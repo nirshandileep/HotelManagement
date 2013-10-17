@@ -12,23 +12,24 @@ namespace HBM.Utility
     public class Generic
     {
         /// <summary>
-        /// Returns an entity by ID. 
+        /// Returns an entity by PrimaryKey. 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="PrimaryKey"></param>
         /// <param name="ExecutedBy"></param>
         /// <param name="dbTransaction"></param>
         /// <returns></returns>
-        public static T Get<T>(int PrimaryKey, string ExecutedBy) where T : new()
+        public static T Get<T>(int PrimaryKey, int companyId) where T : new()
         {
             T entity = default(T);
 
             string TypeName = typeof(T).Name.Replace("Entity", "");
 
             Database db = DatabaseFactory.CreateDatabase();
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "_Get");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "Select");
 
             db.AddInParameter(dbCommand, TypeName + "Id", DbType.Int32, PrimaryKey);
+            db.AddInParameter(dbCommand, "CompanyId", DbType.Int32, companyId);
 
             using (IDataReader dataReader = db.ExecuteReader(dbCommand))
             {
@@ -90,7 +91,7 @@ namespace HBM.Utility
         /// <summary>
         /// Returns a collection of T. T must be an Entity class
         /// </summary>
-        public static List<T> GetAll<T>(int companyId, int executingBy) where T : new()
+        public static List<T> GetAll<T>(int companyId) where T : new()
         {
             List<T> returnEntityCollection = new List<T>();
 
@@ -107,7 +108,6 @@ namespace HBM.Utility
                     T entity = new T();
 
                     AssignDataReaderToEntity(dataReader, entity);
-
                     returnEntityCollection.Add(entity);
                 }
             }

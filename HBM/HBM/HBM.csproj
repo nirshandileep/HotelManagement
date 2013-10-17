@@ -13,6 +13,7 @@
     <RootNamespace>HBM</RootNamespace>
     <AssemblyName>HBM</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,7 +55,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Guest.aspx" />
+    <Content Include="Customers.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="Web.config" />
@@ -66,12 +67,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Guest.aspx.cs">
-      <DependentUpon>Guest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Customers.aspx.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Guest.aspx.designer.cs">
-      <DependentUpon>Guest.aspx</DependentUpon>
+    <Compile Include="Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
     </Compile>
     <Compile Include="HBMMaster.Master.cs">
       <DependentUpon>HBMMaster.Master</DependentUpon>
