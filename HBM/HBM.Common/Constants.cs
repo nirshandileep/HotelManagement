@@ -7,6 +7,71 @@ namespace HBM.Common
 {
     public class Constants
     {
+        #region Database Connection
 
+        public static readonly string HBMCONNECTIONSTRING = "";
+
+        #endregion
+
+        #region Stored Procedures
+
+        public static readonly string SP_ADDITIONALSERVICESELECT = "usp_AdditionalServiceSelect";
+        public static readonly string SP_ADDITIONALSERVICEINSERT = "usp_AdditionalServiceInsert";
+        public static readonly string SP_ADDITIONALSERVICEUPDATE = "usp_AdditionalServiceUpdate";
+        public static readonly string SP_ADDITIONALSERVICEDELETE = "usp_AdditionalServiceDelete";
+        public static readonly string SP_COMPANYSELECT = "usp_CompanySelect";
+        public static readonly string SP_COMPANYINSERT = "usp_CompanyInsert";
+        public static readonly string SP_COMPANYUPDATE = "usp_CompanyUpdate";
+        public static readonly string SP_COMPANYDELETE = "usp_CompanyDelete";
+        public static readonly string SP_CUSTOMERSELECT = "usp_CustomerSelect";
+        public static readonly string SP_CUSTOMERINSERT = "usp_CustomerInsert";
+        public static readonly string SP_CUSTOMERUPDATE = "usp_CustomerUpdate";
+        public static readonly string SP_CUSTOMERDELETE = "usp_CustomerDelete";
+        public static readonly string SP_DEPARTMENTSELECT = "usp_DepartmentSelect";
+        public static readonly string SP_DEPARTMENTINSERT = "usp_DepartmentInsert";
+        public static readonly string SP_DEPARTMENTUPDATE = "usp_DepartmentUpdate";
+        public static readonly string SP_DEPARTMENTDELETE = "usp_DepartmentDelete";
+        public static readonly string SP_GUARANTEESELECT = "usp_GuaranteeSelect";
+        public static readonly string SP_GUARANTEEINSERT = "usp_GuaranteeInsert";
+        public static readonly string SP_GUARANTEEUPDATE = "usp_GuaranteeUpdate";
+        public static readonly string SP_GUARANTEEDELETE = "usp_GuaranteeDelete";
+        public static readonly string SP_RATEPLANSSELECT = "usp_RatePlansSelect";
+        public static readonly string SP_RATEPLANSINSERT = "usp_RatePlansInsert";
+        public static readonly string SP_RATEPLANSUPDATE = "usp_RatePlansUpdate";
+        public static readonly string SP_RATEPLANSDELETE = "usp_RatePlansDelete";
+        public static readonly string SP_RESERVATIONSELECT = "usp_ReservationSelect";
+        public static readonly string SP_RESERVATIONINSERT = "usp_ReservationInsert";
+        public static readonly string SP_RESERVATIONUPDATE = "usp_ReservationUpdate";
+        public static readonly string SP_RESERVATIONDELETE = "usp_ReservationDelete";
+        public static readonly string SP_RESERVATIONADDITIONALSERVICESELECT = "usp_ReservationAdditionalServiceSelect";
+        public static readonly string SP_RESERVATIONADDITIONALSERVICEINSERT = "usp_ReservationAdditionalServiceInsert";
+        public static readonly string SP_RESERVATIONADDITIONALSERVICEUPDATE = "usp_ReservationAdditionalServiceUpdate";
+        public static readonly string SP_RESERVATIONGUESTSELECT = "usp_ReservationGuestSelect";
+        public static readonly string SP_RESERVATIONGUESTINSERT = "usp_ReservationGuestInsert";
+        public static readonly string SP_RESERVATIONGUESTUPDATE = "usp_ReservationGuestUpdate";
+        public static readonly string SP_RESERVATIONPAYMENTSELECT = "usp_ReservationPaymentSelect";
+        public static readonly string SP_RESERVATIONPAYMENTINSERT = "usp_ReservationPaymentInsert";
+        public static readonly string SP_RESERVATIONPAYMENTUPDATE = "usp_ReservationPaymentUpdate";
+        public static readonly string SP_RESERVATIONROOMSELECT = "usp_ReservationRoomSelect";
+        public static readonly string SP_RESERVATIONROOMINSERT = "usp_ReservationRoomInsert";
+        public static readonly string SP_RESERVATIONROOMUPDATE = "usp_ReservationRoomUpdate";
+        public static readonly string SP_ROOMSELECT = "usp_RoomSelect";
+        public static readonly string SP_ROOMINSERT = "usp_RoomInsert";
+        public static readonly string SP_ROOMUPDATE = "usp_RoomUpdate";
+        public static readonly string SP_ROOMDELETE = "usp_RoomDelete";
+        public static readonly string SP_ROOMRATEPLANSELECT = "usp_RoomRatePlanSelect";
+        public static readonly string SP_ROOMRATEPLANINSERT = "usp_RoomRatePlanInsert";
+        public static readonly string SP_ROOMRATEPLANUPDATE = "usp_RoomRatePlanUpdate";
+        public static readonly string SP_ROOMRATEPLANDELETE = "usp_RoomRatePlanDelete";
+        public static readonly string SP_SOURCESELECT = "usp_SourceSelect";
+        public static readonly string SP_SOURCEINSERT = "usp_SourceInsert";
+        public static readonly string SP_SOURCEUPDATE = "usp_SourceUpdate";
+        public static readonly string SP_SOURCEDELETE = "usp_SourceDelete";
+        public static readonly string SP_USERSSELECT = "usp_UsersSelect";
+        public static readonly string SP_USERSINSERT = "usp_UsersInsert";
+        public static readonly string SP_USERSUPDATE = "usp_UsersUpdate";
+        public static readonly string SP_USERSDELETE = "usp_UsersDelete";
+
+        #endregion
     }
 }
