@@ -254,5 +254,21 @@
             <td>
                 &nbsp;</td>
         </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+            <td>
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save">
+                </dx:ASPxButton>
+                <dx:ASPxButton ID="btnClear" runat="server" Text="Clear">
+                </dx:ASPxButton>
+            </td>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+        </tr>
     </table>
 </asp:Content>

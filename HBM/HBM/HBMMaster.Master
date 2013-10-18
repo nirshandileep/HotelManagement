@@ -20,7 +20,9 @@
                 </dx:MenuItem>
                 <dx:MenuItem Text="Customer">
                     <Items>
-                        <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Customer Add">
+                        <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Add">
+                        </dx:MenuItem>
+                        <dx:MenuItem NavigateUrl="~/CustomerSearch.aspx" Text="Search">
                         </dx:MenuItem>
                     </Items>
                 </dx:MenuItem>
