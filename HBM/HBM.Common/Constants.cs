@@ -19,14 +19,7 @@ namespace HBM.Common
         public static readonly string SP_ADDITIONALSERVICEINSERT = "usp_AdditionalServiceInsert";
         public static readonly string SP_ADDITIONALSERVICEUPDATE = "usp_AdditionalServiceUpdate";
         public static readonly string SP_ADDITIONALSERVICEDELETE = "usp_AdditionalServiceDelete";
-        public static readonly string SP_COMPANYSELECT = "usp_CompanySelect";
-        public static readonly string SP_COMPANYINSERT = "usp_CompanyInsert";
-        public static readonly string SP_COMPANYUPDATE = "usp_CompanyUpdate";
-        public static readonly string SP_COMPANYDELETE = "usp_CompanyDelete";
-        public static readonly string SP_CUSTOMERSELECT = "usp_CustomerSelect";
-        public static readonly string SP_CUSTOMERINSERT = "usp_CustomerInsert";
-        public static readonly string SP_CUSTOMERUPDATE = "usp_CustomerUpdate";
-        public static readonly string SP_CUSTOMERDELETE = "usp_CustomerDelete";
+                
         public static readonly string SP_DEPARTMENTSELECT = "usp_DepartmentSelect";
         public static readonly string SP_DEPARTMENTINSERT = "usp_DepartmentInsert";
         public static readonly string SP_DEPARTMENTUPDATE = "usp_DepartmentUpdate";
@@ -67,10 +60,7 @@ namespace HBM.Common
         public static readonly string SP_SOURCEINSERT = "usp_SourceInsert";
         public static readonly string SP_SOURCEUPDATE = "usp_SourceUpdate";
         public static readonly string SP_SOURCEDELETE = "usp_SourceDelete";
-        public static readonly string SP_USERSSELECT = "usp_UsersSelect";
-        public static readonly string SP_USERSINSERT = "usp_UsersInsert";
-        public static readonly string SP_USERSUPDATE = "usp_UsersUpdate";
-        public static readonly string SP_USERSDELETE = "usp_UsersDelete";
+  
 
         #endregion
     }

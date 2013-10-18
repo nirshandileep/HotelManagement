@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
+using HBM.Common;
 
 namespace HBM.UserManagement
 {
@@ -13,8 +14,8 @@ namespace HBM.UserManagement
         public bool Insert(Users users)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_UsersInsert");
 
             db.AddInParameter(command, "@UserName", DbType.String, users.UserName);
             db.AddInParameter(command, "@Password", DbType.String, users.Password);
@@ -35,8 +36,8 @@ namespace HBM.UserManagement
         public bool Update(Users users)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_UsersUpdate");
 
             db.AddInParameter(command, "@UserId", DbType.String, users.UserId);
             db.AddInParameter(command, "@UserName", DbType.String, users.UserName);
@@ -58,12 +59,10 @@ namespace HBM.UserManagement
         public bool Delete(Users users)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_UsersDelete");
 
-            db.AddInParameter(command, "@UserId", DbType.String, users.UserId);
-
-
+            db.AddInParameter(command, "@UserId", DbType.String, users.UserId);            
             db.ExecuteNonQuery(command);
 
             return true;
@@ -71,14 +70,11 @@ namespace HBM.UserManagement
 
         public DataSet SelectAll(Users users)
         {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_UsersSelectAll");
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand dbCommand = db.GetStoredProcCommand("");
-
-            db.AddInParameter(dbCommand, "@UserId", DbType.String, users.UserId);
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.String, users.CompanyId);
             return db.ExecuteDataSet(dbCommand);
-
-
         }
     }
 }

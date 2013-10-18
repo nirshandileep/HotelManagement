@@ -53,6 +53,10 @@
     <Compile Include="Services\CompanyDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">
+      <Project>{CA21B72F-F6C3-49F6-B2DB-83B735A8777A}</Project>
+      <Name>HBM.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HBM.Utility\HBM.Utility.csproj">
       <Project>{95B13785-030E-4F4A-A5C9-C3355B2A9F66}</Project>
       <Name>HBM.Utility</Name>

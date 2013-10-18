@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
+using HBM.Common;
 
 namespace HBM.CustomerManagement
 {
@@ -12,8 +13,8 @@ namespace HBM.CustomerManagement
     {
         public bool Insert(Customer customer)
         {
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CustomerInsert");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, customer.CompanyId);
             db.AddInParameter(command, "@CustomerName", DbType.String, customer.CustomerName);
@@ -56,8 +57,8 @@ namespace HBM.CustomerManagement
         public bool Update(Customer customer)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CustomerUpdate");
 
             db.AddInParameter(command, "@CustomerId", DbType.Int32, customer.CustomerId);
             db.AddInParameter(command, "@CompanyId", DbType.Int32, customer.CompanyId);
@@ -101,8 +102,8 @@ namespace HBM.CustomerManagement
         public bool Delete(Customer customer)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CustomerDelete");
 
             db.AddInParameter(command, "@CustomerId", DbType.Int32, customer.CustomerId);
             db.AddInParameter(command, "@CompanyId", DbType.Int32, customer.CompanyId);
@@ -114,8 +115,8 @@ namespace HBM.CustomerManagement
 
         public DataSet SelectAll(Customer customer)
         {
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CustomerSelectAll");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, customer.CompanyId);
 

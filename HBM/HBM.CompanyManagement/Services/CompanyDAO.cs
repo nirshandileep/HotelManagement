@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
+using HBM.Common;
 
 namespace HBM.CompanyManagement
 {
@@ -13,8 +14,8 @@ namespace HBM.CompanyManagement
         public bool Insert(Company company)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CompanyInsert");
 
             db.AddInParameter(command, "@CompanyName", DbType.String, company.CompanyName);
             db.AddInParameter(command, "@CompanyAddress", DbType.String, company.CompanyAddress);
@@ -35,8 +36,8 @@ namespace HBM.CompanyManagement
         public bool Update(Company company)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CompanyUpdate");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, company.CompanyId);
             db.AddInParameter(command, "@CompanyName", DbType.String, company.CompanyName);
@@ -58,8 +59,8 @@ namespace HBM.CompanyManagement
         public bool Delete(Company company)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CompanyDelete");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, company.CompanyId);
 
@@ -71,8 +72,8 @@ namespace HBM.CompanyManagement
         public DataSet SelectAll(Company company)
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CompanySelectAll");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, company.CompanyId);
 
