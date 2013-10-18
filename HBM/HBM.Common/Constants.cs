@@ -15,15 +15,7 @@ namespace HBM.Common
 
         #region Stored Procedures
 
-        public static readonly string SP_ADDITIONALSERVICESELECT = "usp_AdditionalServiceSelect";
-        public static readonly string SP_ADDITIONALSERVICEINSERT = "usp_AdditionalServiceInsert";
-        public static readonly string SP_ADDITIONALSERVICEUPDATE = "usp_AdditionalServiceUpdate";
-        public static readonly string SP_ADDITIONALSERVICEDELETE = "usp_AdditionalServiceDelete";
-                
-        public static readonly string SP_DEPARTMENTSELECT = "usp_DepartmentSelect";
-        public static readonly string SP_DEPARTMENTINSERT = "usp_DepartmentInsert";
-        public static readonly string SP_DEPARTMENTUPDATE = "usp_DepartmentUpdate";
-        public static readonly string SP_DEPARTMENTDELETE = "usp_DepartmentDelete";
+        
         public static readonly string SP_GUARANTEESELECT = "usp_GuaranteeSelect";
         public static readonly string SP_GUARANTEEINSERT = "usp_GuaranteeInsert";
         public static readonly string SP_GUARANTEEUPDATE = "usp_GuaranteeUpdate";

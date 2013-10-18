@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
 using System.Data;
+using HBM.Common;
 
 namespace HBM.Data
 {
@@ -29,11 +30,11 @@ namespace HBM.Data
 
         #region Methods
 
-        public bool Save()
+        public bool Insert()
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_AdditionalServiceInsert");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, CompanyId);
             db.AddInParameter(command, "@ServiceName", DbType.String, ServiceName);
@@ -54,8 +55,8 @@ namespace HBM.Data
         public bool Update()
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_AdditionalServiceUpdate");
 
             db.AddInParameter(command, "@AdditionalServiceId", DbType.Int32, AdditionalServiceId);
             db.AddInParameter(command, "@CompanyId", DbType.Int32, CompanyId);
@@ -77,8 +78,8 @@ namespace HBM.Data
         public bool Delete()
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand command = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_AdditionalServiceDelete");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, CompanyId);
             db.AddInParameter(command, "@AdditionalServiceId", DbType.Int32, AdditionalServiceId);
@@ -89,30 +90,15 @@ namespace HBM.Data
             return true;
         }
 
-        public void Select()
+        public DataSet SelectAll()
         {
 
-            Database db = DatabaseFactory.CreateDatabase("");
-            DbCommand dbCommand = db.GetStoredProcCommand("");
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_AdditionalServiceSelectAll");
 
-            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, CompanyId);
-            db.AddInParameter(dbCommand, "@AdditionalServiceId", DbType.Int32, AdditionalServiceId);
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, CompanyId);            
 
-            IDataReader reader = db.ExecuteReader(dbCommand);
-
-            if (reader.Read())
-            {
-                AdditionalServiceId = Convert.ToInt32(reader["AdditionalServiceId"].ToString());
-                CompanyId = Convert.ToInt32(reader["CompanyId"].ToString());
-                ServiceName = reader["ServiceName"] != DBNull.Value ? reader["ServiceName"].ToString() : string.Empty;
-                ServiceCode = reader["ServiceCode"] != DBNull.Value ? reader["ServiceCode"].ToString() : string.Empty;
-                CreatedUser = Convert.ToInt32( reader["CreatedBy"] != DBNull.Value ? reader["CreatedUser"].ToString() : "0");
-                CreatedDate = Convert.ToDateTime(reader["CreatedDate"] != DBNull.Value ? reader["CreatedDate"].ToString() : DateTime.MinValue.ToString());
-                UpdatedUser = reader["UpdatedUser"] != DBNull.Value ? reader["UpdatedUser"].ToString() : "0";
-                CreatedDate = Convert.ToDateTime(reader["UpdatedDate"] != DBNull.Value ? reader["UpdatedDate"].ToString() : DateTime.MinValue.ToString());
-                StatusId = Convert.ToInt32(reader["StatusId"] != DBNull.Value ? reader["StatusId"].ToString() : "0");
-
-            }
+            return db.ExecuteDataSet(dbCommand);                      
 
         }
 
