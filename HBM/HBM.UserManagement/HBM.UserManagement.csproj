@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business Entities\Roles.cs" />
     <Compile Include="Business Entities\UserManager.cs" />
     <Compile Include="Business Entities\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
