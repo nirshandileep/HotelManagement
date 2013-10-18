@@ -15,11 +15,20 @@ body{
 	-moz-border-radius:10px 10px 10px 10px;
 	-ms-border-radius:10px 10px 10px 10px;
 	-o-border-radius:10px 10px 10px 10px;
+	box-shadow: 0 0 20px #CCCCCC;
+	-webkit-box-shadow: 0 0 20px #CCCCCC;
+	-moz-box-shadow: 0 0 20px #CCCCCC;
+	-ms-box-shadow: 0 0 20px #CCCCCC;
+	-o-box-shadow: 0 0 20px #CCCCCC;
 	}
 .login-win h2{
 	text-align:center;
 	font-size:16px;
-	margin-bottom:20px;
+	background:url(../images/gnome_session_logout.png) left bottom no-repeat;
+ height: 22px;
+    margin-bottom: 20px;
+    padding-left: 27px;
+    text-align: left;
 	}
 .login-win label{
 	width:100px;
@@ -27,6 +36,14 @@ body{
 	}
 .login-win td{
 	padding:2px;
+	}
+.login-win a {
+	color:#5EA01A;
+	text-decoration:none;
+	}
+.login-win a:hover {
+	text-decoration:underline;
+	color:#345909
 	}
 .dxeEditArea {
 	border-radius:2px;
