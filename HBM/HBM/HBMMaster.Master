@@ -20,15 +20,21 @@
                 </dx:MenuItem>
                 <dx:MenuItem Text="Customer">
                     <Items>
-                        <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Add">
+                        <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Add Customer">
                         </dx:MenuItem>
-                        <dx:MenuItem NavigateUrl="~/CustomerSearch.aspx" Text="Search">
+                        <dx:MenuItem NavigateUrl="~/CustomerSearch.aspx" Text="Search Customer">
                         </dx:MenuItem>
                     </Items>
                 </dx:MenuItem>
-                <dx:MenuItem Text="User">
+                <dx:MenuItem Text="Staff Management">
                     <Items>
                         <dx:MenuItem NavigateUrl="~/Users.aspx" Text="Add Users">
+                        </dx:MenuItem>
+                        <dx:MenuItem NavigateUrl="~/UserSearch.aspx" Text="Search User">
+                        </dx:MenuItem>
+                        <dx:MenuItem NavigateUrl="~/Roles.aspx" Text="Add Role">
+                        </dx:MenuItem>
+                        <dx:MenuItem NavigateUrl="~/RoleSearch.aspx" Text="Search Role">
                         </dx:MenuItem>
                     </Items>
                 </dx:MenuItem>

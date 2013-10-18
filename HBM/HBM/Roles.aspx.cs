@@ -13,5 +13,10 @@ namespace HBM
         {
 
         }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RoleSearch.aspx", false);
+        }
     }
 }

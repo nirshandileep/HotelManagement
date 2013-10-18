@@ -4,21 +4,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table border="0" cellpadding="0" cellspacing="0">
+    <table class="style1">
         <tr>
             <td>
+                Add Roles
             </td>
         </tr>
         <tr>
             <td>
-            </td>
-        </tr>
-        <tr>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>
+                <dx:ASPxGridView ID="gvRoles" runat="server">
+                </dx:ASPxGridView>
             </td>
         </tr>
     </table>

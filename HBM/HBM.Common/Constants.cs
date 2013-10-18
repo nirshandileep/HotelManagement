@@ -51,5 +51,11 @@ namespace HBM.Common
   
 
         #endregion
+
+        #region Constants
+
+        public static readonly string CONST_DEFAULTBACKPAGE = "Dashboard.aspx";
+
+        #endregion
     }
 }

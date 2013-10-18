@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HBMMaster.Master" AutoEventWireup="true" CodeBehind="Customers.aspx.cs" Inherits="HBM.Customers" %>
 <%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .style1
@@ -14,7 +15,11 @@
             <td>
                 Customer Name</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox6" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtCustomerName" runat="server" Width="170px">
+                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" 
+                        SetFocusOnError="True">
+                        <RequiredField IsRequired="True" />
+                    </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -22,7 +27,7 @@
             <td>
                 Passport Number</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox18" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtPassportNumber" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -30,7 +35,7 @@
             <td>
                 Member Code</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox7" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -38,7 +43,7 @@
             <td>
                 Country of Issue</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox19" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtCountryOfIssue" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -46,7 +51,7 @@
             <td>
                 Gender</td>
             <td>
-                <dx:ASPxComboBox ID="ASPxComboBox1" runat="server">
+                <dx:ASPxComboBox ID="cmbGender" runat="server">
                     <Items>
                         <dx:ListEditItem Text="Male" Value="Male" />
                         <dx:ListEditItem Text="Female" Value="Female" />
@@ -58,7 +63,7 @@
             <td>
                 Expiry Date</td>
             <td>
-                <dx:ASPxDateEdit ID="ASPxDateEdit2" runat="server">
+                <dx:ASPxDateEdit ID="dtpExpiryDate" runat="server">
                 </dx:ASPxDateEdit>
             </td>
         </tr>
@@ -66,7 +71,7 @@
             <td>
                 Phone</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox8" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -80,15 +85,15 @@
             <td>
                 Fax</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox9" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtFax" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
                 &nbsp;</td>
             <td>
-                C Type</td>
+                CC Type</td>
             <td>
-                <dx:ASPxComboBox ID="ASPxComboBox3" runat="server" ValueType="System.String">
+                <dx:ASPxComboBox ID="cmbCCType" runat="server" ValueType="System.String">
                 </dx:ASPxComboBox>
             </td>
         </tr>
@@ -96,15 +101,15 @@
             <td>
                 Email</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox10" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
                 &nbsp;</td>
             <td>
-                C No</td>
+                CC No</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox21" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtCCNumber" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -116,9 +121,10 @@
             <td>
                 &nbsp;</td>
             <td>
+                CC
                 Expiry Date</td>
             <td>
-                <dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server">
+                <dx:ASPxDateEdit ID="dtpCCExpiryDate" runat="server">
                 </dx:ASPxDateEdit>
             </td>
         </tr>
@@ -126,15 +132,16 @@
             <td>
                 Company Name</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox11" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
                 &nbsp;</td>
             <td>
+                CC
                 Name Date</td>
             <td>
-                <dx:ASPxDateEdit ID="ASPxDateEdit3" runat="server">
+                <dx:ASPxDateEdit ID="dtpCCNameDate" runat="server">
                 </dx:ASPxDateEdit>
             </td>
         </tr>
@@ -142,7 +149,7 @@
             <td>
                 Company Address</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox12" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -156,7 +163,7 @@
             <td>
                 Notes</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox13" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -164,7 +171,7 @@
             <td>
                 Car</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox22" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtCar" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -178,7 +185,7 @@
             <td>
                 License Plate</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox23" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtLicensePlate" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -186,7 +193,7 @@
             <td>
                 Billing Address</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox14" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtBillingAddress" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -194,15 +201,16 @@
             <td>
                 Drive License</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox24" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
         </tr>
         <tr>
             <td>
+                Billing
                 City</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox15" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -216,7 +224,7 @@
             <td>
                 State</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox16" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -230,7 +238,8 @@
             <td>
                 Country</td>
             <td>
-                <dx:ASPxComboBox ID="ASPxComboBox2" runat="server" ValueType="System.String">
+                <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" 
+                    ValueType="System.String">
                 </dx:ASPxComboBox>
             </td>
             <td>
@@ -244,7 +253,7 @@
             <td>
                 Post Code</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox17" runat="server" Width="170px">
+                <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -256,11 +265,15 @@
         </tr>
         <tr>
             <td>
-                &nbsp;</td>
+                <asp:HiddenField ID="hdnCustomerId" runat="server" Value="0" />
+                <asp:HiddenField ID="hdnFromURL" runat="server" />
+            </td>
             <td>
-                <dx:ASPxButton ID="btnSave" runat="server" Text="Save">
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click">
                 </dx:ASPxButton>
                 <dx:ASPxButton ID="btnClear" runat="server" Text="Clear">
+                </dx:ASPxButton>
+                <dx:ASPxButton ID="btnBack" runat="server" onclick="btnBack_Click" Text="Back">
                 </dx:ASPxButton>
             </td>
             <td>
