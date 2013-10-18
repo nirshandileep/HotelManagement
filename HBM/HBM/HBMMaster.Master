@@ -16,9 +16,17 @@
     <div>Menu - 
         <dx:ASPxMenu ID="ASPxMenu1" runat="server">
             <Items>
-                <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Customer">
+                <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
+                </dx:MenuItem>
+                <dx:MenuItem Text="Customer">
                     <Items>
-                        <dx:MenuItem>
+                        <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Customer Add">
+                        </dx:MenuItem>
+                    </Items>
+                </dx:MenuItem>
+                <dx:MenuItem Text="User">
+                    <Items>
+                        <dx:MenuItem NavigateUrl="~/Users.aspx" Text="Add Users">
                         </dx:MenuItem>
                     </Items>
                 </dx:MenuItem>

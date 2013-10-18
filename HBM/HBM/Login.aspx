@@ -40,7 +40,8 @@
                     &nbsp;
                 </td>
                 <td>
-                    <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Login">
+                    <dx:ASPxButton ID="btnLogin" runat="server" Text="Login" 
+                        onclick="btnLogin_Click">
                     </dx:ASPxButton>
                 </td>
             </tr>
