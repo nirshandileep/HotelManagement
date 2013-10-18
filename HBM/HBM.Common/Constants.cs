@@ -40,10 +40,6 @@ namespace HBM.Common
         public static readonly string SP_RESERVATIONROOMSELECT = "usp_ReservationRoomSelect";
         public static readonly string SP_RESERVATIONROOMINSERT = "usp_ReservationRoomInsert";
         public static readonly string SP_RESERVATIONROOMUPDATE = "usp_ReservationRoomUpdate";
-        public static readonly string SP_ROOMSELECT = "usp_RoomSelect";
-        public static readonly string SP_ROOMINSERT = "usp_RoomInsert";
-        public static readonly string SP_ROOMUPDATE = "usp_RoomUpdate";
-        public static readonly string SP_ROOMDELETE = "usp_RoomDelete";
         public static readonly string SP_ROOMRATEPLANSELECT = "usp_RoomRatePlanSelect";
         public static readonly string SP_ROOMRATEPLANINSERT = "usp_RoomRatePlanInsert";
         public static readonly string SP_ROOMRATEPLANUPDATE = "usp_RoomRatePlanUpdate";

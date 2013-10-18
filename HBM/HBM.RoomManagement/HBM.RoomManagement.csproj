@@ -49,8 +49,14 @@
   <ItemGroup>
     <Compile Include="Business Entities\BedType.cs" />
     <Compile Include="Business Entities\BedTypeManager.cs" />
+    <Compile Include="Business Entities\Room.cs" />
+    <Compile Include="Business Entities\RoomManager.cs" />
+    <Compile Include="Business Entities\RoomRatePlan.cs" />
+    <Compile Include="Business Entities\RoomRatePlanManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BedTypeDAO.cs" />
+    <Compile Include="Services\RoomDAO.cs" />
+    <Compile Include="Services\RoomRatePlanDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">

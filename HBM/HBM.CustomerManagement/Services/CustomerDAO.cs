@@ -43,10 +43,8 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@Car", DbType.String, customer.Car);
             db.AddInParameter(command, "@CarLicensePlate", DbType.String, customer.CarLicensePlate);
             db.AddInParameter(command, "@DriverLicense", DbType.String, customer.DriverLicense);
-            db.AddInParameter(command, "@CreatedBy", DbType.Int32, customer.CreatedBy);
-            db.AddInParameter(command, "@CreatedDate", DbType.DateTime, customer.CreatedDate);
-            db.AddInParameter(command, "@UpdatedBy", DbType.Int32, customer.UpdatedBy);
-            db.AddInParameter(command, "@UpdatedDate", DbType.DateTime, customer.UpdatedDate);
+            db.AddInParameter(command, "@CreatedUser", DbType.Int32, customer.CreatedUser);
+            db.AddInParameter(command, "@CreatedDate", DbType.DateTime, customer.CreatedDate);            
             db.AddInParameter(command, "@StatusId", DbType.Int32, customer.StatusId);
 
             db.ExecuteNonQuery(command);
@@ -88,9 +86,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@Car", DbType.String, customer.Car);
             db.AddInParameter(command, "@CarLicensePlate", DbType.String, customer.CarLicensePlate);
             db.AddInParameter(command, "@DriverLicense", DbType.String, customer.DriverLicense);
-            db.AddInParameter(command, "@CreatedBy", DbType.Int32, customer.CreatedBy);
-            db.AddInParameter(command, "@CreatedDate", DbType.DateTime, customer.CreatedDate);
-            db.AddInParameter(command, "@UpdatedBy", DbType.Int32, customer.UpdatedBy);
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, customer.UpdatedUser);
             db.AddInParameter(command, "@UpdatedDate", DbType.DateTime, customer.UpdatedDate);
             db.AddInParameter(command, "@StatusId", DbType.Int32, customer.StatusId);
 

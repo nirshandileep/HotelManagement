@@ -21,9 +21,9 @@ namespace HBM.UserManagement
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public string CreatedBy { get; set; }
+        public string CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string UpdatedBy { get; set; }
+        public string UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
 

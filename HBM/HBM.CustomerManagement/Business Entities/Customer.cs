@@ -45,9 +45,9 @@ namespace HBM.CustomerManagement
         public string Car { get; set; }
         public string CarLicensePlate { get; set; }
         public string DriverLicense { get; set; }
-        public Int32 CreatedBy { get; set; }
+        public Int32 CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
-        public Int32 UpdatedBy { get; set; }
+        public Int32 UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
 
