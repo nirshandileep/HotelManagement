@@ -47,10 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business Entities\Rights.cs" />
+    <Compile Include="Business Entities\RightsManager.cs" />
     <Compile Include="Business Entities\Roles.cs" />
+    <Compile Include="Business Entities\RolesManager.cs" />
     <Compile Include="Business Entities\UserManager.cs" />
     <Compile Include="Business Entities\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RightsDAO.cs" />
+    <Compile Include="Services\RolesDAO.cs" />
     <Compile Include="Services\UserDAO.cs" />
   </ItemGroup>
   <ItemGroup>

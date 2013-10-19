@@ -9,7 +9,7 @@ namespace HBM.Common
     {
         #region Database Connection
 
-        public static readonly string HBMCONNECTIONSTRING = "";
+        public static readonly string HBMCONNECTIONSTRING = "HBMConnectionString";
 
         #endregion
 
