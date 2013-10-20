@@ -157,13 +157,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtNotes;
         
         /// <summary>
-        /// txtCar control.
+        /// cmbCar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCar;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCar;
         
         /// <summary>
         /// txtLicensePlate control.

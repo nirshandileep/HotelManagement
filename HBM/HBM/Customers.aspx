@@ -182,8 +182,12 @@
             <td>
                 Car</td>
             <td>
-                <dx:ASPxTextBox ID="txtCar" runat="server" Width="170px">
-                </dx:ASPxTextBox>
+                <dx:ASPxComboBox ID="cmbCar" runat="server">
+                    <Items>
+                        <dx:ListEditItem Text="No" Value="No" />
+                        <dx:ListEditItem Text="Yes" Value="Yes" />
+                    </Items>
+                </dx:ASPxComboBox>
             </td>
         </tr>
         <tr>

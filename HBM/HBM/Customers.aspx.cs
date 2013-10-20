@@ -60,7 +60,7 @@ namespace HBM
 
             txtBillingPostCode.Text = CustomerObj.BillingPostCode;
             txtBillingState.Text=CustomerObj.BillingState;
-            txtCar.Text=CustomerObj.Car;
+            cmbCar.SelectedItem.Text = CustomerObj.Car;
             txtLicensePlate.Text=CustomerObj.CarLicensePlate;
 
             if (CustomerObj.CCExpirationDate.HasValue)
@@ -106,7 +106,7 @@ namespace HBM
             CustomerObj.BillingCountry = cmbBillingCountry.SelectedItem.Text;
             CustomerObj.BillingPostCode = txtBillingPostCode.Text.Trim();
             CustomerObj.BillingState = txtBillingState.Text.Trim();
-            CustomerObj.Car = txtCar.Text.Trim();
+            CustomerObj.Car = cmbCar.SelectedItem.Text;
             CustomerObj.CarLicensePlate = txtLicensePlate.Text.Trim();
             CustomerObj.CCExpirationDate = dtpCCExpiryDate.Date;
             CustomerObj.CCNameDate = dtpCCNameDate.Date;
