@@ -16,7 +16,7 @@
 <body>
     <form id="form1" runat="server">
     <div> 
-        <dx:ASPxMenu ID="MainMenu" runat="server" Theme="Office2003Olive">
+        <dx:ASPxMenu ID="MainMenu" runat="server">
             <Items>
                 <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
                 </dx:MenuItem>
