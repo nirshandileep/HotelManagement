@@ -24,7 +24,7 @@ namespace HBM.Utility
         {
             T entity = default(T);
 
-            string TypeName = typeof(T).Name.Replace("Entity", "");
+            string TypeName = typeof(T).Name;
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "Select");

@@ -45,7 +45,7 @@
                 </td>
                 <td>
                     <dx:ASPxButton ID="btnLogin" runat="server" Text="Login" 
-                        onclick="btnLogin_Click" Theme="Office2003Olive">
+                        onclick="btnLogin_Click">
                     </dx:ASPxButton>
                 </td>
             </tr>
