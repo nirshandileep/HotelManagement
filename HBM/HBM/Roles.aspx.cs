@@ -55,7 +55,7 @@ namespace HBM
             }
             catch (System.Exception ex)
             {
-
+                throw ex;
             }
         }
 
@@ -86,8 +86,9 @@ namespace HBM
             }
             catch (System.Exception ex)
             {
-                transaction.Rollback();              
+                transaction.Rollback();
 
+                throw ex;
             }
 
             return result;

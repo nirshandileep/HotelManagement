@@ -31,13 +31,13 @@ namespace HBM {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ASPxMenu1 control.
+        /// MainMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxMenu.ASPxMenu ASPxMenu1;
+        protected global::DevExpress.Web.ASPxMenu.ASPxMenu MainMenu;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

@@ -51,6 +51,12 @@
     <Compile Include="Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">
+      <Project>{CA21B72F-F6C3-49F6-B2DB-83B735A8777A}</Project>
+      <Name>HBM.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

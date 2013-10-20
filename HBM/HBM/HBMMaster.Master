@@ -15,8 +15,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>Menu - 
-        <dx:ASPxMenu ID="ASPxMenu1" runat="server">
+    <div> 
+        <dx:ASPxMenu ID="MainMenu" runat="server" Theme="Office2003Olive">
             <Items>
                 <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
                 </dx:MenuItem>
@@ -41,7 +41,7 @@
                     </Items>
                 </dx:MenuItem>
             </Items>
-        </dx:ASPxMenu> - Menu</div>
+        </dx:ASPxMenu> </div>
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         

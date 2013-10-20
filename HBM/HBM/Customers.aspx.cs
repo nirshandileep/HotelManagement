@@ -44,7 +44,49 @@ namespace HBM
 
         private void SetData()
         {
-            
+            txtCustomerName.Text = CustomerObj.CustomerName;
+            txtBillingAddress.Text = CustomerObj.BillingAddress;
+            txtBillingCity.Text = CustomerObj.BillingCity;
+            cmbBillingCountry.SelectedItem.Value = CustomerObj.BillingCountry;
+
+            txtBillingPostCode.Text = CustomerObj.BillingPostCode;
+            txtBillingState.Text=CustomerObj.BillingState;
+            txtCar.Text=CustomerObj.Car;
+            txtLicensePlate.Text=CustomerObj.CarLicensePlate;
+
+            if (CustomerObj.CCExpirationDate.HasValue)
+            {
+                dtpCCExpiryDate.Date = CustomerObj.CCExpirationDate.Value;
+            }
+
+            if (CustomerObj.CCNameDate.HasValue)
+            {
+                dtpCCNameDate.Date = CustomerObj.CCNameDate.Value;
+            }
+
+            txtCCNumber.Text = CustomerObj.CCNo.HasValue ? CustomerObj.CCNo.Value.ToString() : string.Empty;
+
+            cmbCCType.SelectedItem.Value = CustomerObj.CCType.Value;
+            txtCompanyAddress.Text = CustomerObj.CompanyAddress;
+            txtCompanyName.Text = CustomerObj.CompanyName;
+            txtNotes.Text=CustomerObj.CompanyNotes;
+            txtDriveLicense.Text=CustomerObj.DriverLicense;
+            txtEmail.Text = CustomerObj.Email;
+            txtFax.Text=CustomerObj.Fax;
+            cmbGender.SelectedItem.Text = CustomerObj.Gender;
+            txtMemberCode.Text = CustomerObj.MemberCode;
+
+            txtPhone.Text = CustomerObj.Mobile;
+            txtCountryOfIssue.Text = CustomerObj.PassportCountryOfIssue;
+
+            if (CustomerObj.PassportExpirationDate.HasValue)
+            {
+                dtpExpiryDate.Date = CustomerObj.PassportExpirationDate.Value;
+            }
+
+            txtPassportNumber.Text = CustomerObj.PassportNumber;
+            txtPhone.Text = CustomerObj.Phone;
+
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -87,10 +129,17 @@ namespace HBM
 
             //CustomerObj.StatusId = stat
 
-            if (CustomerObj.Save())
+            string errorMSG;
+            if ((new CustomerManagement.CustomerManager()).IsValidToSave(CustomerObj, out errorMSG))
             {
-                //Save successful Details 
+                if (CustomerObj.Save())
+                {
+
+                    
+                }
             }
+
+            //Display error on a label
 
         }
 

@@ -17,8 +17,9 @@
             <td>
                 <dx:ASPxTextBox ID="txtCustomerName" runat="server" Width="170px">
                     <ValidationSettings Display="Dynamic" EnableCustomValidation="True" 
-                        SetFocusOnError="True">
-                        <RequiredField IsRequired="True" />
+                        SetFocusOnError="True" ValidationGroup="vgCustomer" 
+                        ErrorDisplayMode="Text">
+                        <RequiredField IsRequired="True" ErrorText="Required" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
@@ -36,6 +37,11 @@
                 Member Code</td>
             <td>
                 <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px">
+                     <ValidationSettings Display="Dynamic" EnableCustomValidation="True" 
+                        SetFocusOnError="True" ValidationGroup="vgCustomer" 
+                        ErrorDisplayMode="Text">
+                        <RequiredField IsRequired="True" ErrorText="Required" />
+                    </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -72,6 +78,11 @@
                 Phone</td>
             <td>
                 <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px">
+                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" 
+                        SetFocusOnError="True" ValidationGroup="vgCustomer" 
+                        ErrorDisplayMode="Text">
+                        <RequiredField IsRequired="True" ErrorText="Required" />
+                    </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -194,6 +205,11 @@
                 Billing Address</td>
             <td>
                 <dx:ASPxTextBox ID="txtBillingAddress" runat="server" Width="170px">
+                     <ValidationSettings Display="Dynamic" EnableCustomValidation="True" 
+                        SetFocusOnError="True" ValidationGroup="vgCustomer" 
+                        ErrorDisplayMode="Text">
+                        <RequiredField IsRequired="True" ErrorText="Required" />
+                    </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -211,6 +227,10 @@
                 City</td>
             <td>
                 <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px">
+                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" 
+                        SetFocusOnError="True" ValidationGroup="vgCustomer">
+                        <RequiredField IsRequired="True" />
+                    </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -269,7 +289,8 @@
                 <asp:HiddenField ID="hdnFromURL" runat="server" />
             </td>
             <td>
-                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click">
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click" 
+                    ValidationGroup="vgCustomer">
                 </dx:ASPxButton>
                 <dx:ASPxButton ID="btnClear" runat="server" Text="Clear">
                 </dx:ASPxButton>

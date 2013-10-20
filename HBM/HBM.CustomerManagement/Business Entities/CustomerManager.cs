@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HBM.CustomerManagement.Business_Entities
+namespace HBM.CustomerManagement
 {
     /// <summary>
     /// Make all business logic here
@@ -11,5 +11,21 @@ namespace HBM.CustomerManagement.Business_Entities
     [Serializable]
     public class CustomerManager
     {
+
+        /// <summary>
+        /// Pass the customer object to this method and check if its valid to be saved.
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public bool IsValidToSave(Customer customer, out string errorMSG)
+        {
+            bool isValid = true;
+            errorMSG = string.Empty;
+
+
+
+            return isValid;
+        }
     }
 }

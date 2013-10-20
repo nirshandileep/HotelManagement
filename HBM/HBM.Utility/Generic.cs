@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using HBM.Common;
 
 namespace HBM.Utility
 {
@@ -25,7 +26,7 @@ namespace HBM.Utility
 
             string TypeName = typeof(T).Name.Replace("Entity", "");
 
-            Database db = DatabaseFactory.CreateDatabase();
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "Select");
 
             db.AddInParameter(dbCommand, TypeName + "Id", DbType.Int32, PrimaryKey);
