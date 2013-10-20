@@ -14,8 +14,10 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+
     <form id="form1" runat="server">
-    <div> 
+<div class="header"> 
+	<div class="wrapper">
         <dx:ASPxMenu ID="MainMenu" runat="server">
             <Items>
                 <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
@@ -41,12 +43,17 @@
                     </Items>
                 </dx:MenuItem>
             </Items>
-        </dx:ASPxMenu> </div>
+        </dx:ASPxMenu> 
+	</div>
+</div>
+
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
     </div>
     </form>
+<div class="footer"></div>
+
 </body>
 </html>
