@@ -38,8 +38,17 @@ namespace HBM
             {
                 Master.ClearSessions();
                 CheckFromURL();
+                LoadInitialData();
                 SetData();
             }
+        }
+
+        /// <summary>
+        /// Load all lookup data with this method
+        /// </summary>
+        private void LoadInitialData()
+        {
+            
         }
 
         private void SetData()
