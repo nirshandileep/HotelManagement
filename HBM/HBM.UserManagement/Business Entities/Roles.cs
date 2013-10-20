@@ -20,11 +20,13 @@ namespace HBM.UserManagement
         public int RoleId { get; set; }
         public string RoleName { get; set; }
         public string RoleDescription { get; set; }
+        public int RightId { get; set; }        
         public int CompanyId { get; set; }        
         public Int32 CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
         public Int32 UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
+
 
         #endregion
 
@@ -45,6 +47,21 @@ namespace HBM.UserManagement
                 {
                     result = (new RolesDAO()).Insert(this,db,transaction);
                 }
+            }
+            catch (System.Exception ex)
+            {
+                result = false;
+                throw ex;
+            }
+            return result;
+        }
+
+        public bool SaveRoleRights(Database db, DbTransaction transaction)
+        {
+            bool result = false;
+            try
+            {
+                result = (new RolesDAO()).InsertRoleRights(this, db, transaction);                
             }
             catch (System.Exception ex)
             {

@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HBMMaster.Master" AutoEventWireup="true"
     CodeBehind="Roles.aspx.cs" Inherits="HBM.Roles" %>
-
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+<%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .style1
@@ -26,6 +26,7 @@
                     <tr>
                         <td>
                             Role Name:
+                            <asp:HiddenField ID="hdnRoleId" runat="server" />
                         </td>
                         <td>
                             <dx:ASPxTextBox ID="txtRoleName" runat="server" Width="170px">
@@ -69,15 +70,22 @@
         </tr>
         <tr>
             <td>
-                <dx:ASPxGridView ID="gvRights" runat="server" Width="100%" AutoGenerateColumns="False">
+                <dx:ASPxGridView ID="gvRights" runat="server" Width="100%" 
+                    AutoGenerateColumns="False" KeyFieldName="RightId">
                     <Columns>
                         <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="0">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn Caption="Module" FieldName="ModuleName" VisibleIndex="2">
+                        <dx:GridViewDataTextColumn Caption="Module" FieldName="ModuleName" 
+                            VisibleIndex="1">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Right Name" FieldName="RightName" VisibleIndex="3">
+                        <dx:GridViewDataTextColumn Caption="Right Name" FieldName="RightName" 
+                            VisibleIndex="2">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Description" FieldName="RightDescription" VisibleIndex="4">
+                        <dx:GridViewDataTextColumn Caption="Description" FieldName="RightDescription" 
+                            VisibleIndex="3">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="RightId" FieldName="RightId" 
+                            VisibleIndex="5">
                         </dx:GridViewDataTextColumn>
                     </Columns>
                 </dx:ASPxGridView>

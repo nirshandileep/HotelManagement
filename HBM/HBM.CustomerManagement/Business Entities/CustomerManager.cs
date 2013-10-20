@@ -22,9 +22,6 @@ namespace HBM.CustomerManagement
         {
             bool isValid = true;
             errorMSG = string.Empty;
-
-
-
             return isValid;
         }
     }

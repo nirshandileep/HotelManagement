@@ -13,6 +13,15 @@ namespace HBM {
     public partial class Roles {
         
         /// <summary>
+        /// hdnRoleId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnRoleId;
+        
+        /// <summary>
         /// txtRoleName control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,17 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSave;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new HBM.HBMMaster Master {
+            get {
+                return ((HBM.HBMMaster)(base.Master));
+            }
+        }
     }
 }

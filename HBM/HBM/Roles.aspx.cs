@@ -13,7 +13,6 @@ namespace HBM
 {
     public partial class Roles : System.Web.UI.Page
     {
-
         public UserMan.Rights RightsObj
         {
             get
@@ -22,28 +21,42 @@ namespace HBM
                 return rights = new UserMan.Rights();
             }
         }
+               
 
-        public UserMan.Roles RolesObj
-        {
-            get
-            {
-                UserMan.Roles roles;
-                return roles = new UserMan.Roles();
-            }
-        }
-        
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+                       
+
+            if (Request.QueryString["RoleId"] != null)
             {
+                
+                this.hdnRoleId.Value = Request.QueryString["RoleId"];
+                this.DisplayRoles();
 
             }
-            this.LoadRights();
+            else
+            {
+                this.LoadRights();
+
+            }
+            
+
+
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+               
 
+                this.SaveData();
+            }
+            catch (System.Exception)
+            {
+
+
+            }
         }
 
         protected void LoadRights()
@@ -61,6 +74,7 @@ namespace HBM
 
         protected bool SaveData()
         {
+
             bool result = false;
 
             DbConnection connection = null;
@@ -73,25 +87,60 @@ namespace HBM
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
+                UserMan.Roles RolesObj = new UserMan.Roles();
+
                 RolesObj.RoleName = txtRoleName.Text.Trim();
                 RolesObj.RoleDescription = txtRoleDescription.Text.Trim();
-                RolesObj.CreatedUser=0;
-                RolesObj.CreatedDate = DateTime.Now;
-                RolesObj.UpdatedUser = 0;
-                RolesObj.UpdatedDate = DateTime.Now;                
-                RolesObj.Save(db,transaction);
+                RolesObj.CompanyId = 1;
+                RolesObj.CreatedUser = 1;
+                RolesObj.UpdatedUser = 1;
 
+                if (RolesObj.Save(db, transaction))
+                {
+                    List<object> myList = gvRights.GetSelectedFieldValues("RightId");
+
+                    if (myList.Count > 0)
+                    {
+                        for (int i = 0; i <= myList.Count - 1; i++)
+                        {
+                            RolesObj.RightId = Convert.ToInt32(myList[i].ToString());
+                            RolesObj.SaveRoleRights(db, transaction);
+                        }
+                    }
+                }               
+                
                 transaction.Commit();
                 result = true;
             }
             catch (System.Exception ex)
             {
                 transaction.Rollback();
-
                 throw ex;
             }
 
             return result;
+        }
+
+        protected void DisplayRoles()
+        {
+            try
+            {
+
+                int currentRoleId= Convert.ToInt32(this.hdnRoleId.Value);
+                UserMan.Roles RolesObj = new UserMan.Roles();
+                RolesObj.RoleId = currentRoleId;
+                RolesObj.CompanyId = 1;
+                RolesObj.Select();
+                this.txtRoleName.Text = RolesObj.RoleName;
+                this.txtRoleDescription.Text = RolesObj.RoleDescription;
+
+
+            }
+            catch (System.Exception)
+            {
+                
+                
+            }
         }
 
     }
