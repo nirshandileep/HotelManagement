@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using HBM.UserManagement;
 using System.Data;
+using UM = HBM.UserManagement;
 
 namespace HBM
 {
@@ -26,15 +27,15 @@ namespace HBM
         /// <summary>
         /// Logged User
         /// </summary>
-        public Users User
+        public UM.Users LoggedUser
         {
             get 
             {
-                Users user;
+                UM.Users user;
 
                 if (Session["LoggedUser"] != null)
                 {
-                    user = (Users)Session["LoggedUser"];
+                    user = (UM.Users)Session["LoggedUser"];
                 }
                 else
                 {

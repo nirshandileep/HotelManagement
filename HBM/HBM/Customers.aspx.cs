@@ -136,6 +136,9 @@ namespace HBM
             CustomerObj.PassportNumber = txtPassportNumber.Text.Trim();
             CustomerObj.Phone = txtPhone.Text.Trim();
 
+            CustomerObj.CreatedUser = Master.LoggedUser.UserId;
+            CustomerObj.UpdatedUser = Master.LoggedUser.UserId;
+
             //CustomerObj.StatusId = stat
 
             string errorMSG;
