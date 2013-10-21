@@ -49,7 +49,6 @@
     <Compile Include="AdditionalService.cs" />
     <Compile Include="BedType.cs" />
     <Compile Include="Company.cs" />
-    <Compile Include="Customer.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="Guarantee.cs" />
     <Compile Include="RatePlans.cs" />
