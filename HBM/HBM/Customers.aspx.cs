@@ -64,7 +64,11 @@ namespace HBM
             txtCustomerName.Text = CustomerObj.CustomerName;
             txtBillingAddress.Text = CustomerObj.BillingAddress;
             txtBillingCity.Text = CustomerObj.BillingCity;
-            cmbBillingCountry.SelectedItem.Value = CustomerObj.BillingCountry;
+
+            if (CustomerObj.BillingCountryId.HasValue)
+            {
+                cmbBillingCountry.SelectedItem.Value = CustomerObj.BillingCountryId;
+            }
 
             txtBillingPostCode.Text = CustomerObj.BillingPostCode;
             txtBillingState.Text = CustomerObj.BillingState;
@@ -89,9 +93,9 @@ namespace HBM
             txtFax.Text = CustomerObj.Fax;
             cmbGender.SelectedItem.Text = CustomerObj.Gender;
             txtMemberCode.Text = CustomerObj.MemberCode;
-
             txtPhone.Text = CustomerObj.Mobile;
-            txtCountryOfIssue.Text = CustomerObj.PassportCountryOfIssue;
+
+            cmbPassportCountryOfIssue.SelectedItem.Value = CustomerObj.PassportCountryOfIssue;
 
             if (CustomerObj.PassportExpirationDate.HasValue)
             {
@@ -108,7 +112,7 @@ namespace HBM
             CustomerObj.CustomerName = txtCustomerName.Text.Trim();
             CustomerObj.BillingAddress = txtBillingAddress.Text.Trim();
             CustomerObj.BillingCity = txtBillingCity.Text.Trim();
-            CustomerObj.BillingCountry = cmbBillingCountry.SelectedItem.Text;
+            CustomerObj.BillingCountryId = (int?)cmbBillingCountry.SelectedItem.Value;
             CustomerObj.BillingPostCode = txtBillingPostCode.Text.Trim();
             CustomerObj.BillingState = txtBillingState.Text.Trim();
             CustomerObj.Car = cmbCar.SelectedItem.Text;
@@ -136,7 +140,7 @@ namespace HBM
             CustomerObj.MemberCode = txtMemberCode.Text.Trim();
             
             CustomerObj.Mobile = txtPhone.Text.Trim();
-            CustomerObj.PassportCountryOfIssue = txtCountryOfIssue.Text.Trim();
+            CustomerObj.PassportCountryOfIssue = (int?)cmbPassportCountryOfIssue.SelectedItem.Value;
             CustomerObj.PassportExpirationDate = dtpExpiryDate.Date;
             CustomerObj.PassportNumber = txtPassportNumber.Text.Trim();
             CustomerObj.Phone = txtPhone.Text.Trim();

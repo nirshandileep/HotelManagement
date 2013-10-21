@@ -49,13 +49,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtMemberCode;
         
         /// <summary>
-        /// txtCountryOfIssue control.
+        /// cmbPassportCountryOfIssue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCountryOfIssue;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbPassportCountryOfIssue;
         
         /// <summary>
         /// cmbGender control.

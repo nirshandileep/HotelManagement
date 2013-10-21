@@ -66,8 +66,9 @@
                 Country of Issue
             </td>
             <td>
-                <dx:ASPxTextBox ID="txtCountryOfIssue" runat="server" Width="170px">
-                </dx:ASPxTextBox>
+                            <dx:ASPxComboBox ID="cmbPassportCountryOfIssue" runat="server" 
+                    ValueType="System.Int32">
+                            </dx:ASPxComboBox>
             </td>
         </tr>
         <tr>

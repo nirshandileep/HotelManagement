@@ -33,15 +33,15 @@ namespace HBM.CustomerManagement
         public string BillingAddress { get; set; }
         public string BillingCity { get; set; }
         public string BillingState { get; set; }
-        public string BillingCountry { get; set; }
+        public int? BillingCountryId { get; set; }
         public string BillingPostCode { get; set; }
         public string PassportNumber { get; set; }
-        public string PassportCountryOfIssue { get; set; }
+        public int? PassportCountryOfIssue { get; set; }
         public DateTime? PassportExpirationDate { get; set; }
         public Int32? CCType { get; set; }
         public Int32? CCNo { get; set; }
         public DateTime? CCExpirationDate { get; set; }
-        public DateTime? CCNameDate { get; set; }
+        public string CCNameOnCard { get; set; }
         public string Car { get; set; }
         public string CarLicensePlate { get; set; }
         public string DriverLicense { get; set; }
