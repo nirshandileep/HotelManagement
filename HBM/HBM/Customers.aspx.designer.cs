@@ -256,15 +256,6 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbBillingCountry;
         
         /// <summary>
-        /// btnAddCountry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddCountry;
-        
-        /// <summary>
         /// txtBillingPostCode control.
         /// </summary>
         /// <remarks>
@@ -319,13 +310,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnBack;
         
         /// <summary>
-        /// pcCountry control.
+        /// pcGuestType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl pcCountry;
+        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl pcGuestType;
         
         /// <summary>
         /// cbpCountryPannel control.
@@ -337,22 +328,22 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel cbpCountryPannel;
         
         /// <summary>
-        /// txtAddCountry control.
+        /// txtAddGuestType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtAddCountry;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtAddGuestType;
         
         /// <summary>
-        /// btnSaveCountry control.
+        /// btnSaveGuestType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSaveCountry;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSaveGuestType;
         
         /// <summary>
         /// Master property.

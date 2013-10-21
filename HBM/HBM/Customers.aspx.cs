@@ -32,6 +32,39 @@ namespace HBM
             }
         }
 
+        public DateTime? CCExpiryDate
+        {
+            get 
+            {
+                DateTime? expDate = new DateTime();
+
+                if (cmbCCExpiryDateMonth.SelectedItem.ValueString != string.Empty &&
+                    cmbCCExpiryDateYear.SelectedItem.ValueString != string.Empty)
+                {
+                    DateTime tempDate = new DateTime(
+                        int.Parse(cmbCCExpiryDateYear.SelectedItem.ValueString),
+                        int.Parse(cmbCCExpiryDateMonth.SelectedItem.ValueString),
+                        1);
+
+                    expDate = tempDate;
+                }
+                else
+                {
+                    expDate = null;
+                }
+
+                return expDate;
+            }
+            set 
+            {
+                if (value.HasValue)
+                {
+                    cmbCCExpiryDateMonth.SelectedItem.Value = value.Value.Month;
+                    cmbCCExpiryDateYear.SelectedItem.Value = value.Value.Year;
+                }
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -72,30 +105,42 @@ namespace HBM
 
             txtBillingPostCode.Text = CustomerObj.BillingPostCode;
             txtBillingState.Text = CustomerObj.BillingState;
-            cmbCar.SelectedItem.Text = CustomerObj.Car;
-            txtLicensePlate.Text = CustomerObj.CarLicensePlate;
 
-            if (CustomerObj.CCExpirationDate.HasValue)
+            if (string.IsNullOrEmpty(CustomerObj.Car) == false)
             {
-                cmbCCExpiryDateMonth.SelectedItem.Value = CustomerObj.CCExpirationDate.Value.Month;
-                cmbCCExpiryDateYear.SelectedItem.Value = CustomerObj.CCExpirationDate.Value.Year;
+                cmbCar.SelectedItem.Text = CustomerObj.Car;
+                
             }
 
+            txtLicensePlate.Text = CustomerObj.CarLicensePlate;
+            CCExpiryDate = CustomerObj.CCExpirationDate;
             txtNameOnCard.Text = CustomerObj.CCNameOnCard;
             txtCCNumber.Text = CustomerObj.CCNo.HasValue ? CustomerObj.CCNo.Value.ToString() : string.Empty;
 
-            cmbCCType.SelectedItem.Value = CustomerObj.CCType.Value;
+            if (CustomerObj.CCType.HasValue)
+            {
+                cmbCCType.SelectedItem.Value = CustomerObj.CCType.Value;
+            }
+            
             txtCompanyAddress.Text = CustomerObj.CompanyAddress;
             txtCompanyName.Text = CustomerObj.CompanyName;
             txtNotes.Text = CustomerObj.CompanyNotes;
             txtDriveLicense.Text = CustomerObj.DriverLicense;
             txtEmail.Text = CustomerObj.Email;
             txtFax.Text = CustomerObj.Fax;
-            cmbGender.SelectedItem.Text = CustomerObj.Gender;
+
+            if (string.IsNullOrEmpty(CustomerObj.Gender) == false)
+            {
+                cmbGender.SelectedItem.Text = CustomerObj.Gender;
+            }
+
             txtMemberCode.Text = CustomerObj.MemberCode;
             txtPhone.Text = CustomerObj.Mobile;
 
-            cmbPassportCountryOfIssue.SelectedItem.Value = CustomerObj.PassportCountryOfIssue;
+            if (CustomerObj.PassportCountryOfIssue.HasValue)
+            {
+                cmbPassportCountryOfIssue.SelectedItem.Value = CustomerObj.PassportCountryOfIssue;
+            }
 
             if (CustomerObj.PassportExpirationDate.HasValue)
             {
@@ -117,7 +162,7 @@ namespace HBM
             CustomerObj.BillingState = txtBillingState.Text.Trim();
             CustomerObj.Car = cmbCar.SelectedItem.Text;
             CustomerObj.CarLicensePlate = txtLicensePlate.Text.Trim();
-            CustomerObj.CCExpirationDate = GetCCExpiryDate();
+            CustomerObj.CCExpirationDate = CCExpiryDate;
             CustomerObj.CCNameOnCard = txtNameOnCard.Text.Trim();
             int CCNo;
             if (int.TryParse(txtCCNumber.Text.Trim(), out CCNo))
@@ -165,28 +210,6 @@ namespace HBM
             divErrorMsg.InnerText = errorMSG;
             //Display error on a label
 
-        }
-
-        private DateTime? GetCCExpiryDate()
-        {
-            DateTime? expDate = new DateTime();
-
-            if (cmbCCExpiryDateMonth.SelectedItem.ValueString != string.Empty && 
-                cmbCCExpiryDateYear.SelectedItem.ValueString != string.Empty)
-            {
-                DateTime tempDate = new DateTime(
-                    int.Parse(cmbCCExpiryDateYear.SelectedItem.ValueString),
-                    int.Parse(cmbCCExpiryDateMonth.SelectedItem.ValueString),
-                    1);
-
-                expDate = tempDate;
-            }
-            else
-            {
-                expDate = null;
-            }
-
-            return expDate;
         }
 
         #region Methods

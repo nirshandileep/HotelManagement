@@ -153,9 +153,6 @@
     <Content Include="HBMMaster.Master" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Images\" />
     <Folder Include="JS\" />
   </ItemGroup>
@@ -184,6 +181,9 @@
       <Project>{95B13785-030E-4F4A-A5C9-C3355B2A9F66}</Project>
       <Name>HBM.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

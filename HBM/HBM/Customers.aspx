@@ -343,7 +343,7 @@
             <td>
                 <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px">
                     <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
-                        ValidationGroup="vgCustomer">
+                        ValidationGroup="vgCustomer" ErrorDisplayMode="Text">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -388,9 +388,7 @@
                         <td>
                         </td>
                         <td>
-                            <dx:ASPxButton ID="btnAddCountry" runat="server" Text="..." ToolTip="Add/Edit Country">
-                            </dx:ASPxButton>
-                        </td>
+                            &nbsp;</td>
                     </tr>
                 </table>
             </td>
@@ -446,8 +444,9 @@
         </tr>
     </table>
     <div>
-        <dx:ASPxPopupControl ID="pcCountry" runat="server" HeaderText="Country" AllowDragging="True"
-            Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter">
+        <dx:ASPxPopupControl ID="pcGuestType" runat="server" HeaderText="Guest Type" AllowDragging="True"
+            Modal="True" PopupHorizontalAlign="WindowCenter" 
+            PopupVerticalAlign="WindowCenter">
             <ContentCollection>
                 <dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
                     <dx:ASPxCallbackPanel ID="cbpCountryPannel" runat="server" Width="200px">
@@ -456,11 +455,12 @@
                                 <table border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtAddCountry" runat="server" Width="170px">
+                                            <dx:ASPxTextBox ID="txtAddGuestType" runat="server" Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                         <td>
-                                            <dx:ASPxButton ID="btnSaveCountry" runat="server" Text="Save" OnClick="btnSaveCountry_Click">
+                                            <dx:ASPxButton ID="btnSaveGuestType" runat="server" Text="Save" 
+                                                OnClick="btnSaveCountry_Click">
                                             </dx:ASPxButton>
                                         </td>
                                     </tr>
