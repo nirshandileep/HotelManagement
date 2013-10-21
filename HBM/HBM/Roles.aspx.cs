@@ -13,33 +13,22 @@ namespace HBM
 {
     public partial class Roles : System.Web.UI.Page
     {
-        public UserMan.Rights RightsObj
-        {
-            get
-            {
-                UserMan.Rights rights;
-                return rights = new UserMan.Rights();
-            }
-        }
-               
 
         protected void Page_Load(object sender, EventArgs e)
         {
-                       
 
             if (Request.QueryString["RoleId"] != null)
             {
-                
+
                 this.hdnRoleId.Value = Request.QueryString["RoleId"];
+
                 this.DisplayRoles();
 
             }
-            else
-            {
-                this.LoadRights();
 
-            }
-            
+            this.LoadRights();
+
+
 
 
         }
@@ -48,9 +37,16 @@ namespace HBM
         {
             try
             {
-               
 
-                this.SaveData();
+                if (this.hdnRoleId.Value != string.Empty)
+                {
+                    this.UpdateData();
+                }
+                else
+                {
+                    this.SaveData();
+                }
+
             }
             catch (System.Exception)
             {
@@ -63,7 +59,14 @@ namespace HBM
         {
             try
             {
-                gvRights.DataSource = RightsObj.SelectAllDataset();
+                UserMan.Rights RightsObj = new UserMan.Rights();
+
+                if (this.hdnRoleId.Value != string.Empty)
+                {
+                    RightsObj.RolesId = Convert.ToInt32(this.hdnRoleId.Value);
+                }
+
+                gvRights.DataSource = RightsObj.SelectByRolesId();
                 gvRights.DataBind();
             }
             catch (System.Exception ex)
@@ -107,8 +110,8 @@ namespace HBM
                             RolesObj.SaveRoleRights(db, transaction);
                         }
                     }
-                }               
-                
+                }
+
                 transaction.Commit();
                 result = true;
             }
@@ -121,25 +124,79 @@ namespace HBM
             return result;
         }
 
+        protected bool UpdateData()
+        {
+            bool result = false;
+
+            DbConnection connection = null;
+            DbTransaction transaction = null;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                UserMan.Roles RolesObj = new UserMan.Roles();
+                RolesObj.RolesId = Convert.ToInt32(this.hdnRoleId.Value);
+                RolesObj.RoleName = txtRoleName.Text.Trim();
+                RolesObj.RoleDescription = txtRoleDescription.Text.Trim();
+                RolesObj.CompanyId = 1;
+                RolesObj.UpdatedUser = 1;
+
+                if (RolesObj.Save(db, transaction))
+                {
+                    List<object> myList = gvRights.GetSelectedFieldValues("RightId");
+
+                    //Delete exiting role rights
+                    RolesObj.DeleteByRolesId(db, transaction);
+
+                    if (myList.Count > 0)
+                    {
+                        for (int i = 0; i <= myList.Count - 1; i++)
+                        {
+                            RolesObj.RightId = Convert.ToInt32(myList[i].ToString());
+                            RolesObj.SaveRoleRights(db, transaction);
+                        }
+                    }
+                }
+
+                transaction.Commit();
+                result = true;
+
+            }
+            catch (System.Exception)
+            {
+
+            }
+
+            return result;
+        }
+
         protected void DisplayRoles()
         {
             try
             {
 
-                int currentRoleId= Convert.ToInt32(this.hdnRoleId.Value);
+                int currentRoleId = Convert.ToInt32(this.hdnRoleId.Value);
                 UserMan.Roles RolesObj = new UserMan.Roles();
-                RolesObj.RoleId = currentRoleId;
+                RolesObj.RolesId = currentRoleId;
                 RolesObj.CompanyId = 1;
-                RolesObj.Select();
+                RolesObj = RolesObj.Select();
                 this.txtRoleName.Text = RolesObj.RoleName;
                 this.txtRoleDescription.Text = RolesObj.RoleDescription;
 
+                UserMan.Rights RightsObj = new UserMan.Rights();
+                RightsObj.RolesId = RolesObj.RolesId;
+                gvRights.DataSource = RightsObj.SelectByRolesId();
+                gvRights.DataBind();
 
             }
             catch (System.Exception)
             {
-                
-                
+
+
             }
         }
 

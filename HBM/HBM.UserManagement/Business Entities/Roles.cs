@@ -17,7 +17,7 @@ namespace HBM.UserManagement
     {
         #region Properties
 
-        public int RoleId { get; set; }
+        public int RolesId { get; set; }
         public string RoleName { get; set; }
         public string RoleDescription { get; set; }
         public int RightId { get; set; }        
@@ -39,7 +39,7 @@ namespace HBM.UserManagement
             bool result = false;
             try
             {
-                if (this.RoleId > 0)
+                if (this.RolesId > 0)
                 {
                     result = (new RolesDAO()).Update(this,db,transaction);
                 }
@@ -71,9 +71,24 @@ namespace HBM.UserManagement
             return result;
         }
 
+        public bool DeleteByRolesId(Database db, DbTransaction transaction)
+        {
+            bool result = false;
+            try
+            {
+                result = (new RolesDAO()).DeleteByRolesId(this, db, transaction);
+            }
+            catch (System.Exception ex)
+            {
+                result = false;
+                throw ex;
+            }
+            return result;
+        }
+
+
         #endregion
-
-
+        
         #region Delete
 
         public bool Delete()
@@ -81,7 +96,7 @@ namespace HBM.UserManagement
             bool result = false;
             try
             {
-                if (this.RoleId > 0)
+                if (this.RolesId > 0)
                 {
                     result = (new RolesDAO()).Delete(this);
                 }
@@ -95,11 +110,10 @@ namespace HBM.UserManagement
         }
 
         #endregion
-
-
+        
         public Roles Select()
         {
-            return HBM.Utility.Generic.Get<Roles>(this.RoleId, this.CompanyId);
+            return HBM.Utility.Generic.Get<Roles>(this.RolesId, this.CompanyId);
         }
 
         public List<Roles> SelectAllList()

@@ -11,6 +11,7 @@ namespace HBM.UserManagement
         #region Properties
 
         public int RightId { get; set; }
+        public int RolesId { get; set; }
         public string RightName { get; set; }
         public string RightDescription { get; set; }
         public Int32 CreatedUser { get; set; }
@@ -36,6 +37,13 @@ namespace HBM.UserManagement
         {
             return (new RightsDAO()).SelectAll();
         }
+
+        public DataSet SelectByRolesId()
+        {
+            return (new RightsDAO()).SelectByRolesId(this);
+        }
+
+       
 
         #endregion
     }

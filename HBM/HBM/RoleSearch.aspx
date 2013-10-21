@@ -20,7 +20,7 @@
                 <dx:ASPxGridView ID="gvRoles" runat="server" Width="100%" 
                     AutoGenerateColumns="False" KeyFieldName="RoleId" >
                     <Columns>
-                        <dx:GridViewDataTextColumn Caption="RoleId" FieldName="RoleId" 
+                        <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" 
                             VisibleIndex="0">
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="Role Name" 

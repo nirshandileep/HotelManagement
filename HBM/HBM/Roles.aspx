@@ -87,6 +87,9 @@
                         <dx:GridViewDataTextColumn Caption="RightId" FieldName="RightId" 
                             VisibleIndex="5">
                         </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" 
+                            VisibleIndex="6">
+                        </dx:GridViewDataTextColumn>
                     </Columns>
                 </dx:ASPxGridView>
             </td>
