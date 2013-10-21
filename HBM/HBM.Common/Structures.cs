@@ -7,5 +7,7 @@ namespace HBM.Common
 {
     public class Structures
     {
+        
+
     }
 }

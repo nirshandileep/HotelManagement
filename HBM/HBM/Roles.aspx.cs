@@ -21,7 +21,7 @@ namespace HBM
                 if (Request.QueryString["RolesId"] != null)
                 {
                     this.hdnRoleId.Value = Request.QueryString["RolesId"];
-                    this.DisplayRoles();
+                    this.DisplayData();
                 }
 
                 this.LoadRights();
@@ -184,7 +184,7 @@ namespace HBM
             return result;
         }
 
-        protected void DisplayRoles()
+        protected void DisplayData()
         {
             try
             {

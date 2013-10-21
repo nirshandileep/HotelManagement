@@ -27,7 +27,7 @@
                         <dx:GridViewDataTextColumn Caption="Role Description" FieldName="RoleDescription"
                             VisibleIndex="2">
                         </dx:GridViewDataTextColumn>                        
-                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="">
+                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Edit">
                         <DataItemTemplate>
                             <a id="clickElement" target="_blank" href="Roles.aspx?RolesId=<%# Container.KeyValue%>">Edit </a>
                         </DataItemTemplate>

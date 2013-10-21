@@ -21,11 +21,13 @@ namespace HBM.UserManagement
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public string CreatedUser { get; set; }
+        public Int32 CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string UpdatedUser { get; set; }
+        public Int32 UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
+        public Int32 RolesId { get; set; }
+
 
         #endregion
 

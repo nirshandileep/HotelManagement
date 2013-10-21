@@ -22,9 +22,9 @@ namespace HBM.UserManagement
             db.AddInParameter(command, "@FirstName", DbType.String, users.FirstName);
             db.AddInParameter(command, "@LastName", DbType.String, users.LastName);
             db.AddInParameter(command, "@EmailAddress", DbType.String, users.EmailAddress);
-            db.AddInParameter(command, "@CreatedUser", DbType.Int32, users.CreatedUser);
-            db.AddInParameter(command, "@CreatedDate", DbType.DateTime, users.CreatedDate);            
+            db.AddInParameter(command, "@CreatedUser", DbType.Int32, users.CreatedUser);            
             db.AddInParameter(command, "@StatusId", DbType.Int32, users.StatusId);
+            db.AddInParameter(command, "@RolesId", DbType.Int32, users.RolesId);
 
             db.ExecuteNonQuery(command);
 
@@ -43,9 +43,9 @@ namespace HBM.UserManagement
             db.AddInParameter(command, "@FirstName", DbType.String, users.FirstName);
             db.AddInParameter(command, "@LastName", DbType.String, users.LastName);
             db.AddInParameter(command, "@EmailAddress", DbType.String, users.EmailAddress);
-            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, users.UpdatedUser);
-            db.AddInParameter(command, "@UpdatedDate", DbType.DateTime, users.UpdatedDate);
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, users.UpdatedUser);            
             db.AddInParameter(command, "@StatusId", DbType.Int32, users.StatusId);
+            db.AddInParameter(command, "@RolesId", DbType.Int32, users.RolesId);
 
             db.ExecuteNonQuery(command);
 

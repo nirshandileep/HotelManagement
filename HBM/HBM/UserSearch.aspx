@@ -16,25 +16,28 @@
         </tr>
         <tr>
             <td>
-                <dx:ASPxGridView ID="gvRoles" runat="server" Width="100%" AutoGenerateColumns="False"
+                <dx:ASPxGridView ID="gvUsers" runat="server" Width="100%" AutoGenerateColumns="False"
                     KeyFieldName="RolesId">
                     <Columns>
-                        <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" VisibleIndex="0"
-                            Visible="False">
+                        <dx:GridViewDataTextColumn Caption="UserId" FieldName="UserId" VisibleIndex="0" Visible="False">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Role Name" FieldName="RoleName" VisibleIndex="1">
+                        <dx:GridViewDataTextColumn Caption="UserName" FieldName="UserName" VisibleIndex="1">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Role Description" FieldName="RoleDescription"
-                            VisibleIndex="2">
+                        <dx:GridViewDataTextColumn Caption="FirstName" FieldName="FirstName" VisibleIndex="2">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="">
+                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="LastName" FieldName="LastName">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="EmailAddress" FieldName="EmailAddress" VisibleIndex="4">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Edit">
                             <DataItemTemplate>
-                                <a id="clickElement" target="_blank" href="Roles.aspx?RolesId=<%# Container.KeyValue%>">
+                                <a id="clickElement" target="_blank" href="Users.aspx?UserId=<%# Container.KeyValue%>">
                                     Edit </a>
                             </DataItemTemplate>
                         </dx:GridViewDataTextColumn>
                     </Columns>
                     <Settings ShowFilterRow="True" />
+                    <Settings ShowFilterRow="True"></Settings>
                 </dx:ASPxGridView>
             </td>
         </tr>
