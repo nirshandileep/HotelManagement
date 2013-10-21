@@ -14,7 +14,7 @@ namespace HBM.UserManagement
     {
         #region Properties
 
-        public Int32 UserId { get; set; }
+        public Int32 UsersId { get; set; }
         public Int32 CompanyId{ get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
@@ -40,7 +40,7 @@ namespace HBM.UserManagement
             bool result = false;
             try
             {
-                if (this.UserId > 0)
+                if (this.UsersId > 0)
                 {
                     result = (new UserDAO()).Update(this);
                 }
@@ -67,7 +67,7 @@ namespace HBM.UserManagement
             bool result = false;
             try
             {
-                if (this.UserId > 0)
+                if (this.UsersId > 0)
                 {
                     result = (new UserDAO()).Delete(this);
                 }
@@ -85,7 +85,7 @@ namespace HBM.UserManagement
 
         public Users Select()
         {
-            return HBM.Utility.Generic.Get<Users>(this.UserId, this.CompanyId);
+            return HBM.Utility.Generic.Get<Users>(this.UsersId, this.CompanyId);
         }
 
         public List<Users> SelectAllList()

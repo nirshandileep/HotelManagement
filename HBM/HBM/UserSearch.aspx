@@ -17,7 +17,7 @@
         <tr>
             <td>
                 <dx:ASPxGridView ID="gvUsers" runat="server" Width="100%" AutoGenerateColumns="False"
-                    KeyFieldName="RolesId">
+                    KeyFieldName="UsersId">
                     <Columns>
                         <dx:GridViewDataTextColumn Caption="UserId" FieldName="UserId" VisibleIndex="0" Visible="False">
                         </dx:GridViewDataTextColumn>

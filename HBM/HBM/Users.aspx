@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HBMMaster.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="HBM.Users" %>
 <%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .style1
@@ -55,6 +56,12 @@
         </tr>
         <tr>
             <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td>
                 User Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" MaxLength="50">
@@ -69,7 +76,11 @@
                 Password</td>
             <td>
                 <dx:ASPxTextBox ID="txtPassword" runat="server" Password="True" Width="170px" 
-                    MaxLength="50">
+                    MaxLength="50" EnableClientSideAPI="True" 
+                    oncustomjsproperties="txtPassword_CustomJSProperties">
+                    <ClientSideEvents Init="function(s, e) {
+	 s.SetValue(s.cp_myPassword);
+}" />
                     <ValidationSettings ValidationGroup="vgSave">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
@@ -81,12 +92,22 @@
                 Confirm Password</td>
             <td>
                 <dx:ASPxTextBox ID="txtConfirmPassword" runat="server" Password="True" 
-                    Width="170px" MaxLength="50">
+                    Width="170px" MaxLength="50" 
+                    oncustomjsproperties="txtConfirmPassword_CustomJSProperties">
+                    <ClientSideEvents Init="function(s, e) {
+	s.SetValue(s.cp_myPassword);
+}" />
                     <ValidationSettings ValidationGroup="vgSave">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
         </tr>
         <tr>
             <td>
@@ -103,6 +124,12 @@
                     </ValidationSettings>
                 </dx:ASPxComboBox>
             </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
         </tr>
         <tr>
             <td>

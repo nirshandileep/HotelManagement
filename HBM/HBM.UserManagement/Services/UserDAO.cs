@@ -25,6 +25,8 @@ namespace HBM.UserManagement
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, users.CreatedUser);            
             db.AddInParameter(command, "@StatusId", DbType.Int32, users.StatusId);
             db.AddInParameter(command, "@RolesId", DbType.Int32, users.RolesId);
+            db.AddInParameter(command, "@CompanyId", DbType.Int32, users.CompanyId);
+
 
             db.ExecuteNonQuery(command);
 
@@ -37,7 +39,7 @@ namespace HBM.UserManagement
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_UsersUpdate");
 
-            db.AddInParameter(command, "@UserId", DbType.String, users.UserId);
+            db.AddInParameter(command, "@UsersId", DbType.String, users.UsersId);
             db.AddInParameter(command, "@UserName", DbType.String, users.UserName);
             db.AddInParameter(command, "@Password", DbType.String, users.Password);
             db.AddInParameter(command, "@FirstName", DbType.String, users.FirstName);
@@ -46,6 +48,7 @@ namespace HBM.UserManagement
             db.AddInParameter(command, "@UpdatedUser", DbType.Int32, users.UpdatedUser);            
             db.AddInParameter(command, "@StatusId", DbType.Int32, users.StatusId);
             db.AddInParameter(command, "@RolesId", DbType.Int32, users.RolesId);
+            db.AddInParameter(command, "@CompanyId", DbType.Int32, users.CompanyId);
 
             db.ExecuteNonQuery(command);
 
@@ -58,7 +61,7 @@ namespace HBM.UserManagement
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_UsersDelete");
 
-            db.AddInParameter(command, "@UserId", DbType.String, users.UserId);            
+            db.AddInParameter(command, "@UsersId", DbType.String, users.UsersId);            
             db.ExecuteNonQuery(command);
 
             return true;

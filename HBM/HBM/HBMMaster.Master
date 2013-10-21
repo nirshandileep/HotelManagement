@@ -1,10 +1,9 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HBMMaster.master.cs" Inherits="HBM.HBMMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HBMMaster.master.cs"
+    Inherits="HBM.HBMMaster" %>
 
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -14,46 +13,46 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
     <form id="form1" runat="server">
-<div class="header"> 
-	<div class="wrapper">
-        <dx:ASPxMenu ID="MainMenu" runat="server">
-            <Items>
-                <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
-                </dx:MenuItem>
-                <dx:MenuItem Text="Customer">
-                    <Items>
-                        <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Add Customer">
-                        </dx:MenuItem>
-                        <dx:MenuItem NavigateUrl="~/CustomerSearch.aspx" Text="Search Customer">
-                        </dx:MenuItem>
-                    </Items>
-                </dx:MenuItem>
-                <dx:MenuItem Text="Staff Management">
-                    <Items>
-                        <dx:MenuItem NavigateUrl="~/Users.aspx" Text="Add Users">
-                        </dx:MenuItem>
-                        <dx:MenuItem NavigateUrl="~/UserSearch.aspx" Text="Search User">
-                        </dx:MenuItem>
-                        <dx:MenuItem NavigateUrl="~/Roles.aspx" Text="Add Role">
-                        </dx:MenuItem>
-                        <dx:MenuItem NavigateUrl="~/RoleSearch.aspx" Text="Search Role">
-                        </dx:MenuItem>
-                    </Items>
-                </dx:MenuItem>
-            </Items>
-        </dx:ASPxMenu> 
-	</div>
-</div>
-
+    <div id="dvMessage" runat="server">
+        <asp:Literal ID="ltlMessage" runat="server"></asp:Literal>
+    </div>
+    <div class="header">
+        <div class="wrapper">
+            <dx:ASPxMenu ID="MainMenu" runat="server">
+                <Items>
+                    <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
+                    </dx:MenuItem>
+                    <dx:MenuItem Text="Customer">
+                        <Items>
+                            <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Add Customer">
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="~/CustomerSearch.aspx" Text="Search Customer">
+                            </dx:MenuItem>
+                        </Items>
+                    </dx:MenuItem>
+                    <dx:MenuItem Text="Staff Management">
+                        <Items>
+                            <dx:MenuItem NavigateUrl="~/Users.aspx" Text="Add Users">
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="~/UserSearch.aspx" Text="Search User">
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="~/Roles.aspx" Text="Add Role">
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="~/RoleSearch.aspx" Text="Search Role">
+                            </dx:MenuItem>
+                        </Items>
+                    </dx:MenuItem>
+                </Items>
+            </dx:ASPxMenu>
+        </div>
+    </div>
     <div class="wrapper">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
         </asp:ContentPlaceHolder>
     </div>
     </form>
-<div class="footer"></div>
-
+    <div class="footer">
+    </div>
 </body>
 </html>
