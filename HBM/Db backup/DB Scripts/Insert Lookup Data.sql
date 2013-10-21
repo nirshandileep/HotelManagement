@@ -32,7 +32,8 @@ INSERT INTO [dbo].[Users]
            ,[CreatedDate]
            ,[UpdatedUser]
            ,[UpdatedDate]
-           ,[StatusId])
+           ,[StatusId]
+		   ,[CompanyId])
      VALUES
            ('admin'
            ,'a'
@@ -43,6 +44,7 @@ INSERT INTO [dbo].[Users]
            ,GETUTCDATE()
            ,null
            ,null
+           ,1
            ,1)
 GO
 
