@@ -22,10 +22,10 @@
     <h2>Welcome to ABC login</h2>
         <table class="style1">
             <tr>
-                <td>
+                <td width="32%">
                    <label> User Name</label>
                 </td>
-                <td>
+                <td width="68%">
                     <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" Text="chamila">
                         <ValidationSettings Display="Dynamic">
                             <RequiredField IsRequired="True" />
