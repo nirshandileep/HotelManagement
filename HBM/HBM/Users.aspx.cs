@@ -83,8 +83,8 @@ namespace HBM
                 users.EmailAddress = txtEmail.Text.Trim();
                 users.Password = txtPassword.Text.Trim();
                 users.RolesId = Convert.ToInt32(ddlRoles.Value);
-                users.CreatedUser = 1;
-                users.CompanyId = 1;
+                users.CreatedUser = Master.LoggedUser.UsersId;
+                users.CompanyId = Master.CompanyId;
                 users.StatusId =(int) HBM.Common.Enums.BHMStatus.Active;
                 if (users.Save())
                 {
@@ -114,8 +114,8 @@ namespace HBM
                 users.LastName = txtLastName.Text.Trim();
                 users.EmailAddress = txtEmail.Text.Trim();
                 users.Password = txtPassword.Text.Trim();
-                users.CompanyId = 1;
-                users.UpdatedUser = 1;
+                users.CompanyId = Master.CompanyId;
+                users.UpdatedUser = Master.LoggedUser.UsersId;
                 users.StatusId = (int)HBM.Common.Enums.BHMStatus.Active;
                 users.RolesId = Convert.ToInt32(ddlRoles.Value);
                 if (users.Save())
@@ -140,7 +140,7 @@ namespace HBM
                 int currentUserId = Convert.ToInt32(this.hdnUserId.Value);
                 UserMan.Users users = new UserMan.Users();
                 users.UsersId = currentUserId;
-                users.CompanyId = 1;
+                users.CompanyId = Master.CompanyId;
                 users = users.Select();
                 txtUserName.Text = users.UserName;
                 txtFirstName.Text = users.FirstName;

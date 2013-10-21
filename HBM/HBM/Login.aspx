@@ -26,7 +26,10 @@
                    <label> User Name</label>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" Text="chamila">
+                        <ValidationSettings Display="Dynamic">
+                            <RequiredField IsRequired="True" />
+                        </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
@@ -35,8 +38,17 @@
                    <label> Password</label>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="ASPxTextBox2" runat="server" Width="170px" Password="True">
+                    <dx:ASPxTextBox ID="txtPassword" runat="server" Width="170px" Password="True">
+                        <ValidationSettings Display="Dynamic">
+                            <RequiredField IsRequired="True" />
+                        </ValidationSettings>
                     </dx:ASPxTextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <asp:Label ID="lblError" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -48,10 +60,6 @@
                         onclick="btnLogin_Click">
                     </dx:ASPxButton>
                 </td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td></td>
             </tr>
             <tr>
               <td>&nbsp;</td>

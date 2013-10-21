@@ -49,6 +49,24 @@ namespace HBM {
         protected global::System.Web.UI.WebControls.Literal ltlMessage;
         
         /// <summary>
+        /// lblLoggedUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLoggedUser;
+        
+        /// <summary>
+        /// lbLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbLogout;
+        
+        /// <summary>
         /// MainMenu control.
         /// </summary>
         /// <remarks>

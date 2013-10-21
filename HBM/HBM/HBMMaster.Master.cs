@@ -50,7 +50,10 @@ namespace HBM
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;                
+            }
         }
 
 
@@ -130,5 +133,11 @@ namespace HBM
         }
 
         #endregion
+
+        protected void lbLogout_Click(object sender, EventArgs e)
+        {
+            this.ClearSessions();
+            Response.Redirect(HBM.Common.Constants.CONST_LOGOUT, false);
+        }
     }
 }

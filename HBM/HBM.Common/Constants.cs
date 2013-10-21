@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HBM.Common
 {
-    public class Constants
+    public  class Constants
     {
         #region Database Connection
 
@@ -55,6 +55,7 @@ namespace HBM.Common
         #region Constants
 
         public static readonly string CONST_DEFAULTBACKPAGE = "Dashboard.aspx";
+        public static readonly string CONST_LOGOUT = "Login.aspx";
 
         #endregion
     }

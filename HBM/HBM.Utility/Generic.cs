@@ -87,8 +87,7 @@ namespace HBM.Utility
                 }
             }
         }
-
-
+        
         /// <summary>
         /// Returns a collection of T. T must be an Entity class
         /// </summary>

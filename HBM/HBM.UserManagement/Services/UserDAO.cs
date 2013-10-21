@@ -72,8 +72,50 @@ namespace HBM.UserManagement
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand dbCommand = db.GetStoredProcCommand("usp_UsersSelectAll");
 
-            db.AddInParameter(dbCommand, "@CompanyId", DbType.String, users.CompanyId);
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, users.CompanyId);
             return db.ExecuteDataSet(dbCommand);
+        }
+
+        public bool IsUserAuthenticated(string userName, string password, out int UsersId, out int compnayId)
+        {
+            bool result = false;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                DbCommand dbCommand = db.GetStoredProcCommand("usp_UsersIsAuthenticated");
+
+                db.AddInParameter(dbCommand, "@UserName", DbType.String, userName);
+                db.AddInParameter(dbCommand, "@Password", DbType.String, password);
+                db.AddOutParameter(dbCommand, "@UsersId", DbType.Int32,8);
+                db.AddOutParameter(dbCommand, "@CompanyId", DbType.Int32, 8);                
+
+                db.ExecuteNonQuery(dbCommand);
+
+                UsersId = Convert.ToInt32( db.GetParameterValue(dbCommand, "@UsersId").ToString());
+                compnayId = Convert.ToInt32(db.GetParameterValue(dbCommand, "@CompanyId").ToString());
+
+                if (UsersId > 0)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+                
+            }
+            catch (Exception)
+            {
+                UsersId = 0;
+                compnayId = 0;
+                
+            }
+
+            return result;
+
+           
+
         }
     }
 }

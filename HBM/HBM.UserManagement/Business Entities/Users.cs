@@ -98,6 +98,12 @@ namespace HBM.UserManagement
             return (new UserDAO()).SelectAll(this);
         }
 
+        public bool IsUserAuthenticated(string userName, string password, out int UsersId, out int compnayId)
+        {
+            return (new UserDAO()).IsUserAuthenticated(userName,password, out UsersId, out compnayId);
+        }
+
+
         #endregion
     }
 }
