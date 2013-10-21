@@ -48,7 +48,15 @@ namespace HBM
         /// </summary>
         private void LoadInitialData()
         {
-            
+            //Load Guest Type
+
+
+            //Load CC Type
+
+
+            //Load Country
+
+
         }
 
         private void SetData()
@@ -59,29 +67,26 @@ namespace HBM
             cmbBillingCountry.SelectedItem.Value = CustomerObj.BillingCountry;
 
             txtBillingPostCode.Text = CustomerObj.BillingPostCode;
-            txtBillingState.Text=CustomerObj.BillingState;
+            txtBillingState.Text = CustomerObj.BillingState;
             cmbCar.SelectedItem.Text = CustomerObj.Car;
-            txtLicensePlate.Text=CustomerObj.CarLicensePlate;
+            txtLicensePlate.Text = CustomerObj.CarLicensePlate;
 
             if (CustomerObj.CCExpirationDate.HasValue)
             {
-                dtpCCExpiryDate.Date = CustomerObj.CCExpirationDate.Value;
+                cmbCCExpiryDateMonth.SelectedItem.Value = CustomerObj.CCExpirationDate.Value.Month;
+                cmbCCExpiryDateYear.SelectedItem.Value = CustomerObj.CCExpirationDate.Value.Year;
             }
 
-            if (CustomerObj.CCNameDate.HasValue)
-            {
-                dtpCCNameDate.Date = CustomerObj.CCNameDate.Value;
-            }
-
+            txtNameOnCard.Text = CustomerObj.CCNameOnCard;
             txtCCNumber.Text = CustomerObj.CCNo.HasValue ? CustomerObj.CCNo.Value.ToString() : string.Empty;
 
             cmbCCType.SelectedItem.Value = CustomerObj.CCType.Value;
             txtCompanyAddress.Text = CustomerObj.CompanyAddress;
             txtCompanyName.Text = CustomerObj.CompanyName;
-            txtNotes.Text=CustomerObj.CompanyNotes;
-            txtDriveLicense.Text=CustomerObj.DriverLicense;
+            txtNotes.Text = CustomerObj.CompanyNotes;
+            txtDriveLicense.Text = CustomerObj.DriverLicense;
             txtEmail.Text = CustomerObj.Email;
-            txtFax.Text=CustomerObj.Fax;
+            txtFax.Text = CustomerObj.Fax;
             cmbGender.SelectedItem.Text = CustomerObj.Gender;
             txtMemberCode.Text = CustomerObj.MemberCode;
 
@@ -108,8 +113,8 @@ namespace HBM
             CustomerObj.BillingState = txtBillingState.Text.Trim();
             CustomerObj.Car = cmbCar.SelectedItem.Text;
             CustomerObj.CarLicensePlate = txtLicensePlate.Text.Trim();
-            CustomerObj.CCExpirationDate = dtpCCExpiryDate.Date;
-            CustomerObj.CCNameDate = dtpCCNameDate.Date;
+            CustomerObj.CCExpirationDate = GetCCExpiryDate();
+            CustomerObj.CCNameOnCard = txtNameOnCard.Text.Trim();
             int CCNo;
             if (int.TryParse(txtCCNumber.Text.Trim(), out CCNo))
             {
@@ -149,10 +154,35 @@ namespace HBM
 
                     
                 }
+                
             }
 
+            divErrorMsg.Visible = true;
+            divErrorMsg.InnerText = errorMSG;
             //Display error on a label
 
+        }
+
+        private DateTime? GetCCExpiryDate()
+        {
+            DateTime? expDate = new DateTime();
+
+            if (cmbCCExpiryDateMonth.SelectedItem.ValueString != string.Empty && 
+                cmbCCExpiryDateYear.SelectedItem.ValueString != string.Empty)
+            {
+                DateTime tempDate = new DateTime(
+                    int.Parse(cmbCCExpiryDateYear.SelectedItem.ValueString),
+                    int.Parse(cmbCCExpiryDateMonth.SelectedItem.ValueString),
+                    1);
+
+                expDate = tempDate;
+            }
+            else
+            {
+                expDate = null;
+            }
+
+            return expDate;
         }
 
         #region Methods
@@ -193,6 +223,11 @@ namespace HBM
             {
                 Response.Redirect(HBM.Common.Constants.CONST_DEFAULTBACKPAGE, false);
             }
+        }
+
+        protected void btnSaveCountry_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
