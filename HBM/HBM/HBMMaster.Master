@@ -22,7 +22,7 @@
             <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label>
         </div>
         <div>
-            <asp:LinkButton ID="lbLogout" runat="server" onclick="lbLogout_Click">Logout</asp:LinkButton>
+            <%--<asp:LinkButton ID="lbLogout" runat="server" onclick="lbLogout_Click">Logout</asp:LinkButton>--%>
         </div>
     </div>
     <div class="header">
