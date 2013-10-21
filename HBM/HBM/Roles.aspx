@@ -29,7 +29,7 @@
                             <asp:HiddenField ID="hdnRoleId" runat="server" />
                         </td>
                         <td>
-                            <dx:ASPxTextBox ID="txtRoleName" runat="server" Width="170px">
+                            <dx:ASPxTextBox ID="txtRoleName" runat="server" Width="170px" MaxLength="50">
                                 <ValidationSettings Display="Dynamic" ValidationGroup="vgSave">
                                     <RequiredField IsRequired="True" />
                                 </ValidationSettings>
@@ -47,7 +47,8 @@
                             Role Description:
                         </td>
                         <td>
-                            <dx:ASPxTextBox ID="txtRoleDescription" runat="server" Width="170px">
+                            <dx:ASPxTextBox ID="txtRoleDescription" runat="server" Width="170px" 
+                                MaxLength="50">
                                 <ValidationSettings Display="Dynamic" ValidationGroup="vgSave">
                                     <RequiredField IsRequired="True" />
                                 </ValidationSettings>
@@ -65,7 +66,7 @@
         </tr>
         <tr>
             <td>
-                Rights
+                Rights List
             </td>
         </tr>
         <tr>
@@ -85,10 +86,10 @@
                             VisibleIndex="3">
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="RightId" FieldName="RightId" 
-                            VisibleIndex="5">
+                            VisibleIndex="5" Visible="False">
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" 
-                            VisibleIndex="6">
+                            VisibleIndex="6" Visible="False">
                         </dx:GridViewDataTextColumn>
                     </Columns>
                 </dx:ASPxGridView>

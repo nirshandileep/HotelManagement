@@ -13,23 +13,19 @@ namespace HBM
 {
     public partial class Roles : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Request.QueryString["RoleId"] != null)
+            if (!IsPostBack)
             {
+                if (Request.QueryString["RolesId"] != null)
+                {
+                    this.hdnRoleId.Value = Request.QueryString["RolesId"];
+                    this.DisplayRoles();
+                }
 
-                this.hdnRoleId.Value = Request.QueryString["RoleId"];
-
-                this.DisplayRoles();
-
+                this.LoadRights();
             }
-
-            this.LoadRights();
-
-
-
 
         }
 
@@ -68,6 +64,20 @@ namespace HBM
 
                 gvRights.DataSource = RightsObj.SelectByRolesId();
                 gvRights.DataBind();
+
+                if (this.hdnRoleId.Value != string.Empty)
+                {
+
+                    for (int i = 0; i <= gvRights.VisibleRowCount - 1; i++)
+                    {
+                        if (gvRights.GetRowValues(i,"RolesId").ToString() != string.Empty)
+                        {
+                            gvRights.Selection.SelectRow(i);
+                        }
+                    }
+                    
+                }
+
             }
             catch (System.Exception ex)
             {
