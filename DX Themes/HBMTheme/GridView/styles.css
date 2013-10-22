@@ -1,0 +1,470 @@
+.dxgvControl_HBMTheme,
+.dxgvDisabled_HBMTheme
+{
+	border: 1px Solid #9F9F9F;
+	font: 12px Tahoma;
+	background-color: #F2F2F2;
+	color: Black;
+	cursor: default;
+}
+.dxgvDisabled_HBMTheme
+{
+	color: Gray;
+}
+.dxgvControl_HBMTheme a
+{
+	color: #5555FF;
+}
+.dxgvDisabled_HBMTheme a
+{
+	color: Gray;
+}
+.dxgvLoadingPanel_HBMTheme
+{
+	border: 1px solid #9F9F9F;
+	background-color: #E3E3E1;
+	font: 12px Tahoma;
+	color: #303030;
+}
+.dxgvLoadingPanel_HBMTheme td
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxgvLoadingPanelStatusBar_HBMTheme
+{
+	background-color: Transparent;
+}
+.dxgvLoadingPanelStatusBar_HBMTheme td
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 0px 2px;
+}
+
+.dxgvTable_HBMTheme
+{
+	background-color: White;
+	border-width: 0;
+	border-collapse: separate!important;
+	overflow: hidden;
+	color: Black;
+}
+.dxgvInlineEditRow_HBMTheme,
+.dxgvDataRow_HBMTheme
+{
+}
+.dxgvInlineEditRow_HBMTheme td.dxgv
+{
+	border-bottom: 1px Solid #D3D3D3;
+	border-right: 1px Solid #D3D3D3;
+}
+.dxgvDataRowAlt_HBMTheme
+{
+	background-color: #EDEDEB;
+}
+.dxgvFilterRow_HBMTheme
+{
+	background-color: #E7E7E7;
+}
+.dxgvEditForm_HBMTheme
+{
+	background-color: #F0F0F0;
+}
+.dxgvEditForm_HBMTheme td.dxgv
+{
+	border-bottom: 1px Solid #D3D3D3;
+	padding: 8px 10px 10px;
+}
+.dxgvEditForm_HBMTheme td.dxgvIndentCell
+{
+	background: #EDEDED none;
+	border-right: 1px Solid #CFCFCF;
+	border-left: 1px Solid #CFCFCF;
+	border-top-width: 0px;
+}
+.dxgvSelectedRow_HBMTheme
+{
+	background-color: #A0A0A0;
+	color: White;
+}
+.dxgvFocusedRow_HBMTheme
+{
+	background-color: #8D8D8D;
+	color: White;
+}
+.dxgvSelectedRow_HBMTheme .dxgvCommandColumn_HBMTheme a, 
+.dxgvFocusedRow_HBMTheme .dxgvCommandColumn_HBMTheme a
+{
+	color: White;
+}
+.dxgvSelectedRow_HBMTheme .dxgvCommandColumn_HBMTheme a:hover, 
+.dxgvFocusedRow_HBMTheme .dxgvCommandColumn_HBMTheme a:hover
+{
+	color: #F0F0F0;
+}
+
+.dxgvPreviewRow_HBMTheme
+{
+	background-color: #F5F5F5;
+	color: #707070;
+}
+.dxgvDetailCell_HBMTheme,
+.dxgvPreviewRow_HBMTheme td.dxgv,
+.dxgvEmptyDataRow_HBMTheme td.dxgv
+{
+	padding: 20px 2px 20px 4px;
+	border-bottom: 1px Solid #D3D3D3;
+	border-top-width: 0;
+	border-left-width: 0;
+	border-right-width: 0;
+}
+.dxgvPreviewRow_HBMTheme td.dxgv
+{
+	padding: 10px 10px 10px 15px;
+}
+.dxgvDetailCell_HBMTheme
+{
+	padding: 16px 18px;
+}
+.dxgvDetailRow_HBMTheme td.dxgvIndentCell
+{
+	padding-right: 0px;
+	border-bottom: 1px Solid #D3D3D3;
+}
+.dxgvEmptyDataRow_HBMTheme
+{
+	color: Gray;
+}
+.dxgvEmptyDataRow_HBMTheme td.dxgv
+{
+	border-bottom: 1px Solid #CFCFCF;
+	text-align: center;
+}
+
+.dxgvEditFormDisplayRow_HBMTheme td.dxgv,
+.dxgvDataRow_HBMTheme td.dxgv,
+.dxgvDataRowAlt_HBMTheme td.dxgv,
+.dxgvSelectedRow_HBMTheme td.dxgv,
+.dxgvFocusedRow_HBMTheme td.dxgv
+{
+	overflow: hidden;
+	border-bottom: 1px Solid #CFCFCF;
+	border-right: 1px Solid #CFCFCF;
+	border-top-width: 0;
+	border-left-width: 0;
+	padding: 3px 6px 4px;
+}
+.dxgvEditFormDisplayRow_HBMTheme
+{
+}
+.dxgvEditFormDisplayRow_HBMTheme td.dxgv
+{
+}
+.dxgvEditFormDisplayRow_HBMTheme td.dxgvIndentCell
+{
+	background: #EDEDED none;
+	border-right: 1px Solid #CFCFCF;
+	border-left: 1px Solid #CFCFCF;
+	border-top-width: 0px;
+}
+
+.dxgvEditingErrorRow_HBMTheme
+{
+	background-color: #FFC8C8;
+	color: #FF0000;
+}
+.dxgvEditingErrorRow_HBMTheme td.dxgv
+{
+	white-space: pre-wrap;
+	border-bottom: 1px Solid #D3D3D3;
+	border-right-width: 0;
+	border-top-width: 0;
+	border-left-width: 0;
+	padding: 6px 10px;
+}
+
+.dxgvFilterRow_HBMTheme td.dxgv
+{
+	border-bottom: 1px Solid #C1C1C1;
+	border-right: 1px Solid #C1C1C1;
+	border-top-width: 0;
+	border-left-width: 0;
+	padding: 2px;
+	overflow: hidden;
+}
+.dxgvGroupRow_HBMTheme
+{
+	background-color: #EDEDED;
+}
+.dxgvFocusedGroupRow_HBMTheme
+{
+	background-color: #8D8D8D;
+	color: White;
+}
+.dxgvGroupRow_HBMTheme td.dxgv,
+.dxgvFocusedGroupRow_HBMTheme td.dxgv
+{
+	border: 0 none;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-bottom: 1px Solid #D3D3D3;
+	padding: 3px 6px 4px;
+}
+.dxgvFocusedRow_HBMTheme td.dxgvIndentCell,
+.dxgvFocusedGroupRow_HBMTheme td.dxgvIndentCell,
+.dxgvSelectedRow_HBMTheme td.dxgvIndentCell
+{
+	background-color: #EDEDED!important;
+	border-right: 1px solid #CFCFCF;
+	border-left: 1px solid #CFCFCF;
+	border-top-width: 0px;
+}
+.dxgvHeaderPanel_HBMTheme
+{
+	background-color: #F9F9F9;
+	color: Black;
+	padding: 8px 6px;
+	border-bottom: 1px Solid #9F9F9F;
+}
+
+.dxgvMSDraggable_HBMTheme .dxgvHeader_HBMTheme,
+.dxgvMSDraggable_HBMTheme.dxgvGroupPanel_HBMTheme
+{
+    -ms-touch-action: pinch-zoom;
+}
+.dxgvHeader_HBMTheme
+{
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 4px 6px 5px;
+	border: 1px Solid #9F9F9F;
+	background-color: #DCDCDC;
+	overflow: hidden;
+	font-weight: normal;
+	text-align: left;
+}
+.dxgvHeader_HBMTheme,
+.dxgvHeader_HBMTheme table
+{
+	color: Black;
+}
+.dxgvHeader_HBMTheme td
+{
+	white-space: nowrap;
+}
+.dxgvHeader_HBMTheme a
+{
+	color: #0d45b7;
+}
+.dxgvCustomization_HBMTheme, 
+.dxgvPopupEditForm_HBMTheme
+{
+	padding: 0;
+	margin: 0;
+}
+.dxgvGroupPanel_HBMTheme
+{
+	white-space: nowrap;
+	background-color: #EDEDED;
+	color: #8D8D8D;
+	border-bottom: 1px Solid #9F9F9F;
+	padding: 7px 4px 8px 6px;
+}
+.dxgvFooter_HBMTheme
+{
+	background-color: #D7D7D7;
+	white-space: nowrap;
+}
+.dxgvFooter_HBMTheme td.dxgv
+{
+	padding: 5px 6px 6px;
+	border-bottom: 1px Solid #BCBCBC;
+	border-right-width: 0;
+}
+.dxgvGroupFooter_HBMTheme
+{
+	background-color: #E0E0E0;
+}
+.dxgvGroupFooter_HBMTheme td.dxgv
+{
+	white-space: nowrap;
+}
+.dxgvGroupFooter_HBMTheme td.dxgv
+{
+	padding: 5px 4px 6px 6px;
+	border-bottom: 1px Solid #CFCFCF;
+	border-right-width: 0;
+}
+.dxgvDataRow_HBMTheme td.dxgvIndentCell,
+.dxgvGroupRow_HBMTheme td.dxgvIndentCell,
+.dxgvGroupFooter_HBMTheme td.dxgvIndentCell
+{
+	background-color: #EDEDED;
+	border-right: 1px Solid #CFCFCF;
+	border-left: 1px Solid #CFCFCF;
+	border-top-width: 0px;
+}
+
+.dxgvTitlePanel_HBMTheme, 
+.dxgvTable_HBMTheme caption
+{
+	font-size: 15px;
+	font-weight: normal;
+	padding: 3px 3px 5px;
+	text-align: center;
+	background-color: #ACACAC;
+	color: White;
+	border-bottom: 1px Solid #9F9F9F;
+}
+.dxgvLoadingDiv_HBMTheme
+{
+	background-color: Gray;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+.dxgvStatusBar_HBMTheme
+{
+	border-top: 1px Solid #9F9F9F;
+}
+.dxgvStatusBar_HBMTheme tr.dxgv
+{
+	height: 20px;
+}
+.dxgvCommandColumn_HBMTheme
+{
+	padding: 2px;
+}
+.dxgvCommandColumn_HBMTheme a
+{
+	margin: 0 3px 0 0;
+	color: #0d45b7;
+}
+.dxgvCommandColumn_HBMTheme a:hover
+{
+	color: #5494ea;
+}
+
+.dxgvCommandColumnItem_HBMTheme
+{
+}
+.dxgvEditFormTable_HBMTheme
+{
+	padding: 2px 6px 6px 4px;
+	font-size: 11px;
+	color: Black;
+}
+.dxgvEditFormTable_HBMTheme a
+{
+	color: #0d45b7;
+}
+.dxgvEditFormTable_HBMTheme a:hover
+{
+	color: #5494ea;
+}
+
+.dxgvEditFormCaption_HBMTheme
+{
+	padding: 4px 4px 4px 10px;
+	white-space: nowrap;
+}
+
+.dxgvInlineEditCell_HBMTheme
+{
+	padding: 1px;
+}
+
+.dxgvEditFormCell_HBMTheme
+{
+	padding: 4px;
+	border-width: 0;
+}
+
+.dxgvPagerTopPanel_HBMTheme,
+.dxgvPagerBottomPanel_HBMTheme
+{
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.dxgvDetailButton_HBMTheme
+{
+}
+
+.dxgvFilterBar_HBMTheme
+{
+	border-top: 1px solid #9F9F9F;
+	background: #d4d4d4 none;
+}
+.dxgvFilterBar_HBMTheme a
+{
+	color: #394ea2;
+	text-decoration: underline;
+}
+.dxgvFilterBarCheckBoxCell_HBMTheme
+{
+	padding: 0 7px 0 3px;
+}
+.dxgvFilterBarImageCell_HBMTheme
+{
+	padding: 0 1px 0 3px;
+	cursor: pointer;
+}
+.dxgvFilterBarExpressionCell_HBMTheme
+{
+	padding: 5px 5px 8px 0;
+	white-space: nowrap;
+}
+.dxgvFilterBarClearButtonCell_HBMTheme
+{
+	padding: 5px 6px 8px;
+}
+.dxgvFilterBuilderMainArea_HBMTheme
+{
+	background: white none;
+	padding: 6px 2px;
+} 
+.dxgvFilterBuilderButtonArea_HBMTheme
+{
+	background: #ededed none;
+	border-top: 1px solid #cfcfcf;
+	padding: 6px;
+	white-space: nowrap;
+}
+
+.dxgvDataRowHover_HBMTheme
+{
+	background: #cfcfcf none;
+	color: Black;
+}
+
+
+.dxgvControl_HBMTheme .dxpControl_HBMTheme td.dxpCtrl_HBMTheme, 
+.dxgvDisabled_HBMTheme .dxpControl_HBMTheme td.dxpCtrl_HBMTheme,
+
+.dxgvControl_HBMTheme .dxpLite_HBMTheme,
+.dxgvDisabled_HBMTheme .dxpLite_HBMTheme
+{
+	padding-top: 4px;
+}
+
+.dxgvControl_HBMTheme .dxgvHFSAC
+{
+    padding: 9px 0 0 4px;
+}
+.dxgvControl_HBMTheme .dxgvHFSC
+{
+    padding: 9px 0 6px;
+}
+.dxgvControl_HBMTheme .dxgvHFSC div
+{
+    height: 1px;
+    background: #8b8b8b;
+}
+
+/* Removes flicking in iOS Safari*/
+.dxgvTable_HBMTheme
+{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}

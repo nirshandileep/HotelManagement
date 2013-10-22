@@ -1,0 +1,67 @@
+.dxTreeList_CollapsedButton_HBMTheme,
+.dxTreeList_CollapsedButtonRtl_HBMTheme,
+.dxTreeList_ExpandedButton_HBMTheme,
+.dxTreeList_ExpandedButtonRtl_HBMTheme,
+.dxTreeList_SortAsc_HBMTheme,
+.dxTreeList_SortDesc_HBMTheme,
+.dxTreeList_DragAndDropArrowDown_HBMTheme,
+.dxTreeList_DragAndDropArrowUp_HBMTheme,
+.dxTreeList_DragAndDropHide_HBMTheme,
+.dxTreeList_DragAndDropNode_HBMTheme {
+    background-image: url('sprite.png');
+    -background-image: url('sprite.gif'); /* for IE6 */
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.dxTreeList_CollapsedButton_HBMTheme,
+.dxTreeList_CollapsedButtonRtl_HBMTheme {
+    background-position: -66px 0px;
+    width: 9px;
+    height: 10px;
+}
+
+.dxTreeList_ExpandedButton_HBMTheme,
+.dxTreeList_ExpandedButtonRtl_HBMTheme {
+    background-position: -66px -18px;
+    width: 9px;
+    height: 10px;
+}
+
+.dxTreeList_SortAsc_HBMTheme {
+    background-position: -49px 0px;
+    width: 9px;
+    height: 10px;
+}
+
+.dxTreeList_SortDesc_HBMTheme {
+    background-position: -49px -19px;
+    width: 9px;
+    height: 9px;
+}
+
+.dxTreeList_DragAndDropArrowDown_HBMTheme {
+    background-position: -30px 0px;
+    width: 11px;
+    height: 9px;
+}
+
+.dxTreeList_DragAndDropArrowUp_HBMTheme {
+    background-position: -30px -17px;
+    width: 11px;
+    height: 9px;
+}
+
+.dxTreeList_DragAndDropHide_HBMTheme {
+    background-position: 0px 0px;
+    width: 22px;
+    height: 22px;
+}
+
+.dxTreeList_DragAndDropNode_HBMTheme {
+    background-position: -83px 0px;
+    width: 13px;
+    height: 13px;
+}
+
+

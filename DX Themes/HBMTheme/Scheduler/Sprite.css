@@ -1,0 +1,776 @@
+.dxScheduler_SmartTag_HBMTheme,
+.dxScheduler_TimeMarker_HBMTheme,
+.dxScheduler_Appointment_DayClock_HBMTheme,
+.dxScheduler_Appointment_EndArrow_HBMTheme,
+.dxScheduler_Appointment_NightClock_HBMTheme,
+.dxScheduler_Appointment_NoRecurrence_HBMTheme,
+.dxScheduler_Appointment_Recurrence_HBMTheme,
+.dxScheduler_Appointment_Reminder_HBMTheme,
+.dxScheduler_Appointment_StartArrow_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_00_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_05_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_10_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_15_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_20_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_25_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_30_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_35_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_40_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_45_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_50_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_hour_55_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_00_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_05_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_10_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_15_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_20_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_25_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_30_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_35_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_40_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_45_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_50_HBMTheme,
+.dxScheduler_AppointmentClockArrows_day_minute_55_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_00_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_05_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_10_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_15_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_20_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_25_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_30_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_35_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_40_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_45_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_50_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_hour_55_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_00_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_05_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_10_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_15_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_20_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_25_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_30_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_35_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_40_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_45_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_50_HBMTheme,
+.dxScheduler_AppointmentClockArrows_night_minute_55_HBMTheme,
+.dxScheduler_InplaceEditor_Cancel_HBMTheme,
+.dxScheduler_InplaceEditor_EditForm_HBMTheme,
+.dxScheduler_InplaceEditor_Save_HBMTheme,
+.dxScheduler_Menu_Delete_HBMTheme,
+.dxScheduler_Menu_GoToDate_HBMTheme,
+.dxScheduler_Menu_NewAppointment_HBMTheme,
+.dxScheduler_Menu_RecurringAppointment_HBMTheme,
+.dxScheduler_MoreButton_Bottom_HBMTheme,
+.dxScheduler_MoreButton_BottomHover_HBMTheme,
+.dxScheduler_MoreButton_Top_HBMTheme,
+.dxScheduler_MoreButton_TopHover_HBMTheme,
+.dxScheduler_NavigationButton_Backward_HBMTheme,
+.dxScheduler_NavigationButton_BackwardDisabled_HBMTheme,
+.dxScheduler_NavigationButton_BackwardHover_HBMTheme,
+.dxScheduler_NavigationButton_Forward_HBMTheme,
+.dxScheduler_NavigationButton_ForwardDisabled_HBMTheme,
+.dxScheduler_NavigationButton_ForwardHover_HBMTheme,
+.dxScheduler_ResourceNavigator_Decrease_HBMTheme,
+.dxScheduler_ResourceNavigator_DecreaseDisabled_HBMTheme,
+.dxScheduler_ResourceNavigator_DecreaseHover_HBMTheme,
+.dxScheduler_ResourceNavigator_First_HBMTheme,
+.dxScheduler_ResourceNavigator_FirstDisabled_HBMTheme,
+.dxScheduler_ResourceNavigator_FirstHover_HBMTheme,
+.dxScheduler_ResourceNavigator_Increase_HBMTheme,
+.dxScheduler_ResourceNavigator_IncreaseDisabled_HBMTheme,
+.dxScheduler_ResourceNavigator_IncreaseHover_HBMTheme,
+.dxScheduler_ResourceNavigator_Last_HBMTheme,
+.dxScheduler_ResourceNavigator_LastDisabled_HBMTheme,
+.dxScheduler_ResourceNavigator_LastHover_HBMTheme,
+.dxScheduler_ResourceNavigator_Next_HBMTheme,
+.dxScheduler_ResourceNavigator_NextDisabled_HBMTheme,
+.dxScheduler_ResourceNavigator_NextHover_HBMTheme,
+.dxScheduler_ResourceNavigator_NextPage_HBMTheme,
+.dxScheduler_ResourceNavigator_NextPageDisabled_HBMTheme,
+.dxScheduler_ResourceNavigator_NextPageHover_HBMTheme,
+.dxScheduler_ResourceNavigator_Prev_HBMTheme,
+.dxScheduler_ResourceNavigator_PrevDisabled_HBMTheme,
+.dxScheduler_ResourceNavigator_PrevHover_HBMTheme,
+.dxScheduler_ResourceNavigator_PrevPage_HBMTheme,
+.dxScheduler_ResourceNavigator_PrevPageDisabled_HBMTheme,
+.dxScheduler_ResourceNavigator_PrevPageHover_HBMTheme,
+.dxScheduler_StatusInfo_Error_HBMTheme,
+.dxScheduler_StatusInfo_Info_HBMTheme,
+.dxScheduler_StatusInfo_Warning_HBMTheme,
+.dxScheduler_Tooltip_BottomLeft_HBMTheme,
+.dxScheduler_Tooltip_BottomRight_HBMTheme,
+.dxScheduler_Tooltip_BottomStem_HBMTheme,
+.dxScheduler_Tooltip_Empty_HBMTheme,
+.dxScheduler_Tooltip_TopLeft_HBMTheme,
+.dxScheduler_Tooltip_TopRight_HBMTheme,
+.dxScheduler_ViewNavigator_Backward_HBMTheme,
+.dxScheduler_ViewNavigator_Down_HBMTheme,
+.dxScheduler_ViewNavigator_Forward_HBMTheme {
+    background-image: url('sprite.png');
+    -background-image: url('sprite.gif'); /* for IE6 */
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.dxScheduler_SmartTag_HBMTheme {
+    background-position: -541px -59px;
+    width: 6px;
+    height: 9px;
+}
+
+.dxScheduler_TimeMarker_HBMTheme {
+    background-position: -1px -1px;
+    width: 58px;
+    height: 7px;
+}
+
+.dxScheduler_Appointment_DayClock_HBMTheme {
+    background-position: -60px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_Appointment_EndArrow_HBMTheme {
+    background-position: -76px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_Appointment_NightClock_HBMTheme {
+    background-position: -92px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_Appointment_NoRecurrence_HBMTheme {
+    background-position: -108px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_Appointment_Recurrence_HBMTheme {
+    background-position: -124px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_Appointment_Reminder_HBMTheme {
+    background-position: -140px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_Appointment_StartArrow_HBMTheme {
+    background-position: -156px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_00_HBMTheme {
+    background-position: -172px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_05_HBMTheme {
+    background-position: -188px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_10_HBMTheme {
+    background-position: -204px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_15_HBMTheme {
+    background-position: -220px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_20_HBMTheme {
+    background-position: -236px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_25_HBMTheme {
+    background-position: -252px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_30_HBMTheme {
+    background-position: -268px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_35_HBMTheme {
+    background-position: -284px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_40_HBMTheme {
+    background-position: -300px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_45_HBMTheme {
+    background-position: -316px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_50_HBMTheme {
+    background-position: -332px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_hour_55_HBMTheme {
+    background-position: -348px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_00_HBMTheme {
+    background-position: -364px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_05_HBMTheme {
+    background-position: -380px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_10_HBMTheme {
+    background-position: -396px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_15_HBMTheme {
+    background-position: -412px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_20_HBMTheme {
+    background-position: -428px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_25_HBMTheme {
+    background-position: -444px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_30_HBMTheme {
+    background-position: -460px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_35_HBMTheme {
+    background-position: -476px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_40_HBMTheme {
+    background-position: -492px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_45_HBMTheme {
+    background-position: -508px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_50_HBMTheme {
+    background-position: -524px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_day_minute_55_HBMTheme {
+    background-position: -540px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_00_HBMTheme {
+    background-position: -556px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_05_HBMTheme {
+    background-position: -572px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_10_HBMTheme {
+    background-position: -588px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_15_HBMTheme {
+    background-position: -604px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_20_HBMTheme {
+    background-position: -620px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_25_HBMTheme {
+    background-position: -636px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_30_HBMTheme {
+    background-position: -652px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_35_HBMTheme {
+    background-position: -668px -1px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_40_HBMTheme {
+    background-position: -1px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_45_HBMTheme {
+    background-position: -17px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_50_HBMTheme {
+    background-position: -33px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_hour_55_HBMTheme {
+    background-position: -49px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_00_HBMTheme {
+    background-position: -65px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_05_HBMTheme {
+    background-position: -81px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_10_HBMTheme {
+    background-position: -97px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_15_HBMTheme {
+    background-position: -113px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_20_HBMTheme {
+    background-position: -129px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_25_HBMTheme {
+    background-position: -145px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_30_HBMTheme {
+    background-position: -161px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_35_HBMTheme {
+    background-position: -177px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_40_HBMTheme {
+    background-position: -193px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_45_HBMTheme {
+    background-position: -209px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_50_HBMTheme {
+    background-position: -225px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_AppointmentClockArrows_night_minute_55_HBMTheme {
+    background-position: -241px -17px;
+    width: 15px;
+    height: 15px;
+}
+
+.dxScheduler_InplaceEditor_Cancel_HBMTheme {
+    background-position: -257px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_InplaceEditor_EditForm_HBMTheme {
+    background-position: -277px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_InplaceEditor_Save_HBMTheme {
+    background-position: -297px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_Menu_Delete_HBMTheme {
+    background-position: -548px -59px;
+    width: 16px;
+    height: 16px;
+}
+
+.dxScheduler_Menu_GoToDate_HBMTheme {
+    background-position: -565px -59px;
+    width: 16px;
+    height: 16px;
+}
+
+.dxScheduler_Menu_NewAppointment_HBMTheme {
+    background-position: -582px -59px;
+    width: 16px;
+    height: 16px;
+}
+
+.dxScheduler_Menu_RecurringAppointment_HBMTheme {
+    background-position: -599px -59px;
+    width: 16px;
+    height: 16px;
+}
+
+.dxScheduler_MoreButton_Bottom_HBMTheme {
+    background-position: -317px -17px;
+    width: 21px;
+    height: 17px;
+}
+
+.dxScheduler_MoreButton_BottomHover_HBMTheme {
+    background-position: -339px -17px;
+    width: 21px;
+    height: 17px;
+}
+
+.dxScheduler_MoreButton_Top_HBMTheme {
+    background-position: -361px -17px;
+    width: 21px;
+    height: 17px;
+}
+
+.dxScheduler_MoreButton_TopHover_HBMTheme {
+    background-position: -383px -17px;
+    width: 21px;
+    height: 17px;
+}
+
+.dxScheduler_NavigationButton_Backward_HBMTheme {
+    background-position: -405px -17px;
+    width: 19px;
+    height: 41px;
+}
+
+.dxScheduler_NavigationButton_BackwardDisabled_HBMTheme {
+    background-position: -425px -17px;
+    width: 19px;
+    height: 41px;
+}
+
+.dxScheduler_NavigationButton_BackwardHover_HBMTheme {
+    background-position: -445px -17px;
+    width: 19px;
+    height: 41px;
+}
+
+.dxScheduler_NavigationButton_Forward_HBMTheme {
+    background-position: -465px -17px;
+    width: 19px;
+    height: 41px;
+}
+
+.dxScheduler_NavigationButton_ForwardDisabled_HBMTheme {
+    background-position: -485px -17px;
+    width: 19px;
+    height: 41px;
+}
+
+.dxScheduler_NavigationButton_ForwardHover_HBMTheme {
+    background-position: -505px -17px;
+    width: 19px;
+    height: 41px;
+}
+
+.dxScheduler_ResourceNavigator_Decrease_HBMTheme {
+    background-position: -525px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_DecreaseDisabled_HBMTheme {
+    background-position: -545px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_DecreaseHover_HBMTheme {
+    background-position: -565px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_First_HBMTheme {
+    background-position: -585px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_FirstDisabled_HBMTheme {
+    background-position: -605px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_FirstHover_HBMTheme {
+    background-position: -625px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_Increase_HBMTheme {
+    background-position: -645px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_IncreaseDisabled_HBMTheme {
+    background-position: -665px -17px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_IncreaseHover_HBMTheme {
+    background-position: -1px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_Last_HBMTheme {
+    background-position: -21px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_LastDisabled_HBMTheme {
+    background-position: -41px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_LastHover_HBMTheme {
+    background-position: -61px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_Next_HBMTheme {
+    background-position: -81px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_NextDisabled_HBMTheme {
+    background-position: -101px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_NextHover_HBMTheme {
+    background-position: -121px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_NextPage_HBMTheme {
+    background-position: -141px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_NextPageDisabled_HBMTheme {
+    background-position: -161px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_NextPageHover_HBMTheme {
+    background-position: -181px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_Prev_HBMTheme {
+    background-position: -201px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_PrevDisabled_HBMTheme {
+    background-position: -221px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_PrevHover_HBMTheme {
+    background-position: -241px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_PrevPage_HBMTheme {
+    background-position: -261px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_PrevPageDisabled_HBMTheme {
+    background-position: -281px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_ResourceNavigator_PrevPageHover_HBMTheme {
+    background-position: -301px -59px;
+    width: 19px;
+    height: 19px;
+}
+
+.dxScheduler_StatusInfo_Error_HBMTheme {
+    background-position: -321px -59px;
+    width: 48px;
+    height: 48px;
+}
+
+.dxScheduler_StatusInfo_Info_HBMTheme {
+    background-position: -370px -59px;
+    width: 48px;
+    height: 48px;
+}
+
+.dxScheduler_StatusInfo_Warning_HBMTheme {
+    background-position: -419px -59px;
+    width: 48px;
+    height: 48px;
+}
+
+.dxScheduler_Tooltip_BottomLeft_HBMTheme {
+    background-position: -468px -59px;
+    width: 7px;
+    height: 7px;
+}
+
+.dxScheduler_Tooltip_BottomRight_HBMTheme {
+    background-position: -476px -59px;
+    width: 7px;
+    height: 7px;
+}
+
+.dxScheduler_Tooltip_BottomStem_HBMTheme {
+    background-position: -484px -59px;
+    width: 40px;
+    height: 53px;
+}
+
+.dxScheduler_Tooltip_Empty_HBMTheme {
+    background-position: -616px -59px;
+    width: 1px;
+    height: 1px;
+}
+
+.dxScheduler_Tooltip_TopLeft_HBMTheme {
+    background-position: -525px -59px;
+    width: 7px;
+    height: 7px;
+}
+
+.dxScheduler_Tooltip_TopRight_HBMTheme {
+    background-position: -533px -59px;
+    width: 7px;
+    height: 7px;
+}
+
+.dxScheduler_ViewNavigator_Backward_HBMTheme {
+    background-position: -618px -59px;
+    width: 4px;
+    height: 7px;
+}
+
+.dxScheduler_ViewNavigator_Down_HBMTheme {
+    background-position: -623px -59px;
+    width: 7px;
+    height: 7px;
+}
+
+.dxScheduler_ViewNavigator_Forward_HBMTheme {
+    background-position: -631px -59px;
+    width: 4px;
+    height: 7px;
+}
+

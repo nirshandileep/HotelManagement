@@ -1,0 +1,161 @@
+/* -- WebChartControl -- */
+.dxchartsuiLoadingDiv_HBMTheme
+{
+	background-color:Gray;	
+	opacity: 0.01;
+	filter: progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=1);
+}
+.dxchartsuiLoadingPanel_HBMTheme
+{
+	font: 12px Tahoma;
+	color: #303030;
+	border: solid 1px #9F9F9F;
+	background-color: White;
+}
+.dxchartsuiLoadingPanel_HBMTheme td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+
+/* -- Crosshair -- */
+.dxchartsuiCrosshairHLine_HBMTheme,
+.dxchartsuiCrosshairVLine_HBMTheme
+{
+    background-color: transparent;
+    border-color: #de39cd;
+}
+
+.dxchartsuiCrosshairLabel_HBMTheme,
+.dxchartsuiCrosshairHLine_HBMTheme,
+.dxchartsuiCrosshairVLine_HBMTheme
+{
+    position: absolute;
+    z-index: 41998;
+}
+
+.dxchartsuiCrosshairLabel_HBMTheme
+{
+    background-color: #de39cd;
+    color: White;
+	font: 11px Tahoma;
+	padding: 1px 4px 1px 4px;
+    white-space: nowrap;    
+}
+
+.dxchartsuiCrosshairHLine_HBMTheme
+{
+    height: 0px;
+}
+
+.dxchartsuiCrosshairVLine_HBMTheme
+{
+    width: 0px;
+}
+
+/* -- Tooltip -- */
+.dxchartsuiTooltip_HBMTheme,
+.dxchartsuiTooltip_TopLeft_HBMTheme,
+.dxchartsuiTooltip_TopRight_HBMTheme,
+.dxchartsuiTooltip_BottomLeft_HBMTheme,
+.dxchartsuiTooltip_BottomRight_HBMTheme
+{
+	font: 12px Tahoma;
+	color: #201f35;
+	background-color: White;
+	border: 1px solid rgb(139, 139, 139);
+	border: 1px solid rgba(0, 0, 0, 0.35);
+	padding: 6px 10px 6px 10px;
+	text-align: left;
+    position: absolute;
+    cursor: default;
+    white-space: nowrap;
+    -moz-box-shadow:    0px 2px 10px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);
+    box-shadow:         0px 2px 10px rgba(0, 0, 0, 0.35);
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    z-index: 41999;
+}
+.dxchartsuiTooltip_TopLeft_HBMTheme:before,
+.dxchartsuiTooltip_TopRight_HBMTheme:before,
+.dxchartsuiTooltip_BottomLeft_HBMTheme:before,
+.dxchartsuiTooltip_BottomRight_HBMTheme:before,
+.dxchartsuiTooltip_TopLeft_HBMTheme:after,
+.dxchartsuiTooltip_TopRight_HBMTheme:after,
+.dxchartsuiTooltip_BottomLeft_HBMTheme:after,
+.dxchartsuiTooltip_BottomRight_HBMTheme:after
+{
+    border-style: solid;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+}
+.dxchartsuiTooltip_TopLeft_HBMTheme:before,
+.dxchartsuiTooltip_TopRight_HBMTheme:before,
+.dxchartsuiTooltip_BottomLeft_HBMTheme:before,
+.dxchartsuiTooltip_BottomRight_HBMTheme:before
+{
+    border-width: 10px 5px;
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+.dxchartsuiTooltip_TopLeft_HBMTheme:after,
+.dxchartsuiTooltip_TopRight_HBMTheme:after,
+.dxchartsuiTooltip_BottomLeft_HBMTheme:after,
+.dxchartsuiTooltip_BottomRight_HBMTheme:after
+{
+    border-width: 8px 4px;
+}
+.dxchartsuiTooltip_TopLeft_HBMTheme:before
+{
+    border-color: transparent transparent rgba(139, 139, 139, 0.35) rgba(139, 139, 139, 0.35);
+    top: -20px;
+    left: 10px;
+}
+.dxchartsuiTooltip_TopLeft_HBMTheme:after
+{
+    border-color: transparent transparent White White;
+    top: -16px;
+    left: 11px;
+}
+.dxchartsuiTooltip_TopRight_HBMTheme:before
+{
+    border-color: transparent rgba(139, 139, 139, 0.35) rgba(139, 139, 139, 0.35) transparent;
+    top: -20px;
+    right: 10px;
+}
+.dxchartsuiTooltip_TopRight_HBMTheme:after
+{
+    border-color: transparent White White transparent;
+    top: -16px;
+    right: 11px;
+}
+.dxchartsuiTooltip_BottomRight_HBMTheme:before
+{
+    border-color: rgba(139, 139, 139, 0.35) rgba(139, 139, 139, 0.35) transparent transparent;
+    bottom: -20px;
+    right: 10px;
+}
+.dxchartsuiTooltip_BottomRight_HBMTheme:after
+{
+    border-color: White White transparent transparent;
+    bottom: -16px;
+    right: 11px;
+}
+.dxchartsuiTooltip_BottomLeft_HBMTheme:before
+{
+    border-color: rgba(139, 139, 139, 0.35) transparent transparent rgba(139, 139, 139, 0.35);
+    bottom: -20px;
+    left: 10px;
+}
+.dxchartsuiTooltip_BottomLeft_HBMTheme:after
+{
+    border-color: White transparent transparent White;
+    bottom: -16px;
+    left: 11px;
+}

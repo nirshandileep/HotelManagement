@@ -1,0 +1,252 @@
+/* ----------------- Main ----------------- */
+/* Loading panel */
+.dxheLoadingDiv_HBMTheme
+{
+    background: white;
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+}
+.dxheLoadingPanel_HBMTheme
+{
+    font: 12px Tahoma;
+    color: #303030;
+}
+.dxheLoadingPanel_HBMTheme td.dx
+{
+    white-space: nowrap;
+    text-align: center;
+    padding: 12px 12px 12px 12px;
+}
+
+.dxheControl_HBMTheme
+{
+    border: Solid 1px #7f7f7f;
+}
+
+/* Area */
+.dxheContentArea_HBMTheme
+{
+    padding: 4px;
+    padding-bottom: 6px;    
+    background-color: #cecece;
+}
+.dxheContentArea_HBMTheme .dxheErrorFrame_HBMTheme
+{
+    font-size: 12px;
+    font-family: Tahoma;
+    color: #D00707;
+    background-color: #FBC7C7;
+    border-bottom: solid 1px #DEC0C0;
+}
+.dxheContentArea_HBMTheme .dxheErrorFrame_HBMTheme .dxhe {
+    padding: 5px;
+}
+.dxheContentArea_HBMTheme .dxheErrorFrame_HBMTheme .dxhe td {
+    padding: 0px;
+}
+.dxheContentArea_HBMTheme .dxheErrorFrame_HBMTheme .dxheErrorFrameCloseButton_HBMTheme {
+    cursor: pointer;
+}
+.dxheViewArea_HBMTheme
+{
+    border: Solid 1px #a8a8a8;    
+}
+.dxheContentArea_HBMTheme td.dxheViewArea_HBMTheme /*B209529*/
+{
+	font-size: 0;
+}
+.dxheHtmlViewArea_HBMTheme,
+.dxheDesignViewArea_HBMTheme,
+.dxhePreviewArea_HBMTheme 
+{
+    margin: 0px;
+    background-color: #FFFFFF;
+    background-image: none;
+    font-size: smaller;
+    font: normal 12px Arial;    
+}
+body.dxheDesignViewArea_HBMTheme,
+body.dxhePreviewArea_HBMTheme
+{
+    padding: 0 0 0 4px;
+}
+.dxheControl_HBMTheme.dxhe-rtl .dxheContentArea_HBMTheme .dxeMemo_HBMTheme td,
+body.dxheDesignViewArea_HBMTheme.dxhe-rtl,
+body.dxhePreviewArea_HBMTheme.dxhe-rtl
+{
+	padding: 0 4px 0 0;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{
+    .dxheControl_HBMTheme.dxhe-rtl .dxheContentArea_HBMTheme .dxeMemo_HBMTheme td
+    {
+	    padding: 0 0 0 4px;
+    }
+}
+.dxheControl_HBMTheme .dxeMemo_HBMTheme textarea 
+{
+	resize: none;
+}
+/* Element appearance in DesignView */
+body.dxheDesignViewArea_HBMTheme table.dxEmptyBorderTable_HBMTheme,
+body.dxheDesignViewArea_HBMTheme table.dxEmptyBorderTable_HBMTheme td  {
+    border:1px dotted gray;
+}
+@media print 
+{
+	body.dxheDesignViewArea_HBMTheme table.dxEmptyBorderTable_HBMTheme,
+	body.dxheDesignViewArea_HBMTheme table.dxEmptyBorderTable_HBMTheme td  
+	{
+		border:0px;
+	}
+}
+
+/* Status Bar */
+.dxheStatusBar_HBMTheme 
+{
+}
+.dxheStatusBar_HBMTheme .dxheStatusBarTab_HBMTheme 
+{
+    padding-left: 11px;
+    padding-right: 12px;
+    padding-bottom: 5px;
+}
+.dxheStatusBarActiveTab_HBMTheme 
+{
+}
+.dxHtmlEditor_heSizeGrip_HBMTheme
+{
+    cursor: se-resize;
+}
+.dxHtmlEditor_heSizeGripRtl_HBMTheme
+{
+    cursor: ne-resize;
+}
+.dxheSizeGripContainer_HBMTheme
+{
+    float: left;
+    height: 0;
+    width: 100%;
+    text-align: right;
+    font-size: 0;
+    margin-top: -16px;
+}
+.dxheControl_HBMTheme.dxhe-rtl .dxheSizeGripContainer_HBMTheme 
+{
+	text-align: left;
+}
+/* ----------------- Dialog Forms ----------------- */
+#dxInsertTableForm .buttonsCell,
+#dxInsertLinkForm .buttonsCell,
+#dxInsertImageForm .buttonsCell,
+#dxPasteFromWordForm .buttonsCell,
+#dxTableColumnPropertiesForm .buttonsCell,
+#dxSelectImageForm .buttonsCell,
+.dxheCustomDialog_HBMTheme .dxhecd-Buttons
+{
+    background-color: #F3F3F3;
+    border-top: Solid 1px #E0E0E0;
+    padding: 11px;
+}
+/* Insert Image Form */
+#dxInsertImageForm .imagePreviewCell,
+#dxSelectImageForm .imagePreviewCell
+{
+    color: #878787;
+    border: dashed 1px #cac8c8;
+}
+#dxPasteFromWordForm .pasteContainerCell td
+{
+	border: Solid 1px #9F9F9F;
+}
+/*----------------- Toolbars -----------------*/
+.dxtbSpacing_HBMTheme
+{
+	height: 1px;
+}
+.dxtbControl_HBMTheme 
+{
+    font: 12px Tahoma;
+    color: black;
+    background-color: #9d9d9d;
+    width: 100%;
+    border-bottom: Solid 1px #7f7f7f;
+}
+.dxtbControl_HBMTheme td.dxmMenu_HBMTheme
+{
+	border: 0px;
+}
+.dxtbComboBoxMenuItem_HBMTheme
+{
+    padding-top: 2px;
+}
+
+/* Toolbars Lightweight Mode */
+.dxtbControl_HBMTheme .dxmLite_HBMTheme .dxm-main {
+    border-width: 0px;
+}
+.dxmLite_HBMTheme .dxmtb .dxtb-comboBoxMenuItem {
+	border-width: 0px;
+	padding-top: 2px;
+}
+.dxtbControl_HBMTheme .dxmLite_HBMTheme .dxm-horizontal.dxmtb .dxm-image-l .dxm-dropDownMode.dxtb-cb .dxm-content, 
+.dxtbControl_HBMTheme .dxmLite_HBMTheme .dxm-horizontal.dxmtb .dxm-image-r .dxm-dropDownMode.dxtb-cb .dxm-content
+{
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+.dxtbControl_HBMTheme .dxmLite_HBMTheme .dxm-horizontal.dxmtb .dxm-image-l .dxm-item.dxtb-cddi .dxm-content, 
+.dxtbControl_HBMTheme .dxmLite_HBMTheme .dxm-horizontal.dxmtb .dxm-image-r .dxm-item.dxtb-cddi .dxm-content
+{
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.dxtbControl_HBMTheme .dxmLite_HBMTheme .dxm-horizontal.dxmtb .dxm-image-l .dxm-item.dxtb-cddi .dxm-content img, 
+.dxtbControl_HBMTheme .dxmLite_HBMTheme .dxm-horizontal.dxmtb .dxm-image-r .dxm-item.dxtb-cddi .dxm-content img
+{
+	margin-top: -1px;
+}
+.dxmLite_HBMTheme .dxhetipControl_HBMTheme img
+{
+	vertical-align: top;
+}
+
+/* ToolbarColorButton */
+.dxtcbControl_HBMTheme { }
+.dxtcbColorDiv_HBMTheme
+{
+	width: 16px;
+	height: 3px;
+	font-size:0px;
+	background-color: Transparent;
+}
+
+/*----------------- RoundPanel -----------------*/
+.dxheRP.dxrpControl_HBMTheme .dxrpContent_HBMTheme,
+.dxheRP.dxrpControl_HBMTheme .dxrpLE,
+.dxheRP.dxrpControl_HBMTheme .dxrpRE,
+.dxheRP.dxrpControl_HBMTheme .dxrpBE,
+.dxheRP.dxrpControl_HBMTheme .dxrpNHTE
+{
+	background-color: #F5F5F5;
+}
+.dxheRP.dxrpControl_HBMTheme .dxrpContent_HBMTheme
+{
+    padding: 9px 8px;
+}
+.dxheRP.dxrpControl_HBMTheme .dxrpTE,
+.dxheRP.dxrpControl_HBMTheme .dxrpNHTE,
+.dxheRP.dxrpControl_HBMTheme .dxrpLE,
+.dxheRP.dxrpControl_HBMTheme .dxrpHLE,
+.dxheRP.dxrpControl_HBMTheme .dxrpRE,
+.dxheRP.dxrpControl_HBMTheme .dxrpHRE,
+.dxheRP.dxrpControl_HBMTheme .dxrpBE,
+.dxheRP.dxrpControlGB_HBMTheme .dxrpNHTE,
+.dxheRP.dxrpControlGB_HBMTheme .dxrpLE,
+.dxheRP.dxrpControlGB_HBMTheme .dxrpHLE,
+.dxheRP.dxrpControlGB_HBMTheme .dxrpRE,
+.dxheRP.dxrpControlGB_HBMTheme .dxrpBE
+{
+	border-color: #E2E2E2;
+}
+

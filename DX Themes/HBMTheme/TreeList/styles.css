@@ -1,0 +1,274 @@
+.dxtlControl_HBMTheme
+{
+	cursor: default;
+	font: 12px Tahoma;
+	color: black;
+	border: 1px none #9f9f9f;
+}
+.dxtlControl_HBMTheme caption
+{
+	background: #ACACAC none;
+	border-bottom: 0 solid #9F9F9F;
+	border: 1px solid #9F9F9F;
+	color: White;
+	font-size: 15px;
+	font-weight: normal;
+	padding: 3px 3px 5px;
+	text-align: center;
+}
+
+/* Indent cells */
+.dxtlIndent_HBMTheme,
+.dxtlIndentWithButton_HBMTheme
+{
+	vertical-align: top;
+	background: white none no-repeat top center;
+}
+.dxtlIndent_HBMTheme
+{
+	padding: 0 11px;
+}
+.dxtlIndentWithButton_HBMTheme
+{
+	padding: 5px 7px 6px;
+}
+.dxtlSelectionCell_HBMTheme
+{
+	border: 1px solid #cfcfcf;
+}
+
+/* Tree-lines cells */
+.dxtlLineRoot_HBMTheme
+{
+	background: White url('TreeLineRoot.gif') repeat-y top center;
+}
+
+.dxtlLineFirst_HBMTheme
+{
+	background-image: url('TreeLineFirst.gif');
+}
+.dxtlLineMiddle_HBMTheme
+{
+	background-image: url('TreeLineMiddle.gif');
+}
+.dxtlLineLast_HBMTheme
+{
+	background-image: url('TreeLineLast.gif');
+}
+
+.dxtlLineFirstRtl_HBMTheme
+{
+	background-image: url('TreeLineFirstRtl.gif');
+}
+.dxtlLineMiddleRtl_HBMTheme
+{
+	background-image: url('TreeLineMiddleRtl.gif');
+}
+.dxtlLineLastRtl_HBMTheme
+{
+	background-image: url('TreeLineLastRtl.gif');
+}
+
+/* Headers */
+.dxtlHeader_HBMTheme
+{
+	background: #dcdcdc none;
+	border: 1px solid #9f9f9f;
+	padding: 4px 6px 5px;
+	font-weight: normal;
+}
+.dxtlHeader_HBMTheme table.dxtl
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+.dxtlHeader_HBMTheme td.dxtl
+{
+	padding: 0;
+}
+.dxtlHeader_HBMTheme,
+.dxtlHeader_HBMTheme td.dxtl
+{
+	white-space: nowrap;
+	text-align: left;
+	overflow: hidden;
+}
+
+/* Nodes */
+.dxtlNode_HBMTheme
+{
+	background: white none;
+}
+.dxtlAltNode_HBMTheme
+{
+	background: #ededeb none;
+}
+.dxtlSelectedNode_HBMTheme
+{
+	background: #a0a0a0 none;
+	color: white;
+}
+.dxtlFocusedNode_HBMTheme
+{
+	background: #8d8d8d none;
+	color: white;
+}
+.dxtlInlineEditNode_HBMTheme
+{
+	background: white none;
+}
+.dxtlEditFormDisplayNode_HBMTheme
+{
+	background: white none;
+}
+
+.dxtlNode_HBMTheme td.dxtl, 
+.dxtlAltNode_HBMTheme  td.dxtl, 
+.dxtlSelectedNode_HBMTheme td.dxtl, 
+.dxtlFocusedNode_HBMTheme td.dxtl,
+.dxtlEditFormDisplayNode_HBMTheme td.dxtl,
+.dxtlCommandCell_HBMTheme
+{
+	padding: 3px 6px 4px;
+	border: 1px solid #cfcfcf;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.dxtlInlineEditNode_HBMTheme td.dxtl
+{
+	border: 1px solid #cfcfcf;
+	padding: 1px;
+}
+
+/* Preview */
+.dxtlPreview_HBMTheme
+{
+	background: #f2f2f2 none;
+	color: #7f7f7f;
+	padding: 14px;
+	border: 1px solid #cfcfcf;
+	overflow: hidden;
+}
+
+/* Footers */
+.dxtlGroupFooter_HBMTheme
+{
+	background-color: #E0E0E0;
+}
+.dxtlFooter_HBMTheme
+{
+	background-color: #D7D7D7;
+}
+.dxtlGroupFooter_HBMTheme td.dxtl,
+.dxtlFooter_HBMTheme td.dxtl
+{
+	padding: 5px 6px 6px;
+	white-space: nowrap;
+	border: 1px solid #cfcfcf;
+	overflow: hidden;
+}
+
+/* Pagers */
+.dxtlPagerTopPanel_HBMTheme
+{
+	border-bottom: 1px none #9f9f9f;
+	padding-bottom: 2px;
+}
+.dxtlPagerBottomPanel_HBMTheme
+{
+	border-top: 1px none #9f9f9f;
+	padding-bottom: 2px;
+}
+
+/* Editing */
+.dxtlEditForm_HBMTheme
+{
+	background: #F0F0F0 none;
+	border: 1px solid #D3D3D3;
+	padding: 8px 10px 10px;
+}
+.dxtlEditFormCaption_HBMTheme,
+.dxtlEditFormEditCell_HBMTheme
+{
+	padding: 4px;
+}
+.dxtlEditFormCaption_HBMTheme
+{
+	padding-left: 10px;
+	white-space: nowrap;
+}
+.dxtlError_HBMTheme
+{
+	background: #FFC8C8 none;
+	color: #FF0000;
+	padding: 6px 10px;
+	border: 1px solid #cfcfcf;
+}
+.dxtlPopupEditForm_HBMTheme
+{
+	padding: 12px;
+}
+
+/* Links */
+.dxtlControl_HBMTheme a
+{
+	color: #0d45b7;
+}
+.dxtlControl_HBMTheme a:hover
+{
+	color: #5494ea;
+}
+.dxtlSelectedNode_HBMTheme a, 
+.dxtlFocusedNode_HBMTheme a
+{
+	color: White;
+}
+.dxtlSelectedNode_HBMTheme a:hover, 
+.dxtlFocusedNode_HBMTheme a:hover
+{
+	color: #f0f0f0;
+} 
+.dxtlCommandCell_HBMTheme a
+{
+	margin-right: 3px;
+}
+
+/* Loading panel */
+.dxtlLoadingPanel_HBMTheme
+{
+	border: 1px solid #9F9F9F;
+	background-color: #E3E3E1;
+	font: 12px Tahoma;
+	color: #303030;
+}
+.dxtlLoadingPanel_HBMTheme td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxtlLoadingDiv_HBMTheme
+{
+	background: white none;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+/* Disabled */
+.dxtlDisabled_HBMTheme,
+.dxtlDisabled_HBMTheme .dxtl
+{
+	color: #808080;
+	cursor: default;
+}
+
+/* Scrolling */
+.dxtlControl_HBMTheme .dxtlHSDC 
+{
+    background-color: #F2F2F2;
+}
+.dxtlControl_HBMTheme .dxtlFSDC
+{
+    background-color: #D7D7D7;
+}
+

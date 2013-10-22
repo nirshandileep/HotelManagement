@@ -1,0 +1,1496 @@
+/* TrackBar */
+.dxeTrackBar_HBMTheme
+{
+	user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	visibility: hidden;
+}
+
+.dxeDisabled_HBMTheme .dxeTBHSys a,
+.dxeDisabled_HBMTheme .dxeTBVSys a
+{
+    cursor: default;
+}
+
+.dxeTBBarHighlight_HBMTheme
+{
+	font-size: 0;
+}
+
+.dxeTBScale_HBMTheme, .dxeTBTrack_HBMTheme, .dxeTBBarHighlight_HBMTheme
+{
+	cursor: pointer;
+}
+
+.dxeTBScale_HBMTheme 
+{
+	z-index: 1;
+	font: 11px Tahoma;
+}
+.dxeTBSecondaryDH_HBMTheme, .dxeTBMainDH_HBMTheme
+{
+	z-index: 4;
+}
+
+.dxeTBHSys
+{
+	width: 170px;
+	height: 41px;
+}
+.dxeTBVSys
+{
+	height: 170px;
+	width: 41px;
+}
+.dxeTrackBar_HBMTheme.dxeTBBScaleSys.dxeTBVSys
+{
+	width: 59px;
+}
+.dxeTrackBar_HBMTheme.dxeTBBScaleSys.dxeTBHSys
+{	
+	height: 59px;
+}
+
+.dxeTBTrack_HBMTheme 
+{
+	z-index: 2;
+	position: absolute;
+}
+
+.dxeTBHSys .dxeTBTrack_HBMTheme
+{
+	background-image:  url('edtTrackBarTrackH.gif');
+}
+.dxeTBVSys .dxeTBTrack_HBMTheme
+{
+	background-image:  url('edtTrackBarTrackV.gif');
+}
+
+.dxeTBHSys .dxeTBTrack_HBMTheme, .dxeTBHSys .dxeTBBarHighlight_HBMTheme
+{
+	height: 9px;
+}
+.dxeTBVSys .dxeTBTrack_HBMTheme, .dxeTBVSys .dxeTBBarHighlight_HBMTheme
+{
+	width: 9px;
+}
+
+.dxeTBHSys .dxeTBMainDH_HBMTheme, .dxeTBHSys .dxeTBSecondaryDH_HBMTheme
+{	
+	top: -5px;
+	width:13px;
+	height:19px;
+}
+.dxeTBVSys .dxeTBMainDH_HBMTheme, .dxeTBVSys .dxeTBSecondaryDH_HBMTheme
+{
+	left: -5px;
+	width:19px;
+	height:13px;
+}
+
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBTrack_HBMTheme, .dxeTBVSys .dxeTBTrack_HBMTheme
+{
+	left: 6px;
+}
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBTrack_HBMTheme
+{
+	right: 6px;
+	left: auto;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBTrack_HBMTheme
+{
+	bottom: 6px;
+	top: auto;
+}
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBTrack_HBMTheme, .dxeTBHSys .dxeTBTrack_HBMTheme
+{
+	top: 6px;
+}
+
+.dxeTBBarHighlight_HBMTheme
+{
+	left: 0px;
+	top: 0px;
+	position:absolute;
+	z-index: 3;
+}
+
+.dxeTBHSys .dxeTBBarHighlight_HBMTheme
+{
+	background-image:  url('edtTrackBarBarHighlightH.gif');
+}
+.dxeTBVSys .dxeTBBarHighlight_HBMTheme
+{
+	background-image:  url('edtTrackBarBarHighlightV.gif');
+}
+
+.dxeTBRBLabel_HBMTheme, .dxeTBLTLabel_HBMTheme
+{
+	text-align: center;
+	color: #A8A8A8;
+	cursor: default;
+}
+.dxeTBSmallTickSys .dxeTBRBLabel_HBMTheme, .dxeTBSmallTickSys .dxeTBLTLabel_HBMTheme,
+.dxeTBLargeTickSys .dxeTBRBLabel_HBMTheme, .dxeTBLargeTickSys .dxeTBLTLabel_HBMTheme 
+{	
+	position: absolute;
+}
+
+.dxeTBHSys .dxeTBRBLabel_HBMTheme,.dxeTBHSys .dxeTBLTLabel_HBMTheme
+{
+	width: 100%;
+}
+
+.dxeTBIncBtn_HBMTheme, .dxeTBDecBtn_HBMTheme
+{
+	padding: 2px;
+	width: 17px;
+	height: 17px;
+}
+
+.dxeTBVSys .dxeTBRBLabel_HBMTheme, 
+.dxeTBVSys .dxeTBLTLabel_HBMTheme
+{
+	padding-top: 2px;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBRBLabel_HBMTheme
+{
+	margin-left: -4px;
+}
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBRBLabel_HBMTheme, 
+.dxeTBVSys .dxeTBBScaleSys .dxeTBLTLabel_HBMTheme
+{
+	right: 0px;
+}
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBLTLabel_HBMTheme, 
+.dxeTBVSys .dxeTBBScaleSys .dxeTBRBLabel_HBMTheme
+{
+	left: 0px;
+}
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBRBLabel_HBMTheme, 
+.dxeTBHSys .dxeTBBScaleSys .dxeTBLTLabel_HBMTheme
+{
+	bottom: 0px;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBLTLabel_HBMTheme, 
+.dxeTBHSys .dxeTBBScaleSys .dxeTBRBLabel_HBMTheme
+{
+	top: 0px;
+}
+.dxeTBItem_HBMTheme
+{
+	color: #A8A8A8;
+}
+
+.dxeTBHSys .dxeTBItem_HBMTheme .dxeTBRBLabel_HBMTheme, 
+.dxeTBHSys .dxeTBItem_HBMTheme .dxeTBLTLabel_HBMTheme 
+{
+	display: inline-block;
+	margin-left: 0px!important;
+}
+.dxeTBHSys .dxeTBRBScaleSys 
+.dxeTBItem_HBMTheme .dxeTBRBLabel_HBMTheme 
+{
+	padding-top: 12px;
+}
+.dxeTBHSys .dxeTBLTScaleSys 
+.dxeTBItem_HBMTheme .dxeTBLTLabel_HBMTheme 
+{
+	margin-top: 8px;
+}
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBItem_HBMTheme .dxeTBRBLabel_HBMTheme 
+{
+	margin-left: 5px;
+}
+
+.dxeTBSelectedItem_HBMTheme .dxeTBRBLabel_HBMTheme,
+.dxeTBSelectedItem_HBMTheme .dxeTBLTLabel_HBMTheme,
+.dxeTBSelectedTick_HBMTheme .dxeTBRBLabel_HBMTheme, 
+.dxeTBSelectedTick_HBMTheme .dxeTBLTLabel_HBMTheme
+{
+	color: #C3C3C3;
+}
+
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBItem_HBMTheme
+{
+	text-align: left;
+}
+
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBItem_HBMTheme
+{
+	text-align: right;
+}
+
+.dxeTBVSys .dxeTBBScaleSys .dxeTBItem_HBMTheme
+{
+	text-align: center;
+}
+
+.dxeTBHSys .dxeTBItem_HBMTheme
+{
+	background-image:  url('edtTrackBarLargeTickH.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBItem_HBMTheme
+{
+	background-image:  url('edtTrackBarDoubleSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBItem_HBMTheme 
+{
+	background-image:  url('edtTrackBarLargeTickV.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBItem_HBMTheme
+{
+	background-image:  url('edtTrackBarDoubleSmallTickV.gif');
+}
+
+.dxeTBHSys .dxeTBLargeTick_HBMTheme
+{
+	background-image:  url('edtTrackBarLargeTickH.gif');
+}
+.dxeTBVSys .dxeTBLargeTick_HBMTheme
+{
+	background-image: url('edtTrackBarLargeTickV.gif');
+}
+.dxeTBHSys .dxeTBSmallTick_HBMTheme
+{
+	background-image: url('edtTrackBarSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBSmallTick_HBMTheme
+{
+	background-image: url('edtTrackBarSmallTickV.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBLargeTick_HBMTheme
+{
+	background-image: url('edtTrackBarDoubleLargeTickH.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBLargeTick_HBMTheme
+{
+	background-image: url('edtTrackBarDoubleLargeTickV.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBSmallTick_HBMTheme
+{
+	background-image: url('edtTrackBarDoubleSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBSmallTick_HBMTheme
+{
+	background-image: url('edtTrackBarDoubleSmallTickV.gif');
+}
+
+.dxeTBVSys .dxeTBIncBtn_HBMTheme, .dxeTBVSys .dxeReversedDirectionSys .dxeTBDecBtn_HBMTheme
+{
+	bottom: 0px;
+	top: auto;
+}
+.dxeTBVSys .dxeTBDecBtn_HBMTheme, .dxeTBVSys .dxeReversedDirectionSys .dxeTBIncBtn_HBMTheme
+{
+	top: 0px;
+	bottom: auto;
+}
+.dxeTBHSys .dxeTBDecBtn_HBMTheme, .dxeTBHSys .dxeReversedDirectionSys .dxeTBIncBtn_HBMTheme
+{
+	left: 0px;
+	right: auto;
+}
+.dxeTBHSys .dxeTBIncBtn_HBMTheme, .dxeTBHSys .dxeReversedDirectionSys .dxeTBDecBtn_HBMTheme
+{
+	right: 0px;
+	left: auto;
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBDecBtn_HBMTheme, 
+.dxeTBVSys .dxeTBBScaleSys .dxeTBIncBtn_HBMTheme
+{
+	margin-left: -10px;
+	left: 50%;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBDecBtn_HBMTheme,
+.dxeTBHSys .dxeTBBScaleSys .dxeTBIncBtn_HBMTheme
+{
+	margin-top: -10px;
+	top: 50%;
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBTrack_HBMTheme
+{ 
+	margin-left: -4px;
+	left: 50%;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBTrack_HBMTheme
+{ 
+	margin-top: -4px;
+	top: 50%;
+}
+
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBDecBtn_HBMTheme, 
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBIncBtn_HBMTheme
+{
+	right: 0px;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBDecBtn_HBMTheme, 
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBIncBtn_HBMTheme
+{
+	bottom: 0px;
+}
+
+.dxeTBValueToolTip_HBMTheme,
+div.dxeHelpText_HBMTheme
+{
+	padding: 3px 8px 4px 8px;
+    display: inline;
+    position: absolute;
+    background: white;
+    border-radius: 3px;
+    z-index: 41998;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #A8A8A8;
+    font: 12px Tahoma;
+}
+td.dxeHelpText_HBMTheme {
+    visibility: visible;
+    color: #9F9F9F;
+    font: 11px Tahoma;
+}
+td.dxeHelpText_HBMTheme.dxeHHelpTextSys {
+    padding: 0 6px;
+}
+td.dxeHelpText_HBMTheme.dxeVHelpTextSys {
+    padding: 2px 0;
+}
+
+/* Loading */
+.dxeLoadingDiv_HBMTheme
+{
+	background: White none;
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+}
+.dxeLoadingDivWithContent_HBMTheme
+{
+	background: White none;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+.dxeLoadingPanel_HBMTheme
+{
+	font: 12px Tahoma;
+	color: #303030;
+}
+.dxeLoadingPanelWithContent_HBMTheme
+{
+	font: 12px Tahoma;
+	color: #303030;
+	background: #FFFFFF none;
+	border: 1px solid #D6D6D6;
+}
+
+.dxeLoadingPanel_HBMTheme td.dx, 
+.dxeLoadingPanelWithContent_HBMTheme td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+
+.dxeReadOnly_HBMTheme
+{
+}
+.dxeBase_HBMTheme
+{
+	font: 12px Tahoma;
+}
+td.dxic
+{
+	font-size: 0;
+}
+/* InternalCheckBox */
+.dxeIRBFocused_HBMTheme
+{
+	border: 1px dotted #ffb100;
+	margin: 0px!important;
+}
+.dxeIRadioButton_HBMTheme
+{
+	margin: 1px;
+	display: inline-block;
+	vertical-align: middle;
+}
+/* -- ErrorFrame -- */
+.dxeErrorCell_HBMTheme,
+.dxeErrorCell_HBMTheme td
+{
+	font: 12px Tahoma;
+	color: Red;
+}
+.dxeErrorCell_HBMTheme
+{
+	padding-left: 4px;
+	padding-right: 5px;
+}
+.dxeErrorFrameWithoutError_HBMTheme
+{
+	border: 1px solid Red;
+}
+.dxeErrorFrameWithoutError_HBMTheme .dxeControlsCell_HBMTheme,
+.dxeErrorFrameWithoutError_HBMTheme.dxeControlsCell_HBMTheme
+{
+	padding: 2px;
+}
+
+.dxeEditArea_HBMTheme
+{
+	font: 12px Tahoma;
+	border: 1px solid #A0A0A0;
+}
+/* -- ValidationSummary -- */
+
+.dxvsValidationSummary_HBMTheme
+{
+	font: 12px Tahoma;
+	color: Red;
+}
+.dxvsValidationSummary_HBMTheme td.dxvsRC
+{
+	vertical-align: top;
+	padding: 2px 5px 4px 6px;
+}
+.dxvsValidationSummary_HBMTheme .dxvsE
+{
+}
+
+/* ValidationSummary - Header */
+
+.dxvsValidationSummary_HBMTheme table.dxvsHT
+{
+	width: 100%;
+}
+.dxvsValidationSummary_HBMTheme td.dxvsH
+{
+	padding: 2px 0;
+}
+
+/* ValidationSummary - Hyperlink */
+
+.dxvsValidationSummary_HBMTheme a.dxvsHL,
+.dxvsValidationSummary_HBMTheme a.dxvsHL:visited
+{
+	color: red;
+}
+.dxvsValidationSummary_HBMTheme a.dxvsHL
+{
+	text-decoration: none;
+	border-bottom: 1px dashed #f70;
+}
+.dxvsValidationSummary_HBMTheme a.dxvsHL:hover
+{
+	color: #f70;
+}
+
+/* ValidationSummary - Table Layout */
+
+.dxvsValidationSummary_HBMTheme table.dxvsT
+{
+}
+.dxvsValidationSummary_HBMTheme tr.dxvsE
+{
+}
+.dxvsValidationSummary_HBMTheme td.dxvsETC
+{
+	padding: 2px 0;
+}
+
+/* ValidationSummary - List Layout */
+
+.dxvsValidationSummary_HBMTheme ul.dxvsL
+{
+}
+.dxvsValidationSummary_HBMTheme ol.dxvsL
+{
+}
+.dxvsValidationSummary_HBMTheme li.dxvsE
+{
+	padding: 2px 0;
+}
+
+/* -- Buttons -- */
+.dxeButtonEditButton_HBMTheme,
+.dxeCalendarButton_HBMTheme,
+.dxeSpinIncButton_HBMTheme,
+.dxeSpinDecButton_HBMTheme,
+.dxeSpinLargeIncButton_HBMTheme,
+.dxeSpinLargeDecButton_HBMTheme
+{
+	vertical-align: middle;
+	border: 1px solid #7f7f7f;
+	cursor: pointer;
+} 
+.dxeButtonEditButton_HBMTheme,
+.dxeCalendarButton_HBMTheme,
+.dxeButtonEditButton_HBMTheme td.dx,
+.dxeCalendarButton_HBMTheme td.dx,
+.dxeSpinIncButton_HBMTheme,
+.dxeSpinDecButton_HBMTheme,
+.dxeSpinLargeIncButton_HBMTheme,
+.dxeSpinLargeDecButton_HBMTheme,
+.dxeSpinIncButton_HBMTheme td.dx,
+.dxeSpinDecButton_HBMTheme td.dx,
+.dxeSpinLargeIncButton_HBMTheme td.dx,
+.dxeSpinLargeDecButton_HBMTheme td.dx
+{
+	font: normal 11px Tahoma;
+	text-align: center;
+	white-space: nowrap;
+} 
+.dxeButtonEditButton_HBMTheme,
+.dxeSpinIncButton_HBMTheme,
+.dxeSpinDecButton_HBMTheme,
+.dxeSpinLargeIncButton_HBMTheme,
+.dxeSpinLargeDecButton_HBMTheme
+{
+	padding: 0px 2px 0px 3px;
+	background: #e6e6e6 url('edtDropDownBack.gif') repeat-x top;
+}
+.dxeSpinIncButton_HBMTheme
+{
+	background: #F0F0F0 url('edtSpinIncBtnBack.gif') repeat-x top;
+}
+.dxeSpinDecButton_HBMTheme
+{
+	background: #E6E6E6 url('edtSpinDecBtnBack.gif') repeat-x top;
+}
+
+.dxeButtonEditButton_HBMTheme table.dxbebt,
+.dxeSpinIncButton_HBMTheme table.dxbebt,
+.dxeSpinDecButton_HBMTheme table.dxbebt, 
+.dxeSpinLargeIncButton_HBMTheme table.dxbebt,
+.dxeSpinLargeDecButton_HBMTheme table.dxbebt
+{
+	width: 10px;
+}
+.dxeCalendarButton_HBMTheme
+{
+	font-size: 12px;
+	background: #e5e5e5 url('edtCalendarButtonBack.gif') repeat-x top;
+	padding: 3px 11px 4px;
+	width: 32px;
+}
+.dxeCalendarButton_HBMTheme td.dx
+{
+	font-size: 12px;
+	text-align: center;
+	white-space: nowrap;
+}
+.dxeCalendarButton_HBMTheme table.dxbebt
+{
+	width: 100%;
+}
+
+/* -- Pressed -- */
+.dxeCalendarButtonPressed_HBMTheme,
+.dxeButtonEditButtonPressed_HBMTheme,
+.dxeSpinIncButtonPressed_HBMTheme,
+.dxeSpinDecButtonPressed_HBMTheme,
+.dxeSpinLargeIncButtonPressed_HBMTheme, 
+.dxeSpinLargeDecButtonPressed_HBMTheme
+{
+	background: #D5D5D5 none;
+	border: 1px Solid #7F7F7F;
+}
+/* -- Hover -- */
+.dxeCalendarButtonHover_HBMTheme,
+.dxeButtonEditButtonHover_HBMTheme,
+.dxeSpinIncButtonHover_HBMTheme,
+.dxeSpinDecButtonHover_HBMTheme,
+.dxeSpinLargeIncButtonHover_HBMTheme,
+.dxeSpinLargeDecButtonHover_HBMTheme
+{
+	background: #F2F2F2 url('edtDropDownButtonHoverBack.gif') repeat-x top;
+	border: 1px Solid #606060;
+}
+.dxeCalendarButtonHover_HBMTheme
+{
+	background: url('edtCalendarButtonHBack.gif') repeat-x top;
+}
+
+.dxeButtonEdit_HBMTheme
+{
+	background-color: white;
+	border: 1px solid #9F9F9F;
+}
+
+.dxeButtonEdit_HBMTheme td.dxic 
+{
+    *padding-left: 2px;
+}
+*[dir="rtl"].dxeTextBox_HBMTheme td.dxic 
+{
+    *padding-right: 2px;
+}
+
+.dxeButtonEdit_HBMTheme .dxeEditArea_HBMTheme
+{
+	background-color: white;
+}
+.dxeButtonEdit_HBMTheme .dxeIIC img
+{
+	padding-left: 3px;
+}
+.dxeTextBox_HBMTheme,
+.dxeMemo_HBMTheme
+{
+	background-color: white;
+	border: 1px solid #9f9f9f;
+}
+
+.dxeTextBox_HBMTheme .dxeEditArea_HBMTheme
+{
+	background-color: white;
+}
+.dxeRadioButtonList_HBMTheme, .dxeCheckBoxList_HBMTheme
+{
+	border: 1px Solid #9F9F9F;
+}
+
+.dxeCheckBoxList_HBMTheme .dxe > table,
+.dxeRadioButtonList_HBMTheme .dxe > table 
+{
+    width: 100%;
+}
+
+.dxeRadioButtonList_HBMTheme,
+.dxeRadioButtonList_HBMTheme table,
+.dxeCheckBoxList_HBMTheme,
+.dxeCheckBoxList_HBMTheme table
+{
+	font: 12px Tahoma;
+}
+.dxeRadioButtonList_HBMTheme td.dxe,
+.dxeCheckBoxList_HBMTheme td.dxe
+{
+	padding: 7px 5px 6px 11px;
+}
+.dxeRadioButtonList_HBMTheme label,
+.dxeCheckBoxList_HBMTheme label
+{
+	margin-right: 6px;
+}
+
+.dxeRadioButtonList_HBMTheme img,
+.dxeCheckBoxList_HBMTheme img
+{
+	margin-bottom: -4px;
+    padding-right: 5px;
+}
+
+/* -- Memo -- */
+.dxeMemo_HBMTheme
+{
+}
+.dxeMemoEditArea_HBMTheme
+{
+	background-color: white;
+	font: 12px Tahoma;
+	outline: none;
+}
+
+
+/* -- Hyperlink -- */
+.dxeHyperlink_HBMTheme
+{
+	font: normal 12px Tahoma;
+	color: #0d45b7;
+}
+a.dxeHyperlink_HBMTheme:hover
+{
+	color: #5494ea;
+}
+a.dxeHyperlink_HBMTheme:visited
+{
+	color: #ab59a6;
+}
+
+/* -- ListBox -- */
+.dxeListBox_HBMTheme
+{
+	background-color: white;
+	border: 1px solid #A0A0A0;
+	font: 12px Tahoma;
+	width: 70px;
+	height: 109px;
+}
+.dxeListBox_HBMTheme div.dxlbd
+{
+	padding-top: 1px;
+	padding-bottom: 1px;
+	height: 107px;
+}
+.dxeListBoxItemRow_HBMTheme
+{
+	cursor: default;
+}
+.dxeListBoxItem_HBMTheme
+{
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	font: normal 12px Tahoma;
+	padding: 3px 2px 4px 3px;
+	white-space: nowrap;
+	text-align: left;
+	color: Black;
+}
+.dxeListBoxItem_HBMTheme em
+{
+	background: #CFCFCF none repeat 0 0;
+	color: #333333;
+	font-weight: bold;
+	font-style: normal;
+}
+
+.dxeListBox_HBMTheme td.dxeI,
+.dxeListBox_HBMTheme td.dxeIM,
+.dxeListBox_HBMTheme .dxeHIC, 
+.dxeListBox_HBMTheme td.dxeFTM,
+.dxeListBox_HBMTheme td.dxeTM,
+.dxeListBox_HBMTheme td.dxeC,
+.dxeListBox_HBMTheme td.dxeCM,
+.dxeListBox_HBMTheme td.dxeHCC,
+.dxeListBox_HBMTheme td.dxeMI,
+.dxeListBox_HBMTheme td.dxeMIM
+{
+	border-right-width: 0!important;
+}
+
+.dxeListBox_HBMTheme td.dxeIR,
+.dxeListBox_HBMTheme td.dxeIMR,
+.dxeListBox_HBMTheme .dxeHICR, 
+.dxeListBox_HBMTheme td.dxeFTMR,
+.dxeListBox_HBMTheme td.dxeTMR,
+.dxeListBox_HBMTheme td.dxeCR,
+.dxeListBox_HBMTheme td.dxeCMR,
+.dxeListBox_HBMTheme td.dxeHCCR,
+.dxeListBox_HBMTheme td.dxeMIR,
+.dxeListBox_HBMTheme td.dxeMIMR
+{
+	border-left-width: 0!important;
+}
+
+.dxeListBox_HBMTheme td.dxeCM,
+.dxeListBox_HBMTheme td.dxeHCC,
+.dxeListBox_HBMTheme td.dxeCMR,
+.dxeListBox_HBMTheme td.dxeHCCR
+{
+	width: 29px;
+    *width: 23px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.dxeListBox_HBMTheme td.dxeIM,
+.dxeListBox_HBMTheme td.dxeIMR
+{
+	width: 0;
+}
+.dxeListBox_HBMTheme td.dxeC > span,
+.dxeListBox_HBMTheme td.dxeCM > span
+{
+    margin: 2px 2px 2px 3px;
+}
+.dxeListBox_HBMTheme td.dxeCR > span,
+.dxeListBox_HBMTheme td.dxeCMR > span
+{
+    margin: 2px 3px 2px 2px;
+}
+.dxeListBox_HBMTheme td.dxeC
+{
+	padding-right: 3px!important;
+}
+.dxeListBox_HBMTheme td.dxeCR
+{
+	padding-left: 3px!important;
+}
+
+.dxeListBox_HBMTheme td.dxeT
+{
+	width: 100%;
+	padding-left: 0!important;
+}
+
+.dxeListBox_HBMTheme td.dxeTR
+{
+	width: 100%;
+	padding-right: 0!important;
+}
+
+
+.dxeListBox_HBMTheme td.dxeT,
+.dxeListBox_HBMTheme td.dxeMI
+{
+	border-left-width: 0!important;
+}
+
+.dxeListBox_HBMTheme td.dxeTR,
+.dxeListBox_HBMTheme td.dxeMIR
+{
+	border-right-width: 0!important;
+}
+
+
+.dxeListBox_HBMTheme td.dxeFTM,
+.dxeListBox_HBMTheme td.dxeTM,
+.dxeListBox_HBMTheme td.dxeLTM, 
+.dxeListBox_HBMTheme .dxeHFC,
+.dxeListBox_HBMTheme .dxeHC,
+.dxeListBox_HBMTheme .dxeHLC,
+.dxeListBox_HBMTheme td.dxeFTMR,
+.dxeListBox_HBMTheme td.dxeTMR,
+.dxeListBox_HBMTheme td.dxeLTMR, 
+.dxeListBox_HBMTheme .dxeHFCR,
+.dxeListBox_HBMTheme .dxeHCR,
+.dxeListBox_HBMTheme .dxeHLCR
+{
+	overflow: hidden;
+}
+
+.dxeListBox_HBMTheme td.dxeFTM,
+.dxeListBox_HBMTheme td.dxeTM, 
+.dxeListBox_HBMTheme .dxeHFC,
+.dxeListBox_HBMTheme .dxeHC
+{
+	padding-right: 6px!important;
+}
+
+.dxeListBox_HBMTheme td.dxeFTMR,
+.dxeListBox_HBMTheme td.dxeTMR, 
+.dxeListBox_HBMTheme .dxeHFCR,
+.dxeListBox_HBMTheme .dxeHCR
+{
+	padding-left: 6px!important;
+}
+
+
+.dxeListBox_HBMTheme td.dxeLTM,
+.dxeListBox_HBMTheme td.dxeTM, 
+.dxeListBox_HBMTheme .dxeHC,
+.dxeListBox_HBMTheme .dxeHLC
+{
+	padding-left: 6px!important;
+}
+
+.dxeListBox_HBMTheme td.dxeLTMR,
+.dxeListBox_HBMTheme td.dxeTMR, 
+.dxeListBox_HBMTheme .dxeHCR,
+.dxeListBox_HBMTheme .dxeHLCR
+{
+	padding-right: 6px!important;
+}
+
+/*Grid lines*/
+
+.dxeListBox_HBMTheme td.dxeLTM,
+.dxeListBox_HBMTheme td.dxeTM,
+.dxeListBox_HBMTheme td.dxeMIM
+{
+	border-left: 1px solid #cfcfcf!important;
+}
+
+.dxeListBox_HBMTheme td.dxeLTMR,
+.dxeListBox_HBMTheme td.dxeTMR,
+.dxeListBox_HBMTheme td.dxeMIMR
+{
+	border-right: 1px solid #cfcfcf!important;
+}
+
+.dxeListBox_HBMTheme td.dxeIM,
+.dxeListBox_HBMTheme td.dxeFTM,
+.dxeListBox_HBMTheme td.dxeTM,
+.dxeListBox_HBMTheme td.dxeLTM,
+.dxeListBox_HBMTheme td.dxeCM,
+.dxeListBox_HBMTheme td.dxeMIM,
+.dxeListBox_HBMTheme td.dxeIMR,
+.dxeListBox_HBMTheme td.dxeFTMR,
+.dxeListBox_HBMTheme td.dxeTMR,
+.dxeListBox_HBMTheme td.dxeLTMR,
+.dxeListBox_HBMTheme td.dxeCMR,
+.dxeListBox_HBMTheme td.dxeMIMR
+{
+	border-bottom: 1px solid #cfcfcf;
+}
+
+.dxeListBoxItemSelected_HBMTheme     /* inherits dxeListBoxItem */
+{
+	color: White;
+	background-color: #A0A0A0;
+}
+.dxeListBoxItemHover_HBMTheme        /* inherits dxeListBoxItem */
+{
+	background-color: #cfcfcf;
+	color: black;
+}
+.dxeListBoxItemHover_HBMTheme em,
+.dxeListBoxItemSelected_HBMTheme em
+{
+	background-image: none;
+}
+
+/*Header*/
+
+.dxeListBox_HBMTheme .dxeHD
+{
+	background-color: #dcdcdc;
+	border-bottom: 1px solid #A0A0A0;
+}
+
+.dxeListBox_HBMTheme .dxeHC,
+.dxeListBox_HBMTheme .dxeHLC,
+.dxeListBox_HBMTheme td.dxeHMIC
+{
+	border-left: 1px solid #A0A0A0;
+}
+
+.dxeListBox_HBMTheme .dxeHCR,
+.dxeListBox_HBMTheme .dxeHLCR,
+.dxeListBox_HBMTheme td.dxeHMICR
+{
+	border-right: 1px solid #A0A0A0;
+	text-align: right;
+}
+
+.dxeListBox_HBMTheme .dxeHIC,
+.dxeListBox_HBMTheme .dxeHFC,
+.dxeListBox_HBMTheme .dxeHCC
+{
+	border-left: 1px solid #dcdcdc;
+}
+
+.dxeListBox_HBMTheme .dxeHICR,
+.dxeListBox_HBMTheme .dxeHFCR,
+.dxeListBox_HBMTheme .dxeHCCR
+{
+	border-right: 1px solid #dcdcdc;
+	text-align: right;
+}
+
+.dxeListBox_HBMTheme .dxeHFC,
+.dxeListBox_HBMTheme .dxeHC,
+.dxeListBox_HBMTheme .dxeHMIC
+{
+	border-right-width: 0;
+}
+
+.dxeListBox_HBMTheme .dxeHFCR,
+.dxeListBox_HBMTheme .dxeHCR,
+.dxeListBox_HBMTheme .dxeHMICR
+{
+	border-left-width: 0;
+	text-align: right;
+}
+
+.dxeListBox_HBMTheme .dxeHLC
+{
+	border-right: 1px solid #dcdcdc;
+}
+
+.dxeListBox_HBMTheme .dxeHLCR
+{
+	border-left: 1px solid #dcdcdc;
+	text-align: right;
+}
+
+/* -- Calendar -- */
+.dxeCalendar_HBMTheme
+{
+	border: 1px solid #9f9f9f;
+	background-color: White;
+	color: Black;
+	font-weight: normal;
+	cursor: default;
+}
+.dxeCalendar_HBMTheme td.dxMonthGrid_HBMTheme
+{
+	padding: 8px 20px;
+}
+.dxeCalendar_HBMTheme td.dxMonthGridWithWeekNumbers_HBMTheme
+{
+	padding: 5px 20px 8px 8px;
+}
+.dxeCalendar_HBMTheme td.dxMonthGridWithWeekNumbersRtl_HBMTheme
+{
+	padding: 5px 8px 8px 20px;
+}
+.dxeCalendarDayHeader_HBMTheme
+{
+	font: 12px Tahoma;
+	padding: 2px 4px 5px;
+	border-bottom: 1px solid #cfcfcf;
+}
+.dxeCalendarWeekNumber_HBMTheme
+{
+	font: 9px Tahoma;
+	text-align: right;
+	padding: 6px 8px 6px 4px;
+	color: #bfbfbf;
+}
+.dxeCalendarDay_HBMTheme
+{
+	font: 12px Tahoma;
+	padding: 4px 6px;
+	text-align: center;
+}
+.dxeCalendarWeekend_HBMTheme        /* inherits dxeCalendarDay */
+{
+	color: #c00000;
+}
+.dxeCalendarOtherMonth_HBMTheme     /* inherits dxeCalendarDay */
+{
+	color: #888;
+}
+.dxeCalendarOutOfRange_HBMTheme     /* inherits dxeCalendarDay */
+{
+	color: #d0d0d0;
+}
+.dxeCalendarSelected_HBMTheme       /* inherits dxeCalendarDay */
+{
+	color: White;
+	background-color: #8d8d8d;
+}
+.dxeCalendarToday_HBMTheme         /* inherits dxeCalendarDay */
+{
+	padding: 3px 3px 2px;
+	border: 1px solid #c00000;
+}
+.dxeCalendarHeader_HBMTheme
+{
+	font: 12px Tahoma;
+	background-color: #dcdcdc;
+	border-top: 1px solid #c9c9c9;
+	border-right: 0 solid #c9c9c9;
+	border-bottom: 1px solid #c9c9c9;
+	border-left: 0 solid #c9c9c9;
+	padding: 4px 7px;
+}
+.dxeCalendarHeader_HBMTheme td.dxe
+{
+	text-align: center;
+	cursor: pointer;
+}
+.dxeCalendarFooter_HBMTheme
+{
+	background-color: #ededed;
+	padding: 8px 0px;
+	border-top: 1px solid #d6d6d6;
+}
+.dxeCalendarFastNav_HBMTheme
+{
+	color: Black;
+	background: White none;
+	border-top: 1px solid #9f9f9f;
+	border-right: 1px solid #9f9f9f;
+	border-bottom: 0px solid #9f9f9f;
+	border-left: 1px solid #9f9f9f;
+	padding: 12px 8px;
+}
+.dxeCalendarFastNavMonthArea_HBMTheme
+{
+	padding: 0px 9px;
+}
+.dxeCalendarFastNavYearArea_HBMTheme
+{
+}
+.dxeCalendarFastNavFooter_HBMTheme
+{
+	color: Black;
+	background-color: #ededed;
+	padding: 8px 0px;
+	border-right: 1px solid #9f9f9f;
+	border-bottom: 1px solid #9f9f9f;
+	border-left: 1px solid #9f9f9f;
+	border-top: 1px solid #d6d6d6;
+}
+.dxeCalendarFastNavMonth_HBMTheme,
+.dxeCalendarFastNavYear_HBMTheme
+{
+	font: normal 12px Tahoma;
+	color: Black;
+	padding: 3px 5px;
+	text-align: center;
+	cursor: pointer;
+}
+.dxeCalendarFastNavMonth_HBMTheme
+{
+	padding: 6px;
+}
+.dxeCalendarFastNavMonthSelected_HBMTheme,
+.dxeCalendarFastNavYearSelected_HBMTheme
+{
+	color: White;
+	background: #8d8d8d none;
+}
+.dxeCalendarFastNavMonthHover_HBMTheme,
+.dxeCalendarFastNavYearHover_HBMTheme
+{
+	color: Black;
+	background: #e5e5e5 none;
+	padding: 2px 4px;
+	border: 1px solid #d6d6d6;
+}
+.dxeCalendarFastNavMonthHover_HBMTheme
+{
+	padding: 5px;
+}
+.dxeDateEditTimeEditCell_HBMTheme
+{
+    padding: 11px 29px 16px;
+}
+.dxeDateEditClockCell_HBMTheme
+{
+    padding: 16px 17px 0;
+}
+.dxeCalendarFooter_HBMTheme.dxeDETSF
+{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+/* Disabled */
+.dxeDisabled_HBMTheme,
+.dxeDisabled_HBMTheme td.dxe
+{
+	color: #acacac;
+	cursor: default;
+}
+a.dxeDisabled_HBMTheme:hover
+{
+	color: #acacac;
+}
+.dxeButtonDisabled_HBMTheme,
+.dxeButtonDisabled_HBMTheme td.dxe
+{
+	border-color: #c3c3c3;
+	color: #808080;
+	cursor: default;
+}
+/* -- Button -- */
+.dxbButton_HBMTheme
+{
+	color: #000000;
+	font: normal 12px Tahoma;
+	vertical-align: middle;
+	border: 1px solid #7F7F7F;
+	background: #E0DFDF url('edtButtonBack.gif') repeat-x top;
+	padding: 1px;
+	cursor: pointer;
+}
+.dxbButtonHover_HBMTheme
+{
+	color: #000000;
+	background: #F2F2F2 url('edtButtonHoverBack.gif') repeat-x top;
+	border: 1px solid #606060;
+}
+.dxbButtonChecked_HBMTheme
+{
+	color: #FFFFFF;
+	background: #8D8D8D none;
+}
+.dxbButtonPressed_HBMTheme
+{
+	color: #000000;
+	background: #D5D5D5 none;
+}
+.dxbButton_HBMTheme div.dxb
+{
+	padding: 3px 8px 4px;
+	border-width: 0px;
+}
+.dxbButton_HBMTheme div.dxbf
+{
+	padding: 2px 7px 3px;
+	border: 1px dotted black;
+}
+.dxbButton_HBMTheme div.dxb td.dxb
+{
+	background: transparent url('')!important;
+	border-width: 0px!important;
+	padding: 0px!important;
+}
+/* Disabled */
+.dxbDisabled_HBMTheme
+{
+	border-color: #c3c3c3;
+	color: #808080;
+	cursor: default;
+}
+.dxbDisabled_HBMTheme td.dxb
+{
+	color: #808080;
+}
+/* -- FilterControl -- */
+.dxfcTable_HBMTheme
+{
+	border-collapse: separate!important;
+}
+.dxfcTable_HBMTheme td.dxfc
+{
+	padding: 0px 0px 0px 3px;
+	vertical-align: middle;
+	font: 12px Tahoma;
+	color: Black;
+}
+a.dxfcPropertyName_HBMTheme
+{
+	white-space: nowrap!important;
+	color: Blue!important;
+}
+a.dxfcGroupType_HBMTheme
+{
+	white-space: nowrap!important;
+	padding: 0px 3px!important;
+	color: Red!important;
+}
+a.dxfcOperation_HBMTheme
+{
+	white-space: nowrap!important;
+	color: Green!important;
+}
+a.dxfcValue_HBMTheme
+{
+	white-space: nowrap!important;
+	color: Gray!important;
+}
+
+.dxfcLoadingDiv_HBMTheme
+{
+	background: white none;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+.dxfcLoadingPanel_HBMTheme
+{
+	font: 12px Tahoma;
+	color: #303030;
+	border: 1px solid #9F9F9F;
+	background: white none;
+}
+.dxfcLoadingPanel_HBMTheme td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+
+.dxeMaskHint_HBMTheme
+{
+	background: #ffffe1 none;
+	border: 1px solid black;
+	padding: 2px 5px 3px;
+	color: Black;
+	font: 12px Tahoma;
+}
+
+/* -- ProgressBar -- */
+.dxeProgressBar_HBMTheme
+{
+	border: 1px Solid #696969;
+	background-color: #FFFFFF;
+}
+.dxeProgressBar_HBMTheme,
+.dxeProgressBar_HBMTheme td.dxe
+{
+	font: 12px Tahoma;
+	color: Black;
+}
+.dxeProgressBar_HBMTheme .dxePBMainCell_HBMTheme,
+.dxeProgressBar_HBMTheme td.dxe
+{
+	padding: 0;
+}
+.dxeProgressBarIndicator_HBMTheme
+{
+	background-color: #E0DFDF;
+}
+
+/* -- DropDownWindow -- */
+.dxeDropDownWindow_HBMTheme
+{
+	background-color: white;
+	border: 1px solid #9F9F9F;
+}
+
+/*----------------- ColorTable -----------------*/
+.dxeColorIndicator_HBMTheme
+{
+	border: 1px solid #9F9F9F;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+.dxeColorTable_HBMTheme,
+.dxeItemPicker_HBMTheme
+{
+	background-color: #ffffff;
+	border: 1px solid #9F9F9F;
+}
+.dxeColorTable_HBMTheme td.dx,
+.dxeItemPicker_HBMTheme td.dx
+{
+	padding: 4px;
+}
+.dxeColorTableCell_HBMTheme,
+.dxeItemPickerCell_HBMTheme
+{
+	padding: 3px;
+	cursor: pointer;
+}
+.dxeColorTableCellDiv_HBMTheme
+{
+	border: 1px solid #808080;
+	width: 12px;
+	height: 12px;
+	font-size: 0px;
+}
+.dxeColorTableCellSelected_HBMTheme
+{
+	padding: 2px!important;
+	background-color: #CBCBCB;
+	border: 1px solid #888888;
+}
+.dxeColorTableCellHover_HBMTheme,
+.dxeItemPickerCellHover_HBMTheme
+{
+	padding: 2px!important;
+	background-color: #F2F2F2;
+	border: 1px solid #888888;
+}
+
+/* -- Invalid Style -- */
+.dxeInvalid_HBMTheme
+{
+}
+.dxeInvalid_HBMTheme .dxeEditArea_HBMTheme,
+.dxeInvalid_HBMTheme .dxeMemoEditArea_HBMTheme
+{
+}
+
+/* -- Focused Style -- */
+.dxeFocused_HBMTheme
+{
+	border: 1px solid #3d3d3d;
+}
+.dxeFocused_HBMTheme.dxeTrackBar_HBMTheme
+{
+	border: 0px;
+}
+
+/* -- Null Text Style -- */
+.dxeNullText_HBMTheme .dxeEditArea_HBMTheme,
+.dxeNullText_HBMTheme .dxeMemoEditArea_HBMTheme
+{
+	color: #818181;
+}
+
+/* -- Captcha -- */
+.dxcaControl_HBMTheme 
+{
+}
+
+.dxcaRefreshButton_HBMTheme
+{
+	font: 13px Tahoma;
+	text-decoration: none;
+	color: #1e3695;
+}
+
+.dxcaDisabledRefreshButton_HBMTheme
+{
+	color: #acacac;
+}
+
+.dxcaRefreshButtonCell_HBMTheme
+{
+	padding-left: 4px;
+}
+
+.dxcaRefreshButtonText_HBMTheme
+{
+}
+
+.dxcaDisabledRefreshButtonText_HBMTheme
+{
+}
+
+.dxcaTextBoxCell_HBMTheme
+{
+	font: 12px Tahoma;
+}
+
+.dxcaTextBoxCell_HBMTheme,
+.dxcaTextBoxCellNoIndent_HBMTheme
+{
+	font: 12px Tahoma;
+}
+
+.dxcaTextBoxCell_HBMTheme .dxeErrorCell_HBMTheme
+{
+}
+
+.dxcaTextBoxCellNoIndent_HBMTheme .dxeErrorCell_HBMTheme
+{
+	padding-left: 0px;
+	padding-top: 4px;
+	color: Red;
+}
+
+.dxcaTextBoxLabel_HBMTheme
+{
+	padding-bottom: 4px;
+	display: block;
+}
+
+.dxcaLoadingPanel_HBMTheme
+{
+	font: 12px Tahoma;
+	color: #303030;
+}
+
+.dxcaLoadingPanel_HBMTheme td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+
+.dxpcControl_HBMTheme .dxHFBPS,
+.dxpcLite_HBMTheme .dxHFBPS
+{
+    width: 6px;
+}
+
+.dxeTextBox_HBMTheme,
+.dxeButtonEdit_HBMTheme,
+.dxeIRadioButton_HBMTheme,
+.dxeRadioButtonList_HBMTheme,
+.dxeCheckBoxList_HBMTheme
+{
+    cursor: default;
+}
+
+/* Removes flicking in iOS Safari*/
+.dxeTrackBar_HBMTheme, 
+.dxeIRadioButton_HBMTheme, 
+.dxeButtonEdit_HBMTheme, 
+.dxeTextBox_HBMTheme, 
+.dxeRadioButtonList_HBMTheme, 
+.dxeCheckBoxList_HBMTheme, 
+.dxeMemo_HBMTheme, 
+.dxeListBox_HBMTheme, 
+.dxeCalendar_HBMTheme, 
+.dxeColorTable_HBMTheme
+{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
