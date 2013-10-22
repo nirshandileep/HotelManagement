@@ -38,7 +38,7 @@ namespace HBM.CustomerManagement
         public string PassportNumber { get; set; }
         public int? PassportCountryOfIssue { get; set; }
         public DateTime? PassportExpirationDate { get; set; }
-        public Int32? CCType { get; set; }
+        public Int32? CreditCardTypeId { get; set; }
         public Int32? CCNo { get; set; }
         public DateTime? CCExpirationDate { get; set; }
         public string CCNameOnCard { get; set; }

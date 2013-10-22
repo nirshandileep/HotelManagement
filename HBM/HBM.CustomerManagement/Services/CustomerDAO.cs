@@ -36,7 +36,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@PassportNumber", DbType.String, customer.PassportNumber);
             db.AddInParameter(command, "@PassportCountryOfIssue", DbType.Int32, customer.PassportCountryOfIssue);
             db.AddInParameter(command, "@PassportExpirationDate", DbType.DateTime, customer.PassportExpirationDate);
-            db.AddInParameter(command, "@CCType", DbType.Int32, customer.CCType);
+            db.AddInParameter(command, "@CreditCardTypeId", DbType.Int32, customer.CreditCardTypeId);
             db.AddInParameter(command, "@CCNo", DbType.Int32, customer.CCNo);
             db.AddInParameter(command, "@CCExpirationDate", DbType.DateTime, customer.CCExpirationDate);
             db.AddInParameter(command, "@CCNameOnCard", DbType.String, customer.CCNameOnCard);
@@ -79,7 +79,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@PassportNumber", DbType.String, customer.PassportNumber);
             db.AddInParameter(command, "@PassportCountryOfIssue", DbType.Int32, customer.PassportCountryOfIssue);
             db.AddInParameter(command, "@PassportExpirationDate", DbType.DateTime, customer.PassportExpirationDate);
-            db.AddInParameter(command, "@CCType", DbType.Int32, customer.CCType);
+            db.AddInParameter(command, "@CreditCardTypeId", DbType.Int32, customer.CreditCardTypeId);
             db.AddInParameter(command, "@CCNo", DbType.Int32, customer.CCNo);
             db.AddInParameter(command, "@CCExpirationDate", DbType.DateTime, customer.CCExpirationDate);
             db.AddInParameter(command, "@CCNameOnCard", DbType.String, customer.CCNameOnCard);

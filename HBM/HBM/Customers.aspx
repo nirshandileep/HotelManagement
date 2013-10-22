@@ -175,7 +175,8 @@
                         <td>
                         </td>
                         <td>
-                            <dx:ASPxButton ID="btnAddGuestType" runat="server" Text="..." ToolTip="Add/Edit Guest Types">
+                            <dx:ASPxButton ID="btnAddGuestType" runat="server" Text="..." 
+                                ToolTip="Add/Edit Guest Types" Visible="False">
                             </dx:ASPxButton>
                         </td>
                     </tr>

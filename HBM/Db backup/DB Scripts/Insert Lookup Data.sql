@@ -1,3 +1,20 @@
+INSERT INTO [dbo].[CreditCardType]
+           ([Name]
+           ,[ProcessingFee]
+           ,[CompanyId]
+           ,[CreatedUser]
+           ,[CreatedDate]
+           ,[UpdatedUser]
+           ,[UpdatedDate])
+
+select 'AMEX', 0.00, 1, 1, GETUTCDATE(), NULL, NULL
+UNION ALL
+select 'VISA', 0.00, 1, 1, GETUTCDATE(), NULL, NULL
+union all
+select 'Master Card', 0.00, 1, 1, GETUTCDATE(), NULL, NULL
+
+GO
+
 INSERT INTO [dbo].[Status]
            ([StatusId]
            ,[StatusName]

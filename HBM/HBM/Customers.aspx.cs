@@ -89,11 +89,16 @@ namespace HBM
             cmbGuestType.DataBind();
 
             //Load CC Tyep
+            cmbCCType.DataSource = new CreditCardType() { CompanyId = Master.CompanyId }.SelectAllList();
+            cmbCCType.TextField = "Name";
+            cmbCCType.ValueField = "CreditCardTypeId";
+            cmbCCType.DataBind();
 
+            //Load Passport issued country
             cmbPassportCountryOfIssue.DataSource = new Country().SelectAllList();
-            cmbBillingCountry.TextField = "CountryName";
-            cmbBillingCountry.ValueField = "CountryId";
-            cmbBillingCountry.DataBind();
+            cmbPassportCountryOfIssue.TextField = "CountryName";
+            cmbPassportCountryOfIssue.ValueField = "CountryId";
+            cmbPassportCountryOfIssue.DataBind();
 
             //Load Country
             cmbBillingCountry.DataSource = new Country().SelectAllList();
@@ -128,9 +133,9 @@ namespace HBM
             txtNameOnCard.Text = CustomerObj.CCNameOnCard;
             txtCCNumber.Text = CustomerObj.CCNo.HasValue ? CustomerObj.CCNo.Value.ToString() : string.Empty;
 
-            if (CustomerObj.CCType.HasValue)
+            if (CustomerObj.CreditCardTypeId.HasValue)
             {
-                cmbCCType.SelectedItem.Value = CustomerObj.CCType.Value;
+                cmbCCType.SelectedItem.Value = CustomerObj.CreditCardTypeId.Value;
             }
             
             txtCompanyAddress.Text = CustomerObj.CompanyAddress;
@@ -185,7 +190,7 @@ namespace HBM
                 CustomerObj.CCNo = null;
             }
 
-            CustomerObj.CCType = int.Parse(cmbCCType.SelectedItem.Value.ToString());
+            CustomerObj.CreditCardTypeId = int.Parse(cmbCCType.SelectedItem.Value.ToString());
             CustomerObj.CompanyAddress = txtCompanyAddress.Text.Trim();
             CustomerObj.CompanyName = txtCompanyName.Text.Trim();
             CustomerObj.CompanyNotes = txtNotes.Text.Trim();
