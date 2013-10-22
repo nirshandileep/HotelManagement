@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CustMan = HBM.CustomerManagement;
+using HBM.CustomerManagement;
 
 namespace HBM
 {
@@ -82,13 +83,23 @@ namespace HBM
         private void LoadInitialData()
         {
             //Load Guest Type
+            cmbGuestType.DataSource = new GuestType() { CompanyId = Master.CompanyId }.SelectAllList();
+            cmbGuestType.TextField = "GuestTypeName";
+            cmbGuestType.ValueField = "GuestTypeId";
+            cmbGuestType.DataBind();
 
+            //Load CC Tyep
 
-            //Load CC Type
-
+            cmbPassportCountryOfIssue.DataSource = new Country().SelectAllList();
+            cmbBillingCountry.TextField = "CountryName";
+            cmbBillingCountry.ValueField = "CountryId";
+            cmbBillingCountry.DataBind();
 
             //Load Country
-
+            cmbBillingCountry.DataSource = new Country().SelectAllList();
+            cmbBillingCountry.TextField = "CountryName";
+            cmbBillingCountry.ValueField = "CountryId";
+            cmbBillingCountry.DataBind();
 
         }
 

@@ -20,7 +20,7 @@ namespace HBM.Utility
         /// <param name="ExecutedBy"></param>
         /// <param name="dbTransaction"></param>
         /// <returns></returns>
-        public static T Get<T>(int PrimaryKey, int companyId) where T : new()
+        public static T Get<T>(int PrimaryKey, int companyId = 0) where T : new()
         {
             T entity = default(T);
 
@@ -30,7 +30,9 @@ namespace HBM.Utility
             DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "Select");
 
             db.AddInParameter(dbCommand, TypeName + "Id", DbType.Int32, PrimaryKey);
-            db.AddInParameter(dbCommand, "CompanyId", DbType.Int32, companyId);
+
+            if (companyId != 0)
+                db.AddInParameter(dbCommand, "CompanyId", DbType.Int32, companyId);
 
             using (IDataReader dataReader = db.ExecuteReader(dbCommand))
             {
@@ -91,15 +93,17 @@ namespace HBM.Utility
         /// <summary>
         /// Returns a collection of T. T must be an Entity class
         /// </summary>
-        public static List<T> GetAll<T>(int companyId) where T : new()
+        public static List<T> GetAll<T>(int companyId = 0) where T : new()
         {
             List<T> returnEntityCollection = new List<T>();
 
             string TypeName = typeof(T).Name;
 
-            Database db = DatabaseFactory.CreateDatabase();
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "_GetAll");
-            db.AddInParameter(dbCommand, "companyId", DbType.Int32, companyId);
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "SelectAll");
+
+            if (companyId != 0)
+                db.AddInParameter(dbCommand, "companyId", DbType.Int32, companyId);
 
             using (IDataReader dataReader = db.ExecuteReader(dbCommand))
             {

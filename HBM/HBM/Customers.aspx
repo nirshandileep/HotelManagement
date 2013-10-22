@@ -81,6 +81,10 @@
                         <dx:ListEditItem Text="Male" Value="Male" />
                         <dx:ListEditItem Text="Female" Value="Female" />
                     </Items>
+                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="Text" 
+                        SetFocusOnError="True" ValidationGroup="vgCustomer">
+                        <RequiredField ErrorText="Required" IsRequired="True" />
+                    </ValidationSettings>
                 </dx:ASPxComboBox>
             </td>
             <td>
@@ -140,6 +144,11 @@
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px">
+                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" 
+                        ErrorDisplayMode="Text" SetFocusOnError="True" ValidationGroup="vgCustomer">
+                        <RegularExpression ErrorText="Incorrect Email" 
+                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
+                    </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
             <td>
@@ -343,8 +352,8 @@
             <td>
                 <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px">
                     <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
-                        ValidationGroup="vgCustomer" ErrorDisplayMode="Text">
-                        <RequiredField IsRequired="True" />
+                        ValidationGroup="vgCustomer" ErrorDisplayMode="Text" ErrorText="Required">
+                        <RequiredField IsRequired="True" ErrorText="Required" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>

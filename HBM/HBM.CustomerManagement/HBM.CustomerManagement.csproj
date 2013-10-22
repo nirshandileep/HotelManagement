@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business Entities\Country.cs" />
     <Compile Include="Business Entities\Customer.cs" />
     <Compile Include="Business Entities\CustomerManager.cs" />
-    <Compile Include="Business Entities\Guest.cs" />
+    <Compile Include="Business Entities\GuestType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CustomerDAO.cs" />
   </ItemGroup>
