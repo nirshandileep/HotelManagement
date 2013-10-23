@@ -23,9 +23,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="divErrorMsg" runat="server" visible="false">
     </div>
-    <table class="style1">
+    <table class="style1 customers-tbl">
         <tr>
-            <td>
+            <td height="22">
                 Customer Name
             </td>
             <td>
@@ -36,8 +36,8 @@
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 Passport Number
@@ -48,7 +48,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Member Code
             </td>
             <td>
@@ -59,8 +59,8 @@
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 Country of Issue
@@ -72,7 +72,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Gender
             </td>
             <td>
@@ -88,8 +88,8 @@
                     </ValidationSettings>
                 </dx:ASPxComboBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 Expiry Date
@@ -100,7 +100,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Phone
             </td>
             <td>
@@ -111,26 +111,26 @@
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Fax
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtFax" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 CC Type</td>
@@ -141,7 +141,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Email
             </td>
             <td>
@@ -153,8 +153,8 @@
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 CC No</td>
@@ -164,7 +164,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Guest Type
             </td>
             <td>
@@ -185,8 +185,8 @@
                     </tr>
                 </table>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 CC Expiry Date (mm/yyyy)</td>
@@ -238,32 +238,32 @@
             </td>
         </tr>
         <tr>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Company Name
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 Name on card
@@ -274,33 +274,33 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Company Address
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Notes
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 Car</td>
@@ -315,13 +315,13 @@
             </td>
         </tr>
         <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;
+            <td height="22">&nbsp;
+                </td>
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 License Plate</td>
@@ -331,7 +331,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Billing Address</td>
             <td>
                 <dx:ASPxTextBox ID="txtBillingAddress" runat="server" Width="170px">
@@ -341,8 +341,8 @@
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
             <td>
                 Drive License</td>
@@ -352,7 +352,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Billing City</td>
             <td>
                 <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px">
@@ -362,35 +362,35 @@
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 State</td>
             <td>
                 <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Country</td>
             <td>
                 <table border="0" cellpadding="0" cellspacing="0">
@@ -402,36 +402,36 @@
                         </td>
                         <td>
                         </td>
-                        <td>
-                            &nbsp;</td>
+                        <td>&nbsp;
+                            </td>
                     </tr>
                 </table>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="22">
                 Post Code</td>
             <td>
                 <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px">
                 </dx:ASPxTextBox>
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
         </tr>
         <tr>
@@ -440,21 +440,26 @@
                 <asp:HiddenField ID="hdnFromURL" runat="server" />
             </td>
             <td>
-                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgCustomer">
-                </dx:ASPxButton>
-                <dx:ASPxButton ID="btnClear" runat="server" Text="Clear">
-                </dx:ASPxButton>
-                <dx:ASPxButton ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back">
-                </dx:ASPxButton>
+            <table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="52" align="left">
+    	<dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgCustomer"> </dx:ASPxButton>
+    </td>
+    <td width="52" align="left"><dx:ASPxButton ID="btnClear" runat="server" Text="Clear"></dx:ASPxButton></td>
+    <td width="52" align="left"><dx:ASPxButton ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back">
+                </dx:ASPxButton></td>
+  </tr>
+</table>
+
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
-            <td>
-                &nbsp;
+            <td>&nbsp;
+                
             </td>
         </tr>
     </table>
@@ -468,18 +473,13 @@
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                                 <table border="0" cellpadding="0" cellspacing="0">
-                                    <tr>
-                                        <td>
-                                            <dx:ASPxTextBox ID="txtAddGuestType" runat="server" Width="170px">
-                                            </dx:ASPxTextBox>
-                                        </td>
-                                        <td>
-                                            <dx:ASPxButton ID="btnSaveGuestType" runat="server" Text="Save" 
-                                                OnClick="btnSaveCountry_Click">
-                                            </dx:ASPxButton>
-                                        </td>
-                                    </tr>
-                                </table>
+  <tr>
+    <td width="52"><dx:ASPxTextBox ID="txtAddGuestType" runat="server" Width="170px"> </dx:ASPxTextBox></td>
+    <td width="52"><dx:ASPxButton ID="btnSaveGuestType" runat="server" Text="Save" 
+                                                OnClick="btnSaveCountry_Click"> </dx:ASPxButton></td>
+  </tr>
+</table>
+
                                 <div>
                                 </div>
                             </dx:PanelContent>
