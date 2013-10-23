@@ -18,9 +18,7 @@
         <asp:Literal ID="ltlMessage" runat="server"></asp:Literal>
     </div>
     <div>
-        <div>
-            <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label>
-        </div>
+
         <div>
             	<%--<asp:LinkButton ID="lbLogout" runat="server" onclick="lbLogout_Click">Logout</asp:LinkButton>--%>
         </div>
@@ -53,6 +51,11 @@
                     </dx:MenuItem>
                 </Items>
             </dx:ASPxMenu>
+            
+        <div class="welcomeMsg">
+           <p>Welcome !</p> <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label><p><a href="#">  Logut</a></p>
+        </div>
+        
         </div>
     </div>
     <div class="wrapper">
