@@ -1,0 +1,11 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxFormLayout" Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %> 
+
+<dx:ASPxFormLayout runat="server" CssPostfix="Glass" CssFilePath="~/App_Themes/Glass/{0}/styles.css">
+    <Styles>
+        <LayoutGroupBox>
+            <Caption ForeColor="#689398" />
+        </LayoutGroupBox>
+    </Styles>
+</dx:ASPxFormLayout>
+
