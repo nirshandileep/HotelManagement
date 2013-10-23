@@ -25,6 +25,10 @@
     </div>
     <div class="header">
         <div class="wrapper">
+        	<div class="hotel-logo">
+			<img src="images/hotel-logo.png" width="133" height="77" />
+            </div>
+            <div class="nav">
             <dx:ASPxMenu ID="MainMenu" runat="server" Theme="Glass">
                 <Items>
                     <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
@@ -51,7 +55,7 @@
                     </dx:MenuItem>
                 </Items>
             </dx:ASPxMenu>
-            
+            </div>
         <div class="welcomeMsg">
            <p>Welcome !</p> <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label><p><a href="#">  Logut</a></p>
         </div>
