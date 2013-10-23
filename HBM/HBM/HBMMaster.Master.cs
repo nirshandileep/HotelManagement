@@ -41,7 +41,7 @@ namespace HBM
                 {
                     user = null;
                     Session["LoggedUser"] = null;
-                 //   Response.Redirect("~/Login.aspx");
+                    Response.Redirect("~/Login.aspx", false);
                 }
 
                 return user;
