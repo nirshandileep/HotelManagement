@@ -31,20 +31,19 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@BillingAddress", DbType.String, customer.BillingAddress);
             db.AddInParameter(command, "@BillingCity", DbType.String, customer.BillingCity);
             db.AddInParameter(command, "@BillingState", DbType.String, customer.BillingState);
-            db.AddInParameter(command, "@BillingCountry", DbType.Int32, customer.BillingCountryId);
+            db.AddInParameter(command, "@BillingCountryId", DbType.Int32, customer.BillingCountryId);
             db.AddInParameter(command, "@BillingPostCode", DbType.String, customer.BillingPostCode);
             db.AddInParameter(command, "@PassportNumber", DbType.String, customer.PassportNumber);
             db.AddInParameter(command, "@PassportCountryOfIssue", DbType.Int32, customer.PassportCountryOfIssue);
             db.AddInParameter(command, "@PassportExpirationDate", DbType.DateTime, customer.PassportExpirationDate);
             db.AddInParameter(command, "@CreditCardTypeId", DbType.Int32, customer.CreditCardTypeId);
-            db.AddInParameter(command, "@CCNo", DbType.Int32, customer.CCNo);
+            db.AddInParameter(command, "@CCNo", DbType.Int64, customer.CCNo);
             db.AddInParameter(command, "@CCExpirationDate", DbType.DateTime, customer.CCExpirationDate);
             db.AddInParameter(command, "@CCNameOnCard", DbType.String, customer.CCNameOnCard);
             db.AddInParameter(command, "@Car", DbType.String, customer.Car);
             db.AddInParameter(command, "@CarLicensePlate", DbType.String, customer.CarLicensePlate);
             db.AddInParameter(command, "@DriverLicense", DbType.String, customer.DriverLicense);
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, customer.CreatedUser);
-            db.AddInParameter(command, "@CreatedDate", DbType.DateTime, customer.CreatedDate);            
             db.AddInParameter(command, "@StatusId", DbType.Int32, customer.StatusId);
 
             db.ExecuteNonQuery(command);
@@ -80,7 +79,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@PassportCountryOfIssue", DbType.Int32, customer.PassportCountryOfIssue);
             db.AddInParameter(command, "@PassportExpirationDate", DbType.DateTime, customer.PassportExpirationDate);
             db.AddInParameter(command, "@CreditCardTypeId", DbType.Int32, customer.CreditCardTypeId);
-            db.AddInParameter(command, "@CCNo", DbType.Int32, customer.CCNo);
+            db.AddInParameter(command, "@CCNo", DbType.Int64, customer.CCNo);
             db.AddInParameter(command, "@CCExpirationDate", DbType.DateTime, customer.CCExpirationDate);
             db.AddInParameter(command, "@CCNameOnCard", DbType.String, customer.CCNameOnCard);
             db.AddInParameter(command, "@Car", DbType.String, customer.Car);

@@ -1,0 +1,6 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxColorEdit runat="server" CssPostfix="HBMTheme" CssFilePath="~/App_Themes/HBMTheme/{0}/styles.css" SpriteCssFilePath="~/App_Themes/HBMTheme/{0}/sprite.css" >
+  
+</dx:ASPxColorEdit>

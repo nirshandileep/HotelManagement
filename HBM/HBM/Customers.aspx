@@ -67,7 +67,7 @@
             </td>
             <td>
                             <dx:ASPxComboBox ID="cmbPassportCountryOfIssue" runat="server" 
-                    ValueType="System.Int32">
+                    ValueType="System.Int32" IncrementalFilteringMode="Contains">
                             </dx:ASPxComboBox>
             </td>
         </tr>
@@ -76,7 +76,8 @@
                 Gender
             </td>
             <td>
-                <dx:ASPxComboBox ID="cmbGender" runat="server">
+                <dx:ASPxComboBox ID="cmbGender" runat="server" 
+                    IncrementalFilteringMode="Contains">
                     <Items>
                         <dx:ListEditItem Text="Male" Value="Male" />
                         <dx:ListEditItem Text="Female" Value="Female" />
@@ -134,7 +135,8 @@
             <td>
                 CC Type</td>
             <td>
-                <dx:ASPxComboBox ID="cmbCCType" runat="server">
+                <dx:ASPxComboBox ID="cmbCCType" runat="server" 
+                    IncrementalFilteringMode="Contains" ValueType="System.Int32">
                 </dx:ASPxComboBox>
             </td>
         </tr>
@@ -169,7 +171,8 @@
                 <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
-                            <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32">
+                            <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" 
+                                DropDownStyle="DropDown">
                             </dx:ASPxComboBox>
                         </td>
                         <td>
@@ -192,7 +195,7 @@
                     <tr>
                         <td>
                             <dx:ASPxComboBox ID="cmbCCExpiryDateMonth" runat="server" ValueType="System.Int32"
-                                SelectedIndex="0">
+                                SelectedIndex="0" IncrementalFilteringMode="Contains">
                                 <Items>
                                     <dx:ListEditItem Selected="True" />
                                     <dx:ListEditItem Text="1" Value="1" />
@@ -215,7 +218,7 @@
                         </td>
                         <td>
                             <dx:ASPxComboBox ID="cmbCCExpiryDateYear" runat="server" ValueType="System.Int32"
-                                SelectedIndex="0">
+                                SelectedIndex="0" IncrementalFilteringMode="Contains">
                                 <Items>
                                     <dx:ListEditItem Selected="True" />
                                     <dx:ListEditItem Text="2012" Value="2012" />
@@ -302,7 +305,8 @@
             <td>
                 Car</td>
             <td>
-                <dx:ASPxComboBox ID="cmbCar" runat="server">
+                <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" 
+                    IncrementalFilteringMode="Contains">
                     <Items>
                         <dx:ListEditItem Text="No" Value="No" />
                         <dx:ListEditItem Text="Yes" Value="Yes" />
@@ -392,7 +396,8 @@
                 <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
-                            <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" ValueType="System.String">
+                            <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" ValueType="System.Int32" 
+                                IncrementalFilteringMode="Contains">
                             </dx:ASPxComboBox>
                         </td>
                         <td>

@@ -24,6 +24,7 @@ namespace HBM
                     customer.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
                     customer.CompanyId = Master.CompanyId;
                     customer.Select();
+                    Session["CustomerObj"] = customer;
                 }
                 else
                 {
@@ -39,12 +40,12 @@ namespace HBM
             {
                 DateTime? expDate = new DateTime();
 
-                if (cmbCCExpiryDateMonth.SelectedItem.ValueString != string.Empty &&
-                    cmbCCExpiryDateYear.SelectedItem.ValueString != string.Empty)
+                if (cmbCCExpiryDateMonth.SelectedItem.Value.ToString() != string.Empty &&
+                    cmbCCExpiryDateYear.SelectedItem.Value.ToString() != string.Empty)
                 {
                     DateTime tempDate = new DateTime(
-                        int.Parse(cmbCCExpiryDateYear.SelectedItem.ValueString),
-                        int.Parse(cmbCCExpiryDateMonth.SelectedItem.ValueString),
+                        int.Parse(cmbCCExpiryDateYear.SelectedItem.Value.ToString()),
+                        int.Parse(cmbCCExpiryDateMonth.SelectedItem.Value.ToString()),
                         1);
 
                     expDate = tempDate;
@@ -173,15 +174,24 @@ namespace HBM
             CustomerObj.CustomerName = txtCustomerName.Text.Trim();
             CustomerObj.BillingAddress = txtBillingAddress.Text.Trim();
             CustomerObj.BillingCity = txtBillingCity.Text.Trim();
-            CustomerObj.BillingCountryId = (int?)cmbBillingCountry.SelectedItem.Value;
+
+            if ((int)cmbBillingCountry.SelectedItem.Value > 0)
+            {
+                CustomerObj.BillingCountryId = (int)cmbBillingCountry.SelectedItem.Value;
+            }
+            else
+            {
+                CustomerObj.BillingCountryId = null;
+            }
+            
             CustomerObj.BillingPostCode = txtBillingPostCode.Text.Trim();
             CustomerObj.BillingState = txtBillingState.Text.Trim();
             CustomerObj.Car = cmbCar.SelectedItem.Text;
             CustomerObj.CarLicensePlate = txtLicensePlate.Text.Trim();
             CustomerObj.CCExpirationDate = CCExpiryDate;
             CustomerObj.CCNameOnCard = txtNameOnCard.Text.Trim();
-            int CCNo;
-            if (int.TryParse(txtCCNumber.Text.Trim(), out CCNo))
+            Int64 CCNo;
+            if (Int64.TryParse(txtCCNumber.Text.Trim(), out CCNo))
             {
                 CustomerObj.CCNo = CCNo;
             }
@@ -199,17 +209,29 @@ namespace HBM
             CustomerObj.Fax = txtFax.Text.Trim();
             CustomerObj.Gender = cmbGender.SelectedItem.Text.Trim();
             CustomerObj.MemberCode = txtMemberCode.Text.Trim();
-            
             CustomerObj.Mobile = txtPhone.Text.Trim();
-            CustomerObj.PassportCountryOfIssue = (int?)cmbPassportCountryOfIssue.SelectedItem.Value;
+
+            if ((int)cmbGuestType.SelectedItem.Value > 0)
+            {
+                CustomerObj.GuestTypeId = (int)cmbGuestType.SelectedItem.Value;
+            }
+
+
+            if ((int)cmbPassportCountryOfIssue.SelectedItem.Value > 0)
+            {
+                CustomerObj.PassportCountryOfIssue = (int)cmbPassportCountryOfIssue.SelectedItem.Value;
+            }
+            else
+            {
+                CustomerObj.PassportCountryOfIssue = null;
+            }
+            
             CustomerObj.PassportExpirationDate = dtpExpiryDate.Date;
             CustomerObj.PassportNumber = txtPassportNumber.Text.Trim();
             CustomerObj.Phone = txtPhone.Text.Trim();
 
             CustomerObj.CreatedUser = Master.LoggedUser.UsersId;
             CustomerObj.UpdatedUser = Master.LoggedUser.UsersId;
-
-            //CustomerObj.StatusId = stat
 
             string errorMSG;
             if ((new CustomerManagement.CustomerManager()).IsValidToSave(CustomerObj, out errorMSG))
