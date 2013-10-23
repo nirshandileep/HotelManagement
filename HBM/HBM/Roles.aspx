@@ -48,7 +48,7 @@
                         </td>
                         <td>
                             <dx:ASPxTextBox ID="txtRoleDescription" runat="server" Width="170px" 
-                                MaxLength="50">
+                                MaxLength="50" Theme="Glass">
                                 <ValidationSettings Display="Dynamic" ValidationGroup="vgSave">
                                     <RequiredField IsRequired="True" />
                                 </ValidationSettings>
@@ -72,7 +72,7 @@
         <tr>
             <td>
                 <dx:ASPxGridView ID="gvRights" runat="server" Width="100%" 
-                    AutoGenerateColumns="False" KeyFieldName="RightId">
+                    AutoGenerateColumns="False" KeyFieldName="RightId" Theme="Glass">
                     <Columns>
                         <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="0">
                         </dx:GridViewCommandColumn>
@@ -97,7 +97,8 @@
         </tr>
         <tr>
             <td>
-                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave">
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" 
+                    ValidationGroup="vgSave" Theme="Glass">
                 </dx:ASPxButton>
             </td>
         </tr>

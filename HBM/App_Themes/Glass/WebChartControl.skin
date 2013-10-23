@@ -1,0 +1,9 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Charts" Assembly="DevExpress.Charts.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxcharts" namespace="DevExpress.XtraCharts" assembly="DevExpress.XtraCharts.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxchartsui" namespace="DevExpress.XtraCharts.Web" assembly="DevExpress.XtraCharts.v12.2.Web, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dxchartsui:WebChartControl runat="server" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass">
+    <LoadingPanelImage Url="~/App_Themes/Glass/Chart/Loading.gif"></LoadingPanelImage>
+</dxchartsui:WebChartControl>
+

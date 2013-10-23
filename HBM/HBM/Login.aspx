@@ -26,7 +26,8 @@
                    <label> User Name</label>
                 </td>
                 <td width="68%">
-                    <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" Text="chamila">
+                    <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" Text="chamila" 
+                        Theme="Glass">
                         <ValidationSettings Display="Dynamic">
                             <RequiredField IsRequired="True" />
                         </ValidationSettings>
@@ -38,7 +39,8 @@
                    <label> Password</label>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtPassword" runat="server" Width="170px" Password="True">
+                    <dx:ASPxTextBox ID="txtPassword" runat="server" Width="170px" Password="True" 
+                        Theme="Glass">
                         <ValidationSettings Display="Dynamic">
                             <RequiredField IsRequired="True" />
                         </ValidationSettings>
@@ -57,7 +59,7 @@
                 </td>
                 <td>
                     <dx:ASPxButton ID="btnLogin" runat="server" Text="Login" 
-                        onclick="btnLogin_Click">
+                        onclick="btnLogin_Click" Theme="Glass">
                     </dx:ASPxButton>
                 </td>
             </tr>

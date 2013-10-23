@@ -25,7 +25,7 @@
     </div>
     <div class="header">
         <div class="wrapper">
-            <dx:ASPxMenu ID="MainMenu" runat="server">
+            <dx:ASPxMenu ID="MainMenu" runat="server" Theme="Glass">
                 <Items>
                     <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
                     </dx:MenuItem>

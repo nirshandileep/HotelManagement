@@ -1,0 +1,11 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxxr" Namespace="DevExpress.XtraReports.Web" Assembly="DevExpress.XtraReports.v12.2.Web, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxxr:ReportToolbar runat="server">
+  <Styles CssPostfix="Glass" CssFilePath="~/App_Themes/Glass/{0}/styles.css">
+    <ButtonStyle VerticalAlign="Middle" HorizontalAlign="Center"/>
+    <EditorStyle Paddings-Padding="2"/>
+    <LabelStyle VerticalAlign="Middle" HorizontalAlign="Center" />
+  </Styles>
+  <Images SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css" />
+</dxxr:ReportToolbar>
+

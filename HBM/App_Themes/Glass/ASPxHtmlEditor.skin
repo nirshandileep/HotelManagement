@@ -1,0 +1,20 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
+
+<dxhe:ASPxHtmlEditor runat="server" Width="745px">
+    <Images>
+        <LoadingPanel Url="~/App_Themes/Glass/HtmlEditor/Loading.gif"></LoadingPanel>
+    </Images>
+    <ImagesFileManager>
+        <LoadingPanel Url="~/App_Themes/Glass/Web/Loading.gif"></LoadingPanel>
+        <FolderContainerNodeLoadingPanel Url="~/App_Themes/Glass/Web/tvNodeLoading.gif"></FolderContainerNodeLoadingPanel>
+    </ImagesFileManager>
+	<Styles CssPostfix="Glass" CssFilePath="~/App_Themes/Glass/{0}/styles.css">
+        <ViewArea Border-BorderColor="#4986A2" />
+	</Styles>
+	<StylesStatusBar>
+		<StatusBar TabSpacing="0px" />
+	</StylesStatusBar>
+	<Images SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css"></Images>
+</dxhe:ASPxHtmlEditor>
+

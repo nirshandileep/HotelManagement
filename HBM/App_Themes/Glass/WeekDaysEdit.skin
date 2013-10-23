@@ -1,0 +1,14 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwschs" Namespace="DevExpress.Web.ASPxScheduler.Controls" Assembly="DevExpress.Web.ASPxScheduler.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dxwschs:WeekDaysEdit runat="server" SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass">
+    <ValidationSettings>
+        <ErrorFrameStyle ImageSpacing="4px">
+            <ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+        </ErrorFrameStyle>
+    </ValidationSettings>
+    <ButtonStyle Width="13px"></ButtonStyle>
+    <LoadingPanelImage Url="~/App_Themes/Glass/Editors/Loading.gif"></LoadingPanelImage>
+</dxwschs:WeekDaysEdit>
+

@@ -24,7 +24,8 @@
             <td>
                 First Name</td>
             <td>
-                <dx:ASPxTextBox ID="txtFirstName" runat="server" Width="170px" MaxLength="50">
+                <dx:ASPxTextBox ID="txtFirstName" runat="server" Width="170px" MaxLength="50" 
+                    Theme="Glass">
                     <ValidationSettings ValidationGroup="vgSave">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
@@ -94,7 +95,7 @@
             <td>
                 <dx:ASPxTextBox ID="txtConfirmPassword" runat="server" Password="True" 
                     Width="170px" MaxLength="50" 
-                    oncustomjsproperties="txtConfirmPassword_CustomJSProperties">
+                    oncustomjsproperties="txtConfirmPassword_CustomJSProperties" Theme="Glass">
                     <ClientSideEvents Init="function(s, e) {
 	s.SetValue(s.cp_myPassword);
 }" />
@@ -115,7 +116,7 @@
                 Role</td>
             <td>
                 <dx:ASPxComboBox ID="ddlRoles" runat="server" EnableIncrementalFiltering="True" 
-                    IncrementalFilteringMode="StartsWith" TextFormatString="{0}">
+                    IncrementalFilteringMode="StartsWith" TextFormatString="{0}" Theme="Glass">
                     <Columns>
                         <dx:ListBoxColumn Caption="RoleName" FieldName="RoleName" />
                         <dx:ListBoxColumn Caption="RoleDescription" FieldName="RoleDescription" />
@@ -137,7 +138,7 @@
                 &nbsp;</td>
             <td>
                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click" 
-                    ValidationGroup="vgSave">
+                    ValidationGroup="vgSave" Theme="Glass">
                 </dx:ASPxButton>
             </td>
         </tr>
