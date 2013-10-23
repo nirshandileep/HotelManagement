@@ -21,7 +21,7 @@
                 </td>
         </tr>
         <tr>
-            <td height="22">
+            <td height="17">
                 First Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtFirstName" runat="server" Width="170px" MaxLength="50" 
@@ -33,7 +33,7 @@
             </td>
         </tr>
         <tr>
-            <td height="22">
+            <td height="17">
                 Last Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtLastName" runat="server" Width="170px" MaxLength="50">
@@ -44,7 +44,7 @@
             </td>
         </tr>
         <tr>
-            <td height="22">
+            <td height="17">
                 Email</td>
             <td>
                 <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" MaxLength="50">
@@ -56,14 +56,9 @@
                 </dx:ASPxTextBox>
             </td>
         </tr>
+       
         <tr>
-            <td>&nbsp;
-                </td>
-            <td>&nbsp;
-                </td>
-        </tr>
-        <tr>
-            <td height="22">
+            <td height="17">
                 User Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" MaxLength="50">
@@ -74,7 +69,7 @@
             </td>
         </tr>
         <tr>
-            <td height="22">
+            <td height="17">
                 Password</td>
             <td>
                 <dx:ASPxTextBox ID="txtPassword" runat="server" Password="True" Width="170px" 
@@ -90,7 +85,7 @@
             </td>
         </tr>
         <tr>
-            <td height="22">
+            <td height="17">
                 Confirm Password</td>
             <td>
                 <dx:ASPxTextBox ID="txtConfirmPassword" runat="server" Password="True" 
@@ -105,14 +100,9 @@
                 </dx:ASPxTextBox>
             </td>
         </tr>
+   
         <tr>
-            <td>&nbsp;
-                </td>
-            <td>&nbsp;
-                </td>
-        </tr>
-        <tr>
-            <td height="22">
+            <td height="17">
                 Role</td>
             <td>
                 <dx:ASPxComboBox ID="ddlRoles" runat="server" EnableIncrementalFiltering="True" 
