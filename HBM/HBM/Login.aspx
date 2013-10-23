@@ -47,8 +47,8 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>
-                    <asp:Label ID="lblError" runat="server"></asp:Label>
+                <td> 
+                    <asp:Label ID="lblError" CssClass="error" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
