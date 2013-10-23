@@ -1,5 +1,0 @@
-<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-<%@ Register TagPrefix="dxxr" Namespace="DevExpress.XtraReports.Web" Assembly="DevExpress.XtraReports.v12.2.Web, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-<dxxr:ReportDocumentMap runat="server" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass">
-    <Images SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css" />
-</dxxr:ReportDocumentMap>

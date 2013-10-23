@@ -1,8 +1,0 @@
-<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-<%@ Register TagPrefix="dxwsc" Namespace="DevExpress.Web.ASPxSpellChecker" Assembly="DevExpress.Web.ASPxSpellChecker.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-
-<dxwsc:ASPxSpellChecker runat="server" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass" 
-    SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css">
-    <LoadingPanelImage Url="~/App_Themes/Glass/SpellChecker/Loading.gif"></LoadingPanelImage>
-</dxwsc:ASPxSpellChecker>
-

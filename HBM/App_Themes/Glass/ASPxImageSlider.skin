@@ -1,7 +1,0 @@
-<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxImageSlider" Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-
-<dx:ASPxImageSlider runat="server">
-    <Images SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css" />
-    <Styles CssPostfix="Glass" CssFilePath="~/App_Themes/Glass/{0}/styles.css" />
-</dx:ASPxImageSlider>
