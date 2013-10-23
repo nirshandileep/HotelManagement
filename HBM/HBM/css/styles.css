@@ -150,6 +150,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c3e5', end
 	width:133px;
 	height:77px;
 	}
+.customers-tbl .customer-btn{
+	float:left;
+	width:52px;
+
+	}
 /******* error  *****/
 .error{
 	background:url(../images/error.jpg) left top no-repeat;
