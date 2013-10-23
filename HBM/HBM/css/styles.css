@@ -81,6 +81,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c3e5', end
 	float:right;
 	height:30px;
 	width:270px;
+	margin-top:20px;
 	}
 .welcomeMsg p{
 	text-align:left;
@@ -132,11 +133,22 @@ background: linear-gradient(to bottom,  rgba(146,195,229,1) 0%,rgba(112,176,224,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c3e5', endColorstr='#70b0e0',GradientType=0 ); /* IE6-8 */
 
 	}
+.nav{
+	width:500px;
+	margin:20px;
+	float:left;
+	}
+
 /*************************************************************/
 .wrapper{
 	width:1000px;
 	margin:0 auto;
 
+	}
+.hotel-logo{
+	float:left;
+	width:133px;
+	height:77px;
 	}
 /******* error  *****/
 .error{
