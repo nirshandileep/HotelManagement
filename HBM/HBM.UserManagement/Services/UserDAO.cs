@@ -148,7 +148,7 @@ namespace HBM.UserManagement
 
         }
 
-        public bool IsUserIsDuplicateEmail(string email, int compnayId)
+        public bool IsDuplicateEmail(string email, int compnayId)
         {
             bool result = false;
 

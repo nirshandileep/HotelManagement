@@ -87,7 +87,7 @@ namespace HBM
                 {
                     users.EmailAddress = txtEmail.Text.Trim();
 
-                    if (!users.IsUserIsDuplicateEmail(users.EmailAddress, Master.CompanyId))
+                    if (!users.IsDuplicateEmail(users.EmailAddress, Master.CompanyId))
                     {
                         users.FirstName = txtFirstName.Text.Trim();
                         users.LastName = txtLastName.Text.Trim();

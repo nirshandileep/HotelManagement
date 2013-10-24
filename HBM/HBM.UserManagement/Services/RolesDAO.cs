@@ -85,5 +85,34 @@ namespace HBM.UserManagement
 
         }
 
+        public bool IsDuplicateRoleName(string roleName, int compnayId)
+        {
+            bool result = false;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                DbCommand dbCommand = db.GetStoredProcCommand("usp_RolesIsDuplicateRoleName");
+
+                db.AddInParameter(dbCommand, "@RoleName", DbType.String, roleName);
+                db.AddInParameter(dbCommand, "@CompanyId", DbType.String, compnayId);
+                db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+                db.ExecuteNonQuery(dbCommand);
+
+                result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+
+            return result;
+
+
+
+        }
     }
 }

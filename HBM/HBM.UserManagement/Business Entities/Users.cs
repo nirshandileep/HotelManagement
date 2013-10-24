@@ -108,9 +108,9 @@ namespace HBM.UserManagement
             return (new UserDAO()).IsUserIsDuplicateUserName(userName, compnayId);
         }
 
-        public bool IsUserIsDuplicateEmail(string email, int compnayId)
+        public bool IsDuplicateEmail(string email, int compnayId)
         {
-            return (new UserDAO()).IsUserIsDuplicateEmail(email, compnayId);
+            return (new UserDAO()).IsDuplicateEmail(email, compnayId);
 
         }
 

@@ -126,6 +126,11 @@ namespace HBM.UserManagement
             return (new RolesDAO()).SelectAll(this);
         }
 
+        public bool IsDuplicateRoleName(string roleName, int compnayId)
+        {
+            return (new RolesDAO()).IsDuplicateRoleName(roleName, compnayId);
+        }
+
         #endregion
     }
 }

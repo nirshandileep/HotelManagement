@@ -18,8 +18,10 @@ namespace HBM.Common
         public static readonly string Delete_Confirm = "Are you sure you want to delete this record?";
 
         public static readonly string Invalid_Credentials = "Invalid Credentials";
+        
         public static readonly string Duplicate_Username= "Username already exists";
         public static readonly string Duplicate_Email= "Email already exists";
+        public static readonly string Duplicate_Rolename= "Role name already exists";
 
 
 

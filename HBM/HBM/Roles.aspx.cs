@@ -42,7 +42,6 @@ namespace HBM
                 {
                     this.SaveData();
                 }
-
             }
             catch (System.Exception)
             {
@@ -103,28 +102,38 @@ namespace HBM
                 UserMan.Roles RolesObj = new UserMan.Roles();
 
                 RolesObj.RoleName = txtRoleName.Text.Trim();
-                RolesObj.RoleDescription = txtRoleDescription.Text.Trim();
-                RolesObj.CompanyId = Master.CompanyId;
-                RolesObj.CreatedUser = Master.LoggedUser.UsersId;
-                RolesObj.UpdatedUser = Master.LoggedUser.UsersId;
 
-                if (RolesObj.Save(db, transaction))
+                if (!RolesObj.IsDuplicateRoleName(RolesObj.RoleName, Master.CompanyId))
                 {
-                    List<object> myList = gvRights.GetSelectedFieldValues("RightId");
 
-                    if (myList.Count > 0)
+                    RolesObj.RoleDescription = txtRoleDescription.Text.Trim();
+                    RolesObj.CompanyId = Master.CompanyId;
+                    RolesObj.CreatedUser = Master.LoggedUser.UsersId;
+                    RolesObj.UpdatedUser = Master.LoggedUser.UsersId;
+
+                    if (RolesObj.Save(db, transaction))
                     {
-                        for (int i = 0; i <= myList.Count - 1; i++)
+                        List<object> myList = gvRights.GetSelectedFieldValues("RightId");
+
+                        if (myList.Count > 0)
                         {
-                            RolesObj.RightId = Convert.ToInt32(myList[i].ToString());
-                            RolesObj.SaveRoleRights(db, transaction);
+                            for (int i = 0; i <= myList.Count - 1; i++)
+                            {
+                                RolesObj.RightId = Convert.ToInt32(myList[i].ToString());
+                                RolesObj.SaveRoleRights(db, transaction);
+                            }
                         }
                     }
-                }
 
-                transaction.Commit();
-                result = true;
-                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Save_Success + "')", true);
+                    transaction.Commit();
+                    result = true;
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Save_Success + "')", true);
+                }
+                else
+                {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Duplicate_Rolename + "')", true);
+
+                }
 
 
             }
