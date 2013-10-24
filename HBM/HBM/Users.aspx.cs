@@ -99,18 +99,18 @@ namespace HBM
                         users.StatusId = (int)HBM.Common.Enums.BHMStatus.Active;
                         if (users.Save())
                         {
-                            System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Save_Success + "')", true);
+                            System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
                             this.ClearFormData();
                         }
                     }
                     else
                     {
-                        System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Duplicate_Email + "')", true);
+                        System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Duplicate_Email + "')", true);
                     }
                 }
                 else
                 {
-                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Duplicate_Username + "')", true);
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Duplicate_Username + "')", true);
                 }
 
 
