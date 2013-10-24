@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using UserMan = HBM.UserManagement;
-using Status= HBM.Common.Enums;
+using Status = HBM.Common.Enums;
 using HBM.Common;
 
 namespace HBM
@@ -24,11 +24,11 @@ namespace HBM
 
                 if (Request.QueryString["UserId"] != null)
                 {
-                    this.hdnUserId.Value = Request.QueryString["UserId"];               
+                    this.hdnUserId.Value = Request.QueryString["UserId"];
                     this.DisplayData();
                 }
 
-               
+
             }
         }
 
@@ -43,6 +43,7 @@ namespace HBM
                 }
                 else
                 {
+
                     this.SaveData();
                 }
 
@@ -78,19 +79,38 @@ namespace HBM
             try
             {
                 UserMan.Users users = new UserMan.Users();
+
+                ////Check for existing uername
                 users.UserName = txtUserName.Text.Trim();
-                users.FirstName = txtFirstName.Text.Trim();
-                users.LastName = txtLastName.Text.Trim();
-                users.EmailAddress = txtEmail.Text.Trim();
-                users.Password = txtPassword.Text.Trim();
-                users.RolesId = Convert.ToInt32(ddlRoles.Value);
-                users.CreatedUser = Master.LoggedUser.UsersId;
-                users.CompanyId = Master.CompanyId;
-                users.StatusId =(int) HBM.Common.Enums.BHMStatus.Active;
-                if (users.Save())
+
+                if (!users.IsUserIsDuplicateUserName(users.UserName, Master.CompanyId))
                 {
-                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Save_Success + "')", true);
-                    this.ClearFormData();
+                    users.EmailAddress = txtEmail.Text.Trim();
+
+                    if (!users.IsUserIsDuplicateEmail(users.EmailAddress, Master.CompanyId))
+                    {
+                        users.FirstName = txtFirstName.Text.Trim();
+                        users.LastName = txtLastName.Text.Trim();
+
+                        users.Password = txtPassword.Text.Trim();
+                        users.RolesId = Convert.ToInt32(ddlRoles.Value);
+                        users.CreatedUser = Master.LoggedUser.UsersId;
+                        users.CompanyId = Master.CompanyId;
+                        users.StatusId = (int)HBM.Common.Enums.BHMStatus.Active;
+                        if (users.Save())
+                        {
+                            System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Save_Success + "')", true);
+                            this.ClearFormData();
+                        }
+                    }
+                    else
+                    {
+                        System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Duplicate_Email + "')", true);
+                    }
+                }
+                else
+                {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Duplicate_Username + "')", true);
                 }
 
 
@@ -148,7 +168,7 @@ namespace HBM
                 txtFirstName.Text = users.FirstName;
                 txtLastName.Text = users.LastName;
                 txtEmail.Text = users.EmailAddress;
-                txtPassword.Text = users.Password;                
+                txtPassword.Text = users.Password;
                 ddlRoles.SelectedItem = ddlRoles.Items.FindByValue(users.RolesId.ToString());
 
                 currentPassword = users.Password;
@@ -176,8 +196,8 @@ namespace HBM
 
             }
             catch (System.Exception)
-            {                
-                
+            {
+
             }
         }
 

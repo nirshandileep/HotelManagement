@@ -103,6 +103,17 @@ namespace HBM.UserManagement
             return (new UserDAO()).IsUserAuthenticated(userName,password, out UsersId, out compnayId);
         }
 
+        public bool IsUserIsDuplicateUserName(string userName, int compnayId)
+        {
+            return (new UserDAO()).IsUserIsDuplicateUserName(userName, compnayId);
+        }
+
+        public bool IsUserIsDuplicateEmail(string email, int compnayId)
+        {
+            return (new UserDAO()).IsUserIsDuplicateEmail(email, compnayId);
+
+        }
+
 
         #endregion
     }

@@ -174,9 +174,6 @@
     <Content Include="HBMMaster.Master" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">
       <Project>{CA21B72F-F6C3-49F6-B2DB-83B735A8777A}</Project>
       <Name>HBM.Common</Name>

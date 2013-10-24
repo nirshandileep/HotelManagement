@@ -22,7 +22,7 @@ namespace HBM.UserManagement
             db.AddInParameter(command, "@FirstName", DbType.String, users.FirstName);
             db.AddInParameter(command, "@LastName", DbType.String, users.LastName);
             db.AddInParameter(command, "@EmailAddress", DbType.String, users.EmailAddress);
-            db.AddInParameter(command, "@CreatedUser", DbType.Int32, users.CreatedUser);            
+            db.AddInParameter(command, "@CreatedUser", DbType.Int32, users.CreatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, users.StatusId);
             db.AddInParameter(command, "@RolesId", DbType.Int32, users.RolesId);
             db.AddInParameter(command, "@CompanyId", DbType.Int32, users.CompanyId);
@@ -45,7 +45,7 @@ namespace HBM.UserManagement
             db.AddInParameter(command, "@FirstName", DbType.String, users.FirstName);
             db.AddInParameter(command, "@LastName", DbType.String, users.LastName);
             db.AddInParameter(command, "@EmailAddress", DbType.String, users.EmailAddress);
-            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, users.UpdatedUser);            
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, users.UpdatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, users.StatusId);
             db.AddInParameter(command, "@RolesId", DbType.Int32, users.RolesId);
             db.AddInParameter(command, "@CompanyId", DbType.Int32, users.CompanyId);
@@ -61,7 +61,7 @@ namespace HBM.UserManagement
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_UsersDelete");
 
-            db.AddInParameter(command, "@UsersId", DbType.String, users.UsersId);            
+            db.AddInParameter(command, "@UsersId", DbType.String, users.UsersId);
             db.ExecuteNonQuery(command);
 
             return true;
@@ -87,12 +87,12 @@ namespace HBM.UserManagement
 
                 db.AddInParameter(dbCommand, "@UserName", DbType.String, userName);
                 db.AddInParameter(dbCommand, "@Password", DbType.String, password);
-                db.AddOutParameter(dbCommand, "@UsersId", DbType.Int32,8);
-                db.AddOutParameter(dbCommand, "@CompanyId", DbType.Int32, 8);                
+                db.AddOutParameter(dbCommand, "@UsersId", DbType.Int32, 8);
+                db.AddOutParameter(dbCommand, "@CompanyId", DbType.Int32, 8);
 
                 db.ExecuteNonQuery(dbCommand);
 
-                UsersId = Convert.ToInt32( db.GetParameterValue(dbCommand, "@UsersId").ToString());
+                UsersId = Convert.ToInt32(db.GetParameterValue(dbCommand, "@UsersId").ToString());
                 compnayId = Convert.ToInt32(db.GetParameterValue(dbCommand, "@CompanyId").ToString());
 
                 if (UsersId > 0)
@@ -103,19 +103,81 @@ namespace HBM.UserManagement
                 {
                     result = false;
                 }
-                
+
             }
             catch (Exception)
             {
                 UsersId = 0;
                 compnayId = 0;
-                
+
             }
 
             return result;
 
-           
+
 
         }
+
+        public bool IsUserIsDuplicateUserName(string userName, int compnayId)
+        {
+            bool result = false;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                DbCommand dbCommand = db.GetStoredProcCommand("usp_UsersIsDuplicateUserName");
+
+                db.AddInParameter(dbCommand, "@UserName", DbType.String, userName);
+                db.AddInParameter(dbCommand, "@CompanyId", DbType.String, compnayId);
+                db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+                db.ExecuteNonQuery(dbCommand);
+
+                result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+                
+
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+
+            return result;
+
+
+
+        }
+
+        public bool IsUserIsDuplicateEmail(string email, int compnayId)
+        {
+            bool result = false;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                DbCommand dbCommand = db.GetStoredProcCommand("usp_UsersIsDuplicateEmail");
+
+                db.AddInParameter(dbCommand, "@EmailAddress", DbType.String, email);
+                db.AddInParameter(dbCommand, "@CompanyId", DbType.String, compnayId);
+                db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+                db.ExecuteNonQuery(dbCommand);
+
+                result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+
+            return result;
+
+
+
+        }
+
+
     }
 }
