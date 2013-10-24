@@ -31,22 +31,13 @@ namespace HBM {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// dvMessage control.
+        /// dvTopMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMessage;
-        
-        /// <summary>
-        /// ltlMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvTopMessage;
         
         /// <summary>
         /// MainMenu control.

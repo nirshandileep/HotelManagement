@@ -75,6 +75,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\Messages.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\styles.css" />
     <Content Include="Customers.aspx" />
@@ -83,9 +84,13 @@
     <Content Include="Images\error.jpg" />
     <Content Include="Images\gnome_session_logout.png" />
     <Content Include="Images\hotel-logo.png" />
+    <Content Include="JS\HBMCommon.js" />
     <Content Include="Login.aspx" />
     <Content Include="Roles.aspx" />
     <Content Include="RoleSearch.aspx" />
+    <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Users.aspx" />
     <Content Include="UserSearch.aspx" />
     <Content Include="Web.config">
@@ -169,7 +174,7 @@
     <Content Include="HBMMaster.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="JS\" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">
@@ -328,6 +333,10 @@
     <Content Include="App_Themes\Glass\WebChartControl.skin" />
     <Content Include="App_Themes\Glass\WeekDaysEdit.skin" />
     <Content Include="App_Themes\Glass\WeekOfMonthEdit.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
