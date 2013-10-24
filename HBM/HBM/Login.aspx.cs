@@ -46,6 +46,7 @@ namespace HBM
                 else
                 {
                     lblError.Text = HBM.Common.Messages.Invalid_Credentials;
+                    lblError.Visible = true;
                 }
             }
             catch (System.Exception)

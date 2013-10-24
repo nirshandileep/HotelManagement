@@ -123,6 +123,12 @@ namespace HBM
                                 RolesObj.SaveRoleRights(db, transaction);
                             }
                         }
+                        else
+                        {
+                            System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Select_Role + "')", true);
+                            transaction.Rollback();
+
+                        }
                     }
 
                     transaction.Commit();

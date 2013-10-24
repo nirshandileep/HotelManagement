@@ -23,6 +23,8 @@ namespace HBM.Common
         public static readonly string Duplicate_Email= "Email already exists";
         public static readonly string Duplicate_Rolename= "Role name already exists";
 
+        public static readonly string Select_Role = "Please select a role";
+
 
 
 

@@ -50,7 +50,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td> 
-                    <asp:Label ID="lblError" CssClass="error" runat="server"></asp:Label>
+                    <asp:Label ID="lblError" CssClass="error" runat="server" Visible="false"></asp:Label>
                 </td>
             </tr>
             <tr>
