@@ -26,7 +26,7 @@
             <td>
                 <dx:ASPxTextBox ID="txtFirstName" runat="server" Width="170px" MaxLength="50" 
                     Theme="Glass">
-                    <ValidationSettings ValidationGroup="vgSave">
+                    <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -37,7 +37,7 @@
                 Last Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtLastName" runat="server" Width="170px" MaxLength="50">
-                    <ValidationSettings ValidationGroup="vgSave">
+                    <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -48,7 +48,7 @@
                 Email</td>
             <td>
                 <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" MaxLength="50">
-                    <ValidationSettings ValidationGroup="vgSave">
+                    <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
                         <RegularExpression ErrorText="Invalid" 
                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
                         <RequiredField IsRequired="True" />
@@ -62,7 +62,7 @@
                 User Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" MaxLength="50">
-                    <ValidationSettings ValidationGroup="vgSave">
+                    <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -74,11 +74,12 @@
             <td>
                 <dx:ASPxTextBox ID="txtPassword" runat="server" Password="True" Width="170px" 
                     MaxLength="50" EnableClientSideAPI="True" 
-                    oncustomjsproperties="txtPassword_CustomJSProperties">
+                    oncustomjsproperties="txtPassword_CustomJSProperties" 
+                    ClientInstanceName="password">
                     <ClientSideEvents Init="function(s, e) {
 	 s.SetValue(s.cp_myPassword);
 }" />
-                    <ValidationSettings ValidationGroup="vgSave">
+                    <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -90,11 +91,26 @@
             <td>
                 <dx:ASPxTextBox ID="txtConfirmPassword" runat="server" Password="True" 
                     Width="170px" MaxLength="50" 
-                    oncustomjsproperties="txtConfirmPassword_CustomJSProperties" Theme="Glass">
+                    oncustomjsproperties="txtConfirmPassword_CustomJSProperties" Theme="Glass" 
+                    ClientInstanceName="confirmTb">
                     <ClientSideEvents Init="function(s, e) {
 	s.SetValue(s.cp_myPassword);
+}" LostFocus="function(s, e) {
+	
+if ((password.GetText() == confirmTb.GetText()))
+{
+     e.IsValid=true;
+}
+else
+{
+     e.IsValid=false;
+}
+ 
+}" Validation="function(s, e) {
+
 }" />
-                    <ValidationSettings ValidationGroup="vgSave">
+                    <ValidationSettings ValidationGroup="vgSave" CausesValidation="True" 
+                        Display="Dynamic" EnableCustomValidation="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -111,7 +127,7 @@
                         <dx:ListBoxColumn Caption="RoleName" FieldName="RoleName" />
                         <dx:ListBoxColumn Caption="RoleDescription" FieldName="RoleDescription" />
                     </Columns>
-                    <ValidationSettings ValidationGroup="vgSave">
+                    <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </dx:ASPxComboBox>

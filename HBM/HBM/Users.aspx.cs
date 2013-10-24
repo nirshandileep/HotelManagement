@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using UserMan = HBM.UserManagement;
 using Status= HBM.Common.Enums;
+using HBM.Common;
 
 namespace HBM
 {
@@ -88,6 +89,7 @@ namespace HBM
                 users.StatusId =(int) HBM.Common.Enums.BHMStatus.Active;
                 if (users.Save())
                 {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Save_Success + "')", true);
                     this.ClearFormData();
                 }
 

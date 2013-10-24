@@ -124,6 +124,9 @@ namespace HBM
 
                 transaction.Commit();
                 result = true;
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Save_Success + "')", true);
+
+
             }
             catch (System.Exception ex)
             {
@@ -174,6 +177,7 @@ namespace HBM
 
                 transaction.Commit();
                 result = true;
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowTopMessage('" + Messages.Save_Success + "')", true);
 
             }
             catch (System.Exception)
