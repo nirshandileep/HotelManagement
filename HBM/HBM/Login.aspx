@@ -11,6 +11,12 @@
         {
             width: 100%;
         }
+	body{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000;
+	background:url(images/back.jpg) center top no-repeat;
+	}
     </style>
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
