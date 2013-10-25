@@ -24,7 +24,7 @@
     <div id="dvTopMessage" runat="server" >        
     </div>
 
-    <div class="header">
+    <div class="header2">
         <div class="wrapper">
         	<div class="hotel-logo">
 			<img src="images/hotel-logo.png" width="133" height="77" />
@@ -68,7 +68,7 @@
         </asp:ContentPlaceHolder>
     </div>
     </form>
-    <div class="footer">
+    <div class="footer2">
 	 <p class="txt-center">Copyright &copy; 2013. All rights reserved.     </p>
     </div>
 </body>
