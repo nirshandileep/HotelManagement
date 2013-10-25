@@ -25,7 +25,7 @@
     <form id="form1" runat="server">
 
     <div class="login-win">
-    <h2>Welcome to ABC login</h2>
+    <h2 class="noborder">Welcome to ABC login</h2>
         <table class="style1">
             <tr>
                 <td width="32%">
@@ -53,7 +53,7 @@
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-            <tr>
+            <tr id="trMsg" runat="server" visible="false">
                 <td>&nbsp;</td>
                 <td> 
                     <asp:Label ID="lblError" CssClass="error" runat="server" Visible="false"></asp:Label>
@@ -71,7 +71,7 @@
             </tr>
             <tr>
               <td>&nbsp;</td>
-              <td><p><a href="#">Forgotten your Password?</a> </p></td>
+              <td>&nbsp;</td>
             </tr>
         </table>
     </div>

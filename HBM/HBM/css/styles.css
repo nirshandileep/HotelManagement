@@ -204,5 +204,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c3e5', end
     background-color:#EEF5F7;
 }	
 
+.noborder
+{
+    border:none;
+}
+
 
 	
