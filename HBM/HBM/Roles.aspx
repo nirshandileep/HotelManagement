@@ -14,12 +14,10 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<h2> Add Roles</h2>
+
     <table class="style1">
-        <tr>
-            <td height="21">
-                Add Roles
-            </td>
-        </tr>
+     
         <tr>
             <td>
                 <table class="style1">
