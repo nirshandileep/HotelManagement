@@ -10,7 +10,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table class="style1">
         <tr>
-            <td>
+            <td height="21">
                 Search Users
             </td>
         </tr>
