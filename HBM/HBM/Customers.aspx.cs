@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CustMan = HBM.CustomerManagement;
 using HBM.CustomerManagement;
+using HBM.Common;
 
 namespace HBM
 {
@@ -165,7 +166,7 @@ namespace HBM
 
                 if (string.IsNullOrEmpty(CustomerObj.Gender) == false)
                 {
-                    cmbGender.SelectedItem.Text = CustomerObj.Gender;
+                    cmbGender.Value = CustomerObj.Gender;
                 }
 
                 txtMemberCode.Text = CustomerObj.MemberCode;
@@ -274,14 +275,16 @@ namespace HBM
                 {
                     if (string.IsNullOrEmpty(errorMSG) && CustomerObj.Save())
                     {
-                        //Show save success
+                        System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
                         ClearForm();
                     }
 
                 }
 
-                divErrorMsg.Visible = true;
-                divErrorMsg.InnerText = errorMSG;
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Duplicate_Email + "')", true);
+
+                //divErrorMsg.Visible = true;
+                //divErrorMsg.InnerText = errorMSG;
                 //Display error on a label
             }
             catch (System.Exception)
@@ -294,6 +297,8 @@ namespace HBM
         {
             try
             {
+                Session["CustomerObj"] = null;
+                hdnCustomerId.Value = "0";
                 txtCustomerName.Text = string.Empty;
                 txtBillingAddress.Text = string.Empty;
                 txtBillingCity.Text = string.Empty;

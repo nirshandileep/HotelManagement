@@ -194,10 +194,9 @@
                 <table>
                     <tr>
                         <td>
-                            <dx:ASPxComboBox ID="cmbCCExpiryDateMonth" runat="server" ValueType="System.Int32"
-                                SelectedIndex="0" IncrementalFilteringMode="Contains">
+                            <dx:ASPxComboBox ID="cmbCCExpiryDateMonth" runat="server" 
+                                ValueType="System.Int32" IncrementalFilteringMode="Contains">
                                 <Items>
-                                    <dx:ListEditItem Selected="True" />
                                     <dx:ListEditItem Text="1" Value="1" />
                                     <dx:ListEditItem Text="2" Value="2" />
                                     <dx:ListEditItem Text="3" Value="3" />
@@ -217,10 +216,9 @@
                             /
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cmbCCExpiryDateYear" runat="server" ValueType="System.Int32"
-                                SelectedIndex="0" IncrementalFilteringMode="Contains">
+                            <dx:ASPxComboBox ID="cmbCCExpiryDateYear" runat="server" 
+                                ValueType="System.Int32" IncrementalFilteringMode="Contains">
                                 <Items>
-                                    <dx:ListEditItem Selected="True" />
                                     <dx:ListEditItem Text="2012" Value="2012" />
                                     <dx:ListEditItem Text="2013" Value="2013" />
                                     <dx:ListEditItem Text="2014" Value="2014" />

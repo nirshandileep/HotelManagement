@@ -26,7 +26,30 @@ Customer Search List
 
             <tr>
                 <td>
-                    <dx:ASPxGridView ID="gvCustomers" runat="server">
+                    <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" 
+                        KeyFieldName="CustomerId">
+                        <Columns>
+                            <dx:GridViewDataHyperLinkColumn Caption="Customer Name" FieldName="CustomerId" 
+                                ShowInCustomizationForm="True" UnboundExpression="CustomerId" 
+                                UnboundType="Integer" VisibleIndex="1">
+                                <PropertiesHyperLinkEdit NavigateUrlFormatString="~/Customers.aspx?CustomerId={0}" 
+                                    TextField="CustomerName">
+                                </PropertiesHyperLinkEdit>
+                            </dx:GridViewDataHyperLinkColumn>
+                            <dx:GridViewDataTextColumn FieldName="MemberCode" 
+                                ShowInCustomizationForm="True" VisibleIndex="2">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn FieldName="Phone" ShowInCustomizationForm="True" 
+                                VisibleIndex="3">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn FieldName="CustomerId" 
+                                ShowInCustomizationForm="True" Visible="False" VisibleIndex="0">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Guest Type" FieldName="GuestTypeName" 
+                                UnboundType="String" VisibleIndex="4">
+                            </dx:GridViewDataTextColumn>
+                        </Columns>
+                        <Settings ShowFilterRow="True" />
                     </dx:ASPxGridView>
                 </td>
             </tr>
