@@ -23,12 +23,7 @@
     
     <div id="dvTopMessage" runat="server" >        
     </div>
-    <div>
 
-        <div>
-            	<%--<asp:LinkButton ID="lbLogout" runat="server" onclick="lbLogout_Click">Logout</asp:LinkButton>--%>
-        </div>
-    </div>
     <div class="header">
         <div class="wrapper">
         	<div class="hotel-logo">
@@ -63,7 +58,7 @@
             </dx:ASPxMenu>
             </div>
         <div class="welcomeMsg">
-           <p>Welcome !</p> <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label><p><a href="#">  Logut</a></p>
+           <p>Welcome !</p> <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label><p><asp:LinkButton ID="lbLogout" runat="server" onclick="lbLogout_Click">Logout</asp:LinkButton></a></p>
         </div>
         
         </div>

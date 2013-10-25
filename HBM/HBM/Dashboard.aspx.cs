@@ -15,9 +15,6 @@ namespace HBM
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
-        }
+       
     }
 }
