@@ -82,7 +82,7 @@
             <td>
                 <dx:ASPxTextBox ID="txtPassword" runat="server" Password="True" Width="170px" MaxLength="50"
                     EnableClientSideAPI="True" OnCustomJSProperties="txtPassword_CustomJSProperties"
-                    ClientInstanceName="password">
+                    ClientInstanceName="password1">
                     <ClientSideEvents Init="function(s, e) {
 	 s.SetValue(s.cp_myPassword);
 }" />
@@ -98,23 +98,19 @@
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtConfirmPassword" runat="server" Password="True" Width="170px"
-                    MaxLength="50" OnCustomJSProperties="txtConfirmPassword_CustomJSProperties" Theme="Glass"
-                    ClientInstanceName="confirmTb">
+                    MaxLength="50" 
+                    OnCustomJSProperties="txtConfirmPassword_CustomJSProperties" Theme="Glass"
+                    ClientInstanceName="password2">
                     <ClientSideEvents Init="function(s, e) {
 	s.SetValue(s.cp_myPassword);
 }" LostFocus="function(s, e) {
 	
-if ((password.GetText() == confirmTb.GetText()))
-{
-     e.IsValid=true;
-}
-else
-{
-     e.IsValid=false;
-}
+
  
 }" Validation="function(s, e) {
-
+	var originalPasswd = password1.GetText();
+    var currentPasswd = s.GetText();
+    e.isValid = (originalPasswd  == currentPasswd );
 }" />
                     <ValidationSettings ValidationGroup="vgSave" CausesValidation="True" Display="Dynamic"
                         EnableCustomValidation="True">

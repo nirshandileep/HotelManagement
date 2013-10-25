@@ -17,11 +17,11 @@ namespace HBM
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            this.LoadRoles();
+
             if (!IsPostBack)
             {
-
-                this.LoadRoles();
-
                 if (Request.QueryString["UserId"] != null)
                 {
                     this.hdnUserId.Value = Request.QueryString["UserId"];
