@@ -12,55 +12,52 @@
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <link href="css/messages.css" rel="stylesheet" type="text/css" />
-
     <script language="javascript" type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
     <script language="javascript" type="text/javascript" src="JS/HBMCommon.js"></script>
-    
-
 </head>
 <body>
     <form id="form1" runat="server">
-    
-    <div id="dvTopMessage" runat="server" >        
+    <div id="dvTopMessage" runat="server">
     </div>
-
     <div class="header2">
         <div class="wrapper">
-        	<div class="hotel-logo">
-			<img src="images/hotel-logo.png" width="133" height="77" />
+            <div class="hotel-logo">
+                <img src="images/hotel-logo.png" width="133" height="77" />
             </div>
             <div class="nav">
-            <dx:ASPxMenu ID="MainMenu" runat="server" Theme="Glass">
-                <Items>
-                    <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
-                    </dx:MenuItem>
-                    <dx:MenuItem Text="Customer">
-                        <Items>
-                            <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Add Customer">
-                            </dx:MenuItem>
-                            <dx:MenuItem NavigateUrl="~/CustomerSearch.aspx" Text="Search Customer">
-                            </dx:MenuItem>
-                        </Items>
-                    </dx:MenuItem>
-                    <dx:MenuItem Text="Staff Management">
-                        <Items>
-                            <dx:MenuItem NavigateUrl="~/Users.aspx" Text="Add Users">
-                            </dx:MenuItem>
-                            <dx:MenuItem NavigateUrl="~/UserSearch.aspx" Text="Search User">
-                            </dx:MenuItem>
-                            <dx:MenuItem NavigateUrl="~/Roles.aspx" Text="Add Role">
-                            </dx:MenuItem>
-                            <dx:MenuItem NavigateUrl="~/RoleSearch.aspx" Text="Search Role">
-                            </dx:MenuItem>
-                        </Items>
-                    </dx:MenuItem>
-                </Items>
-            </dx:ASPxMenu>
+                <dx:ASPxMenu ID="MainMenu" runat="server" Theme="Glass">
+                    <Items>
+                        <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
+                        </dx:MenuItem>
+                        <dx:MenuItem Text="Customer">
+                            <Items>
+                                <dx:MenuItem NavigateUrl="~/Customers.aspx" Text="Add Customer">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/CustomerSearch.aspx" Text="Search Customer">
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
+                        <dx:MenuItem Text="Staff Management">
+                            <Items>
+                                <dx:MenuItem NavigateUrl="~/Users.aspx" Text="Add Users">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/UserSearch.aspx" Text="Search User">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/Roles.aspx" Text="Add Role">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/RoleSearch.aspx" Text="Search Role">
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
+                    </Items>
+                </dx:ASPxMenu>
             </div>
-        <div class="welcomeMsg">
-           <p>Welcome !</p> <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label><p><asp:LinkButton ID="lbLogout" runat="server" onclick="lbLogout_Click">Logout</asp:LinkButton></a></p>
-        </div>
-        
+            <div class="welcomeMsg">
+                <p>
+                    Welcome !</p>
+                <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label><p>
+                    <asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">Logout</asp:LinkButton></a></p>
+            </div>
         </div>
     </div>
     <div class="wrapper">
@@ -69,7 +66,9 @@
     </div>
     </form>
     <div class="footer2">
-	 <p class="txt-center">Copyright &copy; 2013. All rights reserved.     </p>
+        <p class="txt-center">
+            Copyright &copy; 2013. All rights reserved.
+        </p>
     </div>
 </body>
 </html>
