@@ -16,7 +16,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table class="style1">
         <tr>
-            <td>
+            <td height="21">
                 Add Roles
             </td>
         </tr>
@@ -24,7 +24,7 @@
             <td>
                 <table class="style1">
                     <tr>
-                        <td>
+                        <td height="21">
                             Role Name:
                             <asp:HiddenField ID="hdnRoleId" runat="server" />
                         </td>
@@ -43,7 +43,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td height="21">
                             Role Description:
                         </td>
                         <td>
@@ -65,7 +65,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td height="21">
                 Rights List
             </td>
         </tr>
@@ -96,7 +96,8 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td><br />
+
                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" 
                     ValidationGroup="vgSave" Theme="Glass">
                 </dx:ASPxButton>
