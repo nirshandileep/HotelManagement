@@ -40,13 +40,16 @@ Customer Search List
                                 ShowInCustomizationForm="True" VisibleIndex="2">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="Phone" ShowInCustomizationForm="True" 
-                                VisibleIndex="3">
+                                UnboundType="String" VisibleIndex="3">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="CustomerId" 
                                 ShowInCustomizationForm="True" Visible="False" VisibleIndex="0">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn Caption="Guest Type" FieldName="GuestTypeName" 
                                 UnboundType="String" VisibleIndex="4">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn FieldName="Email" UnboundType="String" 
+                                VisibleIndex="5">
                             </dx:GridViewDataTextColumn>
                         </Columns>
                         <Settings ShowFilterRow="True" />
