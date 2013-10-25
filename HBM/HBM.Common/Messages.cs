@@ -11,9 +11,9 @@ namespace HBM.Common
         public static readonly string Update_Success = "Successfully Updated";        
         public static readonly string Delete_Success = "Successfully Deleted";
 
-        public static readonly string Save_Unsuccess = "Can not Save";
-        public static readonly string Update_Unsuccess = "Can not update";
-        public static readonly string Delete_Unsuccess = "Can not delete";
+        public static readonly string Save_Unsuccess = "Cannot Save";
+        public static readonly string Update_Unsuccess = "Cannot Update";
+        public static readonly string Delete_Unsuccess = "Cannot Delete";
 
         public static readonly string Delete_Confirm = "Are you sure you want to delete this record?";
 

@@ -25,6 +25,7 @@ namespace HBM
                     customer.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
                     customer.CompanyId = Master.CompanyId;
                     customer = customer.Select();
+                    customer = customer != null ? customer : new Customer();
                     Session["CustomerObj"] = customer;
                 }
                 else
@@ -62,8 +63,8 @@ namespace HBM
             {
                 if (value.HasValue)
                 {
-                    cmbCCExpiryDateMonth.SelectedItem.Value = value.Value.Month;
-                    cmbCCExpiryDateYear.SelectedItem.Value = value.Value.Year;
+                    cmbCCExpiryDateMonth.Value = value.Value.Month;
+                    cmbCCExpiryDateYear.Value = value.Value.Year;
                 }
             }
         }
@@ -134,7 +135,7 @@ namespace HBM
 
                 if (CustomerObj.BillingCountryId.HasValue)
                 {
-                    cmbBillingCountry.SelectedItem.Value = CustomerObj.BillingCountryId;
+                    cmbBillingCountry.Value = CustomerObj.BillingCountryId;
                 }
 
                 txtBillingPostCode.Text = CustomerObj.BillingPostCode;
@@ -142,7 +143,7 @@ namespace HBM
 
                 if (string.IsNullOrEmpty(CustomerObj.Car) == false)
                 {
-                    cmbCar.SelectedItem.Text = CustomerObj.Car;
+                    cmbCar.Text = CustomerObj.Car;
 
                 }
 
@@ -153,7 +154,7 @@ namespace HBM
 
                 if (CustomerObj.CreditCardTypeId.HasValue)
                 {
-                    cmbCCType.SelectedItem.Value = CustomerObj.CreditCardTypeId.Value;
+                    cmbCCType.Value = CustomerObj.CreditCardTypeId.Value;
                 }
 
                 txtCompanyAddress.Text = CustomerObj.CompanyAddress;
@@ -174,7 +175,7 @@ namespace HBM
 
                 if (CustomerObj.PassportCountryOfIssue.HasValue)
                 {
-                    cmbPassportCountryOfIssue.SelectedItem.Value = CustomerObj.PassportCountryOfIssue;
+                    cmbPassportCountryOfIssue.Value = CustomerObj.PassportCountryOfIssue;
                 }
 
                 if (CustomerObj.PassportExpirationDate.HasValue)
@@ -195,6 +196,7 @@ namespace HBM
         {
             try
             {
+                CustomerObj.CompanyId = Master.CompanyId;
                 CustomerObj.CustomerName = txtCustomerName.Text.Trim();
                 CustomerObj.BillingAddress = txtBillingAddress.Text.Trim();
                 CustomerObj.BillingCity = txtBillingCity.Text.Trim();
@@ -278,10 +280,14 @@ namespace HBM
                         System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
                         ClearForm();
                     }
+                    else
+                    {
+                        System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Unsuccess + "')", true);
+                    }
 
                 }
 
-                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Duplicate_Email + "')", true);
+                //System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Duplicate_Email + "')", true);
 
                 //divErrorMsg.Visible = true;
                 //divErrorMsg.InnerText = errorMSG;

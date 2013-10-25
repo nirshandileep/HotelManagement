@@ -25,14 +25,14 @@
     <form id="form1" runat="server">
 
     <div class="login-win">
-    <h2>Welcome to ABC login</h2>
+    <h2>Welcome to Hotel Management Saystem login</h2>
         <table class="style1">
             <tr>
                 <td width="32%">
                    <label> User Name</label>
                 </td>
                 <td width="68%">
-                    <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" Text="chamila" 
+                    <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" 
                         Theme="Glass">
                         <ValidationSettings Display="Dynamic">
                             <RequiredField IsRequired="True" />
@@ -54,7 +54,7 @@
                 </td>
             </tr>
             <tr id="trMsg" runat="server" visible="false">
-                <td>&nbsp;</td>
+                <td>&nbsp;&nbsp;</td>
                 <td> 
                     <asp:Label ID="lblError" CssClass="error" runat="server" Visible="false"></asp:Label>
                 </td>
