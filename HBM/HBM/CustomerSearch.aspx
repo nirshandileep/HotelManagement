@@ -16,11 +16,12 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <div class="wrapper">
+        <h2>Customer Search List</h2>
         <table class="style1">
             <tr>
                 <td>
-Customer Search List
+                    &nbsp;
                 </td>
             </tr>
 
