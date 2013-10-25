@@ -25,7 +25,7 @@
     <form id="form1" runat="server">
 
     <div class="login-win">
-    <h2 class="noborder">Welcome to ABC login</h2>
+    <h2>Welcome to ABC login</h2>
         <table class="style1">
             <tr>
                 <td width="32%">

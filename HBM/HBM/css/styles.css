@@ -48,10 +48,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#def2f3', end
 	text-align:center;
 	font-size:16px;
 	background:url(../images/gnome_session_logout.png) left bottom no-repeat;
- height: 22px;
+   /* height: 22px;*/
     margin-bottom: 20px;
     padding-left: 27px;
     text-align: left;
+    border:none;
 	}
 .login-win label{
 	width:100px;
