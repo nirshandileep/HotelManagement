@@ -14,14 +14,14 @@
 
     <table class="style1">
         <tr>
-            <td>
+            <td width="20%">
                 <asp:HiddenField ID="hdnUserId" runat="server" />
             </td>
-            <td>&nbsp;
+            <td width="80%">&nbsp;
                 </td>
         </tr>
         <tr>
-            <td height="17">
+            <td height="21">
                 First Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtFirstName" runat="server" Width="170px" MaxLength="50" 
@@ -33,7 +33,7 @@
             </td>
         </tr>
         <tr>
-            <td height="17">
+            <td height="21">
                 Last Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtLastName" runat="server" Width="170px" MaxLength="50">
@@ -44,7 +44,7 @@
             </td>
         </tr>
         <tr>
-            <td height="17">
+            <td height="21">
                 Email</td>
             <td>
                 <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" MaxLength="50">
@@ -58,7 +58,7 @@
         </tr>
        
         <tr>
-            <td height="17">
+            <td height="21">
                 User Name</td>
             <td>
                 <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" MaxLength="50">
@@ -69,7 +69,7 @@
             </td>
         </tr>
         <tr>
-            <td height="17">
+            <td height="21">
                 Password</td>
             <td>
                 <dx:ASPxTextBox ID="txtPassword" runat="server" Password="True" Width="170px" 
@@ -86,7 +86,7 @@
             </td>
         </tr>
         <tr>
-            <td height="17">
+            <td height="21">
                 Confirm Password</td>
             <td>
                 <dx:ASPxTextBox ID="txtConfirmPassword" runat="server" Password="True" 
@@ -118,7 +118,7 @@ else
         </tr>
    
         <tr>
-            <td height="17">
+            <td height="21">
                 Role</td>
             <td>
                 <dx:ASPxComboBox ID="ddlRoles" runat="server" EnableIncrementalFiltering="True" 
@@ -134,7 +134,7 @@ else
             </td>
         </tr>
         <tr>
-            <td>&nbsp;
+            <td height="19">&nbsp;
                 </td>
             <td>&nbsp;
                 </td>
