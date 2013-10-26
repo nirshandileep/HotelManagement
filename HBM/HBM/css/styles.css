@@ -8,6 +8,14 @@ body{
 	
 	}
 h2{
+	width: 88%;
+	color:#405d60;
+	text-shadow:1px 1px #f8fefe;
+	-webkit-text-shadow:1px 1px #f8fefe;
+	-moz-text-shadow:1px 1px #f8fefe;
+	-ms-text-shadow:1px 1px #f8fefe;
+	-o-text-shadow:1px 1px #f8fefe;
+	
 	font-size:20px;
 	padding:8px 8px 8px 12px;
 	border:solid 1px #7eacb1;
@@ -25,8 +33,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#def2f3', end
 
 	margin-bottom:10px;
 	}
+h3{
+	font-size:16px;
+	margin: 20px 20px 10px 1px;
+	color:#153033;
+	}
 .login-win{
-	width:350px;
+	width:375px;
 	height:165px;
 	margin:0 auto;
 	margin-top:15%;
@@ -54,6 +67,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#def2f3', end
     text-align: left;
     border:none;
 	}
+	
 .login-win label{
 	width:100px;
 	display:block;
@@ -169,6 +183,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c3e5', end
 	margin:0 auto;
 
 	}
+.page-wrapper{
+	width:90%;
+	margin:0 auto;
+	overflow:hidden;
+	padding:20px;
+	border:solid 1px #ddd;
+	}	
 .hotel-logo{
 	float:left;
 	width:133px;
@@ -193,7 +214,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c3e5', end
 .header2{
 	margin-bottom:10px;
 	height:80px;
-    background-color:#EEF5F7;
+	background:url(../images/header-back.png)#EEF5F7 left top no-repeat;
+   /* background-color:#EEF5F7;*/
+   border-bottom:solid 1px #E0E0E0;
 }
 	
 .footer2
