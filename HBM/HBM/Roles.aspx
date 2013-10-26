@@ -14,6 +14,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<div class="page-wrapper">
 <h2> Add Roles</h2>
 
     <table class="style1">
@@ -64,7 +65,7 @@
         </tr>
         <tr>
             <td height="21">
-                Rights List
+                <h3>Rights List >></h3>
             </td>
         </tr>
         <tr>
@@ -102,4 +103,5 @@
             </td>
         </tr>
     </table>
+</div>
 </asp:Content>
