@@ -10,7 +10,7 @@ function ShowSuccessMessage(content) {
             wrapper.fadeOut(function () {
                 wrapper.remove();
             });
-        }, 2000);
+        }, 3000);
 }
 
 
@@ -24,5 +24,5 @@ function ShowInfoMessage(content) {
         wrapper.fadeOut(function () {
             wrapper.remove();
         });
-    }, 2000);
+    }, 3000);
 }
