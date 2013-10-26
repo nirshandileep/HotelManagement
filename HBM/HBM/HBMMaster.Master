@@ -61,8 +61,10 @@
         </div>
     </div>
     <div class="wrapper">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
+		<div class="page-wrapper">
+       		 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+       		 </asp:ContentPlaceHolder>
+		</div>	
     </div>
     </form>
     <div class="footer2">
