@@ -25,7 +25,7 @@
     <form id="form1" runat="server">
 
     <div class="login-win">
-    <h2>Welcome to Hotel Management Saystem login</h2>
+    <h2>Welcome to Hotel Management System login</h2>
         <table class="style1">
             <tr>
                 <td width="32%">
