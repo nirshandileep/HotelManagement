@@ -14,7 +14,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="page-wrapper">
+
 <h2> Add Roles</h2>
 
     <table class="style1">
@@ -103,5 +103,5 @@
             </td>
         </tr>
     </table>
-</div>
+
 </asp:Content>
