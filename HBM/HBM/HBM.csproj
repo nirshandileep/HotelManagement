@@ -94,13 +94,13 @@
     <Content Include="Login.aspx" />
     <Content Include="Reservation\Reservation.aspx" />
     <Content Include="Reservation\SearchReservation.aspx" />
-    <Content Include="Roles.aspx" />
-    <Content Include="RoleSearch.aspx" />
     <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
-    <Content Include="Users.aspx" />
-    <Content Include="UserSearch.aspx" />
+    <Content Include="StaffManagement\Roles.aspx" />
+    <Content Include="StaffManagement\RoleSearch.aspx" />
+    <Content Include="StaffManagement\Users.aspx" />
+    <Content Include="StaffManagement\UserSearch.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -198,32 +198,32 @@
     <Compile Include="Reservation\SearchReservation.aspx.designer.cs">
       <DependentUpon>SearchReservation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Roles.aspx.cs">
+    <Compile Include="StaffManagement\Roles.aspx.cs">
       <DependentUpon>Roles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Roles.aspx.designer.cs">
+    <Compile Include="StaffManagement\Roles.aspx.designer.cs">
       <DependentUpon>Roles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RoleSearch.aspx.cs">
+    <Compile Include="StaffManagement\RoleSearch.aspx.cs">
       <DependentUpon>RoleSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RoleSearch.aspx.designer.cs">
+    <Compile Include="StaffManagement\RoleSearch.aspx.designer.cs">
       <DependentUpon>RoleSearch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Users.aspx.cs">
+    <Compile Include="StaffManagement\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Users.aspx.designer.cs">
+    <Compile Include="StaffManagement\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserSearch.aspx.cs">
+    <Compile Include="StaffManagement\UserSearch.aspx.cs">
       <DependentUpon>UserSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserSearch.aspx.designer.cs">
+    <Compile Include="StaffManagement\UserSearch.aspx.designer.cs">
       <DependentUpon>UserSearch.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

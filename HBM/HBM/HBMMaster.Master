@@ -39,13 +39,13 @@
                         </dx:MenuItem>
                         <dx:MenuItem Text="Staff Management">
                             <Items>
-                                <dx:MenuItem NavigateUrl="~/Users.aspx" Text="Add Users">
+                                <dx:MenuItem NavigateUrl="~/StaffManagement/Users.aspx" Text="Add Users">
                                 </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/UserSearch.aspx" Text="Search User">
+                                <dx:MenuItem NavigateUrl="~/StaffManagement/UserSearch.aspx" Text="Search User">
                                 </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/Roles.aspx" Text="Add Role">
+                                <dx:MenuItem NavigateUrl="~/StaffManagement/Roles.aspx" Text="Add Role">
                                 </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/RoleSearch.aspx" Text="Search Role">
+                                <dx:MenuItem NavigateUrl="~/StaffManagement/RoleSearch.aspx" Text="Search Role">
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
