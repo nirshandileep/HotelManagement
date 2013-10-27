@@ -22,10 +22,10 @@ namespace HBM
                 {
                     this.hdnRoleId.Value = Request.QueryString["RolesId"];
                     this.DisplayData();
-                }
-
-                this.LoadRights();
+                }                
             }
+
+            this.LoadRights();
 
         }
 

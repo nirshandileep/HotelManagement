@@ -9,22 +9,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <h2>Search Users</h2>
-    <table class="style1">
+    <table>
        
         <tr>
             <td>
                 <dx:ASPxGridView ID="gvUsers" runat="server" Width="100%" AutoGenerateColumns="False"
-                    KeyFieldName="UsersId" Theme="Glass">
+                    KeyFieldName="UsersId" Theme="Glass" >
                     <Columns>
-                        <dx:GridViewDataTextColumn Caption="UserId" FieldName="UserId" VisibleIndex="0" Visible="False">
+                        <dx:GridViewDataTextColumn Caption="UserId" FieldName="UserId" VisibleIndex="0" Visible="False" Width="100px">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="UserName" FieldName="UserName" VisibleIndex="1">
+                        <dx:GridViewDataTextColumn Caption="User Name" FieldName="UserName" VisibleIndex="1" Width="100px">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="FirstName" FieldName="FirstName" VisibleIndex="2">
+                        <dx:GridViewDataTextColumn Caption="First Name" FieldName="FirstName" VisibleIndex="2" Width="100px">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="LastName" FieldName="LastName">
+                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Last Name" FieldName="LastName" Width="100px">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="EmailAddress" FieldName="EmailAddress" VisibleIndex="4">
+                        <dx:GridViewDataTextColumn Caption="Email Address" FieldName="EmailAddress" VisibleIndex="4" Width="100px">
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="Edit">
                             <DataItemTemplate>
