@@ -25,7 +25,7 @@
                 <img src="Images/hotel-logo.png" width="133" height="77" alt="logo" />
             </div>
             <div class="nav">
-                <dx:ASPxMenu ID="MainMenu" runat="server" Theme="Glass">
+                <dx:ASPxMenu ID="MainMenu" runat="server" >
                     <Items>
                         <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
                         </dx:MenuItem>

@@ -1,8 +1,0 @@
-<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-<%@ Register TagPrefix="dx" Namespace="DevExpress.Charts" Assembly="DevExpress.Charts.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-<%@ Register TagPrefix="dx" namespace="DevExpress.XtraCharts" assembly="DevExpress.XtraCharts.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-<%@ Register TagPrefix="dx" namespace="DevExpress.XtraCharts.Web" assembly="DevExpress.XtraCharts.v12.2.Web, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
-
-<dx:WebChartControl runat="server" CssPostfix="HBMTheme" CssFilePath="~/App_Themes/HBMTheme/{0}/styles.css" >
-  
-</dx:WebChartControl>
