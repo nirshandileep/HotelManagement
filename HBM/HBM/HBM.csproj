@@ -76,6 +76,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ControlPanel\Department.aspx" />
+    <Content Include="ControlPanel\Gaurantee.aspx" />
+    <Content Include="ControlPanel\RatePlan.aspx" />
+    <Content Include="ControlPanel\Rooms.aspx" />
+    <Content Include="ControlPanel\Source.aspx" />
     <Content Include="css\Messages.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\styles.css" />
@@ -87,6 +92,8 @@
     <Content Include="Images\hotel-logo.png" />
     <Content Include="JS\HBMCommon.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Reservation\Reservation.aspx" />
+    <Content Include="Reservation\SearchReservation.aspx" />
     <Content Include="Roles.aspx" />
     <Content Include="RoleSearch.aspx" />
     <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
@@ -105,6 +112,36 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlPanel\Department.aspx.cs">
+      <DependentUpon>Department.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\Department.aspx.designer.cs">
+      <DependentUpon>Department.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\Gaurantee.aspx.cs">
+      <DependentUpon>Gaurantee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\Gaurantee.aspx.designer.cs">
+      <DependentUpon>Gaurantee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\RatePlan.aspx.cs">
+      <DependentUpon>RatePlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\RatePlan.aspx.designer.cs">
+      <DependentUpon>RatePlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\Rooms.aspx.cs">
+      <DependentUpon>Rooms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\Rooms.aspx.designer.cs">
+      <DependentUpon>Rooms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\Source.aspx.cs">
+      <DependentUpon>Source.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\Source.aspx.designer.cs">
+      <DependentUpon>Source.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customers.aspx.cs">
       <DependentUpon>Customers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,6 +179,20 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation\Reservation.aspx.cs">
+      <DependentUpon>Reservation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservation\Reservation.aspx.designer.cs">
+      <DependentUpon>Reservation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\SearchReservation.aspx.cs">
+      <DependentUpon>SearchReservation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservation\SearchReservation.aspx.designer.cs">
+      <DependentUpon>SearchReservation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Roles.aspx.cs">
       <DependentUpon>Roles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -339,6 +390,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
