@@ -52,10 +52,12 @@
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-            <tr id="trMsg" runat="server" visible="false">
+            <tr  id="trMsg" runat="server" visible="false">
                 <td>&nbsp;&nbsp;</td>
                 <td> 
+                <div>
                     <asp:Label ID="lblError" CssClass="error" runat="server" Visible="false"></asp:Label>
+                    </div>
                 </td>
             </tr>
             <tr>
