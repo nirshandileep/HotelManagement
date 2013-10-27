@@ -55,7 +55,7 @@ namespace HBM.Common
         #region Constants
 
         public static readonly string CONST_DEFAULTBACKPAGE = "Dashboard.aspx";
-        public static readonly string CONST_LOGOUT = "Login.aspx";
+        public static readonly string CONST_LOGOUT = "~/Login.aspx";
 
         #endregion
     }

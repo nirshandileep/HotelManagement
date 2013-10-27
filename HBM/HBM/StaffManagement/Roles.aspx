@@ -45,8 +45,7 @@
                             Role Description:
                         </td>
                         <td>
-                            <dx:ASPxTextBox ID="txtRoleDescription" runat="server" Width="170px" MaxLength="50"
-                                Theme="Glass">
+                            <dx:ASPxTextBox ID="txtRoleDescription" runat="server" Width="170px" MaxLength="50">
                                 <ValidationSettings Display="Dynamic" ValidationGroup="vgSave">
                                     <RequiredField IsRequired="True" />
                                 </ValidationSettings>
@@ -71,15 +70,18 @@
         <tr>
             <td>
                 <dx:ASPxGridView ID="gvRights" runat="server" Width="100%" AutoGenerateColumns="False"
-                    KeyFieldName="RightId" Theme="Glass">
+                    KeyFieldName="RightId">
                     <Columns>
                         <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="0" Width="100px">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn Caption="Module" FieldName="ModuleName" VisibleIndex="1" Width="150px">
+                        <dx:GridViewDataTextColumn Caption="Module" FieldName="ModuleName" VisibleIndex="1"
+                            Width="150px">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Right Name" FieldName="RightName" VisibleIndex="2" Width="200px">
+                        <dx:GridViewDataTextColumn Caption="Right Name" FieldName="RightName" VisibleIndex="2"
+                            Width="200px">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Description" FieldName="RightDescription" VisibleIndex="3" Width="400px">
+                        <dx:GridViewDataTextColumn Caption="Description" FieldName="RightDescription" VisibleIndex="3"
+                            Width="400px">
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="RightId" FieldName="RightId" VisibleIndex="5"
                             Visible="False">
@@ -94,8 +96,7 @@
         <tr>
             <td>
                 <br />
-                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave"
-                    Theme="Glass">
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave">
                 </dx:ASPxButton>
             </td>
         </tr>
