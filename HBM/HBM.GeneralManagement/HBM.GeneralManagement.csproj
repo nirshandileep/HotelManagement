@@ -40,12 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business Entities\Departments.cs" />
+    <Compile Include="Business Entities\Gaurantee.cs" />
+    <Compile Include="Business Entities\RatePlan.cs" />
+    <Compile Include="Business Entities\Rooms.cs" />
+    <Compile Include="Business Entities\Source.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GauranteeDAO.cs" />
+    <Compile Include="Services\DepartmentsDAO.cs" />
+    <Compile Include="Services\RatePlanDAO.cs" />
+    <Compile Include="Services\RoomsDAO.cs" />
+    <Compile Include="Services\SourceDAO.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Business Entities\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
