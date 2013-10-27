@@ -84,8 +84,8 @@
     <Content Include="css\Messages.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\styles.css" />
-    <Content Include="Customers.aspx" />
-    <Content Include="CustomerSearch.aspx" />
+    <Content Include="Customer\Customers.aspx" />
+    <Content Include="Customer\CustomerSearch.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Images\error.jpg" />
     <Content Include="Images\gnome_session_logout.png" />
@@ -147,18 +147,16 @@
     <Compile Include="ControlPanel\Source.aspx.designer.cs">
       <DependentUpon>Source.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Customers.aspx.cs">
-      <DependentUpon>Customers.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Customers.aspx.designer.cs">
+    <Compile Include="Customer\Customers.aspx.cs">
       <DependentUpon>Customers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CustomerSearch.aspx.cs">
+    <Compile Include="Customer\Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerSearch.aspx.cs">
       <DependentUpon>CustomerSearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustomerSearch.aspx.designer.cs">
+    <Compile Include="Customer\CustomerSearch.aspx.designer.cs">
       <DependentUpon>CustomerSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
