@@ -13,15 +13,6 @@ namespace HBM {
     public partial class Customers {
         
         /// <summary>
-        /// divErrorMsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divErrorMsg;
-        
-        /// <summary>
         /// txtCustomerName control.
         /// </summary>
         /// <remarks>

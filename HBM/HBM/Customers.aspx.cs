@@ -163,7 +163,11 @@ namespace HBM
                 txtDriveLicense.Text = CustomerObj.DriverLicense;
                 txtEmail.Text = CustomerObj.Email;
                 txtFax.Text = CustomerObj.Fax;
-                cmbGuestType.Value = CustomerObj.GuestTypeId;
+
+                if (CustomerObj.GuestTypeId>0)
+                {
+                    cmbGuestType.Value = CustomerObj.GuestTypeId;
+                }
 
                 if (string.IsNullOrEmpty(CustomerObj.Gender) == false)
                 {

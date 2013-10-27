@@ -21,8 +21,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="divErrorMsg" runat="server" visible="false">
-    </div>
     <div class="wrapper">
     <h2>Add Customer</h2>
     <table class="style1 customers-tbl">
