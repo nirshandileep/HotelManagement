@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBM.UserManagement", "HBM.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBM.RoomManagement", "HBM.RoomManagement\HBM.RoomManagement.csproj", "{A75A22F0-F05B-4213-B549-784082EDB419}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBM.GeneralManagement", "HBM.GeneralManagement\HBM.GeneralManagement.csproj", "{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +121,16 @@ Global
 		{A75A22F0-F05B-4213-B549-784082EDB419}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A75A22F0-F05B-4213-B549-784082EDB419}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A75A22F0-F05B-4213-B549-784082EDB419}.Release|x86.ActiveCfg = Release|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
