@@ -114,30 +114,35 @@
   <ItemGroup>
     <Compile Include="ControlPanel\Department.aspx.cs">
       <DependentUpon>Department.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ControlPanel\Department.aspx.designer.cs">
       <DependentUpon>Department.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\Gaurantee.aspx.cs">
       <DependentUpon>Gaurantee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ControlPanel\Gaurantee.aspx.designer.cs">
       <DependentUpon>Gaurantee.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\RatePlan.aspx.cs">
       <DependentUpon>RatePlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ControlPanel\RatePlan.aspx.designer.cs">
       <DependentUpon>RatePlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\Rooms.aspx.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ControlPanel\Rooms.aspx.designer.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\Source.aspx.cs">
       <DependentUpon>Source.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ControlPanel\Source.aspx.designer.cs">
       <DependentUpon>Source.aspx</DependentUpon>

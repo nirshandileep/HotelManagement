@@ -49,6 +49,30 @@
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
+                        <dx:MenuItem Text="Reservation">
+                            <Items>
+                                <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" 
+                                    Text="Add Reservation">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" 
+                                    Text="Search Reservation">
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
+                        <dx:MenuItem Text="Control Panel">
+                            <Items>
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/Department.aspx" Text="Department">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/Gaurantee.aspx" Text="Gaurantee">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/RatePlan.aspx" Text="Rate Plan">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/Rooms.aspx" Text="Rooms">
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/Source.aspx" Text="Source">
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
                     </Items>
                 </dx:ASPxMenu>
             </div>
