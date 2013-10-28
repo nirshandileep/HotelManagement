@@ -76,6 +76,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ControlPanel\BedType.aspx" />
     <Content Include="ControlPanel\Department.aspx" />
     <Content Include="ControlPanel\Gaurantee.aspx" />
     <Content Include="ControlPanel\RatePlan.aspx" />
@@ -112,6 +113,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlPanel\BedType.aspx.cs">
+      <DependentUpon>BedType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\BedType.aspx.designer.cs">
+      <DependentUpon>BedType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ControlPanel\Department.aspx.cs">
       <DependentUpon>Department.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
