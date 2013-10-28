@@ -11,6 +11,34 @@ namespace HBM.GeneralManagement
 {
     public class BedTypeDAO
     {
+
+        public bool InsertUpdateDelete(DataSet ds)
+        {
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand commandInsert = db.GetStoredProcCommand("usp_BedTypeInsert");
+
+            db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, "CompanyId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@BedTypeName", DbType.String,  "BedTypeName", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@BedTypeDescription", DbType.String, "BedTypeDescription", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32,"CreatedUser", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
+            
+            DbCommand commandUpdate = db.GetStoredProcCommand("usp_BedTypeUpdate");
+            db.AddInParameter(commandUpdate, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@BedTypeName", DbType.String, "BedTypeName", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@BedTypeDescription", DbType.String, "BedTypeDescription", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32,"StatusId", DataRowVersion.Current);
+
+            DbCommand commandDelete = db.GetStoredProcCommand("usp_BedTypeDelete");
+            db.AddInParameter(commandDelete, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
+
+             db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete,UpdateBehavior.Continue);
+
+            return true;
+        }
+
         public bool Insert(BedType bedType)
         {
 
@@ -57,9 +85,9 @@ namespace HBM.GeneralManagement
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_BedTypeDelete");
-            
+
             db.AddInParameter(command, "@BedTypeId", DbType.Int32, bedType.BedTypeId);
-            
+
             db.ExecuteNonQuery(command);
 
             return true;
@@ -69,8 +97,8 @@ namespace HBM.GeneralManagement
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_BedTypeSelectAll");      
-            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, bedType.CompanyId);           
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_BedTypeSelectAll");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, bedType.CompanyId);
 
             return db.ExecuteDataSet(dbCommand);
 

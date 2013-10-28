@@ -58,5 +58,13 @@ namespace HBM.Common
         public static readonly string CONST_LOGOUT = "~/Login.aspx";
 
         #endregion
+
+        #region Sessions
+
+        public static readonly string SESSION_BEDTYPES = "BedTypes";
+
+
+
+        #endregion
     }
 }

@@ -24,6 +24,21 @@ namespace HBM.GeneralManagement
 
         #region Methods
 
+        public bool Save(DataSet ds)
+        {
+            bool result = false;
+            try
+            {
+                result = (new BedTypeDAO()).InsertUpdateDelete(ds);
+            }
+            catch (System.Exception ex)
+            {
+                result = false;
+                throw ex;
+            }
+            return result;
+        }
+
 
         public bool Save()
         {
@@ -45,7 +60,7 @@ namespace HBM.GeneralManagement
                 throw ex;
             }
             return result;
-        }               
+        }
 
         public bool Delete()
         {

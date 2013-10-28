@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BedType.aspx.cs" Inherits="HBM.ControlPanel.BedType" %>
-
+<%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 
@@ -36,8 +36,9 @@
             <tr>
                 <td>
                     <dx:ASPxGridView ID="gvBedTypes" runat="server" AutoGenerateColumns="False" 
-            KeyFieldName="BedTypeId" oninitnewrow="gvBedTypes_InitNewRow" 
-                        onrowinserting="gvBedTypes_RowInserting">
+            KeyFieldName="BedTypeId" 
+                        onrowinserting="gvBedTypes_RowInserting" 
+                        onrowdeleting="gvBedTypes_RowDeleting" onrowupdating="gvBedTypes_RowUpdating">
             <Columns>
                 <dx:GridViewCommandColumn VisibleIndex="2">
                     <DeleteButton Visible="True">
