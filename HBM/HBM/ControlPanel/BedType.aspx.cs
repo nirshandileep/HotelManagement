@@ -13,13 +13,24 @@ namespace HBM.ControlPanel
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            try
+            {
+                this.LoadBedTypes();
+            }
+            catch (System.Exception)
+            {
+                
+                
+            }
         }
 
-        protected void LoadData()
+        protected void LoadBedTypes()
         {
             try
             {
-
+                GenMan.BedType bedType = new GenMan.BedType();
+                gvBedTypes.DataSource= bedType.SelectAllDataset();
+                gvBedTypes.DataBind();
                 
             }
             catch (System.Exception)

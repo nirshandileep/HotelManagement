@@ -62,6 +62,8 @@
                         </dx:MenuItem>
                         <dx:MenuItem Text="Control Panel">
                             <Items>
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/BedType.aspx" Text="Bed Types">
+                                </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/Department.aspx" Text="Department">
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/Gaurantee.aspx" Text="Gaurantee">

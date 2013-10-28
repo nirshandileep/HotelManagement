@@ -12,11 +12,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>    
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
+        
+    
+        <table class="style1">
+            <tr>
+                <td>
+                    Bed Types List</td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <dx:ASPxGridView ID="gvBedTypes" runat="server" AutoGenerateColumns="False" 
             KeyFieldName="BedTypeId">
             <Columns>
                 <dx:GridViewCommandColumn VisibleIndex="2">
@@ -29,12 +48,25 @@
                 </dx:GridViewCommandColumn>
                 <dx:GridViewDataTextColumn Caption="Bed Type" FieldName="BedTypeName" 
                     VisibleIndex="0">
+                    <PropertiesTextEdit>
+                        <ValidationSettings>
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                        </ValidationSettings>
+                    </PropertiesTextEdit>
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn Caption="Description" FieldName="BedTypeDescription" 
                     VisibleIndex="1">
+                    <PropertiesTextEdit>
+                        <ValidationSettings>
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                        </ValidationSettings>
+                    </PropertiesTextEdit>
                 </dx:GridViewDataTextColumn>
             </Columns>
-        </dx:ASPxGridView>
+        </dx:ASPxGridView></td>
+            </tr>
+        </table>
+        
     
     </div>
     </form>
