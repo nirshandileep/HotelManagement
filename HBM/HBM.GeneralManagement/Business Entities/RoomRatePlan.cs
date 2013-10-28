@@ -22,7 +22,7 @@ namespace HBM.RoomManagement
         #endregion
 
         #region Methods
-                
+
         public bool Save()
         {
             bool result = false;
@@ -72,7 +72,7 @@ namespace HBM.RoomManagement
         {
             return HBM.Utility.Generic.GetAll<RoomRatePlan>(0);
         }
-        
+
         #endregion
     }
 }
