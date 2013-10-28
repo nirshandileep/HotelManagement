@@ -284,6 +284,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 {
     border:none;
 }
-
-
-	
+#ContentPlaceHolder1_gvCustomers_DXMainTable, #ContentPlaceHolder1_gvUsers{
+	width:900px !important;
+	}
+.w875{
+	width:875px;
+}
