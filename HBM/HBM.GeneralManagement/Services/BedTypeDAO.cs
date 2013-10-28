@@ -7,13 +7,10 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
 using HBM.Common;
 
-
-namespace HBM.RoomManagement
+namespace HBM.GeneralManagement
 {
     public class BedTypeDAO
     {
-
-
         public bool Insert(BedType bedType)
         {
 
@@ -72,15 +69,13 @@ namespace HBM.RoomManagement
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_BedTypeSelectAll");
-
-            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, bedType.CompanyId);            
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_BedTypeSelectAll");      
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, bedType.CompanyId);           
 
             return db.ExecuteDataSet(dbCommand);
 
 
         }
-
 
     }
 }

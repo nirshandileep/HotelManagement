@@ -255,6 +255,10 @@
       <Project>{F29E7344-3AD6-4042-A4DD-FBCADA872B21}</Project>
       <Name>HBM.Exception</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HBM.GeneralManagement\HBM.GeneralManagement.csproj">
+      <Project>{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}</Project>
+      <Name>HBM.GeneralManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HBM.UserManagement\HBM.UserManagement.csproj">
       <Project>{EA380B34-3C84-4AC6-A50B-7F7B53D9757E}</Project>
       <Name>HBM.UserManagement</Name>

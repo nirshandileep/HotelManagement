@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace HBM.RoomManagement
+namespace HBM.GeneralManagement
 {
     /// <summary>
     /// Keep this class simple as possible

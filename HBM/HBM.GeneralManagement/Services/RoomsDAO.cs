@@ -7,7 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
 using HBM.Common;
 
-namespace HBM.RoomManagement
+namespace HBM.GeneralManagement
 {
     public class RoomDAO
     {

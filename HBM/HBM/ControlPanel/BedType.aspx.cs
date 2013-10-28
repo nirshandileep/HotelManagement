@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using GenMan = HBM.GeneralManagement;
 
 namespace HBM.ControlPanel
 {
@@ -12,6 +13,20 @@ namespace HBM.ControlPanel
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void LoadData()
+        {
+            try
+            {
+
+                
+            }
+            catch (System.Exception)
+            {
+                
+                
+            }
         }
     }
 }
