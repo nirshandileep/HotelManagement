@@ -18,10 +18,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper">
         <h2>Customer Search List</h2>
-        <table class="style1">
+        <table class="style1" width="905">
             <tr>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
             </tr>
 
