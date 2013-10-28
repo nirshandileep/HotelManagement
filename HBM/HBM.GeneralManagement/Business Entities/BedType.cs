@@ -24,7 +24,6 @@ namespace HBM.GeneralManagement
 
         #region Methods
 
-        #region Save
 
         public bool Save()
         {
@@ -46,12 +45,7 @@ namespace HBM.GeneralManagement
                 throw ex;
             }
             return result;
-        }
-
-        #endregion
-
-
-        #region Delete
+        }               
 
         public bool Delete()
         {
@@ -70,9 +64,6 @@ namespace HBM.GeneralManagement
             }
             return result;
         }
-
-        #endregion
-
 
         public BedType Select()
         {

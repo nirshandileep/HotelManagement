@@ -36,7 +36,8 @@
             <tr>
                 <td>
                     <dx:ASPxGridView ID="gvBedTypes" runat="server" AutoGenerateColumns="False" 
-            KeyFieldName="BedTypeId">
+            KeyFieldName="BedTypeId" oninitnewrow="gvBedTypes_InitNewRow" 
+                        onrowinserting="gvBedTypes_RowInserting">
             <Columns>
                 <dx:GridViewCommandColumn VisibleIndex="2">
                     <DeleteButton Visible="True">
@@ -48,7 +49,7 @@
                 </dx:GridViewCommandColumn>
                 <dx:GridViewDataTextColumn Caption="Bed Type" FieldName="BedTypeName" 
                     VisibleIndex="0">
-                    <PropertiesTextEdit>
+                    <PropertiesTextEdit MaxLength="50">
                         <ValidationSettings>
                             <RequiredField ErrorText="Required" IsRequired="True" />
                         </ValidationSettings>
@@ -56,7 +57,7 @@
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn Caption="Description" FieldName="BedTypeDescription" 
                     VisibleIndex="1">
-                    <PropertiesTextEdit>
+                    <PropertiesTextEdit MaxLength="100">
                         <ValidationSettings>
                             <RequiredField ErrorText="Required" IsRequired="True" />
                         </ValidationSettings>
