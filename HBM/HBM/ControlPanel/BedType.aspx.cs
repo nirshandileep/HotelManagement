@@ -21,8 +21,10 @@ namespace HBM.ControlPanel
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            try
-            {
+            try 
+            {                   
+
+                gvBedTypes.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
                 this.LoadBedTypes();
                 dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["BedTypeId"] };
                 Session[Constants.SESSION_BEDTYPES] = dsData;
