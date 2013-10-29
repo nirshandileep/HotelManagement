@@ -35,6 +35,21 @@ namespace HBM.GeneralManagement
 
         #region Save
 
+        public bool Save(DataSet ds)
+        {
+            bool result = false;
+            try
+            {
+                result = (new RoomDAO()).InsertUpdateDelete(ds);
+            }
+            catch (System.Exception ex)
+            {
+                result = false;
+                throw ex;
+            }
+            return result;
+        }
+
         public bool Save()
         {
             bool result = false;

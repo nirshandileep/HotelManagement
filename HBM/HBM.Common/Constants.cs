@@ -64,6 +64,8 @@ namespace HBM.Common
         public static readonly string SESSION_BEDTYPES = "BedTypes";
         public static readonly string SESSION_DEPARTMENT = "Departments";
         public static readonly string SESSION_GAURANTEE = "Gaurantee";
+        public static readonly string SESSION_ROOMS = "Rooms";
+
 
 
 
