@@ -55,6 +55,7 @@
     <Compile Include="Business Entities\BedType.cs" />
     <Compile Include="Business Entities\Departments.cs" />
     <Compile Include="Business Entities\Gaurantee.cs" />
+    <Compile Include="Business Entities\RatePlan.cs" />
     <Compile Include="Business Entities\RoomRatePlan.cs" />
     <Compile Include="Business Entities\Rooms.cs" />
     <Compile Include="Business Entities\Source.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Services\BedTypeDAO.cs" />
     <Compile Include="Services\GauranteeDAO.cs" />
     <Compile Include="Services\DepartmentsDAO.cs" />
+    <Compile Include="Services\RatePlanDAO.cs" />
     <Compile Include="Services\RoomRatePlanDAO.cs" />
     <Compile Include="Services\RoomsDAO.cs" />
     <Compile Include="Services\SourceDAO.cs" />

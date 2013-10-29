@@ -11,6 +11,35 @@ namespace HBM.GeneralManagement
 {
     public class RoomRatePlanDAO
     {
+
+        public bool InsertUpdateDelete(DataSet ds)
+        {
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand commandInsert = db.GetStoredProcCommand("usp_RoomRatePlanInsert");
+
+            db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, "CompanyId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@BedTypeName", DbType.String, "BedTypeName", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@BedTypeDescription", DbType.String, "BedTypeDescription", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
+
+            DbCommand commandUpdate = db.GetStoredProcCommand("usp_RoomRatePlanUpdate");
+            db.AddInParameter(commandUpdate, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@BedTypeName", DbType.String, "BedTypeName", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@BedTypeDescription", DbType.String, "BedTypeDescription", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
+
+            DbCommand commandDelete = db.GetStoredProcCommand("usp_RoomRatePlanDelete");
+            db.AddInParameter(commandDelete, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
+
+            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, UpdateBehavior.Transactional);
+
+            return true;
+        }
+
+
         public bool Insert(RoomRatePlan roomRatePlan)
         {
 

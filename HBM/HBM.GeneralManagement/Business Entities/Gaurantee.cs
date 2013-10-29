@@ -23,6 +23,20 @@ namespace HBM.GeneralManagement
 
         #region Methods
 
+        public bool Save(DataSet ds)
+        {
+            bool result = false;
+            try
+            {
+                result = (new GauranteeDAO()).InsertUpdateDelete(ds);
+            }
+            catch (System.Exception ex)
+            {
+                result = false;
+                throw ex;
+            }
+            return result;
+        }
 
         public bool Save()
         {
