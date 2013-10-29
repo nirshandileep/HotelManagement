@@ -87,7 +87,7 @@ namespace HBM.GeneralManagement
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_BedTypeSelectAll");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_DepartmentSelectAll");
             db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, department.CompanyId);
 
             return db.ExecuteDataSet(dbCommand);

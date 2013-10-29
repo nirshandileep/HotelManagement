@@ -62,6 +62,8 @@ namespace HBM.Common
         #region Sessions
 
         public static readonly string SESSION_BEDTYPES = "BedTypes";
+        public static readonly string SESSION_DEPARTMENT = "Departments";
+
 
 
 
