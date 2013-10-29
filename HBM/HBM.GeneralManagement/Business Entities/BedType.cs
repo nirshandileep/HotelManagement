@@ -39,7 +39,6 @@ namespace HBM.GeneralManagement
             return result;
         }
 
-
         public bool Save()
         {
             bool result = false;
