@@ -34,7 +34,7 @@ namespace HBM.GeneralManagement
             DbCommand commandDelete = db.GetStoredProcCommand("usp_BedTypeDelete");
             db.AddInParameter(commandDelete, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
 
-             db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete,UpdateBehavior.Continue);
+             db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete,UpdateBehavior.Transactional);
 
             return true;
         }
