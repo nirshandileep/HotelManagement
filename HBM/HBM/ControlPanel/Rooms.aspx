@@ -28,7 +28,7 @@
                         KeyFieldName="RoomId" onrowdeleting="gvRooms_RowDeleting" 
                         onrowinserting="gvRooms_RowInserting" onrowupdating="gvRooms_RowUpdating">
                         <Columns>
-                            <dx:GridViewDataTextColumn Caption="Room Name" VisibleIndex="0">
+                            <dx:GridViewDataTextColumn Caption="Room Name" FieldName="" VisibleIndex="0">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="7">
                                 <EditButton Visible="True">
