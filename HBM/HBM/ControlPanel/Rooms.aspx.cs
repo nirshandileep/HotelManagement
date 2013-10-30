@@ -9,13 +9,16 @@ using DevExpress.Web.ASPxGridView;
 using System.Data;
 using HBM.Common;
 using System.Collections;
+using DevExpress.Web.ASPxEditors;
 
 namespace HBM.Reservation
 {
     public partial class Rooms : System.Web.UI.Page
     {
         DataSet dsData = new DataSet();
+        DataSet dsBedTypes = new DataSet();
         GenMan.Room rooms = new GenMan.Room();
+        GenMan.BedType bedTypes = new GenMan.BedType();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +28,11 @@ namespace HBM.Reservation
                 this.LoadRooms();
                 dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["RoomId"] };
                 Session[Constants.SESSION_ROOMS] = dsData;
+
+                bedTypes.CompanyId = 1;
+                dsBedTypes = bedTypes.SelectAllDataset();
+                dsBedTypes.Tables[0].TableName = "BedType";
+
             }
             catch (System.Exception)
             {
@@ -49,6 +57,8 @@ namespace HBM.Reservation
 
             }
         }
+
+
 
         protected void gvRooms_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
@@ -125,6 +135,19 @@ namespace HBM.Reservation
 
 
 
+        }
+
+        protected void gvRooms_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+            if (e.Column.FieldName != "BedTypeId") return;
+
+            ASPxComboBox combo = e.Editor as ASPxComboBox;
+
+            combo.DataSource = dsBedTypes;
+            combo.ValueField = "BedTypeId";
+            combo.ValueType = typeof(System.Int32);
+            combo.TextField = "BedTypeName";
+            combo.DataBindItems();
         }
     }
 }

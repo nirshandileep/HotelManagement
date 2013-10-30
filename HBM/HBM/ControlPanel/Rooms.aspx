@@ -26,7 +26,9 @@
             <tr>
                 <td>
                     <dx:ASPxGridView ID="gvRooms" runat="server" AutoGenerateColumns="False" KeyFieldName="RoomId"
-                        OnRowDeleting="gvRooms_RowDeleting" OnRowInserting="gvRooms_RowInserting" OnRowUpdating="gvRooms_RowUpdating">
+                        OnRowDeleting="gvRooms_RowDeleting" OnRowInserting="gvRooms_RowInserting" 
+                        OnRowUpdating="gvRooms_RowUpdating" 
+                        oncelleditorinitialize="gvRooms_CellEditorInitialize">
                         <Columns>
                             <dx:GridViewDataTextColumn Caption="Room Name" FieldName="RoomName" VisibleIndex="0">
                                 <PropertiesTextEdit>
@@ -35,7 +37,7 @@
                                     </ValidationSettings>
                                 </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewCommandColumn VisibleIndex="8">
+                            <dx:GridViewCommandColumn VisibleIndex="9">
                                 <EditButton Visible="True">
                                 </EditButton>
                                 <NewButton Visible="True">
@@ -86,13 +88,11 @@
                             </dx:GridViewDataSpinEditColumn>
                             <dx:GridViewDataCheckColumn Caption="Allow Smoking" VisibleIndex="7" FieldName="SmokingAllow">
                             </dx:GridViewDataCheckColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Bed Type" FieldName="BedTypeId" VisibleIndex="3">
-                                <PropertiesSpinEdit DisplayFormatString="g">
-                                    <ValidationSettings>
-                                        <RequiredField ErrorText="Required" IsRequired="True" />
-                                    </ValidationSettings>
-                                </PropertiesSpinEdit>
-                            </dx:GridViewDataSpinEditColumn>
+                            
+                            <dx:GridViewDataComboBoxColumn Caption="Bed Type" FieldName="BedTypeId" 
+                                VisibleIndex="3">
+                            </dx:GridViewDataComboBoxColumn>
+                            
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />
                         <SettingsText ConfirmDelete="" />
