@@ -26,28 +26,16 @@ namespace HBM.Reservation
             gvRooms.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
 
             this.LoadRooms();
-            dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["RoomId"] };                             
-
-            Session[Constants.SESSION_ROOMS] = dsData;
-
-            bedTypes.CompanyId = 1;
-            dsBedTypes = bedTypes.SelectAllDataset();
-            dsBedTypes.Tables[0].TableName = "BedType";
-            ((GridViewDataComboBoxColumn)gvRooms.Columns["BedTypeId"]).PropertiesComboBox.DataSource = dsBedTypes.Tables[0];
-
+            this.LoadBedType();        
          
 
         }
-
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-
                 gvRooms.DataBind();
-
             }
             catch (System.Exception)
             {
@@ -63,10 +51,10 @@ namespace HBM.Reservation
                 rooms.CompanyId = 1;
                 dsData = rooms.SelectAllDataset();
                 gvRooms.DataMember = dsData.Tables[0].TableName;
-                gvRooms.DataSource = dsData.Tables[0]; 
-            
+                gvRooms.DataSource = dsData.Tables[0];
 
-
+                dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["RoomId"] };
+                Session[Constants.SESSION_ROOMS] = dsData;
             }
             catch (System.Exception)
             {
@@ -75,7 +63,22 @@ namespace HBM.Reservation
             }
         }
 
+        protected void LoadBedType()
+        {
+            try
+            {
+                bedTypes.CompanyId = 1;
+                dsBedTypes = bedTypes.SelectAllDataset();
+                dsBedTypes.Tables[0].TableName = "BedType";
+                ((GridViewDataComboBoxColumn)gvRooms.Columns["BedTypeId"]).PropertiesComboBox.DataSource = dsBedTypes.Tables[0];
 
+            }
+            catch (System.Exception)
+            {
+
+
+            }
+        }   
 
         protected void gvRooms_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
