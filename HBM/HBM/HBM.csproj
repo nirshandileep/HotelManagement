@@ -82,6 +82,7 @@
     <Content Include="ControlPanel\RatePlan.aspx" />
     <Content Include="ControlPanel\Rooms.aspx" />
     <Content Include="ControlPanel\Source.aspx" />
+    <Content Include="ControlPanel\SwitchBoard.aspx" />
     <Content Include="css\Messages.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\styles.css" />
@@ -154,6 +155,13 @@
     </Compile>
     <Compile Include="ControlPanel\Source.aspx.designer.cs">
       <DependentUpon>Source.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\SwitchBoard.aspx.cs">
+      <DependentUpon>SwitchBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\SwitchBoard.aspx.designer.cs">
+      <DependentUpon>SwitchBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\Customers.aspx.cs">
       <DependentUpon>Customers.aspx</DependentUpon>

@@ -74,6 +74,8 @@
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/Source.aspx" Text="Source">
                                 </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/SwitchBoard.aspx" Text="Swtich Board">
+                                </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
                     </Items>
