@@ -21,22 +21,24 @@
         </tr>
         <tr>
             <td>
-                <dx:ASPxTabControl ID="ASPxTabControl1" runat="server" ActiveTabIndex="0" 
-                    RenderMode="Classic">
+                <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="0" 
+                    ontabclick="tcCommon_TabClick" Width="100%" RenderMode="Lightweight">
                     <Tabs>
-                        <dx:Tab>
-                            <ActiveTabTemplate>
-                                <iframe src="BedType.aspx"></iframe>
-                            </ActiveTabTemplate>
+                        <dx:Tab Text="Bed Types">
                         </dx:Tab>
-                        <dx:Tab>
-                           <ActiveTabTemplate>
-                                <iframe src="Department.aspx"></iframe>
-                            </ActiveTabTemplate>
+                        <dx:Tab Text="Departments">
+                        </dx:Tab>
+                        <dx:Tab Text="Guarantee">
+                        </dx:Tab>
+                        <dx:Tab Text="Rooms">
+                        </dx:Tab>
+                        <dx:Tab Text="Source">
                         </dx:Tab>
                     </Tabs>
                 </dx:ASPxTabControl>
+                
             </td>
         </tr>
     </table>
+    <div><iframe id="iframePage" runat="server" width="100%" height="400px"></iframe></div>
 </asp:Content>

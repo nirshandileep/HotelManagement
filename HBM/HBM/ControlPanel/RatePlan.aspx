@@ -8,18 +8,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     
-        <table class="style1">
+        <table >
             <tr>
                 <td>
                     Rate Plan List</td>

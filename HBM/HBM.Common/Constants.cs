@@ -56,6 +56,16 @@ namespace HBM.Common
 
         public static readonly string CONST_DEFAULTBACKPAGE = "Dashboard.aspx";
         public static readonly string CONST_LOGOUT = "~/Login.aspx";
+        public static readonly string CONST_BEDTYPE = "/ControlPanel/BedType.aspx";
+        public static readonly string CONST_DEPARTMENT = "/ControlPanel/Department.aspx";
+        public static readonly string CONST_GAURANTEE = "/ControlPanel/Gaurantee.aspx";
+        public static readonly string CONST_RATEPLAN = "/ControlPanel/RatePlan.aspx";
+        public static readonly string CONST_ROOMS = "/ControlPanel/Rooms.aspx";
+        public static readonly string CONST_SOURCE = "/ControlPanel/Source.aspx";
+
+
+
+
 
         #endregion
 

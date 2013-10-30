@@ -13,12 +13,21 @@ namespace HBM.ControlPanel {
     public partial class SwitchBoard {
         
         /// <summary>
-        /// ASPxTabControl1 control.
+        /// tcCommon control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTabControl.ASPxTabControl ASPxTabControl1;
+        protected global::DevExpress.Web.ASPxTabControl.ASPxTabControl tcCommon;
+        
+        /// <summary>
+        /// iframePage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl iframePage;
     }
 }
