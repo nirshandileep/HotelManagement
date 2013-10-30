@@ -60,7 +60,7 @@
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
-                        <dx:MenuItem Text="Control Panel">
+                        <dx:MenuItem Text="Administration">
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/BedType.aspx" Text="Bed Types">
                                 </dx:MenuItem>
@@ -75,6 +75,8 @@
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/Source.aspx" Text="Source">
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/SwitchBoard.aspx" Text="Swtich Board">
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="Reporting">
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>

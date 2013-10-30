@@ -22,7 +22,7 @@
         <tr>
             <td>
                 <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="0" 
-                    ontabclick="tcCommon_TabClick" Width="100%" RenderMode="Lightweight">
+                    ontabclick="tcCommon_TabClick" Width="100%" Height="25px" TabSpacing="5px">
                     <Tabs>
                         <dx:Tab Text="Bed Types">
                         </dx:Tab>
