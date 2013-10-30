@@ -65,11 +65,7 @@ namespace HBM.Common
         public static readonly string SESSION_DEPARTMENT = "Departments";
         public static readonly string SESSION_GAURANTEE = "Gaurantee";
         public static readonly string SESSION_ROOMS = "Rooms";
-
-
-
-
-
+        public static readonly string SESSION_SOURCE = "Source";
 
         #endregion
     }
