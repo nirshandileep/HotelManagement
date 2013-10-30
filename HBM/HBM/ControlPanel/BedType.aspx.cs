@@ -119,8 +119,7 @@ namespace HBM.ControlPanel
             //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
 
             dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvBedTypes.KeyFieldName])));
-
-            GenMan.BedType bedType = new GenMan.BedType();
+                       
 
             if (bedType.Save(dsData))
             {

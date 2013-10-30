@@ -19,6 +19,7 @@ namespace HBM.GeneralManagement
 
             db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, "CompanyId", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@RoomName", DbType.String, "RoomName",DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@RoomCode", DbType.String, "RoomCode", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@RoomNumber", DbType.String, "RoomNumber",DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@MaxAdult", DbType.Int32, "MaxAdult", DataRowVersion.Current);
@@ -30,19 +31,20 @@ namespace HBM.GeneralManagement
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_RoomUpdate");
 
-
+            db.AddInParameter(commandUpdate, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);          
             db.AddInParameter(commandUpdate, "@RoomName", DbType.String, "RoomName", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@RoomNumber", DbType.String, "RoomNumber", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@RoomCode", DbType.String, "RoomCode", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@MaxAdult", DbType.Int32, "MaxAdult", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@MaxChildren", DbType.Int32, "MaxChildren", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@MaxInfant", DbType.Int32, "MaxInfant", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@SmokingAllow", DbType.Boolean, "SmokingAllow", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
             
             DbCommand commandDelete = db.GetStoredProcCommand("usp_RoomDelete");
-            db.AddInParameter(commandDelete, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
+            db.AddInParameter(commandDelete, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
 
             db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, UpdateBehavior.Transactional);
 

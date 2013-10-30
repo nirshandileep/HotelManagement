@@ -117,9 +117,8 @@ namespace HBM.Reservation
 
             dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvRooms.KeyFieldName])));
 
-            GenMan.BedType bedType = new GenMan.BedType();
 
-            if (bedType.Save(dsData))
+            if (rooms.Save(dsData))
             {
                 this.LoadRooms();
             }

@@ -1,36 +1,41 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Rooms.aspx.cs" Inherits="HBM.Reservation.Rooms" %>
 
-<%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    
-        <table >
+        <table>
             <tr>
                 <td>
-                    Rooms</td>
+                    Room List
+                </td>
             </tr>
             <tr>
                 <td>
-                    &nbsp;</td>
+                    &nbsp;
+                </td>
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxGridView ID="gvRooms" runat="server" AutoGenerateColumns="False" 
-                        KeyFieldName="RoomId" onrowdeleting="gvRooms_RowDeleting" 
-                        onrowinserting="gvRooms_RowInserting" onrowupdating="gvRooms_RowUpdating">
+                    <dx:ASPxGridView ID="gvRooms" runat="server" AutoGenerateColumns="False" KeyFieldName="RoomId"
+                        OnRowDeleting="gvRooms_RowDeleting" OnRowInserting="gvRooms_RowInserting" OnRowUpdating="gvRooms_RowUpdating">
                         <Columns>
-                            <dx:GridViewDataTextColumn Caption="Room Name" FieldName="" VisibleIndex="0">
+                            <dx:GridViewDataTextColumn Caption="Room Name" FieldName="RoomName" VisibleIndex="0">
+                                <PropertiesTextEdit>
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
+                                </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="7">
+                            <dx:GridViewCommandColumn VisibleIndex="8">
                                 <EditButton Visible="True">
                                 </EditButton>
                                 <NewButton Visible="True">
@@ -40,26 +45,54 @@
                                 <ClearFilterButton Visible="True">
                                 </ClearFilterButton>
                             </dx:GridViewCommandColumn>
-                            <dx:GridViewDataTextColumn Caption="Code" VisibleIndex="1">
+                            <dx:GridViewDataTextColumn Caption="Code" VisibleIndex="1" FieldName="RoomCode">
+                                <PropertiesTextEdit>
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
+                                </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Room No" VisibleIndex="2">
-                                <PropertiesSpinEdit DisplayFormatString="g">
+                            <dx:GridViewDataSpinEditColumn Caption="Room No" FieldName="RoomNumber" VisibleIndex="2">
+                                <PropertiesSpinEdit DisplayFormatString="g" MaxLength="5" MaxValue="10000" NullDisplayText="0"
+                                    NullText="0" NumberType="Integer">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Max Adult" VisibleIndex="3">
-                                <PropertiesSpinEdit DisplayFormatString="g">
+                            <dx:GridViewDataSpinEditColumn Caption="Max Adult" VisibleIndex="4" FieldName="MaxAdult">
+                                <PropertiesSpinEdit DisplayFormatString="g" MaxLength="5" MaxValue="100" NullDisplayText="0"
+                                    NullText="0" NumberType="Integer">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Max Children" VisibleIndex="4">
-                                <PropertiesSpinEdit DisplayFormatString="g">
+                            <dx:GridViewDataSpinEditColumn Caption="Max Children" VisibleIndex="5" FieldName="MaxChildren">
+                                <PropertiesSpinEdit DisplayFormatString="g" MaxLength="5" MaxValue="100" NullDisplayText="0"
+                                    NullText="0" NumberType="Integer">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Max Infant" VisibleIndex="5">
-                                <PropertiesSpinEdit DisplayFormatString="g">
+                            <dx:GridViewDataSpinEditColumn Caption="Max Infant" VisibleIndex="6" FieldName="MaxInfant">
+                                <PropertiesSpinEdit DisplayFormatString="g" MaxLength="5" MaxValue="100" NullDisplayText="0"
+                                    NullText="0" NumberType="Integer">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
-                            <dx:GridViewDataCheckColumn Caption="Allow Smoking" VisibleIndex="6">
+                            <dx:GridViewDataCheckColumn Caption="Allow Smoking" VisibleIndex="7" FieldName="SmokingAllow">
                             </dx:GridViewDataCheckColumn>
+                            <dx:GridViewDataSpinEditColumn Caption="Bed Type" FieldName="BedTypeId" VisibleIndex="3">
+                                <PropertiesSpinEdit DisplayFormatString="g">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
+                                </PropertiesSpinEdit>
+                            </dx:GridViewDataSpinEditColumn>
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />
                         <SettingsText ConfirmDelete="" />
@@ -67,9 +100,7 @@
                 </td>
             </tr>
         </table>
-    
     </div>
     </form>
 </body>
-
 </html>
