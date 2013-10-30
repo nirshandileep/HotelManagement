@@ -16,22 +16,37 @@ namespace HBM.Reservation
     public partial class Rooms : System.Web.UI.Page
     {
         DataSet dsData = new DataSet();
-        DataSet dsBedTypes = new DataSet();
+        DataSet dsBedTypes = new DataSet(); 
+
         GenMan.Room rooms = new GenMan.Room();
         GenMan.BedType bedTypes = new GenMan.BedType();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            gvRooms.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+
+            this.LoadRooms();
+            dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["RoomId"] };                             
+
+            Session[Constants.SESSION_ROOMS] = dsData;
+
+            bedTypes.CompanyId = 1;
+            dsBedTypes = bedTypes.SelectAllDataset();
+            dsBedTypes.Tables[0].TableName = "BedType";
+            ((GridViewDataComboBoxColumn)gvRooms.Columns["BedTypeId"]).PropertiesComboBox.DataSource = dsBedTypes.Tables[0];
+
+         
+
+        }
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                gvRooms.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
-                this.LoadRooms();
-                dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["RoomId"] };
-                Session[Constants.SESSION_ROOMS] = dsData;
 
-                bedTypes.CompanyId = 1;
-                dsBedTypes = bedTypes.SelectAllDataset();
-                dsBedTypes.Tables[0].TableName = "BedType";
+                gvRooms.DataBind();
 
             }
             catch (System.Exception)
@@ -47,8 +62,10 @@ namespace HBM.Reservation
             {
                 rooms.CompanyId = 1;
                 dsData = rooms.SelectAllDataset();
-                gvRooms.DataSource = dsData.Tables[0];
-                gvRooms.DataBind();
+                gvRooms.DataMember = dsData.Tables[0].TableName;
+                gvRooms.DataSource = dsData.Tables[0]; 
+            
+
 
             }
             catch (System.Exception)
@@ -133,20 +150,13 @@ namespace HBM.Reservation
                 this.LoadRooms();
             }
 
-
-
         }
 
         protected void gvRooms_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
             if (e.Column.FieldName != "BedTypeId") return;
 
-            ASPxComboBox combo = e.Editor as ASPxComboBox;
-
-            combo.DataSource = dsBedTypes;
-            combo.ValueField = "BedTypeId";
-            combo.ValueType = typeof(System.Int32);
-            combo.TextField = "BedTypeName";
+            ASPxComboBox combo = e.Editor as ASPxComboBox;                      
             combo.DataBindItems();
         }
     }

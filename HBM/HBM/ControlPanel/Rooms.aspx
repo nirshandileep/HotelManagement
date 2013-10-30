@@ -26,11 +26,11 @@
             <tr>
                 <td>
                     <dx:ASPxGridView ID="gvRooms" runat="server" AutoGenerateColumns="False" KeyFieldName="RoomId"
-                        OnRowDeleting="gvRooms_RowDeleting" OnRowInserting="gvRooms_RowInserting" 
-                        OnRowUpdating="gvRooms_RowUpdating" 
-                        oncelleditorinitialize="gvRooms_CellEditorInitialize">
+                        OnRowDeleting="gvRooms_RowDeleting" OnRowInserting="gvRooms_RowInserting" OnRowUpdating="gvRooms_RowUpdating"
+                        OnCellEditorInitialize="gvRooms_CellEditorInitialize">
                         <Columns>
-                            <dx:GridViewDataTextColumn Caption="Room Name" FieldName="RoomName" VisibleIndex="0">
+                            <dx:GridViewDataTextColumn Caption="Room Name" FieldName="RoomName" VisibleIndex="0"
+                                Name="BedTypeName">
                                 <PropertiesTextEdit>
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -88,11 +88,11 @@
                             </dx:GridViewDataSpinEditColumn>
                             <dx:GridViewDataCheckColumn Caption="Allow Smoking" VisibleIndex="7" FieldName="SmokingAllow">
                             </dx:GridViewDataCheckColumn>
-                            
-                            <dx:GridViewDataComboBoxColumn Caption="Bed Type" FieldName="BedTypeId" 
-                                VisibleIndex="3">
+                            <dx:GridViewDataComboBoxColumn Caption="Bed Type" FieldName="BedTypeId" VisibleIndex="3">
+                                <PropertiesComboBox TextField="BedTypeName" ValueField="BedTypeId" 
+                                    ValueType="System.Int32">
+                                </PropertiesComboBox>
                             </dx:GridViewDataComboBoxColumn>
-                            
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />
                         <SettingsText ConfirmDelete="" />
