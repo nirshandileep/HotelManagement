@@ -207,7 +207,7 @@ background: linear-gradient(to bottom,  rgba(222,242,243,1) 1%,rgba(183,216,220,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#def2f3', endColorstr='#b7d8dc',GradientType=0 ); /* IE6-8 */
 
     float: left;
-    margin: 34px 10px 10px 220px;
+    margin: 40px 10px 10px 220px;
     padding: 7px;
     position: absolute;
     width: 735px;
@@ -265,7 +265,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 
 .header2{
 	margin-bottom:10px;
-	height:80px;
+	height:85px;
 	background:url(../images/header-back.png)#EEF5F7 left top no-repeat;
    /* background-color:#EEF5F7;*/
    border-bottom:solid 1px #E0E0E0;
