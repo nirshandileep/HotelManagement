@@ -96,7 +96,7 @@ namespace HBM
                         users.RolesId = Convert.ToInt32(ddlRoles.Value);
                         users.CreatedUser = Master.LoggedUser.UsersId;
                         users.CompanyId = Master.CompanyId;
-                        users.StatusId = (int)HBM.Common.Enums.BHMStatus.Active;
+                        users.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
                         if (users.Save())
                         {
                             System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
@@ -138,7 +138,7 @@ namespace HBM
                 users.Password = txtPassword.Text.Trim();
                 users.CompanyId = Master.CompanyId;
                 users.UpdatedUser = Master.LoggedUser.UsersId;
-                users.StatusId = (int)HBM.Common.Enums.BHMStatus.Active;
+                users.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
                 users.RolesId = Convert.ToInt32(ddlRoles.Value);
                 if (users.Save())
                 {

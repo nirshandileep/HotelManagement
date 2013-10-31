@@ -24,15 +24,17 @@
                 <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="0" 
                     ontabclick="tcCommon_TabClick" Width="100%" Height="25px" TabSpacing="5px">
                     <Tabs>
-                        <dx:Tab Text="Bed Types">
+                        <dx:Tab Text="Bed Types" Name="BedType">
                         </dx:Tab>
-                        <dx:Tab Text="Departments">
+                        <dx:Tab Text="Departments" Name="Departments">
                         </dx:Tab>
-                        <dx:Tab Text="Guarantee">
+                        <dx:Tab Text="Guarantee" Name="Gaurantee">
                         </dx:Tab>
-                        <dx:Tab Text="Rooms">
+                        <dx:Tab Text="Rooms" Name="Rooms">
                         </dx:Tab>
-                        <dx:Tab Text="Source">
+                        <dx:Tab Name="RatePlan" Text="Rate Plan">
+                        </dx:Tab>
+                        <dx:Tab Text="Source" Name="Source">
                         </dx:Tab>
                     </Tabs>
                 </dx:ASPxTabControl>

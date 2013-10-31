@@ -23,26 +23,26 @@ namespace HBM.ControlPanel
       
         protected void tcCommon_TabClick(object source, DevExpress.Web.ASPxTabControl.TabControlCancelEventArgs e)
         {
-            switch (e.Tab.Index)
+            switch (e.Tab.Name)
             {
-                case 0:
+                case "BedType":
                     iframePage.Attributes["src"] = Constants.CONST_BEDTYPE;
                     break;
-                case 1:
+                case "Departments":
                     iframePage.Attributes["src"] = Constants.CONST_DEPARTMENT;
                     break;
-                case 2:
+                case "Gaurantee":
                     iframePage.Attributes["src"] = Constants.CONST_GAURANTEE;
                     break;
-                case 3:
+                case "Rooms":
                     iframePage.Attributes["src"] = Constants.CONST_ROOMS;
                     break;
-                case 4:
-                    iframePage.Attributes["src"] = Constants.CONST_SOURCE;
+                case "RatePlan":
+                    iframePage.Attributes["src"] = Constants.CONST_RATEPLANS;
                     break;
-
-
-
+                case "Source":
+                    iframePage.Attributes["src"] = Constants.CONST_SOURCE;
+                    break;       
 
             }
         }

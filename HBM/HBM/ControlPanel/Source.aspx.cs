@@ -66,7 +66,7 @@ namespace HBM.Reservation
             DataRow row = dsData.Tables[0].NewRow();
             Random rd = new Random();
             e.NewValues["SourceId"] = rd.Next();
-            e.NewValues["StatusId"] = (int)Enums.BHMStatus.Active;
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
             e.NewValues["CompanyId"] = 1;
             e.NewValues["CreatedUser"] = 1;
 
@@ -97,7 +97,7 @@ namespace HBM.Reservation
             ASPxGridView gridView = sender as ASPxGridView;
             DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
-            e.NewValues["StatusId"] = (int)Enums.BHMStatus.Modify;
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
             e.NewValues["UpdatedUser"] = 1;
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();

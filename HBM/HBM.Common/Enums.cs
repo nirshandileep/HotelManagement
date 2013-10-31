@@ -10,7 +10,7 @@ namespace HBM.Common
         /// <summary>
         /// Types of status
         /// </summary>
-        public enum BHMStatus
+        public enum HBMStatus
         {
             Active = 1,
             InActive = 2,
@@ -20,5 +20,6 @@ namespace HBM.Common
             Cancel = 6,
             NoShow = 7,
         }
+       
     }
 }

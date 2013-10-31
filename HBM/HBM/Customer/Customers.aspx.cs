@@ -274,7 +274,7 @@ namespace HBM
                 CustomerObj.Phone = txtPhone.Text.Trim();
                 CustomerObj.CreatedUser = Master.LoggedUser.UsersId;
                 CustomerObj.UpdatedUser = Master.LoggedUser.UsersId;
-                CustomerObj.StatusId = (int)HBM.Common.Enums.BHMStatus.Active;
+                CustomerObj.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
 
                 string errorMSG;
                 if ((new CustomerManagement.CustomerManager()).IsValidToSave(CustomerObj, out errorMSG))
