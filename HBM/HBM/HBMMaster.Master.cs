@@ -52,6 +52,13 @@ namespace HBM
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Called everytime to check it the user session is null
+            if (Session[Constants.SESSION_LOGGEDUSER] == null)
+            {
+                ClearSessions();
+                Response.Redirect("~/Login.aspx", false);
+            }
+
             if (!IsPostBack)
             {
                 this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;                
