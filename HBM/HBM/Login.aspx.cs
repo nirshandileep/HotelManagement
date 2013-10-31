@@ -38,8 +38,8 @@ namespace HBM
                     {
                         users.UsersId = userID;
                         users.CompanyId = companyId;
-                        users = users.Select();
-                        Session["LoggedUser"] = users;
+                        users.Select();
+                        Session[Constants.SESSION_LOGGEDUSER] = users;
                         Response.Redirect(HBM.Common.Constants.CONST_DEFAULTBACKPAGE, false);
                     }
                 }
@@ -52,8 +52,8 @@ namespace HBM
             }
             catch (System.Exception)
             {
-                
-                
+
+
             }
         }
     }

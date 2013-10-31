@@ -9,6 +9,7 @@ using DevExpress.Web.ASPxGridView;
 using System.Data;
 using HBM.Common;
 using System.Collections;
+using HBM.SessionManager;
 
 
 namespace HBM.Reservation
@@ -41,7 +42,7 @@ namespace HBM.Reservation
         {
             try
             {
-                departments.CompanyId = 1;
+                departments.CompanyId = SessionHandler.CurrentCompanyId ;
                 dsData = departments.SelectAllDataset();
                 gvDepartment.DataSource = dsData.Tables[0];
                 gvDepartment.DataBind();
@@ -78,8 +79,8 @@ namespace HBM.Reservation
             Random rd = new Random();
             e.NewValues["DepartmentId"] = rd.Next();
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
-            e.NewValues["CompanyId"] = 1;
-            e.NewValues["CreatedUser"] = 1;
+            e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId;
+            e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();
@@ -109,7 +110,7 @@ namespace HBM.Reservation
             DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
-            e.NewValues["UpdatedUser"] = 1;
+            e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();
             while (enumerator.MoveNext())

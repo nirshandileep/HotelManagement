@@ -9,6 +9,7 @@ using DevExpress.Web.ASPxGridView;
 using System.Data;
 using HBM.Common;
 using System.Collections;
+using HBM.SessionManager;
 
 namespace HBM.ControlPanel
 {
@@ -40,7 +41,7 @@ namespace HBM.ControlPanel
         {
             try
             {
-                bedType.CompanyId = 1;
+                bedType.CompanyId = SessionHandler.CurrentCompanyId;
                 dsData=bedType.SelectAllDataset();
                 gvBedTypes.DataSource = dsData.Tables[0];
                 gvBedTypes.DataBind();
@@ -61,8 +62,8 @@ namespace HBM.ControlPanel
             Random rd = new Random();
             e.NewValues["BedTypeId"] = rd.Next();
             e.NewValues["StatusId"]= (int)Enums.HBMStatus.Active;
-            e.NewValues["CompanyId"] = 1;
-            e.NewValues["CreatedUser"] = 1;
+            e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId; ;
+            e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();
@@ -93,7 +94,7 @@ namespace HBM.ControlPanel
             DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
-            e.NewValues["UpdatedUser"] = 1;
+            e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();
             while (enumerator.MoveNext())
