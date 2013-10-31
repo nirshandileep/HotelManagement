@@ -22,7 +22,7 @@
     <div class="header2">
         <div class="wrapper">
             <div class="hotel-logo">
-                <img src="Images/hotel-logo.png" width="133" height="77" alt="logo" />
+                <img src="../Images/hotel-logo.png" width="133" height="77" alt="logo" />
             </div>
             <div class="nav">
                 <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" >

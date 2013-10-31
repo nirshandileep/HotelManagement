@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RatePlan.aspx.cs" Inherits="HBM.Reservation.RatePlan" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RatePlans.aspx.cs" Inherits="HBM.Reservation.RatePlan" %>
 
 <%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
