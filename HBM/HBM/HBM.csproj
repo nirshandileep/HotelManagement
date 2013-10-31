@@ -271,6 +271,10 @@
       <Project>{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}</Project>
       <Name>HBM.GeneralManagement</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HBM.SessionManager\HBM.SessionManager.csproj">
+      <Project>{5F38975E-16E4-49D4-9F42-0C6FFAA3DCE4}</Project>
+      <Name>HBM.SessionManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HBM.UserManagement\HBM.UserManagement.csproj">
       <Project>{EA380B34-3C84-4AC6-A50B-7F7B53D9757E}</Project>
       <Name>HBM.UserManagement</Name>

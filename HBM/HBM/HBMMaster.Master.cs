@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using HBM.UserManagement;
 using System.Data;
 using UM = HBM.UserManagement;
+using HBM.Common;
+using HBM.SessionManager;
 
 namespace HBM
 {
@@ -20,7 +22,7 @@ namespace HBM
         {
             get 
             {
-                return 1;
+                return SessionHandler.CurrentCompanyId;
             }
         }
 
@@ -33,14 +35,14 @@ namespace HBM
             {
                 UM.Users user;
 
-                if (Session["LoggedUser"] != null)
+                if (Session[Constants.SESSION_LOGGEDUSER] != null)
                 {
-                    user = (UM.Users)Session["LoggedUser"];
+                    user = (UM.Users)Session[Constants.SESSION_LOGGEDUSER];
                 }
                 else
                 {
                     user = null;
-                    Session["LoggedUser"] = null;
+                    Session[Constants.SESSION_LOGGEDUSER] = null;
                     Response.Redirect("~/Login.aspx", false);
                 }
 

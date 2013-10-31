@@ -8,7 +8,7 @@ using HBM.UserManagement;
 using HBM.Common;
 using HBM.CompanyManagement;
 
-namespace HBM.Common
+namespace HBM.SessionManager
 {
     public class SessionHandler : IRequiresSessionState
     {
@@ -25,7 +25,7 @@ namespace HBM.Common
         /// If session SESSION_CURRENTCOMPANY is null 
         /// Company id will be obtained from the logged user
         /// </summary>
-        public static int CurrentCompany
+        public static int CurrentCompanyId
         {
             get
             {
@@ -47,7 +47,6 @@ namespace HBM.Common
         public static T GetSession<T>(string sessionName) where T : new()
         {
             T entity = default(T);
-            string TypeName = typeof(T).Name;
 
             if (HttpContext.Current.Session[sessionName] != null)
             {

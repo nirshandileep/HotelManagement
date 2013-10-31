@@ -45,7 +45,6 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionHandler.cs" />
     <Compile Include="Structures.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
