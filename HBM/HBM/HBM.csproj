@@ -79,7 +79,7 @@
     <Content Include="ControlPanel\BedType.aspx" />
     <Content Include="ControlPanel\Department.aspx" />
     <Content Include="ControlPanel\Gaurantee.aspx" />
-    <Content Include="ControlPanel\RatePlan.aspx" />
+    <Content Include="ControlPanel\RatePlans.aspx" />
     <Content Include="ControlPanel\Rooms.aspx" />
     <Content Include="ControlPanel\Source.aspx" />
     <Content Include="ControlPanel\SwitchBoard.aspx" />
@@ -89,6 +89,7 @@
     <Content Include="Customer\Customers.aspx" />
     <Content Include="Customer\CustomerSearch.aspx" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="Images\error.jpg" />
     <Content Include="Images\gnome_session_logout.png" />
     <Content Include="Images\hotel-logo.png" />
@@ -135,12 +136,12 @@
     <Compile Include="ControlPanel\Gaurantee.aspx.designer.cs">
       <DependentUpon>Gaurantee.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ControlPanel\RatePlan.aspx.cs">
-      <DependentUpon>RatePlan.aspx</DependentUpon>
+    <Compile Include="ControlPanel\RatePlans.aspx.cs">
+      <DependentUpon>RatePlans.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ControlPanel\RatePlan.aspx.designer.cs">
-      <DependentUpon>RatePlan.aspx</DependentUpon>
+    <Compile Include="ControlPanel\RatePlans.aspx.designer.cs">
+      <DependentUpon>RatePlans.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\Rooms.aspx.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
@@ -185,6 +186,9 @@
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="HBMMaster.Master.cs">
       <DependentUpon>HBMMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

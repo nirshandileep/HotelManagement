@@ -68,7 +68,7 @@
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/Gaurantee.aspx" Text="Gaurantee">
                                 </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/RatePlan.aspx" Text="Rate Plan">
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/RatePlans.aspx" Text="Rate Plans">
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/Rooms.aspx" Text="Rooms">
                                 </dx:MenuItem>

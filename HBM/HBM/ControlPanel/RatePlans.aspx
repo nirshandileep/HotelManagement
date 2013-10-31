@@ -25,11 +25,20 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False">
+                     <dx:ASPxGridView ID="gvRatePlans" runat="server" AutoGenerateColumns="False" 
+                         KeyFieldName="RatePlansId" onrowdeleting="gvRatePlans_RowDeleting" 
+                         onrowinserting="gvRatePlans_RowInserting" 
+                         onrowupdating="gvRatePlans_RowUpdating">
                         <Columns>
-                            <dx:GridViewDataTextColumn Caption="Rate Plan Name" VisibleIndex="0">
+                            <dx:GridViewDataTextColumn Caption="Rate Plan Name" VisibleIndex="0" 
+                                FieldName="RatePlanName">
+                                <PropertiesTextEdit>
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
+                                </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="7">
+                            <dx:GridViewCommandColumn VisibleIndex="7">
                                 <EditButton Visible="True">
                                 </EditButton>
                                 <NewButton Visible="True">
@@ -39,30 +48,52 @@
                                 <ClearFilterButton Visible="True">
                                 </ClearFilterButton>
                             </dx:GridViewCommandColumn>
-                            <dx:GridViewDataDateColumn Caption="Effective From" VisibleIndex="1">
-                                <PropertiesDateEdit DisplayFormatString="">
+                            <dx:GridViewDataDateColumn Caption="Effective From" VisibleIndex="1" 
+                                FieldName="EffectiveFrom">
+                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
                                 </PropertiesDateEdit>
                             </dx:GridViewDataDateColumn>
-                            <dx:GridViewDataDateColumn Caption="Effective To" VisibleIndex="2">
+                            <dx:GridViewDataDateColumn Caption="Effective To" VisibleIndex="2" 
+                                FieldName="EffectiveTo">
+                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormat="Custom" 
+                                    EditFormatString="d">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
+                                </PropertiesDateEdit>
                             </dx:GridViewDataDateColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Rate" VisibleIndex="3">
-                                <PropertiesSpinEdit DisplayFormatString="g">
+                            <dx:GridViewDataSpinEditColumn Caption="Rate" VisibleIndex="3" FieldName="Rate">
+                                <PropertiesSpinEdit DisplayFormatString="F2" MaxLength="5" MaxValue="100000" 
+                                    NullDisplayText="0" NullText="0" NumberFormat="Custom">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Additional Adult Rate" VisibleIndex="4">
-                                <PropertiesSpinEdit DisplayFormatString="g">
+                            <dx:GridViewDataSpinEditColumn Caption="Additional Adult Rate" VisibleIndex="4" 
+                                FieldName="AdditionalAdultRate">
+                                <PropertiesSpinEdit DisplayFormatString="F2" MaxLength="5" MaxValue="100000" 
+                                    NullDisplayText="0" NullText="0" NumberFormat="Custom">
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Additional Child Rate" VisibleIndex="5">
-                                <PropertiesSpinEdit DisplayFormatString="g">
+                            <dx:GridViewDataSpinEditColumn Caption="Additional Child Rate" VisibleIndex="5" 
+                                FieldName="AdditionalChildrenRate">
+                                <PropertiesSpinEdit DisplayFormatString="F2" MaxLength="5" MaxValue="100000" 
+                                    NullDisplayText="0" NullText="0" NumberFormat="Custom">
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
                             <dx:GridViewDataSpinEditColumn Caption="Additional Infant Rate" 
-                                VisibleIndex="6">
-                                <PropertiesSpinEdit DisplayFormatString="g">
+                                VisibleIndex="6" FieldName="AdditionalInfantRate">
+                                <PropertiesSpinEdit DisplayFormatString="F2" MaxLength="5" MaxValue="100000" 
+                                    NullDisplayText="0" NullText="0" NumberFormat="Custom">
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
                         </Columns>
+                          <SettingsBehavior ConfirmDelete="True" />
+                        <SettingsText ConfirmDelete="" />
                     </dx:ASPxGridView>
                 </td>
             </tr>

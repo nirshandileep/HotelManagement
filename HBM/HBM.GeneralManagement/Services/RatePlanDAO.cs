@@ -29,7 +29,7 @@ namespace HBM.GeneralManagement
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_RatePlansUpdate");
 
-            db.AddInParameter(commandUpdate, "@RatePlanName", DbType.String, "RatePlanName", DataRowVersion.Current);            
+            db.AddInParameter(commandUpdate, "@RatePlansId", DbType.String, "RatePlansId", DataRowVersion.Current);            
             db.AddInParameter(commandUpdate, "@RatePlanName", DbType.String, "RatePlanName", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@EffectiveFrom", DbType.DateTime, "EffectiveFrom", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@EffectiveTo", DbType.DateTime, "EffectiveTo", DataRowVersion.Current);
@@ -52,7 +52,7 @@ namespace HBM.GeneralManagement
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_BedTypeSelectAll");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_RatePlansSelectAll");
             db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, ratePlan.CompanyId);
 
             return db.ExecuteDataSet(dbCommand);
