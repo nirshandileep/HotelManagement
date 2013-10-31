@@ -17,6 +17,9 @@
 	color:#000;
 	background:url(images/back.jpg) center top no-repeat;
 	}
+	#lblError{
+		position:absolute;
+		}
     </style>
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -31,7 +34,7 @@
                 <td width="32%">
                    <label> User Name</label>
                 </td>
-                <td width="68%">
+                <td colspan="2">
                     <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" Text="Admin">
                         <ValidationSettings Display="Dynamic">
                             <RequiredField IsRequired="True" />
@@ -43,7 +46,7 @@
                 <td>
                    <label> Password</label>
                 </td>
-                <td>
+                <td colspan="2">
                     <dx:ASPxTextBox ID="txtPassword" runat="server" Width="170px" Password="True" 
                         Text="letmein">
                         <ValidationSettings Display="Dynamic">
@@ -52,25 +55,29 @@
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-            <tr  id="trMsg" runat="server" visible="false">
-                <td>&nbsp;&nbsp;</td>
-                <td> 
-                <div>
-                    <asp:Label ID="lblError" CssClass="error" runat="server" Visible="false"></asp:Label>
-                    </div>
-                </td>
-            </tr>
+            
             <tr>
                 <td>&nbsp;
                     
                 </td>
-                <td>
+                <td width="22%">
                     <dx:ASPxButton ID="btnLogin" runat="server" Text="Login" 
                         onclick="btnLogin_Click">
                     </dx:ASPxButton>
                 </td>
+                <td width="46%">
+                <div>
+                <table>
+                	<tr id="trMsg" runat="server" visible="false">
+                    <td>
+                    <asp:Label ID="lblError" CssClass="error" runat="server" Visible="false"></asp:Label>
+                    </td></tr>
+                   </table>
+                    </div>
+                </td>
             </tr>
             <tr>
+              <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
             </tr>
