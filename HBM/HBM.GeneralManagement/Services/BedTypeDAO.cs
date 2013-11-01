@@ -11,7 +11,6 @@ namespace HBM.GeneralManagement
 {
     public class BedTypeDAO
     {
-
         public bool InsertUpdateDelete(DataSet ds)
         {
 

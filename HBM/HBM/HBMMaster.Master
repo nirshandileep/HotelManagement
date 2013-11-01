@@ -78,6 +78,8 @@
                                 </dx:MenuItem>
                                 <dx:MenuItem Text="Reporting">
                                 </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/Company.aspx" Text="Company">
+                                </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
                     </Items>

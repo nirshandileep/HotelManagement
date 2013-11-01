@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ControlPanel\BedType.aspx" />
+    <Content Include="ControlPanel\Company.aspx" />
     <Content Include="ControlPanel\Department.aspx" />
     <Content Include="ControlPanel\Gaurantee.aspx" />
     <Content Include="ControlPanel\RatePlans.aspx" />
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="ControlPanel\BedType.aspx.designer.cs">
       <DependentUpon>BedType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\Company.aspx.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\Company.aspx.designer.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\Department.aspx.cs">
       <DependentUpon>Department.aspx</DependentUpon>
