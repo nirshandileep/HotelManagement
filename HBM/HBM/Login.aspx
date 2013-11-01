@@ -9,7 +9,7 @@
     <style type="text/css">
         .style1
         {
-            width: 100%;
+            width: 500px;
         }
 	body{
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -28,10 +28,51 @@
     <form id="form1" runat="server">
 
     <div class="login-win">
-    <h2>Welcome to Hotel Management System login</h2>
-        <table class="style1">
+    <div class="login-head"></div>
+    <div class="login-body">
+    <div class="login-body-img">
+
+ <table width="670" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td colspan="2" align="left"><img src="images/login-logo.jpg" width="106" height="86" class="flt-l"/>
+      <p class="txt-right flt-r w355">
+        Pellentesque sit amet orci viverra, suscipit arcu porta,<br />
+        varius tortor. Nulla luctus ac sem a sodales. <br />
+        Vestibulum eleifend<br />
+        T : xxx xxx xxx xx<br />
+        E : info@reservation.com<br />
+        </p>
+    </td>
+    </tr>
+  <tr>
+    <td colspan="3"><hr/></td>
+    </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td width="621">&nbsp;</td>
+    <td width="19">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+    
+    
+    </td>
+    <td>
+<table width="500" align="center" class="style1">
             <tr>
-                <td width="32%">
+              <td colspan="3">
+              <div>
+                  <h2>Welcome to Hotel Management System login</h2>
+                  <p class="flt-l w355 txt-left">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elitt orci viverra, suscipit arcu porta, varius tortor.<br /><br />
+
+                  </p>
+              </div>
+              </td>
+              </tr>
+            <tr>
+                <td width="26%">
                    <label> User Name</label>
                 </td>
                 <td colspan="2">
@@ -41,7 +82,7 @@
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
-            </tr>
+          </tr>
             <tr>
                 <td>
                    <label> Password</label>
@@ -60,20 +101,20 @@
                 <td>&nbsp;
                     
                 </td>
-                <td width="22%">
+                <td width="18%">
                     <dx:ASPxButton ID="btnLogin" runat="server" Text="Login" 
                         onclick="btnLogin_Click">
                     </dx:ASPxButton>
                 </td>
-                <td width="46%">
+                <td width="56%">
                 <div>
                 <table>
                 	<tr id="trMsg" runat="server" visible="false">
                     <td>
                     <asp:Label ID="lblError" CssClass="error" runat="server" Visible="false"></asp:Label>
                     </td></tr>
-                   </table>
-                    </div>
+                  </table>
+                  </div>
                 </td>
             </tr>
             <tr>
@@ -82,6 +123,16 @@
               <td>&nbsp;</td>
             </tr>
         </table>
+    
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+ </table>
+
+        
+      </div>
+      </div>
+        <div class="login-footer">Copyright &copy; 2014 by reservation.com. All rights reserved. </div>
     </div>
     </form>
 </body>
