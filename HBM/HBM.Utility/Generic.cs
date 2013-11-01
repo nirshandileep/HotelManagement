@@ -83,9 +83,9 @@ namespace HBM.Utility
                     {
                         // And if the property is writable:
                         if (entityProperty.CanWrite)
-                        {
+                        {                      
                             // Assign the datareader value to the entity
-                            entityProperty.SetValue(entity, dataReader[i], null);
+                            entityProperty.SetValue(entity, dataReader[i], null);                     
 
                         }
                     }

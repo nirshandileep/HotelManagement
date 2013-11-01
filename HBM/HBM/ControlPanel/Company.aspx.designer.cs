@@ -85,40 +85,22 @@ namespace HBM.ControlPanel {
         protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl ucCompanyLogo;
         
         /// <summary>
-        /// ASPxImage1 control.
+        /// trImageRow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxImage ASPxImage1;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trImageRow;
         
         /// <summary>
-        /// Image1 control.
+        /// bimgLogo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
-        
-        /// <summary>
-        /// ASPxBinaryImage1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxBinaryImage ASPxBinaryImage1;
-        
-        /// <summary>
-        /// btnUplaod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnUplaod;
+        protected global::DevExpress.Web.ASPxEditors.ASPxBinaryImage bimgLogo;
         
         /// <summary>
         /// btnSave control.

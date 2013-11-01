@@ -8,6 +8,7 @@ using System.Data.Common;
 using System.Data;
 using HBM.Common;
 using System.IO;
+using System.Drawing;
 
 namespace HBM.GeneralManagement
 {
@@ -86,6 +87,15 @@ namespace HBM.GeneralManagement
             MemoryStream ms = new MemoryStream();
             imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
             return ms.ToArray();
+        }
+
+
+        public byte[] GetByteArrayFromImage(Image singnatureimage)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(singnatureimage, typeof(byte[]));
+
+
         }
 
         #endregion

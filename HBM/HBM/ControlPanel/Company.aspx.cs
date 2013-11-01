@@ -37,10 +37,12 @@ namespace HBM.ControlPanel
                 txtCompanyTelephone.Text = company1.CompanyTelephone;
                 txtCompanyFax.Text = company1.CompanyFax;
 
-                string base64String = Convert.ToBase64String(company1.CompanyLogo, 0, company1.CompanyLogo.Length);
-                Image1.ImageUrl = "data:image/png;base64," + base64String;
-                Image1.DataBind();
-              
+                if (company1.CompanyLogo.Length > 0)
+                {
+                    trImageRow.Visible = true;
+                    bimgLogo.ContentBytes = company1.CompanyLogo;
+                }
+
 
             }
             catch (System.Exception)

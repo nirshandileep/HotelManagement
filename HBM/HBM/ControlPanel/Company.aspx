@@ -104,12 +104,6 @@
             </tr>
             <tr>
                 <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td>
                     Company Logo</td>
                 <td>
                     <dx:ASPxUploadControl ID="ucCompanyLogo" runat="server" Width="280px" 
@@ -117,26 +111,17 @@
                     </dx:ASPxUploadControl>
                 </td>
             </tr>
-            <tr>
+            <tr id="trImageRow" runat="server" visible="false">
                 <td>
                     &nbsp;</td>
                 <td>
-                     <dx:ASPxImage ID="ASPxImage1" runat="server">
-                     </dx:ASPxImage>
+                     
 
-                     <asp:Image ID="Image1" Visible = "false" runat="server" Height = "100" Width = "100" />
-                    <dx:ASPxBinaryImage ID="ASPxBinaryImage1" runat="server">
+                     
+                    <dx:ASPxBinaryImage ID="bimgLogo" runat="server" Height="100px" Width="100px">
                     </dx:ASPxBinaryImage>
 
                      </td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    <dx:ASPxButton ID="btnUplaod" runat="server" Text="Upload">
-                    </dx:ASPxButton>
-                </td>
             </tr>
             <tr>
                 <td>
