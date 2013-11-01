@@ -43,7 +43,7 @@ namespace HBM
                 {
                     user = null;
                     Session[Constants.SESSION_LOGGEDUSER] = null;
-                    Response.Redirect("~/Login.aspx", false);
+                    Response.Redirect(Constants.CONST_LOIN, false);
                 }
 
                 return user;
@@ -56,7 +56,7 @@ namespace HBM
             if (Session[Constants.SESSION_LOGGEDUSER] == null)
             {
                 ClearSessions();
-                Response.Redirect("~/Login.aspx", false);
+                Response.Redirect(Constants.CONST_LOIN, false);
             }
 
             if (!IsPostBack)
@@ -64,7 +64,6 @@ namespace HBM
                 this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;                
             }
         }
-
 
         #region Methods
 
@@ -146,7 +145,7 @@ namespace HBM
         protected void lbLogout_Click(object sender, EventArgs e)
         {
             this.ClearSessions();
-            Response.Redirect(HBM.Common.Constants.CONST_LOGOUT, false);
+            Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
         }
     }
 }
