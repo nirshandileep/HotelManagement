@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.IO;
 using GenMan = HBM.GeneralManagement;
 using Status = HBM.Common.Enums;
-using HBM.Common;
+using System.Drawing;
 
 namespace HBM.ControlPanel
 {
     public partial class Company : System.Web.UI.Page
     {
+
+        byte[] file = null;
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,8 +26,8 @@ namespace HBM.ControlPanel
         protected void LoadCompany()
         {
             try
-            {            
-                company.CompanyId = SessionManager.SessionHandler.CurrentCompanyId;                
+            {
+                company.CompanyId = SessionManager.SessionHandler.CurrentCompanyId;
                 GenMan.Company company1 = new GenMan.Company();
                 company1 = company.Select();
                 txtCompanyName.Text = company1.CompanyName;
@@ -36,6 +36,11 @@ namespace HBM.ControlPanel
                 txtCompanyEmail.Text = company1.CompanyEmail;
                 txtCompanyTelephone.Text = company1.CompanyTelephone;
                 txtCompanyFax.Text = company1.CompanyFax;
+
+                string base64String = Convert.ToBase64String(company1.CompanyLogo, 0, company1.CompanyLogo.Length);
+                Image1.ImageUrl = "data:image/png;base64," + base64String;
+                Image1.DataBind();
+              
 
             }
             catch (System.Exception)
@@ -51,7 +56,7 @@ namespace HBM.ControlPanel
 
             try
             {
-               
+
                 company.CompanyId = SessionManager.SessionHandler.CurrentCompanyId;
                 company.CompanyName = txtCompanyName.Text.Trim();
                 company.CompanyAddress = txtCompanyAddress.Text.Trim();
@@ -60,7 +65,7 @@ namespace HBM.ControlPanel
                 company.CompanyTelephone = txtCompanyTelephone.Text.Trim();
                 company.CompanyFax = txtCompanyFax.Text.Trim();
                 company.StatusId = (int)Status.HBMStatus.Modify;
-                
+                company.CompanyLogo = file;
 
                 if (company.Save())
                 {
@@ -83,6 +88,18 @@ namespace HBM.ControlPanel
             this.SaveData();
         }
 
+        protected void ucCompanyLogo_FileUploadComplete(object sender, DevExpress.Web.ASPxUploadControl.FileUploadCompleteEventArgs e)
+        {
+            file = e.UploadedFile.FileBytes;
+        }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+     
+        }
 
     }
 }

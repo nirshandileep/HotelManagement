@@ -112,7 +112,8 @@
                 <td>
                     Company Logo</td>
                 <td>
-                    <dx:ASPxUploadControl ID="ucCompanyLogo" runat="server" Width="280px">
+                    <dx:ASPxUploadControl ID="ucCompanyLogo" runat="server" Width="280px" 
+                        onfileuploadcomplete="ucCompanyLogo_FileUploadComplete">
                     </dx:ASPxUploadControl>
                 </td>
             </tr>
@@ -120,7 +121,14 @@
                 <td>
                     &nbsp;</td>
                 <td>
-                     <img src="" id="previewImage" alt="" /></td>
+                     <dx:ASPxImage ID="ASPxImage1" runat="server">
+                     </dx:ASPxImage>
+
+                     <asp:Image ID="Image1" Visible = "false" runat="server" Height = "100" Width = "100" />
+                    <dx:ASPxBinaryImage ID="ASPxBinaryImage1" runat="server">
+                    </dx:ASPxBinaryImage>
+
+                     </td>
             </tr>
             <tr>
                 <td>

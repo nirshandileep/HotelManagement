@@ -28,7 +28,7 @@ namespace HBM.GeneralManagement
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
         public string CompanyFax { get; set; }
-        public Image CompanyLogo { get; set; }
+        public byte[] CompanyLogo { get; set; }
 
         #endregion
 

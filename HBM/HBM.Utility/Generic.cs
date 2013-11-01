@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using HBM.Common;
+using System.Drawing;
+
 
 namespace HBM.Utility
 {
@@ -84,12 +86,13 @@ namespace HBM.Utility
                         {
                             // Assign the datareader value to the entity
                             entityProperty.SetValue(entity, dataReader[i], null);
+
                         }
                     }
                 }
             }
         }
-        
+
         /// <summary>
         /// Returns a collection of T. T must be an Entity class
         /// </summary>
