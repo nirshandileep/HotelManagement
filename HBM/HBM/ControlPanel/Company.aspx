@@ -69,8 +69,10 @@
                     <dx:ASPxTextBox ID="txtCompanyEmail" runat="server" Width="170px" 
                         MaxLength="50">
                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                            <RequiredField ErrorText="Required" IsRequired="True" />
 <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
+                            <RegularExpression ErrorText="Invalid" 
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
+                            <RequiredField ErrorText="Required" IsRequired="True" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
@@ -118,13 +120,27 @@
                 <td>
                     &nbsp;</td>
                 <td>
-                    &nbsp;</td>
+                     <img src="" id="previewImage" alt="" /></td>
             </tr>
             <tr>
                 <td>
                     &nbsp;</td>
                 <td>
-                    <dx:ASPxButton ID="btnSave" runat="server" Text="Save">
+                    <dx:ASPxButton ID="btnUplaod" runat="server" Text="Upload">
+                    </dx:ASPxButton>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+                <td>
+                     &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    <dx:ASPxButton ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click">
                     </dx:ASPxButton>
                 </td>
             </tr>

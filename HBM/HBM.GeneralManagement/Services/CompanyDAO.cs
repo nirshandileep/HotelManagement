@@ -25,6 +25,7 @@ namespace HBM.GeneralManagement
             db.AddInParameter(command, "@CompanyCity", DbType.String, company.CompanyCity);
             db.AddInParameter(command, "@CompanyEmail", DbType.String, company.CompanyEmail);
             db.AddInParameter(command, "@CompanyTelephone", DbType.String, company.CompanyTelephone);
+            db.AddInParameter(command, "@CompanyTypeId", DbType.Int32, company.CompanyTypeId);
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, company.CreatedUser);            
             db.AddInParameter(command, "@StatusId", DbType.Int32, company.StatusId);
             db.AddInParameter(command, "@CompanyFax", DbType.String, company.CompanyFax);
@@ -42,11 +43,12 @@ namespace HBM.GeneralManagement
             DbCommand command = db.GetStoredProcCommand("usp_CompanyUpdate");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, company.CompanyId);
+            db.AddInParameter(command, "@CompanyName", DbType.String, company.CompanyName);
             db.AddInParameter(command, "@CompanyAddress", DbType.String, company.CompanyAddress);
             db.AddInParameter(command, "@CompanyCity", DbType.String, company.CompanyCity);
             db.AddInParameter(command, "@CompanyEmail", DbType.String, company.CompanyEmail);
             db.AddInParameter(command, "@CompanyTelephone", DbType.String, company.CompanyTelephone);
-            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, company.CreatedUser);
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, company.UpdatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, company.StatusId);
             db.AddInParameter(command, "@CompanyFax", DbType.String, company.CompanyFax);
             db.AddInParameter(command, "@CompanyLogo", DbType.Binary, company.CompanyLogo);

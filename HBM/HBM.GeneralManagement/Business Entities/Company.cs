@@ -11,7 +11,7 @@ using System.Drawing;
 
 namespace HBM.GeneralManagement
 {
-   public class Company
+    public class Company
     {
         #region Properties
 
@@ -21,17 +21,18 @@ namespace HBM.GeneralManagement
         public string CompanyCity { get; set; }
         public string CompanyEmail { get; set; }
         public string CompanyTelephone { get; set; }
-        public string CreatedUser { get; set; }
+        public int CompanyTypeId { get; set; }
+        public int CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string UpdatedBy { get; set; }
+        public int UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
         public string CompanyFax { get; set; }
-        public Image CompanyLogo { get; set; }       
+        public Image CompanyLogo { get; set; }
 
         #endregion
 
-        #region Methods               
+        #region Methods
 
         public bool Save()
         {
@@ -75,7 +76,7 @@ namespace HBM.GeneralManagement
 
         public Company Select()
         {
-            return HBM.Utility.Generic.Get<Company>(this.CompanyId, this.CompanyId);
+            return HBM.Utility.Generic.Get<Company>(this.CompanyId, 0);
         }
 
         public List<Company> SelectAllList()

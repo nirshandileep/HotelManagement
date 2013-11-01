@@ -20,6 +20,14 @@ namespace HBM.Common
             Cancel = 6,
             NoShow = 7,
         }
+
+        /// <summary>
+        /// Types of Companies
+        /// </summary>
+        public enum HBMCompanyTypes
+        {
+            Hote=1
+        }
        
     }
 }
