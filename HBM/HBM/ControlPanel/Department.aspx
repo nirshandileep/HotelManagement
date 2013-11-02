@@ -38,13 +38,29 @@
                                     </ValidationSettings>
                                 </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewCommandColumn VisibleIndex="1">
-                                <DeleteButton Visible="True">
+                            <dx:GridViewCommandColumn VisibleIndex="1" ButtonType="Image" Width="75px" Caption="Actions"
+                                FixedStyle="Left">
+                                 <DeleteButton Visible="True">
+                                    <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                    </Image>
                                 </DeleteButton>
                                 <EditButton Visible="True">
+                                    <Image ToolTip="Edit" Url="~/Images/update.png">
+                                    </Image>
                                 </EditButton>
                                 <NewButton Visible="True">
+                                    <Image ToolTip="New" Url="~/Images/new.png">
+                                    </Image>
                                 </NewButton>
+                                <UpdateButton Visible="True">
+                                    <Image Url="~/Images/Apply.png">
+                                    </Image>
+                                </UpdateButton>
+                                <CancelButton Visible="True">
+                                    <Image Url="~/Images/Close.png" ToolTip="Cancel">
+                                    </Image>
+                                </CancelButton>
+
                             </dx:GridViewCommandColumn>
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />

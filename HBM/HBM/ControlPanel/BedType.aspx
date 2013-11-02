@@ -10,7 +10,6 @@
 <head id="Head1" runat="server">
     <title></title>
     <link href="../css/components.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -32,19 +31,28 @@
                         OnRowInserting="gvBedTypes_RowInserting" OnRowDeleting="gvBedTypes_RowDeleting"
                         OnRowUpdating="gvBedTypes_RowUpdating">
                         <Columns>
-                            <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="75px">
-                                <DeleteButton Visible="True"  >
+                            <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="75px" Caption="Actions"
+                                FixedStyle="Left">
+                                <DeleteButton Visible="True">
                                     <Image ToolTip="Delete" Url="~/Images/delete.png">
                                     </Image>
                                 </DeleteButton>
-                                <EditButton Visible="True" >
+                                <EditButton Visible="True">
                                     <Image ToolTip="Edit" Url="~/Images/update.png">
                                     </Image>
                                 </EditButton>
-                                <NewButton Visible="True" >
+                                <NewButton Visible="True">
                                     <Image ToolTip="New" Url="~/Images/new.png">
                                     </Image>
                                 </NewButton>
+                                <UpdateButton Visible="True">
+                                    <Image Url="~/Images/Apply.png">
+                                    </Image>
+                                </UpdateButton>
+                                <CancelButton Visible="True">
+                                    <Image Url="~/Images/Close.png" ToolTip="Cancel">
+                                    </Image>
+                                </CancelButton>
                             </dx:GridViewCommandColumn>
                             <dx:GridViewDataTextColumn Caption="Bed Type" FieldName="BedTypeName" VisibleIndex="0">
                                 <PropertiesTextEdit MaxLength="50">

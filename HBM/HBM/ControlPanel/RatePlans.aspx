@@ -38,15 +38,28 @@
                                     </ValidationSettings>
                                 </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewCommandColumn VisibleIndex="7">
+                            <dx:GridViewCommandColumn VisibleIndex="7" ButtonType="Image" Width="75px" Caption="Actions"
+                                FixedStyle="Left">
+                                 <DeleteButton Visible="True">
+                                    <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                    </Image>
+                                </DeleteButton>
                                 <EditButton Visible="True">
+                                    <Image ToolTip="Edit" Url="~/Images/update.png">
+                                    </Image>
                                 </EditButton>
                                 <NewButton Visible="True">
+                                    <Image ToolTip="New" Url="~/Images/new.png">
+                                    </Image>
                                 </NewButton>
-                                <DeleteButton Visible="True">
-                                </DeleteButton>
-                                <ClearFilterButton Visible="True">
-                                </ClearFilterButton>
+                                <UpdateButton Visible="True">
+                                    <Image Url="~/Images/Apply.png">
+                                    </Image>
+                                </UpdateButton>
+                                <CancelButton Visible="True">
+                                    <Image Url="~/Images/Close.png" ToolTip="Cancel">
+                                    </Image>
+                                </CancelButton>
                             </dx:GridViewCommandColumn>
                             <dx:GridViewDataDateColumn Caption="Effective From" VisibleIndex="1" 
                                 FieldName="EffectiveFrom">
