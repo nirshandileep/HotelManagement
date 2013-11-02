@@ -30,8 +30,8 @@
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtCustomerName" runat="server" Width="170px">
-                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
-                        ValidationGroup="vgCustomer" ErrorDisplayMode="Text">
+                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True"
+                        ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
                         <RequiredField IsRequired="True" ErrorText="Required" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -53,8 +53,8 @@
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px">
-                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
-                        ValidationGroup="vgCustomer" ErrorDisplayMode="Text">
+                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True"
+                        ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
                         <RequiredField IsRequired="True" ErrorText="Required" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -81,7 +81,7 @@
                         <dx:ListEditItem Text="Male" Value="Male" />
                         <dx:ListEditItem Text="Female" Value="Female" />
                     </Items>
-                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="Text" SetFocusOnError="True"
+                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip"
                         ValidationGroup="vgCustomer">
                         <RequiredField ErrorText="Required" IsRequired="True" />
                     </ValidationSettings>
@@ -105,7 +105,7 @@
             <td>
                 <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px">
                     <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
-                        ValidationGroup="vgCustomer" ErrorDisplayMode="Text">
+                        ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
                         <RequiredField IsRequired="True" ErrorText="Required" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -146,7 +146,7 @@
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px">
-                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="Text"
+                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
                         SetFocusOnError="True" ValidationGroup="vgCustomer">
                         <RegularExpression ErrorText="Incorrect Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
                     </ValidationSettings>
@@ -336,8 +336,8 @@
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtBillingAddress" runat="server" Width="170px">
-                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
-                        ValidationGroup="vgCustomer" ErrorDisplayMode="Text">
+                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True"
+                        ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
                         <RequiredField IsRequired="True" ErrorText="Required" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -359,8 +359,9 @@
             </td>
             <td>
                 <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px">
-                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
-                        ValidationGroup="vgCustomer" ErrorDisplayMode="Text" ErrorText="Required">
+                    <ValidationSettings Display="Dynamic" EnableCustomValidation="True"
+                        ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip" 
+                        ErrorText="Required">
                         <RequiredField IsRequired="True" ErrorText="Required" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
@@ -449,17 +450,22 @@
                 <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td width="52" align="left">
-                            <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgCustomer">
+                            <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" 
+                                ValidationGroup="vgCustomer" HorizontalAlign="Center" ImageSpacing="15px" 
+                                VerticalAlign="Middle">
+                                <Image Url="~/Images/Save.png">
+                                </Image>
                             </dx:ASPxButton>
                         </td>
                         <td width="52" align="left">
-                            <dx:ASPxButton ID="btnClear" runat="server" Text="Clear">
+                            <dx:ASPxButton ID="btnClear" runat="server" Text="Clear" 
+                                HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
+                                <Image Url="~/Images/Clear.png">
+                                </Image>
                             </dx:ASPxButton>
                         </td>
                         <td width="52" align="left">
-                            <dx:ASPxButton ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back">
-                            </dx:ASPxButton>
-                        </td>
+                            &nbsp;</td>
                     </tr>
                 </table>
             </td>
