@@ -94,6 +94,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\Apply.png" />
     <Content Include="Images\Close.png" />
+    <Content Include="Images\Customer.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\error.jpg" />
     <Content Include="Images\gnome_session_logout.png" />
@@ -436,6 +437,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\Resources\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

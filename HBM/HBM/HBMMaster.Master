@@ -28,25 +28,39 @@
                 <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" >
                     <Items>
                         <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
+                            <Image Url="~/Images/Home.png">
+                            </Image>
                         </dx:MenuItem>
                         <dx:MenuItem Text="Customer">
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/Customer/Customers.aspx" Text="Add Customer">
+                                    <Image Url="~/Images/Customer.png">
+                                    </Image>
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/Customer/CustomerSearch.aspx" 
                                     Text="Search Customer">
+                                    <Image Url="~/Images/Search.png">
+                                    </Image>
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
                         <dx:MenuItem Text="Staff Management">
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/StaffManagement/Users.aspx" Text="Add Users">
+                                    <Image Url="~/Images/Staff.png">
+                                    </Image>
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/StaffManagement/UserSearch.aspx" Text="Search User">
+                                    <Image Url="~/Images/Search.png">
+                                    </Image>
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/StaffManagement/Roles.aspx" Text="Add Role">
+                                    <Image Url="~/Images/Role.png">
+                                    </Image>
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/StaffManagement/RoleSearch.aspx" Text="Search Role">
+                                    <Image Url="~/Images/Search.png">
+                                    </Image>
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
@@ -54,31 +68,29 @@
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" 
                                     Text="Add Reservation">
+                                    <Image Url="~/Images/Reservation.png">
+                                    </Image>
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" 
                                     Text="Search Reservation">
+                                    <Image Url="~/Images/Search.png">
+                                    </Image>
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
                         <dx:MenuItem Text="Administration">
                             <Items>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/BedType.aspx" Text="Bed Types">
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/Department.aspx" Text="Department">
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/Gaurantee.aspx" Text="Gaurantee">
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/RatePlans.aspx" Text="Rate Plans">
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/Rooms.aspx" Text="Rooms">
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/Source.aspx" Text="Source">
+                                <dx:MenuItem NavigateUrl="~/ControlPanel/Company.aspx" Text="Company">
+                                    <Image Url="~/Images/Company.png">
+                                    </Image>
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/SwitchBoard.aspx" Text="Swtich Board">
+                                    <Image Url="~/Images/Switchboard.png">
+                                    </Image>
                                 </dx:MenuItem>
-                                <dx:MenuItem Text="Reporting">
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/Company.aspx" Text="Company">
+                                <dx:MenuItem Text="Reports">
+                                    <Image Url="~/Images/Report.png">
+                                    </Image>
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
