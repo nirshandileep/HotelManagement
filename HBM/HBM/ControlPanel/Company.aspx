@@ -1,6 +1,6 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/HBMMaster.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HBMMaster.Master" AutoEventWireup="true"
     CodeBehind="~/ControlPanel/Company.aspx.cs" Inherits="HBM.ControlPanel.Company" %>
+
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
@@ -9,8 +9,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <div>
-        Company Information
+    <div class="wrapper">
+        <h2>Company Information</h2>
         <table class="style1">
             <tr>
                 <td colspan="2">
@@ -36,8 +36,7 @@
                     Address
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px" 
-                        MaxLength="50">
+                    <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px" MaxLength="50">
                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField ErrorText="Required" IsRequired="True" />
                             <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
@@ -63,8 +62,7 @@
                     Email
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyEmail" runat="server" Width="170px" 
-                        MaxLength="50">
+                    <dx:ASPxTextBox ID="txtCompanyEmail" runat="server" Width="170px" MaxLength="50">
                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
                             <RegularExpression ErrorText="Invalid" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
@@ -78,8 +76,7 @@
                     Telephone
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyTelephone" runat="server" Width="170px" 
-                        MaxLength="50">
+                    <dx:ASPxTextBox ID="txtCompanyTelephone" runat="server" Width="170px" MaxLength="50">
                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField ErrorText="Required" IsRequired="True" />
                             <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
@@ -105,8 +102,7 @@
                     Company Logo
                 </td>
                 <td>
-                    <dx:ASPxUploadControl ID="ucCompanyLogo" runat="server" Width="280px" 
-                        OnFileUploadComplete="ucCompanyLogo_FileUploadComplete">
+                    <dx:ASPxUploadControl ID="ucCompanyLogo" runat="server" Width="280px" OnFileUploadComplete="ucCompanyLogo_FileUploadComplete">
                     </dx:ASPxUploadControl>
                 </td>
             </tr>
@@ -132,9 +128,8 @@
                     &nbsp;
                 </td>
                 <td>
-                    <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Save" 
-                        OnClick="btnSave_Click" HorizontalAlign="Center" ImageSpacing="15px" 
-                        VerticalAlign="Middle">
+                    <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Save" OnClick="btnSave_Click"
+                        HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
                         <Image Url="~/Images/Save.png">
                         </Image>
                     </dx:ASPxButton>

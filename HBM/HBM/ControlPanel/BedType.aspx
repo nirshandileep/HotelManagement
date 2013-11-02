@@ -9,17 +9,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <link href="../css/components.css" rel="stylesheet" type="text/css" />
+    <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div class="wrapper-switchboard">
+        <h2>
+            Bed Types List</h2>
         <table>
-            <tr>
-                <td>
-                    Bed Types List
-                </td>
-            </tr>
             <tr>
                 <td>
                     &nbsp;

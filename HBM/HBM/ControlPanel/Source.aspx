@@ -8,22 +8,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-    </style>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <table class="style1">
-            <tr>
-                <td>
-                    Source
-                </td>
-            </tr>
+    <div class="wrapper-switchboard">
+        <h2>
+            Source</h2>
+        <table>
             <tr>
                 <td>
                     &nbsp;

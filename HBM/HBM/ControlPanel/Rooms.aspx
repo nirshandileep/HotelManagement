@@ -8,16 +8,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div class="wrapper-switchboard">
+        <h2>
+            Room List</h2>
         <table>
-            <tr>
-                <td>
-                    Room List
-                </td>
-            </tr>
             <tr>
                 <td>
                     &nbsp;
@@ -39,7 +38,7 @@
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewCommandColumn VisibleIndex="9" ButtonType="Image" Width="75px" Caption="Actions"
                                 FixedStyle="Left">
-                                  <DeleteButton Visible="True">
+                                <DeleteButton Visible="True">
                                     <Image ToolTip="Delete" Url="~/Images/delete.png">
                                     </Image>
                                 </DeleteButton>
@@ -102,8 +101,7 @@
                             <dx:GridViewDataCheckColumn Caption="Allow Smoking" VisibleIndex="7" FieldName="SmokingAllow">
                             </dx:GridViewDataCheckColumn>
                             <dx:GridViewDataComboBoxColumn Caption="Bed Type" FieldName="BedTypeId" VisibleIndex="3">
-                                <PropertiesComboBox TextField="BedTypeName" ValueField="BedTypeId" 
-                                    ValueType="System.Int32">
+                                <PropertiesComboBox TextField="BedTypeName" ValueField="BedTypeId" ValueType="System.Int32">
                                 </PropertiesComboBox>
                             </dx:GridViewDataComboBoxColumn>
                         </Columns>

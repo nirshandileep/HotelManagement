@@ -8,16 +8,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div class="wrapper-switchboard">
+        <h2>
+            Department List</h2>
         <table>
-            <tr>
-                <td>
-                    Department List
-                </td>
-            </tr>
             <tr>
                 <td>
                     &nbsp;
@@ -25,13 +24,11 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxGridView ID="gvDepartment" runat="server" AutoGenerateColumns="False" 
-                        KeyFieldName="DepartmentId" onrowdeleting="gvDepartment_RowDeleting" 
-                        onrowinserting="gvDepartment_RowInserting" 
-                        onrowupdating="gvDepartment_RowUpdating">
+                    <dx:ASPxGridView ID="gvDepartment" runat="server" AutoGenerateColumns="False" KeyFieldName="DepartmentId"
+                        OnRowDeleting="gvDepartment_RowDeleting" OnRowInserting="gvDepartment_RowInserting"
+                        OnRowUpdating="gvDepartment_RowUpdating">
                         <Columns>
-                            <dx:GridViewDataTextColumn Caption="Department Name" VisibleIndex="0" 
-                                FieldName="DepartmentName">
+                            <dx:GridViewDataTextColumn Caption="Department Name" VisibleIndex="0" FieldName="DepartmentName">
                                 <PropertiesTextEdit>
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -40,7 +37,7 @@
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewCommandColumn VisibleIndex="1" ButtonType="Image" Width="75px" Caption="Actions"
                                 FixedStyle="Left">
-                                 <DeleteButton Visible="True">
+                                <DeleteButton Visible="True">
                                     <Image ToolTip="Delete" Url="~/Images/delete.png">
                                     </Image>
                                 </DeleteButton>
@@ -60,7 +57,6 @@
                                     <Image Url="~/Images/Close.png" ToolTip="Cancel">
                                     </Image>
                                 </CancelButton>
-
                             </dx:GridViewCommandColumn>
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />

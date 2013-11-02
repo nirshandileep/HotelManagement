@@ -8,39 +8,43 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table class="dxflInternalEditorTable">
-        <tr>
-            <td>
-                Swtich Board
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="0" 
-                    ontabclick="tcCommon_TabClick" Width="100%" Height="25px" TabSpacing="5px">
-                    <Tabs>
-                        <dx:Tab Text="Bed Types" Name="BedType">
-                        </dx:Tab>
-                        <dx:Tab Text="Departments" Name="Departments">
-                        </dx:Tab>
-                        <dx:Tab Text="Guarantee" Name="Gaurantee">
-                        </dx:Tab>
-                        <dx:Tab Text="Rooms" Name="Rooms">
-                        </dx:Tab>
-                        <dx:Tab Name="RatePlan" Text="Rate Plan">
-                        </dx:Tab>
-                        <dx:Tab Text="Source" Name="Source">
-                        </dx:Tab>
-                    </Tabs>
-                </dx:ASPxTabControl>
-                
-            </td>
-        </tr>
-    </table>
-    <div><iframe id="iframePage" runat="server" width="100%" height="400px"></iframe></div>
+    <div class="wrapper">
+    <h2>Swtich Board</h2>
+        <table class="dxflInternalEditorTable">
+            <tr>
+                <td>
+                     &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="1" OnTabClick="tcCommon_TabClick"
+                        Width="900px" Height="25px" TabSpacing="0px" TabAlign="Center">
+                        <Tabs>
+                            <dx:Tab Text="Bed Types" Name="BedType">
+                            </dx:Tab>
+                            <dx:Tab Text="Departments" Name="Departments">
+                            </dx:Tab>
+                            <dx:Tab Text="Guarantee" Name="Gaurantee">
+                            </dx:Tab>
+                            <dx:Tab Text="Rooms" Name="Rooms">
+                            </dx:Tab>
+                            <dx:Tab Name="RatePlan" Text="Rate Plan">
+                            </dx:Tab>
+                            <dx:Tab Text="Source" Name="Source">
+                            </dx:Tab>
+                        </Tabs>
+                    </dx:ASPxTabControl>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <iframe id="iframePage" runat="server" width="900px" height="400px"></iframe>
+        </div>
+    </div>
 </asp:Content>
