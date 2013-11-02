@@ -29,19 +29,21 @@ namespace HBM.ControlPanel
             try
             {
                 company.CompanyId = SessionManager.SessionHandler.CurrentCompanyId;
-                GenMan.Company company1 = new GenMan.Company();
-                company1 = company.Select();
-                txtCompanyName.Text = company1.CompanyName;
-                txtCompanyAddress.Text = company1.CompanyAddress;
-                txtCompanyCity.Text = company1.CompanyCity;
-                txtCompanyEmail.Text = company1.CompanyEmail;
-                txtCompanyTelephone.Text = company1.CompanyTelephone;
-                txtCompanyFax.Text = company1.CompanyFax;
+                GenMan.Company currentCompany = new GenMan.Company();
+                currentCompany = company.Select();
+                txtCompanyName.Text = currentCompany.CompanyName;
+                txtCompanyAddress.Text = currentCompany.CompanyAddress;
+                txtCompanyCity.Text = currentCompany.CompanyCity;
+                txtCompanyEmail.Text = currentCompany.CompanyEmail;
+                txtCompanyTelephone.Text = currentCompany.CompanyTelephone;
+                txtCompanyFax.Text = currentCompany.CompanyFax;
 
-                if (company1.CompanyLogo.Length > 0)
+                if (currentCompany.CompanyLogo.Length > 0)
                 {
                     trImageRow.Visible = true;
-                    bimgLogo.ContentBytes = company1.CompanyLogo;
+                    bimgLogo.ContentBytes = currentCompany.CompanyLogo;
+                    hdnCompanyLogo.Value = Convert.ToBase64String(currentCompany.CompanyLogo);
+
                 }
 
 
@@ -68,12 +70,23 @@ namespace HBM.ControlPanel
                 company.CompanyTelephone = txtCompanyTelephone.Text.Trim();
                 company.CompanyFax = txtCompanyFax.Text.Trim();
                 company.StatusId = (int)Status.HBMStatus.Modify;
-                company.CompanyLogo = file;
+
+
+                if (file != null)
+                {
+                    company.CompanyLogo = file;
+                }
+                else if (hdnCompanyLogo.Value != string.Empty)
+                {
+                    company.CompanyLogo = (byte[]) Convert.FromBase64String(hdnCompanyLogo.Value);
+                }
+
+
 
                 if (company.Save())
                 {
-                    this.LoadCompany();
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
+                    this.LoadCompany();
                 }
 
 
@@ -101,7 +114,7 @@ namespace HBM.ControlPanel
             MemoryStream ms = new MemoryStream(byteArrayIn);
             Image returnImage = Image.FromStream(ms);
             return returnImage;
-     
+
         }
 
     }

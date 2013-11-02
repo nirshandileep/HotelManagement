@@ -1,6 +1,6 @@
 ﻿
 //Top Message
-function ShowSuccessMessage(content) {
+function ShowSuccessMessage(content) {    
     var wrapper = $('<div />').addClass('msg__success_wrapper');
     var save_content = $('<div />').addClass('msg_success_content').html(content);
         wrapper.append(save_content);

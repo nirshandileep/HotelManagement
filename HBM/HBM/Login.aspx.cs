@@ -38,8 +38,7 @@ namespace HBM
                     {
                         users.UsersId = userID;
                         users.CompanyId = companyId;
-                        users.Select();
-                        Session[Constants.SESSION_LOGGEDUSER] = users;
+                        Session[Constants.SESSION_LOGGEDUSER] = users.Select();
                         Response.Redirect(HBM.Common.Constants.CONST_DEFAULTBACKPAGE, false);
                     }
                 }

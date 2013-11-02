@@ -12,8 +12,8 @@
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <link href="css/messages.css" rel="stylesheet" type="text/css" />
-    <script language="javascript" type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
-    <script language="javascript" type="text/javascript" src="JS/HBMCommon.js"></script>
+    <script language="javascript" type="text/javascript" src="../Scripts/jquery-2.0.3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../JS/HBMCommon.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

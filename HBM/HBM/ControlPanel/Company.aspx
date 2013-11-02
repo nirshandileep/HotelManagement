@@ -5,7 +5,6 @@
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dx" %>
-
 <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -16,6 +15,7 @@
             <tr>
                 <td colspan="2">
                     &nbsp;
+                    <asp:HiddenField ID="hdnCompanyLogo" runat="server" />
                 </td>
             </tr>
             <tr>

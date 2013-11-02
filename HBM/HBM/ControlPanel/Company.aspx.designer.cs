@@ -13,6 +13,15 @@ namespace HBM.ControlPanel {
     public partial class Company {
         
         /// <summary>
+        /// hdnCompanyLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnCompanyLogo;
+        
+        /// <summary>
         /// txtCompanyName control.
         /// </summary>
         /// <remarks>
