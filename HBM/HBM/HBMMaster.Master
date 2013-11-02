@@ -25,13 +25,15 @@
                 <img src="../Images/hotel-logo.png" width="133" height="77" alt="logo" />
             </div>
             <div class="nav">
-                <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" >
+                <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" 
+                    BorderBetweenItemAndSubMenu="HideAll" ItemSpacing="0px" SelectParentItem="True" 
+                    VerticalAlign="Middle" >
                     <Items>
                         <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
                             <Image Url="~/Images/Home.png">
                             </Image>
                         </dx:MenuItem>
-                        <dx:MenuItem Text="Customer">
+                        <dx:MenuItem Text="Customer" DropDownMode="True">
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/Customer/Customers.aspx" Text="Add Customer">
                                     <Image Url="~/Images/Customer.png">
@@ -44,7 +46,7 @@
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
-                        <dx:MenuItem Text="Staff Management">
+                        <dx:MenuItem Text="Staff Management" DropDownMode="True">
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/StaffManagement/Users.aspx" Text="Add Users">
                                     <Image Url="~/Images/Staff.png">
@@ -64,7 +66,7 @@
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
-                        <dx:MenuItem Text="Reservation">
+                        <dx:MenuItem Text="Reservation" DropDownMode="True">
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" 
                                     Text="Add Reservation">
@@ -78,7 +80,7 @@
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
-                        <dx:MenuItem Text="Administration">
+                        <dx:MenuItem Text="Administration" DropDownMode="True">
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/ControlPanel/Company.aspx" Text="Company">
                                     <Image Url="~/Images/Company.png">
