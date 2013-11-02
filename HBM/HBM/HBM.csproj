@@ -308,6 +308,10 @@
       <Project>{95B13785-030E-4F4A-A5C9-C3355B2A9F66}</Project>
       <Name>HBM.Utility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReservationManagement\HBM.ReservationManagement.csproj">
+      <Project>{72B2DF31-E167-4446-A169-22EA49AEF064}</Project>
+      <Name>HBM.ReservationManagement</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\HBMTheme\ASPxButton.skin" />

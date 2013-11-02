@@ -49,6 +49,40 @@ namespace HBM.Utility
         }
 
         /// <summary>
+        /// Returns an entity by PrimaryKey. 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="PrimaryKey"></param>
+        /// <param name="ExecutedBy"></param>
+        /// <param name="dbTransaction"></param>
+        /// <returns></returns>
+        public static T Get<T>(Int64 PrimaryKey, int companyId = 0) where T : new()
+        {
+            T entity = default(T);
+
+            string TypeName = typeof(T).Name;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "Select");
+
+            db.AddInParameter(dbCommand, TypeName + "Id", DbType.Int64, PrimaryKey);
+
+            if (companyId != 0)
+                db.AddInParameter(dbCommand, "CompanyId", DbType.Int32, companyId);
+
+            using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+            {
+                if (dataReader.Read())
+                {
+                    entity = new T();
+                    AssignDataReaderToEntity(dataReader, entity);
+                }
+            }
+
+            return entity;
+        }
+
+        /// <summary>
         /// This function loops through each column in the datareader and assigns
         /// the value to the associated property on the entity (if it exists).
         /// </summary>

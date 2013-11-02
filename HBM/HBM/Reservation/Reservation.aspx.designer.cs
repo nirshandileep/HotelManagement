@@ -49,6 +49,24 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddSource;
         
         /// <summary>
+        /// hdnReservationId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnReservationId;
+        
+        /// <summary>
+        /// hdnFromURL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFromURL;
+        
+        /// <summary>
         /// teBookingTime control.
         /// </summary>
         /// <remarks>
@@ -130,22 +148,22 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seNumberOfInfants;
         
         /// <summary>
-        /// txtRoomName control.
+        /// cmbRooms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtRoomName;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRooms;
         
         /// <summary>
-        /// btnAddRoomRate control.
+        /// cmbRatePlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddRoomRate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRatePlan;
         
         /// <summary>
         /// gvRooms control.
@@ -166,6 +184,15 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtGuestName;
         
         /// <summary>
+        /// ASPxComboBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox1;
+        
+        /// <summary>
         /// txtSelectGuest control.
         /// </summary>
         /// <remarks>
@@ -173,6 +200,15 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxButton txtSelectGuest;
+        
+        /// <summary>
+        /// hdnCustomerId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnCustomerId;
         
         /// <summary>
         /// txtGuestCompany control.
@@ -337,15 +373,6 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbTax;
         
         /// <summary>
-        /// btnAddTax control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddTax;
-        
-        /// <summary>
         /// txtTaxTotal control.
         /// </summary>
         /// <remarks>
@@ -407,5 +434,17 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl ppcPageLoader;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new HBM.HBMMaster Master {
+            get {
+                return ((HBM.HBMMaster)(base.Master));
+            }
+        }
     }
 }

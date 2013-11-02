@@ -8,6 +8,7 @@
     Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+    <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -27,20 +28,38 @@
                             Status
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cmbResStatus" runat="server" ValueType="System.String">
+                            <dx:ASPxComboBox ID="cmbResStatus" runat="server" ValueType="System.Int32">
                             </dx:ASPxComboBox>
                         </td>
                         <td>
                             Source
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cmbSource" runat="server" ValueType="System.String">
+                            <dx:ASPxComboBox ID="cmbSource" runat="server" ValueType="System.Int32">
                             </dx:ASPxComboBox>
                         </td>
                         <td>
                             <dx:ASPxButton ID="btnAddSource" runat="server" Text="..." Visible="False">
                             </dx:ASPxButton>
                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            <asp:HiddenField ID="hdnReservationId" runat="server" Value="0" />
+                        </td>
+                        <td>
+                            <asp:HiddenField ID="hdnFromURL" runat="server" />
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                        <td title="Reservation">
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td>
@@ -69,6 +88,22 @@
                             </dx:ASPxButton>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
                 </table>
             </td>
         </tr>
@@ -89,6 +124,12 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Check Out
                                     </td>
                                     <td>
@@ -98,41 +139,86 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Adult No.
                                     </td>
                                     <td>
-                                        <dx:ASPxSpinEdit ID="seNumberOfAdults" runat="server" Height="21px" Number="0">
+                                        <dx:ASPxSpinEdit ID="seNumberOfAdults" runat="server" Height="21px" Number="0" 
+                                            NumberType="Integer">
                                         </dx:ASPxSpinEdit>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
                                         Child No.
                                     </td>
                                     <td>
-                                        <dx:ASPxSpinEdit ID="seNumberOfChildren" runat="server" Height="21px" Number="0">
+                                        <dx:ASPxSpinEdit ID="seNumberOfChildren" runat="server" Height="21px" 
+                                            Number="0" NumberType="Integer">
                                         </dx:ASPxSpinEdit>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
                                         Infant No.
                                     </td>
                                     <td>
-                                        <dx:ASPxSpinEdit ID="seNumberOfInfants" runat="server" Height="21px" Number="0">
+                                        <dx:ASPxSpinEdit ID="seNumberOfInfants" runat="server" Height="21px" Number="0" 
+                                            NumberType="Integer">
                                         </dx:ASPxSpinEdit>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
                                         Room
                                     </td>
                                     <td>
-                                        <dx:ASPxTextBox ID="txtRoomName" runat="server" Width="170px" ReadOnly="True">
-                                        </dx:ASPxTextBox>
-                                        <dx:ASPxButton ID="btnAddRoomRate" runat="server" Text="...">
-                                        </dx:ASPxButton>
+                                        <dx:ASPxComboBox ID="cmbRooms" runat="server" ValueType="System.Int32">
+                                        </dx:ASPxComboBox>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Rate Plan</td>
+                                    <td>
+                                        <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.Int32">
+                                        </dx:ASPxComboBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                             </table>
                             <div>
@@ -160,9 +246,27 @@
                                     <td>
                                         <dx:ASPxTextBox ID="txtGuestName" runat="server" Width="170px" Enabled="False">
                                         </dx:ASPxTextBox>
+                                        <dx:ASPxComboBox ID="ASPxComboBox1" runat="server">
+                                            <Columns>
+                                                <dx:ListBoxColumn FieldName="CustomerName" />
+                                                <dx:ListBoxColumn FieldName="MemberCode" />
+                                                <dx:ListBoxColumn FieldName="GuestTypeName" />
+                                                <dx:ListBoxColumn FieldName="Phone" />
+                                                <dx:ListBoxColumn FieldName="CompanyName" />
+                                                <dx:ListBoxColumn FieldName="Email" />
+                                                <dx:ListBoxColumn FieldName="DriverLicense" />
+                                            </Columns>
+                                        </dx:ASPxComboBox>
                                         <dx:ASPxButton ID="txtSelectGuest" runat="server" Text="...">
                                         </dx:ASPxButton>
+                                        <asp:HiddenField ID="hdnCustomerId" runat="server" Value="0" />
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -172,6 +276,12 @@
                                         <dx:ASPxTextBox ID="txtGuestCompany" runat="server" Width="170px" Enabled="False">
                                         </dx:ASPxTextBox>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -187,6 +297,12 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Phone
                                     </td>
                                     <td>
@@ -196,12 +312,24 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Special Requirement
                                     </td>
                                     <td>
                                         <dx:ASPxTextBox ID="txtSpecialRequirement" runat="server" Width="170px">
                                         </dx:ASPxTextBox>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                             </table>
                             <div>
@@ -248,12 +376,24 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         City
                                     </td>
                                     <td>
                                         <dx:ASPxTextBox ID="txtCity" runat="server" Width="170px">
                                         </dx:ASPxTextBox>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -266,12 +406,24 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Country
                                     </td>
                                     <td>
-                                        <dx:ASPxComboBox ID="cmbCountry" runat="server" ValueType="System.String">
+                                        <dx:ASPxComboBox ID="cmbCountry" runat="server" ValueType="System.Int32">
                                         </dx:ASPxComboBox>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -281,6 +433,12 @@
                                         <dx:ASPxTextBox ID="txtPostCode" runat="server" Width="170px">
                                         </dx:ASPxTextBox>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                             </table>
                             <div>
@@ -315,6 +473,10 @@
                                             </dx:ASPxGridView>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;</td>
+                                    </tr>
                                 </table>
                             </div>
                         </td>
@@ -339,6 +501,12 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Service Total
                                     </td>
                                     <td>
@@ -348,12 +516,24 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Net Total
                                     </td>
                                     <td>
                                         <dx:ASPxTextBox ID="txtNetTotal" runat="server" Width="170px" ReadOnly="True">
                                         </dx:ASPxTextBox>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                             </table>
                         </td>
@@ -373,14 +553,24 @@
                                             </tr>
                                             <tr>
                                                 <td>
+                                                    &nbsp;</td>
+                                                <td>
+                                                    &nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                                     Tax
                                                 </td>
                                                 <td>
                                                     <dx:ASPxComboBox ID="cmbTax" runat="server" ValueType="System.String">
                                                     </dx:ASPxComboBox>
-                                                    <dx:ASPxButton ID="btnAddTax" runat="server" Text="...">
-                                                    </dx:ASPxButton>
                                                 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    &nbsp;</td>
+                                                <td>
+                                                    &nbsp;</td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -390,6 +580,12 @@
                                                     <dx:ASPxTextBox ID="txtTaxTotal" runat="server" Width="170px" ReadOnly="True">
                                                     </dx:ASPxTextBox>
                                                 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    &nbsp;</td>
+                                                <td>
+                                                    &nbsp;</td>
                                             </tr>
                                         </table>
                                     </td>
@@ -412,6 +608,12 @@
                                             </tr>
                                             <tr>
                                                 <td>
+                                                    &nbsp;</td>
+                                                <td>
+                                                    &nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                                     Paid
                                                 </td>
                                                 <td>
@@ -421,12 +623,24 @@
                                             </tr>
                                             <tr>
                                                 <td>
+                                                    &nbsp;</td>
+                                                <td>
+                                                    &nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                                     Balance
                                                 </td>
                                                 <td>
                                                     <dx:ASPxTextBox ID="ASPxTextBox7" runat="server" Width="170px" ReadOnly="True">
                                                     </dx:ASPxTextBox>
                                                 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    &nbsp;</td>
+                                                <td>
+                                                    &nbsp;</td>
                                             </tr>
                                         </table>
                                     </td>
