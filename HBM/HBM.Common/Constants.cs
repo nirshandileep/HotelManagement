@@ -63,10 +63,8 @@ namespace HBM.Common
         public static readonly string CONST_ROOMS = "/ControlPanel/Rooms.aspx";
         public static readonly string CONST_RATEPLANS= "/ControlPanel/RatePlans.aspx";
         public static readonly string CONST_SOURCE = "/ControlPanel/Source.aspx";
-
-
-
-
+        public static readonly string CONST_TAXTYPES= "/ControlPanel/TaxType.aspx";
+        
 
         #endregion
 
@@ -80,6 +78,7 @@ namespace HBM.Common
         public static readonly string SESSION_LOGGEDUSER = "LoggedUser";
         public static readonly string SESSION_CURRENTCOMPANY = "CurrentCompany";
         public static readonly string SESSION_RATEPLANS = "RatePlans";
+        public static readonly string SESSION_TAXTYPES= "TaxTypes";
 
 
         #endregion

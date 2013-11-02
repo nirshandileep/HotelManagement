@@ -84,6 +84,7 @@
     <Content Include="ControlPanel\Rooms.aspx" />
     <Content Include="ControlPanel\Source.aspx" />
     <Content Include="ControlPanel\SwitchBoard.aspx" />
+    <Content Include="ControlPanel\TaxType.aspx" />
     <Content Include="css\components.css" />
     <Content Include="css\Messages.css" />
     <Content Include="css\reset.css" />
@@ -188,6 +189,13 @@
     </Compile>
     <Compile Include="ControlPanel\SwitchBoard.aspx.designer.cs">
       <DependentUpon>SwitchBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\TaxType.aspx.cs">
+      <DependentUpon>TaxType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\TaxType.aspx.designer.cs">
+      <DependentUpon>TaxType.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\Customers.aspx.cs">
       <DependentUpon>Customers.aspx</DependentUpon>

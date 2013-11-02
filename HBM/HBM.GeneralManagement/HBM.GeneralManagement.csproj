@@ -72,6 +72,7 @@
     <Compile Include="Services\RoomRatePlanDAO.cs" />
     <Compile Include="Services\RoomsDAO.cs" />
     <Compile Include="Services\SourceDAO.cs" />
+    <Compile Include="Services\TaxTypeDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">

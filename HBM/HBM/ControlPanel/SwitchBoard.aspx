@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="1" OnTabClick="tcCommon_TabClick"
+                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="0" OnTabClick="tcCommon_TabClick"
                         Width="900px" Height="25px" TabSpacing="0px" TabAlign="Center">
                         <Tabs>
                             <dx:Tab Text="Bed Types" Name="BedType">
@@ -37,6 +37,8 @@
                             <dx:Tab Name="RatePlan" Text="Rate Plan">
                             </dx:Tab>
                             <dx:Tab Text="Source" Name="Source">
+                            </dx:Tab>
+                            <dx:Tab Name="TaxTypes" Text="Tax Types">
                             </dx:Tab>
                         </Tabs>
                     </dx:ASPxTabControl>

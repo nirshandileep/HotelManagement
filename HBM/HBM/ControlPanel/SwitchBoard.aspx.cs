@@ -42,8 +42,10 @@ namespace HBM.ControlPanel
                     break;
                 case "Source":
                     iframePage.Attributes["src"] = Constants.CONST_SOURCE;
-                    break;       
-
+                    break;
+                case "TaxTypes":
+                    iframePage.Attributes["src"] = Constants.CONST_TAXTYPES;
+                    break;      
             }
         }
     }

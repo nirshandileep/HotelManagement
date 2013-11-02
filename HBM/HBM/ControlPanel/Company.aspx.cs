@@ -69,7 +69,7 @@ namespace HBM.ControlPanel
                 company.CompanyEmail = txtCompanyEmail.Text.Trim();
                 company.CompanyTelephone = txtCompanyTelephone.Text.Trim();
                 company.CompanyFax = txtCompanyFax.Text.Trim();
-                company.StatusId = (int)Status.HBMStatus.Modify;
+                company.StatusId = (int)Enums.HBMStatus.Modify;
 
 
                 if (file != null)

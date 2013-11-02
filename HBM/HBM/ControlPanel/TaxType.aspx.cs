@@ -13,21 +13,20 @@ using HBM.SessionManager;
 
 namespace HBM.ControlPanel
 {
-    public partial class BedType : System.Web.UI.Page
+    public partial class TaxType : System.Web.UI.Page
     {
-
         DataSet dsData = new DataSet();
-        GenMan.BedType bedType = new GenMan.BedType();
+        GenMan.TaxType taxType = new GenMan.TaxType();
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            try 
-            {                   
+            try
+            {
 
-                gvBedTypes.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
-                this.LoadBedTypes();
-                dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["BedTypeId"] };
+                gvTaxTypes.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+                this.LoadTaxTypes();
+                dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["TaxTypeId"] };
                 Session[Constants.SESSION_TAXTYPES] = dsData;
             }
             catch (System.Exception)
@@ -37,14 +36,14 @@ namespace HBM.ControlPanel
             }
         }
 
-        protected void LoadBedTypes()
+        protected void LoadTaxTypes()
         {
             try
             {
-                bedType.CompanyId = SessionHandler.CurrentCompanyId;
-                dsData=bedType.SelectAllDataset();
-                gvBedTypes.DataSource = dsData.Tables[0];
-                gvBedTypes.DataBind();
+                taxType.CompanyId = SessionHandler.CurrentCompanyId;
+                dsData = taxType.SelectAllDataset();
+                gvTaxTypes.DataSource = dsData.Tables[0];
+                gvTaxTypes.DataBind();
 
             }
             catch (System.Exception)
@@ -54,14 +53,14 @@ namespace HBM.ControlPanel
             }
         }
 
-        protected void gvBedTypes_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        protected void gvTaxTypes_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             dsData = Session[Constants.SESSION_TAXTYPES] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
             DataRow row = dsData.Tables[0].NewRow();
             Random rd = new Random();
-            e.NewValues["BedTypeId"] = rd.Next();
-            e.NewValues["StatusId"]= (int)Enums.HBMStatus.Active;
+            e.NewValues["TaxTypeId"] = rd.Next();
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
             e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId; ;
             e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
@@ -78,16 +77,16 @@ namespace HBM.ControlPanel
             e.Cancel = true;
 
             dsData.Tables[0].Rows.Add(row);
-            
-            if (bedType.Save(dsData))
+
+            if (taxType.Save(dsData))
             {
-                this.LoadBedTypes();
+                this.LoadTaxTypes();
             }
 
 
         }
 
-        protected void gvBedTypes_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        protected void gvTaxTypes_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             dsData = Session[Constants.SESSION_TAXTYPES] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
@@ -104,27 +103,26 @@ namespace HBM.ControlPanel
 
             gridView.CancelEdit();
             e.Cancel = true;
-            
-            if (bedType.Save(dsData))
+
+            if (taxType.Save(dsData))
             {
-                this.LoadBedTypes();
+                this.LoadTaxTypes();
             }
 
         }
 
-        protected void gvBedTypes_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        protected void gvTaxTypes_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            int i = gvBedTypes.FindVisibleIndexByKeyValue(e.Keys[gvBedTypes.KeyFieldName]);
+            int i = gvTaxTypes.FindVisibleIndexByKeyValue(e.Keys[gvTaxTypes.KeyFieldName]);
             e.Cancel = true;
             dsData = Session[Constants.SESSION_TAXTYPES] as DataSet;
             //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
 
-            dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvBedTypes.KeyFieldName])));
-                       
-
-            if (bedType.Save(dsData))
+            dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvTaxTypes.KeyFieldName])));
+            
+            if (taxType.Save(dsData))
             {
-                this.LoadBedTypes();
+                this.LoadTaxTypes();
             }
 
 
