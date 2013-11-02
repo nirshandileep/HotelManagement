@@ -45,7 +45,7 @@ namespace HBM
                 }
                 else
                 {
-                    trMsg.Visible = true;
+                    //trMsg.Visible = true;
                     lblError.Text = HBM.Common.Messages.Invalid_Credentials;
                     lblError.Visible = true;
                 }

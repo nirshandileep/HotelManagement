@@ -3,6 +3,7 @@ using System.IO;
 using GenMan = HBM.GeneralManagement;
 using Status = HBM.Common.Enums;
 using System.Drawing;
+using HBM.Common;
 
 namespace HBM.ControlPanel
 {
@@ -72,7 +73,7 @@ namespace HBM.ControlPanel
                 if (company.Save())
                 {
                     this.LoadCompany();
-                    //System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
                 }
 
 

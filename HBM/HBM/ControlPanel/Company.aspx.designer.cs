@@ -13,15 +13,6 @@ namespace HBM.ControlPanel {
     public partial class Company {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// txtCompanyName control.
         /// </summary>
         /// <remarks>
@@ -103,12 +94,24 @@ namespace HBM.ControlPanel {
         protected global::DevExpress.Web.ASPxEditors.ASPxBinaryImage bimgLogo;
         
         /// <summary>
-        /// btnSave control.
+        /// ASPxButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSave;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton1;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new HBM.HBMMaster Master {
+            get {
+                return ((HBM.HBMMaster)(base.Master));
+            }
+        }
     }
 }
