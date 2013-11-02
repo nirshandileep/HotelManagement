@@ -96,7 +96,11 @@
         <tr>
             <td>
                 <br />
-                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave">
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" 
+                    ValidationGroup="vgSave" HorizontalAlign="Center" ImageSpacing="15px" 
+                    VerticalAlign="Middle">
+                    <Image Url="~/Images/Save.png">
+                    </Image>
                 </dx:ASPxButton>
             </td>
         </tr>

@@ -105,6 +105,7 @@
     <Content Include="Images\gnome_session_logout.png" />
     <Content Include="Images\hotel-logo.png" />
     <Content Include="Images\new.png" />
+    <Content Include="Images\Save.png" />
     <Content Include="Images\Switchboard.png" />
     <Content Include="Images\update.png" />
     <Content Include="Images\Search.png" />

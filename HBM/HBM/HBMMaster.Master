@@ -25,8 +25,7 @@
                 <img src="../Images/hotel-logo.png" width="133" height="77" alt="logo" />
             </div>
             <div class="nav">
-                <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" 
-                    BorderBetweenItemAndSubMenu="HideAll" ItemSpacing="0px" SelectParentItem="True" 
+                <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" ItemSpacing="0px" SelectParentItem="True" 
                     VerticalAlign="Middle" >
                     <Items>
                         <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
@@ -97,7 +96,7 @@
                             </Items>
                         </dx:MenuItem>
                     </Items>
-                    <Border BorderStyle="Solid" BorderWidth="1px" />
+                    <Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#76A3BC" />
                 </dx:ASPxMenu>
             </div>
             <div class="welcomeMsg">

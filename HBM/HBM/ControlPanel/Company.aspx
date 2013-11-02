@@ -132,7 +132,11 @@
                     &nbsp;
                 </td>
                 <td>
-                    <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Save" OnClick="btnSave_Click">
+                    <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Save" 
+                        OnClick="btnSave_Click" HorizontalAlign="Center" ImageSpacing="15px" 
+                        VerticalAlign="Middle">
+                        <Image Url="~/Images/Save.png">
+                        </Image>
                     </dx:ASPxButton>
                 </td>
             </tr>
