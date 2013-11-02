@@ -96,7 +96,7 @@
                             </Items>
                         </dx:MenuItem>
                     </Items>
-                    <Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#76A3BC" />
+                    <Border BorderStyle="None" BorderColor="#76A3BC" />
                 </dx:ASPxMenu>
             </div>
             <div class="welcomeMsg">
