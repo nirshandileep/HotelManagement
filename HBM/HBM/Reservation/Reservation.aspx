@@ -449,8 +449,10 @@
             <table>
             <tr>
             	<td>
-                <dx:ASPxButton ID="btnSave" runat="server" Text="Save">
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" ImageSpacing="15px">
                 </dx:ASPxButton>
+                <Image Url="~/Images/Save.png" width="16" height="16">
+                        </Image>
                 </td>
                 <td>
                 <dx:ASPxButton ID="btnCancel" runat="server" Text="Cancel">
