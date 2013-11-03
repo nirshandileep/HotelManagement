@@ -13,7 +13,7 @@ h2{
 	-moz-text-shadow:1px 1px #f8fefe;
 	-ms-text-shadow:1px 1px #f8fefe;
 	-o-text-shadow:1px 1px #f8fefe;
-	font-size:20px;
+	font-size:16px;
 	padding:8px 8px 8px 12px;
 	border:solid 1px #7eacb1;
 	
@@ -335,3 +335,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 .dxmMenuItemDropDownButton_Glass, .dxmMenuLargeItemDropDownButton_Glass, .dxmMenuRtlItemDropDownButton_Glass, .dxmMenuLargeRtlItemDropDownButton_Glass{
 	padding-top:12px;
 	}
+.dxgvCommandColumnItem_Glass {
+    padding: 5px 10px 0;
+    width: 19px;
+}
+/*
+#gvBedTypes_col0{
+	width: 126px;
+	}*/
