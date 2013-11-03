@@ -19,7 +19,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td width="110" height="22">
                     Company Name
                 </td>
                 <td>
@@ -32,7 +32,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td height="22">
                     Address
                 </td>
                 <td>
@@ -45,7 +45,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td height="22">
                     City
                 </td>
                 <td>
@@ -58,7 +58,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td height="22">
                     Email
                 </td>
                 <td>
@@ -72,7 +72,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td height="22">
                     Telephone
                 </td>
                 <td>
@@ -85,7 +85,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td height="22">
                     Fax
                 </td>
                 <td>
@@ -98,7 +98,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td height="22">
                     Company Logo
                 </td>
                 <td>
@@ -107,8 +107,8 @@
                 </td>
             </tr>
             <tr id="trImageRow" runat="server" visible="false">
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
                 <td>
                     <dx:ASPxBinaryImage ID="bimgLogo" runat="server" Height="100px" Width="100px">
@@ -116,21 +116,21 @@
                 </td>
             </tr>
             <tr>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
             </tr>
             <tr>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
                 <td>
                     <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Save" OnClick="btnSave_Click"
                         HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
-                        <Image Url="~/Images/Save.png">
+                        <Image Url="~/Images/Save.png" width="16" height="16">
                         </Image>
                     </dx:ASPxButton>
                 </td>
