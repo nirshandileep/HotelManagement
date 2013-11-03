@@ -323,3 +323,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 	width:875px;
 }
 
+#MainMenu img,.dxmSubMenuItemWithImage_Glass img{
+	width:16px;
+	height:16px;
+	}
+.dxWeb_mHorizontalPopOut_Glass {
+    background-position: -92px -50px;
+    height: 7px !important;
+    width: 7px !important;
+}
+.dxmMenuItemDropDownButton_Glass, .dxmMenuLargeItemDropDownButton_Glass, .dxmMenuRtlItemDropDownButton_Glass, .dxmMenuLargeRtlItemDropDownButton_Glass{
+	padding-top:12px;
+	}
