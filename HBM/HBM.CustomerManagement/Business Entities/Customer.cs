@@ -23,6 +23,7 @@ namespace HBM.CustomerManagement
         public string MemberCode { get; set; }
         public string Gender { get; set; }
         public Int32 GuestTypeId { get; set; }
+        public string GuestTypeName { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Mobile { get; set; }

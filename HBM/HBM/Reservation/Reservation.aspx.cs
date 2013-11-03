@@ -60,20 +60,8 @@ namespace HBM.Reservation
             txtUser.Text = ReservationObj.ReservationId == 0 ? Master.LoggedUser.UserName : new UserManagement.Users() { UsersId = ReservationObj.CreatedUser }.Select().UserName;
             cmbGuarantee.Value = ReservationObj.GuaranteeId;
             
-            dtpCheckIn.Value = ReservationObj.ReservationId == 0 ? "" : ReservationObj.ReservationRoom.CheckInDate.ToString();
-            dtpCheckOut.Value = ReservationObj.ReservationId == 0 ? "" : ReservationObj.ReservationRoom.CheckOutDate.ToString();
-            
-            seNumberOfAdults.Value = ReservationObj.ReservationRoom.NumberOfAdults;
-            seNumberOfChildren.Value = ReservationObj.ReservationRoom.NumberOfChildren;
-            seNumberOfInfants.Value = ReservationObj.ReservationRoom.NumberOfInfant;
-
-            cmbRooms.Value = ReservationObj.ReservationRoom.RoomRatePlan.RoomId;
-            cmbRatePlan.Value = ReservationObj.ReservationRoom.RoomRatePlanId;
-
-            //txtGuestName.Text = ReservationObj.
-
-
-
+            teCheckIn.Value = ReservationObj.ReservationId == 0 ? DateTime.Now.AddDays(1) : ReservationObj.ReservationRoom.CheckInDate;
+            teCheckOut.Value = ReservationObj.ReservationId == 0 ? DateTime.Now.AddDays(2) : ReservationObj.ReservationRoom.CheckOutDate;
         }
 
         /// <summary>
@@ -86,20 +74,19 @@ namespace HBM.Reservation
             cmbResStatus.ValueField = "StatusId";
             cmbResStatus.DataBind();
 
-            cmbGuarantee.DataSource = new GenMan.Gaurantee(){ CompanyId = Master.CompanyId }.SelectAllList();
+            cmbGuarantee.DataSource = new GenMan.Gaurantee() { CompanyId = Master.CompanyId }.SelectAllList();
             cmbGuarantee.TextField = "GuaranteeName";
             cmbGuarantee.ValueField = "GuaranteeId";
             cmbGuarantee.DataBind();
-
-            cmbCountry.DataSource = new Country() { CompanyId = Master.CompanyId }.SelectAllList();
-            cmbCountry.TextField = "CountryName";
-            cmbCountry.ValueField = "CountryId";
-            cmbCountry.DataBind();
 
             cmbTax.DataSource = new GenMan.TaxType() { CompanyId = Master.CompanyId }.SelectAllList();
             cmbTax.TextField = "TaxTypeName";
             cmbTax.ValueField = "TaxTypeId";
             cmbTax.DataBind();
+
+            cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CompanyId }.SelectAllList();
+            cmbCustomerName.ValueField = "CustomerId";
+            cmbCustomerName.DataBind();
         }
 
         /// <summary>

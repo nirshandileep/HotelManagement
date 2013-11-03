@@ -10,7 +10,7 @@ namespace HBM.GeneralManagement
 
         public int StatusId { get; set; }
         public string StatusName { get; set; }
-        public int StatusDescription { get; set; }
+        public string StatusDescription { get; set; }
         public int CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
         public int UpdatedUser { get; set; }

@@ -103,229 +103,85 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddGuarantee;
         
         /// <summary>
-        /// dtpCheckIn control.
+        /// rpRoomInformation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpCheckIn;
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpRoomInformation;
         
         /// <summary>
-        /// dtpCheckOut control.
+        /// cmbCustomerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpCheckOut;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCustomerName;
         
         /// <summary>
-        /// seNumberOfAdults control.
+        /// teCheckIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seNumberOfAdults;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTimeEdit teCheckIn;
         
         /// <summary>
-        /// seNumberOfChildren control.
+        /// teCheckOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seNumberOfChildren;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTimeEdit teCheckOut;
         
         /// <summary>
-        /// seNumberOfInfants control.
+        /// gvRoomDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seNumberOfInfants;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvRoomDetails;
         
         /// <summary>
-        /// cmbRooms control.
+        /// rpPaymentInformation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRooms;
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpPaymentInformation;
         
         /// <summary>
-        /// cmbRatePlan control.
+        /// gvPaymentInformation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRatePlan;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvPaymentInformation;
         
         /// <summary>
-        /// gvRooms control.
+        /// rpServiceInformation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvRooms;
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpServiceInformation;
         
         /// <summary>
-        /// txtGuestName control.
+        /// gvServiceInformation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtGuestName;
-        
-        /// <summary>
-        /// ASPxComboBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox1;
-        
-        /// <summary>
-        /// txtSelectGuest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton txtSelectGuest;
-        
-        /// <summary>
-        /// hdnCustomerId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnCustomerId;
-        
-        /// <summary>
-        /// txtGuestCompany control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtGuestCompany;
-        
-        /// <summary>
-        /// txtEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtEmail;
-        
-        /// <summary>
-        /// txtPhone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtPhone;
-        
-        /// <summary>
-        /// txtSpecialRequirement control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtSpecialRequirement;
-        
-        /// <summary>
-        /// btnAddPayment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddPayment;
-        
-        /// <summary>
-        /// gvPayments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvPayments;
-        
-        /// <summary>
-        /// txtAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtAddress;
-        
-        /// <summary>
-        /// txtCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCity;
-        
-        /// <summary>
-        /// txtState control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtState;
-        
-        /// <summary>
-        /// cmbCountry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCountry;
-        
-        /// <summary>
-        /// txtPostCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtPostCode;
-        
-        /// <summary>
-        /// btnAddServices control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddServices;
-        
-        /// <summary>
-        /// gvServices control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvServices;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvServiceInformation;
         
         /// <summary>
         /// txtRoomTotal control.
