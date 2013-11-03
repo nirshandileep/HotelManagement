@@ -8,6 +8,7 @@ using UserMan = HBM.UserManagement;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using HBM.Common;
+using HBM.Utility;
 
 namespace HBM
 {
@@ -20,7 +21,7 @@ namespace HBM
             {
                 if (Request.QueryString["RolesId"] != null)
                 {
-                    this.hdnRoleId.Value = Request.QueryString["RolesId"];
+                    this.hdnRoleId.Value = Cryptography.Decrypt(Request.QueryString["RolesId"]);
                     this.DisplayData();
                 }                
             }

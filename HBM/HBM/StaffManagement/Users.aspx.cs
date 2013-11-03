@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using UserMan = HBM.UserManagement;
 using Status = HBM.Common.Enums;
 using HBM.Common;
+using HBM.Utility;
 
 namespace HBM
 {
@@ -24,7 +25,7 @@ namespace HBM
             {
                 if (Request.QueryString["UserId"] != null)
                 {
-                    this.hdnUserId.Value = Request.QueryString["UserId"];
+                    this.hdnUserId.Value = Cryptography.Decrypt(Request.QueryString["UserId"]);
                     this.DisplayData();
                 }
 

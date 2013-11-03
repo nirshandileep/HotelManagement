@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using UserMan = HBM.UserManagement;
+using HBM.Utility;
 
 namespace HBM
 {

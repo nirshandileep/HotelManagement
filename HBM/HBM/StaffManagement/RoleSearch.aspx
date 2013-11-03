@@ -17,20 +17,15 @@
                 <dx:ASPxGridView ID="gvRoles" runat="server" Width="100%" AutoGenerateColumns="False"
                     KeyFieldName="RolesId">
                     <Columns>
-                        <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" VisibleIndex="0"
-                            Visible="False">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Role Name" FieldName="RoleName" VisibleIndex="1">
+                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Role Name" FieldName="RolesId">
+                            <DataItemTemplate>
+                                <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Roles.aspx?RolesId=",Eval("RolesId")) %>'
+                                    Text='<%# Eval("RoleName") %>' />
+                            </DataItemTemplate>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="Role Description" FieldName="RoleDescription"
                             VisibleIndex="2">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Edit">
-                            <DataItemTemplate>
-                                <a id="clickElement" target="_blank" href="Roles.aspx?RolesId=<%# Container.KeyValue%>">
-                                    Edit </a>
-                            </DataItemTemplate>
-                        </dx:GridViewDataTextColumn>
+                        </dx:GridViewDataTextColumn>                     
                     </Columns>
                     <Settings ShowFilterRow="True" />
                 </dx:ASPxGridView>

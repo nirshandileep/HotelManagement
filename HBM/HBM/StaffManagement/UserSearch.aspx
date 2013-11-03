@@ -17,14 +17,10 @@
                 <dx:ASPxGridView ID="gvUsers" runat="server" Width="100%" AutoGenerateColumns="False"
                     KeyFieldName="UsersId">
                     <Columns>
-                        <dx:GridViewDataHyperLinkColumn Caption="User Name" FieldName="UserId" UnboundExpression="UserId"
-                            UnboundType="Integer" VisibleIndex="1">
-                            <PropertiesHyperLinkEdit NavigateUrlFormatString="Users.aspx?UserId={0}"
-                                TextField="UserName">
-                            </PropertiesHyperLinkEdit>
-                        </dx:GridViewDataHyperLinkColumn>
-                        <dx:GridViewDataTextColumn Caption="User Name" FieldName="UserName" VisibleIndex="1"
-                            Width="100px">
+                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="User Name" FieldName="UserId">
+                            <DataItemTemplate>
+                                <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Users.aspx?UserId=",Eval("UsersId")) %>' Text='<%# Eval("UserName") %>' />
+                            </DataItemTemplate>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="First Name" FieldName="FirstName" VisibleIndex="2"
                             Width="100px">
@@ -35,7 +31,6 @@
                         <dx:GridViewDataTextColumn Caption="Email Address" FieldName="EmailAddress" VisibleIndex="4"
                             Width="100px">
                         </dx:GridViewDataTextColumn>
-                      
                     </Columns>
                     <Settings ShowFilterRow="True" />
                     <Settings ShowFilterRow="True"></Settings>
