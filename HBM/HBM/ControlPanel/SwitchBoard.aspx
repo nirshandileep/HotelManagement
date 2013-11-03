@@ -46,7 +46,7 @@
             </tr>
         </table>
         <div>
-            <iframe id="iframePage" runat="server" width="900px" height="400px"></iframe>
+            <iframe id="iframePage" runat="server" width="900px" height="400px" style="overflow-y: scroll; overflow-x:hidden;"></iframe>
         </div>
     </div>
 </asp:Content>

@@ -18,8 +18,8 @@
             Source</h2>
         <table>
             <tr>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
             </tr>
             <tr>
@@ -34,7 +34,7 @@
                                     </ValidationSettings>
                                 </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="75px" Caption="Actions"
+                            <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">
                                 <DeleteButton Visible="True">
                                     <Image ToolTip="Delete" Url="~/Images/delete.png">
