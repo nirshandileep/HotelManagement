@@ -1,4 +1,8 @@
-﻿
+﻿function ShowPopupWindow(popupControlId) {
+    popupControlId.Show();
+}
+
+
 //Top Message
 function ShowSuccessMessage(content) {    
     var wrapper = $('<div />').addClass('msg__success_wrapper');

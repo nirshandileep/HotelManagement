@@ -54,14 +54,20 @@ namespace HBM.Reservation
         private void SetData()
         {
             txtResCode.Text = ReservationObj.ReservationCode;
-            cmbResStatus.Value = ReservationObj.StatusId;
-            cmbSource.Value = ReservationObj.SourceId;
-            teBookingTime.Value = ReservationObj.ReservationId == 0 ? DateTime.Now : ReservationObj.BookingDate;
+
+            if (ReservationObj.ReservationId > 0)
+            {
+                cmbResStatus.Value = ReservationObj.StatusId;
+                cmbSource.Value = ReservationObj.SourceId;
+                cmbGuarantee.Value = ReservationObj.GuaranteeId;
+            }
+
+            dtpBookingTime.Value = ReservationObj.ReservationId == 0 ? DateTime.Now : ReservationObj.BookingDate;
             txtUser.Text = ReservationObj.ReservationId == 0 ? Master.LoggedUser.UserName : new UserManagement.Users() { UsersId = ReservationObj.CreatedUser }.Select().UserName;
-            cmbGuarantee.Value = ReservationObj.GuaranteeId;
-            
-            teCheckIn.Value = ReservationObj.ReservationId == 0 ? DateTime.Now.AddDays(1) : ReservationObj.ReservationRoom.CheckInDate;
-            teCheckOut.Value = ReservationObj.ReservationId == 0 ? DateTime.Now.AddDays(2) : ReservationObj.ReservationRoom.CheckOutDate;
+            dtpCheckIn.Value = ReservationObj.ReservationId == 0 ? DateTime.Now.AddDays(Common.Constants.CHECKIN_ADD_DAYS) : ReservationObj.ReservationRoom.CheckInDate;
+            dtpCheckOut.Value = ReservationObj.ReservationId == 0 ? DateTime.Now.AddDays(Common.Constants.CHECKOUT_ADD_DAYS) : ReservationObj.ReservationRoom.CheckOutDate;
+
+
         }
 
         /// <summary>

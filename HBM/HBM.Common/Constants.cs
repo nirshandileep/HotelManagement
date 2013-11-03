@@ -52,7 +52,7 @@ namespace HBM.Common
 
         #endregion
 
-        #region Constants
+        #region Page Path's
 
         public static readonly string CONST_DEFAULTBACKPAGE = "Dashboard.aspx";
         public static readonly string CONST_LOIN = "~/Login.aspx";
@@ -82,5 +82,13 @@ namespace HBM.Common
 
 
         #endregion
+
+        #region To be moved to config table
+
+        public static readonly int CHECKIN_ADD_DAYS = 1;
+        public static readonly int CHECKOUT_ADD_DAYS = 2;
+
+        #endregion 
+
     }
 }

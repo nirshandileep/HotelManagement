@@ -67,13 +67,13 @@ namespace HBM.Reservation {
         protected global::System.Web.UI.WebControls.HiddenField hdnFromURL;
         
         /// <summary>
-        /// teBookingTime control.
+        /// dtpBookingTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTimeEdit teBookingTime;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpBookingTime;
         
         /// <summary>
         /// txtUser control.
@@ -121,22 +121,31 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCustomerName;
         
         /// <summary>
-        /// teCheckIn control.
+        /// dtpCheckIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTimeEdit teCheckIn;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpCheckIn;
         
         /// <summary>
-        /// teCheckOut control.
+        /// dtpCheckOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTimeEdit teCheckOut;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpCheckOut;
+        
+        /// <summary>
+        /// btnAddRoomShow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddRoomShow;
         
         /// <summary>
         /// gvRoomDetails control.
@@ -283,13 +292,94 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnCancel;
         
         /// <summary>
-        /// ppcPageLoader control.
+        /// ppcAddRoom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl ppcPageLoader;
+        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl ppcAddRoom;
+        
+        /// <summary>
+        /// seAdultNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seAdultNumber;
+        
+        /// <summary>
+        /// seChildNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seChildNumber;
+        
+        /// <summary>
+        /// seInfantNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seInfantNumber;
+        
+        /// <summary>
+        /// gvCustomers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvCustomers;
+        
+        /// <summary>
+        /// cmbRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRoom;
+        
+        /// <summary>
+        /// cmbRatePlan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRatePlan;
+        
+        /// <summary>
+        /// gvRoomRates control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvRoomRates;
+        
+        /// <summary>
+        /// btnAddRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddRoom;
+        
+        /// <summary>
+        /// btnCancelRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnCancelRoom;
         
         /// <summary>
         /// Master property.
