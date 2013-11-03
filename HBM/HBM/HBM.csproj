@@ -101,7 +101,6 @@
     <Content Include="Images\delete.png" />
     <Content Include="Images\Home.png" />
     <Content Include="Images\Login.png" />
-    <Content Include="Images\New document.png" />
     <Content Include="Images\Report.png" />
     <Content Include="Images\Role.png" />
     <Content Include="Images\error.jpg" />

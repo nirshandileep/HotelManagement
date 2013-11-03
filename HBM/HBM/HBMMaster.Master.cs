@@ -61,7 +61,14 @@ namespace HBM
 
             if (!IsPostBack)
             {
-                this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;                
+                if (LoggedUser != null)
+                {
+                    this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;
+                }
+                else
+                {
+                    Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
+                }
             }
         }
 

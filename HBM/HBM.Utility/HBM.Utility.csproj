@@ -55,6 +55,7 @@
     <Compile Include="Generic.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">

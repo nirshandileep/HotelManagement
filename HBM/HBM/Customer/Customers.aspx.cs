@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using CustMan = HBM.CustomerManagement;
 using HBM.CustomerManagement;
 using HBM.Common;
+using HBM.Utility;
 
 namespace HBM
 {
@@ -353,9 +354,9 @@ namespace HBM
         {
             try
             {
-                if (Request.QueryString["CustomerId"] != null && Request.QueryString["CustomerId"].Trim() != String.Empty)
+                if (Request.QueryString["CustomerId"] != null && Request.QueryString["CustomerId"] != String.Empty)
                 {
-                    hdnCustomerId.Value = Request.QueryString["CustomerId"].Trim();
+                    hdnCustomerId.Value = Cryptography.Decrypt(Request.QueryString["CustomerId"]);
                     Page.Title = "View Customer";
                 }
             }

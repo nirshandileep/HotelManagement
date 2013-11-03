@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HBM.Utility;
+using DevExpress.Web.ASPxGridView;
+
 
 namespace HBM
 {
@@ -11,8 +14,11 @@ namespace HBM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            gvCustomers.DataSource = new CustomerManagement.Customer() { CompanyId = Master.CompanyId }.SelectAllDataset();
+            gvCustomers.DataSource = new CustomerManagement.Customer() { CompanyId = Master.CompanyId }.SelectAllDataset();            
             gvCustomers.DataBind();
         }
+
+       
+
     }
 }
