@@ -47,8 +47,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
                         <td>
                             <asp:HiddenField ID="hdnReservationId" runat="server" Value="0" />
@@ -56,17 +56,17 @@
                         <td>
                             <asp:HiddenField ID="hdnFromURL" runat="server" />
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
-                        <td title="Reservation">
-                            &nbsp;
+                        <td title="Reservation">&nbsp;
+                            
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
                     </tr>
                     <tr>
@@ -97,26 +97,26 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
+                            
                         </td>
                     </tr>
                 </table>
@@ -126,12 +126,12 @@
             <td>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
-                        <td>
-                            <dx:ASPxRoundPanel ID="rpRoomInformation" runat="server" Width="100%" 
+                        <td align="left">
+                            <dx:ASPxRoundPanel ID="rpRoomInformation" runat="server" Width="98%" 
                                 HeaderText="Room Information" HorizontalAlign="Justify">
                                 <PanelCollection>
                                     <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="98%">
                                             <tr>
                                                 <td>
                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -139,7 +139,7 @@
                                                             <td>
                                                                 Customer
                                                             </td>
-                                                            <td>
+                                                            <td valign="top">
                                                                 <dx:ASPxComboBox ID="cmbCustomerName" runat="server" ValueType="System.Int32" 
                                                                     TextFormatString="{0} ({2})" DropDownStyle="DropDown" 
                                                                     IncrementalFilteringMode="Contains">
@@ -164,22 +164,22 @@
                                                         <tr>
                                                             <td>
                                                                 &nbsp;&nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
+                                                            <td>&nbsp;
+                                                                </td>
+                                                            <td>&nbsp;
+                                                                </td>
+                                                            <td>&nbsp;
+                                                                </td>
+                                                            <td>&nbsp;
+                                                                </td>
+                                                            <td>&nbsp;
+                                                                </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 Check In
                                                             </td>
-                                                            <td>
+                                                            <td valign="top">
                                                                 <dx:ASPxTimeEdit ID="teCheckIn" runat="server" EditFormat="DateTime">
                                                                 </dx:ASPxTimeEdit>
                                                             </td>
@@ -188,7 +188,7 @@
                                                             <td>
                                                                 Check Out
                                                             </td>
-                                                            <td>
+                                                            <td valign="top">
                                                                 <dx:ASPxTimeEdit ID="teCheckOut" runat="server" EditFormat="DateTime">
                                                                 </dx:ASPxTimeEdit>
                                                             </td>
@@ -198,16 +198,16 @@
                                                         <tr>
                                                             <td>
                                                                 &nbsp;&nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
-                                                            <td>
-                                                                &nbsp;</td>
+                                                            <td>&nbsp;
+                                                                </td>
+                                                            <td>&nbsp;
+                                                                </td>
+                                                            <td>&nbsp;
+                                                                </td>
+                                                            <td>&nbsp;
+                                                                </td>
+                                                            <td>&nbsp;
+                                                                </td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -226,7 +226,8 @@
                         <td>
                             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
-                                    <td>
+                                    <td valign="top">
+                                    <div style="margin-bottom:10px;">
                                         <dx:ASPxRoundPanel ID="rpPaymentInformation" runat="server" Width="100%" HeaderText="Payment Information">
                                             <PanelCollection>
                                                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
@@ -235,6 +236,7 @@
                                                 </dx:PanelContent>
                                             </PanelCollection>
                                         </dx:ASPxRoundPanel>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -256,7 +258,8 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td valign="top">
+            <div style="margin-top:10px;">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
                         <td>
@@ -271,11 +274,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        &nbsp;
+                                    <td>&nbsp;
+                                        
                                     </td>
-                                    <td>
-                                        &nbsp;
+                                    <td>&nbsp;
+                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -288,11 +291,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        &nbsp;
+                                    <td>&nbsp;
+                                        
                                     </td>
-                                    <td>
-                                        &nbsp;
+                                    <td>&nbsp;
+                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -305,11 +308,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        &nbsp;
+                                    <td>&nbsp;
+                                        
                                     </td>
-                                    <td>
-                                        &nbsp;
+                                    <td>&nbsp;
+                                        
                                     </td>
                                 </tr>
                             </table>
@@ -329,11 +332,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
                                             </tr>
                                             <tr>
@@ -346,11 +349,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
                                             </tr>
                                             <tr>
@@ -363,11 +366,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
                                             </tr>
                                         </table>
@@ -390,11 +393,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
                                             </tr>
                                             <tr>
@@ -407,11 +410,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
                                             </tr>
                                             <tr>
@@ -424,11 +427,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
-                                                <td>
-                                                    &nbsp;
+                                                <td>&nbsp;
+                                                    
                                                 </td>
                                             </tr>
                                         </table>
@@ -438,14 +441,23 @@
                         </td>
                     </tr>
                 </table>
+                </div>
             </td>
         </tr>
         <tr>
             <td align="center">
+            <table>
+            <tr>
+            	<td>
                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save">
                 </dx:ASPxButton>
+                </td>
+                <td>
                 <dx:ASPxButton ID="btnCancel" runat="server" Text="Cancel">
                 </dx:ASPxButton>
+                </td>
+                </tr>
+                </table>
             </td>
         </tr>
         <tr>
