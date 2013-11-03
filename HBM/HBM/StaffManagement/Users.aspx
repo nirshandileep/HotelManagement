@@ -23,8 +23,8 @@
                 <td width="20%">
                     <asp:HiddenField ID="hdnUserId" runat="server" />
                 </td>
-                <td width="80%">
-                    &nbsp;
+                <td width="80%">&nbsp;
+                    
                 </td>
             </tr>
             <tr>
@@ -136,22 +136,22 @@
                 </td>
             </tr>
             <tr>
-                <td height="19">
-                    &nbsp;
+                <td height="19">&nbsp;
+                    
                 </td>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
             </tr>
             <tr>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
                 <td>
                     <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" 
                         ValidationGroup="vgSave" HorizontalAlign="Center" ImageSpacing="15px" 
                         VerticalAlign="Middle">
-                        <Image Url="~/Images/Save.png">
+                        <Image Url="~/Images/Save.png"  width="16" height="16">
                         </Image>
                     </dx:ASPxButton>
                 </td>
