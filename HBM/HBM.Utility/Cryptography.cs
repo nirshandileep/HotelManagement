@@ -8,7 +8,7 @@ using System.IO;
 
 namespace HBM.Utility
 {
-    public class Cryptography
+    public class Cryptography 
     {
         #region Properties
 

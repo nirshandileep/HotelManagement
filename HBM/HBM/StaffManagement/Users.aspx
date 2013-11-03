@@ -33,8 +33,9 @@
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtFirstName" runat="server" Width="170px" MaxLength="50">
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
-                            <RequiredField IsRequired="True" />
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
+                            ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField IsRequired="True" ErrorText="Required" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
@@ -45,8 +46,9 @@
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtLastName" runat="server" Width="170px" MaxLength="50">
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
-                            <RequiredField IsRequired="True" />
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
+                            ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField IsRequired="True" ErrorText="Required" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
@@ -57,9 +59,10 @@
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" MaxLength="50">
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
+                            ErrorDisplayMode="ImageWithTooltip">
                             <RegularExpression ErrorText="Invalid" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
-                            <RequiredField IsRequired="True" />
+                            <RequiredField IsRequired="True" ErrorText="Required" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
@@ -70,8 +73,11 @@
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" MaxLength="50">
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
-                            <RequiredField IsRequired="True" />
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
+                            ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField IsRequired="True" ErrorText="Required" />
+                            <RegularExpression ErrorText="Username must be 5 charactrs" 
+                                ValidationExpression="^[a-zA-Z0-9]+$" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
@@ -88,7 +94,9 @@
 	 s.SetValue(s.cp_myPassword);
 }" />
                         <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
-                            <RequiredField IsRequired="True" />
+                            <RequiredField IsRequired="True" ErrorText="Required" />
+                            <RegularExpression ErrorText="Password must be 6 charactors" 
+                                ValidationExpression="^[a-zA-Z0-9]+$" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
@@ -113,7 +121,9 @@
 }" />
                         <ValidationSettings ValidationGroup="vgSave" CausesValidation="True" Display="Dynamic"
                             EnableCustomValidation="True">
-                            <RequiredField IsRequired="True" />
+                            <RequiredField IsRequired="True" ErrorText="Required" />
+                            <RegularExpression ErrorText="Password must be 6 charactors" 
+                                ValidationExpression="^[a-zA-Z0-9]+$" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
@@ -129,7 +139,8 @@
                             <dx:ListBoxColumn Caption="RoleName" FieldName="RoleName" />
                             <dx:ListBoxColumn Caption="RoleDescription" FieldName="RoleDescription" />
                         </Columns>
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
+                            ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" />
                         </ValidationSettings>
                     </dx:ASPxComboBox>

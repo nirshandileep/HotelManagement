@@ -18,7 +18,7 @@ namespace HBM.UserManagement
             DbCommand command = db.GetStoredProcCommand("usp_UsersInsert");
 
             db.AddInParameter(command, "@UserName", DbType.String, users.UserName);
-            db.AddInParameter(command, "@Password", DbType.String, users.Password);
+            db.AddInParameter(command, "@Password", DbType.String, users.Password.GetHashCode());
             db.AddInParameter(command, "@FirstName", DbType.String, users.FirstName);
             db.AddInParameter(command, "@LastName", DbType.String, users.LastName);
             db.AddInParameter(command, "@EmailAddress", DbType.String, users.EmailAddress);
@@ -41,7 +41,7 @@ namespace HBM.UserManagement
 
             db.AddInParameter(command, "@UsersId", DbType.String, users.UsersId);
             db.AddInParameter(command, "@UserName", DbType.String, users.UserName);
-            db.AddInParameter(command, "@Password", DbType.String, users.Password);
+            db.AddInParameter(command, "@Password", DbType.String, users.Password.GetHashCode());
             db.AddInParameter(command, "@FirstName", DbType.String, users.FirstName);
             db.AddInParameter(command, "@LastName", DbType.String, users.LastName);
             db.AddInParameter(command, "@EmailAddress", DbType.String, users.EmailAddress);
@@ -86,7 +86,7 @@ namespace HBM.UserManagement
                 DbCommand dbCommand = db.GetStoredProcCommand("usp_UsersIsAuthenticated");
 
                 db.AddInParameter(dbCommand, "@UserName", DbType.String, userName);
-                db.AddInParameter(dbCommand, "@Password", DbType.String, password);
+                db.AddInParameter(dbCommand, "@Password", DbType.String, password.GetHashCode());
                 db.AddOutParameter(dbCommand, "@UsersId", DbType.Int32, 8);
                 db.AddOutParameter(dbCommand, "@CompanyId", DbType.Int32, 8);
 

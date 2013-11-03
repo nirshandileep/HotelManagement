@@ -51,7 +51,7 @@ namespace HBM.UserManagement
             catch (System.Exception ex)
             {
                 result = false;
-                throw ex;
+                throw ;
             }
             return result;
         }
@@ -66,7 +66,7 @@ namespace HBM.UserManagement
             catch (System.Exception ex)
             {
                 result = false;
-                throw ex;
+                throw ;
             }
             return result;
         }
@@ -81,7 +81,7 @@ namespace HBM.UserManagement
             catch (System.Exception ex)
             {
                 result = false;
-                throw ex;
+                throw ;
             }
             return result;
         }
@@ -104,7 +104,7 @@ namespace HBM.UserManagement
             catch (System.Exception ex)
             {
                 result = false;
-                throw ex;
+                throw ;
             }
             return result;
         }
