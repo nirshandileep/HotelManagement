@@ -12,19 +12,19 @@
     <h2>Swtich Board</h2>
         <table class="dxflInternalEditorTable">
             <tr>
-                <td>
-                     &nbsp;
+                <td>&nbsp;
+                     
                 </td>
             </tr>
             <tr>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="margin-bottom:5px;" align="left">
                     <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="0" OnTabClick="tcCommon_TabClick"
-                        Width="900px" Height="25px" TabSpacing="0px" TabAlign="Center">
+                        Width="900px" Height="25px" TabSpacing="0px" TabAlign="left">
                         <Tabs>
                             <dx:Tab Text="Bed Types" Name="BedType">
                             </dx:Tab>

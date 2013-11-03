@@ -19,8 +19,8 @@
             Bed Types List</h2>
         <table>
             <tr>
-                <td>
-                    &nbsp;
+                <td>&nbsp;
+                    
                 </td>
             </tr>
             <tr>
@@ -29,7 +29,7 @@
                         OnRowInserting="gvBedTypes_RowInserting" OnRowDeleting="gvBedTypes_RowDeleting"
                         OnRowUpdating="gvBedTypes_RowUpdating">
                         <Columns>
-                            <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="75px" Caption="Actions"
+                            <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">
                                 <DeleteButton Visible="True">
                                     <Image ToolTip="Delete" Url="~/Images/delete.png">
