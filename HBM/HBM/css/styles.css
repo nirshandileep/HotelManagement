@@ -343,3 +343,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 #gvBedTypes_col0{
 	width: 126px;
 	}*/
+	
+	.reqfield {
+	color:red;
+	font-weight:bold;
+	vertical-align:middle;
+	padding-left:5px;
+	}

@@ -29,7 +29,7 @@ namespace HBM
                     this.DisplayData();
                 }
 
-
+                this.ClearFormData();
             }
         }
 
@@ -212,6 +212,8 @@ namespace HBM
             e.Properties["cp_myPassword"] = currentPassword;
 
         }
+
+        
 
     }
 }

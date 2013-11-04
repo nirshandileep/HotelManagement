@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td width="110" height="22">
-                    Company Name
+                    Company Name<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px" MaxLength="50">
@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Address
+                    Address<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px" MaxLength="50">
@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    City
+                    City<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyCity" runat="server" Width="170px" MaxLength="50">
@@ -59,7 +59,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Email
+                    Email<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyEmail" runat="server" Width="170px" MaxLength="50">
@@ -73,7 +73,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Telephone
+                    Telephone<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyTelephone" runat="server" Width="170px" MaxLength="50">
@@ -86,7 +86,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Fax
+                    Fax<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyFax" runat="server" Width="170px" MaxLength="50">

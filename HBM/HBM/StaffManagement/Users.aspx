@@ -7,34 +7,27 @@
     Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dx" %>
 <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper">
         <h2>
             Add User</h2>
-        <table class="style1">
+        <table>
             <tr>
                 <td width="20%">
                     <asp:HiddenField ID="hdnUserId" runat="server" />
                 </td>
-                <td width="80%">&nbsp;
-                    
+                <td width="80%">
+                    &nbsp;
                 </td>
             </tr>
             <tr>
                 <td height="21">
-                    First Name
+                    First Name<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtFirstName" runat="server" Width="170px" MaxLength="50">
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
-                            ErrorDisplayMode="ImageWithTooltip">
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
@@ -42,12 +35,11 @@
             </tr>
             <tr>
                 <td height="21">
-                    Last Name
+                    Last Name<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtLastName" runat="server" Width="170px" MaxLength="50">
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
-                            ErrorDisplayMode="ImageWithTooltip">
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
@@ -55,12 +47,11 @@
             </tr>
             <tr>
                 <td height="21">
-                    Email
+                    Email<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" MaxLength="50">
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
-                            ErrorDisplayMode="ImageWithTooltip">
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                             <RegularExpression ErrorText="Invalid" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
                             <RequiredField IsRequired="True" ErrorText="Required" />
                         </ValidationSettings>
@@ -69,22 +60,21 @@
             </tr>
             <tr>
                 <td height="21">
-                    User Name
+                    User Name<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" MaxLength="50">
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
-                            ErrorDisplayMode="ImageWithTooltip">
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
-                            <RegularExpression ErrorText="Username must be 5 charactrs" 
-                                ValidationExpression="^[a-zA-Z0-9]+$" />
+                            <RegularExpression ErrorText="Username must be more than 5 chars with no spaces]" 
+                                ValidationExpression="^[a-zA-Z0-9~!@#$%^&*]{5,20}$" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>
                 <td height="21">
-                    Password
+                    Password<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtPassword" runat="server" Password="True" Width="170px" MaxLength="50"
@@ -93,17 +83,17 @@
                         <ClientSideEvents Init="function(s, e) {
 	 s.SetValue(s.cp_myPassword);
 }" />
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic">
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
+                            ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
-                            <RegularExpression ErrorText="Password must be 6 charactors" 
-                                ValidationExpression="^[a-zA-Z0-9]+$" />
+                            <RegularExpression ErrorText="Password must be 6 charactors" ValidationExpression="^[a-zA-Z0-9~!@#$%^&*]{6,20}$" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>
                 <td height="21">
-                    Confirm Password
+                    Confirm Password<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtConfirmPassword" runat="server" Password="True" Width="170px"
@@ -120,17 +110,17 @@
     e.isValid = (originalPasswd  == currentPasswd );
 }" />
                         <ValidationSettings ValidationGroup="vgSave" CausesValidation="True" Display="Dynamic"
-                            EnableCustomValidation="True">
+                            EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip" 
+                            ErrorText="Password must match">
                             <RequiredField IsRequired="True" ErrorText="Required" />
-                            <RegularExpression ErrorText="Password must be 6 charactors" 
-                                ValidationExpression="^[a-zA-Z0-9]+$" />
+                            <RegularExpression ErrorText="Password must be 6 charactors" ValidationExpression="^[a-zA-Z0-9~!@#$%^&*]{6,20}$" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>
                 <td height="21">
-                    Role
+                    Role<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="ddlRoles" runat="server" EnableIncrementalFiltering="True" IncrementalFilteringMode="StartsWith"
@@ -139,30 +129,28 @@
                             <dx:ListBoxColumn Caption="RoleName" FieldName="RoleName" />
                             <dx:ListBoxColumn Caption="RoleDescription" FieldName="RoleDescription" />
                         </Columns>
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
-                            ErrorDisplayMode="ImageWithTooltip">
-                            <RequiredField IsRequired="True" />
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField IsRequired="True" ErrorText="Required" />
                         </ValidationSettings>
                     </dx:ASPxComboBox>
                 </td>
             </tr>
             <tr>
-                <td height="19">&nbsp;
-                    
+                <td height="19">
+                    &nbsp;
                 </td>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
                 <td>
-                    <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" 
-                        ValidationGroup="vgSave" HorizontalAlign="Center" ImageSpacing="15px" 
-                        VerticalAlign="Middle">
-                        <Image Url="~/Images/Save.png"  width="16" height="16">
+                    <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave"
+                        HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
+                        <Image Url="~/Images/Save.png" Width="16" Height="16">
                         </Image>
                     </dx:ASPxButton>
                 </td>
