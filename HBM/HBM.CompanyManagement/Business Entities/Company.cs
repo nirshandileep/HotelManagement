@@ -20,17 +20,18 @@ namespace HBM.CompanyManagement
         public string CompanyCity { get; set; }
         public string CompanyEmail { get; set; }
         public string CompanyTelephone { get; set; }
-        public string CreatedBy { get; set; }
+        public int CompanyTypeId { get; set; }
+        public int CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string UpdatedBy { get; set; }
+        public int UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
+        public string CompanyFax { get; set; }
+        public byte[] CompanyLogo { get; set; }
 
         #endregion
 
         #region Methods
-
-        #region Save
 
         public bool Save()
         {
@@ -54,10 +55,6 @@ namespace HBM.CompanyManagement
             return result;
         }
 
-        #endregion
-        
-        #region Delete
-
         public bool Delete()
         {
             bool result = false;
@@ -76,12 +73,9 @@ namespace HBM.CompanyManagement
             return result;
         }
 
-        #endregion
-
-
         public Company Select()
         {
-            return HBM.Utility.Generic.Get<Company>(this.CompanyId, this.CompanyId);
+            return HBM.Utility.Generic.Get<Company>(this.CompanyId, 0);
         }
 
         public List<Company> SelectAllList()

@@ -9,29 +9,21 @@ using System.Data;
 using UM = HBM.UserManagement;
 using HBM.Common;
 using HBM.SessionManager;
+using HBM.CompanyManagement;
 
 namespace HBM
 {
     public partial class HBMMaster : System.Web.UI.MasterPage
     {
 
-        /// <summary>
-        /// Returns CompanyId of the logged session
-        /// </summary>
-        public int CompanyId
-        {
-            get 
-            {
-                return SessionHandler.CurrentCompanyId;
-            }
-        }
+        #region Properties
 
         /// <summary>
         /// Logged User
         /// </summary>
         public UM.Users LoggedUser
         {
-            get 
+            get
             {
                 UM.Users user;
 
@@ -50,27 +42,31 @@ namespace HBM
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Returns CompanyId of the logged session
+        /// </summary>
+        public int CompanyId
         {
-            //Called everytime to check it the user session is null
-            if (Session[Constants.SESSION_LOGGEDUSER] == null)
+            get
             {
-                ClearSessions();
-                Response.Redirect(Constants.CONST_LOIN, false);
-            }
-
-            if (!IsPostBack)
-            {
-                if (LoggedUser != null)
-                {
-                    this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;
-                }
-                else
-                {
-                    Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
-                }
+                return SessionHandler.CurrentCompanyId;
             }
         }
+
+        /// <summary>
+        /// Logged user currenct company
+        /// </summary>
+        public Company CurrentCompany
+        {
+
+            get
+            {
+                return SessionHandler.CurrentCompany;
+            }
+        }
+
+
+        #endregion
 
         #region Methods
 
@@ -79,11 +75,10 @@ namespace HBM
         /// </summary>
         public void ClearSessions()
         {
-
             ///
             /// Customer
             ///
-            Session["CustomerObj"] = null;
+            Session[Constants.SESSION_LOGGEDUSER] = null;
 
         }
 
@@ -149,10 +144,51 @@ namespace HBM
 
         #endregion
 
+        #region Events
+
+        /// <summary>
+        /// Page Loadf
+        /// </summary>
+        /// <param name="sender">object as sender</param>
+        /// <param name="e">e Event argument</param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //Called everytime to check it the user session is null
+            if (Session[Constants.SESSION_LOGGEDUSER] == null)
+            {
+                ClearSessions();
+                Response.Redirect(Constants.CONST_LOIN, false);
+            }
+
+            if (!IsPostBack)
+            {
+                if (LoggedUser != null)
+                {
+                    this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;
+
+                    if (CurrentCompany.CompanyLogo.Length > 0)
+                    {
+                        this.bimgLogo.ContentBytes = this.CurrentCompany.CompanyLogo;
+                    }
+                }
+                else
+                {
+                    Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Log out Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbLogout_Click(object sender, EventArgs e)
         {
             this.ClearSessions();
             Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
         }
+
+        #endregion
     }
 }

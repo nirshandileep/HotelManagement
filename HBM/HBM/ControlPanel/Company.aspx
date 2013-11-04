@@ -10,8 +10,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper">
-        <h2>Company Information</h2>
-        <table class="style1">
+        <h2>
+            Company Information</h2>
+        <table>
             <tr>
                 <td colspan="2">
                     &nbsp;
@@ -107,8 +108,8 @@
                 </td>
             </tr>
             <tr id="trImageRow" runat="server" visible="false">
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
                 <td>
                     <dx:ASPxBinaryImage ID="bimgLogo" runat="server" Height="100px" Width="100px">
@@ -116,21 +117,21 @@
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
                 <td>
                     <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Save" OnClick="btnSave_Click"
                         HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
-                        <Image Url="~/Images/Save.png" width="16" height="16">
+                        <Image Url="~/Images/Save.png" Width="16" Height="16">
                         </Image>
                     </dx:ASPxButton>
                 </td>

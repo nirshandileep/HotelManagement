@@ -28,8 +28,9 @@
                         </td>
                         <td>
                             <dx:ASPxTextBox ID="txtRoleName" runat="server" Width="170px" MaxLength="50">
-                                <ValidationSettings Display="Dynamic" ValidationGroup="vgSave">
-                                    <RequiredField IsRequired="True" />
+                                <ValidationSettings Display="Dynamic" ValidationGroup="vgSave" 
+                                    ErrorDisplayMode="ImageWithTooltip">
+                                    <RequiredField IsRequired="True" ErrorText="Required" />
                                 </ValidationSettings>
                             </dx:ASPxTextBox>
                         </td>
@@ -46,8 +47,9 @@
                         </td>
                         <td>
                             <dx:ASPxTextBox ID="txtRoleDescription" runat="server" Width="170px" MaxLength="50">
-                                <ValidationSettings Display="Dynamic" ValidationGroup="vgSave">
-                                    <RequiredField IsRequired="True" />
+                                <ValidationSettings Display="Dynamic" ValidationGroup="vgSave" 
+                                    ErrorDisplayMode="ImageWithTooltip">
+                                    <RequiredField IsRequired="True" ErrorText="Required" />
                                 </ValidationSettings>
                             </dx:ASPxTextBox>
                         </td>
@@ -64,7 +66,7 @@
         <tr>
             <td height="21">
                 <h3>
-                    Rights List >></h3>
+                    Rights List</h3>
             </td>
         </tr>
         <tr>

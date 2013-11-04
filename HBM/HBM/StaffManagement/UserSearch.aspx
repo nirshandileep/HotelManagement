@@ -17,9 +17,10 @@
                 <dx:ASPxGridView ID="gvUsers" runat="server" Width="100%" AutoGenerateColumns="False"
                     KeyFieldName="UsersId">
                     <Columns>
-                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="User Name" FieldName="UserId">
+                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="User Name" FieldName="UserId" Width="100px">
                             <DataItemTemplate>
-                                <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Users.aspx?UserId=",Eval("UsersId")) %>' Text='<%# Eval("UserName") %>' />
+                                <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Users.aspx?UserId=",Eval("UsersId")) %>'
+                                    Text='<%# Eval("UserName") %>' />
                             </DataItemTemplate>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="First Name" FieldName="FirstName" VisibleIndex="2"

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using UserMan = HBM.UserManagement;
 using HBM.Common;
+using HBM.CompanyManagement;
 
 namespace HBM
 {
@@ -39,6 +40,10 @@ namespace HBM
                         users.UsersId = userID;
                         users.CompanyId = companyId;
                         Session[Constants.SESSION_LOGGEDUSER] = users.Select();
+
+                        Company company=new Company();
+                        company.CompanyId=users.CompanyId;
+                        Session[Constants.SESSION_CURRENTCOMPANY] = company.Select();
                         Response.Redirect(HBM.Common.Constants.CONST_DEFAULTBACKPAGE, false);
                     }
                 }

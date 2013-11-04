@@ -11,6 +11,8 @@ namespace HBM.CompanyManagement
 {
     public class CompanyDAO
     {
+        #region Methods
+
         public bool Insert(Company company)
         {
 
@@ -22,9 +24,11 @@ namespace HBM.CompanyManagement
             db.AddInParameter(command, "@CompanyCity", DbType.String, company.CompanyCity);
             db.AddInParameter(command, "@CompanyEmail", DbType.String, company.CompanyEmail);
             db.AddInParameter(command, "@CompanyTelephone", DbType.String, company.CompanyTelephone);
-            db.AddInParameter(command, "@CreatedBy", DbType.Int32, company.CreatedBy);
-            db.AddInParameter(command, "@CreatedDate", DbType.DateTime, company.CreatedDate);            
+            db.AddInParameter(command, "@CompanyTypeId", DbType.Int32, company.CompanyTypeId);
+            db.AddInParameter(command, "@CreatedUser", DbType.Int32, company.CreatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, company.StatusId);
+            db.AddInParameter(command, "@CompanyFax", DbType.String, company.CompanyFax);
+            db.AddInParameter(command, "@CompanyLogo", DbType.Binary, company.CompanyLogo);
 
             db.ExecuteNonQuery(command);
 
@@ -42,10 +46,11 @@ namespace HBM.CompanyManagement
             db.AddInParameter(command, "@CompanyAddress", DbType.String, company.CompanyAddress);
             db.AddInParameter(command, "@CompanyCity", DbType.String, company.CompanyCity);
             db.AddInParameter(command, "@CompanyEmail", DbType.String, company.CompanyEmail);
-            db.AddInParameter(command, "@CompanyTelephone", DbType.String, company.CompanyTelephone);            
-            db.AddInParameter(command, "@UpdatedBy", DbType.Int32, company.UpdatedBy);
-            db.AddInParameter(command, "@UpdatedDate", DbType.DateTime, company.UpdatedDate);
+            db.AddInParameter(command, "@CompanyTelephone", DbType.String, company.CompanyTelephone);
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, company.UpdatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, company.StatusId);
+            db.AddInParameter(command, "@CompanyFax", DbType.String, company.CompanyFax);
+            db.AddInParameter(command, "@CompanyLogo", DbType.Binary, company.CompanyLogo);
 
             db.ExecuteNonQuery(command);
 
@@ -57,7 +62,6 @@ namespace HBM.CompanyManagement
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_CompanyDelete");
-
             db.AddInParameter(command, "@CompanyId", DbType.Int32, company.CompanyId);
 
             db.ExecuteNonQuery(command);
@@ -69,12 +73,13 @@ namespace HBM.CompanyManagement
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand command = db.GetStoredProcCommand("usp_CompanySelectAll");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_CompanySelectAll");
 
-            db.AddInParameter(command, "@CompanyId", DbType.Int32, company.CompanyId);
+            return db.ExecuteDataSet(dbCommand);
 
-            return db.ExecuteDataSet(command);
-        }
+        }       
+
+        #endregion
 
     }
 

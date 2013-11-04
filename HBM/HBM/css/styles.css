@@ -278,6 +278,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 	float:left;
 	width:133px;
 	height:77px;
+	padding-top:10px;
+	border:1px;
+	border-color:Blue;
 	}
 .customers-tbl .customer-btn{
 	float:left;

@@ -8,6 +8,7 @@ using HBM.UserManagement;
 using HBM.Common;
 using HBM.CompanyManagement;
 
+
 namespace HBM.SessionManager
 {
     public class SessionHandler : IRequiresSessionState
@@ -41,6 +42,14 @@ namespace HBM.SessionManager
                 }
 
                 return companyId;
+            }
+        }
+
+        public static HBM.CompanyManagement.Company CurrentCompany
+        {
+            get
+            {
+                return GetSession<Company>(Constants.SESSION_CURRENTCOMPANY);                
             }
         }
 

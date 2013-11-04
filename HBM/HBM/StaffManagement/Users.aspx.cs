@@ -29,7 +29,7 @@ namespace HBM
                     this.DisplayData();
                 }
 
-                this.ClearFormData();
+                
             }
         }
 

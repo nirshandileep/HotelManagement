@@ -40,6 +40,15 @@ namespace HBM {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvTopMessage;
         
         /// <summary>
+        /// bimgLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxBinaryImage bimgLogo;
+        
+        /// <summary>
         /// MainMenu control.
         /// </summary>
         /// <remarks>

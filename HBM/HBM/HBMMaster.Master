@@ -3,6 +3,8 @@
 
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -22,11 +24,13 @@
     <div class="header2">
         <div class="wrapper">
             <div class="hotel-logo">
-                <img src="../Images/hotel-logo.png" width="133" height="77" alt="logo" />
+                <%--<img src="../Images/hotel-logo.png" width="133" height="77" alt="logo" />--%>
+                <dx:ASPxBinaryImage ID="bimgLogo" runat="server" width="133" height="77" alt="logo">
+                </dx:ASPxBinaryImage>
             </div>
             <div class="nav">
-                <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" ItemSpacing="0px" SelectParentItem="True" 
-                    VerticalAlign="Middle" >
+                <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" ItemSpacing="0px" SelectParentItem="True"
+                    VerticalAlign="Middle">
                     <Items>
                         <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
                             <Image Url="~/Images/Home.png">
@@ -38,8 +42,7 @@
                                     <Image Url="~/Images/Customer.png">
                                     </Image>
                                 </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/Customer/CustomerSearch.aspx" 
-                                    Text="Search Customer">
+                                <dx:MenuItem NavigateUrl="~/Customer/CustomerSearch.aspx" Text="Search Customer">
                                     <Image Url="~/Images/Search.png">
                                     </Image>
                                 </dx:MenuItem>
@@ -67,13 +70,11 @@
                         </dx:MenuItem>
                         <dx:MenuItem Text="Reservation" DropDownMode="True">
                             <Items>
-                                <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" 
-                                    Text="Add Reservation">
+                                <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" Text="Add Reservation">
                                     <Image Url="~/Images/Reservation.png">
                                     </Image>
                                 </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" 
-                                    Text="Search Reservation">
+                                <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" Text="Search Reservation">
                                     <Image Url="~/Images/Search.png">
                                     </Image>
                                 </dx:MenuItem>
@@ -103,15 +104,15 @@
                 <p>
                     Welcome !</p>
                 <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label><p>
-                    <asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">Logout</asp:LinkButton></a></p>
+                    <a><asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">Logout</asp:LinkButton></a></p>
             </div>
         </div>
     </div>
     <div class="wrapper">
-		<div class="page-wrapper">
-       		 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-       		 </asp:ContentPlaceHolder>
-		</div>	
+        <div class="page-wrapper">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </div>
     </form>
     <div class="footer2">

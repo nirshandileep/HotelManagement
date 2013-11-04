@@ -75,8 +75,7 @@ namespace HBM
             try
             {
                 if (!IsPostBack)
-                {
-                    Master.ClearSessions();
+                {                    
                     CheckFromURL();
                     IsEditCustomer();
                     LoadInitialData();
