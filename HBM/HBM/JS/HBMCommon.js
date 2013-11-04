@@ -1,6 +1,21 @@
 ﻿function ShowPopupWindow(popupControlId) {
     popupControlId.Show();
 }
+//function ShowPopupWindow(popupControlId, windowName) {
+//    try {
+//        var popupControl = popupControlId;
+//        
+//        //var hintWindow = popupControl.GetWindowByName(windowName);
+//        //if (value)
+//        popupControl.ShowWindow(windowName);
+//        alert('after');
+//        //else
+//        //    popupControl.HideWindow(hintWindow);
+//    }
+//    catch (e) {
+//        alert('error '+e.message);
+//    }
+//}
 
 
 //Top Message
