@@ -9,22 +9,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper">
-    <h2>Swtich Board</h2>
+        <h2>
+            Swtich Board</h2>
         <table class="dxflInternalEditorTable">
             <tr>
-                <td>&nbsp;
-                     
+                <td>
+                    &nbsp;
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
             </tr>
             <tr>
-                <td style="margin-bottom:5px;" align="left">
+                <td>
                     <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="0" OnTabClick="tcCommon_TabClick"
-                        Width="900px" Height="25px" TabSpacing="0px" TabAlign="left">
+                        Width="900px" Height="25px" EnableTabScrolling="True" TabAlign="Justify" 
+                        EnableTheming="True" TabSpacing="0px">
                         <Tabs>
                             <dx:Tab Text="Bed Types" Name="BedType">
                             </dx:Tab>
@@ -46,7 +48,7 @@
             </tr>
         </table>
         <div>
-            <iframe id="iframePage" runat="server" width="900px" height="400px" style="overflow-y: scroll; overflow-x:hidden;"></iframe>
+            <iframe id="iframePage" runat="server" width="900px" height="500px"></iframe>
         </div>
     </div>
 </asp:Content>

@@ -335,6 +335,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 .dxmMenuItemDropDownButton_Glass, .dxmMenuLargeItemDropDownButton_Glass, .dxmMenuRtlItemDropDownButton_Glass, .dxmMenuLargeRtlItemDropDownButton_Glass{
 	padding-top:12px;
 	}
+	
 .dxgvCommandColumnItem_Glass {
     padding: 5px 10px 0;
     width: 19px;
