@@ -84,11 +84,11 @@ namespace HBM
                 ////Check for existing uername
                 users.UserName = txtUserName.Text.Trim();
 
-                if (!users.IsUserIsDuplicateUserName(users.UserName, Master.CompanyId))
+                if (!users.IsUserIsDuplicateUserName(users.UserName, Master.CurrentCompany.CompanyId))
                 {
                     users.EmailAddress = txtEmail.Text.Trim();
 
-                    if (!users.IsDuplicateEmail(users.EmailAddress, Master.CompanyId))
+                    if (!users.IsDuplicateEmail(users.EmailAddress, Master.CurrentCompany.CompanyId))
                     {
                         users.FirstName = txtFirstName.Text.Trim();
                         users.LastName = txtLastName.Text.Trim();
@@ -96,7 +96,7 @@ namespace HBM
                         users.Password = txtPassword.Text.Trim();
                         users.RolesId = Convert.ToInt32(ddlRoles.Value);
                         users.CreatedUser = Master.LoggedUser.UsersId;
-                        users.CompanyId = Master.CompanyId;
+                        users.CompanyId = Master.CurrentCompany.CompanyId;
                         users.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
                         if (users.Save())
                         {
@@ -137,7 +137,7 @@ namespace HBM
                 users.LastName = txtLastName.Text.Trim();
                 users.EmailAddress = txtEmail.Text.Trim();
                 users.Password = txtPassword.Text.Trim();
-                users.CompanyId = Master.CompanyId;
+                users.CompanyId = Master.CurrentCompany.CompanyId;
                 users.UpdatedUser = Master.LoggedUser.UsersId;
                 users.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
                 users.RolesId = Convert.ToInt32(ddlRoles.Value);
@@ -163,7 +163,7 @@ namespace HBM
                 int currentUserId = Convert.ToInt32(this.hdnUserId.Value);
                 UserMan.Users users = new UserMan.Users();
                 users.UsersId = currentUserId;
-                users.CompanyId = Master.CompanyId;
+                users.CompanyId = Master.CurrentCompany.CompanyId;
                 users = users.Select();
                 txtUserName.Text = users.UserName;
                 txtFirstName.Text = users.FirstName;

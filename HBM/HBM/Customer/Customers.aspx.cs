@@ -24,7 +24,7 @@ namespace HBM
                 {
                     customer = new CustMan.Customer();
                     customer.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
-                    customer.CompanyId = Master.CompanyId;
+                    customer.CompanyId = Master.CurrentCompany.CompanyId;
                     customer = customer.Select();
                     customer = customer != null ? customer : new Customer();
                     Session["CustomerObj"] = customer;
@@ -96,13 +96,13 @@ namespace HBM
             try
             {
                 //Load Guest Type
-                cmbGuestType.DataSource = new GuestType() { CompanyId = Master.CompanyId }.SelectAllList();
+                cmbGuestType.DataSource = new GuestType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
                 cmbGuestType.TextField = "GuestTypeName";
                 cmbGuestType.ValueField = "GuestTypeId";
                 cmbGuestType.DataBind();
 
                 //Load CC Tyep
-                cmbCCType.DataSource = new CreditCardType() { CompanyId = Master.CompanyId }.SelectAllList();
+                cmbCCType.DataSource = new CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
                 cmbCCType.TextField = "Name";
                 cmbCCType.ValueField = "CreditCardTypeId";
                 cmbCCType.DataBind();
@@ -200,7 +200,7 @@ namespace HBM
         {
             try
             {
-                CustomerObj.CompanyId = Master.CompanyId;
+                CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
                 CustomerObj.CustomerName = txtCustomerName.Text.Trim();
                 CustomerObj.BillingAddress = txtBillingAddress.Text.Trim();
                 CustomerObj.BillingCity = txtBillingCity.Text.Trim();

@@ -18,7 +18,7 @@ namespace HBM
             try
             {
                 UserMan.Users UserObj = new UserMan.Users();
-                UserObj.CompanyId = Master.CompanyId;
+                UserObj.CompanyId = Master.CurrentCompany.CompanyId;
                 gvUsers.DataSource = UserObj.SelectAllDataset();
                 gvUsers.DataBind();
             }

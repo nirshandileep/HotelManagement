@@ -23,7 +23,7 @@ namespace HBM.Reservation
                 {
                     reservation = new Res.Reservation();
                     reservation.ReservationId = Int32.Parse(hdnReservationId.Value.Trim() == String.Empty ? "0" : hdnReservationId.Value.Trim());
-                    reservation.CompanyId = Master.CompanyId;
+                    reservation.CompanyId = Master.CurrentCompany.CompanyId;
                     reservation = reservation.Select();
                     reservation = reservation != null ? reservation : new Res.Reservation();
                     Session["ReservationObj"] = reservation;
@@ -80,17 +80,17 @@ namespace HBM.Reservation
             cmbResStatus.ValueField = "StatusId";
             cmbResStatus.DataBind();
 
-            cmbGuarantee.DataSource = new GenMan.Gaurantee() { CompanyId = Master.CompanyId }.SelectAllList();
+            cmbGuarantee.DataSource = new GenMan.Gaurantee() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
             cmbGuarantee.TextField = "GuaranteeName";
             cmbGuarantee.ValueField = "GuaranteeId";
             cmbGuarantee.DataBind();
 
-            cmbTax.DataSource = new GenMan.TaxType() { CompanyId = Master.CompanyId }.SelectAllList();
+            cmbTax.DataSource = new GenMan.TaxType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
             cmbTax.TextField = "TaxTypeName";
             cmbTax.ValueField = "TaxTypeId";
             cmbTax.DataBind();
 
-            cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CompanyId }.SelectAllList();
+            cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
             cmbCustomerName.ValueField = "CustomerId";
             cmbCustomerName.DataBind();
         }

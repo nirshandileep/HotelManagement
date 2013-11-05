@@ -43,17 +43,6 @@ namespace HBM
         }
 
         /// <summary>
-        /// Returns CompanyId of the logged session
-        /// </summary>
-        public int CompanyId
-        {
-            get
-            {
-                return SessionHandler.CurrentCompanyId;
-            }
-        }
-
-        /// <summary>
         /// Logged user currenct company
         /// </summary>
         public Company CurrentCompany

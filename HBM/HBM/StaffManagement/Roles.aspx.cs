@@ -104,11 +104,11 @@ namespace HBM
 
                 RolesObj.RoleName = txtRoleName.Text.Trim();
 
-                if (!RolesObj.IsDuplicateRoleName(RolesObj.RoleName, Master.CompanyId))
+                if (!RolesObj.IsDuplicateRoleName(RolesObj.RoleName, Master.CurrentCompany.CompanyId))
                 {
 
                     RolesObj.RoleDescription = txtRoleDescription.Text.Trim();
-                    RolesObj.CompanyId = Master.CompanyId;
+                    RolesObj.CompanyId = Master.CurrentCompany.CompanyId;
                     RolesObj.CreatedUser = Master.LoggedUser.UsersId;
                     RolesObj.UpdatedUser = Master.LoggedUser.UsersId;
 
@@ -171,7 +171,7 @@ namespace HBM
                 RolesObj.RolesId = Convert.ToInt32(this.hdnRoleId.Value);
                 RolesObj.RoleName = txtRoleName.Text.Trim();
                 RolesObj.RoleDescription = txtRoleDescription.Text.Trim();
-                RolesObj.CompanyId = Master.CompanyId;
+                RolesObj.CompanyId = Master.CurrentCompany.CompanyId;
                 RolesObj.UpdatedUser = Master.LoggedUser.UsersId;
 
                 if (RolesObj.Save(db, transaction))
@@ -212,7 +212,7 @@ namespace HBM
                 int currentRoleId = Convert.ToInt32(this.hdnRoleId.Value);
                 UserMan.Roles RolesObj = new UserMan.Roles();
                 RolesObj.RolesId = currentRoleId;
-                RolesObj.CompanyId = Master.CompanyId;
+                RolesObj.CompanyId = Master.CurrentCompany.CompanyId;
                 RolesObj = RolesObj.Select();
                 this.txtRoleName.Text = RolesObj.RoleName;
                 this.txtRoleDescription.Text = RolesObj.RoleDescription;
