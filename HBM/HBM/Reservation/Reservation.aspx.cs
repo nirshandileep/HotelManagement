@@ -14,7 +14,7 @@ namespace HBM.Reservation
     public partial class Reservation : System.Web.UI.Page
     {
 
-        public Res.Reservation ReservationObj
+        public Res.Reservation ResObj
         {
             get
             {
@@ -41,10 +41,13 @@ namespace HBM.Reservation
             if (!IsPostBack)
             {
                 Master.ClearSessions();
-                CheckFromURL();
                 IsEditReservation();
                 LoadInitialData();
                 SetData();
+            }
+            if (IsCallback)
+            {
+                LoadInitialData();
             }
         }
 
@@ -53,19 +56,20 @@ namespace HBM.Reservation
         /// </summary>
         private void SetData()
         {
-            txtResCode.Text = ReservationObj.ReservationCode;
+            txtResCode.Text = ResObj.ReservationCode;
+            hdnReservationUserId.Add("CreatedUser", ResObj.ReservationId > 0 ? ResObj.CreatedUser : Master.LoggedUser.UsersId);
 
-            if (ReservationObj.ReservationId > 0)
+            if (ResObj.ReservationId > 0)
             {
-                cmbResStatus.Value = ReservationObj.StatusId;
-                cmbSource.Value = ReservationObj.SourceId;
-                cmbGuarantee.Value = ReservationObj.GuaranteeId;
+                cmbResStatus.Value = ResObj.StatusId;
+                cmbSource.Value = ResObj.SourceId;
+                cmbGuarantee.Value = ResObj.GuaranteeId;
             }
 
-            dtpBookingTime.Value = ReservationObj.ReservationId == 0 ? DateTime.Now : ReservationObj.BookingDate;
-            txtUser.Text = ReservationObj.ReservationId == 0 ? Master.LoggedUser.UserName : new UserManagement.Users() { UsersId = ReservationObj.CreatedUser }.Select().UserName;
-            dtpCheckIn.Value = ReservationObj.ReservationId == 0 ? DateTime.Now.AddDays(Common.Constants.CHECKIN_ADD_DAYS) : ReservationObj.ReservationRoom.CheckInDate;
-            dtpCheckOut.Value = ReservationObj.ReservationId == 0 ? DateTime.Now.AddDays(Common.Constants.CHECKOUT_ADD_DAYS) : ReservationObj.ReservationRoom.CheckOutDate;
+            dtpBookingTime.Value = ResObj.ReservationId == 0 ? DateTime.Now : ResObj.BookingDate;
+            txtUser.Text = ResObj.ReservationId == 0 ? Master.LoggedUser.UserName : new UserManagement.Users() { UsersId = ResObj.CreatedUser }.Select().UserName;
+            dtpCheckIn.Value = ResObj.ReservationId == 0 ? DateTime.Now.AddDays(Common.Constants.CHECKIN_ADD_DAYS) : ResObj.ReservationRoom.CheckInDate;
+            dtpCheckOut.Value = ResObj.ReservationId == 0 ? DateTime.Now.AddDays(Common.Constants.CHECKOUT_ADD_DAYS) : ResObj.ReservationRoom.CheckOutDate;
 
 
         }
@@ -115,22 +119,53 @@ namespace HBM.Reservation
         }
 
         /// <summary>
-        /// Fill FromURL to go back
+        /// Reservation Save
         /// </summary>
-        private void CheckFromURL()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if (Request.QueryString["FromURL"] != null && Request.QueryString["FromURL"].Trim() != String.Empty)
-                {
-                    hdnFromURL.Value = Request.QueryString["FromURL"].Trim();
-                }
+                ResObj.ReservationCode = txtResCode.Text.Trim();
+                ResObj.StatusId = (int)cmbResStatus.Value == -1 ? 1 : Int32.Parse(cmbResStatus.Value.ToString());
+                ResObj.SourceId = (int?)cmbSource.Value;
+                ResObj.BookingDate = (DateTime)dtpBookingTime.Value;
+                ResObj.CreatedUser = (int)hdnReservationUserId.Get("CreatedUser");
+                ResObj.UpdatedUser = Master.LoggedUser.UsersId;
+                ResObj.GuaranteeId = (int)cmbGuarantee.Value;
+
+                //Customer Section
+                ResObj.CustomerId = (int)cmbCustomerName.Value;
+                ResObj.CheckInDate = (DateTime)dtpCheckIn.Value;
+                ResObj.CheckOutDate = (DateTime)dtpCheckOut.Value;
+
+                ResObj.TaxTypeId = (int)cmbTax.Value;
+
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Save room details to reservation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnAddRoom_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
             }
             catch (System.Exception)
             {
 
+                throw;
             }
-
         }
     }
 }

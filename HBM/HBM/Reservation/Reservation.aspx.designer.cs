@@ -103,6 +103,15 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddGuarantee;
         
         /// <summary>
+        /// hdnReservationUserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxHiddenField.ASPxHiddenField hdnReservationUserId;
+        
+        /// <summary>
         /// rpRoomInformation control.
         /// </summary>
         /// <remarks>
