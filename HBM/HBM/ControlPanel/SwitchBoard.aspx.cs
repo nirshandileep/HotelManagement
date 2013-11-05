@@ -20,7 +20,7 @@ namespace HBM.ControlPanel
 
         }
 
-      
+
         protected void tcCommon_TabClick(object source, DevExpress.Web.ASPxTabControl.TabControlCancelEventArgs e)
         {
             switch (e.Tab.Name)
@@ -45,8 +45,15 @@ namespace HBM.ControlPanel
                     break;
                 case "TaxTypes":
                     iframePage.Attributes["src"] = Constants.CONST_TAXTYPES;
-                    break;      
+                    break;
+                case "AdditionalServiceType":
+                    iframePage.Attributes["src"] = Constants.CONST_ADDITIONALSERVICETYPE;
+                    break;
+
+
             }
+
+
         }
     }
 }
