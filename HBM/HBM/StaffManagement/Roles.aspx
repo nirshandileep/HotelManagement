@@ -23,7 +23,7 @@
                 <table class="style1">
                     <tr>
                         <td height="21">
-                            Role Name:
+                            Role Name<span class="reqfield">*</span>
                             <asp:HiddenField ID="hdnRoleId" runat="server" />
                         </td>
                         <td>
@@ -43,7 +43,7 @@
                     </tr>
                     <tr>
                         <td height="21">
-                            Role Description:
+                            Role Description<span class="reqfield">*</span>
                         </td>
                         <td>
                             <dx:ASPxTextBox ID="txtRoleDescription" runat="server" Width="170px" MaxLength="50">

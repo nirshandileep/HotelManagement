@@ -13,7 +13,6 @@
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper">
@@ -22,7 +21,7 @@
         <table class=" customers-tbl">
             <tr>
                 <td height="22">
-                    Customer Name
+                    Customer Name<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtCustomerName" runat="server" Width="170px">
@@ -45,7 +44,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Member Code
+                    Member Code<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px">
@@ -69,7 +68,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Gender
+                    Gender<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbGender" runat="server" IncrementalFilteringMode="Contains">
@@ -95,7 +94,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Phone
+                    Phone<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px">
@@ -327,7 +326,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Billing Address
+                    Billing Address<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtBillingAddress" runat="server" Width="170px">
@@ -350,7 +349,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Billing City
+                    Billing City<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px">
@@ -452,7 +451,9 @@
                             </td>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnClear" runat="server" Text="Clear" HorizontalAlign="Center"
-                                    ImageSpacing="15px" VerticalAlign="Middle">
+                                    ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False" 
+                                    AutoPostBack="false" onclick="btnClear_Click">
+                            
                                     <Image Url="~/Images/Clear.png">
                                     </Image>
                                 </dx:ASPxButton>
