@@ -24,8 +24,8 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="7" OnTabClick="tcCommon_TabClick"
-                        Width="900px" Height="25px" EnableTabScrolling="True" TabAlign="Justify" 
+                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="5" OnTabClick="tcCommon_TabClick"
+                        Width="900px" Height="25px" EnableTabScrolling="True" TabAlign="Center" 
                         EnableTheming="True" TabSpacing="0px">
                         <Tabs>
                             <dx:Tab Text="Bed Types" Name="BedType">

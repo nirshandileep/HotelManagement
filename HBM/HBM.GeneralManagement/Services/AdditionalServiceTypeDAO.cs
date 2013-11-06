@@ -18,13 +18,13 @@ namespace HBM.GeneralManagement
             DbCommand commandInsert = db.GetStoredProcCommand("usp_AdditionalServiceTypeInsert");
 
             db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, "CompanyId", DataRowVersion.Current);
-            db.AddInParameter(commandInsert, "@AdditionalServiceTypeName", DbType.String, "AdditionalServiceTypeName", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@AdditionalServiceType", DbType.String, "AdditionalServiceType", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_AdditionalServiceTypeUpdate");
             db.AddInParameter(commandUpdate, "@AdditionalServiceTypeId", DbType.Int32, "AdditionalServiceTypeId", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@AdditionalServiceTypeName", DbType.String, "AdditionalServiceTypeName", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@AdditionalServiceType", DbType.String, "AdditionalServiceType", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 
