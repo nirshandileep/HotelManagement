@@ -12,7 +12,8 @@
 <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxHiddenField" tagprefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxHiddenField" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -32,10 +33,8 @@
                             Status
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cmbResStatus" runat="server" ValueType="System.Int32" 
-                                DropDownStyle="DropDown">
-                                <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" 
-                                    ValidationGroup="vgRes">
+                            <dx:ASPxComboBox ID="cmbResStatus" runat="server" ValueType="System.Int32" DropDownStyle="DropDown">
+                                <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgRes">
                                     <RequiredField IsRequired="True" />
                                 </ValidationSettings>
                             </dx:ASPxComboBox>
@@ -45,11 +44,13 @@
                         </td>
                         <td>
                             <dx:ASPxComboBox ID="cmbSource" runat="server" ValueType="System.Int32" 
-                                DropDownStyle="DropDown">
+                                DropDownStyle="DropDown" ClientInstanceName="cmbSource">
                             </dx:ASPxComboBox>
                         </td>
                         <td>
-                            <dx:ASPxButton ID="btnAddSource" runat="server" Text="..." Visible="False">
+                            <dx:ASPxButton ID="btnAddSource" runat="server" Text="..." AutoPostBack="False" 
+                                UseSubmitBehavior="False">
+                                <ClientSideEvents Click="function(s, e) { ShowIframePopupWindow(ppcIframePopup,'/ControlPanel/Source.aspx'); }" />
                             </dx:ASPxButton>
                         </td>
                     </tr>
@@ -98,15 +99,16 @@
                         </td>
                         <td>
                             <dx:ASPxComboBox ID="cmbGuarantee" runat="server" ValueType="System.Int32" 
-                                DropDownStyle="DropDown">
-                                <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" 
-                                    ValidationGroup="vgRes">
+                                DropDownStyle="DropDown" ClientInstanceName="cmbGuarantee">
+                                <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgRes">
                                     <RequiredField IsRequired="True" />
                                 </ValidationSettings>
                             </dx:ASPxComboBox>
                         </td>
                         <td>
-                            <dx:ASPxButton ID="btnAddGuarantee" runat="server" Text="..." Visible="False">
+                            <dx:ASPxButton ID="btnAddGuarantee" runat="server" Text="..." 
+                                AutoPostBack="False" UseSubmitBehavior="False">
+                                <ClientSideEvents Click="function(s, e) { ShowIframePopupWindow(ppcIframePopup,'/ControlPanel/Gaurantee.aspx'); }" />
                             </dx:ASPxButton>
                         </td>
                     </tr>
@@ -164,8 +166,7 @@
                                                                         <dx:ListBoxColumn FieldName="GuestTypeName" />
                                                                         <dx:ListBoxColumn FieldName="Email" />
                                                                     </Columns>
-                                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" 
-                                                                        ValidationGroup="vgRes">
+                                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgRes">
                                                                         <RequiredField IsRequired="True" />
                                                                     </ValidationSettings>
                                                                 </dx:ASPxComboBox>
@@ -207,8 +208,7 @@
                                                                 <dx:ASPxDateEdit ID="dtpCheckIn" runat="server" EditFormat="DateTime">
                                                                     <TimeSectionProperties Visible="True">
                                                                     </TimeSectionProperties>
-                                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" 
-                                                                        ValidationGroup="vgRes">
+                                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgRes">
                                                                         <RequiredField IsRequired="True" />
                                                                     </ValidationSettings>
                                                                 </dx:ASPxDateEdit>
@@ -222,8 +222,7 @@
                                                                 <dx:ASPxDateEdit ID="dtpCheckOut" runat="server" EditFormat="DateTime">
                                                                     <TimeSectionProperties Visible="True">
                                                                     </TimeSectionProperties>
-                                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" 
-                                                                        ValidationGroup="vgRes">
+                                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgRes">
                                                                         <RequiredField IsRequired="True" />
                                                                     </ValidationSettings>
                                                                 </dx:ASPxDateEdit>
@@ -259,21 +258,19 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <dx:ASPxGridView ID="gvRoomDetails" runat="server" Width="100%" 
-                                                        AutoGenerateColumns="False" KeyFieldName="ReservationRoomId">
+                                                    <dx:ASPxGridView ID="gvRoomDetails" runat="server" Width="100%" AutoGenerateColumns="False"
+                                                        KeyFieldName="ReservationRoomId" ClientInstanceName="gvRoomDetails">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" 
-                                                                ShowInGroupFooterColumn="Amount" SummaryType="Sum" />
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
+                                                                SummaryType="Sum" />
                                                         </TotalSummary>
                                                         <Columns>
-                                                            <dx:GridViewDataTextColumn FieldName="RoomName" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="0">
+                                                            <dx:GridViewDataTextColumn FieldName="RoomName" ShowInCustomizationForm="True" VisibleIndex="0">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn FieldName="Amount" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="2">
+                                                            <dx:GridViewDataTextColumn FieldName="Amount" ShowInCustomizationForm="True" VisibleIndex="2">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn FieldName="CustomerName" 
-                                                                ShowInCustomizationForm="True" VisibleIndex="1">
+                                                            <dx:GridViewDataTextColumn FieldName="CustomerName" ShowInCustomizationForm="True"
+                                                                VisibleIndex="1">
                                                             </dx:GridViewDataTextColumn>
                                                         </Columns>
                                                         <Settings ShowFooter="True" ShowGroupButtons="False" />
@@ -295,8 +292,8 @@
                                                     <dx:ASPxGridView ID="gvPaymentInformation" runat="server" Width="100%" AutoGenerateColumns="False"
                                                         KeyFieldName="ReservationPaymentId">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" 
-                                                                ShowInGroupFooterColumn="Amount" SummaryType="Sum" />
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
+                                                                SummaryType="Sum" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ButtonType="Image" ShowInCustomizationForm="True" VisibleIndex="0"
@@ -376,8 +373,8 @@
                                                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                                                     <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Rate" ShowInColumn="Rate" 
-                                                                ShowInGroupFooterColumn="Rate" SummaryType="Sum" />
+                                                            <dx:ASPxSummaryItem FieldName="Rate" ShowInColumn="Rate" ShowInGroupFooterColumn="Rate"
+                                                                SummaryType="Sum" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
@@ -632,7 +629,7 @@
         </tr>
         <tr>
             <td align="center">
-                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click">
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click">
                 </dx:ASPxButton>
                 <dx:ASPxButton ID="btnCancel" runat="server" Text="Cancel">
                 </dx:ASPxButton>
@@ -641,166 +638,184 @@
         <tr>
             <td>
                 <dx:ASPxPopupControl ID="ppcAddRoom" runat="server" ClientInstanceName="ppcAddRoom"
-                    HeaderText="Add Rooms" AllowDragging="True" AllowResize="True" 
-                    Modal="True" PopupHorizontalAlign="WindowCenter"
-                    PopupVerticalAlign="WindowCenter" RenderMode="Lightweight" 
-                    EnableClientSideAPI="True">
+                    HeaderText="Add Rooms" AllowDragging="True" AllowResize="True" Modal="True" PopupHorizontalAlign="WindowCenter"
+                    PopupVerticalAlign="WindowCenter" RenderMode="Lightweight" EnableClientSideAPI="True">
+                    <ClientSideEvents CloseUp="function(s, e) {
+	gvRoomDetails.PerformCallback();
+}" />
                     <ContentCollection>
                         <dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td>
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td>
-                                                            <table border="0" cellpadding="0" cellspacing="0">
-                                                                <tr>
-                                                                    <td>
-                                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Adult No.
-                                                                                </td>
-                                                                                <td>
-                                                                                    <dx:ASPxSpinEdit ID="seAdultNumber" runat="server" Height="21px" Number="0">
-                                                                                    </dx:ASPxSpinEdit>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Child No.
-                                                                                </td>
-                                                                                <td>
-                                                                                    <dx:ASPxSpinEdit ID="seChildNumber" runat="server" Height="21px" Number="0">
-                                                                                    </dx:ASPxSpinEdit>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Infant No.
-                                                                                </td>
-                                                                                <td>
-                                                                                    <dx:ASPxSpinEdit ID="seInfantNumber" runat="server" Height="21px" Number="0">
-                                                                                    </dx:ASPxSpinEdit>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" Width="100%">
-                                                                            <Columns>
-                                                                                <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
-                                                                                    VisibleIndex="0">
-                                                                                    <EditButton Visible="True">
-                                                                                        <Image ToolTip="Edit" Url="~/Images/update.png
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td>
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td>
+                                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td>
+                                                                            Adult No.
+                                                                        </td>
+                                                                        <td>
+                                                                            <dx:ASPxSpinEdit ID="seAdultNumber" runat="server" Height="21px" Number="0">
+                                                                            </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            Child No.
+                                                                        </td>
+                                                                        <td>
+                                                                            <dx:ASPxSpinEdit ID="seChildNumber" runat="server" Height="21px" Number="0">
+                                                                            </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            Infant No.
+                                                                        </td>
+                                                                        <td>
+                                                                            <dx:ASPxSpinEdit ID="seInfantNumber" runat="server" Height="21px" Number="0">
+                                                                            </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" Width="100%">
+                                                                    <Columns>
+                                                                        <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
+                                                                            VisibleIndex="0">
+                                                                            <EditButton Visible="True">
+                                                                                <Image ToolTip="Edit" Url="~/Images/update.png
 ">
-                                                                                        </Image>
-                                                                                    </EditButton>
-                                                                                    <NewButton Visible="True">
-                                                                                        <Image ToolTip="New" Url="~/Images/new.png
+                                                                                </Image>
+                                                                            </EditButton>
+                                                                            <NewButton Visible="True">
+                                                                                <Image ToolTip="New" Url="~/Images/new.png
 ">
-                                                                                        </Image>
-                                                                                    </NewButton>
-                                                                                    <DeleteButton Visible="True">
-                                                                                        <Image ToolTip="Delete" Url="~/Images/delete.png
+                                                                                </Image>
+                                                                            </NewButton>
+                                                                            <DeleteButton Visible="True">
+                                                                                <Image ToolTip="Delete" Url="~/Images/delete.png
 ">
-                                                                                        </Image>
-                                                                                    </DeleteButton>
-                                                                                    <CancelButton Visible="True">
-                                                                                        <Image ToolTip="Cancel" Url="~/Images/Close.png">
-                                                                                        </Image>
-                                                                                    </CancelButton>
-                                                                                    <UpdateButton Visible="True">
-                                                                                        <Image Url="~/Images/Apply.png">
-                                                                                        </Image>
-                                                                                    </UpdateButton>
-                                                                                    <ClearFilterButton Visible="True">
-                                                                                    </ClearFilterButton>
-                                                                                </dx:GridViewCommandColumn>
-                                                                                <dx:GridViewDataComboBoxColumn ShowInCustomizationForm="True" VisibleIndex="2">
-                                                                                    <PropertiesComboBox>
-                                                                                        <Columns>
-                                                                                            <dx:ListBoxColumn FieldName="CustomerId" Visible="False" />
-                                                                                            <dx:ListBoxColumn Caption="Name" FieldName="CustomerName" />
-                                                                                            <dx:ListBoxColumn Caption="Code" FieldName="MemberCode" />
-                                                                                            <dx:ListBoxColumn FieldName="Phone" />
-                                                                                            <dx:ListBoxColumn FieldName="Email" />
-                                                                                        </Columns>
-                                                                                    </PropertiesComboBox>
-                                                                                </dx:GridViewDataComboBoxColumn>
-                                                                            </Columns>
-                                                                        </dx:ASPxGridView>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                        <td>
-                                                            <table border="0" cellpadding="0" cellspacing="0">
-                                                                <tr>
-                                                                    <td>
-                                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Room
-                                                                                </td>
-                                                                                <td>
-                                                                                    <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
-                                                                                        TextFormatString="{0}; {1}; {2}; {3}; {4}">
-                                                                                        <Columns>
-                                                                                            <dx:ListBoxColumn FieldName="RoomName" />
-                                                                                            <dx:ListBoxColumn FieldName="RoomCode" />
-                                                                                            <dx:ListBoxColumn FieldName="RoomNumber" />
-                                                                                            <dx:ListBoxColumn FieldName="MaxAdult" />
-                                                                                            <dx:ListBoxColumn FieldName="MaxChildren" />
-                                                                                        </Columns>
-                                                                                    </dx:ASPxComboBox>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Rate Plan
-                                                                                </td>
-                                                                                <td>
-                                                                                    <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String">
-                                                                                    </dx:ASPxComboBox>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <dx:ASPxGridView ID="gvRoomRates" runat="server" AutoGenerateColumns="False" Width="100%">
-                                                                            <Columns>
-                                                                                <dx:GridViewDataTextColumn FieldName="Date" ShowInCustomizationForm="True" UnboundType="DateTime"
-                                                                                    VisibleIndex="0">
-                                                                                </dx:GridViewDataTextColumn>
-                                                                                <dx:GridViewDataTextColumn FieldName="Rate" ShowInCustomizationForm="True" VisibleIndex="1">
-                                                                                </dx:GridViewDataTextColumn>
-                                                                            </Columns>
-                                                                        </dx:ASPxGridView>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <dx:ASPxButton ID="btnAddRoom" runat="server" Text="Ok" 
-                                                    OnClick="btnAddRoom_Click">
-                                                </dx:ASPxButton>
-                                                <dx:ASPxButton ID="btnCancelRoom" runat="server" Text="Cancel">
-                                                </dx:ASPxButton>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                                                                </Image>
+                                                                            </DeleteButton>
+                                                                            <CancelButton Visible="True">
+                                                                                <Image ToolTip="Cancel" Url="~/Images/Close.png">
+                                                                                </Image>
+                                                                            </CancelButton>
+                                                                            <UpdateButton Visible="True">
+                                                                                <Image Url="~/Images/Apply.png">
+                                                                                </Image>
+                                                                            </UpdateButton>
+                                                                            <ClearFilterButton Visible="True">
+                                                                            </ClearFilterButton>
+                                                                        </dx:GridViewCommandColumn>
+                                                                        <dx:GridViewDataComboBoxColumn ShowInCustomizationForm="True" VisibleIndex="2">
+                                                                            <PropertiesComboBox>
+                                                                                <Columns>
+                                                                                    <dx:ListBoxColumn FieldName="CustomerId" Visible="False" />
+                                                                                    <dx:ListBoxColumn Caption="Name" FieldName="CustomerName" />
+                                                                                    <dx:ListBoxColumn Caption="Code" FieldName="MemberCode" />
+                                                                                    <dx:ListBoxColumn FieldName="Phone" />
+                                                                                    <dx:ListBoxColumn FieldName="Email" />
+                                                                                </Columns>
+                                                                            </PropertiesComboBox>
+                                                                        </dx:GridViewDataComboBoxColumn>
+                                                                    </Columns>
+                                                                </dx:ASPxGridView>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td>
+                                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td>
+                                                                            Room
+                                                                        </td>
+                                                                        <td>
+                                                                            <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
+                                                                                TextFormatString="{0}; {1}; {2}; {3}; {4}">
+                                                                                <Columns>
+                                                                                    <dx:ListBoxColumn FieldName="RoomName" />
+                                                                                    <dx:ListBoxColumn FieldName="RoomCode" />
+                                                                                    <dx:ListBoxColumn FieldName="RoomNumber" />
+                                                                                    <dx:ListBoxColumn FieldName="MaxAdult" />
+                                                                                    <dx:ListBoxColumn FieldName="MaxChildren" />
+                                                                                </Columns>
+                                                                            </dx:ASPxComboBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            Rate Plan
+                                                                        </td>
+                                                                        <td>
+                                                                            <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String">
+                                                                            </dx:ASPxComboBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <dx:ASPxGridView ID="gvRoomRates" runat="server" AutoGenerateColumns="False" Width="100%">
+                                                                    <Columns>
+                                                                        <dx:GridViewDataTextColumn FieldName="Date" ShowInCustomizationForm="True" UnboundType="DateTime"
+                                                                            VisibleIndex="0">
+                                                                        </dx:GridViewDataTextColumn>
+                                                                        <dx:GridViewDataTextColumn FieldName="Rate" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                                        </dx:GridViewDataTextColumn>
+                                                                    </Columns>
+                                                                </dx:ASPxGridView>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dx:ASPxButton ID="btnAddRoom" runat="server" Text="Ok" OnClick="btnAddRoom_Click">
+                                        </dx:ASPxButton>
+                                        <dx:ASPxButton ID="btnCancelRoom" runat="server" Text="Cancel">
+                                        </dx:ASPxButton>
+                                    </td>
+                                </tr>
+                            </table>
                         </dx:PopupControlContentControl>
                     </ContentCollection>
+                </dx:ASPxPopupControl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dx:ASPxPopupControl ID="ppcIframePopup" runat="server" 
+                    ClientInstanceName="ppcIframePopup" 
+                    EnableClientSideAPI="True" HeaderText="Add/Edit" AllowDragging="True" 
+                    AllowResize="True" Modal="True" PopupHorizontalAlign="WindowCenter" 
+                    PopupVerticalAlign="WindowCenter" ShowPageScrollbarWhenModal="True" 
+                    ShowSizeGrip="True" Height="400px" Width="700px">
+                    <ClientSideEvents CloseUp="function(s, e) {
+	cmbGuarantee.PerformCallback();
+	cmbSource.PerformCallback();
+}" />
+                    <ContentCollection>
+<dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True"></dx:PopupControlContentControl>
+</ContentCollection>
                 </dx:ASPxPopupControl>
             </td>
         </tr>

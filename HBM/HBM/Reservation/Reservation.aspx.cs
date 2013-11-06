@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using Res = HBM.ReservationManagement;
 using GenMan = HBM.GeneralManagement;
 using HBM.CustomerManagement;
-using HBM.GeneralManagement;
 
 namespace HBM.Reservation
 {
@@ -38,16 +37,18 @@ namespace HBM.Reservation
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //Some controls do not work wothout this placed here
+            LoadInitialData();
+
             if (!IsPostBack)
             {
-                Master.ClearSessions();
                 IsEditReservation();
-                LoadInitialData();
                 SetData();
             }
             if (IsCallback)
             {
-                LoadInitialData();
+                
             }
         }
 
@@ -57,7 +58,11 @@ namespace HBM.Reservation
         private void SetData()
         {
             txtResCode.Text = ResObj.ReservationCode;
-            hdnReservationUserId.Add("CreatedUser", ResObj.ReservationId > 0 ? ResObj.CreatedUser : Master.LoggedUser.UsersId);
+
+            if (Master.LoggedUser!=null)
+            {
+                hdnReservationUserId.Add("CreatedUser", ResObj.ReservationId > 0 ? ResObj.CreatedUser : Master.LoggedUser.UsersId);    
+            }
 
             if (ResObj.ReservationId > 0)
             {
@@ -79,12 +84,12 @@ namespace HBM.Reservation
         /// </summary>
         private void LoadInitialData()
         {
-            cmbResStatus.DataSource = new Status().SelectAllList();
+            cmbResStatus.DataSource = new GenMan.Status().SelectAllList();
             cmbResStatus.TextField = "StatusName";
             cmbResStatus.ValueField = "StatusId";
             cmbResStatus.DataBind();
 
-            cmbGuarantee.DataSource = new GenMan.Gaurantee() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+            cmbGuarantee.DataSource = new GenMan.Gaurantee() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset();
             cmbGuarantee.TextField = "GuaranteeName";
             cmbGuarantee.ValueField = "GuaranteeId";
             cmbGuarantee.DataBind();
@@ -97,6 +102,11 @@ namespace HBM.Reservation
             cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
             cmbCustomerName.ValueField = "CustomerId";
             cmbCustomerName.DataBind();
+
+            cmbSource.DataSource = new GenMan.Source() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset();
+            cmbSource.TextField = "SourceName";
+            cmbSource.ValueField = "SourceId";
+            cmbSource.DataBind();
         }
 
         /// <summary>

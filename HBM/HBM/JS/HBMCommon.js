@@ -1,21 +1,17 @@
 ﻿function ShowPopupWindow(popupControlId) {
     popupControlId.Show();
 }
-//function ShowPopupWindow(popupControlId, windowName) {
-//    try {
-//        var popupControl = popupControlId;
-//        
-//        //var hintWindow = popupControl.GetWindowByName(windowName);
-//        //if (value)
-//        popupControl.ShowWindow(windowName);
-//        alert('after');
-//        //else
-//        //    popupControl.HideWindow(hintWindow);
-//    }
-//    catch (e) {
-//        alert('error '+e.message);
-//    }
-//}
+
+function ShowIframePopupWindow(popupControl, contentURL) {
+    try {
+        var path = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + contentURL;
+        popupControl.SetContentUrl(path);
+        popupControl.Show();
+    }
+    catch (e) {
+        alert('JSError '+e.message);
+    }
+}
 
 
 //Top Message
