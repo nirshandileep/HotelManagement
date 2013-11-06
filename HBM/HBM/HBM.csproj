@@ -76,6 +76,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ControlPanel\AdditionalService.aspx" />
     <Content Include="ControlPanel\AdditionalServiceType.aspx" />
     <Content Include="ControlPanel\BedType.aspx" />
     <Content Include="ControlPanel\Company.aspx" />
@@ -136,6 +137,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlPanel\AdditionalService.aspx.cs">
+      <DependentUpon>AdditionalService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\AdditionalService.aspx.designer.cs">
+      <DependentUpon>AdditionalService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ControlPanel\AdditionalServiceType.aspx.cs">
       <DependentUpon>AdditionalServiceType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

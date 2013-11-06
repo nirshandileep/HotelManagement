@@ -44,6 +44,8 @@
                             </dx:Tab>
                             <dx:Tab Name="AdditionalServiceType" Text="Additional Service Type">
                             </dx:Tab>
+                            <dx:Tab Name="AdditionalService" Text="Additional Service">
+                            </dx:Tab>
                         </Tabs>
                     </dx:ASPxTabControl>
                 </td>

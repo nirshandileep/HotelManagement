@@ -50,6 +50,11 @@ namespace HBM.ControlPanel
                     iframePage.Attributes["src"] = Constants.CONST_ADDITIONALSERVICETYPE;
                     break;
 
+                case "AdditionalService":
+                    iframePage.Attributes["src"] = Constants.CONST_ADDITIONALSERVICE;
+                    break;
+
+
 
             }
 

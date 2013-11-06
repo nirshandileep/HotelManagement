@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business Entities\AdditionalService.cs" />
     <Compile Include="Business Entities\AdditionalServiceType.cs" />
     <Compile Include="Business Entities\BedType.cs" />
     <Compile Include="Business Entities\Company.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Business Entities\Status.cs" />
     <Compile Include="Business Entities\TaxType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdditionalServiceDAO.cs" />
     <Compile Include="Services\AdditionalServiceTypeDAO.cs" />
     <Compile Include="Services\BedTypeDAO.cs" />
     <Compile Include="Services\CompanyDAO.cs" />
