@@ -39,7 +39,26 @@
         </tr>
         <tr>
             <td colspan="2">
-                <dxwschs:ASPxScheduler ID="schReservationDashboad" runat="server">
+                <dxwschs:ASPxScheduler ID="schReservationDashboad" runat="server" 
+                    ClientIDMode="AutoID" Start="2013-11-01">
+                    
+<Views>
+<DayView><TimeRulers>
+<cc1:TimeRuler></cc1:TimeRuler>
+</TimeRulers>
+</DayView>
+
+<WorkWeekView><TimeRulers>
+<cc1:TimeRuler></cc1:TimeRuler>
+</TimeRulers>
+</WorkWeekView>
+    <TimelineView>
+        <TimelineViewStyles>
+            <Appointment BackColor="#FFFF99">
+            </Appointment>
+        </TimelineViewStyles>
+    </TimelineView>
+</Views>
                 </dxwschs:ASPxScheduler>
             </td>
         </tr>
