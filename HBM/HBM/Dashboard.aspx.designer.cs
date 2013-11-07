@@ -13,6 +13,15 @@ namespace HBM {
     public partial class Dashboard {
         
         /// <summary>
+        /// schReservationDashboad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxScheduler.ASPxScheduler schReservationDashboad;
+        
+        /// <summary>
         /// Master property.
         /// </summary>
         /// <remarks>

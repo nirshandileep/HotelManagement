@@ -13,6 +13,11 @@ namespace HBM
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            schReservationDashboad.ActiveViewType = DevExpress.XtraScheduler.SchedulerViewType.Timeline;
+            schReservationDashboad.Views.WorkWeekView.Enabled = false;
+            
+            
+
         }
 
        
