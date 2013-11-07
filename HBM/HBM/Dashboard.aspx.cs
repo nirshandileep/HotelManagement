@@ -14,7 +14,6 @@ namespace HBM
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            schReservationDashboad.ActiveViewType = DevExpress.XtraScheduler.SchedulerViewType.Timeline;
             schReservationDashboad.Views.WorkWeekView.Enabled = false;
 
             schReservationDashboad.AppointmentDataSource = this.CreatDataSource();
@@ -24,8 +23,7 @@ namespace HBM
             schReservationDashboad.Storage.Appointments.Mappings.Label = "Room";
             schReservationDashboad.Storage.Appointments.Mappings.Subject = "Name";
 
-
-            
+           
             schReservationDashboad.DataBind();
             
 
@@ -43,6 +41,8 @@ namespace HBM
             dt.Rows.Add(1,Convert.ToDateTime("10-11-2013"), Convert.ToDateTime("12-11-2013"), "James", "Sapphire");
             dt.Rows.Add(2,Convert.ToDateTime("20-11-2013"), Convert.ToDateTime("25-11-2013"), "Craig", "Garnet");
             dt.Rows.Add(3,Convert.ToDateTime("22-11-2013"), Convert.ToDateTime("30-11-2013"), "Sandra", "Ruby");
+            dt.Rows.Add(1, Convert.ToDateTime("10-11-2013"), Convert.ToDateTime("12-11-2013"), "David", "Blue Sapphire");
+
 
             return dt;
 

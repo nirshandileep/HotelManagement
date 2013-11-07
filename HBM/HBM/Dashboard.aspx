@@ -39,26 +39,31 @@
         </tr>
         <tr>
             <td colspan="2">
-                <dxwschs:ASPxScheduler ID="schReservationDashboad" runat="server" 
-                    ClientIDMode="AutoID" Start="2013-11-01">
-                    
-<Views>
-<DayView><TimeRulers>
-<cc1:TimeRuler></cc1:TimeRuler>
-</TimeRulers>
-</DayView>
-
-<WorkWeekView><TimeRulers>
-<cc1:TimeRuler></cc1:TimeRuler>
-</TimeRulers>
-</WorkWeekView>
-    <TimelineView>
-        <TimelineViewStyles>
-            <Appointment BackColor="#FFFF99">
-            </Appointment>
-        </TimelineViewStyles>
-    </TimelineView>
-</Views>
+                <dxwschs:ASPxScheduler ID="schReservationDashboad" runat="server" ClientIDMode="AutoID"
+                    Start="2013-11-01" ActiveViewType="Timeline">
+                    <Views>
+                        <DayView>
+                            <TimeRulers>
+                                <cc1:TimeRuler></cc1:TimeRuler>
+                            </TimeRulers>
+                        </DayView>
+                        <WorkWeekView>
+                            <TimeRulers>
+                                <cc1:TimeRuler></cc1:TimeRuler>
+                            </TimeRulers>
+                        </WorkWeekView>
+                        <TimelineView>
+                            <TimelineViewStyles>
+                                <Appointment BackColor="#ffffcc">
+                                </Appointment>
+                            </TimelineViewStyles>
+                        </TimelineView>
+                    </Views>
+                    <Styles>
+                        <Appointment BackColor="#ffffcc">
+                            <Border BorderColor="#cc0000" BorderStyle="Solid" BorderWidth="1px" />
+                        </Appointment>
+                    </Styles>
                 </dxwschs:ASPxScheduler>
             </td>
         </tr>
