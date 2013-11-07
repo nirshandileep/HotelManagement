@@ -54,16 +54,12 @@
                         </WorkWeekView>
                         <TimelineView>
                             <TimelineViewStyles>
-                                <Appointment BackColor="#ffffcc">
+                                <Appointment BackColor="#FFFFCC">
                                 </Appointment>
                             </TimelineViewStyles>
                         </TimelineView>
                     </Views>
-                    <Styles>
-                        <Appointment BackColor="#ffffcc">
-                            <Border BorderColor="#cc0000" BorderStyle="Solid" BorderWidth="1px" />
-                        </Appointment>
-                    </Styles>
+                    
                 </dxwschs:ASPxScheduler>
             </td>
         </tr>
