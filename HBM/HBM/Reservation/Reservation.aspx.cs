@@ -7,11 +7,40 @@ using System.Web.UI.WebControls;
 using Res = HBM.ReservationManagement;
 using GenMan = HBM.GeneralManagement;
 using HBM.CustomerManagement;
+using System.Data;
+using DevExpress.Web.ASPxGridView;
+using HBM.Common;
+using HBM.SessionManager;
+using System.Collections;
 
 namespace HBM.Reservation
 {
     public partial class Reservation : System.Web.UI.Page
     {
+        DataSet dsData = new DataSet();
+
+        private DataSet dsTempGuests;
+
+        public DataSet DsTempGuests
+        {
+            get 
+            {
+                if (Session["DsTempGuests"] == null)
+                {
+                    dsTempGuests = new DataSet();
+                    Session["DsTempGuests"] = dsTempGuests;
+                }
+                else
+                {
+                    dsTempGuests = (DataSet)Session["DsTempGuests"];
+                }
+                return dsTempGuests;
+            }
+            set
+            {
+                Session["DsTempGuests"] = value;
+            }
+        }
 
         public Res.Reservation ResObj
         {
@@ -39,10 +68,12 @@ namespace HBM.Reservation
         {
 
             //Some controls do not work wothout this placed here
-            LoadInitialData();
+            LoadData();
 
             if (!IsPostBack)
             {
+                LoadInitialData();
+                SetLimits();
                 IsEditReservation();
                 SetData();
             }
@@ -50,6 +81,33 @@ namespace HBM.Reservation
             {
                 
             }
+        }
+
+        private void SetLimits()
+        {
+            try
+            {
+                seAdultNumber.MinValue = 0;
+                seChildNumber.MinValue = 0;
+                seInfantNumber.MinValue = 0;
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        /// <summary>
+        /// Fill the controls that gets emptied after every callback
+        /// </summary>
+        private void LoadData()
+        {
+
+            cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+            cmbCustomerName.ValueField = "CustomerId";
+            cmbCustomerName.DataBind();
         }
 
         /// <summary>
@@ -98,10 +156,6 @@ namespace HBM.Reservation
             cmbTax.TextField = "TaxTypeName";
             cmbTax.ValueField = "TaxTypeId";
             cmbTax.DataBind();
-
-            cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
-            cmbCustomerName.ValueField = "CustomerId";
-            cmbCustomerName.DataBind();
 
             cmbSource.DataSource = new GenMan.Source() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset();
             cmbSource.TextField = "SourceName";
@@ -176,6 +230,77 @@ namespace HBM.Reservation
 
                 throw;
             }
+        }
+
+        protected void gvCustomers_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            try
+            {
+                int i = gvCustomers.FindVisibleIndexByKeyValue(e.Keys[gvCustomers.KeyFieldName]);
+                e.Cancel = true;
+                dsData = Session[Constants.SESSION_RATEPLANS] as DataSet;
+                dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvCustomers.KeyFieldName])));
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        protected void gvCustomers_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            try
+            {
+
+                dsData = DsTempGuests;
+                ASPxGridView gridView = sender as ASPxGridView;
+                DataRow row = dsData.Tables[0].NewRow();
+                Random rd = new Random();
+                e.NewValues["ReservationGuestId"] = rd.Next();
+                e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
+                e.NewValues["CompanyId"] = Master.CurrentCompany.CompanyId;
+                e.NewValues["CreatedUser"] = Master.LoggedUser.UsersId;
+
+                IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
+                enumerator.Reset();
+                while (enumerator.MoveNext())
+                {
+                    if (enumerator.Key.ToString() != "Count")
+                    {
+                        row[enumerator.Key.ToString()] = enumerator.Value == null ? DBNull.Value : enumerator.Value;
+                    }
+                }
+                gridView.CancelEdit();
+                e.Cancel = true;
+
+                dsData.Tables[0].Rows.Add(row);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        protected void gvCustomers_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            dsData = DsTempGuests;
+            ASPxGridView gridView = sender as ASPxGridView;
+            DataTable dataTable = dsData.Tables[0];
+            DataRow row = dataTable.Rows.Find(e.Keys[0]);
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
+            e.NewValues["UpdatedUser"] = Master.LoggedUser.UsersId;
+            IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
+            enumerator.Reset();
+            while (enumerator.MoveNext())
+            {
+                row[enumerator.Key.ToString()] = enumerator.Value == null ? DBNull.Value : enumerator.Value;
+            }
+
+            gridView.CancelEdit();
+            e.Cancel = true;
         }
     }
 }

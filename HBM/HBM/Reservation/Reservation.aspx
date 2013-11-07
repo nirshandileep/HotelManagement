@@ -43,13 +43,12 @@
                             Source
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cmbSource" runat="server" ValueType="System.Int32" 
-                                DropDownStyle="DropDown" ClientInstanceName="cmbSource">
+                            <dx:ASPxComboBox ID="cmbSource" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
+                                ClientInstanceName="cmbSource">
                             </dx:ASPxComboBox>
                         </td>
                         <td>
-                            <dx:ASPxButton ID="btnAddSource" runat="server" Text="..." AutoPostBack="False" 
-                                UseSubmitBehavior="False">
+                            <dx:ASPxButton ID="btnAddSource" runat="server" Text="..." AutoPostBack="False" UseSubmitBehavior="False">
                                 <ClientSideEvents Click="function(s, e) { ShowIframePopupWindow(ppcIframePopup,'/ControlPanel/Source.aspx'); }" />
                             </dx:ASPxButton>
                         </td>
@@ -98,16 +97,16 @@
                             Guarantee
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cmbGuarantee" runat="server" ValueType="System.Int32" 
-                                DropDownStyle="DropDown" ClientInstanceName="cmbGuarantee">
+                            <dx:ASPxComboBox ID="cmbGuarantee" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
+                                ClientInstanceName="cmbGuarantee">
                                 <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgRes">
                                     <RequiredField IsRequired="True" />
                                 </ValidationSettings>
                             </dx:ASPxComboBox>
                         </td>
                         <td>
-                            <dx:ASPxButton ID="btnAddGuarantee" runat="server" Text="..." 
-                                AutoPostBack="False" UseSubmitBehavior="False">
+                            <dx:ASPxButton ID="btnAddGuarantee" runat="server" Text="..." AutoPostBack="False"
+                                UseSubmitBehavior="False">
                                 <ClientSideEvents Click="function(s, e) { ShowIframePopupWindow(ppcIframePopup,'/ControlPanel/Gaurantee.aspx'); }" />
                             </dx:ASPxButton>
                         </td>
@@ -265,12 +264,21 @@
                                                                 SummaryType="Sum" />
                                                         </TotalSummary>
                                                         <Columns>
-                                                            <dx:GridViewDataTextColumn FieldName="RoomName" ShowInCustomizationForm="True" VisibleIndex="0">
+                                                            <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
+                                                                VisibleIndex="0">
+                                                                <DeleteButton Visible="True">
+                                                                    <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                                                    </Image>
+                                                                </DeleteButton>
+                                                                <ClearFilterButton Visible="True">
+                                                                </ClearFilterButton>
+                                                            </dx:GridViewCommandColumn>
+                                                            <dx:GridViewDataTextColumn FieldName="RoomName" ShowInCustomizationForm="True" VisibleIndex="1">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn FieldName="Amount" ShowInCustomizationForm="True" VisibleIndex="2">
+                                                            <dx:GridViewDataTextColumn FieldName="Amount" ShowInCustomizationForm="True" VisibleIndex="3">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn FieldName="CustomerName" ShowInCustomizationForm="True"
-                                                                VisibleIndex="1">
+                                                                VisibleIndex="2">
                                                             </dx:GridViewDataTextColumn>
                                                         </Columns>
                                                         <Settings ShowFooter="True" ShowGroupButtons="False" />
@@ -530,6 +538,9 @@
                                                 <td>
                                                     <dx:ASPxComboBox ID="cmbTax" runat="server" ValueType="System.String">
                                                     </dx:ASPxComboBox>
+                                                    <dx:ASPxButton ID="btnTaxAdd" runat="server" AutoPostBack="False" Text="..." UseSubmitBehavior="False"
+                                                        Width="35px">
+                                                    </dx:ASPxButton>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -660,7 +671,8 @@
                                                                             Adult No.
                                                                         </td>
                                                                         <td>
-                                                                            <dx:ASPxSpinEdit ID="seAdultNumber" runat="server" Height="21px" Number="0">
+                                                                            <dx:ASPxSpinEdit ID="seAdultNumber" runat="server" Height="21px" Number="0" NumberType="Integer">
+                                                                                <ClientSideEvents ValueChanged="function(s, e) {	//Need to populate Rooms from server}" />
                                                                             </dx:ASPxSpinEdit>
                                                                         </td>
                                                                     </tr>
@@ -669,7 +681,8 @@
                                                                             Child No.
                                                                         </td>
                                                                         <td>
-                                                                            <dx:ASPxSpinEdit ID="seChildNumber" runat="server" Height="21px" Number="0">
+                                                                            <dx:ASPxSpinEdit ID="seChildNumber" runat="server" Height="21px" Number="0" NumberType="Integer">
+                                                                                <ClientSideEvents ValueChanged="function(s, e) {	//Need to populate Rooms from server}" />
                                                                             </dx:ASPxSpinEdit>
                                                                         </td>
                                                                     </tr>
@@ -678,7 +691,8 @@
                                                                             Infant No.
                                                                         </td>
                                                                         <td>
-                                                                            <dx:ASPxSpinEdit ID="seInfantNumber" runat="server" Height="21px" Number="0">
+                                                                            <dx:ASPxSpinEdit ID="seInfantNumber" runat="server" Height="21px" Number="0" NumberType="Integer">
+                                                                                <ClientSideEvents ValueChanged="function(s, e) {	//Need to populate Rooms from server}" />
                                                                             </dx:ASPxSpinEdit>
                                                                         </td>
                                                                     </tr>
@@ -687,7 +701,9 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" Width="100%">
+                                                                <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" Width="100%"
+                                                                    KeyFieldName="ReservationGuestId" OnRowDeleting="gvCustomers_RowDeleting" OnRowInserting="gvCustomers_RowInserting"
+                                                                    OnRowUpdating="gvCustomers_RowUpdating">
                                                                     <Columns>
                                                                         <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
                                                                             VisibleIndex="0">
@@ -717,7 +733,7 @@
                                                                             <ClearFilterButton Visible="True">
                                                                             </ClearFilterButton>
                                                                         </dx:GridViewCommandColumn>
-                                                                        <dx:GridViewDataComboBoxColumn ShowInCustomizationForm="True" VisibleIndex="2">
+                                                                        <dx:GridViewDataComboBoxColumn ShowInCustomizationForm="True" VisibleIndex="2" Caption="Customer">
                                                                             <PropertiesComboBox>
                                                                                 <Columns>
                                                                                     <dx:ListBoxColumn FieldName="CustomerId" Visible="False" />
@@ -803,19 +819,18 @@
         </tr>
         <tr>
             <td>
-                <dx:ASPxPopupControl ID="ppcIframePopup" runat="server" 
-                    ClientInstanceName="ppcIframePopup" 
-                    EnableClientSideAPI="True" HeaderText="Add/Edit" AllowDragging="True" 
-                    AllowResize="True" Modal="True" PopupHorizontalAlign="WindowCenter" 
-                    PopupVerticalAlign="WindowCenter" ShowPageScrollbarWhenModal="True" 
-                    ShowSizeGrip="True" Height="400px" Width="700px">
+                <dx:ASPxPopupControl ID="ppcIframePopup" runat="server" ClientInstanceName="ppcIframePopup"
+                    EnableClientSideAPI="True" HeaderText="Add/Edit" AllowDragging="True" AllowResize="True"
+                    Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"
+                    ShowPageScrollbarWhenModal="True" ShowSizeGrip="True" Height="400px" Width="700px">
                     <ClientSideEvents CloseUp="function(s, e) {
 	cmbGuarantee.PerformCallback();
 	cmbSource.PerformCallback();
 }" />
                     <ContentCollection>
-<dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True"></dx:PopupControlContentControl>
-</ContentCollection>
+                        <dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
+                        </dx:PopupControlContentControl>
+                    </ContentCollection>
                 </dx:ASPxPopupControl>
             </td>
         </tr>

@@ -28,6 +28,11 @@ namespace HBM.ReservationManagement
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public int TaxTypeId { get; set; }
+        
+        public DataSet DsReservationGuest { get; set; }
+        public DataSet DsReservationAdditionalService { get; set; }
+        public DataSet DsReservationPayment { get; set; }
+        public DataSet DsReservationRoom { get; set; }
 
         #region Save
 
