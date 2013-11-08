@@ -77,8 +77,10 @@
     <Compile Include="Services\AdditionalServiceTypeDAO.cs" />
     <Compile Include="Services\BedTypeDAO.cs" />
     <Compile Include="Services\CompanyDAO.cs" />
+    <Compile Include="Services\CreditCardTypeDAO.cs" />
     <Compile Include="Services\GauranteeDAO.cs" />
     <Compile Include="Services\DepartmentsDAO.cs" />
+    <Compile Include="Services\PaymentTypeDAO.cs" />
     <Compile Include="Services\RatePlansDAO.cs" />
     <Compile Include="Services\RoomRatePlanDAO.cs" />
     <Compile Include="Services\RoomsDAO.cs" />
