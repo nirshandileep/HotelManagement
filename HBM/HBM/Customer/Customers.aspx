@@ -38,7 +38,7 @@
                     Passport Number
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtPassportNumber" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtPassportNumber" runat="server" Width="170px" TabIndex="15">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
@@ -47,7 +47,7 @@
                     Member Code<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px" TabIndex="1">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
                             ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -62,7 +62,7 @@
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbPassportCountryOfIssue" runat="server" ValueType="System.Int32"
-                        IncrementalFilteringMode="Contains">
+                        IncrementalFilteringMode="Contains" TabIndex="16">
                     </dx:ASPxComboBox>
                 </td>
             </tr>
@@ -71,7 +71,8 @@
                     Gender<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxComboBox ID="cmbGender" runat="server" IncrementalFilteringMode="Contains">
+                    <dx:ASPxComboBox ID="cmbGender" runat="server" IncrementalFilteringMode="Contains"
+                        TabIndex="2">
                         <Items>
                             <dx:ListEditItem Text="Male" Value="Male" />
                             <dx:ListEditItem Text="Female" Value="Female" />
@@ -88,7 +89,7 @@
                     Expiry Date
                 </td>
                 <td>
-                    <dx:ASPxDateEdit ID="dtpExpiryDate" runat="server">
+                    <dx:ASPxDateEdit ID="dtpExpiryDate" runat="server" TabIndex="17">
                     </dx:ASPxDateEdit>
                 </td>
             </tr>
@@ -97,7 +98,7 @@
                     Phone<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px" TabIndex="3">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
                             ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -119,7 +120,7 @@
                     Fax
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtFax" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtFax" runat="server" Width="170px" TabIndex="4">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -130,7 +131,7 @@
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbCCType" runat="server" IncrementalFilteringMode="Contains"
-                        ValueType="System.Int32">
+                        ValueType="System.Int32" TabIndex="18">
                     </dx:ASPxComboBox>
                 </td>
             </tr>
@@ -139,7 +140,7 @@
                     Email
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" TabIndex="5">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
                             SetFocusOnError="True" ValidationGroup="vgCustomer">
                             <RegularExpression ErrorText="Incorrect Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
@@ -153,7 +154,7 @@
                     CC No
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCCNumber" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtCCNumber" runat="server" Width="170px" TabIndex="19">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
@@ -162,21 +163,16 @@
                     Guest Type
                 </td>
                 <td>
-                    <table border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td>
-                                <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" DropDownStyle="DropDown">
-                                </dx:ASPxComboBox>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <dx:ASPxButton ID="btnAddGuestType" runat="server" Text="..." ToolTip="Add/Edit Guest Types"
-                                    Visible="False">
-                                </dx:ASPxButton>
-                            </td>
-                        </tr>
-                    </table>
+                    <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
+                        TabIndex="6">
+                        <ClientSideEvents ButtonClick="function(s, e) {
+  	ShowPopupWindow(ppcGuestType);
+}" />
+                        <Buttons>
+                            <dx:EditButton Position="Left" ToolTip="Add/Edit guest type">
+                            </dx:EditButton>
+                        </Buttons>
+                    </dx:ASPxComboBox>
                 </td>
                 <td>
                     &nbsp;
@@ -189,7 +185,7 @@
                         <tr>
                             <td>
                                 <dx:ASPxComboBox ID="cmbCCExpiryDateMonth" runat="server" ValueType="System.Int32"
-                                    IncrementalFilteringMode="Contains" Width="50px">
+                                    IncrementalFilteringMode="Contains" Width="50px" TabIndex="20">
                                     <Items>
                                         <dx:ListEditItem Text="1" Value="1" />
                                         <dx:ListEditItem Text="2" Value="2" />
@@ -211,7 +207,7 @@
                             </td>
                             <td>
                                 <dx:ASPxComboBox ID="cmbCCExpiryDateYear" runat="server" ValueType="System.Int32"
-                                    IncrementalFilteringMode="Contains" Width="114px">
+                                    IncrementalFilteringMode="Contains" Width="114px" TabIndex="21">
                                     <Items>
                                         <dx:ListEditItem Text="2012" Value="2012" />
                                         <dx:ListEditItem Text="2013" Value="2013" />
@@ -251,7 +247,7 @@
                     Company Name
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px" TabIndex="7">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -261,7 +257,7 @@
                     Name on card
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtNameOnCard" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtNameOnCard" runat="server" Width="170px" TabIndex="22">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
@@ -270,7 +266,7 @@
                     Company Address
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px" TabIndex="8">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -288,7 +284,7 @@
                     Notes
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px" TabIndex="9">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -298,7 +294,8 @@
                     Car
                 </td>
                 <td>
-                    <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" IncrementalFilteringMode="Contains">
+                    <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" IncrementalFilteringMode="Contains"
+                        TabIndex="23">
                         <Items>
                             <dx:ListEditItem Text="No" Value="No" />
                             <dx:ListEditItem Text="Yes" Value="Yes" />
@@ -320,7 +317,7 @@
                     License Plate
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtLicensePlate" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtLicensePlate" runat="server" Width="170px" TabIndex="24">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
@@ -329,7 +326,7 @@
                     Billing Address<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtBillingAddress" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtBillingAddress" runat="server" Width="170px" TabIndex="10">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
                             ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -343,7 +340,7 @@
                     Drive License
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px" TabIndex="25">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
@@ -352,7 +349,7 @@
                     Billing City<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px" TabIndex="11">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
                             ErrorDisplayMode="ImageWithTooltip" ErrorText="Required">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -374,7 +371,7 @@
                     State
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px" TabIndex="12">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -395,7 +392,8 @@
                     <table border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td>
-                                <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" ValueType="System.Int32" IncrementalFilteringMode="Contains">
+                                <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" ValueType="System.Int32" IncrementalFilteringMode="Contains"
+                                    TabIndex="13">
                                 </dx:ASPxComboBox>
                             </td>
                             <td>
@@ -421,7 +419,7 @@
                     Post Code
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px" TabIndex="14">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -444,16 +442,15 @@
                         <tr>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgCustomer"
-                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
+                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" TabIndex="26">
                                     <Image Url="~/Images/Save.png">
                                     </Image>
                                 </dx:ASPxButton>
                             </td>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnClear" runat="server" Text="Clear" HorizontalAlign="Center"
-                                    ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False" 
-                                    AutoPostBack="false" onclick="btnClear_Click">
-                            
+                                    ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False" AutoPostBack="false"
+                                    OnClick="btnClear_Click" TabIndex="27">
                                     <Image Url="~/Images/Clear.png">
                                     </Image>
                                 </dx:ASPxButton>
@@ -478,7 +475,8 @@
     </div>
     <div>
         <dx:ASPxPopupControl ID="pcGuestType" runat="server" HeaderText="Guest Type" AllowDragging="True"
-            Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter">
+            ClientInstanceName="ppcGuestType" Modal="True" PopupHorizontalAlign="WindowCenter"
+            PopupVerticalAlign="WindowCenter">
             <ContentCollection>
                 <dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
                     <dx:ASPxCallbackPanel ID="cbpCountryPannel" runat="server" Width="200px">
