@@ -84,8 +84,11 @@
     <Content Include="ControlPanel\AdditionalServiceType.aspx" />
     <Content Include="ControlPanel\BedType.aspx" />
     <Content Include="ControlPanel\Company.aspx" />
+    <Content Include="ControlPanel\CreditCardType.aspx" />
     <Content Include="ControlPanel\Department.aspx" />
     <Content Include="ControlPanel\Gaurantee.aspx" />
+    <Content Include="ControlPanel\GuestTypes.aspx" />
+    <Content Include="ControlPanel\PaymentTypes.aspx" />
     <Content Include="ControlPanel\RatePlans.aspx" />
     <Content Include="ControlPanel\Rooms.aspx" />
     <Content Include="ControlPanel\Source.aspx" />
@@ -169,6 +172,13 @@
     <Compile Include="ControlPanel\Company.aspx.designer.cs">
       <DependentUpon>Company.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ControlPanel\CreditCardType.aspx.cs">
+      <DependentUpon>CreditCardType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\CreditCardType.aspx.designer.cs">
+      <DependentUpon>CreditCardType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ControlPanel\Department.aspx.cs">
       <DependentUpon>Department.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -182,6 +192,20 @@
     </Compile>
     <Compile Include="ControlPanel\Gaurantee.aspx.designer.cs">
       <DependentUpon>Gaurantee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\GuestTypes.aspx.cs">
+      <DependentUpon>GuestTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\GuestTypes.aspx.designer.cs">
+      <DependentUpon>GuestTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\PaymentTypes.aspx.cs">
+      <DependentUpon>PaymentTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\PaymentTypes.aspx.designer.cs">
+      <DependentUpon>PaymentTypes.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\RatePlans.aspx.cs">
       <DependentUpon>RatePlans.aspx</DependentUpon>

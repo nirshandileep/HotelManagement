@@ -65,6 +65,7 @@
     <Compile Include="Business Entities\CreditCardType.cs" />
     <Compile Include="Business Entities\Departments.cs" />
     <Compile Include="Business Entities\Gaurantee.cs" />
+    <Compile Include="Business Entities\GuestType.cs" />
     <Compile Include="Business Entities\PaymentType.cs" />
     <Compile Include="Business Entities\RatePlans.cs" />
     <Compile Include="Business Entities\RoomRatePlan.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Services\CreditCardTypeDAO.cs" />
     <Compile Include="Services\GauranteeDAO.cs" />
     <Compile Include="Services\DepartmentsDAO.cs" />
+    <Compile Include="Services\GuestTypeDAO.cs" />
     <Compile Include="Services\PaymentTypeDAO.cs" />
     <Compile Include="Services\RatePlansDAO.cs" />
     <Compile Include="Services\RoomRatePlanDAO.cs" />
