@@ -46,6 +46,12 @@
                             </dx:Tab>
                             <dx:Tab Name="AdditionalService" Text="Additional Service">
                             </dx:Tab>
+                            <dx:Tab Name="GuestType" Text="Guest Types">
+                            </dx:Tab>
+                            <dx:Tab Name="CreditCardTypes" Text="Credit Card Types">
+                            </dx:Tab>
+                            <dx:Tab Name="PaymentTypes" Text="Payment Types">
+                            </dx:Tab>
                         </Tabs>
                     </dx:ASPxTabControl>
                 </td>

@@ -28,7 +28,7 @@ namespace HBM.ControlPanel
                 gvBedTypes.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
                 this.LoadBedTypes();
                 dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["BedTypeId"] };
-                Session[Constants.SESSION_TAXTYPES] = dsData;
+                Session[Constants.SESSION_BEDTYPES] = dsData;
             }
             catch (System.Exception)
             {
@@ -56,7 +56,7 @@ namespace HBM.ControlPanel
 
         protected void gvBedTypes_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            dsData = Session[Constants.SESSION_TAXTYPES] as DataSet;
+            dsData = Session[Constants.SESSION_BEDTYPES] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
             DataRow row = dsData.Tables[0].NewRow();
             Random rd = new Random();
@@ -89,7 +89,7 @@ namespace HBM.ControlPanel
 
         protected void gvBedTypes_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            dsData = Session[Constants.SESSION_TAXTYPES] as DataSet;
+            dsData = Session[Constants.SESSION_BEDTYPES] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
             DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
@@ -116,7 +116,7 @@ namespace HBM.ControlPanel
         {
             int i = gvBedTypes.FindVisibleIndexByKeyValue(e.Keys[gvBedTypes.KeyFieldName]);
             e.Cancel = true;
-            dsData = Session[Constants.SESSION_TAXTYPES] as DataSet;
+            dsData = Session[Constants.SESSION_BEDTYPES] as DataSet;
             //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
 
             dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvBedTypes.KeyFieldName])));

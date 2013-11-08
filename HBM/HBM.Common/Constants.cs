@@ -67,6 +67,10 @@ namespace HBM.Common
         public static readonly string CONST_ADDITIONALSERVICETYPE = "/ControlPanel/AdditionalServiceType.aspx";
         public static readonly string CONST_ADDITIONALSERVICE= "/ControlPanel/AdditionalService.aspx";
 
+        public static readonly string CONST_GUESTTYPES = "/ControlPanel/GuestTypes.aspx";
+        public static readonly string CONST_CREDITCARDTYPE = "/ControlPanel/CreditCardType.aspx";
+        public static readonly string CONST_PAYMENTTYPES = "/ControlPanel/PaymentTypes.aspx";
+
        
 
         #endregion
@@ -84,6 +88,10 @@ namespace HBM.Common
         public static readonly string SESSION_TAXTYPES= "TaxTypes";
         public static readonly string SESSION_ADDITIONALSERVICETYPE = "AdditionalServiceType";
         public static readonly string SESSION_ADDITIONALSERVICE = "AdditionalService";
+        public static readonly string SESSION_CREDITCARDTYPE = "CreditCardType";
+        public static readonly string SESSION_GUESTTYPE = "GuestType";
+        public static readonly string SESSION_PAYMENTTYPES = "PaymentTypes";
+
 
 
 

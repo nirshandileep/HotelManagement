@@ -49,12 +49,18 @@ namespace HBM.ControlPanel
                 case "AdditionalServiceType":
                     iframePage.Attributes["src"] = Constants.CONST_ADDITIONALSERVICETYPE;
                     break;
-
                 case "AdditionalService":
                     iframePage.Attributes["src"] = Constants.CONST_ADDITIONALSERVICE;
                     break;
-
-
+                case "GuestType":
+                    iframePage.Attributes["src"] = Constants.CONST_GUESTTYPES;
+                    break;
+                case "CreditCardTypes":
+                    iframePage.Attributes["src"] = Constants.CONST_CREDITCARDTYPE;
+                    break;
+                case "PaymentTypes":
+                    iframePage.Attributes["src"] = Constants.CONST_PAYMENTTYPES;
+                    break;
 
             }
 
