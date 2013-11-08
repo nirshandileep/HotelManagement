@@ -12,6 +12,8 @@ using DevExpress.Web.ASPxGridView;
 using HBM.Common;
 using HBM.SessionManager;
 using System.Collections;
+using DevExpress.Web.ASPxEditors;
+using HBM.GeneralManagement;
 
 namespace HBM.Reservation
 {
@@ -68,7 +70,7 @@ namespace HBM.Reservation
         {
 
             //Some controls do not work wothout this placed here
-            LoadData();
+            BindData();
 
             if (!IsPostBack)
             {
@@ -98,16 +100,73 @@ namespace HBM.Reservation
             }
         }
 
+        /// <summary>
+        /// Page Init
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            gvCustomers.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+            gvPaymentInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+            gvRoomDetails.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+            gvServiceInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+
+            LoadLookupDataToGridColumns();
+        }
+
+        private void LoadLookupDataToGridColumns()
+        {
+            try
+            {
+                ///
+                /// Customers Grid (Guests List)
+                ///
+                ((GridViewDataComboBoxColumn)gvCustomers.Columns["CustomerId"]).PropertiesComboBox.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset();
+                ((GridViewDataComboBoxColumn)gvCustomers.Columns["CustomerId"]).PropertiesComboBox.ValueField = "CustomerId";
+                ((GridViewDataComboBoxColumn)gvCustomers.Columns["CustomerId"]).PropertiesComboBox.TextField = "CustomerName";
+
+                ///
+                /// Payment Information Grid
+                ///
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = new GenMan.PaymentType().SelectAllList();
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.ValueField = "PaymentTypeId";
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.TextField = "PaymentTypeName";
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = "CreditCardTypeId";
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = "Name";
+
+                ///
+                /// Customer Combobox (Reservation Creater)
+                ///
+                cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+                cmbCustomerName.ValueField = "CustomerId";
+
+                ///
+                /// Additional Services
+                ///
+                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.ValueField = "AdditionalServiceId";
+                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.ValueField = "ServiceName";
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
 
         /// <summary>
         /// Fill the controls that gets emptied after every callback
         /// </summary>
-        private void LoadData()
+        private void BindData()
         {
 
-            cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
-            cmbCustomerName.ValueField = "CustomerId";
             cmbCustomerName.DataBind();
+            gvCustomers.DataBind();
+            gvPaymentInformation.DataBind();
+            gvServiceInformation.DataBind();
+
         }
 
         /// <summary>
@@ -301,6 +360,22 @@ namespace HBM.Reservation
 
             gridView.CancelEdit();
             e.Cancel = true;
+        }
+
+        protected void gvCustomers_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+            try
+            {
+                if (e.Column.FieldName != "CustomerId") return;
+
+                ASPxComboBox combo = e.Editor as ASPxComboBox;
+                combo.DataBindItems();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

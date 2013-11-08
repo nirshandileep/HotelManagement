@@ -46,6 +46,12 @@ namespace HBM.GeneralManagement
             return (new AdditionalServiceDAO()).SelectAll(this);
         }
 
+
+        public List<AdditionalService> SelectAllList()
+        {
+            return HBM.Utility.Generic.GetAll<AdditionalService>(this.CompanyId);
+        }
+
         #endregion
     }
 }

@@ -349,9 +349,13 @@
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataComboBoxColumn Caption="Payment Type" FieldName="PaymentTypeId" ShowInCustomizationForm="True"
                                                                 UnboundType="Integer" VisibleIndex="4">
+                                                                <PropertiesComboBox ValueType="System.Char">
+                                                                </PropertiesComboBox>
                                                             </dx:GridViewDataComboBoxColumn>
                                                             <dx:GridViewDataComboBoxColumn Caption="Card Type" FieldName="CreditCardTypeId" ShowInCustomizationForm="True"
                                                                 UnboundType="Integer" VisibleIndex="5">
+                                                                <PropertiesComboBox ValueType="System.Char">
+                                                                </PropertiesComboBox>
                                                             </dx:GridViewDataComboBoxColumn>
                                                             <dx:GridViewDataTextColumn Caption="Card No." FieldName="CCNo" ShowInCustomizationForm="True"
                                                                 VisibleIndex="6">
@@ -411,8 +415,8 @@
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
                                                             <dx:GridViewDataComboBoxColumn Caption="Service Name" ShowInCustomizationForm="True"
-                                                                VisibleIndex="1">
-                                                                <PropertiesComboBox DropDownStyle="DropDown" TextFormatString="{0}; {1}; {2}; {3}"
+                                                                VisibleIndex="1" FieldName="AdditionalServiceId" UnboundType="Integer">
+                                                                <PropertiesComboBox DropDownStyle="DropDown"
                                                                     ValueType="System.Int32">
                                                                     <Columns>
                                                                         <dx:ListBoxColumn FieldName="AdditionalServiceId" Visible="False" />
@@ -649,8 +653,9 @@
         <tr>
             <td>
                 <dx:ASPxPopupControl ID="ppcAddRoom" runat="server" ClientInstanceName="ppcAddRoom"
-                    HeaderText="Add Rooms" AllowDragging="True" AllowResize="True" Modal="True" PopupHorizontalAlign="WindowCenter"
-                    PopupVerticalAlign="WindowCenter" RenderMode="Lightweight" EnableClientSideAPI="True">
+                    HeaderText="Add Rooms" AllowDragging="True" AllowResize="True" 
+                    Modal="True" PopupHorizontalAlign="WindowCenter"
+                    PopupVerticalAlign="WindowCenter" EnableClientSideAPI="True">
                     <ClientSideEvents CloseUp="function(s, e) {
 	gvRoomDetails.PerformCallback();
 }" />
@@ -703,7 +708,8 @@
                                                             <td>
                                                                 <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" Width="100%"
                                                                     KeyFieldName="ReservationGuestId" OnRowDeleting="gvCustomers_RowDeleting" OnRowInserting="gvCustomers_RowInserting"
-                                                                    OnRowUpdating="gvCustomers_RowUpdating">
+                                                                    OnRowUpdating="gvCustomers_RowUpdating" 
+                                                                    OnCellEditorInitialize="gvCustomers_CellEditorInitialize">
                                                                     <Columns>
                                                                         <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
                                                                             VisibleIndex="0">
@@ -733,8 +739,9 @@
                                                                             <ClearFilterButton Visible="True">
                                                                             </ClearFilterButton>
                                                                         </dx:GridViewCommandColumn>
-                                                                        <dx:GridViewDataComboBoxColumn ShowInCustomizationForm="True" VisibleIndex="2" Caption="Customer">
-                                                                            <PropertiesComboBox>
+                                                                        <dx:GridViewDataComboBoxColumn ShowInCustomizationForm="True" VisibleIndex="2" 
+                                                                            Caption="Customer" FieldName="CustomerId" UnboundType="Integer">
+                                                                            <PropertiesComboBox ValueType="System.Int32">
                                                                                 <Columns>
                                                                                     <dx:ListBoxColumn FieldName="CustomerId" Visible="False" />
                                                                                     <dx:ListBoxColumn Caption="Name" FieldName="CustomerName" />
@@ -743,8 +750,10 @@
                                                                                     <dx:ListBoxColumn FieldName="Email" />
                                                                                 </Columns>
                                                                             </PropertiesComboBox>
+                                                                            <Settings AllowAutoFilter="True" FilterMode="DisplayText" />
                                                                         </dx:GridViewDataComboBoxColumn>
                                                                     </Columns>
+                                                                    <SettingsBehavior ConfirmDelete="True" EnableCustomizationWindow="True" />
                                                                 </dx:ASPxGridView>
                                                             </td>
                                                         </tr>
@@ -806,8 +815,6 @@
                                 <tr>
                                     <td>
                                         <dx:ASPxButton ID="btnAddRoom" runat="server" Text="Ok" OnClick="btnAddRoom_Click">
-                                        </dx:ASPxButton>
-                                        <dx:ASPxButton ID="btnCancelRoom" runat="server" Text="Cancel">
                                         </dx:ASPxButton>
                                     </td>
                                 </tr>
