@@ -59,13 +59,14 @@
                                     </ValidationSettings>
                                 </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn Caption="ProcessingFee" FieldName="ProcessingFee" VisibleIndex="1">
-                                <PropertiesTextEdit MaxLength="100">
+                            <dx:GridViewDataSpinEditColumn Caption="ProcessingFee" 
+                                FieldName="ProcessingFee" VisibleIndex="1">
+                                <PropertiesSpinEdit DisplayFormatString="g" MaxLength="100">
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>
-                                </PropertiesTextEdit>
-                            </dx:GridViewDataTextColumn>
+                                </PropertiesSpinEdit>
+                            </dx:GridViewDataSpinEditColumn>
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />
                         <SettingsText ConfirmDelete="" />

@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
     <div class="wrapper-switchboard">
         <h2>
-            Bed Types List</h2>
+            Guest Type List</h2>
         <table>
             <tr>
                 <td>&nbsp;
