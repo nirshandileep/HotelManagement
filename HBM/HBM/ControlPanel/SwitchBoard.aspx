@@ -24,8 +24,8 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="5" OnTabClick="tcCommon_TabClick"
-                        Width="900px" Height="25px" EnableTabScrolling="True" TabAlign="Center" 
+                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="6" OnTabClick="tcCommon_TabClick"
+                        Width="900px" Height="25px" TabAlign="Justify" 
                         EnableTheming="True" TabSpacing="0px">
                         <Tabs>
                             <dx:Tab Text="Bed Types" Name="BedType">
@@ -42,7 +42,8 @@
                             </dx:Tab>
                             <dx:Tab Name="TaxTypes" Text="Tax Types">
                             </dx:Tab>
-                            <dx:Tab Name="AdditionalServiceType" Text="Additional Service Type">
+                            <dx:Tab Name="AdditionalServiceType" Text="Additional Service Type" 
+                                NewLine="True">
                             </dx:Tab>
                             <dx:Tab Name="AdditionalService" Text="Additional Service">
                             </dx:Tab>

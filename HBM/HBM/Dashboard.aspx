@@ -57,8 +57,17 @@
                                 <Appointment BackColor="#FFFFCC">
                                 </Appointment>
                             </TimelineViewStyles>
+                            <AppointmentDisplayOptions AppointmentInterspacing="10" 
+                                TimeDisplayType="Text" />
                         </TimelineView>
                     </Views>
+                    
+                    <OptionsCustomization AllowAppointmentCopy="None" AllowAppointmentCreate="None" 
+                        AllowAppointmentDelete="None" AllowAppointmentDrag="None" 
+                        AllowAppointmentDragBetweenResources="None" AllowAppointmentEdit="None" 
+                        AllowAppointmentMultiSelect="False" AllowAppointmentResize="None" 
+                        AllowDisplayAppointmentDependencyForm="Never" 
+                        AllowDisplayAppointmentForm="Never" AllowInplaceEditor="None" />
                     
                 </dxwschs:ASPxScheduler>
             </td>
