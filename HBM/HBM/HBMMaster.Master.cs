@@ -149,22 +149,23 @@ namespace HBM
                 Response.Redirect(Constants.CONST_LOIN, false);
             }
 
-            if (!IsPostBack)
-            {
-                if (LoggedUser != null)
-                {
-                    this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;
 
-                    if (CurrentCompany.CompanyLogo.Length > 0)
-                    {
-                        this.bimgLogo.ContentBytes = this.CurrentCompany.CompanyLogo;
-                    }
-                }
-                else
+            if (LoggedUser != null)
+            {
+                this.lblLoggedUser.Text = LoggedUser.FirstName + " " + LoggedUser.LastName;
+
+                if (CurrentCompany.CompanyLogo.Length > 0)
                 {
-                    Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
+                    this.bimgLogo.ContentBytes = this.CurrentCompany.CompanyLogo;
                 }
             }
+            else
+            {
+                Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
+            }
+
+
+
         }
 
         /// <summary>
