@@ -73,7 +73,7 @@
         <tr>
             <td>
                 <dx:ASPxGridView ID="gvRights" runat="server" Width="100%" AutoGenerateColumns="False"
-                    KeyFieldName="RightId">
+                    KeyFieldName="RightId" >
                     <Columns>
                         <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="0" Width="100px">
                         </dx:GridViewCommandColumn>
@@ -86,13 +86,14 @@
                         <dx:GridViewDataTextColumn Caption="Description" FieldName="RightDescription" VisibleIndex="3"
                             Width="400px">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="RightId" FieldName="RightId" VisibleIndex="5"
+                        <dx:GridViewDataTextColumn Caption="RightId" FieldName="RightId" VisibleIndex="6"
                             Visible="False">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" VisibleIndex="6"
+                        <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" VisibleIndex="7"
                             Visible="False">
-                        </dx:GridViewDataTextColumn>
+                        </dx:GridViewDataTextColumn>                        
                     </Columns>
+                    <Settings ShowGroupPanel="True" />
                 </dx:ASPxGridView>
             </td>
         </tr>

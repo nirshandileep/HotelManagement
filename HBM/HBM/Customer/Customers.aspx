@@ -160,7 +160,7 @@
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
-                    Guest Type
+                    Guest Type<span class="reqfield">*</span>
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
@@ -172,6 +172,10 @@
                             <dx:EditButton Position="Left" ToolTip="Add/Edit guest type">
                             </dx:EditButton>
                         </Buttons>
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" 
+                            ValidationGroup="vgCustomer" Display="Dynamic">
+                            <RequiredField ErrorText="Required" IsRequired="True"  />
+                        </ValidationSettings>
                     </dx:ASPxComboBox>
                 </td>
                 <td>

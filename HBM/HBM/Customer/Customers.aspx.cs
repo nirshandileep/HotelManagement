@@ -15,27 +15,27 @@ namespace HBM
     {
 
 
-        public CustMan.Customer CustomerObj
-        {
-            get 
-            {
-                CustMan.Customer customer;
-                if (Session["CustomerObj"] == null)
-                {
-                    customer = new CustMan.Customer();
-                    customer.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
-                    customer.CompanyId = Master.CurrentCompany.CompanyId;
-                    customer = customer.Select();
-                    customer = customer != null ? customer : new Customer();
-                    Session["CustomerObj"] = customer;
-                }
-                else
-                {
-                    customer = (CustMan.Customer)Session["CustomerObj"];
-                }
-                return customer;
-            }
-        }
+        //public CustMan.Customer CustomerObj
+        //{
+        //    get 
+        //    {
+        //        CustMan.Customer customer;
+        //        if (Session["CustomerObj"] == null)
+        //        {
+        //            customer = new CustMan.Customer();
+        //            customer.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
+        //            customer.CompanyId = Master.CurrentCompany.CompanyId;
+        //            customer = customer.Select();
+        //            customer = customer != null ? customer : new Customer();
+        //            Session["CustomerObj"] = customer;
+        //        }
+        //        else
+        //        {
+        //            customer = (CustMan.Customer)Session["CustomerObj"];
+        //        }
+        //        return customer;
+        //    }
+        //}
 
         public DateTime? CCExpiryDate
         {
@@ -79,7 +79,7 @@ namespace HBM
                     CheckFromURL();
                     IsEditCustomer();
                     LoadInitialData();
-                    SetData();
+                    ViewData();
                 }
             }
             catch (System.Exception)
@@ -125,10 +125,16 @@ namespace HBM
             }
         }
 
-        private void SetData()
+        private void ViewData()
         {
             try
             {
+
+                CustMan.Customer CustomerObj = new CustMan.Customer();
+                CustomerObj.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
+                CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
+                CustomerObj = CustomerObj.Select();
+
                 txtCustomerName.Text = CustomerObj.CustomerName;
                 txtBillingAddress.Text = CustomerObj.BillingAddress;
                 txtBillingCity.Text = CustomerObj.BillingCity;
@@ -200,6 +206,7 @@ namespace HBM
         {
             try
             {
+                CustMan.Customer CustomerObj = new CustMan.Customer();
                 CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
                 CustomerObj.CustomerName = txtCustomerName.Text.Trim();
                 CustomerObj.BillingAddress = txtBillingAddress.Text.Trim();
