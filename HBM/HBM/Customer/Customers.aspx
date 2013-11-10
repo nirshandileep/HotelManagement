@@ -493,7 +493,7 @@
                                             </dx:ASPxTextBox>
                                         </td>
                                         <td width="52">
-                                            <dx:ASPxButton ID="btnSaveGuestType" runat="server" Text="Save" OnClick="btnSaveCountry_Click">
+                                            <dx:ASPxButton ID="btnSaveGuestType" runat="server" Text="Save" >
                                             </dx:ASPxButton>
                                         </td>
                                     </tr>

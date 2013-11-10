@@ -5,6 +5,8 @@ using System.Web;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
+using System.Web;
+
 
 namespace HBM.Utility
 {
@@ -31,7 +33,6 @@ namespace HBM.Utility
                 Byte[] byteArray = Encoding.UTF8.GetBytes(text);
                 MemoryStream memoryStream = new MemoryStream();
                 CryptoStream cryptoStream = new CryptoStream(memoryStream, des.CreateEncryptor(key, IV), CryptoStreamMode.Write);
-
                 cryptoStream.Write(byteArray, 0, byteArray.Length);
                 cryptoStream.FlushFinalBlock();
                 return Convert.ToBase64String(memoryStream.ToArray());

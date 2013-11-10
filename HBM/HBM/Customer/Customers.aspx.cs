@@ -14,32 +14,11 @@ namespace HBM
     public partial class Customers : System.Web.UI.Page
     {
 
-
-        //public CustMan.Customer CustomerObj
-        //{
-        //    get 
-        //    {
-        //        CustMan.Customer customer;
-        //        if (Session["CustomerObj"] == null)
-        //        {
-        //            customer = new CustMan.Customer();
-        //            customer.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
-        //            customer.CompanyId = Master.CurrentCompany.CompanyId;
-        //            customer = customer.Select();
-        //            customer = customer != null ? customer : new Customer();
-        //            Session["CustomerObj"] = customer;
-        //        }
-        //        else
-        //        {
-        //            customer = (CustMan.Customer)Session["CustomerObj"];
-        //        }
-        //        return customer;
-        //    }
-        //}
+        #region Properties
 
         public DateTime? CCExpiryDate
         {
-            get 
+            get
             {
                 DateTime? expDate = new DateTime();
 
@@ -60,7 +39,7 @@ namespace HBM
 
                 return expDate;
             }
-            set 
+            set
             {
                 if (value.HasValue)
                 {
@@ -70,60 +49,9 @@ namespace HBM
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!IsPostBack)
-                {                    
-                    CheckFromURL();
-                    IsEditCustomer();
-                    LoadInitialData();
-                    ViewData();
-                }
-            }
-            catch (System.Exception)
-            {
+        #endregion
 
-            }
-        }
-
-        /// <summary>
-        /// Load all lookup data with this method
-        /// </summary>
-        private void LoadInitialData()
-        {
-            try
-            {
-                //Load Guest Type
-                cmbGuestType.DataSource = new GuestType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
-                cmbGuestType.TextField = "GuestTypeName";
-                cmbGuestType.ValueField = "GuestTypeId";
-                cmbGuestType.DataBind();
-
-                //Load CC Tyep
-                cmbCCType.DataSource = new CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
-                cmbCCType.TextField = "Name";
-                cmbCCType.ValueField = "CreditCardTypeId";
-                cmbCCType.DataBind();
-
-                //Load Passport issued country
-                cmbPassportCountryOfIssue.DataSource = new Country().SelectAllList();
-                cmbPassportCountryOfIssue.TextField = "CountryName";
-                cmbPassportCountryOfIssue.ValueField = "CountryId";
-                cmbPassportCountryOfIssue.DataBind();
-
-                //Load Country
-                cmbBillingCountry.DataSource = new Country().SelectAllList();
-                cmbBillingCountry.TextField = "CountryName";
-                cmbBillingCountry.ValueField = "CountryId";
-                cmbBillingCountry.DataBind();
-            }
-            catch (System.Exception)
-            {
-
-            }
-        }
+        #region Methods
 
         private void ViewData()
         {
@@ -133,6 +61,7 @@ namespace HBM
                 CustMan.Customer CustomerObj = new CustMan.Customer();
                 CustomerObj.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
                 CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
+
                 CustomerObj = CustomerObj.Select();
 
                 txtCustomerName.Text = CustomerObj.CustomerName;
@@ -170,7 +99,7 @@ namespace HBM
                 txtEmail.Text = CustomerObj.Email;
                 txtFax.Text = CustomerObj.Fax;
 
-                if (CustomerObj.GuestTypeId>0)
+                if (CustomerObj.GuestTypeId > 0)
                 {
                     cmbGuestType.Value = CustomerObj.GuestTypeId;
                 }
@@ -195,114 +124,6 @@ namespace HBM
 
                 txtPassportNumber.Text = CustomerObj.PassportNumber;
                 txtPhone.Text = CustomerObj.Phone;
-            }
-            catch (System.Exception)
-            {
-
-            }
-        }
-
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                CustMan.Customer CustomerObj = new CustMan.Customer();
-                CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
-                CustomerObj.CustomerName = txtCustomerName.Text.Trim();
-                CustomerObj.BillingAddress = txtBillingAddress.Text.Trim();
-                CustomerObj.BillingCity = txtBillingCity.Text.Trim();
-
-                if (cmbBillingCountry.SelectedIndex > -1
-                    && (int)cmbBillingCountry.SelectedItem.Value > 0)
-                {
-                    CustomerObj.BillingCountryId = (int)cmbBillingCountry.SelectedItem.Value;
-                }
-                else
-                {
-                    CustomerObj.BillingCountryId = null;
-                }
-
-                CustomerObj.BillingPostCode = txtBillingPostCode.Text.Trim();
-                CustomerObj.BillingState = txtBillingState.Text.Trim();
-
-                if (cmbCar.SelectedIndex > -1)
-                {
-                    CustomerObj.Car = cmbCar.SelectedItem.Text;
-                }
-                else
-                {
-                    CustomerObj.Car = null;
-                }
-
-                CustomerObj.CarLicensePlate = txtLicensePlate.Text.Trim();
-                CustomerObj.CCExpirationDate = CCExpiryDate;
-                CustomerObj.CCNameOnCard = txtNameOnCard.Text.Trim();
-                Int64 CCNo;
-                if (Int64.TryParse(txtCCNumber.Text.Trim(), out CCNo))
-                {
-                    CustomerObj.CCNo = CCNo;
-                }
-                else
-                {
-                    CustomerObj.CCNo = null;
-                }
-
-                if (cmbCCType.SelectedIndex > -1)
-                {
-                    CustomerObj.CreditCardTypeId = int.Parse(cmbCCType.SelectedItem.Value.ToString());
-                }
-                else
-                {
-                    CustomerObj.CreditCardTypeId = null;
-                }
-
-                CustomerObj.CompanyAddress = txtCompanyAddress.Text.Trim();
-                CustomerObj.CompanyName = txtCompanyName.Text.Trim();
-                CustomerObj.CompanyNotes = txtNotes.Text.Trim();
-                CustomerObj.DriverLicense = txtDriveLicense.Text.Trim();
-                CustomerObj.Email = txtEmail.Text.Trim();
-                CustomerObj.Fax = txtFax.Text.Trim();
-                CustomerObj.Gender = cmbGender.SelectedItem.Text.Trim();
-                CustomerObj.MemberCode = txtMemberCode.Text.Trim();
-                CustomerObj.Mobile = txtPhone.Text.Trim();
-                CustomerObj.GuestTypeId = (int)cmbGuestType.SelectedItem.Value;
-
-                if (cmbPassportCountryOfIssue.SelectedIndex > -1 && (int)cmbPassportCountryOfIssue.SelectedItem.Value > 0)
-                {
-                    CustomerObj.PassportCountryOfIssue = (int)cmbPassportCountryOfIssue.SelectedItem.Value;
-                }
-                else
-                {
-                    CustomerObj.PassportCountryOfIssue = null;
-                }
-
-                CustomerObj.PassportExpirationDate = (DateTime?)dtpExpiryDate.Value;
-                CustomerObj.PassportNumber = txtPassportNumber.Text.Trim();
-                CustomerObj.Phone = txtPhone.Text.Trim();
-                CustomerObj.CreatedUser = Master.LoggedUser.UsersId;
-                CustomerObj.UpdatedUser = Master.LoggedUser.UsersId;
-                CustomerObj.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
-
-                string errorMSG;
-                if ((new CustomerManagement.CustomerManager()).IsValidToSave(CustomerObj, out errorMSG))
-                {
-                    if (string.IsNullOrEmpty(errorMSG) && CustomerObj.Save())
-                    {
-                        System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
-                        ClearForm();
-                    }
-                    else
-                    {
-                        System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Unsuccess + "')", true);
-                    }
-
-                }
-
-                //System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Duplicate_Email + "')", true);
-
-                //divErrorMsg.Visible = true;
-                //divErrorMsg.InnerText = errorMSG;
-                //Display error on a label
             }
             catch (System.Exception)
             {
@@ -351,11 +172,40 @@ namespace HBM
             }
         }
 
-        #region Methods
+        private void LoadInitialData()
+        {
+            try
+            {
+                //Load Guest Type
+                cmbGuestType.DataSource = new GuestType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+                cmbGuestType.TextField = "GuestTypeName";
+                cmbGuestType.ValueField = "GuestTypeId";
+                cmbGuestType.DataBind();
 
-        /// <summary>
-        /// Check if GRNId is passed to edit
-        /// </summary>
+                //Load CC Tyep
+                cmbCCType.DataSource = new CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+                cmbCCType.TextField = "Name";
+                cmbCCType.ValueField = "CreditCardTypeId";
+                cmbCCType.DataBind();
+
+                //Load Passport issued country
+                cmbPassportCountryOfIssue.DataSource = new Country().SelectAllList();
+                cmbPassportCountryOfIssue.TextField = "CountryName";
+                cmbPassportCountryOfIssue.ValueField = "CountryId";
+                cmbPassportCountryOfIssue.DataBind();
+
+                //Load Country
+                cmbBillingCountry.DataSource = new Country().SelectAllList();
+                cmbBillingCountry.TextField = "CountryName";
+                cmbBillingCountry.ValueField = "CountryId";
+                cmbBillingCountry.DataBind();
+            }
+            catch (System.Exception)
+            {
+
+            }
+        }
+
         private void IsEditCustomer()
         {
             try
@@ -373,9 +223,6 @@ namespace HBM
 
         }
 
-        /// <summary>
-        /// Fill FromURL to go back
-        /// </summary>
         private void CheckFromURL()
         {
             try
@@ -392,32 +239,129 @@ namespace HBM
 
         }
 
-        #endregion Methods
-
-        protected void btnBack_Click(object sender, EventArgs e)
+        private void SaveData()
         {
-            try
+            CustMan.Customer CustomerObj = new CustMan.Customer();
+            CustomerObj.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
+            CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
+            CustomerObj.CustomerName = txtCustomerName.Text.Trim();
+            CustomerObj.BillingAddress = txtBillingAddress.Text.Trim();
+            CustomerObj.BillingCity = txtBillingCity.Text.Trim();
+
+            if (cmbBillingCountry.SelectedIndex > -1
+                && (int)cmbBillingCountry.SelectedItem.Value > 0)
             {
-                if (hdnFromURL.Value.Trim() != string.Empty)
+                CustomerObj.BillingCountryId = (int)cmbBillingCountry.SelectedItem.Value;
+            }
+            else
+            {
+                CustomerObj.BillingCountryId = null;
+            }
+
+            CustomerObj.BillingPostCode = txtBillingPostCode.Text.Trim();
+            CustomerObj.BillingState = txtBillingState.Text.Trim();
+
+            if (cmbCar.SelectedIndex > -1)
+            {
+                CustomerObj.Car = cmbCar.SelectedItem.Text;
+            }
+            else
+            {
+                CustomerObj.Car = null;
+            }
+
+            CustomerObj.CarLicensePlate = txtLicensePlate.Text.Trim();
+            CustomerObj.CCExpirationDate = CCExpiryDate;
+            CustomerObj.CCNameOnCard = txtNameOnCard.Text.Trim();
+            Int64 CCNo;
+            if (Int64.TryParse(txtCCNumber.Text.Trim(), out CCNo))
+            {
+                CustomerObj.CCNo = CCNo;
+            }
+            else
+            {
+                CustomerObj.CCNo = null;
+            }
+
+            if (cmbCCType.SelectedIndex > -1)
+            {
+                CustomerObj.CreditCardTypeId = int.Parse(cmbCCType.SelectedItem.Value.ToString());
+            }
+            else
+            {
+                CustomerObj.CreditCardTypeId = null;
+            }
+
+            CustomerObj.CompanyAddress = txtCompanyAddress.Text.Trim();
+            CustomerObj.CompanyName = txtCompanyName.Text.Trim();
+            CustomerObj.CompanyNotes = txtNotes.Text.Trim();
+            CustomerObj.DriverLicense = txtDriveLicense.Text.Trim();
+            CustomerObj.Email = txtEmail.Text.Trim();
+            CustomerObj.Fax = txtFax.Text.Trim();
+            CustomerObj.Gender = cmbGender.SelectedItem.Text.Trim();
+            CustomerObj.MemberCode = txtMemberCode.Text.Trim();
+            CustomerObj.Mobile = txtPhone.Text.Trim();
+            CustomerObj.GuestTypeId = (int)cmbGuestType.SelectedItem.Value;
+
+            if (cmbPassportCountryOfIssue.SelectedIndex > -1 && (int)cmbPassportCountryOfIssue.SelectedItem.Value > 0)
+            {
+                CustomerObj.PassportCountryOfIssue = (int)cmbPassportCountryOfIssue.SelectedItem.Value;
+            }
+            else
+            {
+                CustomerObj.PassportCountryOfIssue = null;
+            }
+
+            CustomerObj.PassportExpirationDate = (DateTime?)dtpExpiryDate.Value;
+            CustomerObj.PassportNumber = txtPassportNumber.Text.Trim();
+            CustomerObj.Phone = txtPhone.Text.Trim();
+            CustomerObj.CreatedUser = Master.LoggedUser.UsersId;
+            CustomerObj.UpdatedUser = Master.LoggedUser.UsersId;
+            CustomerObj.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
+
+            string errorMSG;
+            if ((new CustomerManagement.CustomerManager()).IsValidToSave(CustomerObj, out errorMSG))
+            {
+                if (string.IsNullOrEmpty(errorMSG) && CustomerObj.Save())
                 {
-                    Response.Redirect(hdnFromURL.Value.Trim(), false);
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
+                    ClearForm();
                 }
                 else
                 {
-                    Response.Redirect(HBM.Common.Constants.CONST_DEFAULTBACKPAGE, false);
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Unsuccess + "')", true);
+                }
+
+            }
+        }
+
+        #endregion Methods
+
+        #region Events
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!IsPostBack)
+                {
+                    CheckFromURL();
+                    IsEditCustomer();
+                    LoadInitialData();
+                    ViewData();
                 }
             }
             catch (System.Exception)
             {
 
             }
-
         }
 
-        protected void btnSaveCountry_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
+                this.SaveData();
 
             }
             catch (System.Exception)
@@ -434,9 +378,11 @@ namespace HBM
             }
             catch (System.Exception)
             {
-                
-                
+
+
             }
         }
+
+        #endregion
     }
 }

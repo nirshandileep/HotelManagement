@@ -26,7 +26,7 @@
                             <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Customer Name" 
                                 FieldName="CustomerId" Width="250px">
                                 <DataItemTemplate>
-                                    <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/Customer/Customers.aspx?CustomerId=",Eval("CustomerId")) %>'
+                                    <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/Customer/Customers.aspx?CustomerId=",Eval("CustomerId").ToString()) %>'
                                         Text='<%# Eval("CustomerName") %>' />
                                 </DataItemTemplate>
                                 <CellStyle HorizontalAlign="Left">

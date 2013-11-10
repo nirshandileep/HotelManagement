@@ -22,7 +22,7 @@ namespace HBM
         protected void Page_Load(object sender, EventArgs e)
         {
             gvCustomers.DataSource = new CustomerManagement.Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset();            
-            gvCustomers.DataBind();
+            gvCustomers.DataBind();                        
         }
 
        

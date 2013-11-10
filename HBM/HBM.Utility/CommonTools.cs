@@ -7,9 +7,9 @@ namespace HBM.Utility
 {
     public static class CommonTools
     {
-        public static string CreateURLQueryString(string urltoFormat, object mykey)
+        public static string CreateURLQueryString(string urlToNavigate, object mykey)
         {
-            string url =urltoFormat+ (object)Cryptography.Encrypt(mykey.ToString());
+            string url = urlToNavigate + ((object)Cryptography.Encrypt(mykey.ToString()).ToString());
             return url;
         }
     }
