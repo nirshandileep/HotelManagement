@@ -104,5 +104,11 @@ namespace HBM.Common
 
         #endregion 
 
+        #region Common Settings
+
+        public static readonly int GRID_PAGESIZE = 15;
+
+        #endregion
+
     }
 }

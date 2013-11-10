@@ -20,28 +20,28 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" KeyFieldName="CustomerId">
-                        <Columns>
-                            <%-- <dx:GridViewDataHyperLinkColumn Caption="Customer Name" FieldName="CustomerId" UnboundExpression="CustomerId"
-                                UnboundType="Integer" VisibleIndex="1">
-                                <PropertiesHyperLinkEdit NavigateUrlFormatString='<%# CreateURLQueryString(Eval("CustomerId")) %>'
-                                    TextField="CustomerName">
-                                </PropertiesHyperLinkEdit>
-                            </dx:GridViewDataHyperLinkColumn>--%>
-                            <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Customer Name" FieldName="CustomerId">
+                    <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" 
+                        KeyFieldName="CustomerId" Width="100%">
+                        <Columns>                         
+                            <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Customer Name" 
+                                FieldName="CustomerId" Width="250px">
                                 <DataItemTemplate>
                                     <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/Customer/Customers.aspx?CustomerId=",Eval("CustomerId")) %>'
                                         Text='<%# Eval("CustomerName") %>' />
                                 </DataItemTemplate>
+                                <CellStyle HorizontalAlign="Left">
+                                </CellStyle>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="MemberCode" VisibleIndex="2">
+                            <dx:GridViewDataTextColumn FieldName="MemberCode" VisibleIndex="2" 
+                                Width="100px">
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="Phone" UnboundType="String" VisibleIndex="3">
+                            <dx:GridViewDataTextColumn FieldName="Phone" UnboundType="String" 
+                                VisibleIndex="3" Width="150px">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="CustomerId" Visible="False" VisibleIndex="0">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn Caption="Guest Type" FieldName="GuestTypeName" UnboundType="String"
-                                VisibleIndex="4">
+                                VisibleIndex="4" Width="150px">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="Email" UnboundType="String" VisibleIndex="5">
                             </dx:GridViewDataTextColumn>

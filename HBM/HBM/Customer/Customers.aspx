@@ -172,9 +172,9 @@
                             <dx:EditButton Position="Left" ToolTip="Add/Edit guest type">
                             </dx:EditButton>
                         </Buttons>
-                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" 
-                            ValidationGroup="vgCustomer" Display="Dynamic">
-                            <RequiredField ErrorText="Required" IsRequired="True"  />
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer"
+                            Display="Dynamic">
+                            <RequiredField ErrorText="Required" IsRequired="True" />
                         </ValidationSettings>
                     </dx:ASPxComboBox>
                 </td>
@@ -506,7 +506,5 @@
                 </dx:PopupControlContentControl>
             </ContentCollection>
         </dx:ASPxPopupControl>
-    </div>
-    <div>
     </div>
 </asp:Content>

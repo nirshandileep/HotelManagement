@@ -6,12 +6,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using UserMan = HBM.UserManagement;
 using HBM.Utility;
+using HBM.Common;
 
 namespace HBM
 {
     public partial class UserSearch : System.Web.UI.Page
     {
-                
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            gvUsers.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

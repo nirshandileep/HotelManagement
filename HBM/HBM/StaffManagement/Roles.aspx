@@ -93,7 +93,9 @@
                             Visible="False">
                         </dx:GridViewDataTextColumn>                        
                     </Columns>
-                    <Settings ShowGroupPanel="True" />
+                    
+                    <SettingsBehavior AllowDragDrop="False" />
+                    
                 </dx:ASPxGridView>
             </td>
         </tr>
