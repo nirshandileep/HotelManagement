@@ -677,7 +677,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <dx:ASPxSpinEdit ID="seAdultNumber" runat="server" Height="21px" Number="0" NumberType="Integer">
-                                                                                <ClientSideEvents ValueChanged="function(s, e) {	//Need to populate Rooms from server}" />
+                                                                                <ClientSideEvents ValueChanged="function(s, e) {	cmbRoom.PerformCallback(); }" />
                                                                             </dx:ASPxSpinEdit>
                                                                         </td>
                                                                     </tr>
@@ -687,7 +687,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <dx:ASPxSpinEdit ID="seChildNumber" runat="server" Height="21px" Number="0" NumberType="Integer">
-                                                                                <ClientSideEvents ValueChanged="function(s, e) {	//Need to populate Rooms from server}" />
+                                                                                <ClientSideEvents ValueChanged="function(s, e) { cmbRoom.PerformCallback(); }" />
                                                                             </dx:ASPxSpinEdit>
                                                                         </td>
                                                                     </tr>
@@ -697,7 +697,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <dx:ASPxSpinEdit ID="seInfantNumber" runat="server" Height="21px" Number="0" NumberType="Integer">
-                                                                                <ClientSideEvents ValueChanged="function(s, e) {	//Need to populate Rooms from server}" />
+                                                                                <ClientSideEvents ValueChanged="function(s, e) { cmbRoom.PerformCallback(); }" />
                                                                             </dx:ASPxSpinEdit>
                                                                         </td>
                                                                     </tr>
@@ -739,7 +739,7 @@
                                                                             <ClearFilterButton Visible="True">
                                                                             </ClearFilterButton>
                                                                         </dx:GridViewCommandColumn>
-                                                                        <dx:GridViewDataComboBoxColumn ShowInCustomizationForm="True" VisibleIndex="2" 
+                                                                        <dx:GridViewDataComboBoxColumn ShowInCustomizationForm="True" VisibleIndex="1" 
                                                                             Caption="Customer" FieldName="CustomerId" UnboundType="Integer">
                                                                             <PropertiesComboBox ValueType="System.Int32">
                                                                                 <Columns>
@@ -752,6 +752,10 @@
                                                                             </PropertiesComboBox>
                                                                             <Settings AllowAutoFilter="True" FilterMode="DisplayText" />
                                                                         </dx:GridViewDataComboBoxColumn>
+                                                                        <dx:GridViewDataTextColumn FieldName="ReservationRoomId" 
+                                                                            ShowInCustomizationForm="False" UnboundType="Integer" Visible="False" 
+                                                                            VisibleIndex="3">
+                                                                        </dx:GridViewDataTextColumn>
                                                                     </Columns>
                                                                     <SettingsBehavior ConfirmDelete="True" EnableCustomizationWindow="True" />
                                                                 </dx:ASPxGridView>
@@ -769,8 +773,11 @@
                                                                             Room
                                                                         </td>
                                                                         <td>
-                                                                            <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
-                                                                                TextFormatString="{0}; {1}; {2}; {3}; {4}">
+                                                                            <dx:ASPxComboBox ID="cmbRoom" runat="server" DropDownStyle="DropDown" 
+                                                                                ClientInstanceName="cmbRoom" OnCallback="cmbRoom_Callback">
+                                                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {
+	//Callback Rateplan
+}" />
                                                                                 <Columns>
                                                                                     <dx:ListBoxColumn FieldName="RoomName" />
                                                                                     <dx:ListBoxColumn FieldName="RoomCode" />
@@ -786,7 +793,11 @@
                                                                             Rate Plan
                                                                         </td>
                                                                         <td>
-                                                                            <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String">
+                                                                            <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String" 
+                                                                                ClientInstanceName="cmbRatePlan" OnCallback="cmbRatePlan_Callback">
+                                                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {
+	//gvRoomRates callback
+}" />
                                                                             </dx:ASPxComboBox>
                                                                         </td>
                                                                     </tr>
@@ -795,7 +806,9 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <dx:ASPxGridView ID="gvRoomRates" runat="server" AutoGenerateColumns="False" Width="100%">
+                                                                <dx:ASPxGridView ID="gvRoomRates" runat="server" AutoGenerateColumns="False" 
+                                                                    Width="100%" ClientInstanceName="gvRoomRates" 
+                                                                    OnCustomCallback="gvRoomRates_CustomCallback">
                                                                     <Columns>
                                                                         <dx:GridViewDataTextColumn FieldName="Date" ShowInCustomizationForm="True" UnboundType="DateTime"
                                                                             VisibleIndex="0">
@@ -816,6 +829,7 @@
                                     <td>
                                         <dx:ASPxButton ID="btnAddRoom" runat="server" Text="Ok" OnClick="btnAddRoom_Click">
                                         </dx:ASPxButton>
+                                        <asp:HiddenField ID="hdnReservationRoomId" runat="server" Value="0" />
                                     </td>
                                 </tr>
                             </table>

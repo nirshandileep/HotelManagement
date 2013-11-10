@@ -29,7 +29,7 @@ namespace HBM.Reservation
             {
                 if (Session["DsTempGuests"] == null)
                 {
-                    dsTempGuests = new DataSet();
+                    dsTempGuests = ResObj.DsReservationGuest;
                     Session["DsTempGuests"] = dsTempGuests;
                 }
                 else
@@ -92,6 +92,11 @@ namespace HBM.Reservation
                 seAdultNumber.MinValue = 0;
                 seChildNumber.MinValue = 0;
                 seInfantNumber.MinValue = 0;
+
+                seAdultNumber.MaxValue = 1000;
+                seChildNumber.MaxValue = 1000;
+                seInfantNumber.MaxValue = 1000;
+
             }
             catch (System.Exception)
             {
@@ -112,6 +117,16 @@ namespace HBM.Reservation
             gvRoomDetails.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
             gvServiceInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
 
+            gvCustomers.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+            gvPaymentInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+            gvRoomDetails.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+            gvServiceInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+
+            gvCustomers.FilterExpression = "[ReservationRoomId] = '" + hdnReservationRoomId.Value.Trim() + "'";
+            gvCustomers.DataSource = ResObj.DsReservationGuest;
+
+
+
             LoadLookupDataToGridColumns();
         }
 
@@ -129,12 +144,12 @@ namespace HBM.Reservation
                 ///
                 /// Payment Information Grid
                 ///
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = new GenMan.PaymentType().SelectAllList();
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllList();
                 ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.ValueField = "PaymentTypeId";
                 ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.TextField = "PaymentTypeName";
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = "CreditCardTypeId";
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = "Name";
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllList();
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.ValueField = "CreditCardTypeId";
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.TextField = "Name";
 
                 ///
                 /// Customer Combobox (Reservation Creater)
@@ -147,7 +162,7 @@ namespace HBM.Reservation
                 ///
                 ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
                 ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.ValueField = "AdditionalServiceId";
-                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.ValueField = "ServiceName";
+                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.TextField = "ServiceName";
             }
             catch (System.Exception)
             {
@@ -376,6 +391,33 @@ namespace HBM.Reservation
 
                 throw;
             }
+        }
+
+        protected void cmbRoom_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            int adultCount = int.Parse(seAdultNumber.Value.ToString());
+            int childCount = int.Parse(seChildNumber.Value.ToString());
+            int infantCount = int.Parse(seInfantNumber.Value.ToString());
+
+            cmbRoom.DataSource = (new Room() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset();
+            cmbRoom.DataBind();
+        }
+
+        protected void cmbRatePlan_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            if (cmbRoom.SelectedIndex == -1) return;
+            
+            cmbRatePlan.DataSource = new RoomRatePlan() { RoomId = int.Parse(cmbRoom.Value.ToString()) }.SelectByRoomId();
+            cmbRatePlan.DataBind();
+        }
+
+        protected void gvRoomRates_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            DateTime checkInDate = DateTime.Parse(dtpCheckIn.Value.ToString());
+            DateTime checkOutDate = DateTime.Parse(dtpCheckIn.Value.ToString());
+
+            //Auto populate the rows and fill the grid
+            //Calculate the rate for each day
         }
     }
 }

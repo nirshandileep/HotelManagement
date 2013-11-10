@@ -86,7 +86,19 @@ namespace HBM.ReservationManagement
 
         public Reservation Select()
         {
-            return HBM.Utility.Generic.Get<Reservation>(this.ReservationId);
+            Reservation reservation = HBM.Utility.Generic.Get<Reservation>(this.ReservationId);
+            
+            if (reservation == null)
+            {
+                reservation = new Reservation();
+            }
+
+            reservation.DsReservationGuest = (new ReservationDAO()).SelectReservationGuests(this);
+            reservation.DsReservationAdditionalService = (new ReservationDAO()).SelectReservationAdditionalServices(this);
+            reservation.DsReservationPayment = (new ReservationDAO()).SelectReservationPayments(this);
+            reservation.DsReservationRoom = (new ReservationDAO()).SelectReservationRooms(this);
+
+            return reservation;
         }
 
         public List<Reservation> SelectAllList()

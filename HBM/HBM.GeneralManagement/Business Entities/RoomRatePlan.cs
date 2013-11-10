@@ -73,6 +73,11 @@ namespace HBM.GeneralManagement
             return HBM.Utility.Generic.GetAll<RoomRatePlan>(0);
         }
 
+        public DataSet SelectByRoomId()
+        {
+            return new RoomRatePlanDAO().SelectByRoomId(this.RoomId);
+        }
+
         #endregion
     }
 }

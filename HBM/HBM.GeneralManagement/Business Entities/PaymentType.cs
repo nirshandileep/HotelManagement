@@ -41,7 +41,7 @@ namespace HBM.GeneralManagement
 
         public List<PaymentType> SelectAllList()
         {
-            return HBM.Utility.Generic.GetAll<PaymentType>();
+            return HBM.Utility.Generic.GetAll<PaymentType>(CompanyId);
         }
 
         public DataSet SelectAllDataset()

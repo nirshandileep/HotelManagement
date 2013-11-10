@@ -90,5 +90,16 @@ namespace HBM.GeneralManagement
             return true;
         }
 
+
+        public DataSet SelectByRoomId(int RoomId)
+        {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_RoomRatePlanSelectByRoomId");
+
+            db.AddInParameter(command, "@RoomId", DbType.Int32, RoomId);
+
+            return db.ExecuteDataSet(command);
+        }
+
     }
 }

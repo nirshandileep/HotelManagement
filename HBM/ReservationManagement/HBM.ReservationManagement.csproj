@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +54,10 @@
     <Compile Include="Services\ReservationDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">
+      <Project>{CA21B72F-F6C3-49F6-B2DB-83B735A8777A}</Project>
+      <Name>HBM.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HBM.GeneralManagement\HBM.GeneralManagement.csproj">
       <Project>{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}</Project>
       <Name>HBM.GeneralManagement</Name>
