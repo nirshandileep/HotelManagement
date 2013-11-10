@@ -24,7 +24,7 @@
                     Customer Name<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCustomerName" runat="server" Width="170px">
+                    <dx:ASPxTextBox ID="txtCustomerName" runat="server" Width="170px" TabIndex="1">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
                             ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />

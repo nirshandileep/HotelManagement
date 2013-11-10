@@ -10,7 +10,7 @@ using System.Web;
 
 namespace HBM.Utility
 {
-    public class Cryptography 
+    public class Cryptography
     {
         #region Properties
 
@@ -21,7 +21,7 @@ namespace HBM.Utility
         #endregion
 
         #region Methods
-     
+
         public static string Encrypt(string text)
         {
 
@@ -51,7 +51,7 @@ namespace HBM.Utility
             return string.Empty;
 
         }
-        
+
         public static string Decrypt(string text)
         {
 
@@ -60,7 +60,7 @@ namespace HBM.Utility
 
                 key = Encoding.UTF8.GetBytes(stringKey.Substring(0, 8));
                 DESCryptoServiceProvider des = new DESCryptoServiceProvider();
-                Byte[] byteArray = Convert.FromBase64String(text);
+                Byte[] byteArray = Convert.FromBase64String(text.Replace(" ","+"));
                 MemoryStream memoryStream = new MemoryStream();
                 CryptoStream cryptoStream = new CryptoStream(memoryStream, des.CreateDecryptor(key, IV), CryptoStreamMode.Write);
 
