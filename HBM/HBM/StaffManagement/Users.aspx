@@ -12,9 +12,9 @@
     <div class="wrapper-inner">
         <h2>
             Add User</h2>
-        <table>
+        <table class="user-tbl">
             <tr>
-                <td width="20%">
+                <td width="15%">
                     <asp:HiddenField ID="hdnUserId" runat="server" />
                 </td>
                 <td width="80%">

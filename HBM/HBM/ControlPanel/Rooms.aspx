@@ -16,7 +16,7 @@
     <div class="wrapper-switchboard">
         <h2>
             Room List</h2>
-        <table>
+        <table class="rooms-info-tbl">
             <tr>
                 <td>&nbsp;
                     

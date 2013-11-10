@@ -12,7 +12,7 @@
     <div class="wrapper-inner">
         <h2>
             Company Information</h2>
-        <table>
+        <table class="company-info-tbl">
             <tr>
                 <td colspan="2">
                     &nbsp;

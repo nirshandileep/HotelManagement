@@ -367,10 +367,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 	
 /* Customer styles */
 .customers-tbl{
-	width:900px;
-	float:left;
-	margin-top:20px;
-	margin-left: 23px;
+	width: 871px;
+	float: left;
+	margin-top: 20px;
+	margin-left: 29px;
 }
 .customers-tbl td{
 	vertical-align:top;
@@ -396,4 +396,73 @@ width: 150px;
 	margin-top:5px;
 	font-weight:bold;	
 }
+/* Users section styles */
 
+.user-tbl{
+	width:871px;
+	float:left;
+	margin-top:4px;
+	margin-left:13px;
+}
+.user-tbl td{
+	vertical-align:top;
+	padding-bottom:5px;
+}
+.user-tbl td .dxbebt td.dx{
+	padding-top:6px;
+	padding-bottom:0px;
+}
+.user-tbl td #ContentPlaceHolder1_btnSave_CD img{
+	margin-top:4px;
+}
+
+.dxgvDataRow_Glass td.dxgv, .dxgvSelectedRow_Glass td.dxgv{
+	padding:5px 6px 5px 6px;
+	vertical-align:middle;
+}
+#ContentPlaceHolder1_gvRoles_DXMainTable td{
+	text-align:left;
+}
+
+/* Administration styles */
+.company-info-tbl{
+	width: 871px;
+	float: left;
+	margin-top: 20px;
+	margin-left: 13px;
+}
+.company-info-tbl td{
+	vertical-align:top;
+	padding-bottom:5px;
+}
+
+.company-info-tbl td .dxbebt td.dx{
+	padding-top:6px;
+	padding-bottom:0px;
+}
+.company-info-tbl td input{
+	width:192px;
+}
+.company-info-tbl td#ContentPlaceHolder1_ASPxButton1_B{
+	padding-bottom:0px;
+}
+.wrapper-switchboard h2{
+	width:97%;
+}
+td.dxeSBC{
+	vertical-align:middle;
+}
+.rooms-info-tbl{
+	width: 871px;
+	float: left;
+	margin-top: 20px;
+	margin-left: 13px;
+}
+.rooms-info-tbl td{
+	vertical-align:top;
+}
+
+.rooms-info-tbl td .dxbebt td.dx{
+	padding-top:3px;
+	padding-bottom:0px;
+}
