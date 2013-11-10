@@ -370,6 +370,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 	width:900px;
 	float:left;
 	margin-top:20px;
+	margin-left: 23px;
 }
 .customers-tbl td{
 	vertical-align:top;
