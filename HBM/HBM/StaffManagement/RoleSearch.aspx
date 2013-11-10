@@ -9,6 +9,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<div class="wrapper-inner">
     <h2 class="w875">
         Search Roles</h2>
     <table class="style1">
@@ -32,4 +33,6 @@
             </td>
         </tr>
     </table>
+    </div>
+
 </asp:Content>

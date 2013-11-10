@@ -15,12 +15,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="wrapper">
+    <div class="wrapper-inner">
         <h2>
             Add Customer</h2>
-        <table class=" customers-tbl">
+        <table class="customers-tbl">
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Customer Name<span class="reqfield">*</span>
                 </td>
                 <td>
@@ -34,7 +34,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     Passport Number
                 </td>
                 <td>
@@ -43,7 +43,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Member Code<span class="reqfield">*</span>
                 </td>
                 <td>
@@ -57,7 +57,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     Country of Issue
                 </td>
                 <td>
@@ -67,7 +67,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Gender<span class="reqfield">*</span>
                 </td>
                 <td>
@@ -85,7 +85,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     Expiry Date
                 </td>
                 <td>
@@ -94,7 +94,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Phone<span class="reqfield">*</span>
                 </td>
                 <td>
@@ -116,7 +116,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Fax
                 </td>
                 <td>
@@ -126,7 +126,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     CC Type
                 </td>
                 <td>
@@ -136,7 +136,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Email
                 </td>
                 <td>
@@ -150,7 +150,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     CC No
                 </td>
                 <td>
@@ -159,7 +159,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Guest Type
                 </td>
                 <td>
@@ -177,7 +177,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     CC Expiry Date (mm/yyyy)
                 </td>
                 <td>
@@ -243,7 +243,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Company Name
                 </td>
                 <td>
@@ -253,7 +253,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     Name on card
                 </td>
                 <td>
@@ -262,7 +262,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Company Address
                 </td>
                 <td>
@@ -280,7 +280,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Notes
                 </td>
                 <td>
@@ -304,7 +304,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     &nbsp;
                 </td>
                 <td>
@@ -313,7 +313,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     License Plate
                 </td>
                 <td>
@@ -322,7 +322,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Billing Address<span class="reqfield">*</span>
                 </td>
                 <td>
@@ -336,7 +336,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="info-lbl">
                     Drive License
                 </td>
                 <td>
@@ -345,7 +345,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Billing City<span class="reqfield">*</span>
                 </td>
                 <td>
@@ -367,7 +367,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     State
                 </td>
                 <td>
@@ -385,7 +385,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Country
                 </td>
                 <td>
@@ -415,7 +415,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="22">
+                <td height="22" class="info-lbl">
                     Post Code
                 </td>
                 <td>
@@ -438,7 +438,7 @@
                     <asp:HiddenField ID="hdnFromURL" runat="server" />
                 </td>
                 <td>
-                    <table border="0" cellpadding="0" cellspacing="0">
+                    <table border="0" cellpadding="0" cellspacing="0" id="customer-info-btn-tbl">
                         <tr>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgCustomer"

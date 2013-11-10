@@ -14,10 +14,18 @@
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <link href="css/messages.css" rel="stylesheet" type="text/css" />
+    <link href="css/stickyfooter.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript" src="../Scripts/jquery-2.0.3.min.js"></script>
     <script language="javascript" type="text/javascript" src="../JS/HBMCommon.js"></script>
+    <!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+    <![endif]-->
 </head>
 <body>
+    <div id="wrap">
+	<div id="main">
     <form id="form1" runat="server">
     <div id="dvTopMessage" runat="server">
     </div>
@@ -103,8 +111,10 @@
             <div class="welcomeMsg">
                 <p>
                     Welcome !</p>
-                <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label><p>
-                    <a><asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">Logout</asp:LinkButton></a></p>
+                <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label>
+                <div class="logoutBtn">
+                    <a><asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">Logout</asp:LinkButton></a>
+                </div>
             </div>
         </div>
     </div>
@@ -115,10 +125,15 @@
         </div>
     </div>
     </form>
-    <div class="footer2">
-        <p class="txt-center">
-            Copyright &copy; 2013. All rights reserved.
-        </p>
     </div>
+    </div>
+    <div id="footer">
+        <div class="footer2">
+            <p class="txt-center">
+                Copyright &copy; 2013. All rights reserved.
+            </p>
+        </div>
+    </div>
+    
 </body>
 </html>
