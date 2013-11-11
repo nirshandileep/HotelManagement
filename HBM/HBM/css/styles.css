@@ -45,12 +45,12 @@ h3{
 	width:711px;
 	height:42px;
 	font-size:12px;
-	color:#031a16;
-	text-shadow:1px 1px #0f927d;
-	-webkit-text-shadow:1px 1px #0f927d;
-	-moz-text-shadow:1px 1px #0f927d;
-	-ms-text-shadow:1px 1px #0f927d;
-	-o-text-shadow:1px 1px #0f927d;
+	color:#405d60;
+	text-shadow:1px 1px #f8fefe;
+	-webkit-text-shadow:1px 1px #f8fefe;
+	-moz-text-shadow:1px 1px #f8fefe;
+	-ms-text-shadow:1px 1px #f8fefe;
+	-o-text-shadow:1px 1px #f8fefe;
 	text-align:center;
 	padding-top:13px;
 	background:url(../images/login-footer.png) left top no-repeat;
