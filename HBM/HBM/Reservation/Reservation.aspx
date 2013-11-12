@@ -143,7 +143,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
                         <td>
-                            <dx:ASPxRoundPanel ID="rpRoomInformation" runat="server" Width="100%" HeaderText="Room Information"
+                            <dx:ASPxRoundPanel ID="rpRoomInformation" runat="server" Width="150px" HeaderText="Room Information"
                                 HorizontalAlign="Justify">
                                 <PanelCollection>
                                     <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
@@ -294,7 +294,7 @@
                             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td>
-                                        <dx:ASPxRoundPanel ID="rpPaymentInformation" runat="server" Width="100%" HeaderText="Payment Information">
+                                        <dx:ASPxRoundPanel ID="rpPaymentInformation" runat="server" Width="200px" HeaderText="Payment Information">
                                             <PanelCollection>
                                                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                                                     <dx:ASPxGridView ID="gvPaymentInformation" runat="server" Width="100%" AutoGenerateColumns="False"
@@ -380,7 +380,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <dx:ASPxRoundPanel ID="rpServiceInformation" runat="server" Width="100%" HeaderText="Service Information">
+                                        <dx:ASPxRoundPanel ID="rpServiceInformation" runat="server" Width="200px" HeaderText="Service Information">
                                             <PanelCollection>
                                                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                                                     <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False">

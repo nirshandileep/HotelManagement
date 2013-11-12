@@ -292,33 +292,6 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl pcGuestType;
         
         /// <summary>
-        /// cbpCountryPannel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel cbpCountryPannel;
-        
-        /// <summary>
-        /// txtAddGuestType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtAddGuestType;
-        
-        /// <summary>
-        /// btnSaveGuestType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSaveGuestType;
-        
-        /// <summary>
         /// Master property.
         /// </summary>
         /// <remarks>

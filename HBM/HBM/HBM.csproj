@@ -87,6 +87,7 @@
     <Content Include="ControlPanel\CreditCardType.aspx" />
     <Content Include="ControlPanel\Department.aspx" />
     <Content Include="ControlPanel\Gaurantee.aspx" />
+    <Content Include="ControlPanel\GuestTypes.aspx" />
     <Content Include="ControlPanel\PaymentTypes.aspx" />
     <Content Include="ControlPanel\RatePlans.aspx" />
     <Content Include="ControlPanel\Rooms.aspx" />
@@ -191,6 +192,13 @@
     </Compile>
     <Compile Include="ControlPanel\Gaurantee.aspx.designer.cs">
       <DependentUpon>Gaurantee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\GuestTypes.aspx.cs">
+      <DependentUpon>GuestTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\GuestTypes.aspx.designer.cs">
+      <DependentUpon>GuestTypes.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\PaymentTypes.aspx.cs">
       <DependentUpon>PaymentTypes.aspx</DependentUpon>

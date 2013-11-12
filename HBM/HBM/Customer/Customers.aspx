@@ -480,30 +480,10 @@
     <div>
         <dx:ASPxPopupControl ID="pcGuestType" runat="server" HeaderText="Guest Type" AllowDragging="True"
             ClientInstanceName="ppcGuestType" Modal="True" PopupHorizontalAlign="WindowCenter"
-            PopupVerticalAlign="WindowCenter">
+            PopupVerticalAlign="WindowCenter" 
+            ContentUrl="~/ControlPanel/GuestTypes.aspx" Width="500px" Height="350px">
             <ContentCollection>
-                <dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
-                    <dx:ASPxCallbackPanel ID="cbpCountryPannel" runat="server" Width="200px">
-                        <PanelCollection>
-                            <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <table border="0" cellpadding="0" cellspacing="0">
-                                    <tr>
-                                        <td width="52">
-                                            <dx:ASPxTextBox ID="txtAddGuestType" runat="server" Width="170px">
-                                            </dx:ASPxTextBox>
-                                        </td>
-                                        <td width="52">
-                                            <dx:ASPxButton ID="btnSaveGuestType" runat="server" Text="Save" >
-                                            </dx:ASPxButton>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div>
-                                </div>
-                            </dx:PanelContent>
-                        </PanelCollection>
-                    </dx:ASPxCallbackPanel>
-                </dx:PopupControlContentControl>
+
             </ContentCollection>
         </dx:ASPxPopupControl>
     </div>
