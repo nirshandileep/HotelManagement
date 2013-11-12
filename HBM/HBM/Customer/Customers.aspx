@@ -164,7 +164,7 @@
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
-                        TabIndex="6">
+                        TabIndex="6" ClientInstanceName="cmbGuestType">
                         <ClientSideEvents ButtonClick="function(s, e) {
   	ShowPopupWindow(ppcGuestType);
 }" />
@@ -482,7 +482,13 @@
             ClientInstanceName="ppcGuestType" Modal="True" PopupHorizontalAlign="WindowCenter"
             PopupVerticalAlign="WindowCenter" 
             ContentUrl="~/ControlPanel/GuestTypes.aspx" Width="700px" Height="350px">
+            <ClientSideEvents CloseUp="function(s, e) {
+	cmbGuestType.PerformCallback();
+}" />
             <ContentCollection>
+
+                <dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
+                </dx:PopupControlContentControl>
 
             </ContentCollection>
         </dx:ASPxPopupControl>

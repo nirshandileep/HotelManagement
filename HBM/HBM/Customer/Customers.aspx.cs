@@ -176,11 +176,6 @@ namespace HBM
         {
             try
             {
-                //Load Guest Type
-                cmbGuestType.DataSource = new GuestType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
-                cmbGuestType.TextField = "GuestTypeName";
-                cmbGuestType.ValueField = "GuestTypeId";
-                cmbGuestType.DataBind();
 
                 //Load CC Tyep
                 cmbCCType.DataSource = new CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
@@ -343,6 +338,9 @@ namespace HBM
         {
             try
             {
+
+                LoadInitData();
+
                 if (!IsPostBack)
                 {
                     CheckFromURL();
@@ -355,6 +353,15 @@ namespace HBM
             {
 
             }
+        }
+
+        private void LoadInitData()
+        {
+            //Load Guest Type
+            cmbGuestType.DataSource = new GuestType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+            cmbGuestType.TextField = "GuestTypeName";
+            cmbGuestType.ValueField = "GuestTypeId";
+            cmbGuestType.DataBind();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
