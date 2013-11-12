@@ -19,6 +19,8 @@ namespace HBM.Reservation
 {
     public partial class Reservation : System.Web.UI.Page
     {
+        #region Properties
+
         DataSet dsData = new DataSet();
 
         private DataSet dsTempGuests;
@@ -66,6 +68,10 @@ namespace HBM.Reservation
             }
         }
 
+        #endregion
+
+        #region Page Load events
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -82,26 +88,6 @@ namespace HBM.Reservation
             if (IsCallback)
             {
                 
-            }
-        }
-
-        private void SetLimits()
-        {
-            try
-            {
-                seAdultNumber.MinValue = 0;
-                seChildNumber.MinValue = 0;
-                seInfantNumber.MinValue = 0;
-
-                seAdultNumber.MaxValue = 1000;
-                seChildNumber.MaxValue = 1000;
-                seInfantNumber.MaxValue = 1000;
-
-            }
-            catch (System.Exception)
-            {
-
-                throw;
             }
         }
 
@@ -128,6 +114,30 @@ namespace HBM.Reservation
 
 
             LoadLookupDataToGridColumns();
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void SetLimits()
+        {
+            try
+            {
+                seAdultNumber.MinValue = 0;
+                seChildNumber.MinValue = 0;
+                seInfantNumber.MinValue = 0;
+
+                seAdultNumber.MaxValue = 1000;
+                seChildNumber.MaxValue = 1000;
+                seInfantNumber.MaxValue = 1000;
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
 
         private void LoadLookupDataToGridColumns()
@@ -256,6 +266,10 @@ namespace HBM.Reservation
             }
         }
 
+        #endregion
+
+        #region Events
+
         /// <summary>
         /// Reservation Save
         /// </summary>
@@ -306,13 +320,15 @@ namespace HBM.Reservation
             }
         }
 
+        #region Grid View Customers events (Inside Popup)
+
         protected void gvCustomers_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             try
             {
                 int i = gvCustomers.FindVisibleIndexByKeyValue(e.Keys[gvCustomers.KeyFieldName]);
                 e.Cancel = true;
-                dsData = Session[Constants.SESSION_RATEPLANS] as DataSet;
+                dsData = ResObj.DsReservationGuest;
                 dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvCustomers.KeyFieldName])));
             }
             catch (System.Exception)
@@ -327,13 +343,11 @@ namespace HBM.Reservation
             try
             {
 
-                dsData = DsTempGuests;
+                dsData = ResObj.DsReservationGuest;
                 ASPxGridView gridView = sender as ASPxGridView;
                 DataRow row = dsData.Tables[0].NewRow();
                 Random rd = new Random();
                 e.NewValues["ReservationGuestId"] = rd.Next();
-                e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
-                e.NewValues["CompanyId"] = Master.CurrentCompany.CompanyId;
                 e.NewValues["CreatedUser"] = Master.LoggedUser.UsersId;
 
                 IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
@@ -360,11 +374,13 @@ namespace HBM.Reservation
 
         protected void gvCustomers_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            dsData = DsTempGuests;
+            //dsData = DsTempGuests;
+            dsData = ResObj.DsReservationGuest;
             ASPxGridView gridView = sender as ASPxGridView;
             DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
-            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
+            //e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
+
             e.NewValues["UpdatedUser"] = Master.LoggedUser.UsersId;
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();
@@ -393,22 +409,34 @@ namespace HBM.Reservation
             }
         }
 
+        #endregion
+
         protected void cmbRoom_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
             int adultCount = int.Parse(seAdultNumber.Value.ToString());
             int childCount = int.Parse(seChildNumber.Value.ToString());
             int infantCount = int.Parse(seInfantNumber.Value.ToString());
 
+            //Need to filter from max allowed values for each category
+
             cmbRoom.DataSource = (new Room() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset();
+            cmbRoom.ValueField = "RoomId";
             cmbRoom.DataBind();
         }
 
         protected void cmbRatePlan_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
-            if (cmbRoom.SelectedIndex == -1) return;
+            if (cmbRoom.SelectedIndex != -1 || cmbRoom.Value.ToString() != "")
+            {
+                cmbRatePlan.DataSource = new RoomRatePlan() { RoomId = int.Parse(cmbRoom.Value.ToString()) }.SelectByRoomId();
+                cmbRatePlan.ValueField = "RoomRatePlanId";
+                cmbRatePlan.DataBind();
+            }
+            else
+            {
+                return;
+            }            
             
-            cmbRatePlan.DataSource = new RoomRatePlan() { RoomId = int.Parse(cmbRoom.Value.ToString()) }.SelectByRoomId();
-            cmbRatePlan.DataBind();
         }
 
         protected void gvRoomRates_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
@@ -416,8 +444,35 @@ namespace HBM.Reservation
             DateTime checkInDate = DateTime.Parse(dtpCheckIn.Value.ToString());
             DateTime checkOutDate = DateTime.Parse(dtpCheckIn.Value.ToString());
 
-            //Auto populate the rows and fill the grid
-            //Calculate the rate for each day
+            RatePlans ratePlan = new RatePlans();
+            //select data for RatePlan by RoomRatePlanId
+
+            if (cmbRatePlan.Value != null && 
+                cmbRatePlan.Value.ToString() != "")
+            {
+
+            }
+
+            List<DateTime> dates = new List<DateTime>();
+            for (var dt = checkInDate; dt <= checkOutDate; dt = dt.AddDays(1))
+            {
+                dates.Add(dt);
+            }
+
+
+            //Loop for all dates and calculate the rates 
+            //and populate the grid with values for each date
+            //Todo
+            foreach (DateTime eachDayInStay in dates)
+            {
+                //Calculate rates and add to each row of the dataset
+            }
+            gvRoomRates.DataSource = new DataSet();
+            gvRoomRates.DataBind();
+            
+
         }
+
+        #endregion
     }
 }

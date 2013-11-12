@@ -45,6 +45,11 @@ namespace HBM.GeneralManagement
             return result;
         }
 
+        public List<RatePlans> SelectAllList()
+        {
+            return HBM.Utility.Generic.GetAll<RatePlans>(this.CompanyId);
+        }
+
         public DataSet SelectAllDataset()
         {
             return (new RatePlansDAO()).SelectAll(this);

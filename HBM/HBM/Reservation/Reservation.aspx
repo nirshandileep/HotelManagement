@@ -775,9 +775,7 @@
                                                                         <td>
                                                                             <dx:ASPxComboBox ID="cmbRoom" runat="server" DropDownStyle="DropDown" 
                                                                                 ClientInstanceName="cmbRoom" OnCallback="cmbRoom_Callback">
-                                                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {
-	//Callback Rateplan
-}" />
+                                                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {cmbRatePlan.PerformCallback();}" />
                                                                                 <Columns>
                                                                                     <dx:ListBoxColumn FieldName="RoomName" />
                                                                                     <dx:ListBoxColumn FieldName="RoomCode" />
@@ -795,9 +793,7 @@
                                                                         <td>
                                                                             <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String" 
                                                                                 ClientInstanceName="cmbRatePlan" OnCallback="cmbRatePlan_Callback">
-                                                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {
-	//gvRoomRates callback
-}" />
+                                                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {gvRoomRates.PerformCallback(); }" />
                                                                             </dx:ASPxComboBox>
                                                                         </td>
                                                                     </tr>
