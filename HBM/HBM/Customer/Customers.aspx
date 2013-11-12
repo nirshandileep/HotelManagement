@@ -481,7 +481,7 @@
         <dx:ASPxPopupControl ID="pcGuestType" runat="server" HeaderText="Guest Type" AllowDragging="True"
             ClientInstanceName="ppcGuestType" Modal="True" PopupHorizontalAlign="WindowCenter"
             PopupVerticalAlign="WindowCenter" 
-            ContentUrl="~/ControlPanel/GuestTypes.aspx" Width="500px" Height="350px">
+            ContentUrl="~/ControlPanel/GuestTypes.aspx" Width="700px" Height="350px">
             <ContentCollection>
 
             </ContentCollection>
