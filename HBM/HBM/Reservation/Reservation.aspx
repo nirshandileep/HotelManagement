@@ -325,7 +325,11 @@
                                 <dx:ASPxRoundPanel ID="rpServiceInformation" runat="server" Width="200px" HeaderText="Service Information">
                                     <PanelCollection>
                                         <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                            <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False">
+                                            <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" 
+                                                AutoGenerateColumns="False" KeyFieldName="ReservationAdditionalServiceId" 
+                                                OnRowDeleting="gvServiceInformation_RowDeleting" 
+                                                OnRowInserting="gvServiceInformation_RowInserting" 
+                                                OnRowUpdating="gvServiceInformation_RowUpdating">
                                                 <TotalSummary>
                                                     <dx:ASPxSummaryItem FieldName="Rate" ShowInColumn="Rate" ShowInGroupFooterColumn="Rate"
                                                         SummaryType="Sum" />

@@ -19,6 +19,12 @@ namespace HBM.Reservation
 {
     public partial class Reservation : System.Web.UI.Page
     {
+        #region Variables
+
+        DataSet dsAdditionalService= new DataSet();
+
+        #endregion
+
         #region Properties
 
         DataSet dsData = new DataSet();
@@ -474,5 +480,76 @@ namespace HBM.Reservation
         }
 
         #endregion
+
+        protected void gvServiceInformation_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            int i = gvServiceInformation.FindVisibleIndexByKeyValue(e.Keys[gvServiceInformation.KeyFieldName]);
+            e.Cancel = true;
+            dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
+            //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
+
+            dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvServiceInformation.KeyFieldName])));
+
+
+            //if (additionalService.Save(dsAdditionalService))
+            //{
+            //    this.LoadAdditionalService();
+            //}
+        }
+
+        protected void gvServiceInformation_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
+            ASPxGridView gridView = sender as ASPxGridView;
+            DataRow row = dsData.Tables[0].NewRow();
+            Random rd = new Random();
+            e.NewValues["ReservationId"] = rd.Next();
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
+            e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId; ;
+            e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
+
+            IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
+            enumerator.Reset();
+            while (enumerator.MoveNext())
+            {
+                if (enumerator.Key.ToString() != "Count")
+                {
+                    row[enumerator.Key.ToString()] = enumerator.Value == null ? DBNull.Value : enumerator.Value;
+                }
+            }
+            gridView.CancelEdit();
+            e.Cancel = true;
+
+            dsData.Tables[0].Rows.Add(row);
+
+            //if (additionalService.Save(dsAdditionalService))
+            //{
+            //    this.LoadAdditionalService();
+            //}
+        }
+
+        protected void gvServiceInformation_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
+            ASPxGridView gridView = sender as ASPxGridView;
+            DataTable dataTable = dsData.Tables[0];
+            DataRow row = dataTable.Rows.Find(e.Keys[0]);
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
+            e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;
+            IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
+            enumerator.Reset();
+            while (enumerator.MoveNext())
+            {
+                row[enumerator.Key.ToString()] = enumerator.Value == null ? DBNull.Value : enumerator.Value;
+            }
+
+            gridView.CancelEdit();
+            e.Cancel = true;
+
+            //if (additionalService.Save(dsAdditionalService))
+            //{
+            //    this.LoadAdditionalService();
+            //}
+        }
     }
 }

@@ -91,6 +91,7 @@ namespace HBM.Common
         public static readonly string SESSION_CREDITCARDTYPE = "CreditCardType";
         public static readonly string SESSION_GUESTTYPE = "GuestType";
         public static readonly string SESSION_PAYMENTTYPES = "PaymentTypes";
+        public static readonly string SESSION_RESERVATION_ADDTIONALSERVICE= "ReservationAddtionalService";
 
 
 
