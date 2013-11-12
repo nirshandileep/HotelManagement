@@ -103,6 +103,15 @@
     <Content Include="Dashboard.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\Apply.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\BottomLeftCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\BottomRightCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\HeaderContent.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\HeaderLeftEdge.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\HeaderRightEdge.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\NoHeaderTopLeftCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\NoHeaderTopRightCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\TopLeftCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\522222765\TopRightCorner.png" />
     <Content Include="Images\Clear.png" />
     <Content Include="Images\Company.png" />
     <Content Include="Images\Close.png" />

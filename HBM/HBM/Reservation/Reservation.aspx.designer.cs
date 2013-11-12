@@ -13,6 +13,24 @@ namespace HBM.Reservation {
     public partial class Reservation {
         
         /// <summary>
+        /// ASPxRoundPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel1;
+        
+        /// <summary>
+        /// PanelContent1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent1;
+        
+        /// <summary>
         /// txtResCode control.
         /// </summary>
         /// <remarks>
@@ -166,24 +184,6 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvRoomDetails;
         
         /// <summary>
-        /// rpPaymentInformation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpPaymentInformation;
-        
-        /// <summary>
-        /// gvPaymentInformation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvPaymentInformation;
-        
-        /// <summary>
         /// rpServiceInformation control.
         /// </summary>
         /// <remarks>
@@ -200,6 +200,24 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvServiceInformation;
+        
+        /// <summary>
+        /// rpPaymentInformation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpPaymentInformation;
+        
+        /// <summary>
+        /// gvPaymentInformation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvPaymentInformation;
         
         /// <summary>
         /// txtRoomTotal control.
@@ -245,15 +263,6 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbTax;
-        
-        /// <summary>
-        /// btnTaxAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnTaxAdd;
         
         /// <summary>
         /// txtTaxTotal control.
