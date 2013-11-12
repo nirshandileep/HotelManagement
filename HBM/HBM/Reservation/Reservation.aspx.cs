@@ -14,6 +14,7 @@ using HBM.SessionManager;
 using System.Collections;
 using DevExpress.Web.ASPxEditors;
 using HBM.GeneralManagement;
+using GenRes = HBM.ReservationManagement;
 
 namespace HBM.Reservation
 {
@@ -22,6 +23,8 @@ namespace HBM.Reservation
         #region Variables
 
         DataSet dsAdditionalService= new DataSet();
+        GenMan.AdditionalService additionalService = new GenMan.AdditionalService();
+        GenRes.ReservationAdditionalService reservationAdditionalService = new GenRes.ReservationAdditionalService();
 
         #endregion
 
@@ -90,6 +93,8 @@ namespace HBM.Reservation
                 SetLimits();
                 IsEditReservation();
                 SetData();
+
+                this.LoadAddiotnalService();
             }
             if (IsCallback)
             {
@@ -176,9 +181,13 @@ namespace HBM.Reservation
                 ///
                 /// Additional Services
                 ///
-                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
-                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.ValueField = "AdditionalServiceId";
-                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.TextField = "ServiceName";
+                //((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
+                //((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.ValueField = "AdditionalServiceId";
+                //((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.TextField = "ServiceName";
+
+
+
+
             }
             catch (System.Exception)
             {
@@ -481,6 +490,20 @@ namespace HBM.Reservation
 
         #endregion
 
+        #region Addtional Service
+
+        private void LoadAddiotnalService()
+        {
+            reservationAdditionalService.ReservationId = 0;
+            dsAdditionalService=reservationAdditionalService.SelectAllDataSetByReservationID();
+            gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
+            gvServiceInformation.DataBind();
+
+            dsAdditionalService.Tables[0].PrimaryKey = new DataColumn[] { dsAdditionalService.Tables[0].Columns["ReservationAdditionalServiceId"] };
+            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] = dsAdditionalService;
+
+        }
+
         protected void gvServiceInformation_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             int i = gvServiceInformation.FindVisibleIndexByKeyValue(e.Keys[gvServiceInformation.KeyFieldName]);
@@ -488,7 +511,7 @@ namespace HBM.Reservation
             dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
             //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
 
-            dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvServiceInformation.KeyFieldName])));
+            dsAdditionalService.Tables[0].DefaultView.Delete(dsAdditionalService.Tables[0].Rows.IndexOf(dsAdditionalService.Tables[0].Rows.Find(e.Keys[gvServiceInformation.KeyFieldName])));
 
 
             //if (additionalService.Save(dsAdditionalService))
@@ -501,7 +524,7 @@ namespace HBM.Reservation
         {
             dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
-            DataRow row = dsData.Tables[0].NewRow();
+            DataRow row = dsAdditionalService.Tables[0].NewRow();
             Random rd = new Random();
             e.NewValues["ReservationId"] = rd.Next();
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
@@ -520,7 +543,7 @@ namespace HBM.Reservation
             gridView.CancelEdit();
             e.Cancel = true;
 
-            dsData.Tables[0].Rows.Add(row);
+            dsAdditionalService.Tables[0].Rows.Add(row);
 
             //if (additionalService.Save(dsAdditionalService))
             //{
@@ -551,5 +574,7 @@ namespace HBM.Reservation
             //    this.LoadAdditionalService();
             //}
         }
+
+        #endregion
     }
 }

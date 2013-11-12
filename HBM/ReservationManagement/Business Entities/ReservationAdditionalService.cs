@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace HBM.ReservationManagement
 {
@@ -19,6 +20,26 @@ namespace HBM.ReservationManagement
         public DateTime UpdatedDate { get; set; }
 
         #endregion
+
+        public bool Save(DataSet ds)
+        {
+            bool result = false;
+            try
+            {
+                result = (new ReservationAdditionalServiceDAO()).InsertUpdateDelete(ds);
+            }
+            catch (System.Exception ex)
+            {
+                result = false;
+                throw ex;
+            }
+            return result;
+        }
+
+        public DataSet SelectAllDataSetByReservationID()
+        {
+            return (new ReservationAdditionalServiceDAO()).SelectByReservationID(this);
+        }
 
 
     }
