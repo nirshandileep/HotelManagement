@@ -43,6 +43,7 @@
                                             <dx:ASPxComboBox ID="cmbResStatus" runat="server" ValueType="System.Int32" DropDownStyle="DropDown">
                                                 <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgRes">
                                                     <RequiredField IsRequired="True" />
+                                                    <RequiredField IsRequired="True"></RequiredField>
                                                 </ValidationSettings>
                                             </dx:ASPxComboBox>
                                         </td>
@@ -52,12 +53,17 @@
                                         <td>
                                             <dx:ASPxComboBox ID="cmbSource" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
                                                 ClientInstanceName="cmbSource">
+                                                <ClientSideEvents ButtonClick="function(s, e) {
+                                              
+                                ShowIframePopupWindow(ppcIframePopup,'/ControlPanel/Source.aspx');}"></ClientSideEvents>
+                                                <Buttons>
+                                                    <dx:EditButton Position="Left" ToolTip="Add/Edit Source">
+                                                    </dx:EditButton>
+                                                </Buttons>
                                             </dx:ASPxComboBox>
                                         </td>
                                         <td>
-                                            <dx:ASPxButton ID="btnAddSource" runat="server" Text="..." AutoPostBack="False" UseSubmitBehavior="False">
-                                                <ClientSideEvents Click="function(s, e) { ShowIframePopupWindow(ppcIframePopup,'/ControlPanel/Source.aspx'); }" />
-                                            </dx:ASPxButton>
+                                    &nbsp;
                                         </td>
                                     </tr>
                                     <tr>
@@ -106,16 +112,26 @@
                                         <td>
                                             <dx:ASPxComboBox ID="cmbGuarantee" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
                                                 ClientInstanceName="cmbGuarantee">
+
+                                                  <ClientSideEvents ButtonClick="function(s, e) {
+  
+                                 ShowIframePopupWindow(ppcIframePopup,'/ControlPanel/Gaurantee.aspx');
+                                 }"></ClientSideEvents>
+
+
+
+                                                <Buttons>
+                                                    <dx:EditButton Position="Left" ToolTip="Add/Edit Gaurantee">
+                                                    </dx:EditButton>
+                                                </Buttons>
                                                 <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgRes">
                                                     <RequiredField IsRequired="True" />
+                                                    <RequiredField IsRequired="True"></RequiredField>
                                                 </ValidationSettings>
                                             </dx:ASPxComboBox>
                                         </td>
                                         <td>
-                                            <dx:ASPxButton ID="btnAddGuarantee" runat="server" Text="..." AutoPostBack="False"
-                                                UseSubmitBehavior="False">
-                                                <ClientSideEvents Click="function(s, e) { ShowIframePopupWindow(ppcIframePopup,'/ControlPanel/Gaurantee.aspx'); }" />
-                                            </dx:ASPxButton>
+                                           &nbsp; 
                                         </td>
                                     </tr>
                                     <tr>
@@ -559,7 +575,7 @@
                                                     </td>
                                                     <td>
                                                         <dx:ASPxComboBox ID="cmbTax" runat="server" ValueType="System.String">
-                                                        </dx:ASPxComboBox>                                                  
+                                                        </dx:ASPxComboBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
