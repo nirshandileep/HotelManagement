@@ -74,7 +74,7 @@ namespace HBM.ReservationManagement
         internal DataSet SelectReservationAdditionalServices(Reservation reservation)
         {
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationAdditionalServices_SelectByReservationId");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationAdditionalServiceSelectByReservationID");
             db.AddInParameter(dbCommand, "@ReservationId", DbType.Int32, reservation.ReservationId);
             return db.ExecuteDataSet(dbCommand);
         }

@@ -360,32 +360,22 @@
                                                         <ClearFilterButton Visible="True">
                                                         </ClearFilterButton>
                                                     </dx:GridViewCommandColumn>
-                                                    <dx:GridViewDataComboBoxColumn Caption="Service Name" ShowInCustomizationForm="True"
-                                                        VisibleIndex="1" FieldName="AdditionalServiceId" UnboundType="Integer">
-                                                        <PropertiesComboBox DropDownStyle="DropDown" ValueType="System.Int32">
-                                                            <Columns>
-                                                                <dx:ListBoxColumn FieldName="AdditionalServiceId" Visible="False" />
-                                                                <dx:ListBoxColumn FieldName="ServiceName" />
-                                                                <dx:ListBoxColumn Caption="Code" FieldName="ServiceCode" />
-                                                                <dx:ListBoxColumn FieldName="Rate" />
-                                                                <dx:ListBoxColumn Caption="Type" FieldName="AdditionalServiceType" />
-                                                            </Columns>
-                                                        </PropertiesComboBox>
-                                                    </dx:GridViewDataComboBoxColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="ServiceCode" ShowInCustomizationForm="True"
-                                                        VisibleIndex="2" UnboundType="String">
-                                                    </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn Caption="Type" FieldName="AdditionalServiceType" ShowInCustomizationForm="True"
-                                                        VisibleIndex="3">
-                                                    </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="Rate" ShowInCustomizationForm="True" VisibleIndex="4"
-                                                        UnboundType="Decimal">
-                                                    </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="Note" ShowInCustomizationForm="True" VisibleIndex="5"
-                                                        UnboundType="String">
+                                                    <dx:GridViewDataSpinEditColumn Caption="AdditionalServiceId" 
+                                                        FieldName="AdditionalServiceId" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                        <PropertiesSpinEdit DisplayFormatString="g">
+                                                        </PropertiesSpinEdit>
+                                                    </dx:GridViewDataSpinEditColumn>
+                                                    <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" 
+                                                        ShowInCustomizationForm="True" VisibleIndex="2">
+                                                        <PropertiesSpinEdit DisplayFormatString="g">
+                                                        </PropertiesSpinEdit>
+                                                    </dx:GridViewDataSpinEditColumn>
+                                                    <dx:GridViewDataTextColumn Caption="Note" FieldName="Note" 
+                                                        ShowInCustomizationForm="True" VisibleIndex="3">
                                                     </dx:GridViewDataTextColumn>
                                                 </Columns>
-                                                <SettingsBehavior AllowGroup="False" SortMode="DisplayText" />
+                                                <SettingsBehavior AllowGroup="False" SortMode="DisplayText" 
+                                                    ConfirmDelete="True" />
                                                 <Settings ShowGroupButtons="False" />
                                             </dx:ASPxGridView>
                                         </dx:PanelContent>
@@ -414,7 +404,7 @@
                                                 </TotalSummary>
                                                 <Columns>
                                                     <dx:GridViewCommandColumn ButtonType="Image" ShowInCustomizationForm="True" VisibleIndex="0"
-                                                        Width="55px" Caption="Action">
+                                                        Width="80px" Caption="Action">
                                                         <EditButton Visible="True">
                                                             <Image ToolTip="Edit" Url="~/Images/update.png">
                                                             </Image>

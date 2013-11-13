@@ -84,6 +84,26 @@ namespace HBM.Reservation
 
         #region Page Load events
 
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            gvCustomers.SettingsText.ConfirmDelete = Messages.Delete_Confirm;         
+            gvRoomDetails.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+            gvServiceInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+            gvPaymentInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
+
+            gvCustomers.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+            gvPaymentInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+            gvRoomDetails.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+            gvServiceInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+
+            gvCustomers.FilterExpression = "[ReservationRoomId] = '" + hdnReservationRoomId.Value.Trim() + "'";
+            gvCustomers.DataSource = ResObj.DsReservationGuest;
+
+
+
+            LoadLookupDataToGridColumns();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -105,31 +125,8 @@ namespace HBM.Reservation
 
             }
         }
-
-        /// <summary>
-        /// Page Init
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void Page_Init(object sender, EventArgs e)
-        {
-            gvCustomers.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
-            gvPaymentInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
-            gvRoomDetails.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
-            gvServiceInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
-
-            gvCustomers.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
-            gvPaymentInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
-            gvRoomDetails.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
-            gvServiceInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
-
-            gvCustomers.FilterExpression = "[ReservationRoomId] = '" + hdnReservationRoomId.Value.Trim() + "'";
-            gvCustomers.DataSource = ResObj.DsReservationGuest;
-
-
-
-            LoadLookupDataToGridColumns();
-        }
+                
+        
 
         #endregion
 
@@ -209,7 +206,7 @@ namespace HBM.Reservation
             cmbCustomerName.DataBind();
             gvCustomers.DataBind();
             //gvPaymentInformation.DataBind();
-            gvServiceInformation.DataBind();
+            //gvServiceInformation.DataBind();
 
         }
 
@@ -513,15 +510,12 @@ namespace HBM.Reservation
             int i = gvServiceInformation.FindVisibleIndexByKeyValue(e.Keys[gvServiceInformation.KeyFieldName]);
             e.Cancel = true;
             dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
-            //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
-
+           
             dsAdditionalService.Tables[0].DefaultView.Delete(dsAdditionalService.Tables[0].Rows.IndexOf(dsAdditionalService.Tables[0].Rows.Find(e.Keys[gvServiceInformation.KeyFieldName])));
 
-
-            //if (additionalService.Save(dsAdditionalService))
-            //{
-            //    this.LoadAdditionalService();
-            //}
+            gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
+            gvServiceInformation.DataBind();
+           
         }
 
         protected void gvServiceInformation_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -529,10 +523,15 @@ namespace HBM.Reservation
             dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
             DataRow row = dsAdditionalService.Tables[0].NewRow();
+            
             Random rd = new Random();
-            e.NewValues["ReservationId"] = rd.Next();
-            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
-            e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId; ;
+            e.NewValues["ReservationAdditionalServiceId"] = rd.Next();
+
+            Random rd1 = new Random();
+            e.NewValues["ReservationId"] = rd1.Next();
+
+
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;            
             e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
@@ -549,10 +548,9 @@ namespace HBM.Reservation
 
             dsAdditionalService.Tables[0].Rows.Add(row);
 
-            //if (additionalService.Save(dsAdditionalService))
-            //{
-            //    this.LoadAdditionalService();
-            //}
+            gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
+            gvServiceInformation.DataBind();
+            
         }
 
         protected void gvServiceInformation_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -573,10 +571,9 @@ namespace HBM.Reservation
             gridView.CancelEdit();
             e.Cancel = true;
 
-            //if (additionalService.Save(dsAdditionalService))
-            //{
-            //    this.LoadAdditionalService();
-            //}
+            gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
+            gvServiceInformation.DataBind();
+            
         }
 
         #endregion
@@ -603,7 +600,7 @@ namespace HBM.Reservation
             dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;
             //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
 
-            dsPaymentInformation.Tables[0].DefaultView.Delete(dsPaymentInformation.Tables[0].Rows.IndexOf(dsPaymentInformation.Tables[0].Rows.Find(e.Keys[gvServiceInformation.KeyFieldName])));
+            dsPaymentInformation.Tables[0].DefaultView.Delete(dsPaymentInformation.Tables[0].Rows.IndexOf(dsPaymentInformation.Tables[0].Rows.Find(e.Keys[gvPaymentInformation.KeyFieldName])));
             
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
