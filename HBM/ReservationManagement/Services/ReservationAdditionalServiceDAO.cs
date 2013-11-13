@@ -23,13 +23,18 @@ namespace HBM.ReservationManagement
             db.AddInParameter(commandInsert, "@Amount", DbType.Decimal, "Amount", DataRowVersion.Current);            
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@AdditionalServiceId", DbType.Int32, "AdditionalServiceId", DataRowVersion.Current);
+                        
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_ReservationAdditionalServiceUpdate");
 
+            db.AddInParameter(commandUpdate, "@ReservationAdditionalServiceId", DbType.Int32, "ReservationAdditionalServiceId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Amount", DbType.String, "Amount", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@AdditionalServiceId", DbType.Int32, "AdditionalServiceId", DataRowVersion.Current);
+
 
             DbCommand commandDelete = db.GetStoredProcCommand("usp_ReservationAdditionalServiceDelete");
             db.AddInParameter(commandDelete, "@ReservationAdditionalServiceId", DbType.Int64, "ReservationAdditionalServiceId", DataRowVersion.Current);
