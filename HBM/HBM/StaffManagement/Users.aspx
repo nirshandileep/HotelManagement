@@ -150,7 +150,7 @@
                 <td>
                     <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave"
                         HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
-                        <Image Url="~/Images/Save.png" Width="16" Height="16">
+                        <Image Url="~/Images/Save.png">
                         </Image>
                     </dx:ASPxButton>
                 </td>

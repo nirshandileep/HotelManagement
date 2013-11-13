@@ -408,12 +408,24 @@ width: 150px;
 	vertical-align:top;
 	padding-bottom:5px;
 }
+.user-tbl td td#ContentPlaceHolder1_btnSave_B, .user-tbl td td#ContentPlaceHolder1_btnSave_B #ContentPlaceHolder1_btnSave_BTC{
+	padding:0px;
+}
+
+.user-tbl td  div#ContentPlaceHolder1_btnSave_CD{
+	height:26px;
+}
+.user-tbl #ContentPlaceHolder1_btnSave_BTC span{
+	float:left;
+	margin-top:7px;
+	font-weight:bold;	
+}
 .user-tbl td .dxbebt td.dx{
 	padding-top:6px;
 	padding-bottom:0px;
 }
 .user-tbl td #ContentPlaceHolder1_btnSave_CD img{
-	margin-top:4px;
+	margin-top:2px;
 }
 
 .dxgvDataRow_Glass td.dxgv, .dxgvSelectedRow_Glass td.dxgv{
@@ -422,6 +434,28 @@ width: 150px;
 }
 #ContentPlaceHolder1_gvRoles_DXMainTable td{
 	text-align:left;
+}
+.role-tbl{
+	width:871px;
+	float:left;
+	margin-top:4px;
+	margin-left:13px;
+}
+.role-tbl td{
+	vertical-align:top;
+}
+.role-tbl td td#ContentPlaceHolder1_btnSave_B{
+	padding-bottom:5px;
+}
+.role-search-tbl{
+	width:310px;
+	float:left;
+	margin-top:4px;
+	margin-left:13px;
+}
+.role-search-tbl td{
+	vertical-align:top;
+	padding-bottom:5px;
 }
 
 /* Administration styles */

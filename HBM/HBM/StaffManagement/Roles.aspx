@@ -22,10 +22,10 @@
     <div class="wrapper-inner">
         <h2 class="w875">
             Add Roles</h2>
-        <table class="style1">
+        <table class="role-tbl">
             <tr>
                 <td>
-                    <table class="style1">
+                    <table class="role-search-tbl">
                         <tr>
                             <td height="21">
                                 Role Name<span class="reqfield">*</span>
@@ -111,7 +111,7 @@
                     <br />
                     <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave"
                         HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
-                        <Image Url="~/Images/Save.png" Width="17">
+                        <Image Url="~/Images/Save.png">
                         </Image>
                     </dx:ASPxButton>
                 </td>
