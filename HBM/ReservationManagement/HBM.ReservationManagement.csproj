@@ -50,10 +50,12 @@
   <ItemGroup>
     <Compile Include="Business Entities\Reservation.cs" />
     <Compile Include="Business Entities\ReservationAdditionalService.cs" />
+    <Compile Include="Business Entities\ReservationPayments.cs" />
     <Compile Include="Business Entities\ReservationRoom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ReservationAdditionalServiceDAO.cs" />
     <Compile Include="Services\ReservationDAO.cs" />
+    <Compile Include="Services\ReservationPaymentsDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HBM.Common\HBM.Common.csproj">

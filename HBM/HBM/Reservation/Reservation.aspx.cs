@@ -22,9 +22,12 @@ namespace HBM.Reservation
     {
         #region Variables
 
-        DataSet dsAdditionalService= new DataSet();
+        DataSet dsAdditionalService = new DataSet();
+        DataSet dsPaymentInformation = new DataSet();
         GenMan.AdditionalService additionalService = new GenMan.AdditionalService();
         GenRes.ReservationAdditionalService reservationAdditionalService = new GenRes.ReservationAdditionalService();
+        GenRes.ReservationPayments reservationPayments = new GenRes.ReservationPayments();
+
 
         #endregion
 
@@ -36,7 +39,7 @@ namespace HBM.Reservation
 
         public DataSet DsTempGuests
         {
-            get 
+            get
             {
                 if (Session["DsTempGuests"] == null)
                 {
@@ -98,7 +101,7 @@ namespace HBM.Reservation
             }
             if (IsCallback)
             {
-                
+
             }
         }
 
@@ -216,9 +219,9 @@ namespace HBM.Reservation
         {
             txtResCode.Text = ResObj.ReservationCode;
 
-            if (Master.LoggedUser!=null)
+            if (Master.LoggedUser != null)
             {
-                hdnReservationUserId.Add("CreatedUser", ResObj.ReservationId > 0 ? ResObj.CreatedUser : Master.LoggedUser.UsersId);    
+                hdnReservationUserId.Add("CreatedUser", ResObj.ReservationId > 0 ? ResObj.CreatedUser : Master.LoggedUser.UsersId);
             }
 
             if (ResObj.ReservationId > 0)
@@ -312,7 +315,7 @@ namespace HBM.Reservation
             }
             catch (System.Exception)
             {
-                
+
                 throw;
             }
         }
@@ -450,8 +453,8 @@ namespace HBM.Reservation
             else
             {
                 return;
-            }            
-            
+            }
+
         }
 
         protected void gvRoomRates_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
@@ -462,7 +465,7 @@ namespace HBM.Reservation
             RatePlans ratePlan = new RatePlans();
             //select data for RatePlan by RoomRatePlanId
 
-            if (cmbRatePlan.Value != null && 
+            if (cmbRatePlan.Value != null &&
                 cmbRatePlan.Value.ToString() != "")
             {
 
@@ -484,7 +487,7 @@ namespace HBM.Reservation
             }
             gvRoomRates.DataSource = new DataSet();
             gvRoomRates.DataBind();
-            
+
 
         }
 
@@ -495,7 +498,7 @@ namespace HBM.Reservation
         private void LoadAddiotnalService()
         {
             reservationAdditionalService.ReservationId = 0;
-            dsAdditionalService=reservationAdditionalService.SelectAllDataSetByReservationID();
+            dsAdditionalService = reservationAdditionalService.SelectAllDataSetByReservationID();
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
 
@@ -554,6 +557,90 @@ namespace HBM.Reservation
         protected void gvServiceInformation_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
+            ASPxGridView gridView = sender as ASPxGridView;
+            DataTable dataTable = dsData.Tables[0];
+            DataRow row = dataTable.Rows.Find(e.Keys[0]);
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
+            e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;
+            IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
+            enumerator.Reset();
+            while (enumerator.MoveNext())
+            {
+                row[enumerator.Key.ToString()] = enumerator.Value == null ? DBNull.Value : enumerator.Value;
+            }
+
+            gridView.CancelEdit();
+            e.Cancel = true;
+
+            //if (additionalService.Save(dsAdditionalService))
+            //{
+            //    this.LoadAdditionalService();
+            //}
+        }
+
+        #endregion
+
+        #region Payment Information
+
+        private void LoadPaymentInformation()
+        {
+            reservationPayments.ReservationId = 0;
+            dsPaymentInformation = reservationAdditionalService.SelectAllDataSetByReservationID();
+            gvPaymentInformation.DataSource = dsAdditionalService.Tables[0];
+            gvPaymentInformation.DataBind();
+
+            dsPaymentInformation.Tables[0].PrimaryKey = new DataColumn[] { dsPaymentInformation.Tables[0].Columns["ReservationPaymentId"] };
+            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] = dsPaymentInformation;
+
+        }
+
+        protected void gvPaymentInformation_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+
+            int i = gvPaymentInformation.FindVisibleIndexByKeyValue(e.Keys[gvPaymentInformation.KeyFieldName]);
+            e.Cancel = true;
+            dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;
+            //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
+
+            dsPaymentInformation.Tables[0].DefaultView.Delete(dsPaymentInformation.Tables[0].Rows.IndexOf(dsPaymentInformation.Tables[0].Rows.Find(e.Keys[gvServiceInformation.KeyFieldName])));
+
+
+        }
+
+        protected void gvPaymentInformation_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;
+            ASPxGridView gridView = sender as ASPxGridView;
+            DataRow row = dsAdditionalService.Tables[0].NewRow();
+            Random rd = new Random();
+            e.NewValues["ReservationId"] = rd.Next();
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
+            e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId; ;
+            e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
+
+            IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
+            enumerator.Reset();
+            while (enumerator.MoveNext())
+            {
+                if (enumerator.Key.ToString() != "Count")
+                {
+                    row[enumerator.Key.ToString()] = enumerator.Value == null ? DBNull.Value : enumerator.Value;
+                }
+            }
+            gridView.CancelEdit();
+            e.Cancel = true;
+
+            dsPaymentInformation.Tables[0].Rows.Add(row);
+
+            //if (additionalService.Save(dsAdditionalService))
+            //{
+            //    this.LoadAdditionalService();
+            //}
+        }
+
+        protected void gvPaymentInformation_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
             DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);

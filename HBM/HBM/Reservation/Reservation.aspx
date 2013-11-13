@@ -404,7 +404,10 @@
                                     <PanelCollection>
                                         <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                                             <dx:ASPxGridView ID="gvPaymentInformation" runat="server" Width="100%" AutoGenerateColumns="False"
-                                                KeyFieldName="ReservationPaymentId">
+                                                KeyFieldName="ReservationPaymentId" 
+                                                OnRowDeleting="gvPaymentInformation_RowDeleting" 
+                                                OnRowInserting="gvPaymentInformation_RowInserting" 
+                                                OnRowUpdating="gvPaymentInformation_RowUpdating">
                                                 <TotalSummary>
                                                     <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
                                                         SummaryType="Sum" />
