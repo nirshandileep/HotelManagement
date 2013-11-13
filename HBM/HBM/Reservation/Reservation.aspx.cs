@@ -98,6 +98,7 @@ namespace HBM.Reservation
                 SetData();
 
                 this.LoadAddiotnalService();
+                this.LoadPaymentInformation();
             }
             if (IsCallback)
             {
@@ -168,12 +169,12 @@ namespace HBM.Reservation
                 ///
                 /// Payment Information Grid
                 ///
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllList();
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.ValueField = "PaymentTypeId";
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.TextField = "PaymentTypeName";
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllList();
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.ValueField = "CreditCardTypeId";
-                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.TextField = "Name";
+                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllList();
+                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.ValueField = "PaymentTypeId";
+                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.TextField = "PaymentTypeName";
+                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllList();
+                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.ValueField = "CreditCardTypeId";
+                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.TextField = "Name";
 
                 ///
                 /// Customer Combobox (Reservation Creater)
@@ -207,7 +208,7 @@ namespace HBM.Reservation
 
             cmbCustomerName.DataBind();
             gvCustomers.DataBind();
-            gvPaymentInformation.DataBind();
+            //gvPaymentInformation.DataBind();
             gvServiceInformation.DataBind();
 
         }
@@ -558,7 +559,7 @@ namespace HBM.Reservation
         {
             dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
-            DataTable dataTable = dsData.Tables[0];
+            DataTable dataTable = dsAdditionalService.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
             e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;
@@ -585,12 +586,12 @@ namespace HBM.Reservation
         private void LoadPaymentInformation()
         {
             reservationPayments.ReservationId = 0;
-            dsPaymentInformation = reservationAdditionalService.SelectAllDataSetByReservationID();
-            gvPaymentInformation.DataSource = dsAdditionalService.Tables[0];
+            dsPaymentInformation = reservationPayments.SelectAllDataSetByReservationID();
+            gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
 
             dsPaymentInformation.Tables[0].PrimaryKey = new DataColumn[] { dsPaymentInformation.Tables[0].Columns["ReservationPaymentId"] };
-            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] = dsPaymentInformation;
+            Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
 
         }
 
@@ -611,11 +612,14 @@ namespace HBM.Reservation
         {
             dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
-            DataRow row = dsAdditionalService.Tables[0].NewRow();
+            DataRow row = dsPaymentInformation.Tables[0].NewRow();
             Random rd = new Random();
+            e.NewValues["ReservationPaymentId"] = rd.Next();
+
+            Random rd1 = new Random();
             e.NewValues["ReservationId"] = rd.Next();
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
-            e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId; ;
+            //e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId; ;
             e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
@@ -634,7 +638,8 @@ namespace HBM.Reservation
 
             //if (additionalService.Save(dsAdditionalService))
             //{
-            //    this.LoadAdditionalService();
+            gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
+            gvPaymentInformation.DataBind();
             //}
         }
 
@@ -642,7 +647,7 @@ namespace HBM.Reservation
         {
             dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
-            DataTable dataTable = dsData.Tables[0];
+            DataTable dataTable = dsPaymentInformation.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
             e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;

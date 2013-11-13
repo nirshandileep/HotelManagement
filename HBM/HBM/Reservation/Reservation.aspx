@@ -438,49 +438,41 @@
                                                         <ClearFilterButton Visible="True">
                                                         </ClearFilterButton>
                                                     </dx:GridViewCommandColumn>
-                                                    <dx:GridViewDataTextColumn Caption="Amount" FieldName="PaymentAmount" ShowInCustomizationForm="True"
-                                                        UnboundType="Decimal" VisibleIndex="9">
-                                                        <EditFormSettings Caption="Amount" Visible="True" />
-                                                    </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataDateColumn FieldName="PaymentDate" ShowInCustomizationForm="True"
-                                                        UnboundType="DateTime" VisibleIndex="1">
-                                                        <PropertiesDateEdit DisplayFormatString="">
-                                                            <TimeSectionProperties Visible="True">
-                                                            </TimeSectionProperties>
-                                                        </PropertiesDateEdit>
-                                                        <EditFormSettings Caption="Payment Date" Visible="True" />
+                                                    <dx:GridViewDataDateColumn FieldName="PaymentDate" 
+                                                        ShowInCustomizationForm="True" VisibleIndex="1" Caption="PaymentDate">
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="ReferenceNumber" ShowInCustomizationForm="True"
-                                                        UnboundType="String" VisibleIndex="2">
+                                                    <dx:GridViewDataTextColumn FieldName="ReferenceNumber" 
+                                                        ShowInCustomizationForm="True" VisibleIndex="2" Caption="ReferenceNumber">
                                                     </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="Notes" ShowInCustomizationForm="True" UnboundType="String"
-                                                        VisibleIndex="3" Visible="False">
+                                                    <dx:GridViewDataTextColumn FieldName="Notes" ShowInCustomizationForm="True"
+                                                        VisibleIndex="3" Caption="Notes">
                                                     </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataComboBoxColumn Caption="Payment Type" FieldName="PaymentTypeId" ShowInCustomizationForm="True"
-                                                        UnboundType="Integer" VisibleIndex="4">
-                                                        <PropertiesComboBox ValueType="System.Char">
-                                                        </PropertiesComboBox>
-                                                    </dx:GridViewDataComboBoxColumn>
-                                                    <dx:GridViewDataComboBoxColumn Caption="Card Type" FieldName="CreditCardTypeId" ShowInCustomizationForm="True"
-                                                        UnboundType="Integer" VisibleIndex="5">
-                                                        <PropertiesComboBox ValueType="System.Char">
-                                                        </PropertiesComboBox>
-                                                    </dx:GridViewDataComboBoxColumn>
-                                                    <dx:GridViewDataTextColumn Caption="Card No." FieldName="CCNo" ShowInCustomizationForm="True"
-                                                        VisibleIndex="6">
+                                                    <dx:GridViewDataSpinEditColumn Caption="PaymentTypeId" 
+                                                        FieldName="PaymentTypeId" ShowInCustomizationForm="True" VisibleIndex="4">
+                                                        <PropertiesSpinEdit DisplayFormatString="g">
+                                                        </PropertiesSpinEdit>
+                                                    </dx:GridViewDataSpinEditColumn>
+                                                    <dx:GridViewDataSpinEditColumn Caption="CurrencyId" FieldName="CurrencyId" 
+                                                        ShowInCustomizationForm="True" VisibleIndex="5">
+                                                        <PropertiesSpinEdit DisplayFormatString="g">
+                                                        </PropertiesSpinEdit>
+                                                    </dx:GridViewDataSpinEditColumn>
+                                                    <dx:GridViewDataSpinEditColumn Caption="CreditCardTypeId" 
+                                                        FieldName="CreditCardTypeId" ShowInCustomizationForm="True" VisibleIndex="6">
+                                                        <PropertiesSpinEdit DisplayFormatString="g">
+                                                        </PropertiesSpinEdit>
+                                                    </dx:GridViewDataSpinEditColumn>
+                                                    <dx:GridViewDataTextColumn Caption="CCNo" FieldName="CCNo" ShowInCustomizationForm="True"
+                                                        VisibleIndex="7">
                                                     </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataDateColumn Caption="Expiration Date" FieldName="ExpirationDate" ShowInCustomizationForm="True"
-                                                        UnboundType="DateTime" VisibleIndex="7">
-                                                        <PropertiesDateEdit DisplayFormatString="">
-                                                        </PropertiesDateEdit>
+                                                    <dx:GridViewDataDateColumn Caption="CCExpirationDate" 
+                                                        FieldName="CCExpirationDate" ShowInCustomizationForm="True" VisibleIndex="8">
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataTextColumn Caption="Name On Card" FieldName="CCNameOnCard" ShowInCustomizationForm="True"
-                                                        UnboundType="String" VisibleIndex="8">
+                                                    <dx:GridViewDataTextColumn Caption="CCNameOnCard" FieldName="CCNameOnCard" 
+                                                        ShowInCustomizationForm="True" VisibleIndex="9">
                                                     </dx:GridViewDataTextColumn>
                                                 </Columns>
-                                                <SettingsBehavior AllowGroup="False" ConfirmDelete="True" EnableCustomizationWindow="True"
-                                                    SortMode="DisplayText" />
-                                                <Settings ShowGroupButtons="False" />
+                                                <SettingsBehavior ConfirmDelete="True" EnableCustomizationWindow="True" />
                                             </dx:ASPxGridView>
                                         </dx:PanelContent>
                                     </PanelCollection>

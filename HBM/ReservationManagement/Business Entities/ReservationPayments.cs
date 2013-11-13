@@ -15,7 +15,6 @@ namespace HBM.ReservationManagement
         public int ReservationId { get; set; }
         public decimal PaymentAmount { get; set; }
         public DateTime PaymentDate { get; set; }
-
         public string ReferenceNumber { get; set; }
         public string Notes { get; set; }
         public int PaymentTypeId { get; set; }
@@ -23,8 +22,7 @@ namespace HBM.ReservationManagement
         public int CreditCardTypeId { get; set; }
         public string CCNo { get; set; }
         public DateTime CCExpirationDate { get; set; }
-        public string CCNameOnCard { get; set; }
-        
+        public string CCNameOnCard { get; set; }        
         public Int32 CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
         public Int32 UpdatedUser { get; set; }
