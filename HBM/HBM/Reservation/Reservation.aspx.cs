@@ -163,29 +163,17 @@ namespace HBM.Reservation
                 ((GridViewDataComboBoxColumn)gvCustomers.Columns["CustomerId"]).PropertiesComboBox.ValueField = "CustomerId";
                 ((GridViewDataComboBoxColumn)gvCustomers.Columns["CustomerId"]).PropertiesComboBox.TextField = "CustomerName";
 
-                ///
-                /// Payment Information Grid
-                ///
-                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllList();
-                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.ValueField = "PaymentTypeId";
-                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.TextField = "PaymentTypeName";
-                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllList();
-                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.ValueField = "CreditCardTypeId";
-                //((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.TextField = "Name";
-
+               
                 ///
                 /// Customer Combobox (Reservation Creater)
                 ///
                 cmbCustomerName.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
                 cmbCustomerName.ValueField = "CustomerId";
 
-                ///
-                /// Additional Services
-                ///
-                
 
-                
-
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CurrencyId"]).PropertiesComboBox.DataSource = new GenMan.CurrencyTypes().SelectAllDataset().Tables[0];
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
+                ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
                 ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
                 
 
@@ -669,7 +657,16 @@ namespace HBM.Reservation
             gvPaymentInformation.DataBind();
         }
 
+        protected void gvPaymentInformation_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+            if (e.Column.FieldName != "PaymentTypeId" && e.Column.FieldName != "CreditCardTypeId" && e.Column.FieldName != "CurrencyId") return;
+            ASPxComboBox combo = e.Editor as ASPxComboBox;
+            combo.DataBindItems();
+        }
+
         #endregion
+
+        
 
         
     }

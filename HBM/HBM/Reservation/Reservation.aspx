@@ -337,7 +337,7 @@
                                                 </TotalSummary>
                                                 <Columns>
                                                     <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
-                                                        VisibleIndex="0">
+                                                        VisibleIndex="0" Width="80px">
                                                         <EditButton Visible="True">
                                                             <Image ToolTip="Edit" Url="~/Images/update.png">
                                                             </Image>
@@ -361,10 +361,17 @@
                                                         <ClearFilterButton Visible="True">
                                                         </ClearFilterButton>
                                                     </dx:GridViewCommandColumn>
-                                                    <dx:GridViewDataComboBoxColumn Caption="AdditionalServiceId" 
-                                                        FieldName="AdditionalServiceId" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                    <dx:GridViewDataComboBoxColumn Caption="Service Type" 
+                                                        FieldName="AdditionalServiceId" ShowInCustomizationForm="True" 
+                                                        VisibleIndex="1">
                                                         <PropertiesComboBox TextField="ServiceName" ValueField="AdditionalServiceId" 
-                                                            ValueType="System.Int32">
+                                                            ValueType="System.Int32" IncrementalFilteringMode="StartsWith" 
+                                                            TextFormatString="{1}">
+                                                            <Columns>
+                                                                <dx:ListBoxColumn Caption="Service Code" FieldName="ServiceCode" />
+                                                                <dx:ListBoxColumn Caption="Service Name" FieldName="ServiceName" />
+                                                                <dx:ListBoxColumn Caption="Rate" FieldName="Rate" />
+                                                            </Columns>
                                                             <ValidationSettings>
                                                                 <RequiredField ErrorText="Required" IsRequired="True" />
                                                             </ValidationSettings>
@@ -405,7 +412,8 @@
                                                 KeyFieldName="ReservationPaymentId" 
                                                 OnRowDeleting="gvPaymentInformation_RowDeleting" 
                                                 OnRowInserting="gvPaymentInformation_RowInserting" 
-                                                OnRowUpdating="gvPaymentInformation_RowUpdating">
+                                                OnRowUpdating="gvPaymentInformation_RowUpdating" 
+                                                OnCellEditorInitialize="gvPaymentInformation_CellEditorInitialize">
                                                 <TotalSummary>
                                                     <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
                                                         SummaryType="Sum" />
@@ -445,21 +453,24 @@
                                                     <dx:GridViewDataTextColumn FieldName="Notes" ShowInCustomizationForm="True"
                                                         VisibleIndex="3" Caption="Notes">
                                                     </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataSpinEditColumn Caption="PaymentTypeId" 
+                                                    <dx:GridViewDataComboBoxColumn Caption="PaymentTypeId" 
                                                         FieldName="PaymentTypeId" ShowInCustomizationForm="True" VisibleIndex="4">
-                                                        <PropertiesSpinEdit DisplayFormatString="g">
-                                                        </PropertiesSpinEdit>
-                                                    </dx:GridViewDataSpinEditColumn>
-                                                    <dx:GridViewDataSpinEditColumn Caption="CurrencyId" FieldName="CurrencyId" 
+                                                        <PropertiesComboBox DisplayFormatString="g" TextField="PaymentTypeName" 
+                                                            ValueField="PaymentTypeId" ValueType="System.Int32">
+                                                        </PropertiesComboBox>
+                                                    </dx:GridViewDataComboBoxColumn>
+                                                    <dx:GridViewDataComboBoxColumn Caption="CurrencyId" FieldName="CurrencyId" 
                                                         ShowInCustomizationForm="True" VisibleIndex="5">
-                                                        <PropertiesSpinEdit DisplayFormatString="g">
-                                                        </PropertiesSpinEdit>
-                                                    </dx:GridViewDataSpinEditColumn>
-                                                    <dx:GridViewDataSpinEditColumn Caption="CreditCardTypeId" 
+                                                        <PropertiesComboBox TextField="CurrencyName" ValueField="CurrencyId" 
+                                                            ValueType="System.Int32">
+                                                        </PropertiesComboBox>
+                                                    </dx:GridViewDataComboBoxColumn>
+                                                    <dx:GridViewDataComboBoxColumn Caption="CreditCardTypeId" 
                                                         FieldName="CreditCardTypeId" ShowInCustomizationForm="True" VisibleIndex="6">
-                                                        <PropertiesSpinEdit DisplayFormatString="g">
-                                                        </PropertiesSpinEdit>
-                                                    </dx:GridViewDataSpinEditColumn>
+                                                        <PropertiesComboBox TextField="Name" ValueField="CreditCardTypeId" 
+                                                            ValueType="System.Int32">
+                                                        </PropertiesComboBox>
+                                                    </dx:GridViewDataComboBoxColumn>
                                                     <dx:GridViewDataTextColumn Caption="CCNo" FieldName="CCNo" ShowInCustomizationForm="True"
                                                         VisibleIndex="7">
                                                     </dx:GridViewDataTextColumn>
