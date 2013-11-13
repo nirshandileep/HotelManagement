@@ -604,7 +604,9 @@ namespace HBM.Reservation
             //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
 
             dsPaymentInformation.Tables[0].DefaultView.Delete(dsPaymentInformation.Tables[0].Rows.IndexOf(dsPaymentInformation.Tables[0].Rows.Find(e.Keys[gvServiceInformation.KeyFieldName])));
-
+            
+            gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
+            gvPaymentInformation.DataBind();
 
         }
 
@@ -635,12 +637,10 @@ namespace HBM.Reservation
             e.Cancel = true;
 
             dsPaymentInformation.Tables[0].Rows.Add(row);
-
-            //if (additionalService.Save(dsAdditionalService))
-            //{
+                     
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
-            //}
+           
         }
 
         protected void gvPaymentInformation_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -661,10 +661,8 @@ namespace HBM.Reservation
             gridView.CancelEdit();
             e.Cancel = true;
 
-            //if (additionalService.Save(dsAdditionalService))
-            //{
-            //    this.LoadAdditionalService();
-            //}
+            gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
+            gvPaymentInformation.DataBind();
         }
 
         #endregion
