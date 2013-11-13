@@ -182,12 +182,12 @@ namespace HBM.Reservation
                 ///
                 /// Additional Services
                 ///
-                //((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllList();
-                //((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.ValueField = "AdditionalServiceId";
-                //((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.TextField = "ServiceName";
+                
 
+                
 
-
+                ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
+                
 
             }
             catch (System.Exception)
@@ -205,8 +205,7 @@ namespace HBM.Reservation
 
             cmbCustomerName.DataBind();
             gvCustomers.DataBind();
-            //gvPaymentInformation.DataBind();
-            //gvServiceInformation.DataBind();
+         
 
         }
 
@@ -576,6 +575,14 @@ namespace HBM.Reservation
             
         }
 
+        protected void gvServiceInformation_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+            if (e.Column.FieldName != "AdditionalServiceId") return;
+
+            ASPxComboBox combo = e.Editor as ASPxComboBox;
+            combo.DataBindItems();
+        }
+
         #endregion
 
         #region Payment Information
@@ -663,5 +670,7 @@ namespace HBM.Reservation
         }
 
         #endregion
+
+        
     }
 }

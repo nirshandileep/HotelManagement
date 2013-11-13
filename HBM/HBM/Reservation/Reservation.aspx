@@ -321,15 +321,16 @@
                                     </PanelCollection>
                                 </dx:ASPxRoundPanel>
                             </td>
-                            <td>
-                                <dx:ASPxRoundPanel ID="rpServiceInformation" runat="server" Width="200px" HeaderText="Service Information">
+                            <td align="right">
+                                <dx:ASPxRoundPanel ID="rpServiceInformation" runat="server" Width="420px" HeaderText="Service Information">
                                     <PanelCollection>
                                         <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                                             <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" 
                                                 AutoGenerateColumns="False" KeyFieldName="ReservationAdditionalServiceId" 
                                                 OnRowDeleting="gvServiceInformation_RowDeleting" 
                                                 OnRowInserting="gvServiceInformation_RowInserting" 
-                                                OnRowUpdating="gvServiceInformation_RowUpdating">
+                                                OnRowUpdating="gvServiceInformation_RowUpdating" 
+                                                OnCellEditorInitialize="gvServiceInformation_CellEditorInitialize">
                                                 <TotalSummary>
                                                     <dx:ASPxSummaryItem FieldName="Rate" ShowInColumn="Rate" ShowInGroupFooterColumn="Rate"
                                                         SummaryType="Sum" />
@@ -360,14 +361,21 @@
                                                         <ClearFilterButton Visible="True">
                                                         </ClearFilterButton>
                                                     </dx:GridViewCommandColumn>
-                                                    <dx:GridViewDataSpinEditColumn Caption="AdditionalServiceId" 
+                                                    <dx:GridViewDataComboBoxColumn Caption="AdditionalServiceId" 
                                                         FieldName="AdditionalServiceId" ShowInCustomizationForm="True" VisibleIndex="1">
-                                                        <PropertiesSpinEdit DisplayFormatString="g">
-                                                        </PropertiesSpinEdit>
-                                                    </dx:GridViewDataSpinEditColumn>
+                                                        <PropertiesComboBox TextField="ServiceName" ValueField="AdditionalServiceId" 
+                                                            ValueType="System.Int32">
+                                                            <ValidationSettings>
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
+                                                        </PropertiesComboBox>
+                                                    </dx:GridViewDataComboBoxColumn>
                                                     <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" 
                                                         ShowInCustomizationForm="True" VisibleIndex="2">
                                                         <PropertiesSpinEdit DisplayFormatString="g">
+                                                            <ValidationSettings>
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
                                                         </PropertiesSpinEdit>
                                                     </dx:GridViewDataSpinEditColumn>
                                                     <dx:GridViewDataTextColumn Caption="Note" FieldName="Note" 
