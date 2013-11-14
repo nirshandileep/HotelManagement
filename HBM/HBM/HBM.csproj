@@ -133,6 +133,7 @@
     <Content Include="Images\Reservation.png" />
     <Content Include="JS\HBMCommon.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Reservation\Booking.aspx" />
     <Content Include="Reservation\Reservation.aspx" />
     <Content Include="Reservation\SearchReservation.aspx" />
     <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
@@ -291,6 +292,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation\Booking.aspx.cs">
+      <DependentUpon>Booking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservation\Booking.aspx.designer.cs">
+      <DependentUpon>Booking.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reservation\Reservation.aspx.cs">
       <DependentUpon>Reservation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
