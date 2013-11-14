@@ -445,40 +445,66 @@
                                                         </ClearFilterButton>
                                                     </dx:GridViewCommandColumn>
                                                     <dx:GridViewDataDateColumn FieldName="PaymentDate" 
-                                                        ShowInCustomizationForm="True" VisibleIndex="1" Caption="PaymentDate">
+                                                        ShowInCustomizationForm="True" VisibleIndex="1" Caption="Payment Date">
+                                                        <PropertiesDateEdit>
+                                                            <ValidationSettings>
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
+                                                        </PropertiesDateEdit>
                                                     </dx:GridViewDataDateColumn>
                                                     <dx:GridViewDataTextColumn FieldName="ReferenceNumber" 
-                                                        ShowInCustomizationForm="True" VisibleIndex="2" Caption="ReferenceNumber">
+                                                        ShowInCustomizationForm="True" VisibleIndex="4" Caption="Ref No">
+                                                        <PropertiesTextEdit>
+                                                            <ValidationSettings>
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
+                                                        </PropertiesTextEdit>
                                                     </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="Notes" ShowInCustomizationForm="True"
-                                                        VisibleIndex="3" Caption="Notes">
-                                                    </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataComboBoxColumn Caption="PaymentTypeId" 
-                                                        FieldName="PaymentTypeId" ShowInCustomizationForm="True" VisibleIndex="4">
-                                                        <PropertiesComboBox DisplayFormatString="g" TextField="PaymentTypeName" 
+                                                    <dx:GridViewDataMemoColumn Caption="Notes" FieldName="Notes" 
+                                                        ShowInCustomizationForm="True" VisibleIndex="9">
+                                                    </dx:GridViewDataMemoColumn>
+                                                    <dx:GridViewDataComboBoxColumn Caption="Payment Type" 
+                                                        FieldName="PaymentTypeId" ShowInCustomizationForm="True" VisibleIndex="2">
+                                                        <PropertiesComboBox TextField="PaymentTypeName" 
                                                             ValueField="PaymentTypeId" ValueType="System.Int32">
+                                                            <ValidationSettings>
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn>
-                                                    <dx:GridViewDataComboBoxColumn Caption="CurrencyId" FieldName="CurrencyId" 
-                                                        ShowInCustomizationForm="True" VisibleIndex="5">
+                                                    <dx:GridViewDataComboBoxColumn Caption="Currency" FieldName="CurrencyId" 
+                                                        ShowInCustomizationForm="True" VisibleIndex="3">
                                                         <PropertiesComboBox TextField="CurrencyName" ValueField="CurrencyId" 
                                                             ValueType="System.Int32">
+                                                            <ValidationSettings>
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn>
-                                                    <dx:GridViewDataComboBoxColumn Caption="CreditCardTypeId" 
-                                                        FieldName="CreditCardTypeId" ShowInCustomizationForm="True" VisibleIndex="6">
+                                                    <dx:GridViewDataComboBoxColumn Caption="Card Type" 
+                                                        FieldName="CreditCardTypeId" ShowInCustomizationForm="True" 
+                                                        VisibleIndex="5">
                                                         <PropertiesComboBox TextField="Name" ValueField="CreditCardTypeId" 
                                                             ValueType="System.Int32">
+                                                            <ValidationSettings>
+                                                                <RequiredField ErrorText="Required" />
+                                                            </ValidationSettings>
                                                         </PropertiesComboBox>
                                                     </dx:GridViewDataComboBoxColumn>
-                                                    <dx:GridViewDataTextColumn Caption="CCNo" FieldName="CCNo" ShowInCustomizationForm="True"
-                                                        VisibleIndex="7">
+                                                    <dx:GridViewDataTextColumn Caption="Card No" FieldName="CCNo" ShowInCustomizationForm="True"
+                                                        VisibleIndex="6">
+                                                        <PropertiesTextEdit>
+                                                            <ValidationSettings>
+                                                                <RequiredField ErrorText="Required" />
+                                                            </ValidationSettings>
+                                                        </PropertiesTextEdit>
                                                     </dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataDateColumn Caption="CCExpirationDate" 
-                                                        FieldName="CCExpirationDate" ShowInCustomizationForm="True" VisibleIndex="8">
+                                                    <dx:GridViewDataDateColumn Caption="Expire Date" 
+                                                        FieldName="CCExpirationDate" ShowInCustomizationForm="True" 
+                                                        VisibleIndex="7">
                                                     </dx:GridViewDataDateColumn>
-                                                    <dx:GridViewDataTextColumn Caption="CCNameOnCard" FieldName="CCNameOnCard" 
-                                                        ShowInCustomizationForm="True" VisibleIndex="9">
+                                                    <dx:GridViewDataTextColumn FieldName="CCNameOnCard" ShowInCustomizationForm="True"
+                                                        VisibleIndex="8" Caption="Name on Card">
                                                     </dx:GridViewDataTextColumn>
                                                 </Columns>
                                                 <SettingsBehavior ConfirmDelete="True" EnableCustomizationWindow="True" />
