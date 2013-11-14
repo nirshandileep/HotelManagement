@@ -268,7 +268,7 @@
             <tr>
                 <td height="22" class="info-lbl">
                     Company Address
-                </td>
+                    Line 1</td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px" TabIndex="8">
                     </dx:ASPxTextBox>
@@ -282,6 +282,66 @@
                 <td>
                     &nbsp;
                 </td>
+            </tr>
+            <tr>
+                <td height="22" class="info-lbl">
+                    Company Address Line 2</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td height="22" class="info-lbl">
+                    City</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td height="22" class="info-lbl">
+                    State/County</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td height="22" class="info-lbl">
+                    Country</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td height="22" class="info-lbl">
+                    Zip Code/Post code</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
@@ -330,7 +390,8 @@
                     Billing Address<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtBillingAddress" runat="server" Width="170px" TabIndex="10">
+                    <dx:ASPxTextBox ID="txtBillingAddressLine1" runat="server" Width="170px" 
+                        TabIndex="10">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
                             ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -347,6 +408,18 @@
                     <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px" TabIndex="25">
                     </dx:ASPxTextBox>
                 </td>
+            </tr>
+            <tr>
+                <td height="22" class="info-lbl">
+                    Billing Address Line 2</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td class="info-lbl">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
@@ -372,8 +445,7 @@
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
-                    State
-                </td>
+                    State/County</td>
                 <td>
                     <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px" TabIndex="12">
                     </dx:ASPxTextBox>
@@ -420,8 +492,7 @@
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
-                    Post Code
-                </td>
+                    Zip Code/Post code</td>
                 <td>
                     <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px" TabIndex="14">
                     </dx:ASPxTextBox>

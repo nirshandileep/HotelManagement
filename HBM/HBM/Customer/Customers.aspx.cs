@@ -65,7 +65,9 @@ namespace HBM
                 CustomerObj = CustomerObj.Select();
 
                 txtCustomerName.Text = CustomerObj.CustomerName;
-                txtBillingAddress.Text = CustomerObj.BillingAddress;
+                txtBillingAddressLine1.Text = CustomerObj.BillingAddressLine1;
+                //txtBillingAddressLine2.Text = CustomerObj.BillingAddressLine2;
+
                 txtBillingCity.Text = CustomerObj.BillingCity;
 
                 if (CustomerObj.BillingCountryId.HasValue)
@@ -92,7 +94,7 @@ namespace HBM
                     cmbCCType.Value = CustomerObj.CreditCardTypeId.Value;
                 }
 
-                txtCompanyAddress.Text = CustomerObj.CompanyAddress;
+                txtCompanyAddress.Text = CustomerObj.CompanyAddressLine1;
                 txtCompanyName.Text = CustomerObj.CompanyName;
                 txtNotes.Text = CustomerObj.CompanyNotes;
                 txtDriveLicense.Text = CustomerObj.DriverLicense;
@@ -138,7 +140,9 @@ namespace HBM
                 Session["CustomerObj"] = null;
                 hdnCustomerId.Value = "0";
                 txtCustomerName.Text = string.Empty;
-                txtBillingAddress.Text = string.Empty;
+                txtBillingAddressLine1.Text = string.Empty;
+                //others
+
                 txtBillingCity.Text = string.Empty;
                 txtBillingPostCode.Text = string.Empty;
                 txtBillingState.Text = string.Empty;
@@ -240,7 +244,10 @@ namespace HBM
             CustomerObj.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
             CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
             CustomerObj.CustomerName = txtCustomerName.Text.Trim();
-            CustomerObj.BillingAddress = txtBillingAddress.Text.Trim();
+
+            CustomerObj.BillingAddressLine1 = txtBillingAddressLine1.Text.Trim();
+            //adress lines
+
             CustomerObj.BillingCity = txtBillingCity.Text.Trim();
 
             if (cmbBillingCountry.SelectedIndex > -1
@@ -287,7 +294,7 @@ namespace HBM
                 CustomerObj.CreditCardTypeId = null;
             }
 
-            CustomerObj.CompanyAddress = txtCompanyAddress.Text.Trim();
+            CustomerObj.CompanyAddressLine1 = txtCompanyAddress.Text.Trim();
             CustomerObj.CompanyName = txtCompanyName.Text.Trim();
             CustomerObj.CompanyNotes = txtNotes.Text.Trim();
             CustomerObj.DriverLicense = txtDriveLicense.Text.Trim();

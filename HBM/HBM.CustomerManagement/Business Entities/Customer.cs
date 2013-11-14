@@ -29,9 +29,14 @@ namespace HBM.CustomerManagement
         public string Mobile { get; set; }
         public string Email { get; set; }
         public string CompanyName { get; set; }
-        public string CompanyAddress { get; set; }
+        public string CompanyAddressLine1 { get; set; }
+        public string CompanyAddressLine2 { get; set; }
+        public string CompanyCity { get; set; }
+        public string CompanyState { get; set; }
+        public int? CompanyCountryId { get; set; }
         public string CompanyNotes { get; set; }
-        public string BillingAddress { get; set; }
+        public string BillingAddressLine1 { get; set; }
+        public string BillingAddressLine2 { get; set; }
         public string BillingCity { get; set; }
         public string BillingState { get; set; }
         public int? BillingCountryId { get; set; }

@@ -193,13 +193,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtLicensePlate;
         
         /// <summary>
-        /// txtBillingAddress control.
+        /// txtBillingAddressLine1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtBillingAddress;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtBillingAddressLine1;
         
         /// <summary>
         /// txtDriveLicense control.
