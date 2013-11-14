@@ -128,12 +128,45 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" Width="100%">
                                     <TabPages>
                                         <dx:TabPage Text="Guest Info">
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                                    <dx:ASPxGridView ID="ASPxGridView1" runat="server">
+                                                    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" Width="100%">
+                                                        <Columns>
+                                                            <dx:GridViewCommandColumn ShowInCustomizationForm="True" ShowSelectCheckbox="True"
+                                                                VisibleIndex="0">
+                                                                <ClearFilterButton Visible="True">
+                                                                </ClearFilterButton>
+                                                            </dx:GridViewCommandColumn>
+                                                            <dx:GridViewDataTextColumn Caption="Customer" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataTextColumn Caption="In" ShowInCustomizationForm="True" VisibleIndex="2">
+                                                                <PropertiesTextEdit DisplayFormatString="d">
+                                                                </PropertiesTextEdit>
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataTextColumn Caption="Out" ShowInCustomizationForm="True" VisibleIndex="3">
+                                                                <PropertiesTextEdit DisplayFormatString="d">
+                                                                </PropertiesTextEdit>
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataTextColumn Caption="Room" ShowInCustomizationForm="True" VisibleIndex="4">
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" VisibleIndex="5">
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataSpinEditColumn Caption="# of Adults" ShowInCustomizationForm="True"
+                                                                VisibleIndex="6">
+                                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                                                </PropertiesSpinEdit>
+                                                            </dx:GridViewDataSpinEditColumn>
+                                                            <dx:GridViewDataTextColumn Caption="# of Childrens" ShowInCustomizationForm="True"
+                                                                VisibleIndex="7">
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataTextColumn Caption="# of Infant" ShowInCustomizationForm="True" VisibleIndex="8">
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataTextColumn Caption="Amount" ShowInCustomizationForm="True" VisibleIndex="9">
+                                                            </dx:GridViewDataTextColumn>
+                                                        </Columns>
                                                     </dx:ASPxGridView>
                                                 </dx:ContentControl>
                                             </ContentCollection>
@@ -141,7 +174,66 @@
                                         <dx:TabPage Text="Additional Service">
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                                    <dx:ASPxGridView ID="ASPxGridView2" runat="server">
+                                                    <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False"
+                                                        KeyFieldName="ReservationAdditionalServiceId">
+                                                        <TotalSummary>
+                                                            <dx:ASPxSummaryItem FieldName="Rate" ShowInColumn="Rate" ShowInGroupFooterColumn="Rate"
+                                                                SummaryType="Sum" />
+                                                        </TotalSummary>
+                                                        <Columns>
+                                                            <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
+                                                                VisibleIndex="0" Width="80px">
+                                                                <EditButton Visible="True">
+                                                                    <Image ToolTip="Edit" Url="~/Images/update.png">
+                                                                    </Image>
+                                                                </EditButton>
+                                                                <NewButton Visible="True">
+                                                                    <Image ToolTip="New" Url="~/Images/new.png">
+                                                                    </Image>
+                                                                </NewButton>
+                                                                <DeleteButton Visible="True">
+                                                                    <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                                                    </Image>
+                                                                </DeleteButton>
+                                                                <CancelButton Visible="True">
+                                                                    <Image Url="~/Images/Close.png">
+                                                                    </Image>
+                                                                </CancelButton>
+                                                                <UpdateButton Visible="True">
+                                                                    <Image ToolTip="Save" Url="~/Images/Apply.png">
+                                                                    </Image>
+                                                                </UpdateButton>
+                                                                <ClearFilterButton Visible="True">
+                                                                </ClearFilterButton>
+                                                            </dx:GridViewCommandColumn>
+                                                            <dx:GridViewDataComboBoxColumn Caption="Service Type" FieldName="AdditionalServiceId"
+                                                                ShowInCustomizationForm="True" VisibleIndex="1">
+                                                                <PropertiesComboBox TextField="ServiceName" ValueField="AdditionalServiceId" ValueType="System.Int32"
+                                                                    IncrementalFilteringMode="StartsWith" TextFormatString="{1}">
+                                                                    <Columns>
+                                                                        <dx:ListBoxColumn Caption="Service Code" FieldName="ServiceCode" />
+                                                                        <dx:ListBoxColumn Caption="Service Name" FieldName="ServiceName" />
+                                                                        <dx:ListBoxColumn Caption="Rate" FieldName="Rate" />
+                                                                    </Columns>
+                                                                    <ValidationSettings>
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
+                                                                </PropertiesComboBox>
+                                                            </dx:GridViewDataComboBoxColumn>
+                                                            <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" ShowInCustomizationForm="True"
+                                                                VisibleIndex="2">
+                                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                                                    <ValidationSettings>
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
+                                                                </PropertiesSpinEdit>
+                                                            </dx:GridViewDataSpinEditColumn>
+                                                            <dx:GridViewDataTextColumn Caption="Note" FieldName="Note" ShowInCustomizationForm="True"
+                                                                VisibleIndex="3">
+                                                            </dx:GridViewDataTextColumn>
+                                                        </Columns>
+                                                        <SettingsBehavior AllowGroup="False" SortMode="DisplayText" ConfirmDelete="True" />
+                                                        <Settings ShowGroupButtons="False" />
                                                     </dx:ASPxGridView>
                                                 </dx:ContentControl>
                                             </ContentCollection>
