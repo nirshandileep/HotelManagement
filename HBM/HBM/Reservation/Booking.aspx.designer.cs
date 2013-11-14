@@ -31,22 +31,22 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent1;
         
         /// <summary>
-        /// ASPxComboBox1 control.
+        /// cmbCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCustomer;
         
         /// <summary>
-        /// ASPxComboBox2 control.
+        /// cmbSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbSource;
         
         /// <summary>
         /// ASPxRoundPanel2 control.
@@ -67,22 +67,22 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent2;
         
         /// <summary>
-        /// ASPxDateEdit3 control.
+        /// dtCheckingDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtCheckingDate;
         
         /// <summary>
-        /// ASPxDateEdit4 control.
+        /// dtCheckOutDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit4;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtCheckOutDate;
         
         /// <summary>
         /// ASPxRoundPanel3 control.
@@ -103,76 +103,76 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl ASPxPageControl1;
         
         /// <summary>
-        /// ASPxComboBox3 control.
+        /// cmbCustomerAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCustomerAdd;
         
         /// <summary>
-        /// ASPxComboBox4 control.
+        /// cmbRoom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox4;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRoom;
         
         /// <summary>
-        /// ASPxComboBox5 control.
+        /// cmdRatePlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox5;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmdRatePlan;
         
         /// <summary>
-        /// ASPxButton1 control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAdd;
         
         /// <summary>
-        /// ASPxSpinEdit1 control.
+        /// seAdults control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit ASPxSpinEdit1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seAdults;
         
         /// <summary>
-        /// ASPxSpinEdit2 control.
+        /// seChildren control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit ASPxSpinEdit2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seChildren;
         
         /// <summary>
-        /// ASPxSpinEdit3 control.
+        /// seInfants control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit ASPxSpinEdit3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seInfants;
         
         /// <summary>
-        /// ASPxGridView1 control.
+        /// gvGuestInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView ASPxGridView1;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvGuestInfo;
         
         /// <summary>
         /// gvServiceInformation control.
