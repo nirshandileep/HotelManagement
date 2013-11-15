@@ -13,6 +13,7 @@
     Namespace="DevExpress.Web.ASPxClasses" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
+<%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -31,7 +32,14 @@
                                             Customer
                                         </td>
                                         <td>
-                                            <dx:ASPxComboBox ID="cmbCustomer" runat="server">
+                                            <dx:ASPxComboBox ID="cmbCustomer" runat="server" EnableIncrementalFiltering="True"
+                                                IncrementalFilteringMode="StartsWith" TextFormatString="{1}">
+                                                <Columns>
+                                                    <dx:ListBoxColumn Caption="Code" FieldName="MemberCode" />
+                                                    <dx:ListBoxColumn Caption="Name" FieldName="CustomerName" />
+                                                    <dx:ListBoxColumn Caption="Phone" FieldName="Phone" />
+                                                    <dx:ListBoxColumn Caption="Mobile" FieldName="Mobile" />
+                                                </Columns>
                                             </dx:ASPxComboBox>
                                         </td>
                                         <td>
@@ -128,7 +136,8 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
+                                    Width="100%"  >
                                     <TabPages>
                                         <dx:TabPage Text="Guest Info">
                                             <ContentCollection>
@@ -136,29 +145,54 @@
                                                     <table width="100%">
                                                         <tr>
                                                             <td height="22">
-                                                                Customer
-                                                            </td>
+                                                                Sharers' names</td>
                                                             <td>
-                                                                <dx:ASPxComboBox ID="cmbCustomerAdd" runat="server" ValueType="System.String">
-                                                                </dx:ASPxComboBox>
+                                                                <dx:ASPxDropDownEdit ID="ASPxDropDownEdit1" runat="server" 
+                                                                    DropDownWindowHeight="200px" DropDownWindowWidth="350px">
+                                                                    <DropDownWindowTemplate>
+                                                                        <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="71px" Width="100%">
+                                                                        </dx:ASPxMemo>
+                                                                    </DropDownWindowTemplate>
+                                                                </dx:ASPxDropDownEdit>
                                                             </td>
                                                             <td>
                                                                 Room
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.String">
+                                                                <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.String" TextFormatString="{1}">
+                                                                    <Columns>
+                                                                        <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" />
+                                                                        <dx:ListBoxColumn Caption="Name" FieldName="RoomName" />
+                                                                        <dx:ListBoxColumn Caption="Room Number" FieldName="RoomNumber" />
+                                                                        <dx:ListBoxColumn Caption="Max Adult" FieldName="MaxAdult" />
+                                                                        <dx:ListBoxColumn Caption="Max Children" FieldName="MaxChildren" />
+                                                                        <dx:ListBoxColumn Caption="Max Infant" FieldName="MaxInfant" />
+                                                                        <dx:ListBoxColumn Caption="Smoking Allow" FieldName="SmokingAllow" />
+                                                                        <dx:ListBoxColumn Caption="Bed Type" FieldName="BedTypeName" />
+                                                                        <dx:ListBoxColumn Caption="Description" FieldName="BedTypeDescription" />
+                                                                    </Columns>
                                                                 </dx:ASPxComboBox>
                                                             </td>
                                                             <td>
                                                                 Rate Plan
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxComboBox ID="cmdRatePlan" runat="server" ValueType="System.String">
+                                                                <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String" 
+                                                                    TextFormatString="{0}">
+                                                                    <Columns>
+                                                                        <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" />
+                                                                        <dx:ListBoxColumn Caption="Effective From" FieldName="EffectiveFrom" />
+                                                                        <dx:ListBoxColumn Caption="Effective To" FieldName="EffectiveTo" />
+                                                                        <dx:ListBoxColumn Caption="Rate" FieldName="Rate" />
+                                                                        <dx:ListBoxColumn Caption="Adult Rate" FieldName="AdditionalAdultRate" />
+                                                                        <dx:ListBoxColumn Caption="Children Rate" FieldName="AdditionalChildrenRate" />
+                                                                        <dx:ListBoxColumn Caption="Infant Rate" FieldName="AdditionalInfantRate" />
+                                                                    </Columns>
                                                                 </dx:ASPxComboBox>
                                                             </td>
                                                             <td rowspan="3">
                                                                 <dx:ASPxButton ID="btnAdd" runat="server" Text="Add" Height="40px">
-                                                                            </dx:ASPxButton>
+                                                                </dx:ASPxButton>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -270,14 +304,18 @@
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                                     <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False"
-                                                        KeyFieldName="ReservationAdditionalServiceId">
+                                                        KeyFieldName="ReservationAdditionalServiceId" 
+                                                        OnCellEditorInitialize="gvServiceInformation_CellEditorInitialize" 
+                                                        OnRowDeleting="gvServiceInformation_RowDeleting" 
+                                                        OnRowInserting="gvServiceInformation_RowInserting" 
+                                                        OnRowUpdating="gvServiceInformation_RowUpdating">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Rate" ShowInColumn="Rate" ShowInGroupFooterColumn="Rate"
                                                                 SummaryType="Sum" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
-                                                                VisibleIndex="0" Width="80px">
+                                                                VisibleIndex="0" Width="120px">
                                                                 <EditButton Visible="True">
                                                                     <Image ToolTip="Edit" Url="~/Images/update.png">
                                                                     </Image>
@@ -337,7 +375,11 @@
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                                     <dx:ASPxGridView ID="gvPaymentInformation" runat="server" Width="100%" AutoGenerateColumns="False"
-                                                        KeyFieldName="ReservationPaymentId">
+                                                        KeyFieldName="ReservationPaymentId" 
+                                                        OnCellEditorInitialize="gvPaymentInformation_CellEditorInitialize" 
+                                                        OnRowDeleting="gvPaymentInformation_RowDeleting" 
+                                                        OnRowInserting="gvPaymentInformation_RowInserting" 
+                                                        OnRowUpdating="gvPaymentInformation_RowUpdating">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
                                                                 SummaryType="Sum" />
@@ -369,7 +411,7 @@
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
                                                             <dx:GridViewDataDateColumn FieldName="PaymentDate" ShowInCustomizationForm="True"
-                                                                VisibleIndex="1" Caption="Payment Date">
+                                                                VisibleIndex="2" Caption="Payment Date">
                                                                 <PropertiesDateEdit>
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -377,7 +419,7 @@
                                                                 </PropertiesDateEdit>
                                                             </dx:GridViewDataDateColumn>
                                                             <dx:GridViewDataTextColumn FieldName="ReferenceNumber" ShowInCustomizationForm="True"
-                                                                VisibleIndex="4" Caption="Ref No">
+                                                                VisibleIndex="4" Caption="Ref No" Visible="False">
                                                                 <PropertiesTextEdit>
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -388,7 +430,7 @@
                                                                 VisibleIndex="9">
                                                             </dx:GridViewDataMemoColumn>
                                                             <dx:GridViewDataComboBoxColumn Caption="Payment Type" FieldName="PaymentTypeId" ShowInCustomizationForm="True"
-                                                                VisibleIndex="2">
+                                                                VisibleIndex="1">
                                                                 <PropertiesComboBox TextField="PaymentTypeName" ValueField="PaymentTypeId" ValueType="System.Int32">
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -396,7 +438,7 @@
                                                                 </PropertiesComboBox>
                                                             </dx:GridViewDataComboBoxColumn>
                                                             <dx:GridViewDataComboBoxColumn Caption="Currency" FieldName="CurrencyId" ShowInCustomizationForm="True"
-                                                                VisibleIndex="3">
+                                                                VisibleIndex="3" Visible="False">
                                                                 <PropertiesComboBox TextField="CurrencyName" ValueField="CurrencyId" ValueType="System.Int32">
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />

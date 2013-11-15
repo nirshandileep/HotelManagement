@@ -103,13 +103,13 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl ASPxPageControl1;
         
         /// <summary>
-        /// cmbCustomerAdd control.
+        /// ASPxDropDownEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCustomerAdd;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDropDownEdit ASPxDropDownEdit1;
         
         /// <summary>
         /// cmbRoom control.
@@ -121,13 +121,13 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRoom;
         
         /// <summary>
-        /// cmdRatePlan control.
+        /// cmbRatePlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmdRatePlan;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbRatePlan;
         
         /// <summary>
         /// btnAdd control.
@@ -299,5 +299,17 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton3;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new HBM.HBMMaster Master {
+            get {
+                return ((HBM.HBMMaster)(base.Master));
+            }
+        }
     }
 }
