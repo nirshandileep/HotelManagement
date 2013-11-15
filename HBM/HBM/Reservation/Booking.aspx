@@ -147,14 +147,15 @@
                                                             <td height="22">
                                                                 Sharers' names</td>
                                                             <td>
-                                                                <dx:ASPxDropDownEdit ID="ASPxDropDownEdit1" runat="server" 
-                                                                    DropDownWindowHeight="200px" DropDownWindowWidth="350px">
+                                                                <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" 
+                                                                    DropDownWindowHeight="200px" DropDownWindowWidth="350px"  ClientInstanceName="ddlShareNames">
                                                                     <DropDownWindowTemplate>
-                                                                        <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="200px" Width="100%" >
+                                                                        <dx:ASPxMemo ID="memSharesNames" runat="server" Height="200px" Width="100%"  ClientInstanceName="memSharesNames">
                                                                         </dx:ASPxMemo>
                                                                     </DropDownWindowTemplate>
                                                                     <ClientSideEvents CloseUp="function(s, e) {
-	alert('a');
+    alert(memSharesNames);
+	ddlShareNames.text=memSharesNames.text;
 }" />
                                                                 </dx:ASPxDropDownEdit>
                                                             </td>

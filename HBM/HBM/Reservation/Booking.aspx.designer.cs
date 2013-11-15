@@ -103,13 +103,13 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl ASPxPageControl1;
         
         /// <summary>
-        /// ASPxDropDownEdit1 control.
+        /// ddlShareNames control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDropDownEdit ASPxDropDownEdit1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDropDownEdit ddlShareNames;
         
         /// <summary>
         /// cmbRoom control.
