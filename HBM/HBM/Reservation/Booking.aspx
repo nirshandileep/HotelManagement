@@ -150,9 +150,12 @@
                                                                 <dx:ASPxDropDownEdit ID="ASPxDropDownEdit1" runat="server" 
                                                                     DropDownWindowHeight="200px" DropDownWindowWidth="350px">
                                                                     <DropDownWindowTemplate>
-                                                                        <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="71px" Width="100%">
+                                                                        <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="200px" Width="100%" >
                                                                         </dx:ASPxMemo>
                                                                     </DropDownWindowTemplate>
+                                                                    <ClientSideEvents CloseUp="function(s, e) {
+	alert('a');
+}" />
                                                                 </dx:ASPxDropDownEdit>
                                                             </td>
                                                             <td>
