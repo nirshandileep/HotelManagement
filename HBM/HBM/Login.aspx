@@ -47,7 +47,6 @@
                                 No 11, Station Road, Harlesden<br />
                                 London, NW10 4UJ<br />
                                 TeL : 0203 551 9908 / 0208 965 1451<br />
-                                Fax : info@reservation.com<br />
                             </p>
                         </td>
                     </tr>

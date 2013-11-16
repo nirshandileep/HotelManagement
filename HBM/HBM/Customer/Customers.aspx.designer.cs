@@ -139,15 +139,6 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCCExpiryDateYear;
         
         /// <summary>
-        /// txtCompanyName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyName;
-        
-        /// <summary>
         /// txtNameOnCard control.
         /// </summary>
         /// <remarks>
@@ -155,6 +146,15 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtNameOnCard;
+        
+        /// <summary>
+        /// txtCompanyName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyName;
         
         /// <summary>
         /// txtCompanyAddressLine1 control.
@@ -166,6 +166,15 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyAddressLine1;
         
         /// <summary>
+        /// cmbCar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCar;
+        
+        /// <summary>
         /// txtCompanyAddressLine2 control.
         /// </summary>
         /// <remarks>
@@ -175,6 +184,15 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyAddressLine2;
         
         /// <summary>
+        /// txtLicensePlate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtLicensePlate;
+        
+        /// <summary>
         /// txtCompanyCity control.
         /// </summary>
         /// <remarks>
@@ -182,6 +200,15 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyCity;
+        
+        /// <summary>
+        /// txtDriveLicense control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtDriveLicense;
         
         /// <summary>
         /// txtCompanyState control.
@@ -220,24 +247,6 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtNotes;
         
         /// <summary>
-        /// cmbCar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCar;
-        
-        /// <summary>
-        /// txtLicensePlate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtLicensePlate;
-        
-        /// <summary>
         /// txtBillingAddressLine1 control.
         /// </summary>
         /// <remarks>
@@ -245,15 +254,6 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtBillingAddressLine1;
-        
-        /// <summary>
-        /// txtDriveLicense control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtDriveLicense;
         
         /// <summary>
         /// txtBillingCity control.

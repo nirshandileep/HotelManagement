@@ -119,8 +119,8 @@
             </div>
         </div>
     </div>
-    <div class="wrapper">
-        <div class="page-wrapper">
+    <div>
+        <div >
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

@@ -38,7 +38,8 @@
                     Passport Number
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtPassportNumber" runat="server" Width="170px" TabIndex="15">
+                    <dx:ASPxTextBox ID="txtPassportNumber" runat="server" Width="170px" 
+                        TabIndex="21">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
@@ -47,7 +48,7 @@
                     Member Code<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px" TabIndex="1">
+                    <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px" TabIndex="2">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
                             ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -62,7 +63,7 @@
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbPassportCountryOfIssue" runat="server" ValueType="System.Int32"
-                        IncrementalFilteringMode="Contains" TabIndex="16">
+                        IncrementalFilteringMode="Contains" TabIndex="22">
                     </dx:ASPxComboBox>
                 </td>
             </tr>
@@ -72,7 +73,7 @@
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbGender" runat="server" IncrementalFilteringMode="Contains"
-                        TabIndex="2">
+                        TabIndex="3">
                         <Items>
                             <dx:ListEditItem Text="Male" Value="Male" />
                             <dx:ListEditItem Text="Female" Value="Female" />
@@ -89,7 +90,7 @@
                     Expiry Date
                 </td>
                 <td>
-                    <dx:ASPxDateEdit ID="dtpExpiryDate" runat="server" TabIndex="17">
+                    <dx:ASPxDateEdit ID="dtpExpiryDate" runat="server" TabIndex="23">
                     </dx:ASPxDateEdit>
                 </td>
             </tr>
@@ -98,7 +99,7 @@
                     Phone<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px" TabIndex="3">
+                    <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px" TabIndex="4">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
                             ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -120,7 +121,7 @@
                     Fax
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtFax" runat="server" Width="170px" TabIndex="4">
+                    <dx:ASPxTextBox ID="txtFax" runat="server" Width="170px" TabIndex="5">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -131,7 +132,7 @@
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbCCType" runat="server" IncrementalFilteringMode="Contains"
-                        ValueType="System.Int32" TabIndex="18">
+                        ValueType="System.Int32" TabIndex="24">
                     </dx:ASPxComboBox>
                 </td>
             </tr>
@@ -140,7 +141,7 @@
                     Email
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" TabIndex="5">
+                    <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" TabIndex="6">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
                             SetFocusOnError="True" ValidationGroup="vgCustomer">
                             <RegularExpression ErrorText="Incorrect Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
@@ -154,7 +155,7 @@
                     CC No
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCCNumber" runat="server" Width="170px" TabIndex="19">
+                    <dx:ASPxTextBox ID="txtCCNumber" runat="server" Width="170px" TabIndex="25">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
@@ -164,7 +165,7 @@
                 </td>
                 <td>
                     <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
-                        TabIndex="6" ClientInstanceName="cmbGuestType">
+                        TabIndex="7" ClientInstanceName="cmbGuestType">
                         <ClientSideEvents ButtonClick="function(s, e) {
   	ShowPopupWindow(ppcGuestType);
 }" />
@@ -189,7 +190,7 @@
                         <tr>
                             <td>
                                 <dx:ASPxComboBox ID="cmbCCExpiryDateMonth" runat="server" ValueType="System.Int32"
-                                    IncrementalFilteringMode="Contains" Width="50px" TabIndex="20">
+                                    IncrementalFilteringMode="Contains" Width="50px" TabIndex="26">
                                     <Items>
                                         <dx:ListEditItem Text="1" Value="1" />
                                         <dx:ListEditItem Text="2" Value="2" />
@@ -211,7 +212,7 @@
                             </td>
                             <td>
                                 <dx:ASPxComboBox ID="cmbCCExpiryDateYear" runat="server" ValueType="System.Int32"
-                                    IncrementalFilteringMode="Contains" Width="114px" TabIndex="21">
+                                    IncrementalFilteringMode="Contains" Width="114px" TabIndex="27">
                                     <Items>
                                         <dx:ListEditItem Text="2012" Value="2012" />
                                         <dx:ListEditItem Text="2013" Value="2013" />
@@ -240,10 +241,13 @@
                     &nbsp;
                 </td>
                 <td>
+                    Name on card
                     &nbsp;
                 </td>
                 <td>
-                    &nbsp;
+                    &nbsp;<dx:ASPxTextBox ID="txtNameOnCard" runat="server" Width="170px" 
+                        TabIndex="28">
+                    </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>
@@ -251,19 +255,16 @@
                     Company Name
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px" TabIndex="7">
+                    <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px" TabIndex="8">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
                     &nbsp;
                 </td>
                 <td class="info-lbl">
-                    Name on card
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <dx:ASPxTextBox ID="txtNameOnCard" runat="server" Width="170px" TabIndex="22">
-                    </dx:ASPxTextBox>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
@@ -271,17 +272,24 @@
                     Line 1</td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyAddressLine1" runat="server" Width="170px" 
-                        TabIndex="8" MaxLength="150">
+                        TabIndex="9" MaxLength="150">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
                     &nbsp;
                 </td>
                 <td>
+                    Car
                     &nbsp;
                 </td>
                 <td>
-                    &nbsp;
+                    <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" IncrementalFilteringMode="Contains"
+                        TabIndex="29">
+                        <Items>
+                            <dx:ListEditItem Text="No" Value="No" />
+                            <dx:ListEditItem Text="Yes" Value="Yes" />
+                        </Items>
+                    </dx:ASPxComboBox>
                 </td>
             </tr>
             <tr>
@@ -289,36 +297,42 @@
                     Company Address Line 2</td>
                 <td>
                     <dx:ASPxTextBox ID="txtCompanyAddressLine2" runat="server" Width="170px" 
-                        TabIndex="8" MaxLength="150">
+                        TabIndex="10" MaxLength="150">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
                     &nbsp;</td>
                 <td>
-                    &nbsp;</td>
+                    License Plate
+                </td>
                 <td>
-                    &nbsp;</td>
+                    <dx:ASPxTextBox ID="txtLicensePlate" runat="server" Width="170px" TabIndex="30">
+                    </dx:ASPxTextBox>
+                </td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
                     City</td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyCity" runat="server" Width="170px" TabIndex="8" 
+                    <dx:ASPxTextBox ID="txtCompanyCity" runat="server" Width="170px" TabIndex="11" 
                         MaxLength="50">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
                     &nbsp;</td>
                 <td>
-                    &nbsp;</td>
+                    Drive License
+                </td>
                 <td>
-                    &nbsp;</td>
+                    <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px" TabIndex="31">
+                    </dx:ASPxTextBox>
+                </td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
                     State/County</td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyState" runat="server" Width="170px" TabIndex="8" 
+                    <dx:ASPxTextBox ID="txtCompanyState" runat="server" Width="170px" TabIndex="12" 
                         MaxLength="50">
                     </dx:ASPxTextBox>
                 </td>
@@ -365,24 +379,16 @@
                     Notes
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px" TabIndex="9">
+                    <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px" TabIndex="15">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
                     &nbsp;
                 </td>
                 <td>
-                    Car
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" IncrementalFilteringMode="Contains"
-                        TabIndex="23">
-                        <Items>
-                            <dx:ListEditItem Text="No" Value="No" />
-                            <dx:ListEditItem Text="Yes" Value="Yes" />
-                        </Items>
-                    </dx:ASPxComboBox>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
@@ -395,12 +401,9 @@
                     &nbsp;
                 </td>
                 <td class="info-lbl">
-                    License Plate
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <dx:ASPxTextBox ID="txtLicensePlate" runat="server" Width="170px" TabIndex="24">
-                    </dx:ASPxTextBox>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
@@ -408,7 +411,7 @@
                 </td>
                 <td>
                     <dx:ASPxTextBox ID="txtBillingAddressLine1" runat="server" Width="170px" 
-                        TabIndex="10">
+                        TabIndex="16">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
                             ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -419,19 +422,16 @@
                     &nbsp;
                 </td>
                 <td class="info-lbl">
-                    Drive License
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px" TabIndex="25">
-                    </dx:ASPxTextBox>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">
                     Billing City<span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px" TabIndex="11">
+                    <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px" TabIndex="17">
                         <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
                             ErrorDisplayMode="ImageWithTooltip" ErrorText="Required">
                             <RequiredField IsRequired="True" ErrorText="Required" />
@@ -452,7 +452,7 @@
                 <td height="22" class="info-lbl">
                     State/County</td>
                 <td>
-                    <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px" TabIndex="12">
+                    <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px" TabIndex="18">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -474,7 +474,7 @@
                         <tr>
                             <td>
                                 <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" ValueType="System.Int32" IncrementalFilteringMode="Contains"
-                                    TabIndex="13">
+                                    TabIndex="19">
                                 </dx:ASPxComboBox>
                             </td>
                             <td>
@@ -499,7 +499,8 @@
                 <td height="22" class="info-lbl">
                     Zip Code/Post code</td>
                 <td>
-                    <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px" TabIndex="14">
+                    <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px" 
+                        TabIndex="20">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
