@@ -154,8 +154,12 @@
                                                                         </dx:ASPxMemo>
                                                                     </DropDownWindowTemplate>
                                                                     <ClientSideEvents CloseUp="function(s, e) {
-    alert(memSharesNames);
-	ddlShareNames.text=memSharesNames.text;
+    
+	ddlShareNames.SetValue(memSharesNames.GetValue().toString());
+}" DropDown="function(s, e) {
+
+memSharesNames.SetValue(ddlShareNames.GetValue().toString());
+
 }" />
                                                                 </dx:ASPxDropDownEdit>
                                                             </td>
