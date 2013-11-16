@@ -157,13 +157,58 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtNameOnCard;
         
         /// <summary>
-        /// txtCompanyAddress control.
+        /// txtCompanyAddressLine1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyAddress;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyAddressLine1;
+        
+        /// <summary>
+        /// txtCompanyAddressLine2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyAddressLine2;
+        
+        /// <summary>
+        /// txtCompanyCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyCity;
+        
+        /// <summary>
+        /// txtCompanyState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyState;
+        
+        /// <summary>
+        /// cmbCompanyCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCompanyCountry;
+        
+        /// <summary>
+        /// txtCompanyPostCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyPostCode;
         
         /// <summary>
         /// txtNotes control.

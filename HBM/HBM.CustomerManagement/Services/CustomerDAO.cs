@@ -30,6 +30,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@CompanyAddressLine2", DbType.String, customer.CompanyAddressLine2);
             db.AddInParameter(command, "@CompanyCity", DbType.String, customer.CompanyCity);
             db.AddInParameter(command, "@CompanyState", DbType.String, customer.CompanyState);
+            db.AddInParameter(command, "@CompanyPostCode", DbType.String, customer.CompanyPostCode);
             db.AddInParameter(command, "@CompanyCountryId", DbType.Int32, customer.CompanyCountryId);
             db.AddInParameter(command, "@CompanyNotes", DbType.String, customer.CompanyNotes);
             db.AddInParameter(command, "@BillingAddressLine1", DbType.String, customer.BillingAddressLine1);
@@ -77,6 +78,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@CompanyAddressLine2", DbType.String, customer.CompanyAddressLine2);
             db.AddInParameter(command, "@CompanyCity", DbType.String, customer.CompanyCity);
             db.AddInParameter(command, "@CompanyState", DbType.String, customer.CompanyState);
+            db.AddInParameter(command, "@CompanyPostCode", DbType.String, customer.CompanyPostCode);
             db.AddInParameter(command, "@CompanyCountryId", DbType.Int32, customer.CompanyCountryId);
             db.AddInParameter(command, "@CompanyNotes", DbType.String, customer.CompanyNotes);
             db.AddInParameter(command, "@BillingAddressLine1", DbType.String, customer.BillingAddressLine1);

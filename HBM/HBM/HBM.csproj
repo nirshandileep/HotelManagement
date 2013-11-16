@@ -292,6 +292,11 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Reservation\Booking.aspx.cs">
       <DependentUpon>Booking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -384,72 +389,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Themes\HBMTheme\ASPxButton.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxButtonEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxCalendar.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxCallbackPanel.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxCaptcha.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxCheckBox.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxCheckBoxList.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxCloudControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxColorEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxComboBox.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxDataView.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxDateEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxDateNavigator.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxDockPanel.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxDropDownEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxFileManager.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxFilterControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxFormLayout.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxGridLookup.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxGridView.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxHeadline.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxHtmlEditor.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxHyperLink.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxImageSlider.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxLabel.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxListBox.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxLoadingPanel.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxMemo.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxMenu.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxNavBar.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxNewsControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxPageControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxPager.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxPivotGrid.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxPopupControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxPopupMenu.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxProgressBar.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxRadioButton.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxRadioButtonList.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxRatingControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxRoundPanel.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxScheduler.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxSiteMapControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxSpellChecker.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxSpinEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxSplitter.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxTabControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxTextBox.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxTimeEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxTitleIndex.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxTrackBar.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxTreeList.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxTreeView.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxUploadControl.skin" />
-    <Content Include="App_Themes\HBMTheme\ASPxValidationSummary.skin" />
-    <Content Include="App_Themes\HBMTheme\MonthEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\RecurrenceTypeEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\ReportDocumentMap.skin" />
-    <Content Include="App_Themes\HBMTheme\ReportParametersPanel.skin" />
-    <Content Include="App_Themes\HBMTheme\ReportToolbar.skin" />
-    <Content Include="App_Themes\HBMTheme\ReportViewer.skin" />
-    <Content Include="App_Themes\HBMTheme\WebChartControl.skin" />
-    <Content Include="App_Themes\HBMTheme\WeekDaysEdit.skin" />
-    <Content Include="App_Themes\HBMTheme\WeekOfMonthEdit.skin" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="App_Themes\Glass\ASPxButton.skin" />
     <Content Include="App_Themes\Glass\ASPxButtonEdit.skin" />
     <Content Include="App_Themes\Glass\ASPxCalendar.skin" />
@@ -520,7 +459,10 @@
     <None Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Resources\" />

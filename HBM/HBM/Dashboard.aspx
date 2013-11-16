@@ -69,6 +69,8 @@
                         AllowDisplayAppointmentDependencyForm="Never" 
                         AllowDisplayAppointmentForm="Never" AllowInplaceEditor="None" />
                     
+                    <OptionsBehavior RecurrentAppointmentDeleteAction="Cancel" />
+                    
                 </dxwschs:ASPxScheduler>
             </td>
         </tr>

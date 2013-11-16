@@ -24,7 +24,9 @@
                         KeyFieldName="CustomerId" Width="100%">
                         <Columns>                         
                             <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Customer Name" 
-                                FieldName="CustomerId" Width="250px">
+                                FieldName="CustomerName" Width="250px" UnboundType="String">
+                                <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
+                                    SortMode="DisplayText" />
                                 <DataItemTemplate>
                                     <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/Customer/Customers.aspx?CustomerId=",Eval("CustomerId").ToString()) %>'
                                         Text='<%# Eval("CustomerName") %>' />
@@ -34,9 +36,13 @@
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="MemberCode" VisibleIndex="2" 
                                 Width="100px">
+                                <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
+                                    SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="Phone" UnboundType="String" 
                                 VisibleIndex="3" Width="150px">
+                                <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
+                                    SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="CustomerId" Visible="False" VisibleIndex="0">
                             </dx:GridViewDataTextColumn>
@@ -44,6 +50,8 @@
                                 VisibleIndex="4" Width="150px">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="Email" UnboundType="String" VisibleIndex="5">
+                                <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
+                                    SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
                         </Columns>
                         <Settings ShowFilterRow="True" />

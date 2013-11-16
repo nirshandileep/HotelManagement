@@ -82,7 +82,8 @@
                                     <Image Url="~/Images/Reservation.png">
                                     </Image>
                                 </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" Text="Search Reservation">
+                                <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" 
+                                    Text="Search Reservation" Visible="False">
                                     <Image Url="~/Images/Search.png">
                                     </Image>
                                 </dx:MenuItem>
@@ -98,7 +99,7 @@
                                     <Image Url="~/Images/Switchboard.png">
                                     </Image>
                                 </dx:MenuItem>
-                                <dx:MenuItem Text="Reports">
+                                <dx:MenuItem Text="Reports" Visible="False">
                                     <Image Url="~/Images/Report.png">
                                     </Image>
                                 </dx:MenuItem>

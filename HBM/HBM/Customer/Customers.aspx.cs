@@ -94,7 +94,14 @@ namespace HBM
                     cmbCCType.Value = CustomerObj.CreditCardTypeId.Value;
                 }
 
-                txtCompanyAddress.Text = CustomerObj.CompanyAddressLine1;
+                txtCompanyAddressLine1.Text = CustomerObj.CompanyAddressLine1;
+                txtCompanyAddressLine2.Text = CustomerObj.CompanyAddressLine2;
+                txtCompanyCity.Text = CustomerObj.CompanyCity;
+                if (CustomerObj.CompanyCountryId.HasValue) 
+                    cmbCompanyCountry.Value = CustomerObj.CompanyCountryId;
+                txtCompanyState.Text = CustomerObj.CompanyState;
+                txtCompanyPostCode.Text = CustomerObj.CompanyPostCode;
+
                 txtCompanyName.Text = CustomerObj.CompanyName;
                 txtNotes.Text = CustomerObj.CompanyNotes;
                 txtDriveLicense.Text = CustomerObj.DriverLicense;
@@ -149,7 +156,14 @@ namespace HBM
                 txtLicensePlate.Text = string.Empty;
                 txtNameOnCard.Text = string.Empty;
                 txtCCNumber.Text = string.Empty;
-                txtCompanyAddress.Text = string.Empty;
+
+                txtCompanyAddressLine1.Text = string.Empty;
+                txtCompanyAddressLine2.Text = string.Empty;
+                txtCompanyCity.Text = string.Empty;
+                txtCompanyPostCode.Text = string.Empty;
+                txtCompanyState.Text = string.Empty;
+                cmbCompanyCountry.Value = null;
+
                 txtCompanyName.Text = string.Empty;
                 txtNotes.Text = string.Empty;
                 txtDriveLicense.Text = string.Empty;
@@ -193,11 +207,17 @@ namespace HBM
                 cmbPassportCountryOfIssue.ValueField = "CountryId";
                 cmbPassportCountryOfIssue.DataBind();
 
-                //Load Country
+                //Load Billing Country
                 cmbBillingCountry.DataSource = new Country().SelectAllList();
                 cmbBillingCountry.TextField = "CountryName";
                 cmbBillingCountry.ValueField = "CountryId";
                 cmbBillingCountry.DataBind();
+
+                //Load Company Country
+                cmbCompanyCountry.DataSource = new Country().SelectAllList();
+                cmbCompanyCountry.TextField = "CountryName";
+                cmbCompanyCountry.ValueField = "CountryId";
+                cmbCompanyCountry.DataBind();
             }
             catch (System.Exception)
             {
@@ -294,7 +314,13 @@ namespace HBM
                 CustomerObj.CreditCardTypeId = null;
             }
 
-            CustomerObj.CompanyAddressLine1 = txtCompanyAddress.Text.Trim();
+            CustomerObj.CompanyAddressLine1 = txtCompanyAddressLine1.Text.Trim();
+            CustomerObj.CompanyAddressLine2 = txtCompanyAddressLine2.Text.Trim();
+            CustomerObj.CompanyCity = txtCompanyCity.Text.Trim();
+            CustomerObj.CompanyCountryId = (int)cmbCompanyCountry.SelectedItem.Value;
+            CustomerObj.CompanyState = txtCompanyState.Text.Trim();
+            CustomerObj.CompanyPostCode = txtCompanyPostCode.Text.Trim();
+
             CustomerObj.CompanyName = txtCompanyName.Text.Trim();
             CustomerObj.CompanyNotes = txtNotes.Text.Trim();
             CustomerObj.DriverLicense = txtDriveLicense.Text.Trim();

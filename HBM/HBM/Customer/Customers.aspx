@@ -270,7 +270,8 @@
                     Company Address
                     Line 1</td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCompanyAddress" runat="server" Width="170px" TabIndex="8">
+                    <dx:ASPxTextBox ID="txtCompanyAddressLine1" runat="server" Width="170px" 
+                        TabIndex="8" MaxLength="150">
                     </dx:ASPxTextBox>
                 </td>
                 <td>
@@ -287,7 +288,10 @@
                 <td height="22" class="info-lbl">
                     Company Address Line 2</td>
                 <td>
-                    &nbsp;</td>
+                    <dx:ASPxTextBox ID="txtCompanyAddressLine2" runat="server" Width="170px" 
+                        TabIndex="8" MaxLength="150">
+                    </dx:ASPxTextBox>
+                </td>
                 <td>
                     &nbsp;</td>
                 <td>
@@ -299,7 +303,10 @@
                 <td height="22" class="info-lbl">
                     City</td>
                 <td>
-                    &nbsp;</td>
+                    <dx:ASPxTextBox ID="txtCompanyCity" runat="server" Width="170px" TabIndex="8" 
+                        MaxLength="50">
+                    </dx:ASPxTextBox>
+                </td>
                 <td>
                     &nbsp;</td>
                 <td>
@@ -311,7 +318,10 @@
                 <td height="22" class="info-lbl">
                     State/County</td>
                 <td>
-                    &nbsp;</td>
+                    <dx:ASPxTextBox ID="txtCompanyState" runat="server" Width="170px" TabIndex="8" 
+                        MaxLength="50">
+                    </dx:ASPxTextBox>
+                </td>
                 <td>
                     &nbsp;</td>
                 <td>
@@ -323,7 +333,11 @@
                 <td height="22" class="info-lbl">
                     Country</td>
                 <td>
-                    &nbsp;</td>
+                                <dx:ASPxComboBox ID="cmbCompanyCountry" runat="server" 
+                        ValueType="System.Int32" IncrementalFilteringMode="Contains"
+                                    TabIndex="13">
+                                </dx:ASPxComboBox>
+                            </td>
                 <td>
                     &nbsp;</td>
                 <td>
@@ -335,7 +349,10 @@
                 <td height="22" class="info-lbl">
                     Zip Code/Post code</td>
                 <td>
-                    &nbsp;</td>
+                    <dx:ASPxTextBox ID="txtCompanyPostCode" runat="server" MaxLength="50" 
+                        TabIndex="14" Width="170px">
+                    </dx:ASPxTextBox>
+                </td>
                 <td>
                     &nbsp;</td>
                 <td>
@@ -408,18 +425,6 @@
                     <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px" TabIndex="25">
                     </dx:ASPxTextBox>
                 </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Billing Address Line 2</td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td class="info-lbl">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
             </tr>
             <tr>
                 <td height="22" class="info-lbl">

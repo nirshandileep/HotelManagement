@@ -33,6 +33,7 @@ namespace HBM.CustomerManagement
         public string CompanyAddressLine2 { get; set; }
         public string CompanyCity { get; set; }
         public string CompanyState { get; set; }
+        public string CompanyPostCode { get; set; }
         public int? CompanyCountryId { get; set; }
         public string CompanyNotes { get; set; }
         public string BillingAddressLine1 { get; set; }
