@@ -83,6 +83,8 @@ namespace HBM.Reservation
 
         protected void gvRooms_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
+            try
+            {
             dsData = Session[Constants.SESSION_ROOMS] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
             DataRow row = dsData.Tables[0].NewRow();
@@ -90,7 +92,7 @@ namespace HBM.Reservation
             e.NewValues["RoomId"] = rd.Next();
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
             e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId;
-            e.NewValues["CreatedUser"] = SessionHandler.LoggedUser;
+            e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();
@@ -111,7 +113,12 @@ namespace HBM.Reservation
                 this.LoadRooms();
             }
 
+            }
+            catch (System.Exception ex)
+            {
 
+                throw ex;
+            }
         }
 
         protected void gvRooms_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
