@@ -40,12 +40,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
                             <td height="21">
                                 Role Description<span class="reqfield">*</span>
                             </td>
@@ -55,12 +49,6 @@
                                         <RequiredField IsRequired="True" ErrorText="Required" />
                                     </ValidationSettings>
                                 </dx:ASPxTextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            </td>
-                            <td>
                             </td>
                         </tr>
                         <tr>

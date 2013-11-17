@@ -136,7 +136,7 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" 
                                     Width="100%"  >
                                     <TabPages>
                                         <dx:TabPage Text="Guest Info">
@@ -362,7 +362,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </PropertiesComboBox>
                                                             </dx:GridViewDataComboBoxColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" ShowInCustomizationForm="True"
-                                                                VisibleIndex="2">
+                                                                VisibleIndex="3">
                                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -370,11 +370,11 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
                                                             <dx:GridViewDataTextColumn Caption="Note" FieldName="Note" ShowInCustomizationForm="True"
-                                                                VisibleIndex="3">
+                                                                VisibleIndex="2">
                                                             </dx:GridViewDataTextColumn>
                                                         </Columns>
                                                         <SettingsBehavior AllowGroup="False" SortMode="DisplayText" ConfirmDelete="True" />
-                                                        <Settings ShowGroupButtons="False" />
+                                                        <Settings ShowGroupButtons="False" ShowFooter="True" />
                                                     </dx:ASPxGridView>
                                                 </dx:ContentControl>
                                             </ContentCollection>
