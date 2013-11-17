@@ -20,12 +20,17 @@ namespace HBM.Reservation
 {
     public partial class Booking : System.Web.UI.Page
     {
+        #region Variables
+
         DataSet dsAdditionalService = new DataSet();
         DataSet dsPaymentInformation = new DataSet();
         GenMan.AdditionalService additionalService = new GenMan.AdditionalService();
         GenRes.ReservationAdditionalService reservationAdditionalService = new GenRes.ReservationAdditionalService();
         GenRes.ReservationPayments reservationPayments = new GenRes.ReservationPayments();
 
+        #endregion
+
+        #region Page Events
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -51,6 +56,10 @@ namespace HBM.Reservation
                 this.LoadPaymentInformation();
             }
         }
+
+        #endregion
+
+        #region Methods
 
         private void LoadInitialData()
         {
@@ -97,6 +106,29 @@ namespace HBM.Reservation
             cmbRatePlan.DataBind();
 
         }
+
+        private bool SaveReservation()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region Events
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            if (SaveReservation())
+            {
+                //// show success msg
+            }
+            else
+            {
+                //// show error msg
+            }
+        }
+
+        #endregion
 
         #region Addtional Service
 
@@ -285,7 +317,9 @@ namespace HBM.Reservation
         }
 
         #endregion
-             
-      
+
+        
+
+
     }
 }

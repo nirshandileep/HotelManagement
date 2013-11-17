@@ -40,18 +40,10 @@
                                                     <dx:ListBoxColumn Caption="Phone" FieldName="Phone" />
                                                     <dx:ListBoxColumn Caption="Mobile" FieldName="Mobile" />
                                                 </Columns>
+                                                <ValidationSettings ValidationGroup="vgSave" ErrorDisplayMode="ImageWithTooltip">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
                                             </dx:ASPxComboBox>
-                                        </td>
-                                        <td>
-                                            Source
-                                        </td>
-                                        <td>
-                                            <dx:ASPxComboBox ID="cmbSource" runat="server">
-                                            </dx:ASPxComboBox>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;
                                         </td>
                                     </tr>
                                     <tr>
@@ -61,14 +53,17 @@
                                         <td>
                                             &nbsp;
                                         </td>
+                                    </tr>
+                                    <tr>
                                         <td>
-                                            &nbsp;
+                                            Source
                                         </td>
                                         <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;
+                                            <dx:ASPxComboBox ID="cmbSource" runat="server">
+                                                <ValidationSettings ValidationGroup="vgSave" ErrorDisplayMode="ImageWithTooltip">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
+                                            </dx:ASPxComboBox>
                                         </td>
                                     </tr>
                                 </table>
@@ -88,15 +83,11 @@
                                         <td>
                                             Check In
                                         </td>
-                                        <td>
+                                        <td align="left">
                                             <dx:ASPxDateEdit ID="dtCheckingDate" runat="server" Width="150px">
-                                            </dx:ASPxDateEdit>
-                                        </td>
-                                        <td>
-                                            Check Out
-                                        </td>
-                                        <td>
-                                            <dx:ASPxDateEdit ID="dtCheckOutDate" runat="server" Width="150px">
+                                                <ValidationSettings ValidationGroup="vgSave" ErrorDisplayMode="ImageWithTooltip">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
                                             </dx:ASPxDateEdit>
                                         </td>
                                     </tr>
@@ -107,11 +98,17 @@
                                         <td>
                                             &nbsp;
                                         </td>
+                                    </tr>
+                                    <tr>
                                         <td>
-                                            &nbsp;
+                                            Check Out
                                         </td>
-                                        <td>
-                                            &nbsp;
+                                        <td align="left">
+                                            <dx:ASPxDateEdit ID="dtCheckOutDate" runat="server" Width="150px">
+                                                <ValidationSettings ValidationGroup="vgSave" ErrorDisplayMode="ImageWithTooltip">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
+                                            </dx:ASPxDateEdit>
                                         </td>
                                     </tr>
                                 </table>
@@ -136,8 +133,7 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" 
-                                    Width="100%"  >
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
                                     <TabPages>
                                         <dx:TabPage Text="Guest Info">
                                             <ContentCollection>
@@ -145,12 +141,13 @@
                                                     <table width="100%">
                                                         <tr>
                                                             <td height="22">
-                                                                Sharers' names</td>
+                                                                Sharers' names
+                                                            </td>
                                                             <td>
-                                                                <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" 
-                                                                    DropDownWindowHeight="200px" DropDownWindowWidth="350px"  ClientInstanceName="ddlShareNames">
+                                                                <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" DropDownWindowHeight="200px"
+                                                                    DropDownWindowWidth="350px" ClientInstanceName="ddlShareNames">
                                                                     <DropDownWindowTemplate>
-                                                                        <dx:ASPxMemo ID="memSharesNames" runat="server" Height="200px" Width="100%"  ClientInstanceName="memSharesNames">
+                                                                        <dx:ASPxMemo ID="memSharesNames" runat="server" Height="200px" Width="100%" ClientInstanceName="memSharesNames">
                                                                         </dx:ASPxMemo>
                                                                     </DropDownWindowTemplate>
                                                                     <ClientSideEvents CloseUp="function(s, e) {
@@ -161,6 +158,9 @@
 memSharesNames.SetValue(ddlShareNames.GetValue().toString());
 
 }" />
+                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
                                                                 </dx:ASPxDropDownEdit>
                                                             </td>
                                                             <td>
@@ -179,14 +179,16 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                         <dx:ListBoxColumn Caption="Bed Type" FieldName="BedTypeName" />
                                                                         <dx:ListBoxColumn Caption="Description" FieldName="BedTypeDescription" />
                                                                     </Columns>
+                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
                                                                 </dx:ASPxComboBox>
                                                             </td>
                                                             <td>
                                                                 Rate Plan
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String" 
-                                                                    TextFormatString="{0}">
+                                                                <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String" TextFormatString="{0}">
                                                                     <Columns>
                                                                         <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" />
                                                                         <dx:ListBoxColumn Caption="Effective From" FieldName="EffectiveFrom" />
@@ -196,10 +198,14 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                         <dx:ListBoxColumn Caption="Children Rate" FieldName="AdditionalChildrenRate" />
                                                                         <dx:ListBoxColumn Caption="Infant Rate" FieldName="AdditionalInfantRate" />
                                                                     </Columns>
+                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
                                                                 </dx:ASPxComboBox>
                                                             </td>
                                                             <td rowspan="3">
-                                                                <dx:ASPxButton ID="btnAdd" runat="server" Text="Add" Height="40px">
+                                                                <dx:ASPxButton ID="btnAdd" runat="server" Text="Add" Height="40px" 
+                                                                    ValidationGroup="vgAdd">
                                                                 </dx:ASPxButton>
                                                             </td>
                                                         </tr>
@@ -228,21 +234,33 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 # of Adults
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="seAdults" runat="server" Height="21px" Number="0">
+                                                                <dx:ASPxSpinEdit ID="seAdults" runat="server" Height="21px" Number="0" MaxLength="3"
+                                                                    MaxValue="100" NullText="0">
+                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
                                                             <td>
                                                                 # of Children
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="seChildren" runat="server" Height="21px" Number="0">
+                                                                <dx:ASPxSpinEdit ID="seChildren" runat="server" Height="21px" Number="0" MaxLength="3"
+                                                                    MaxValue="100" NullText="0">
+                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
                                                             <td>
                                                                 # of Infants
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="seInfants" runat="server" Height="21px" Number="0">
+                                                                <dx:ASPxSpinEdit ID="seInfants" runat="server" Height="21px" Number="0" MaxLength="3"
+                                                                    MaxValue="100" NullText="0">
+                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>
@@ -277,7 +295,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 <ClearFilterButton Visible="True">
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Customer" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                            <dx:GridViewDataTextColumn Caption="Sharers" ShowInCustomizationForm="True" VisibleIndex="1">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="In" ShowInCustomizationForm="True" VisibleIndex="2">
                                                                 <PropertiesTextEdit DisplayFormatString="d">
@@ -312,10 +330,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                                     <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False"
-                                                        KeyFieldName="ReservationAdditionalServiceId" 
-                                                        OnCellEditorInitialize="gvServiceInformation_CellEditorInitialize" 
-                                                        OnRowDeleting="gvServiceInformation_RowDeleting" 
-                                                        OnRowInserting="gvServiceInformation_RowInserting" 
+                                                        KeyFieldName="ReservationAdditionalServiceId" OnCellEditorInitialize="gvServiceInformation_CellEditorInitialize"
+                                                        OnRowDeleting="gvServiceInformation_RowDeleting" OnRowInserting="gvServiceInformation_RowInserting"
                                                         OnRowUpdating="gvServiceInformation_RowUpdating">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Rate" ShowInColumn="Rate" ShowInGroupFooterColumn="Rate"
@@ -383,10 +399,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                                     <dx:ASPxGridView ID="gvPaymentInformation" runat="server" Width="100%" AutoGenerateColumns="False"
-                                                        KeyFieldName="ReservationPaymentId" 
-                                                        OnCellEditorInitialize="gvPaymentInformation_CellEditorInitialize" 
-                                                        OnRowDeleting="gvPaymentInformation_RowDeleting" 
-                                                        OnRowInserting="gvPaymentInformation_RowInserting" 
+                                                        KeyFieldName="ReservationPaymentId" OnCellEditorInitialize="gvPaymentInformation_CellEditorInitialize"
+                                                        OnRowDeleting="gvPaymentInformation_RowDeleting" OnRowInserting="gvPaymentInformation_RowInserting"
                                                         OnRowUpdating="gvPaymentInformation_RowUpdating">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
@@ -706,14 +720,15 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                     <table>
                         <tr>
                             <td>
-                                <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Save">
+                                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click"
+                                    ValidationGroup="vgSave">
                                 </dx:ASPxButton>
                             </td>
                             <td>
                                 &nbsp;
                             </td>
                             <td>
-                                <dx:ASPxButton ID="ASPxButton3" runat="server" Text="Settle">
+                                <dx:ASPxButton ID="btnSettle" runat="server" Text="Settle">
                                 </dx:ASPxButton>
                             </td>
                         </tr>

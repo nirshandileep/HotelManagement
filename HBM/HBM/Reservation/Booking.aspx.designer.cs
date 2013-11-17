@@ -283,22 +283,22 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox7;
         
         /// <summary>
-        /// ASPxButton2 control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSave;
         
         /// <summary>
-        /// ASPxButton3 control.
+        /// btnSettle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSettle;
         
         /// <summary>
         /// Master property.
