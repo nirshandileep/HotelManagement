@@ -317,7 +317,15 @@ namespace HBM
             CustomerObj.CompanyAddressLine1 = txtCompanyAddressLine1.Text.Trim();
             CustomerObj.CompanyAddressLine2 = txtCompanyAddressLine2.Text.Trim();
             CustomerObj.CompanyCity = txtCompanyCity.Text.Trim();
-            CustomerObj.CompanyCountryId = (int)cmbCompanyCountry.SelectedItem.Value;
+            if (cmbCompanyCountry.SelectedIndex > -1)
+            {
+                CustomerObj.CompanyCountryId = (int)cmbCompanyCountry.SelectedItem.Value;
+            }
+            else
+            {
+                CustomerObj.CompanyCountryId = null;
+            }
+            
             CustomerObj.CompanyState = txtCompanyState.Text.Trim();
             CustomerObj.CompanyPostCode = txtCompanyPostCode.Text.Trim();
 
