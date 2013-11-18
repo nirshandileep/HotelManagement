@@ -646,7 +646,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                     Total
                                                                 </td>
                                                                 <td>
-                                                                    <dx:ASPxTextBox ID="ASPxTextBox8" runat="server" Width="170px" ReadOnly="True">
+                                                                    <dx:ASPxTextBox ID="txtTotal" runat="server" Width="170px" ReadOnly="True">
                                                                     </dx:ASPxTextBox>
                                                                 </td>
                                                             </tr>
@@ -663,7 +663,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                     Paid
                                                                 </td>
                                                                 <td>
-                                                                    <dx:ASPxTextBox ID="ASPxTextBox9" runat="server" Width="170px" ReadOnly="True">
+                                                                    <dx:ASPxTextBox ID="txtPaidAmount" runat="server" Width="170px" ReadOnly="True">
                                                                     </dx:ASPxTextBox>
                                                                 </td>
                                                             </tr>
@@ -680,7 +680,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                     Balance
                                                                 </td>
                                                                 <td>
-                                                                    <dx:ASPxTextBox ID="ASPxTextBox7" runat="server" Width="170px" ReadOnly="True">
+                                                                    <dx:ASPxTextBox ID="txtBalance" runat="server" Width="170px" ReadOnly="True">
                                                                     </dx:ASPxTextBox>
                                                                 </td>
                                                             </tr>

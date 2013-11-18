@@ -11,6 +11,70 @@ namespace HBM.ReservationManagement
 {
     public class ReservationDAO
     {
+
+        public bool Insert(Reservation reservation, Database db, DbTransaction transaction)
+        {
+
+            DbCommand command = db.GetStoredProcCommand("usp_ReservationInsert");
+
+            db.AddInParameter(command, "@CompanyId", DbType.Int32, reservation.CompanyId);
+            db.AddInParameter(command, "@CustomerId", DbType.Int32, reservation.CustomerId);
+            db.AddInParameter(command, "@StatusId", DbType.Int32, reservation.StatusId);
+            db.AddInParameter(command, "@BookingDate", DbType.DateTime, reservation.BookingDate);
+            db.AddInParameter(command, "@CheckInDate", DbType.DateTime, reservation.CheckInDate);
+            db.AddInParameter(command, "@CheckOutDate", DbType.DateTime, reservation.CheckOutDate);
+            db.AddInParameter(command, "@SourceId", DbType.Int32, reservation.SourceId);
+            db.AddInParameter(command, "@RoomTotal", DbType.Decimal, reservation.RoomTotal);
+            db.AddInParameter(command, "@ServiceTotal", DbType.Decimal, reservation.ServiceTotal);
+            db.AddInParameter(command, "@NetTotal", DbType.Decimal, reservation.NetTotal);
+            db.AddInParameter(command, "@Discount", DbType.Decimal, reservation.Discount);
+            db.AddInParameter(command, "@TaxAmount", DbType.Decimal, reservation.TaxAmount);
+            db.AddInParameter(command, "@PaidAmount", DbType.Decimal, reservation.PaidAmount);
+            db.AddInParameter(command, "@Total", DbType.Decimal, reservation.Total);
+            db.AddInParameter(command, "@Balance", DbType.Decimal, reservation.Balance);
+            db.AddInParameter(command, "@CreatedUser", DbType.Int32, reservation.CreatedUser);
+            db.AddInParameter(command, "@TaxTypeId", DbType.Int32, reservation.TaxTypeId);          
+
+            db.ExecuteNonQuery(command);
+
+
+
+            return true;
+        }
+
+        public bool Update(Reservation reservation, Database db, DbTransaction transaction)
+        {
+
+            DbCommand command = db.GetStoredProcCommand("usp_ReservationUpdate");
+
+            db.AddInParameter(command, "@ReservationId", DbType.Int32, reservation.ReservationId);            
+            db.AddInParameter(command, "@CompanyId", DbType.Int32, reservation.CompanyId);
+            db.AddInParameter(command, "@CustomerId", DbType.Int32, reservation.CustomerId);
+            db.AddInParameter(command, "@StatusId", DbType.Int32, reservation.StatusId);
+            db.AddInParameter(command, "@BookingDate", DbType.DateTime, reservation.BookingDate);
+            db.AddInParameter(command, "@CheckInDate", DbType.DateTime, reservation.CheckInDate);
+            db.AddInParameter(command, "@CheckOutDate", DbType.DateTime, reservation.CheckOutDate);
+            db.AddInParameter(command, "@SourceId", DbType.Int32, reservation.SourceId);
+            db.AddInParameter(command, "@RoomTotal", DbType.Decimal, reservation.RoomTotal);
+            db.AddInParameter(command, "@ServiceTotal", DbType.Decimal, reservation.ServiceTotal);
+            db.AddInParameter(command, "@NetTotal", DbType.Decimal, reservation.NetTotal);
+            db.AddInParameter(command, "@Discount", DbType.Decimal, reservation.Discount);
+            db.AddInParameter(command, "@TaxAmount", DbType.Decimal, reservation.TaxAmount);
+            db.AddInParameter(command, "@PaidAmount", DbType.Decimal, reservation.PaidAmount);
+            db.AddInParameter(command, "@Total", DbType.Decimal, reservation.Total);
+            db.AddInParameter(command, "@Balance", DbType.Decimal, reservation.Balance);
+            db.AddInParameter(command, "@CreatedUser", DbType.Int32, reservation.CreatedUser);
+            db.AddInParameter(command, "@TaxTypeId", DbType.Int32, reservation.TaxTypeId);
+
+            db.ExecuteNonQuery(command);
+
+            return true;
+        }
+
+
+
+        ////
+
         internal System.Data.DataSet SelectAll(Reservation reservation)
         {
             throw new NotImplementedException();
@@ -47,16 +111,6 @@ namespace HBM.ReservationManagement
         }
 
         internal bool Delete(Reservation reservation)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal bool Insert(Reservation reservation)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal bool Update(Reservation reservation)
         {
             throw new NotImplementedException();
         }

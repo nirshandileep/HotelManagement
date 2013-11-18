@@ -256,31 +256,31 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtTaxTotal;
         
         /// <summary>
-        /// ASPxTextBox8 control.
+        /// txtTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox8;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtTotal;
         
         /// <summary>
-        /// ASPxTextBox9 control.
+        /// txtPaidAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox9;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtPaidAmount;
         
         /// <summary>
-        /// ASPxTextBox7 control.
+        /// txtBalance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox7;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtBalance;
         
         /// <summary>
         /// btnSave control.

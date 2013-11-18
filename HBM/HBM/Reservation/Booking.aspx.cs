@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Res = HBM.ReservationManagement;
+using ResMan = HBM.ReservationManagement;
 using GenMan = HBM.GeneralManagement;
 using HBM.CustomerManagement;
 using System.Data;
@@ -15,6 +15,8 @@ using System.Collections;
 using DevExpress.Web.ASPxEditors;
 using HBM.GeneralManagement;
 using GenRes = HBM.ReservationManagement;
+using System.Data.Common;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 
 namespace HBM.Reservation
 {
@@ -107,10 +109,6 @@ namespace HBM.Reservation
 
         }
 
-        private bool SaveReservation()
-        {
-            return true;
-        }
 
         #endregion
 
@@ -118,15 +116,64 @@ namespace HBM.Reservation
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (SaveReservation())
+            if (SaveData())
             {
-                //// show success msg
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
             }
             else
             {
                 //// show error msg
             }
         }
+
+        #endregion
+
+        #region Reservation
+
+        private bool SaveData()
+        {
+
+            bool result = false;
+
+            DbConnection connection = null;
+            DbTransaction transaction = null;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                ResMan.Reservation reservation = new GenRes.Reservation();
+                reservation.ReservationId = 0;
+                reservation.CompanyId = Master.CurrentCompany.CompanyId;
+                reservation.CheckInDate = Convert.ToDateTime(dtCheckingDate.Text);
+                reservation.CheckOutDate = Convert.ToDateTime(dtCheckOutDate.Text);
+                reservation.SourceId = (int)HBM.Common.Enums.HBMStatus.Active;
+                reservation.RoomTotal = Convert.ToDecimal(txtRoomTotal.Text.Trim());
+                reservation.ServiceTotal = Convert.ToDecimal(txtServiceTotal.Text.Trim());
+                reservation.NetTotal = Convert.ToDecimal(txtNetTotal.Text.Trim());
+                reservation.Discount = Convert.ToDecimal(txtDiscount.Text.Trim());
+                reservation.TaxAmount = Convert.ToDecimal(txtTaxTotal.Text.Trim());
+                reservation.Total = Convert.ToDecimal(txtTotal.Text.Trim());
+                reservation.PaidAmount = Convert.ToDecimal(txtPaidAmount.Text.Trim());
+                reservation.Balance = Convert.ToDecimal(txtBalance.Text.Trim());
+                reservation.CreatedUser = Master.LoggedUser.UsersId;
+                
+                reservation.Save(db,transaction);
+                transaction.Commit();
+                result = true;
+            }
+            catch (System.Exception)
+            {
+                transaction.Rollback();               
+            }
+
+
+            return result;
+        }
+
 
         #endregion
 
@@ -318,7 +365,7 @@ namespace HBM.Reservation
 
         #endregion
 
-        
+
 
 
     }
