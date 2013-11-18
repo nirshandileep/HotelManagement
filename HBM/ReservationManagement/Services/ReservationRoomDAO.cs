@@ -10,10 +10,8 @@ namespace HBM.ReservationManagement
 {
     public class ReservationRoomDAO
     {
-        public bool InsertUpdateDelete(DataSet ds)
-        {
-
-            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+        public bool InsertUpdateDelete(DataSet ds, Database db, DbTransaction transaction)
+        {          
             DbCommand commandInsert = db.GetStoredProcCommand("usp_ReservationRoomInsert");
 
             db.AddInParameter(commandInsert, "@ReservationId", DbType.Int32, "ReservationId", DataRowVersion.Current);
@@ -49,7 +47,7 @@ namespace HBM.ReservationManagement
             DbCommand commandDelete = db.GetStoredProcCommand("usp_ReservationRoomDelete");
             db.AddInParameter(commandDelete, "@ReservationReservationId", DbType.Int32, "ReservationReservationId", DataRowVersion.Current);
 
-            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, UpdateBehavior.Transactional);
+            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, transaction);
 
             return true;
         }
@@ -58,7 +56,7 @@ namespace HBM.ReservationManagement
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_TaxTypeSelectAll");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationRoomSelectByReservationId");
             db.AddInParameter(dbCommand, "@ReservationId", DbType.Int32, reservationRoom.ReservationId);
 
             return db.ExecuteDataSet(dbCommand);

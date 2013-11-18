@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data.Common;
 
 namespace HBM.ReservationManagement
 {
@@ -22,12 +24,14 @@ namespace HBM.ReservationManagement
 
         #endregion
 
-        public bool Save(DataSet ds)
+        #region Methods
+
+        public bool Save(DataSet ds, Database db, DbTransaction transaction)
         {
             bool result = false;
             try
             {
-                result = (new ReservationAdditionalServiceDAO()).InsertUpdateDelete(ds);
+                result = (new ReservationAdditionalServiceDAO()).InsertUpdateDelete(ds, db, transaction);
             }
             catch (System.Exception ex)
             {
@@ -42,6 +46,6 @@ namespace HBM.ReservationManagement
             return (new ReservationAdditionalServiceDAO()).SelectByReservationID(this);
         }
 
-
+        #endregion
     }
 }

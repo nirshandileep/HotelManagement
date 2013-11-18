@@ -11,6 +11,8 @@ namespace HBM.ReservationManagement
 {
     public class Reservation
     {
+        #region Properies
+
         public Int64 ReservationId { get; set; }
         public int CompanyId { get; set; }
         public int CustomerId { get; set; }
@@ -34,11 +36,13 @@ namespace HBM.ReservationManagement
         public bool IsDeleted { get; set; }
         public ReservationRoom ReservationRoom { get; set; }
         public int TaxTypeId { get; set; }
+        public DataSet ReservationAdditionalServiceDataSet { get; set; }
+        public DataSet ReservationPaymentDataSet { get; set; }
+        public DataSet ReservationRoomDataSet { get; set; }
 
-        //public DataSet DsReservationGuest { get; set; }
-        public DataSet DsReservationAdditionalService { get; set; }
-        public DataSet DsReservationPayment { get; set; }
-        public DataSet DsReservationRoom { get; set; }
+        #endregion
+
+        #region Methods
 
         public bool Save(Database db, DbTransaction transaction)
         {
@@ -61,25 +65,7 @@ namespace HBM.ReservationManagement
             }
             return result;
         }
-
-        public bool Delete()
-        {
-            bool result = false;
-            try
-            {
-                if (this.ReservationId > 0)
-                {
-                    result = (new ReservationDAO()).Delete(this);
-                }
-            }
-            catch (System.Exception ex)
-            {
-                result = false;
-                throw ex;
-            }
-            return result;
-        }               
-
+            
         public Reservation Select()
         {
             Reservation reservation = HBM.Utility.Generic.Get<Reservation>(this.ReservationId);
@@ -88,11 +74,10 @@ namespace HBM.ReservationManagement
             {
                 reservation = new Reservation();
             }
-
-            //reservation.DsReservationGuest = (new ReservationDAO()).SelectReservationGuests(this);
-            reservation.DsReservationAdditionalService = (new ReservationDAO()).SelectReservationAdditionalServices(this);
-            reservation.DsReservationPayment = (new ReservationDAO()).SelectReservationPayments(this);
-            reservation.DsReservationRoom = (new ReservationDAO()).SelectReservationRooms(this);
+            
+            reservation.ReservationAdditionalServiceDataSet = (new ReservationDAO()).SelectReservationAdditionalServices(this);
+            reservation.ReservationPaymentDataSet = (new ReservationDAO()).SelectReservationPayments(this);
+            reservation.ReservationRoomDataSet = (new ReservationDAO()).SelectReservationRooms(this);
 
             return reservation;
         }
@@ -102,9 +87,7 @@ namespace HBM.ReservationManagement
             return HBM.Utility.Generic.GetAll<Reservation>(this.CompanyId);
         }
 
-        public DataSet SelectAllDataset()
-        {
-            return (new ReservationDAO()).SelectAll(this);
-        }
+
+        #endregion
     }
 }

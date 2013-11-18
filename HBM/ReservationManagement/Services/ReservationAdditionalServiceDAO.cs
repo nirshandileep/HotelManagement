@@ -12,10 +12,8 @@ namespace HBM.ReservationManagement
 {
     public class ReservationAdditionalServiceDAO
     {
-        public bool InsertUpdateDelete(DataSet ds)
-        {
-
-            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+        public bool InsertUpdateDelete(DataSet ds, Database db, DbTransaction transaction)
+        {         
             DbCommand commandInsert = db.GetStoredProcCommand("usp_ReservationAdditionalServiceInsert");
 
             db.AddInParameter(commandInsert, "@ReservationId", DbType.Int32, "ReservationId", DataRowVersion.Current);
@@ -39,7 +37,7 @@ namespace HBM.ReservationManagement
             DbCommand commandDelete = db.GetStoredProcCommand("usp_ReservationAdditionalServiceDelete");
             db.AddInParameter(commandDelete, "@ReservationAdditionalServiceId", DbType.Int64, "ReservationAdditionalServiceId", DataRowVersion.Current);
 
-            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, UpdateBehavior.Transactional);
+            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, transaction);
 
             return true;
         }

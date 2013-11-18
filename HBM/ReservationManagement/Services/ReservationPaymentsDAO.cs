@@ -11,10 +11,9 @@ namespace HBM.ReservationManagement
 {
     public class ReservationPaymentsDAO
     {
-        public bool InsertUpdateDelete(DataSet ds)
+        public bool InsertUpdateDelete(DataSet ds, Database db, DbTransaction transaction)
         {
-
-            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                        
             DbCommand commandInsert = db.GetStoredProcCommand("usp_ReservationPaymentInsert");
 
             db.AddInParameter(commandInsert, "@ReservationId", DbType.Int32, "ReservationId", DataRowVersion.Current);
@@ -52,7 +51,7 @@ namespace HBM.ReservationManagement
             DbCommand commandDelete = db.GetStoredProcCommand("usp_ReservationPaymentDelete");
             db.AddInParameter(commandDelete, "@ReservationPaymentId", DbType.Int64, "ReservationPaymentId", DataRowVersion.Current);
 
-            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, UpdateBehavior.Transactional);
+            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, transaction);
 
             return true;
         }
