@@ -85,7 +85,7 @@
                                             User Name</label>
                                     </td>
                                     <td colspan="2">
-                                        <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px">
+                                        <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" Text="admin">
                                             <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                                                 <RequiredField IsRequired="True" ErrorText="Required" />
                                             </ValidationSettings>
@@ -98,7 +98,8 @@
                                             Password</label>
                                     </td>
                                     <td colspan="2">
-                                        <dx:ASPxTextBox ID="txtPassword" runat="server" Width="170px" Password="True">
+                                        <dx:ASPxTextBox ID="txtPassword" runat="server" Width="170px" Password="True" 
+                                            Text="letmein">
                                             <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                                                 <RequiredField IsRequired="True" ErrorText="Required" />
                                             </ValidationSettings>

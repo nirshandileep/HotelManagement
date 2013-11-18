@@ -14,6 +14,8 @@ namespace HBM
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            pcPageControl.ActiveTabIndex = 0;
+
             schReservationDashboad.Views.WorkWeekView.Enabled = false;
 
             schReservationDashboad.AppointmentDataSource = this.CreatDataSource();
