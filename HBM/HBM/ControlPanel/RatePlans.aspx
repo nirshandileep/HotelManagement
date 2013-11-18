@@ -18,8 +18,8 @@
             Rate Plan List</h2>
         <table>
             <tr>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
             </tr>
             <tr>
@@ -59,7 +59,8 @@
                                 </CancelButton>
                             </dx:GridViewCommandColumn>
                             <dx:GridViewDataDateColumn Caption="Effective From" VisibleIndex="1" FieldName="EffectiveFrom">
-                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d">
+                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d" 
+                                    EditFormat="Custom">
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>

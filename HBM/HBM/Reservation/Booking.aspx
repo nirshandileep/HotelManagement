@@ -139,9 +139,9 @@
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                                     <table width="100%">
-                                                        <tr>
-                                                            <td height="22">
-                                                                Sharers' names
+                                                        <tr valign="middle">
+                                                            <td height="22" valign="middle">
+                                                                Sharers
                                                             </td>
                                                             <td>
                                                                 <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" DropDownWindowHeight="200px"
@@ -163,40 +163,40 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                     </ValidationSettings>
                                                                 </dx:ASPxDropDownEdit>
                                                             </td>
-                                                            <td>
+                                                            <td valign="middle">
                                                                 Room
                                                             </td>
                                                             <td>
                                                                 <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.String" TextFormatString="{1}">
                                                                     <Columns>
-                                                                        <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" />
-                                                                        <dx:ListBoxColumn Caption="Name" FieldName="RoomName" />
-                                                                        <dx:ListBoxColumn Caption="Room Number" FieldName="RoomNumber" />
-                                                                        <dx:ListBoxColumn Caption="Max Adult" FieldName="MaxAdult" />
-                                                                        <dx:ListBoxColumn Caption="Max Children" FieldName="MaxChildren" />
-                                                                        <dx:ListBoxColumn Caption="Max Infant" FieldName="MaxInfant" />
-                                                                        <dx:ListBoxColumn Caption="Smoking Allow" FieldName="SmokingAllow" />
-                                                                        <dx:ListBoxColumn Caption="Bed Type" FieldName="BedTypeName" />
-                                                                        <dx:ListBoxColumn Caption="Description" FieldName="BedTypeDescription" />
+                                                                        <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" Width="50px"/>
+                                                                        <dx:ListBoxColumn Caption="Name" FieldName="RoomName" Width="125px"/>
+                                                                        <dx:ListBoxColumn Caption="Room Number" FieldName="RoomNumber" Width="100px"/>
+                                                                        <dx:ListBoxColumn Caption="Max Adult" FieldName="MaxAdult" Width="50px"/>
+                                                                        <dx:ListBoxColumn Caption="Max Children" FieldName="MaxChildren" Width="90px"/>
+                                                                        <dx:ListBoxColumn Caption="Max Infant" FieldName="MaxInfant" Width="90px"/>
+                                                                        <dx:ListBoxColumn Caption="Smoking Allow" FieldName="SmokingAllow" Width="90px"/>
+                                                                        <dx:ListBoxColumn Caption="Bed Type" FieldName="BedTypeName" Width="100px"/>
+                                                                        <dx:ListBoxColumn Caption="Description" FieldName="BedTypeDescription" Width="100px"/>
                                                                     </Columns>
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                                                     </ValidationSettings>
                                                                 </dx:ASPxComboBox>
                                                             </td>
-                                                            <td>
+                                                            <td valign="middle">
                                                                 Rate Plan
                                                             </td>
                                                             <td>
                                                                 <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String" TextFormatString="{0}">
                                                                     <Columns>
-                                                                        <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" />
-                                                                        <dx:ListBoxColumn Caption="Effective From" FieldName="EffectiveFrom" />
-                                                                        <dx:ListBoxColumn Caption="Effective To" FieldName="EffectiveTo" />
-                                                                        <dx:ListBoxColumn Caption="Rate" FieldName="Rate" />
-                                                                        <dx:ListBoxColumn Caption="Adult Rate" FieldName="AdditionalAdultRate" />
-                                                                        <dx:ListBoxColumn Caption="Children Rate" FieldName="AdditionalChildrenRate" />
-                                                                        <dx:ListBoxColumn Caption="Infant Rate" FieldName="AdditionalInfantRate" />
+                                                                        <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" Width="100px" />
+                                                                        <dx:ListBoxColumn Caption="Effective From" FieldName="EffectiveFrom" Width="100px" />
+                                                                        <dx:ListBoxColumn Caption="Effective To" FieldName="EffectiveTo" Width="100px"/>
+                                                                        <dx:ListBoxColumn Caption="Rate" FieldName="Rate" Width="50px"/>
+                                                                        <dx:ListBoxColumn Caption="Adult Rate" FieldName="AdditionalAdultRate"  Width="100px"/>
+                                                                        <dx:ListBoxColumn Caption="Children Rate" FieldName="AdditionalChildrenRate" Width="100px"/>
+                                                                        <dx:ListBoxColumn Caption="Infant Rate" FieldName="AdditionalInfantRate" Width="100px" />
                                                                     </Columns>
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -229,9 +229,9 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 &nbsp;
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td height="22">
-                                                                # of Adults
+                                                        <tr valign="middle">
+                                                            <td height="22" valign="middle">
+                                                                # Adults
                                                             </td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="seAdults" runat="server" Height="21px" Number="0" MaxLength="3"
@@ -241,8 +241,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                     </ValidationSettings>
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
-                                                            <td>
-                                                                # of Children
+                                                            <td valign="middle">
+                                                                # Children
                                                             </td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="seChildren" runat="server" Height="21px" Number="0" MaxLength="3"
@@ -252,8 +252,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                     </ValidationSettings>
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
-                                                            <td>
-                                                                # of Infants
+                                                            <td valign="middle">
+                                                                # Infants
                                                             </td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="seInfants" runat="server" Height="21px" Number="0" MaxLength="3"
