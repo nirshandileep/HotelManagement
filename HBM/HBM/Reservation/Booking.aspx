@@ -289,12 +289,20 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         </tr>
                                                     </table>
                                                     <dx:ASPxGridView ID="gvRoomInfo" runat="server" AutoGenerateColumns="False" 
-                                                        Width="100%" OnCellEditorInitialize="gvRoomInfo_CellEditorInitialize" 
+                                                        Width="100%" OnCellEditorInitialize="gvRoomInfo_CellEditorInitialize" KeyFieldName="ReservationRoomId"
                                                         OnRowDeleting="gvRoomInfo_RowDeleting" OnRowInserting="gvRoomInfo_RowInserting" 
                                                         OnRowUpdating="gvRoomInfo_RowUpdating">
+                                                        <TotalSummary>
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" 
+                                                                SummaryType="Sum" />
+                                                        </TotalSummary>
                                                         <Columns>
-                                                            <dx:GridViewCommandColumn ShowInCustomizationForm="True" ShowSelectCheckbox="True"
-                                                                VisibleIndex="0">
+                                                            <dx:GridViewCommandColumn ShowInCustomizationForm="True"
+                                                                VisibleIndex="0" ButtonType="Image">
+                                                                <DeleteButton Visible="True">
+                                                                   <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                                                    </Image>
+                                                                </DeleteButton>
                                                                 <ClearFilterButton Visible="True">
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
@@ -337,6 +345,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
                                                         </Columns>
+                                                        <SettingsBehavior ConfirmDelete="True" />
+                                                        <Settings ShowFooter="True" ShowPreview="True" />
                                                     </dx:ASPxGridView>
                                                 </dx:ContentControl>
                                             </ContentCollection>
@@ -349,7 +359,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         OnRowDeleting="gvServiceInformation_RowDeleting" OnRowInserting="gvServiceInformation_RowInserting"
                                                         OnRowUpdating="gvServiceInformation_RowUpdating">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Rate" ShowInColumn="Rate" ShowInGroupFooterColumn="Rate"
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount"
                                                                 SummaryType="Sum" />
                                                         </TotalSummary>
                                                         <Columns>

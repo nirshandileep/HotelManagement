@@ -172,6 +172,7 @@ namespace HBM.Reservation
             gvRoomInfo.DataBind();
 
             this.ClearRoomInfoSection();
+            this.Calculate();
 
         }
         #endregion
@@ -289,6 +290,18 @@ namespace HBM.Reservation
             seChildren.Text = "0";
             seInfants.Text = "0";
             ddlShareNames.Focus();
+        }
+
+        private void Calculate()
+        {
+            txtRoomTotal.Text = gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString();
+            txtServiceTotal.Text = gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString();
+            txtNetTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
+            txtDiscount.Text = "0";
+            txtTaxTotal.Text = "0";
+            txtTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
+            txtPaidAmount.Text = "0";
+            txtBalance.Text = ((Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)) - Convert.ToDecimal(txtPaidAmount.Text)).ToString();
         }
 
         #endregion
