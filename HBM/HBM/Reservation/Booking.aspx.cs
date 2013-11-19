@@ -171,7 +171,7 @@ namespace HBM.Reservation
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
 
-
+            this.ClearRoomInfoSection();
 
         }
         #endregion
@@ -278,6 +278,17 @@ namespace HBM.Reservation
 
 
             return result;
+        }
+
+        private void ClearRoomInfoSection()
+        {
+            ddlShareNames.Text = string.Empty;
+            cmbRoom.SelectedIndex = -1;
+            cmbRatePlan.SelectedIndex = -1;
+            seAdults.Text = "0";
+            seChildren.Text = "0";
+            seInfants.Text = "0";
+            ddlShareNames.Focus();
         }
 
         #endregion
