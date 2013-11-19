@@ -51,7 +51,7 @@ namespace HBM.ReservationManagement
             return result;
         }
 
-        public DataSet SelectAllDataset()
+        public DataSet SelectAllDataSetByReseervationId()
         {
             return (new ReservationRoomDAO()).SelectByReseervationId(this);
         }
@@ -61,6 +61,7 @@ namespace HBM.ReservationManagement
             return HBM.Utility.Generic.Get<ReservationRoom>(this.ReservationRoomId);
         }
 
+      
         #endregion
     }
 }

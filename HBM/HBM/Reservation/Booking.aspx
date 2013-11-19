@@ -135,7 +135,7 @@
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                                 <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
                                     <TabPages>
-                                        <dx:TabPage Text="Guest Info">
+                                        <dx:TabPage Text="Room Info">
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                                     <table width="100%">
@@ -288,7 +288,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <dx:ASPxGridView ID="gvGuestInfo" runat="server" AutoGenerateColumns="False" Width="100%">
+                                                    <dx:ASPxGridView ID="gvRoomInfo" runat="server" AutoGenerateColumns="False" 
+                                                        Width="100%" OnCellEditorInitialize="gvRoomInfo_CellEditorInitialize" 
+                                                        OnRowDeleting="gvRoomInfo_RowDeleting" OnRowInserting="gvRoomInfo_RowInserting" 
+                                                        OnRowUpdating="gvRoomInfo_RowUpdating">
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ShowInCustomizationForm="True" ShowSelectCheckbox="True"
                                                                 VisibleIndex="0">

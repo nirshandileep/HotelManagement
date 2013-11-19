@@ -166,13 +166,13 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seInfants;
         
         /// <summary>
-        /// gvGuestInfo control.
+        /// gvRoomInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvGuestInfo;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvRoomInfo;
         
         /// <summary>
         /// gvServiceInformation control.
