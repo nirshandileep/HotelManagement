@@ -93,7 +93,7 @@ namespace HBM.Common
         public static readonly string SESSION_PAYMENTTYPES = "PaymentTypes";
         public static readonly string SESSION_RESERVATION_ADDTIONALSERVICE= "ReservationAddtionalService";
         public static readonly string SESSION_RESERVATION_PAYMENTINFORMATION= "ReservationPaymentInformation";
-        public static readonly string SESSION_RESERVATION_ROOMINFORMATION = "ReservationPaymentInformation";
+        public static readonly string SESSION_RESERVATION_ROOMINFORMATION = "ReservationRoomInformation";
         
 
         #endregion

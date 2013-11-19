@@ -205,7 +205,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                             </td>
                                                             <td rowspan="3">
                                                                 <dx:ASPxButton ID="btnAdd" runat="server" Text="Add" Height="40px" 
-                                                                    ValidationGroup="vgAdd">
+                                                                    ValidationGroup="vgAdd" OnClick="btnAdd_Click">
                                                                 </dx:ASPxButton>
                                                             </td>
                                                         </tr>
@@ -298,32 +298,44 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 <ClearFilterButton Visible="True">
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Sharers" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                            <dx:GridViewDataTextColumn Caption="Sharers" ShowInCustomizationForm="True" 
+                                                                VisibleIndex="1" FieldName="Sharers">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="In" ShowInCustomizationForm="True" VisibleIndex="2">
+                                                            <dx:GridViewDataTextColumn Caption="In" ShowInCustomizationForm="True" 
+                                                                VisibleIndex="2" FieldName="CheckInDate">
                                                                 <PropertiesTextEdit DisplayFormatString="d">
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Out" ShowInCustomizationForm="True" VisibleIndex="3">
+                                                            <dx:GridViewDataTextColumn Caption="Out" ShowInCustomizationForm="True" 
+                                                                VisibleIndex="3" FieldName="CheckOutDate">
                                                                 <PropertiesTextEdit DisplayFormatString="d">
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Room" ShowInCustomizationForm="True" VisibleIndex="4">
+                                                            <dx:GridViewDataTextColumn Caption="Room" ShowInCustomizationForm="True" 
+                                                                VisibleIndex="4" FieldName="RoomId">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" VisibleIndex="5">
+                                                            <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" 
+                                                                VisibleIndex="5" FieldName="RoomRatePlanId">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="# of Adults" ShowInCustomizationForm="True"
-                                                                VisibleIndex="6">
+                                                                VisibleIndex="6" FieldName="NumberOfAdults">
                                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
                                                             <dx:GridViewDataTextColumn Caption="# of Childrens" ShowInCustomizationForm="True"
-                                                                VisibleIndex="7">
+                                                                VisibleIndex="7" FieldName="NumberOfChildren">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="# of Infant" ShowInCustomizationForm="True" VisibleIndex="8">
+                                                            <dx:GridViewDataTextColumn Caption="# of Infant" ShowInCustomizationForm="True" 
+                                                                VisibleIndex="8" FieldName="NumberOfInfant">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Amount" ShowInCustomizationForm="True" VisibleIndex="9">
+                                                            <dx:GridViewDataTextColumn Caption="Amount" ShowInCustomizationForm="True" 
+                                                                VisibleIndex="10" FieldName="Amount">
                                                             </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataSpinEditColumn Caption="Days" FieldName="Days" 
+                                                                ShowInCustomizationForm="True" VisibleIndex="9">
+                                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                                                </PropertiesSpinEdit>
+                                                            </dx:GridViewDataSpinEditColumn>
                                                         </Columns>
                                                     </dx:ASPxGridView>
                                                 </dx:ContentControl>

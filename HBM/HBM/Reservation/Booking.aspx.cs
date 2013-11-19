@@ -24,7 +24,7 @@ namespace HBM.Reservation
     {
         #region Variables
 
-        DataSet dsRoomInfomation= new DataSet();        
+        DataSet dsRoomInfomation = new DataSet();
         DataSet dsAdditionalService = new DataSet();
         DataSet dsPaymentInformation = new DataSet();
         GenMan.AdditionalService additionalService = new GenMan.AdditionalService();
@@ -52,10 +52,10 @@ namespace HBM.Reservation
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 this.LoadInitialData();
+                this.LoadRoomInformation();
                 this.LoadAddiotnalService();
                 this.LoadPaymentInformation();
             }
@@ -128,6 +128,52 @@ namespace HBM.Reservation
             }
         }
 
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+
+            if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+            {
+                dsRoomInfomation = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
+
+                DataRow dr = dsRoomInfomation.Tables[0].NewRow();
+                Random rd = new Random();
+                dr["ReservationRoomId"] = rd.Next();
+                dr["ReservationId"] = 0;
+                dr["RoomId"] = Convert.ToInt32(cmbRoom.Value);
+                dr["RoomRatePlanId"] = Convert.ToInt32(cmbRatePlan.Value);
+                dr["Sharers"] = ddlShareNames.Text.Trim();
+                dr["CheckInDate"] = dtCheckingDate.Text;
+                dr["CheckOutDate"] = dtCheckOutDate.Text;
+                dr["NumberOfAdults"] = seAdults.Text;
+                dr["NumberOfChildren"] = seChildren.Text;
+                dr["NumberOfInfant"] = seInfants.Text;
+
+                TimeSpan tspan = Convert.ToDateTime(dtCheckOutDate.Text) - Convert.ToDateTime(dtCheckingDate.Text);
+                double totalDays = 0;
+                totalDays = tspan.TotalDays;
+
+                dr["Days"] = totalDays;
+                dr["Amount"] = totalDays * 10;
+                dr["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
+                dr["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
+
+                dsRoomInfomation.Tables[0].Rows.Add(dr);
+                Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
+             
+            }
+            else
+            {
+                reservationRoom.ReservationId = 0;
+                dsRoomInfomation = reservationRoom.SelectAllDataSetByReseervationId();
+                Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
+            }
+
+            gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
+            gvRoomInfo.DataBind();
+
+
+
+        }
         #endregion
 
         #region Reservation
@@ -169,13 +215,13 @@ namespace HBM.Reservation
                 reservation.ReservationAdditionalServiceDataSet = this.dsAdditionalService;
                 reservation.ReservationPaymentDataSet = this.dsPaymentInformation;
 
-                reservation.Save(db,transaction);
+                reservation.Save(db, transaction);
                 transaction.Commit();
                 result = true;
             }
             catch (System.Exception)
             {
-                transaction.Rollback();               
+                transaction.Rollback();
             }
 
 
@@ -198,7 +244,7 @@ namespace HBM.Reservation
 
                 ResMan.Reservation reservation = new GenRes.Reservation();
                 reservation.ReservationId = 0;
-                reservation=reservation.Select();
+                reservation = reservation.Select();
 
                 cmbCustomer.Value = reservation.CustomerId;
                 cmbSource.Value = reservation.SourceId;
@@ -217,10 +263,10 @@ namespace HBM.Reservation
                 this.dsAdditionalService = reservation.ReservationAdditionalServiceDataSet;
                 this.dsPaymentInformation = reservation.ReservationPaymentDataSet;
 
-                
+
                 this.LoadAddiotnalService();
                 this.LoadPaymentInformation();
-              
+
 
                 transaction.Commit();
                 result = true;
@@ -235,7 +281,7 @@ namespace HBM.Reservation
         }
 
         #endregion
-        
+
         #region Room Information
 
         private void LoadRoomInformation()
@@ -249,7 +295,7 @@ namespace HBM.Reservation
             Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
 
         }
-        
+
         protected void gvRoomInfo_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
             if (e.Column.FieldName != "ReservationRoomId") return;
@@ -514,11 +560,7 @@ namespace HBM.Reservation
             combo.DataBindItems();
         }
 
-        #endregion
-
-        
-
-
+        #endregion        
 
     }
 }
