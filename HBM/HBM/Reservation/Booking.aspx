@@ -359,7 +359,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         KeyFieldName="ReservationAdditionalServiceId" OnCellEditorInitialize="gvServiceInformation_CellEditorInitialize"
                                                         OnRowDeleting="gvServiceInformation_RowDeleting" OnRowInserting="gvServiceInformation_RowInserting"
                                                         OnRowUpdating="gvServiceInformation_RowUpdating" 
-                                                        OnRowInserted="gvServiceInformation_RowInserted">
+                                                        OnRowInserted="gvServiceInformation_RowInserted" 
+                                                        OnUnload="gvServiceInformation_Unload">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount"
                                                                 SummaryType="Sum" />

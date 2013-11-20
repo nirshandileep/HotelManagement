@@ -91,6 +91,7 @@
     <Content Include="ControlPanel\GuestTypes.aspx" />
     <Content Include="ControlPanel\PaymentTypes.aspx" />
     <Content Include="ControlPanel\RatePlans.aspx" />
+    <Content Include="ControlPanel\RoomRatePlans.aspx" />
     <Content Include="ControlPanel\Rooms.aspx" />
     <Content Include="ControlPanel\Source.aspx" />
     <Content Include="ControlPanel\SwitchBoard.aspx" />
@@ -223,6 +224,13 @@
     </Compile>
     <Compile Include="ControlPanel\RatePlans.aspx.designer.cs">
       <DependentUpon>RatePlans.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\RoomRatePlans.aspx.cs">
+      <DependentUpon>RoomRatePlans.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\RoomRatePlans.aspx.designer.cs">
+      <DependentUpon>RoomRatePlans.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\Rooms.aspx.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
