@@ -140,7 +140,7 @@ namespace HBM.Reservation
                 dr["ReservationRoomId"] = rd.Next();
                 dr["ReservationId"] = 0;
                 dr["RoomId"] = Convert.ToInt32(cmbRoom.Value);
-                dr["RoomRatePlanId"] = Convert.ToInt32(cmbRatePlan.Value);
+                dr["RatePlanId"] = Convert.ToInt32(cmbRatePlan.Value);
                 dr["Sharers"] = ddlShareNames.Text.Trim();
                 dr["CheckInDate"] = dtCheckingDate.Text;
                 dr["CheckOutDate"] = dtCheckOutDate.Text;
@@ -207,14 +207,44 @@ namespace HBM.Reservation
                 reservation.ServiceTotal = Convert.ToDecimal(txtServiceTotal.Text.Trim());
                 reservation.NetTotal = Convert.ToDecimal(txtNetTotal.Text.Trim());
                 reservation.Discount = Convert.ToDecimal(txtDiscount.Text.Trim());
+                reservation.TaxTypeId = Convert.ToInt32(cmbTax.Value);
                 reservation.TaxAmount = Convert.ToDecimal(txtTaxTotal.Text.Trim());
                 reservation.Total = Convert.ToDecimal(txtTotal.Text.Trim());
                 reservation.PaidAmount = Convert.ToDecimal(txtPaidAmount.Text.Trim());
                 reservation.Balance = Convert.ToDecimal(txtBalance.Text.Trim());
                 reservation.CreatedUser = Master.LoggedUser.UsersId;
-                reservation.ReservationRoomDataSet = this.dsRoomInfomation;
-                reservation.ReservationAdditionalServiceDataSet = this.dsAdditionalService;
-                reservation.ReservationPaymentDataSet = this.dsPaymentInformation;
+
+                if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+                {
+                    reservation.ReservationRoomDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
+                }
+                else
+                {
+                    reservationRoom.ReservationId = 0;
+                    reservation.ReservationRoomDataSet = reservationRoom.SelectAllDataSetByReseervationId();
+                }
+
+
+                if (Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] != null)
+                {
+                    reservation.ReservationAdditionalServiceDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE];
+                }
+                else
+                {
+                    reservationAdditionalService.ReservationId = 0;
+                    reservation.ReservationAdditionalServiceDataSet = reservationAdditionalService.SelectAllDataSetByReservationID();
+                }
+
+
+                if (Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] != null)
+                {
+                    reservation.ReservationPaymentDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION];
+                }
+                else
+                {
+                    reservationPayments.ReservationId = 0;
+                    reservation.ReservationPaymentDataSet = reservationPayments.SelectAllDataSetByReservationID();
+                }
 
                 reservation.Save(db, transaction);
                 transaction.Commit();
@@ -338,6 +368,8 @@ namespace HBM.Reservation
 
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
+
+            
         }
 
         protected void gvRoomInfo_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -372,6 +404,8 @@ namespace HBM.Reservation
 
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
+
+            
         }
 
         protected void gvRoomInfo_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -394,6 +428,8 @@ namespace HBM.Reservation
 
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
+
+            
         }
 
         #endregion
@@ -422,6 +458,8 @@ namespace HBM.Reservation
 
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
+
+            
 
         }
 
@@ -454,10 +492,18 @@ namespace HBM.Reservation
             e.Cancel = true;
 
             dsAdditionalService.Tables[0].Rows.Add(row);
-
+            
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
-            gvServiceInformation.DataBind();
+          
 
+            
+
+        }
+
+        protected void gvServiceInformation_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+         
+           
         }
 
         protected void gvServiceInformation_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -481,6 +527,7 @@ namespace HBM.Reservation
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
 
+            
         }
 
         protected void gvServiceInformation_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
@@ -585,6 +632,14 @@ namespace HBM.Reservation
         }
 
         #endregion        
+
+        protected void gvServiceInformation_Unload(object sender, EventArgs e)
+        {
+
+        }
+
+       
+       
 
     }
 }

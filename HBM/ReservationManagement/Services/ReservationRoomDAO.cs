@@ -10,13 +10,13 @@ namespace HBM.ReservationManagement
 {
     public class ReservationRoomDAO
     {
-        public bool InsertUpdateDelete(DataSet ds, Database db, DbTransaction transaction)
+        public bool InsertUpdateDelete(ReservationRoom reservationRoom, Database db, DbTransaction transaction)
         {          
             DbCommand commandInsert = db.GetStoredProcCommand("usp_ReservationRoomInsert");
 
-            db.AddInParameter(commandInsert, "@ReservationId", DbType.Int32, "ReservationId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@ReservationId", DbType.Int64, reservationRoom.ReservationId);
             db.AddInParameter(commandInsert, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
-            db.AddInParameter(commandInsert, "@RoomRatePlanId", DbType.Int32, "RoomRatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@RatePlanId", DbType.Int32, "RatePlanId", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Sharers", DbType.String, "Sharers", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@CheckInDate", DbType.DateTime, "CheckInDate", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@CheckOutDate", DbType.DateTime, "CheckOutDate", DataRowVersion.Current);
@@ -32,7 +32,7 @@ namespace HBM.ReservationManagement
 
             db.AddInParameter(commandUpdate, "@ReservationReservationId", DbType.Int32, "ReservationReservationId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@RoomRatePlanId", DbType.Int32, "RoomRatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@RatePlanId", DbType.Int32, "RatePlanId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Sharers", DbType.String, "Sharers", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@CheckInDate", DbType.DateTime, "CheckInDate", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@CheckOutDate", DbType.DateTime, "CheckOutDate", DataRowVersion.Current);
@@ -45,9 +45,9 @@ namespace HBM.ReservationManagement
             db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 
             DbCommand commandDelete = db.GetStoredProcCommand("usp_ReservationRoomDelete");
-            db.AddInParameter(commandDelete, "@ReservationReservationId", DbType.Int32, "ReservationReservationId", DataRowVersion.Current);
+            db.AddInParameter(commandDelete, "@ReservationRoomId", DbType.Int32, "ReservationRoomId", DataRowVersion.Current);
 
-            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, transaction);
+            db.UpdateDataSet(reservationRoom.ReservationRoomList, reservationRoom.ReservationRoomList.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, transaction);
 
             return true;
         }

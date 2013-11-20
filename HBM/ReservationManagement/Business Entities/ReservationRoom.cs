@@ -16,7 +16,7 @@ namespace HBM.ReservationManagement
 
         public int ReservationRoomId { get; set; }
         public int ReservationId { get; set; }
-        public int RoomId { get; set; }  
+        public int RoomId { get; set; }
         public int RoomRatePlanId { get; set; }
         public string Sharers { get; set; }
         public DateTime CheckInDate { get; set; }
@@ -25,23 +25,25 @@ namespace HBM.ReservationManagement
         public int NumberOfChildren { get; set; }
         public int NumberOfInfant { get; set; }
         public decimal Days { get; set; }
-        public decimal Amount { get; set; }       
+        public decimal Amount { get; set; }
         public int StatusId { get; set; }
         public int CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
         public int UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
-        
+        public DataSet ReservationRoomList { get; set; }
+
+
         #endregion
 
         #region Methods
 
-        public bool Save(DataSet ds, Database db, DbTransaction transaction)
+        public bool Save(Database db, DbTransaction transaction)
         {
             bool result = false;
             try
             {
-                result = (new ReservationRoomDAO()).InsertUpdateDelete(ds, db, transaction);
+                result = (new ReservationRoomDAO()).InsertUpdateDelete(this, db, transaction);
             }
             catch (System.Exception ex)
             {
@@ -61,7 +63,7 @@ namespace HBM.ReservationManagement
             return HBM.Utility.Generic.Get<ReservationRoom>(this.ReservationRoomId);
         }
 
-      
+
         #endregion
     }
 }

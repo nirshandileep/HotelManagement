@@ -19,8 +19,7 @@ namespace HBM.ReservationManagement
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, reservation.CompanyId);
             db.AddInParameter(command, "@CustomerId", DbType.Int32, reservation.CustomerId);
-            db.AddInParameter(command, "@StatusId", DbType.Int32, reservation.StatusId);
-            db.AddInParameter(command, "@BookingDate", DbType.DateTime, reservation.BookingDate);
+            db.AddInParameter(command, "@StatusId", DbType.Int32, reservation.StatusId);            
             db.AddInParameter(command, "@CheckInDate", DbType.DateTime, reservation.CheckInDate);
             db.AddInParameter(command, "@CheckOutDate", DbType.DateTime, reservation.CheckOutDate);
             db.AddInParameter(command, "@SourceId", DbType.Int32, reservation.SourceId);
@@ -33,19 +32,26 @@ namespace HBM.ReservationManagement
             db.AddInParameter(command, "@Total", DbType.Decimal, reservation.Total);
             db.AddInParameter(command, "@Balance", DbType.Decimal, reservation.Balance);
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, reservation.CreatedUser);
-            db.AddInParameter(command, "@TaxTypeId", DbType.Int32, reservation.TaxTypeId);          
-
+            db.AddInParameter(command, "@TaxTypeId", DbType.Int32, reservation.TaxTypeId);
+            db.AddOutParameter(command, "@NewReservationId", DbType.Int32,8);    
+            
             db.ExecuteNonQuery(command);
 
-            ReservationRoom reservationRoom = new ReservationRoom();
-            reservationRoom.Save(reservation.ReservationRoomDataSet, db, transaction);
+            Int32 newReservationId = Convert.ToInt32(db.GetParameterValue(command, "@NewReservationId"));
 
+            ReservationRoom reservationRoom = new ReservationRoom();
+            reservationRoom.ReservationId = newReservationId;
+            reservationRoom.ReservationRoomList = reservation.ReservationRoomDataSet;
+            reservationRoom.Save(db, transaction);
 
             ReservationAdditionalService reservationAddtionalService = new ReservationAdditionalService();
-            reservationAddtionalService.Save(reservation.ReservationAdditionalServiceDataSet, db, transaction);
+            reservationAddtionalService.ReservationId = newReservationId;
+            reservationAddtionalService.ReservationAdditionalServiceList = reservation.ReservationAdditionalServiceDataSet;
+            reservationAddtionalService.Save(db, transaction);
 
-            ReservationPayments reservationPayments = new ReservationPayments();
-            reservationPayments.Save(reservation.ReservationPaymentDataSet, db, transaction);
+            //ReservationPayments reservationPayments = new ReservationPayments();
+            //reservationPayments.ReservationId = newReservationId;
+            //reservationPayments.Save(reservation.ReservationPaymentDataSet, db, transaction);
 
             return true;
         }

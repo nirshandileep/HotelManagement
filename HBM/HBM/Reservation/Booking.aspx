@@ -133,7 +133,8 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" 
+                                    Width="100%">
                                     <TabPages>
                                         <dx:TabPage Text="Room Info">
                                             <ContentCollection>
@@ -323,7 +324,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 VisibleIndex="4" FieldName="RoomId">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="5" FieldName="RoomRatePlanId">
+                                                                VisibleIndex="5" FieldName="RatePlanId">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="# of Adults" ShowInCustomizationForm="True"
                                                                 VisibleIndex="6" FieldName="NumberOfAdults">
@@ -357,7 +358,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                     <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False"
                                                         KeyFieldName="ReservationAdditionalServiceId" OnCellEditorInitialize="gvServiceInformation_CellEditorInitialize"
                                                         OnRowDeleting="gvServiceInformation_RowDeleting" OnRowInserting="gvServiceInformation_RowInserting"
-                                                        OnRowUpdating="gvServiceInformation_RowUpdating">
+                                                        OnRowUpdating="gvServiceInformation_RowUpdating" 
+                                                        OnRowInserted="gvServiceInformation_RowInserted">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount"
                                                                 SummaryType="Sum" />

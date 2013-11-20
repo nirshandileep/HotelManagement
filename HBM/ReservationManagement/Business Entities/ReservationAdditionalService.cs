@@ -20,18 +20,19 @@ namespace HBM.ReservationManagement
         public DateTime CreatedDate { get; set; }
         public Int32 UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
-        public int AdditionalServiceId { get; set; }        
+        public int AdditionalServiceId { get; set; }
+        public DataSet ReservationAdditionalServiceList { get; set; }
 
         #endregion
 
         #region Methods
 
-        public bool Save(DataSet ds, Database db, DbTransaction transaction)
+        public bool Save( Database db, DbTransaction transaction)
         {
             bool result = false;
             try
             {
-                result = (new ReservationAdditionalServiceDAO()).InsertUpdateDelete(ds, db, transaction);
+                result = (new ReservationAdditionalServiceDAO()).InsertUpdateDelete(this, db, transaction);
             }
             catch (System.Exception ex)
             {

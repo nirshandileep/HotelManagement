@@ -12,11 +12,11 @@ namespace HBM.ReservationManagement
 {
     public class ReservationAdditionalServiceDAO
     {
-        public bool InsertUpdateDelete(DataSet ds, Database db, DbTransaction transaction)
+        public bool InsertUpdateDelete(ReservationAdditionalService reservationAddtionalService, Database db, DbTransaction transaction)
         {         
             DbCommand commandInsert = db.GetStoredProcCommand("usp_ReservationAdditionalServiceInsert");
 
-            db.AddInParameter(commandInsert, "@ReservationId", DbType.Int32, "ReservationId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@ReservationId", DbType.Int64,reservationAddtionalService.ReservationId);
             db.AddInParameter(commandInsert, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Amount", DbType.Decimal, "Amount", DataRowVersion.Current);            
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
@@ -37,7 +37,7 @@ namespace HBM.ReservationManagement
             DbCommand commandDelete = db.GetStoredProcCommand("usp_ReservationAdditionalServiceDelete");
             db.AddInParameter(commandDelete, "@ReservationAdditionalServiceId", DbType.Int64, "ReservationAdditionalServiceId", DataRowVersion.Current);
 
-            db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, transaction);
+            db.UpdateDataSet(reservationAddtionalService.ReservationAdditionalServiceList, reservationAddtionalService.ReservationAdditionalServiceList.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, transaction);
 
             return true;
         }
