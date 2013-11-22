@@ -133,8 +133,7 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" 
-                                    Width="100%">
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
                                     <TabPages>
                                         <dx:TabPage Text="Room Info">
                                             <ContentCollection>
@@ -170,15 +169,15 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                             <td>
                                                                 <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.String" TextFormatString="{1}">
                                                                     <Columns>
-                                                                        <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" Width="50px"/>
-                                                                        <dx:ListBoxColumn Caption="Name" FieldName="RoomName" Width="125px"/>
-                                                                        <dx:ListBoxColumn Caption="Room Number" FieldName="RoomNumber" Width="100px"/>
-                                                                        <dx:ListBoxColumn Caption="Max Adult" FieldName="MaxAdult" Width="50px"/>
-                                                                        <dx:ListBoxColumn Caption="Max Children" FieldName="MaxChildren" Width="90px"/>
-                                                                        <dx:ListBoxColumn Caption="Max Infant" FieldName="MaxInfant" Width="90px"/>
-                                                                        <dx:ListBoxColumn Caption="Smoking Allow" FieldName="SmokingAllow" Width="90px"/>
-                                                                        <dx:ListBoxColumn Caption="Bed Type" FieldName="BedTypeName" Width="100px"/>
-                                                                        <dx:ListBoxColumn Caption="Description" FieldName="BedTypeDescription" Width="100px"/>
+                                                                        <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" Width="50px" />
+                                                                        <dx:ListBoxColumn Caption="Name" FieldName="RoomName" Width="125px" />
+                                                                        <dx:ListBoxColumn Caption="Room Number" FieldName="RoomNumber" Width="100px" />
+                                                                        <dx:ListBoxColumn Caption="Max Adult" FieldName="MaxAdult" Width="50px" />
+                                                                        <dx:ListBoxColumn Caption="Max Children" FieldName="MaxChildren" Width="90px" />
+                                                                        <dx:ListBoxColumn Caption="Max Infant" FieldName="MaxInfant" Width="90px" />
+                                                                        <dx:ListBoxColumn Caption="Smoking Allow" FieldName="SmokingAllow" Width="90px" />
+                                                                        <dx:ListBoxColumn Caption="Bed Type" FieldName="BedTypeName" Width="100px" />
+                                                                        <dx:ListBoxColumn Caption="Description" FieldName="BedTypeDescription" Width="100px" />
                                                                     </Columns>
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -193,10 +192,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                     <Columns>
                                                                         <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" Width="100px" />
                                                                         <dx:ListBoxColumn Caption="Effective From" FieldName="EffectiveFrom" Width="100px" />
-                                                                        <dx:ListBoxColumn Caption="Effective To" FieldName="EffectiveTo" Width="100px"/>
-                                                                        <dx:ListBoxColumn Caption="Rate" FieldName="Rate" Width="50px"/>
-                                                                        <dx:ListBoxColumn Caption="Adult Rate" FieldName="AdditionalAdultRate"  Width="100px"/>
-                                                                        <dx:ListBoxColumn Caption="Children Rate" FieldName="AdditionalChildrenRate" Width="100px"/>
+                                                                        <dx:ListBoxColumn Caption="Effective To" FieldName="EffectiveTo" Width="100px" />
+                                                                        <dx:ListBoxColumn Caption="Rate" FieldName="Rate" Width="50px" />
+                                                                        <dx:ListBoxColumn Caption="Adult Rate" FieldName="AdditionalAdultRate" Width="100px" />
+                                                                        <dx:ListBoxColumn Caption="Children Rate" FieldName="AdditionalChildrenRate" Width="100px" />
                                                                         <dx:ListBoxColumn Caption="Infant Rate" FieldName="AdditionalInfantRate" Width="100px" />
                                                                     </Columns>
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
@@ -205,8 +204,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </dx:ASPxComboBox>
                                                             </td>
                                                             <td rowspan="3">
-                                                                <dx:ASPxButton ID="btnAdd" runat="server" Text="Add" Height="40px" 
-                                                                    ValidationGroup="vgAdd" OnClick="btnAdd_Click">
+                                                                <dx:ASPxButton ID="btnAdd" runat="server" Text="Add" Height="40px" ValidationGroup="vgAdd"
+                                                                    OnClick="btnAdd_Click">
+                                                                    <Image Url="~/Images/Add.png">
+                                                                    </Image>
                                                                 </dx:ASPxButton>
                                                             </td>
                                                         </tr>
@@ -289,42 +290,40 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <dx:ASPxGridView ID="gvRoomInfo" runat="server" AutoGenerateColumns="False" 
-                                                        Width="100%" OnCellEditorInitialize="gvRoomInfo_CellEditorInitialize" KeyFieldName="ReservationRoomId"
-                                                        OnRowDeleting="gvRoomInfo_RowDeleting" OnRowInserting="gvRoomInfo_RowInserting" 
-                                                        OnRowUpdating="gvRoomInfo_RowUpdating">
+                                                    <dx:ASPxGridView ID="gvRoomInfo" runat="server" AutoGenerateColumns="False" Width="100%"
+                                                        OnCellEditorInitialize="gvRoomInfo_CellEditorInitialize" KeyFieldName="ReservationRoomId"
+                                                        OnRowDeleting="gvRoomInfo_RowDeleting" OnRowInserting="gvRoomInfo_RowInserting"
+                                                        OnRowUpdating="gvRoomInfo_RowUpdating" OnDataBound="gvRoomInfo_DataBound">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" 
-                                                                SummaryType="Sum" />
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" />
                                                         </TotalSummary>
                                                         <Columns>
-                                                            <dx:GridViewCommandColumn ShowInCustomizationForm="True"
-                                                                VisibleIndex="0" ButtonType="Image">
+                                                            <dx:GridViewCommandColumn ShowInCustomizationForm="True" VisibleIndex="0" ButtonType="Image">
                                                                 <DeleteButton Visible="True">
-                                                                   <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                                                    <Image ToolTip="Delete" Url="~/Images/delete.png">
                                                                     </Image>
                                                                 </DeleteButton>
                                                                 <ClearFilterButton Visible="True">
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Sharers" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="1" FieldName="Sharers">
+                                                            <dx:GridViewDataTextColumn Caption="Sharers" ShowInCustomizationForm="True" VisibleIndex="1"
+                                                                FieldName="Sharers">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="In" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="2" FieldName="CheckInDate">
+                                                            <dx:GridViewDataTextColumn Caption="In" ShowInCustomizationForm="True" VisibleIndex="2"
+                                                                FieldName="CheckInDate">
                                                                 <PropertiesTextEdit DisplayFormatString="d">
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Out" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="3" FieldName="CheckOutDate">
+                                                            <dx:GridViewDataTextColumn Caption="Out" ShowInCustomizationForm="True" VisibleIndex="3"
+                                                                FieldName="CheckOutDate">
                                                                 <PropertiesTextEdit DisplayFormatString="d">
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Room" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="4" FieldName="RoomId">
+                                                            <dx:GridViewDataTextColumn Caption="Room" ShowInCustomizationForm="True" VisibleIndex="4"
+                                                                FieldName="RoomId">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="5" FieldName="RatePlanId">
+                                                            <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" VisibleIndex="5"
+                                                                FieldName="RatePlanId">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="# of Adults" ShowInCustomizationForm="True"
                                                                 VisibleIndex="6" FieldName="NumberOfAdults">
@@ -334,14 +333,14 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                             <dx:GridViewDataTextColumn Caption="# of Childrens" ShowInCustomizationForm="True"
                                                                 VisibleIndex="7" FieldName="NumberOfChildren">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="# of Infant" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="8" FieldName="NumberOfInfant">
+                                                            <dx:GridViewDataTextColumn Caption="# of Infant" ShowInCustomizationForm="True" VisibleIndex="8"
+                                                                FieldName="NumberOfInfant">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="Amount" ShowInCustomizationForm="True" 
-                                                                VisibleIndex="10" FieldName="Amount">
+                                                            <dx:GridViewDataTextColumn Caption="Amount" ShowInCustomizationForm="True" VisibleIndex="10"
+                                                                FieldName="Amount">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataSpinEditColumn Caption="Days" FieldName="Days" 
-                                                                ShowInCustomizationForm="True" VisibleIndex="9">
+                                                            <dx:GridViewDataSpinEditColumn Caption="Days" FieldName="Days" ShowInCustomizationForm="True"
+                                                                VisibleIndex="9">
                                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
@@ -358,12 +357,9 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                     <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False"
                                                         KeyFieldName="ReservationAdditionalServiceId" OnCellEditorInitialize="gvServiceInformation_CellEditorInitialize"
                                                         OnRowDeleting="gvServiceInformation_RowDeleting" OnRowInserting="gvServiceInformation_RowInserting"
-                                                        OnRowUpdating="gvServiceInformation_RowUpdating" 
-                                                        OnRowInserted="gvServiceInformation_RowInserted" 
-                                                        OnUnload="gvServiceInformation_Unload">
+                                                        OnRowUpdating="gvServiceInformation_RowUpdating" OnDataBound="gvServiceInformation_DataBound">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount"
-                                                                SummaryType="Sum" />
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
@@ -517,8 +513,17 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                             <dx:GridViewDataTextColumn FieldName="CCNameOnCard" ShowInCustomizationForm="True"
                                                                 VisibleIndex="8" Caption="Name on Card">
                                                             </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" ShowInCustomizationForm="True"
+                                                                VisibleIndex="11">
+                                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                                                </PropertiesSpinEdit>
+                                                            </dx:GridViewDataSpinEditColumn>
+                                                            <dx:GridViewDataTextColumn Caption="Ref No" FieldName="ReferenceNumber" ShowInCustomizationForm="True"
+                                                                VisibleIndex="10">
+                                                            </dx:GridViewDataTextColumn>
                                                         </Columns>
                                                         <SettingsBehavior ConfirmDelete="True" EnableCustomizationWindow="True" />
+                                                        <Settings ShowFooter="True" />
                                                     </dx:ASPxGridView>
                                                 </dx:ContentControl>
                                             </ContentCollection>
@@ -555,7 +560,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         Room Total
                                                     </td>
                                                     <td>
-                                                        <dx:ASPxTextBox ID="txtRoomTotal" runat="server" Width="170px" ReadOnly="True">
+                                                        <dx:ASPxTextBox ID="txtRoomTotal" runat="server" Width="170px">
                                                         </dx:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -572,7 +577,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         Service Total
                                                     </td>
                                                     <td>
-                                                        <dx:ASPxTextBox ID="txtServiceTotal" runat="server" Width="170px" ReadOnly="True">
+                                                        <dx:ASPxTextBox ID="txtServiceTotal" runat="server" Width="170px">
                                                         </dx:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -745,18 +750,20 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
             </tr>
             <tr>
                 <td colspan="3">
-                    <table>
+                    <table border="0" cellpadding="0" cellspacing="0" >
                         <tr>
-                            <td>
-                                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click"
-                                    ValidationGroup="vgSave">
+                            <td width="52" align="left">
+                                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave"
+                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" TabIndex="26">
+                                    <Image Url="~/Images/Save.png">
+                                    </Image>
                                 </dx:ASPxButton>
                             </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                            <td>
-                                <dx:ASPxButton ID="btnSettle" runat="server" Text="Settle">
+                            <td width="52" align="left">
+                                <dx:ASPxButton ID="btnNew" runat="server" Text="New" HorizontalAlign="Center" ImageSpacing="15px"
+                                    VerticalAlign="Middle" TabIndex="26">
+                                    <Image Url="~/Images/NewDoc.png">
+                                    </Image>
                                 </dx:ASPxButton>
                             </td>
                         </tr>

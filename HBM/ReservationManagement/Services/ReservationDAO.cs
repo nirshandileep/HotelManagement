@@ -49,9 +49,10 @@ namespace HBM.ReservationManagement
             reservationAddtionalService.ReservationAdditionalServiceList = reservation.ReservationAdditionalServiceDataSet;
             reservationAddtionalService.Save(db, transaction);
 
-            //ReservationPayments reservationPayments = new ReservationPayments();
-            //reservationPayments.ReservationId = newReservationId;
-            //reservationPayments.Save(reservation.ReservationPaymentDataSet, db, transaction);
+            ReservationPayments reservationPayments = new ReservationPayments();
+            reservationPayments.ReservationId = newReservationId;
+            reservationPayments.ReservationPaymentList = reservation.ReservationPaymentDataSet;
+            reservationPayments.Save(db, transaction);
 
             return true;
         }

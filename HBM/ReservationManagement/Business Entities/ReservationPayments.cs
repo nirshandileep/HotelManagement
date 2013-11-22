@@ -29,17 +29,20 @@ namespace HBM.ReservationManagement
         public DateTime CreatedDate { get; set; }
         public Int32 UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public decimal Amount { get; set; }
+        public DataSet ReservationPaymentList { get; set; }
+
 
         #endregion
 
         #region Methods
 
-        public bool Save(DataSet ds, Database db, DbTransaction transaction)
+        public bool Save(Database db, DbTransaction transaction)
         {
             bool result = false;
             try
             {
-                result = (new ReservationPaymentsDAO()).InsertUpdateDelete(ds,db,transaction);
+                result = (new ReservationPaymentsDAO()).InsertUpdateDelete(this,db,transaction);
             }
             catch (System.Exception ex)
             {

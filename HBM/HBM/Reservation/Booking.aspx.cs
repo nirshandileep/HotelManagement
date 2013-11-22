@@ -38,27 +38,34 @@ namespace HBM.Reservation
 
         protected void Page_Init(object sender, EventArgs e)
         {
+
             gvServiceInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
             gvPaymentInformation.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
 
             gvPaymentInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
             gvServiceInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
 
+            this.LoadInitialData();
+
+            if (!IsPostBack)
+            {               
+                this.LoadRoomInformation();
+                this.LoadAddiotnalService();
+                this.LoadPaymentInformation();                
+            }
+
             ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CurrencyId"]).PropertiesComboBox.DataSource = new GenMan.CurrencyTypes().SelectAllDataset().Tables[0];
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
+
+            
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                this.LoadInitialData();
-                this.LoadRoomInformation();
-                this.LoadAddiotnalService();
-                this.LoadPaymentInformation();
-            }
+            
         }
 
         #endregion
@@ -324,8 +331,27 @@ namespace HBM.Reservation
 
         private void Calculate()
         {
-            txtRoomTotal.Text = gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString();
-            txtServiceTotal.Text = gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString();
+            if (gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]) != null)
+            {
+               txtRoomTotal.Text = gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString();
+            }
+            else
+            {
+                txtRoomTotal.Text = "0";
+            }            
+            
+
+            if (gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]) !=null)
+            {
+                txtServiceTotal.Text = gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString();
+
+            }
+            else
+            {
+                txtServiceTotal.Text = "0";
+            }
+
+
             txtNetTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
             txtDiscount.Text = "0";
             txtTaxTotal.Text = "0";
@@ -494,18 +520,11 @@ namespace HBM.Reservation
             dsAdditionalService.Tables[0].Rows.Add(row);
             
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
-          
-
+            gvPaymentInformation.DataBind();
             
 
         }
-
-        protected void gvServiceInformation_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-         
-           
-        }
-
+     
         protected void gvServiceInformation_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
@@ -536,6 +555,13 @@ namespace HBM.Reservation
 
             ASPxComboBox combo = e.Editor as ASPxComboBox;
             combo.DataBindItems();
+        }
+
+        protected void gvServiceInformation_DataBound(object sender, EventArgs e)
+        {
+
+                this.Calculate();
+            
         }
 
         #endregion
@@ -633,13 +659,12 @@ namespace HBM.Reservation
 
         #endregion        
 
-        protected void gvServiceInformation_Unload(object sender, EventArgs e)
+        protected void gvRoomInfo_DataBound(object sender, EventArgs e)
         {
-
+            this.Calculate();
         }
 
-       
-       
+        
 
     }
 }

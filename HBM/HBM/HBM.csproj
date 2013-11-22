@@ -104,6 +104,7 @@
     <Content Include="Customer\CustomerSearch.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Add.png" />
     <Content Include="Images\Apply.png" />
     <Content Include="Images\back.jpg" />
     <Content Include="Images\Clear.png" />
