@@ -16,6 +16,7 @@ namespace HBM.ReservationManagement
         public Int64 ReservationId { get; set; }
         public int CompanyId { get; set; }
         public int CustomerId { get; set; }
+        public string ReservationCode { get; set; }
         public int StatusId { get; set; }
         public DateTime BookingDate { get; set; }
         public DateTime CheckInDate { get; set; }

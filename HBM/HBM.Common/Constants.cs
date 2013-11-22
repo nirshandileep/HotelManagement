@@ -94,6 +94,9 @@ namespace HBM.Common
         public static readonly string SESSION_RESERVATION_ADDTIONALSERVICE= "ReservationAddtionalService";
         public static readonly string SESSION_RESERVATION_PAYMENTINFORMATION= "ReservationPaymentInformation";
         public static readonly string SESSION_RESERVATION_ROOMINFORMATION = "ReservationRoomInformation";
+        public static readonly string SESSION_ARRIVALS = "ArrivalsList";
+        public static readonly string SESSION_DEPARTURES = "DeparturesList";
+        public static readonly string SESSION_DIRTYROOMS = "DirtyRoomsList";
         
 
         #endregion

@@ -63,5 +63,59 @@ namespace HBM.ReservationManagement
 
 
         }
+
+        public DataSet DashboardSelectArrivalsList(int companyId)
+        {
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_Dashboard_ReservationRoom_ArrivalsSelect");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, companyId);
+
+            return db.ExecuteDataSet(dbCommand);
+        }
+
+        public DataSet DashboardSelectDeparturesList(int companyId)
+        {
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_Dashboard_ReservationRoom_DeparturesSelect");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, companyId);
+
+            return db.ExecuteDataSet(dbCommand);
+        }
+
+        public bool DashboardUpdateArrivalsList(DataSet arrivalsList)
+        {
+            DbConnection connection = null;
+            DbTransaction transaction = null;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                DbCommand commandUpdate = db.GetStoredProcCommand("usp_Dashboard_ReservationRoom_ArrivalsUpdate");
+
+                db.AddInParameter(commandUpdate, "@ReservationRoomId", DbType.Int64, "ReservationRoomId", DataRowVersion.Current);
+                db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
+
+                db.UpdateDataSet(arrivalsList, arrivalsList.Tables[0].TableName, null, commandUpdate, null, null);
+
+                transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

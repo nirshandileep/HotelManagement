@@ -32,6 +32,7 @@ namespace HBM.ReservationManagement
         public int UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
         public DataSet ReservationRoomList { get; set; }
+        public DateTime ActualCheckInDate { get; set; }
 
 
         #endregion
@@ -63,6 +64,10 @@ namespace HBM.ReservationManagement
             return HBM.Utility.Generic.Get<ReservationRoom>(this.ReservationRoomId);
         }
 
+        public bool UpdateDashboardArrivals(DataSet dsArrivals)
+        {
+            return (new ReservationRoomDAO()).DashboardUpdateArrivalsList(dsArrivals);
+        }
 
         #endregion
     }
