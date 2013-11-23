@@ -106,6 +106,15 @@
     <Content Include="Global.asax" />
     <Content Include="Images\Add.png" />
     <Content Include="Images\Apply.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\BottomLeftCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\BottomRightCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\HeaderContent.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\HeaderLeftEdge.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\HeaderRightEdge.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\NoHeaderTopLeftCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\NoHeaderTopRightCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\TopLeftCorner.png" />
+    <Content Include="Images\ASPxRoundPanel\2044981245\TopRightCorner.png" />
     <Content Include="Images\back.jpg" />
     <Content Include="Images\Clear.png" />
     <Content Include="Images\Company.png" />

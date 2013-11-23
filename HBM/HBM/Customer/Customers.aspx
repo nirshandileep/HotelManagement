@@ -12,511 +12,481 @@
 <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-inner">
         <h2>
             Add Customer</h2>
-        <table class="customers-tbl">
+        <table>
             <tr>
-                <td height="22" class="info-lbl">
-                    Customer Name<span class="reqfield">*</span>
-                </td>
                 <td>
-                    <dx:ASPxTextBox ID="txtCustomerName" runat="server" Width="170px" TabIndex="1">
-                        <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
-                            ErrorDisplayMode="ImageWithTooltip">
-                            <RequiredField IsRequired="True" ErrorText="Required" />
-                        </ValidationSettings>
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    Passport Number
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtPassportNumber" runat="server" Width="170px" 
-                        TabIndex="21">
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Member Code<span class="reqfield">*</span>
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtMemberCode" runat="server" Width="170px" TabIndex="2">
-                        <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
-                            ErrorDisplayMode="ImageWithTooltip">
-                            <RequiredField IsRequired="True" ErrorText="Required" />
-                        </ValidationSettings>
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    Country of Issue
-                </td>
-                <td>
-                    <dx:ASPxComboBox ID="cmbPassportCountryOfIssue" runat="server" ValueType="System.Int32"
-                        IncrementalFilteringMode="Contains" TabIndex="22">
-                    </dx:ASPxComboBox>
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Gender<span class="reqfield">*</span>
-                </td>
-                <td>
-                    <dx:ASPxComboBox ID="cmbGender" runat="server" IncrementalFilteringMode="Contains"
-                        TabIndex="3">
-                        <Items>
-                            <dx:ListEditItem Text="Male" Value="Male" />
-                            <dx:ListEditItem Text="Female" Value="Female" />
-                        </Items>
-                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer">
-                            <RequiredField ErrorText="Required" IsRequired="True" />
-                        </ValidationSettings>
-                    </dx:ASPxComboBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    Expiry Date
-                </td>
-                <td>
-                    <dx:ASPxDateEdit ID="dtpExpiryDate" runat="server" TabIndex="23">
-                    </dx:ASPxDateEdit>
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Phone<span class="reqfield">*</span>
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px" TabIndex="4">
-                        <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
-                            ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
-                            <RequiredField IsRequired="True" ErrorText="Required" />
-                        </ValidationSettings>
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Fax
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtFax" runat="server" Width="170px" TabIndex="5">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    CC Type
-                </td>
-                <td>
-                    <dx:ASPxComboBox ID="cmbCCType" runat="server" IncrementalFilteringMode="Contains"
-                        ValueType="System.Int32" TabIndex="24">
-                    </dx:ASPxComboBox>
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Email
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" TabIndex="6">
-                        <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
-                            SetFocusOnError="True" ValidationGroup="vgCustomer">
-                            <RegularExpression ErrorText="Incorrect Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
-                        </ValidationSettings>
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    CC No
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtCCNumber" runat="server" Width="170px" TabIndex="25">
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Guest Type<span class="reqfield">*</span>
-                </td>
-                <td>
-                    <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
-                        TabIndex="7" ClientInstanceName="cmbGuestType">
-                        <ClientSideEvents ButtonClick="function(s, e) {
+                    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" Width="800px" HeaderText="Personnel Information">
+                        <PanelCollection>
+                            <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                                <table class="customers-tbl">
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Customer Name<span class="reqfield">*</span>
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtCustomerName" runat="server" TabIndex="1" Width="170px">
+                                                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
+                                                    ValidationGroup="vgCustomer">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            CC Type
+                                        </td>
+                                        <td>
+                                            <dx:ASPxComboBox ID="cmbCCType" runat="server" IncrementalFilteringMode="Contains"
+                                                ValueType="System.Int32" TabIndex="24">
+                                            </dx:ASPxComboBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Member Code<span class="reqfield">*</span>
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtMemberCode" runat="server" TabIndex="2" Width="170px">
+                                                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
+                                                    ValidationGroup="vgCustomer">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            CC No
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtCCNumber" runat="server" Width="170px" TabIndex="25">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Gender<span class="reqfield">*</span>
+                                        </td>
+                                        <td>
+                                            <dx:ASPxComboBox ID="cmbGender" runat="server" IncrementalFilteringMode="Contains"
+                                                TabIndex="3">
+                                                <Items>
+                                                    <dx:ListEditItem Text="Male" Value="Male" />
+                                                    <dx:ListEditItem Text="Female" Value="Female" />
+                                                </Items>
+                                                <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
+                                            </dx:ASPxComboBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            CC Expiry Date (mm/yyyy)
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dx:ASPxComboBox ID="cmbCCExpiryDateMonth" runat="server" ValueType="System.Int32"
+                                                            IncrementalFilteringMode="Contains" Width="50px" TabIndex="26">
+                                                            <Items>
+                                                                <dx:ListEditItem Text="1" Value="1" />
+                                                                <dx:ListEditItem Text="2" Value="2" />
+                                                                <dx:ListEditItem Text="3" Value="3" />
+                                                                <dx:ListEditItem Text="4" Value="4" />
+                                                                <dx:ListEditItem Text="5" Value="5" />
+                                                                <dx:ListEditItem Text="6" Value="6" />
+                                                                <dx:ListEditItem Text="7" Value="7" />
+                                                                <dx:ListEditItem Text="8" Value="8" />
+                                                                <dx:ListEditItem Text="9" Value="9" />
+                                                                <dx:ListEditItem Text="10" Value="10" />
+                                                                <dx:ListEditItem Text="11" Value="11" />
+                                                                <dx:ListEditItem Text="12" Value="12" />
+                                                            </Items>
+                                                        </dx:ASPxComboBox>
+                                                    </td>
+                                                    <td>
+                                                        /
+                                                    </td>
+                                                    <td>
+                                                        <dx:ASPxComboBox ID="cmbCCExpiryDateYear" runat="server" ValueType="System.Int32"
+                                                            IncrementalFilteringMode="Contains" Width="114px" TabIndex="27">
+                                                            <Items>
+                                                                <dx:ListEditItem Text="2012" Value="2012" />
+                                                                <dx:ListEditItem Text="2013" Value="2013" />
+                                                                <dx:ListEditItem Text="2014" Value="2014" />
+                                                                <dx:ListEditItem Text="2015" Value="2015" />
+                                                                <dx:ListEditItem Text="2016" Value="2016" />
+                                                                <dx:ListEditItem Text="2017" Value="2017" />
+                                                                <dx:ListEditItem Text="2018" Value="2018" />
+                                                                <dx:ListEditItem Text="2019" Value="2019" />
+                                                                <dx:ListEditItem Text="2020" Value="2020" />
+                                                            </Items>
+                                                        </dx:ASPxComboBox>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Phone<span class="reqfield">*</span>
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px" TabIndex="4">
+                                                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" SetFocusOnError="True"
+                                                    ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
+                                                    <RequiredField IsRequired="True" ErrorText="Required" />
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            Name on card
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtNameOnCard" runat="server" Width="170px" TabIndex="28">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Fax
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtFax" runat="server" Width="170px" TabIndex="5">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Email
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px" TabIndex="6">
+                                                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
+                                                    SetFocusOnError="True" ValidationGroup="vgCustomer">
+                                                    <RegularExpression ErrorText="Incorrect Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            Car
+                                        </td>
+                                        <td>
+                                            <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" IncrementalFilteringMode="Contains"
+                                                TabIndex="29">
+                                                <Items>
+                                                    <dx:ListEditItem Text="No" Value="No" />
+                                                    <dx:ListEditItem Text="Yes" Value="Yes" />
+                                                </Items>
+                                            </dx:ASPxComboBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Guest Type
+                                        </td>
+                                        <td>
+                                            <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
+                                                TabIndex="7" ClientInstanceName="cmbGuestType">
+                                                <ClientSideEvents ButtonClick="function(s, e) {
   	ShowPopupWindow(ppcGuestType);
 }" />
-                        <Buttons>
-                            <dx:EditButton Position="Left" ToolTip="Add/Edit guest type">
-                            </dx:EditButton>
-                        </Buttons>
-                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer"
-                            Display="Dynamic">
-                            <RequiredField ErrorText="Required" IsRequired="True" />
-                        </ValidationSettings>
-                    </dx:ASPxComboBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    CC Expiry Date (mm/yyyy)
-                </td>
-                <td>
-                    <table>
-                        <tr>
-                            <td>
-                                <dx:ASPxComboBox ID="cmbCCExpiryDateMonth" runat="server" ValueType="System.Int32"
-                                    IncrementalFilteringMode="Contains" Width="50px" TabIndex="26">
-                                    <Items>
-                                        <dx:ListEditItem Text="1" Value="1" />
-                                        <dx:ListEditItem Text="2" Value="2" />
-                                        <dx:ListEditItem Text="3" Value="3" />
-                                        <dx:ListEditItem Text="4" Value="4" />
-                                        <dx:ListEditItem Text="5" Value="5" />
-                                        <dx:ListEditItem Text="6" Value="6" />
-                                        <dx:ListEditItem Text="7" Value="7" />
-                                        <dx:ListEditItem Text="8" Value="8" />
-                                        <dx:ListEditItem Text="9" Value="9" />
-                                        <dx:ListEditItem Text="10" Value="10" />
-                                        <dx:ListEditItem Text="11" Value="11" />
-                                        <dx:ListEditItem Text="12" Value="12" />
-                                    </Items>
-                                </dx:ASPxComboBox>
-                            </td>
-                            <td>
-                                /
-                            </td>
-                            <td>
-                                <dx:ASPxComboBox ID="cmbCCExpiryDateYear" runat="server" ValueType="System.Int32"
-                                    IncrementalFilteringMode="Contains" Width="114px" TabIndex="27">
-                                    <Items>
-                                        <dx:ListEditItem Text="2012" Value="2012" />
-                                        <dx:ListEditItem Text="2013" Value="2013" />
-                                        <dx:ListEditItem Text="2014" Value="2014" />
-                                        <dx:ListEditItem Text="2015" Value="2015" />
-                                        <dx:ListEditItem Text="2016" Value="2016" />
-                                        <dx:ListEditItem Text="2017" Value="2017" />
-                                        <dx:ListEditItem Text="2018" Value="2018" />
-                                        <dx:ListEditItem Text="2019" Value="2019" />
-                                        <dx:ListEditItem Text="2020" Value="2020" />
-                                    </Items>
-                                </dx:ASPxComboBox>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    Name on card
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;<dx:ASPxTextBox ID="txtNameOnCard" runat="server" Width="170px" 
-                        TabIndex="28">
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Company Name
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px" TabIndex="8">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Company Address
-                    Line 1</td>
-                <td>
-                    <dx:ASPxTextBox ID="txtCompanyAddressLine1" runat="server" Width="170px" 
-                        TabIndex="9" MaxLength="150">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    Car
-                    &nbsp;
-                </td>
-                <td>
-                    <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" IncrementalFilteringMode="Contains"
-                        TabIndex="29">
-                        <Items>
-                            <dx:ListEditItem Text="No" Value="No" />
-                            <dx:ListEditItem Text="Yes" Value="Yes" />
-                        </Items>
-                    </dx:ASPxComboBox>
+                                                <Buttons>
+                                                    <dx:EditButton Position="Left" ToolTip="Add/Edit guest type">
+                                                    </dx:EditButton>
+                                                </Buttons>
+                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer"
+                                                    Display="Dynamic">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
+                                            </dx:ASPxComboBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            License Plate
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtLicensePlate" runat="server" Width="170px" TabIndex="30">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Passport Number
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtPassportNumber" runat="server" TabIndex="21" Width="170px">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            Drive License
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px" TabIndex="31">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Country of Issue
+                                        </td>
+                                        <td>
+                                            <dx:ASPxComboBox ID="cmbPassportCountryOfIssue" runat="server" ValueType="System.Int32"
+                                                IncrementalFilteringMode="Contains" TabIndex="22">
+                                            </dx:ASPxComboBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Expiry Date
+                                        </td>
+                                        <td>
+                                            <dx:ASPxDateEdit ID="dtpExpiryDate" runat="server" TabIndex="23">
+                                            </dx:ASPxDateEdit>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxRoundPanel>
                 </td>
             </tr>
             <tr>
-                <td height="22" class="info-lbl">
-                    Company Address Line 2</td>
-                <td>
-                    <dx:ASPxTextBox ID="txtCompanyAddressLine2" runat="server" Width="170px" 
-                        TabIndex="10" MaxLength="150">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    License Plate
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtLicensePlate" runat="server" Width="170px" TabIndex="30">
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    City</td>
-                <td>
-                    <dx:ASPxTextBox ID="txtCompanyCity" runat="server" Width="170px" TabIndex="11" 
-                        MaxLength="50">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    Drive License
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px" TabIndex="31">
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    State/County</td>
-                <td>
-                    <dx:ASPxTextBox ID="txtCompanyState" runat="server" Width="170px" TabIndex="12" 
-                        MaxLength="50">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Country</td>
-                <td>
-                                <dx:ASPxComboBox ID="cmbCompanyCountry" runat="server" 
-                        ValueType="System.Int32" IncrementalFilteringMode="Contains"
-                                    TabIndex="13">
-                                </dx:ASPxComboBox>
-                            </td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Zip Code/Post code</td>
-                <td>
-                    <dx:ASPxTextBox ID="txtCompanyPostCode" runat="server" MaxLength="50" 
-                        TabIndex="14" Width="170px">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Notes
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px" TabIndex="15">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Billing Address<span class="reqfield">*</span>
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtBillingAddressLine1" runat="server" Width="170px" 
-                        TabIndex="16">
-                        <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
-                            ErrorDisplayMode="ImageWithTooltip">
-                            <RequiredField IsRequired="True" ErrorText="Required" />
-                        </ValidationSettings>
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td class="info-lbl">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Billing City<span class="reqfield">*</span>
-                </td>
-                <td>
-                    <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px" TabIndex="17">
-                        <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
-                            ErrorDisplayMode="ImageWithTooltip" ErrorText="Required">
-                            <RequiredField IsRequired="True" ErrorText="Required" />
-                        </ValidationSettings>
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    State/County</td>
-                <td>
-                    <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px" TabIndex="18">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Country
-                </td>
-                <td>
-                    <table border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td>
-                                <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" ValueType="System.Int32" IncrementalFilteringMode="Contains"
-                                    TabIndex="19">
-                                </dx:ASPxComboBox>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td height="22" class="info-lbl">
-                    Zip Code/Post code</td>
-                <td>
-                    <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px" 
-                        TabIndex="20">
-                    </dx:ASPxTextBox>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
                 <td>
                     &nbsp;
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:HiddenField ID="hdnCustomerId" runat="server" Value="0" />
-                    <asp:HiddenField ID="hdnFromURL" runat="server" />
+                    <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" Width="850px" HeaderText="Company Information">
+                        <PanelCollection>
+                            <dx:PanelContent ID="PanelContent1" runat="server" SupportsDisabledAttribute="True">
+                                <table class="customers-tbl">
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Company Name
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px" TabIndex="8">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            State/County
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtCompanyState" runat="server" Width="170px" TabIndex="12" MaxLength="50">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Company Address Line 1
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtCompanyAddressLine1" runat="server" Width="170px" TabIndex="9"
+                                                MaxLength="150">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            Country
+                                        </td>
+                                        <td>
+                                            <dx:ASPxComboBox ID="cmbCompanyCountry" runat="server" ValueType="System.Int32" IncrementalFilteringMode="Contains"
+                                                TabIndex="13">
+                                            </dx:ASPxComboBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Company Address Line 2
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtCompanyAddressLine2" runat="server" Width="170px" TabIndex="10"
+                                                MaxLength="150">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            Zip Code/Post code
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtCompanyPostCode" runat="server" MaxLength="50" TabIndex="14"
+                                                Width="170px">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr height="22" class="info-lbl">
+                                        <td>
+                                            City
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtCompanyCity" runat="server" Width="170px" TabIndex="11" MaxLength="50">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            Notes
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px" TabIndex="15">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxRoundPanel>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="200px" HeaderText="Billing Information">
+                        <PanelCollection>
+                            <dx:PanelContent ID="PanelContent2" runat="server" SupportsDisabledAttribute="True">
+                                <table class="customers-tbl">
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Billing Address<span class="reqfield">*</span>
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtBillingAddressLine1" runat="server" Width="170px" TabIndex="16">
+                                                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
+                                                    ErrorDisplayMode="ImageWithTooltip">
+                                                    <RequiredField IsRequired="True" ErrorText="Required" />
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            Country
+                                        </td>
+                                        <td>
+                                            <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" ValueType="System.Int32" IncrementalFilteringMode="Contains"
+                                                TabIndex="19">
+                                            </dx:ASPxComboBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Billing City<span class="reqfield">*</span>
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px" TabIndex="17">
+                                                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ValidationGroup="vgCustomer"
+                                                    ErrorDisplayMode="ImageWithTooltip" ErrorText="Required">
+                                                    <RequiredField IsRequired="True" ErrorText="Required" />
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            Zip Code/Post code
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px" TabIndex="20">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            State/County
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px" TabIndex="18">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            <asp:HiddenField ID="hdnCustomerId" runat="server" Value="0" />
+                                            <asp:HiddenField ID="hdnFromURL" runat="server" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxRoundPanel>
+                </td>
+            </tr>
+        </table>
+        <table class="customers-tbl">
+            <tr>
+                <td>
                 </td>
                 <td>
                     <table border="0" cellpadding="0" cellspacing="0" id="customer-info-btn-tbl">
@@ -557,16 +527,14 @@
     <div>
         <dx:ASPxPopupControl ID="pcGuestType" runat="server" HeaderText="Guest Type" AllowDragging="True"
             ClientInstanceName="ppcGuestType" Modal="True" PopupHorizontalAlign="WindowCenter"
-            PopupVerticalAlign="WindowCenter" 
-            ContentUrl="~/ControlPanel/GuestTypes.aspx" Width="700px" Height="350px">
+            PopupVerticalAlign="WindowCenter" ContentUrl="~/ControlPanel/GuestTypes.aspx"
+            Width="700px" Height="350px">
             <ClientSideEvents CloseUp="function(s, e) {
 	cmbGuestType.PerformCallback();
 }" />
             <ContentCollection>
-
                 <dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
                 </dx:PopupControlContentControl>
-
             </ContentCollection>
         </dx:ASPxPopupControl>
     </div>
