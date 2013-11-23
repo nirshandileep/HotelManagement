@@ -28,6 +28,10 @@ namespace HBM.GeneralManagement
         public string UpdatedBy { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
+        public bool IsDirty { get; set; }
+        public string CleaningNote { get; set; }
+        public int CleanedBy { get; set; }
+        public DateTime CleanedDate { get; set; }
 
         #endregion
 
@@ -112,6 +116,12 @@ namespace HBM.GeneralManagement
         {
             return (new RoomDAO()).SelectAll(this);
         }
+
+        public bool MarkRoomAsDirty()
+        {
+            return (new RoomDAO()).UpdateRoomAsDirty(this);
+        }
+
 
         #endregion
     }

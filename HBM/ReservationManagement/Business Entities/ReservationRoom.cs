@@ -33,7 +33,7 @@ namespace HBM.ReservationManagement
         public DateTime UpdatedDate { get; set; }
         public DataSet ReservationRoomList { get; set; }
         public DateTime ActualCheckInDate { get; set; }
-
+        public DateTime ActualCheckOutDate { get; set; }
 
         #endregion
 

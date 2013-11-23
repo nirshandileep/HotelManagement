@@ -64,22 +64,28 @@ namespace HBM.ReservationManagement
 
         }
 
-        public DataSet DashboardSelectArrivalsList(int companyId)
+        public DataSet DashboardSelectArrivalsList(int companyId, DateTime fromDate, DateTime toDate)
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand dbCommand = db.GetStoredProcCommand("usp_Dashboard_ReservationRoom_ArrivalsSelect");
             db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, companyId);
 
+            db.AddInParameter(dbCommand, "@FromDate", DbType.DateTime, fromDate);
+            db.AddInParameter(dbCommand, "@ToDate", DbType.DateTime, toDate);
+
             return db.ExecuteDataSet(dbCommand);
         }
 
-        public DataSet DashboardSelectDeparturesList(int companyId)
+        public DataSet DashboardSelectDeparturesList(int companyId, DateTime fromDate, DateTime toDate)
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand dbCommand = db.GetStoredProcCommand("usp_Dashboard_ReservationRoom_DeparturesSelect");
             db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, companyId);
+
+            db.AddInParameter(dbCommand, "@FromDate", DbType.DateTime, fromDate);
+            db.AddInParameter(dbCommand, "@ToDate", DbType.DateTime, toDate);
 
             return db.ExecuteDataSet(dbCommand);
         }

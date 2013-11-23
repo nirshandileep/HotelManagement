@@ -8,6 +8,7 @@ using HBM.Common;
 using System.Data;
 using DevExpress.Web.ASPxGridView;
 using System.Collections;
+using HBM.GeneralManagement;
 
 namespace HBM
 {
@@ -18,8 +19,6 @@ namespace HBM
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            pcPageControl.ActiveTabIndex = 0;
 
             //Scheduler 
             schReservationDashboad.Views.WorkWeekView.Enabled = false;
@@ -33,31 +32,69 @@ namespace HBM
 
             if (!IsPostBack)
             {
+                pcPageControl.ActiveTabIndex = 0;
+
+                dtpArrivalFromDate.Date = DateTime.Now;
+                dtpArrivalToDate.Date = DateTime.Now;
+
+                dtpDeparturesFrom.Date = DateTime.Now;
+                dtpDeparturesTo.Date = DateTime.Now;
+
                 LoadArrivals();
                 LoadDepartures();
-
-                Session[Constants.SESSION_DIRTYROOMS] = new DataSet();//Todo
-                gvDirtyRooms.DataSource = new DataSet();
-                //gvDirtyRooms.DataBind();
+                LoadDirtyRooms();
             }
 
             if (Session[Constants.SESSION_ARRIVALS] != null)
             {
                 gvArrivals.DataSource = (DataSet)Session[Constants.SESSION_ARRIVALS];
-                //gvArrivals.DataBind();    
+                gvArrivals.DataBind();    
+            }
+
+            if (Session[Constants.SESSION_DEPARTURES] != null)
+            {
+                gvDepartures.DataSource = (DataSet)Session[Constants.SESSION_DEPARTURES];
+                gvDepartures.DataBind();
             }
 
             if (Session[Constants.SESSION_DIRTYROOMS] != null)
             {
-                gvDepartures.DataSource = (DataSet)Session[Constants.SESSION_DIRTYROOMS];
-                //gvDepartures.DataBind();
+                gvDirtyRooms.DataSource = (DataSet)Session[Constants.SESSION_DIRTYROOMS];
+                gvDirtyRooms.DataBind();
             }
+        }
+
+        private void LoadDirtyRooms()
+        {
+            DataSet dsDirtyRooms = new RoomDAO().SelectAllDirtyRooms(Master.CurrentCompany.CompanyId);
+            dsDirtyRooms.Tables[0].PrimaryKey = new DataColumn[] { dsDirtyRooms.Tables[0].Columns["RoomId"] };
+            Session[Constants.SESSION_DIRTYROOMS] = dsDirtyRooms;
+        }
+
+        private void LoadArrivals()
+        {
+            if (dtpArrivalFromDate.Date > dtpArrivalToDate.Date)
+            {
+                dtpArrivalFromDate.ErrorText = "From date cannot be greater than To date";
+                return;
+            }
+
+            //Arrivals
+            dsData = new ReservationManagement.ReservationRoomDAO().DashboardSelectArrivalsList(Master.CurrentCompany.CompanyId, dtpArrivalFromDate.Date, dtpArrivalToDate.Date);
+            dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["ReservationRoomId"] };
+            Session[Constants.SESSION_ARRIVALS] = dsData;
         }
 
         private void LoadDepartures()
         {
+            if (dtpDeparturesFrom.Date > dtpDeparturesTo.Date)
+            {
+                dtpArrivalFromDate.ErrorText = "From date cannot be greater than To date";
+                return;
+            }
+
             //Departures
-            dsDepartures = new ReservationManagement.ReservationRoomDAO().DashboardSelectDeparturesList(Master.CurrentCompany.CompanyId);
+            dsDepartures = new ReservationManagement.ReservationRoomDAO().DashboardSelectDeparturesList(Master.CurrentCompany.CompanyId, dtpDeparturesFrom.Date, dtpDeparturesTo.Date);
             dsDepartures.Tables[0].PrimaryKey = new DataColumn[] { dsDepartures.Tables[0].Columns["ReservationRoomId"] };
             Session[Constants.SESSION_DEPARTURES] = dsDepartures;
         }
@@ -112,13 +149,6 @@ namespace HBM
             }
         }
 
-        private void LoadArrivals()
-        {
-            //Arrivals
-            dsData = new ReservationManagement.ReservationRoomDAO().DashboardSelectArrivalsList(Master.CurrentCompany.CompanyId);
-            dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["ReservationRoomId"] };
-            Session[Constants.SESSION_ARRIVALS] = dsData;
-        }
 
        
     }

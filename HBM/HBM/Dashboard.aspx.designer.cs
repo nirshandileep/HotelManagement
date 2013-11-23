@@ -31,6 +31,33 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxScheduler.ASPxScheduler schReservationDashboad;
         
         /// <summary>
+        /// dtpArrivalFromDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpArrivalFromDate;
+        
+        /// <summary>
+        /// dtpArrivalToDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpArrivalToDate;
+        
+        /// <summary>
+        /// btnSearchArrivals control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSearchArrivals;
+        
+        /// <summary>
         /// gvArrivals control.
         /// </summary>
         /// <remarks>
@@ -38,6 +65,33 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvArrivals;
+        
+        /// <summary>
+        /// dtpDeparturesFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpDeparturesFrom;
+        
+        /// <summary>
+        /// dtpDeparturesTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpDeparturesTo;
+        
+        /// <summary>
+        /// btnSearchDepartures control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSearchDepartures;
         
         /// <summary>
         /// gvDepartures control.

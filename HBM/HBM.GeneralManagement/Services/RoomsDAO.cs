@@ -130,5 +130,31 @@ namespace HBM.GeneralManagement
 
         }
 
+        public DataSet SelectAllDirtyRooms(int Company)
+        {
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_Dashboard_Room_DirtySelect");
+
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, Company);
+
+            return db.ExecuteDataSet(dbCommand);
+
+        }
+
+        public bool UpdateRoomAsDirty(Room room)
+        {
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_RoomMarkDirty");
+
+            db.AddInParameter(command, "@RoomId", DbType.Int32, room.RoomId);
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, room.UpdatedBy);
+
+            db.ExecuteNonQuery(command);
+
+            return true;
+        }
+
     }
 }
