@@ -38,19 +38,19 @@ namespace HBM
 
                 Session[Constants.SESSION_DIRTYROOMS] = new DataSet();//Todo
                 gvDirtyRooms.DataSource = new DataSet();
-                gvDirtyRooms.DataBind();
+                //gvDirtyRooms.DataBind();
             }
 
             if (Session[Constants.SESSION_ARRIVALS] != null)
             {
                 gvArrivals.DataSource = (DataSet)Session[Constants.SESSION_ARRIVALS];
-                gvArrivals.DataBind();    
+                //gvArrivals.DataBind();    
             }
 
             if (Session[Constants.SESSION_DIRTYROOMS] != null)
             {
                 gvDepartures.DataSource = (DataSet)Session[Constants.SESSION_DIRTYROOMS];
-                gvDepartures.DataBind();
+                //gvDepartures.DataBind();
             }
         }
 

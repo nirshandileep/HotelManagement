@@ -13,6 +13,15 @@ namespace HBM.Reservation {
     public partial class Booking {
         
         /// <summary>
+        /// hdnReservationId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnReservationId;
+        
+        /// <summary>
         /// ASPxRoundPanel1 control.
         /// </summary>
         /// <remarks>

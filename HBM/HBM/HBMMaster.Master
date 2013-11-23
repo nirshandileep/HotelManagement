@@ -83,7 +83,7 @@
                                     </Image>
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" 
-                                    Text="Search Reservation" Visible="False">
+                                    Text="Search Reservation">
                                     <Image Url="~/Images/Search.png">
                                     </Image>
                                 </dx:MenuItem>

@@ -19,6 +19,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-inner">
         <h2>
+            <asp:HiddenField ID="hdnReservationId" runat="server" />
             Reservation</h2>
         <table width="100%">
             <tr>
@@ -761,7 +762,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                             </td>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnNew" runat="server" Text="New" HorizontalAlign="Center" ImageSpacing="15px"
-                                    VerticalAlign="Middle" TabIndex="26">
+                                    VerticalAlign="Middle" TabIndex="26" OnClick="btnNew_Click">
                                     <Image Url="~/Images/NewDoc.png">
                                     </Image>
                                 </dx:ASPxButton>

@@ -13,7 +13,7 @@ namespace HBM.ReservationManagement
         #region Properties
 
         public int ReservationAdditionalServiceId { get; set; }
-        public int ReservationId { get; set; }
+        public Int64 ReservationId { get; set; }
         public string Note { get; set; }
         public decimal Amount { get; set; }
         public Int32 CreatedUser { get; set; }

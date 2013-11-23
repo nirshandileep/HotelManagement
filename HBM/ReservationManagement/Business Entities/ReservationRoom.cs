@@ -15,7 +15,7 @@ namespace HBM.ReservationManagement
         #region Properties
 
         public int ReservationRoomId { get; set; }
-        public int ReservationId { get; set; }
+        public Int64 ReservationId { get; set; }
         public int RoomId { get; set; }
         public int RoomRatePlanId { get; set; }
         public string Sharers { get; set; }

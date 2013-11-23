@@ -62,11 +62,9 @@ namespace HBM.ReservationManagement
 
             DbCommand command = db.GetStoredProcCommand("usp_ReservationUpdate");
 
-            db.AddInParameter(command, "@ReservationId", DbType.Int32, reservation.ReservationId);            
-            db.AddInParameter(command, "@CompanyId", DbType.Int32, reservation.CompanyId);
+            db.AddInParameter(command, "@ReservationId", DbType.Int32, reservation.ReservationId);                        
             db.AddInParameter(command, "@CustomerId", DbType.Int32, reservation.CustomerId);
-            db.AddInParameter(command, "@StatusId", DbType.Int32, reservation.StatusId);
-            db.AddInParameter(command, "@BookingDate", DbType.DateTime, reservation.BookingDate);
+            db.AddInParameter(command, "@StatusId", DbType.Int32, reservation.StatusId);            
             db.AddInParameter(command, "@CheckInDate", DbType.DateTime, reservation.CheckInDate);
             db.AddInParameter(command, "@CheckOutDate", DbType.DateTime, reservation.CheckOutDate);
             db.AddInParameter(command, "@SourceId", DbType.Int32, reservation.SourceId);
@@ -78,22 +76,27 @@ namespace HBM.ReservationManagement
             db.AddInParameter(command, "@PaidAmount", DbType.Decimal, reservation.PaidAmount);
             db.AddInParameter(command, "@Total", DbType.Decimal, reservation.Total);
             db.AddInParameter(command, "@Balance", DbType.Decimal, reservation.Balance);
-            db.AddInParameter(command, "@CreatedUser", DbType.Int32, reservation.CreatedUser);
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, reservation.UpdatedUser);
             db.AddInParameter(command, "@TaxTypeId", DbType.Int32, reservation.TaxTypeId);
 
             db.ExecuteNonQuery(command);
 
             return true;
         }
-        
-        ////
 
-    
-
-        internal DataSet SelectReservationGuests(Reservation reservation)
+        public DataSet SelectAll(Reservation reservation)
         {
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationGuests_SelectByReservationId");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationSelectAll");
+
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, reservation.CompanyId);
+            return db.ExecuteDataSet(dbCommand);
+        }
+
+        internal DataSet SelectReservationRooms(Reservation reservation)
+        {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationRoomSelectByReservationID");
             db.AddInParameter(dbCommand, "@ReservationId", DbType.Int32, reservation.ReservationId);
             return db.ExecuteDataSet(dbCommand);
         }
@@ -109,17 +112,12 @@ namespace HBM.ReservationManagement
         internal DataSet SelectReservationPayments(Reservation reservation)
         {
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationReservationPayments_SelectByReservationId");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationPaymentSelectByReservationID");
             db.AddInParameter(dbCommand, "@ReservationId", DbType.Int32, reservation.ReservationId);
             return db.ExecuteDataSet(dbCommand);
         }
+      
 
-        internal DataSet SelectReservationRooms(Reservation reservation)
-        {
-            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationReservationRooms_SelectByReservationId");
-            db.AddInParameter(dbCommand, "@ReservationId", DbType.Int32, reservation.ReservationId);
-            return db.ExecuteDataSet(dbCommand);
-        }
+      
     }
 }

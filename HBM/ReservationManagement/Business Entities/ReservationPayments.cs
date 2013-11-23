@@ -14,7 +14,7 @@ namespace HBM.ReservationManagement
         #region Properties
 
         public int ReservationPaymentId { get; set; }
-        public int ReservationId { get; set; }
+        public Int64 ReservationId { get; set; }
         public decimal PaymentAmount { get; set; }
         public DateTime PaymentDate { get; set; }
         public string ReferenceNumber { get; set; }

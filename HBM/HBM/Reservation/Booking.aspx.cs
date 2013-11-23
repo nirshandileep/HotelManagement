@@ -17,6 +17,7 @@ using HBM.GeneralManagement;
 using GenRes = HBM.ReservationManagement;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using HBM.Utility;
 
 namespace HBM.Reservation
 {
@@ -27,10 +28,13 @@ namespace HBM.Reservation
         DataSet dsRoomInfomation = new DataSet();
         DataSet dsAdditionalService = new DataSet();
         DataSet dsPaymentInformation = new DataSet();
+
         GenMan.AdditionalService additionalService = new GenMan.AdditionalService();
         GenRes.ReservationRoom reservationRoom = new GenRes.ReservationRoom();
         GenRes.ReservationAdditionalService reservationAdditionalService = new GenRes.ReservationAdditionalService();
         GenRes.ReservationPayments reservationPayments = new GenRes.ReservationPayments();
+
+        Int64 newReservationId = 0;
 
         #endregion
 
@@ -45,32 +49,39 @@ namespace HBM.Reservation
             gvPaymentInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
             gvServiceInformation.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
 
-            this.LoadInitialData();
+         
 
             if (!IsPostBack)
-            {               
-                this.LoadRoomInformation();
-                this.LoadAddiotnalService();
-                this.LoadPaymentInformation();                
+            {
+                this.LoadInitialData();
+                this.LoadRoomInformation(newReservationId);
+                this.LoadAddiotnalService(newReservationId);
+                this.LoadPaymentInformation(newReservationId);
+
+                //// Display reservation
+                if (Request.QueryString["ReservationId"] != null)
+                {
+                    this.hdnReservationId.Value = Cryptography.Decrypt(Request.QueryString["ReservationId"]);
+                    Int64 currentReservationId = Convert.ToInt64(this.hdnReservationId.Value);
+                    this.DisplayData(currentReservationId);
+                }
+
             }
 
             ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CurrencyId"]).PropertiesComboBox.DataSource = new GenMan.CurrencyTypes().SelectAllDataset().Tables[0];
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
-
+            
             
 
-        }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            
+
         }
 
         #endregion
 
-        #region Methods
+        #region Common Methods
 
         private void LoadInitialData()
         {
@@ -118,6 +129,29 @@ namespace HBM.Reservation
 
         }
 
+        private void ClearFormFields()
+        {
+            cmbCustomer.SelectedIndex = -1;
+            cmbSource.SelectedIndex = -1;
+            dtCheckingDate.Text = string.Empty;
+            dtCheckOutDate.Text = string.Empty;
+
+            this.ClearRoomInfoSection();
+            this.LoadRoomInformation(newReservationId);
+            this.LoadAddiotnalService(newReservationId);
+            this.LoadPaymentInformation(newReservationId);
+            
+            txtRoomTotal.Text = "0";
+            txtServiceTotal.Text = "0";
+            txtNetTotal.Text = "0";
+            txtDiscount.Text = "0";
+            cmbTax.SelectedIndex=-1;
+            txtTaxTotal.Text = "0";
+            txtTotal.Text = "0";
+            txtPaidAmount.Text = "0";
+            txtBalance.Text = "0";
+
+        }
 
         #endregion
 
@@ -125,14 +159,28 @@ namespace HBM.Reservation
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (SaveData())
+
+
+            if (hdnReservationId.Value != string.Empty)
             {
-                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
+                Int64 currentReservationId;
+                currentReservationId = Convert.ToInt64(hdnReservationId.Value);
+                if (this.SaveData(currentReservationId))
+                {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Update_Success + "')", true);
+
+                }
+
             }
             else
             {
-                //// show error msg
+                if (this.SaveData(newReservationId))
+                {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
+
+                }
             }
+        
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -182,11 +230,17 @@ namespace HBM.Reservation
             this.Calculate();
 
         }
+
+        protected void btnNew_Click(object sender, EventArgs e)
+        {
+            this.ClearFormFields();
+        }
+
         #endregion
 
         #region Reservation
 
-        private bool SaveData()
+        private bool SaveData(Int64 reservationId)
         {
 
             bool result = false;
@@ -202,14 +256,24 @@ namespace HBM.Reservation
                 transaction = connection.BeginTransaction();
 
                 ResMan.Reservation reservation = new GenRes.Reservation();
-                reservation.ReservationId = 0;
+                reservation.ReservationId = reservationId;
                 reservation.CompanyId = Master.CurrentCompany.CompanyId;
 
                 reservation.CustomerId = Convert.ToInt32(cmbCustomer.Value);
                 reservation.SourceId = Convert.ToInt32(cmbSource.Value);
                 reservation.CheckInDate = Convert.ToDateTime(dtCheckingDate.Text);
                 reservation.CheckOutDate = Convert.ToDateTime(dtCheckOutDate.Text);
-                reservation.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
+
+                if (reservationId == newReservationId)
+                {
+                    reservation.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
+
+                }
+                else
+                {
+                    reservation.StatusId = (int)HBM.Common.Enums.HBMStatus.Modify;
+                }
+
                 reservation.RoomTotal = Convert.ToDecimal(txtRoomTotal.Text.Trim());
                 reservation.ServiceTotal = Convert.ToDecimal(txtServiceTotal.Text.Trim());
                 reservation.NetTotal = Convert.ToDecimal(txtNetTotal.Text.Trim());
@@ -220,6 +284,7 @@ namespace HBM.Reservation
                 reservation.PaidAmount = Convert.ToDecimal(txtPaidAmount.Text.Trim());
                 reservation.Balance = Convert.ToDecimal(txtBalance.Text.Trim());
                 reservation.CreatedUser = Master.LoggedUser.UsersId;
+                reservation.UpdatedUser = Master.LoggedUser.UsersId;
 
                 if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
                 {
@@ -227,7 +292,7 @@ namespace HBM.Reservation
                 }
                 else
                 {
-                    reservationRoom.ReservationId = 0;
+                    reservationRoom.ReservationId = reservationId;
                     reservation.ReservationRoomDataSet = reservationRoom.SelectAllDataSetByReseervationId();
                 }
 
@@ -238,7 +303,7 @@ namespace HBM.Reservation
                 }
                 else
                 {
-                    reservationAdditionalService.ReservationId = 0;
+                    reservationAdditionalService.ReservationId = reservationId;
                     reservation.ReservationAdditionalServiceDataSet = reservationAdditionalService.SelectAllDataSetByReservationID();
                 }
 
@@ -249,7 +314,7 @@ namespace HBM.Reservation
                 }
                 else
                 {
-                    reservationPayments.ReservationId = 0;
+                    reservationPayments.ReservationId = reservationId;
                     reservation.ReservationPaymentDataSet = reservationPayments.SelectAllDataSetByReservationID();
                 }
 
@@ -266,7 +331,7 @@ namespace HBM.Reservation
             return result;
         }
 
-        private bool DisplayData()
+        private bool DisplayData(Int64 reservationId)
         {
             bool result = false;
 
@@ -281,31 +346,29 @@ namespace HBM.Reservation
                 transaction = connection.BeginTransaction();
 
                 ResMan.Reservation reservation = new GenRes.Reservation();
-                reservation.ReservationId = 0;
+                reservation.ReservationId = reservationId;
                 reservation = reservation.Select();
 
-                cmbCustomer.Value = reservation.CustomerId;
-                cmbSource.Value = reservation.SourceId;
-                dtCheckingDate.Text = reservation.CheckInDate.ToString();
-                dtCheckOutDate.Text = reservation.CheckOutDate.ToString();
+                cmbCustomer.SelectedItem = cmbCustomer.Items.FindByValue(reservation.CustomerId.ToString());
+                cmbSource.SelectedItem = cmbSource.Items.FindByValue(reservation.SourceId.ToString()); 
+                                
+                dtCheckingDate.Value = reservation.CheckInDate;
+                dtCheckOutDate.Value = reservation.CheckOutDate;
 
                 txtRoomTotal.Text = reservation.RoomTotal.ToString();
                 txtServiceTotal.Text = reservation.ServiceTotal.ToString();
                 txtNetTotal.Text = reservation.NetTotal.ToString();
                 txtDiscount.Text = reservation.Discount.ToString();
+                cmbTax.SelectedItem = cmbTax.Items.FindByValue(reservation.TaxTypeId.ToString());
                 txtTaxTotal.Text = reservation.TaxAmount.ToString();
                 txtTotal.Text = reservation.Total.ToString();
                 txtPaidAmount.Text = reservation.PaidAmount.ToString();
-                txtBalance.Text = reservation.Balance.ToString();
-                this.dsRoomInfomation = reservation.ReservationRoomDataSet;
-                this.dsAdditionalService = reservation.ReservationAdditionalServiceDataSet;
-                this.dsPaymentInformation = reservation.ReservationPaymentDataSet;
-
-
-                this.LoadAddiotnalService();
-                this.LoadPaymentInformation();
-
-
+                txtBalance.Text = reservation.Balance.ToString();                
+           
+                this.LoadRoomInformation(reservationId);
+                this.LoadAddiotnalService(reservationId);
+                this.LoadPaymentInformation(reservationId);
+                
                 transaction.Commit();
                 result = true;
             }
@@ -364,9 +427,9 @@ namespace HBM.Reservation
 
         #region Room Information
 
-        private void LoadRoomInformation()
+        private void LoadRoomInformation(Int64 reservationId)
         {
-            reservationRoom.ReservationId = 0;
+            reservationRoom.ReservationId = reservationId;
             dsRoomInfomation = reservationRoom.SelectAllDataSetByReseervationId();
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
@@ -458,13 +521,18 @@ namespace HBM.Reservation
             
         }
 
+        protected void gvRoomInfo_DataBound(object sender, EventArgs e)
+        {
+            this.Calculate();
+        }
+
         #endregion
 
         #region Addtional Service
 
-        private void LoadAddiotnalService()
+        private void LoadAddiotnalService(Int64 reservationId)
         {
-            reservationAdditionalService.ReservationId = 0;
+            reservationAdditionalService.ReservationId = reservationId;
             dsAdditionalService = reservationAdditionalService.SelectAllDataSetByReservationID();
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
@@ -568,9 +636,9 @@ namespace HBM.Reservation
 
         #region Payment Information
 
-        private void LoadPaymentInformation()
+        private void LoadPaymentInformation(Int64 reservationId)
         {
-            reservationPayments.ReservationId = 0;
+            reservationPayments.ReservationId = reservationId;
             dsPaymentInformation = reservationPayments.SelectAllDataSetByReservationID();
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
@@ -658,13 +726,6 @@ namespace HBM.Reservation
         }
 
         #endregion        
-
-        protected void gvRoomInfo_DataBound(object sender, EventArgs e)
-        {
-            this.Calculate();
-        }
-
         
-
     }
 }

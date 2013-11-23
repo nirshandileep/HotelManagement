@@ -88,7 +88,10 @@ namespace HBM.ReservationManagement
             return HBM.Utility.Generic.GetAll<Reservation>(this.CompanyId);
         }
 
-
+        public DataSet SelectAllDataset()
+        {
+            return (new ReservationDAO()).SelectAll(this);
+        }
         #endregion
     }
 }
