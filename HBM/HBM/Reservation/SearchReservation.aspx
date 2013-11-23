@@ -21,8 +21,8 @@
                     <dx:ASPxGridView ID="gvReservation" runat="server" AutoGenerateColumns="False" 
                         KeyFieldName="ReservationId" Width="100%">
                         <Columns>                         
-                            <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Customer Name" 
-                                FieldName="CustomerName" Width="250px" UnboundType="String">
+                            <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Customer Name" 
+                                FieldName="CustomerName" Width="150px" UnboundType="String">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                                 <DataItemTemplate>
@@ -32,29 +32,36 @@
                                 <CellStyle HorizontalAlign="Left">
                                 </CellStyle>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="ReservationCode" VisibleIndex="2" 
-                                Width="100px" Caption="Reservation Code">
+                            <dx:GridViewDataTextColumn FieldName="Phone" VisibleIndex="2" Caption="Phone">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Mobile" FieldName="Mobile" VisibleIndex="3">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Email" FieldName="Email" VisibleIndex="4">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Code" FieldName="ReservationCode" 
+                                VisibleIndex="1" Width="100px">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="BookingDate" UnboundType="String" 
-                                VisibleIndex="3" Width="150px" Caption="Booking Date">
+                                VisibleIndex="5" Width="150px" Caption="Booking Date">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="ReservationId" Visible="False" 
                                 VisibleIndex="0">
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn Caption="Check In" FieldName="CheckInDate" UnboundType="String"
-                                VisibleIndex="4" Width="150px">
-                            </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="CheckOutDate" UnboundType="String" 
-                                VisibleIndex="5" Caption="Check Out">
+                            <dx:GridViewDataDateColumn Caption="Check In" FieldName="CheckInDate" 
+                                UnboundType="String" VisibleIndex="6" Width="100px">
+                            </dx:GridViewDataDateColumn>
+                            <dx:GridViewDataDateColumn Caption="Check Out" FieldName="CheckOutDate" 
+                                UnboundType="String" VisibleIndex="7" Width="100px">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
-                            </dx:GridViewDataTextColumn>
+                            </dx:GridViewDataDateColumn>
                         </Columns>
-                        <Settings ShowFilterRow="True" />
+                        <SettingsBehavior ColumnResizeMode="Control" />
+                        <Settings ShowFilterRow="True" HorizontalScrollBarMode="Visible" />
                     </dx:ASPxGridView>
                 </td>
             </tr>

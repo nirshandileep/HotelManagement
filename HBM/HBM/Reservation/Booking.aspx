@@ -28,8 +28,8 @@
                         <PanelCollection>
                             <dx:PanelContent ID="PanelContent1" runat="server" SupportsDisabledAttribute="True">
                                 <table width="100%">
-                                    <tr>
-                                        <td>
+                                    <tr valign="middle">
+                                        <td align="left" width="80px" >
                                             Customer
                                         </td>
                                         <td>
@@ -55,7 +55,7 @@
                                             &nbsp;
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr valign="middle">
                                         <td>
                                             Source
                                         </td>
@@ -80,8 +80,8 @@
                         <PanelCollection>
                             <dx:PanelContent ID="PanelContent2" runat="server" SupportsDisabledAttribute="True">
                                 <table width="100%">
-                                    <tr>
-                                        <td>
+                                    <tr valign="middle">
+                                        <td align="left" width="80px">
                                             Check In
                                         </td>
                                         <td align="left">
@@ -101,11 +101,11 @@
                                             &nbsp;
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
+                                    <tr valign="middle">
+                                        <td align="left">
                                             Check Out
                                         </td>
-                                        <td align="left">
+                                        <td align="left" >
                                             <dx:ASPxDateEdit ID="dtCheckOutDate" runat="server" Width="150px" 
                                                 ClientInstanceName="checkoutdate">
                                                 <ClientSideEvents Validation="function(s, e) {
@@ -572,7 +572,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         Room Total
                                                     </td>
                                                     <td>
-                                                        <dx:ASPxTextBox ID="txtRoomTotal" runat="server" Width="170px">
+                                                        <dx:ASPxTextBox ID="txtRoomTotal" runat="server" Width="170px" ReadOnly="True">
                                                         </dx:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -589,7 +589,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         Service Total
                                                     </td>
                                                     <td>
-                                                        <dx:ASPxTextBox ID="txtServiceTotal" runat="server" Width="170px">
+                                                        <dx:ASPxTextBox ID="txtServiceTotal" runat="server" Width="170px" ReadOnly="True">
                                                         </dx:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -762,7 +762,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
             </tr>
             <tr>
                 <td colspan="3">
-                    <table border="0" cellpadding="0" cellspacing="0" >
+                    <table border="0" cellpadding="0" cellspacing="0" id="reservation-info-btn-tbl">
                         <tr>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave"
@@ -778,6 +778,14 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                     </Image>
                                 </dx:ASPxButton>
                             </td>
+                            <td width="52" align="left">
+                                <dx:ASPxButton ID="btnPrint" runat="server" Text="Print" HorizontalAlign="Center" ImageSpacing="15px"
+                                    VerticalAlign="Middle" TabIndex="26" OnClick="btnPrint_Click">
+                                    <Image Url="~/Images/Print.png">
+                                    </Image>
+                                </dx:ASPxButton>
+                            </td>
+
                         </tr>
                     </table>
                 </td>

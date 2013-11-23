@@ -24,6 +24,11 @@
             margin-top: 7px;
             margin-left: -6px;
         }
+        
+        .buttonOk
+        {
+            padding-left: 4px;
+        }
     </style>
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -98,8 +103,7 @@
                                             Password</label>
                                     </td>
                                     <td colspan="2">
-                                        <dx:ASPxTextBox ID="txtPassword" runat="server" Width="170px" Password="True" 
-                                            Text="letmein">
+                                        <dx:ASPxTextBox ID="txtPassword" runat="server" Width="170px" Password="True" Text="letmein">
                                             <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                                                 <RequiredField IsRequired="True" ErrorText="Required" />
                                             </ValidationSettings>
@@ -110,7 +114,7 @@
                                     <td>
                                         &nbsp;
                                     </td>
-                                    <td width="15%">
+                                    <td width="15%" style="padding-left: 4px;">
                                         <dx:ASPxButton ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click">
                                         </dx:ASPxButton>
                                     </td>

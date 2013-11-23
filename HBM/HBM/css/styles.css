@@ -500,3 +500,9 @@ td.dxeSBC{
 	padding-top:3px;
 	padding-bottom:0px;
 }
+
+
+#reservation-info-btn-tbl{margin-top:10px;}
+#reservation-info-btn-tbl td{
+	padding-right:10px;
+}

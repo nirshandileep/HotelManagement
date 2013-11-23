@@ -240,6 +240,12 @@ namespace HBM.Reservation
             this.ClearFormFields();
         }
 
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
         #endregion
 
         #region Reservation

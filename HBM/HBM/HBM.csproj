@@ -121,6 +121,7 @@
     <Content Include="Images\login-head.png" />
     <Content Include="Images\login-logo.jpg" />
     <Content Include="Images\Login.png" />
+    <Content Include="Images\Print.png" />
     <Content Include="Images\Report.png" />
     <Content Include="Images\Role.png" />
     <Content Include="Images\error.jpg" />
