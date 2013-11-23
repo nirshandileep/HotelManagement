@@ -23,7 +23,7 @@
                     <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" 
                         KeyFieldName="CustomerId" Width="100%">
                         <Columns>                         
-                            <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Customer Name" 
+                            <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Customer Name" 
                                 FieldName="CustomerName" Width="250px" UnboundType="String">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
@@ -34,7 +34,7 @@
                                 <CellStyle HorizontalAlign="Left">
                                 </CellStyle>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="MemberCode" VisibleIndex="2" 
+                            <dx:GridViewDataTextColumn FieldName="MemberCode" VisibleIndex="1" 
                                 Width="100px">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
@@ -47,14 +47,20 @@
                             <dx:GridViewDataTextColumn FieldName="CustomerId" Visible="False" VisibleIndex="0">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn Caption="Guest Type" FieldName="GuestTypeName" UnboundType="String"
-                                VisibleIndex="4" Width="150px">
+                                VisibleIndex="7" Width="150px">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="Email" UnboundType="String" VisibleIndex="5">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Mobile" FieldName="Mobile" VisibleIndex="4">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Company" FieldName="CompanyName" 
+                                VisibleIndex="2">
+                            </dx:GridViewDataTextColumn>
                         </Columns>
-                        <Settings ShowFilterRow="True" />
+                        <SettingsBehavior ColumnResizeMode="Control" />
+                        <Settings ShowFilterRow="True" HorizontalScrollBarMode="Auto" />
                     </dx:ASPxGridView>
                 </td>
             </tr>

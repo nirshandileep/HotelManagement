@@ -326,7 +326,7 @@
                                         <td width="50px">
                                             &nbsp;
                                         </td>
-                                        <td>
+                                        <td height="22" class="info-lbl">
                                             State/County
                                         </td>
                                         <td>
