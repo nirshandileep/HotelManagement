@@ -140,6 +140,7 @@ namespace HBM.Reservation
             this.LoadRoomInformation(newReservationId);
             this.LoadAddiotnalService(newReservationId);
             this.LoadPaymentInformation(newReservationId);
+            this.LoadInitialData();
             
             txtRoomTotal.Text = "0";
             txtServiceTotal.Text = "0";
@@ -150,6 +151,9 @@ namespace HBM.Reservation
             txtTotal.Text = "0";
             txtPaidAmount.Text = "0";
             txtBalance.Text = "0";
+
+            this.hdnReservationId.Value = string.Empty;
+            Response.Redirect("Booking.aspx", false);
 
         }
 
@@ -494,6 +498,7 @@ namespace HBM.Reservation
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
 
+            Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
             
         }
 
@@ -589,7 +594,9 @@ namespace HBM.Reservation
             
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvPaymentInformation.DataBind();
-            
+
+            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE]=dsAdditionalService  ;
+
 
         }
      
@@ -693,6 +700,8 @@ namespace HBM.Reservation
 
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
+
+            Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
 
         }
 

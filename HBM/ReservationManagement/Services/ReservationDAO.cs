@@ -80,6 +80,21 @@ namespace HBM.ReservationManagement
             db.AddInParameter(command, "@TaxTypeId", DbType.Int32, reservation.TaxTypeId);
 
             db.ExecuteNonQuery(command);
+            
+            ReservationRoom reservationRoom = new ReservationRoom();
+            reservationRoom.ReservationId = reservation.ReservationId;
+            reservationRoom.ReservationRoomList = reservation.ReservationRoomDataSet;
+            reservationRoom.Save(db, transaction);
+
+            ReservationAdditionalService reservationAddtionalService = new ReservationAdditionalService();
+            reservationAddtionalService.ReservationId = reservation.ReservationId;
+            reservationAddtionalService.ReservationAdditionalServiceList = reservation.ReservationAdditionalServiceDataSet;
+            reservationAddtionalService.Save(db, transaction);
+
+            ReservationPayments reservationPayments = new ReservationPayments();
+            reservationPayments.ReservationId = reservation.ReservationId;
+            reservationPayments.ReservationPaymentList = reservation.ReservationPaymentDataSet;
+            reservationPayments.Save(db, transaction);
 
             return true;
         }

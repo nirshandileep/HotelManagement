@@ -85,7 +85,8 @@
                                             Check In
                                         </td>
                                         <td align="left">
-                                            <dx:ASPxDateEdit ID="dtCheckingDate" runat="server" Width="150px">
+                                            <dx:ASPxDateEdit ID="dtCheckingDate" runat="server" Width="150px" 
+                                                ClientInstanceName="checkindate">
                                                 <ValidationSettings ValidationGroup="vgSave" ErrorDisplayMode="ImageWithTooltip">
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
                                                 </ValidationSettings>
@@ -105,8 +106,18 @@
                                             Check Out
                                         </td>
                                         <td align="left">
-                                            <dx:ASPxDateEdit ID="dtCheckOutDate" runat="server" Width="150px">
-                                                <ValidationSettings ValidationGroup="vgSave" ErrorDisplayMode="ImageWithTooltip">
+                                            <dx:ASPxDateEdit ID="dtCheckOutDate" runat="server" Width="150px" 
+                                                ClientInstanceName="checkoutdate">
+                                                <ClientSideEvents Validation="function(s, e) {
+	
+	var checkindateText= checkindate.GetText();
+    var checkoutdateText = checkoutdate.GetText();
+    e.isValid = (checkoutdateText  &gt;= checkindateText );
+
+}" />
+                                                <ValidationSettings ValidationGroup="vgSave" 
+                                                    ErrorDisplayMode="ImageWithTooltip" EnableCustomValidation="True" 
+                                                    ErrorText="Checkout date must be recent">
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
                                                 </ValidationSettings>
                                             </dx:ASPxDateEdit>
@@ -308,40 +319,40 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
                                                             <dx:GridViewDataTextColumn Caption="Sharers" ShowInCustomizationForm="True" VisibleIndex="1"
-                                                                FieldName="Sharers">
+                                                                FieldName="Sharers" Width="150px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="In" ShowInCustomizationForm="True" VisibleIndex="2"
-                                                                FieldName="CheckInDate">
+                                                                FieldName="CheckInDate" Width="80px">
                                                                 <PropertiesTextEdit DisplayFormatString="d">
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="Out" ShowInCustomizationForm="True" VisibleIndex="3"
-                                                                FieldName="CheckOutDate">
+                                                                FieldName="CheckOutDate" Width="80px">
                                                                 <PropertiesTextEdit DisplayFormatString="d">
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="Room" ShowInCustomizationForm="True" VisibleIndex="4"
-                                                                FieldName="RoomId">
+                                                                FieldName="RoomId" Width="100px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" VisibleIndex="5"
-                                                                FieldName="RatePlanId">
+                                                                FieldName="RatePlanId" Width="60px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="# of Adults" ShowInCustomizationForm="True"
-                                                                VisibleIndex="6" FieldName="NumberOfAdults">
+                                                                VisibleIndex="6" FieldName="NumberOfAdults" Width="60px">
                                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
                                                             <dx:GridViewDataTextColumn Caption="# of Childrens" ShowInCustomizationForm="True"
-                                                                VisibleIndex="7" FieldName="NumberOfChildren">
+                                                                VisibleIndex="7" FieldName="NumberOfChildren" Width="60px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="# of Infant" ShowInCustomizationForm="True" VisibleIndex="8"
-                                                                FieldName="NumberOfInfant">
+                                                                FieldName="NumberOfInfant" Width="60px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="Amount" ShowInCustomizationForm="True" VisibleIndex="10"
-                                                                FieldName="Amount">
+                                                                FieldName="Amount" Width="80px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="Days" FieldName="Days" ShowInCustomizationForm="True"
-                                                                VisibleIndex="9">
+                                                                VisibleIndex="9" Width="50px">
                                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
@@ -389,7 +400,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
                                                             <dx:GridViewDataComboBoxColumn Caption="Service Type" FieldName="AdditionalServiceId"
-                                                                ShowInCustomizationForm="True" VisibleIndex="1">
+                                                                ShowInCustomizationForm="True" VisibleIndex="1" Width="150px">
                                                                 <PropertiesComboBox TextField="ServiceName" ValueField="AdditionalServiceId" ValueType="System.Int32"
                                                                     IncrementalFilteringMode="StartsWith" TextFormatString="{1}">
                                                                     <Columns>
@@ -403,7 +414,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </PropertiesComboBox>
                                                             </dx:GridViewDataComboBoxColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" ShowInCustomizationForm="True"
-                                                                VisibleIndex="3">
+                                                                VisibleIndex="3" Width="80px">
                                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -433,7 +444,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ButtonType="Image" ShowInCustomizationForm="True" VisibleIndex="0"
-                                                                Width="80px" Caption="Action">
+                                                                Width="120px" Caption="Action">
                                                                 <EditButton Visible="True">
                                                                     <Image ToolTip="Edit" Url="~/Images/update.png">
                                                                     </Image>
@@ -458,7 +469,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
                                                             <dx:GridViewDataDateColumn FieldName="PaymentDate" ShowInCustomizationForm="True"
-                                                                VisibleIndex="2" Caption="Payment Date">
+                                                                VisibleIndex="2" Caption="Date" Width="60px">
                                                                 <PropertiesDateEdit>
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -466,7 +477,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </PropertiesDateEdit>
                                                             </dx:GridViewDataDateColumn>
                                                             <dx:GridViewDataTextColumn FieldName="ReferenceNumber" ShowInCustomizationForm="True"
-                                                                VisibleIndex="4" Caption="Ref No" Visible="False">
+                                                                VisibleIndex="4" Caption="Ref No" Visible="False" Width="50px">
                                                                 <PropertiesTextEdit>
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -474,10 +485,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataMemoColumn Caption="Notes" FieldName="Notes" ShowInCustomizationForm="True"
-                                                                VisibleIndex="9">
+                                                                VisibleIndex="10">
                                                             </dx:GridViewDataMemoColumn>
-                                                            <dx:GridViewDataComboBoxColumn Caption="Payment Type" FieldName="PaymentTypeId" ShowInCustomizationForm="True"
-                                                                VisibleIndex="1">
+                                                            <dx:GridViewDataComboBoxColumn Caption="Type" FieldName="PaymentTypeId" ShowInCustomizationForm="True"
+                                                                VisibleIndex="1" Width="60px">
                                                                 <PropertiesComboBox TextField="PaymentTypeName" ValueField="PaymentTypeId" ValueType="System.Int32">
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
@@ -509,18 +520,18 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataDateColumn Caption="Expire Date" FieldName="CCExpirationDate" ShowInCustomizationForm="True"
-                                                                VisibleIndex="7">
+                                                                VisibleIndex="7" Width="60px">
                                                             </dx:GridViewDataDateColumn>
                                                             <dx:GridViewDataTextColumn FieldName="CCNameOnCard" ShowInCustomizationForm="True"
-                                                                VisibleIndex="8" Caption="Name on Card">
+                                                                VisibleIndex="8" Caption="Name on Card" Width="120px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" ShowInCustomizationForm="True"
-                                                                VisibleIndex="11">
+                                                                VisibleIndex="11" Width="80px">
                                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
                                                             <dx:GridViewDataTextColumn Caption="Ref No" FieldName="ReferenceNumber" ShowInCustomizationForm="True"
-                                                                VisibleIndex="10">
+                                                                VisibleIndex="9">
                                                             </dx:GridViewDataTextColumn>
                                                         </Columns>
                                                         <SettingsBehavior ConfirmDelete="True" EnableCustomizationWindow="True" />
