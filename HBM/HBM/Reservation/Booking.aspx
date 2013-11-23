@@ -110,8 +110,8 @@
                                                 ClientInstanceName="checkoutdate">
                                                 <ClientSideEvents Validation="function(s, e) {
 	
-	var checkindateText= checkindate.GetText();
-    var checkoutdateText = checkoutdate.GetText();
+	var checkindateText=new Date(checkindate.GetText());
+    var checkoutdateText =new Date(checkoutdate.GetText());
     e.isValid = (checkoutdateText  &gt;= checkindateText );
 
 }" />
