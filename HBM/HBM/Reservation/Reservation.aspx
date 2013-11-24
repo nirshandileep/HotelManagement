@@ -781,7 +781,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
         </table>
     </div>
     <dx:ASPxPopupControl ID="ppPrintPreview" runat="server" ContentUrl="~/Reports/PrintPreview.aspx" 
-        Height="800px" Modal="True" Width="700px" AllowDragging="True"  ClientIDMode="Static"
+        Height="600px" Modal="True" Width="838px" AllowDragging="True"  ClientIDMode="Static"
         AllowResize="True" AppearAfter="0" AutoUpdatePosition="True" DisappearAfter="0" 
         FooterText="" HeaderText="" LoadingPanelDelay="0" 
         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" 

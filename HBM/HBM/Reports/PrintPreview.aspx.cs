@@ -12,6 +12,15 @@ namespace HBM.Reports
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            this.ShowReservationInvoice();
+
         }
+
+        private void ShowReservationInvoice()
+        {
+            xrReservation reservationInvoice = new xrReservation();
+            rvReportViewer.Report = reservationInvoice;
+        }
+
     }
 }
