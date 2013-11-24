@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HBMMaster.Master" AutoEventWireup="true"
-    CodeBehind="Booking.aspx.cs" Inherits="HBM.Reservation.Booking" %>
+    CodeBehind="Reservation.aspx.cs" Inherits="HBM.Reservation.Reservation" %>
 
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dx" %>

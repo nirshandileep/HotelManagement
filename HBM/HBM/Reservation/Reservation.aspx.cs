@@ -21,7 +21,7 @@ using HBM.Utility;
 
 namespace HBM.Reservation
 {
-    public partial class Booking : System.Web.UI.Page
+    public partial class Reservation : System.Web.UI.Page
     {
         #region Variables
 

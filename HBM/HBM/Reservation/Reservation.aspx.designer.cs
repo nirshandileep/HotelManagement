@@ -10,7 +10,7 @@
 namespace HBM.Reservation {
     
     
-    public partial class Booking {
+    public partial class Reservation {
         
         /// <summary>
         /// hdnReservationId control.

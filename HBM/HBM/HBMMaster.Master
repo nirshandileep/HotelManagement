@@ -78,7 +78,8 @@
                         </dx:MenuItem>
                         <dx:MenuItem Text="Reservation" DropDownMode="True">
                             <Items>
-                                <dx:MenuItem NavigateUrl="~/Reservation/Booking.aspx" Text="Add Reservation">
+                                <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" 
+                                    Text="Add Reservation">
                                     <Image Url="~/Images/Reservation.png">
                                     </Image>
                                 </dx:MenuItem>
