@@ -19,8 +19,8 @@
             Bed Types List</h2>
         <table>
             <tr>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
             </tr>
             <tr>

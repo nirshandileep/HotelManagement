@@ -58,6 +58,9 @@
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v12.2.Web, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="DevExpress.XtraScheduler.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="HBMTheme">
       <HintPath>..\..\DX Themes\HBMTheme.dll</HintPath>
@@ -153,6 +156,7 @@
     <Content Include="Images\Reservation.png" />
     <Content Include="JS\HBMCommon.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Reports\PrintPreview.aspx" />
     <Content Include="Reservation\Reservation.aspx" />
     <Content Include="Reservation\SearchReservation.aspx" />
     <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
@@ -318,6 +322,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\PrintPreview.aspx.cs">
+      <DependentUpon>PrintPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\PrintPreview.aspx.designer.cs">
+      <DependentUpon>PrintPreview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\xrReservation.cs">
       <SubType>Component</SubType>
     </Compile>

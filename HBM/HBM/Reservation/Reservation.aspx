@@ -2,6 +2,9 @@
     CodeBehind="Reservation.aspx.cs" Inherits="HBM.Reservation.Reservation" %>
 
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dx" %>
@@ -754,7 +757,11 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                             </td>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnPrint" runat="server" Text="Print" HorizontalAlign="Center"
-                                    ImageSpacing="15px" VerticalAlign="Middle" TabIndex="26" OnClick="btnPrint_Click">
+                                    ImageSpacing="15px" VerticalAlign="Middle" TabIndex="26" 
+                                    AutoPostBack="False" UseSubmitBehavior="False">
+                                    <ClientSideEvents Click="function(s, e) {
+		ShowPopupWindow(ppPrintPreview);
+}" />
                                     <Image Url="~/Images/Print.png">
                                     </Image>
                                 </dx:ASPxButton>
@@ -773,4 +780,11 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
             </tr>
         </table>
     </div>
+    <dx:ASPxPopupControl ID="ppPrintPreview" runat="server" ContentUrl="~/Reports/PrintPreview.aspx" 
+        Height="800px" Modal="True" Width="700px" AllowDragging="True"  ClientIDMode="Static"
+        AllowResize="True" AppearAfter="0" AutoUpdatePosition="True" DisappearAfter="0" 
+        FooterText="" HeaderText="" LoadingPanelDelay="0" 
+        PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" 
+        ScrollBars="Auto" ShowPageScrollbarWhenModal="True">
+    </dx:ASPxPopupControl>
 </asp:Content>

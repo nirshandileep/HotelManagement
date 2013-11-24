@@ -233,11 +233,6 @@ namespace HBM.Reservation
             this.ClearFormFields();
         }
 
-        protected void btnPrint_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             Response.Redirect(Constants.URL_RESERVATIONSEARCH, false);
