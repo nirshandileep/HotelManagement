@@ -26,7 +26,7 @@
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                                 <DataItemTemplate>
-                                    <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/Reservation/Booking.aspx?ReservationId=",Eval("ReservationId").ToString()) %>'
+                                    <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/Reservation/Reservation.aspx?ReservationId=",Eval("ReservationId").ToString()) %>'
                                         Text='<%# Eval("CustomerName") %>' />
                                 </DataItemTemplate>
                                 <CellStyle HorizontalAlign="Left">

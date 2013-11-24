@@ -22,11 +22,13 @@
 		#wrap {display:table;height:100%}
 	</style>
     <![endif]-->
+   
 </head>
 <body>
+ 
     <div id="wrap">
 	<div id="main">
-    <form id="form1" runat="server">
+    <form id="form1" runat="server">    
     <div id="dvTopMessage" runat="server">
     </div>
     <div class="header2">

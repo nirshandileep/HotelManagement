@@ -170,7 +170,7 @@ namespace HBM
                 txtLastName.Text = users.LastName;
                 txtEmail.Text = users.EmailAddress;
                 txtPassword.Text = users.Password;
-                ddlRoles.SelectedItem = ddlRoles.Items.FindByValue(users.RolesId.ToString());
+                ddlRoles.SelectedItem = ddlRoles.Items.FindByValue(users.RolesId);
 
                 currentPassword = users.Password;
 

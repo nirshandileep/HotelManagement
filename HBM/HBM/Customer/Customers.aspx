@@ -85,8 +85,7 @@
                                                     <dx:ListEditItem Text="Male" Value="Male" />
                                                     <dx:ListEditItem Text="Female" Value="Female" />
                                                 </Items>
-                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" 
-                                                    ValidationGroup="vgCustomer">
+                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer">
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
                                                 </ValidationSettings>
                                             </dx:ASPxComboBox>
@@ -148,8 +147,7 @@
                                         </td>
                                         <td>
                                             <dx:ASPxTextBox ID="txtPhone" runat="server" Width="170px" TabIndex="4">
-                                                <ValidationSettings EnableCustomValidation="True"
-                                                    ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
+                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
                                                     <RequiredField IsRequired="True" ErrorText="Required" />
                                                 </ValidationSettings>
                                             </dx:ASPxTextBox>
@@ -376,7 +374,7 @@
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
-                                    <tr >
+                                    <tr>
                                         <td height="22" class="info-lbl">
                                             City
                                         </td>
@@ -418,8 +416,7 @@
                                         </td>
                                         <td>
                                             <dx:ASPxTextBox ID="txtBillingAddressLine1" runat="server" Width="170px" TabIndex="27">
-                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="vgCustomer"
-                                                    ErrorDisplayMode="ImageWithTooltip">
+                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
                                                     <RequiredField IsRequired="True" ErrorText="Required" />
                                                 </ValidationSettings>
                                             </dx:ASPxTextBox>
@@ -442,8 +439,8 @@
                                         </td>
                                         <td>
                                             <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px" TabIndex="28">
-                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="vgCustomer"
-                                                    ErrorDisplayMode="ImageWithTooltip" ErrorText="Required">
+                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip"
+                                                    ErrorText="Required">
                                                     <RequiredField IsRequired="True" ErrorText="Required" />
                                                 </ValidationSettings>
                                             </dx:ASPxTextBox>
@@ -507,7 +504,7 @@
                                     </Image>
                                 </dx:ASPxButton>
                             </td>
-                           <td width="52" align="left">
+                            <td width="52" align="left">
                                 <dx:ASPxButton ID="btnSearch" runat="server" Text="Search" HorizontalAlign="Center"
                                     ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False" AutoPostBack="false"
                                     OnClick="btnSearch_Click" TabIndex="32">
