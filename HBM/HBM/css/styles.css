@@ -502,7 +502,22 @@ td.dxeSBC{
 }
 
 
+
+/* Reservation styles */
 #reservation-info-btn-tbl{margin-top:10px;}
 #reservation-info-btn-tbl td{
 	padding-right:10px;
 }
+
+#ContentPlaceHolder1_btnSave_CD, #ContentPlaceHolder1_btnNew_CD, #ContentPlaceHolder1_btnPrint_CD, #ContentPlaceHolder1_btnSearch_CD{
+	height:20px;
+}
+
+#ContentPlaceHolder1_btnSave_BTC span, #ContentPlaceHolder1_btnNew_BTC span,  #ContentPlaceHolder1_btnPrint_BTC span, #ContentPlaceHolder1_btnSearch_BTC span{
+	float:left;
+	margin-top:5px;
+	font-weight:bold;		
+	margin-bottom:5px;
+}
+
+/*End*/

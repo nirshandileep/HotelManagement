@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div class="wrapper-inner">
         <h2>
-            Reservation List</h2>
+            Search Reservations</h2>
         <table width="900">
             <tr>
                 <td>

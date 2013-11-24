@@ -11,7 +11,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-inner">
         <h2>
-            Customer Search List</h2>
+            Search Customers</h2>
         <table width="900">
             <tr>
                 <td>

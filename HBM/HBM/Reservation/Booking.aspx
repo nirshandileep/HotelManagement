@@ -29,7 +29,7 @@
                             <dx:PanelContent ID="PanelContent1" runat="server" SupportsDisabledAttribute="True">
                                 <table width="100%">
                                     <tr valign="middle">
-                                        <td align="left" width="80px" >
+                                        <td align="left" width="80px">
                                             Customer
                                         </td>
                                         <td>
@@ -85,8 +85,7 @@
                                             Check In
                                         </td>
                                         <td align="left">
-                                            <dx:ASPxDateEdit ID="dtCheckingDate" runat="server" Width="150px" 
-                                                ClientInstanceName="checkindate">
+                                            <dx:ASPxDateEdit ID="dtCheckingDate" runat="server" Width="150px" ClientInstanceName="checkindate">
                                                 <ValidationSettings ValidationGroup="vgSave" ErrorDisplayMode="ImageWithTooltip">
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
                                                 </ValidationSettings>
@@ -105,9 +104,8 @@
                                         <td align="left">
                                             Check Out
                                         </td>
-                                        <td align="left" >
-                                            <dx:ASPxDateEdit ID="dtCheckOutDate" runat="server" Width="150px" 
-                                                ClientInstanceName="checkoutdate">
+                                        <td align="left">
+                                            <dx:ASPxDateEdit ID="dtCheckOutDate" runat="server" Width="150px" ClientInstanceName="checkoutdate">
                                                 <ClientSideEvents Validation="function(s, e) {
 	
 	var checkindateText=new Date(checkindate.GetText());
@@ -115,9 +113,8 @@
     e.isValid = (checkoutdateText  &gt;= checkindateText );
 
 }" />
-                                                <ValidationSettings ValidationGroup="vgSave" 
-                                                    ErrorDisplayMode="ImageWithTooltip" EnableCustomValidation="True" 
-                                                    ErrorText="Checkout date must be recent">
+                                                <ValidationSettings ValidationGroup="vgSave" ErrorDisplayMode="ImageWithTooltip"
+                                                    EnableCustomValidation="True" ErrorText="Checkout date must be recent">
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
                                                 </ValidationSettings>
                                             </dx:ASPxDateEdit>
@@ -157,8 +154,7 @@
                                                             </td>
                                                             <td>
                                                                 <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" DropDownWindowHeight="200px"
-                                                                    DropDownWindowWidth="350px" ClientInstanceName="ddlShareNames" 
-                                                                    MaxLength="255">
+                                                                    DropDownWindowWidth="350px" ClientInstanceName="ddlShareNames" MaxLength="255">
                                                                     <DropDownWindowTemplate>
                                                                         <dx:ASPxMemo ID="memSharesNames" runat="server" Height="200px" Width="100%" ClientInstanceName="memSharesNames">
                                                                         </dx:ASPxMemo>
@@ -279,37 +275,13 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                &nbsp;
-                                                            </td>
-                                                            <td>
-                                                                &nbsp;
-                                                            </td>
-                                                            <td>
-                                                                &nbsp;
-                                                            </td>
-                                                            <td>
-                                                                &nbsp;
-                                                            </td>
-                                                            <td>
-                                                                &nbsp;
-                                                            </td>
-                                                            <td>
-                                                                &nbsp;
-                                                            </td>
-                                                            <td valign="middle">
-                                                                &nbsp;
-                                                            </td>
-                                                        </tr>
                                                     </table>
                                                     <dx:ASPxGridView ID="gvRoomInfo" runat="server" AutoGenerateColumns="False" Width="100%"
                                                         OnCellEditorInitialize="gvRoomInfo_CellEditorInitialize" KeyFieldName="ReservationRoomId"
                                                         OnRowDeleting="gvRoomInfo_RowDeleting" OnRowInserting="gvRoomInfo_RowInserting"
                                                         OnRowUpdating="gvRoomInfo_RowUpdating" OnDataBound="gvRoomInfo_DataBound">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" 
-                                                                DisplayFormat="Total : {0:F2}" />
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" DisplayFormat="Total : {0:F2}" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ShowInCustomizationForm="True" VisibleIndex="0" ButtonType="Image">
@@ -373,8 +345,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         OnRowDeleting="gvServiceInformation_RowDeleting" OnRowInserting="gvServiceInformation_RowInserting"
                                                         OnRowUpdating="gvServiceInformation_RowUpdating" OnDataBound="gvServiceInformation_DataBound">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" 
-                                                                DisplayFormat="Total : {0:F2}" />
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" DisplayFormat="Total : {0:F2}" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
@@ -782,9 +753,16 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                 </dx:ASPxButton>
                             </td>
                             <td width="52" align="left">
-                                <dx:ASPxButton ID="btnPrint" runat="server" Text="Print" HorizontalAlign="Center" ImageSpacing="15px"
-                                    VerticalAlign="Middle" TabIndex="26" OnClick="btnPrint_Click">
+                                <dx:ASPxButton ID="btnPrint" runat="server" Text="Print" HorizontalAlign="Center"
+                                    ImageSpacing="15px" VerticalAlign="Middle" TabIndex="26" OnClick="btnPrint_Click">
                                     <Image Url="~/Images/Print.png">
+                                    </Image>
+                                </dx:ASPxButton>
+                            </td>
+                              <td width="52" align="left">
+                                <dx:ASPxButton ID="btnSearch" runat="server" Text="Search" HorizontalAlign="Center"
+                                    ImageSpacing="15px" VerticalAlign="Middle" TabIndex="26" OnClick="btnSearch_Click">
+                                    <Image Url="~/Images/Search.png">
                                     </Image>
                                 </dx:ASPxButton>
                             </td>

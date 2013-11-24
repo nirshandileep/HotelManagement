@@ -238,6 +238,10 @@ namespace HBM.Reservation
             
         }
 
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Constants.URL_RESERVATIONSEARCH, false);
+        }
 
         #endregion
 
