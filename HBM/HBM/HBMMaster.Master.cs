@@ -35,7 +35,7 @@ namespace HBM
                 {
                     user = null;
                     Session[Constants.SESSION_LOGGEDUSER] = null;
-                    Response.Redirect(Constants.CONST_LOIN, false);
+                    Response.Redirect(Constants.URL_LOGIN, false);
                 }
 
                 return user;
@@ -146,7 +146,7 @@ namespace HBM
             if (Session[Constants.SESSION_LOGGEDUSER] == null)
             {
                 ClearSessions();
-                Response.Redirect(Constants.CONST_LOIN, false);
+                Response.Redirect(Constants.URL_LOGIN, false);
             }
 
 
@@ -161,7 +161,7 @@ namespace HBM
             }
             else
             {
-                Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
+                Response.Redirect(HBM.Common.Constants.URL_LOGIN, false);
             }
 
 
@@ -176,7 +176,7 @@ namespace HBM
         protected void lbLogout_Click(object sender, EventArgs e)
         {
             this.ClearSessions();
-            Response.Redirect(HBM.Common.Constants.CONST_LOIN, false);
+            Response.Redirect(HBM.Common.Constants.URL_LOGIN, false);
         }
 
         #endregion

@@ -37,20 +37,21 @@ namespace HBM.ReservationManagement
             
             db.ExecuteNonQuery(command);
 
-            Int32 newReservationId = Convert.ToInt32(db.GetParameterValue(command, "@NewReservationId"));
+            //Int32 newReservationId = Convert.ToInt32(db.GetParameterValue(command, "@NewReservationId"));
+            reservation.ReservationId = Convert.ToInt32(db.GetParameterValue(command, "@NewReservationId"));
 
             ReservationRoom reservationRoom = new ReservationRoom();
-            reservationRoom.ReservationId = newReservationId;
+            reservationRoom.ReservationId = reservation.ReservationId;
             reservationRoom.ReservationRoomList = reservation.ReservationRoomDataSet;
             reservationRoom.Save(db, transaction);
 
             ReservationAdditionalService reservationAddtionalService = new ReservationAdditionalService();
-            reservationAddtionalService.ReservationId = newReservationId;
+            reservationAddtionalService.ReservationId = reservation.ReservationId;
             reservationAddtionalService.ReservationAdditionalServiceList = reservation.ReservationAdditionalServiceDataSet;
             reservationAddtionalService.Save(db, transaction);
 
             ReservationPayments reservationPayments = new ReservationPayments();
-            reservationPayments.ReservationId = newReservationId;
+            reservationPayments.ReservationId = reservation.ReservationId;
             reservationPayments.ReservationPaymentList = reservation.ReservationPaymentDataSet;
             reservationPayments.Save(db, transaction);
 

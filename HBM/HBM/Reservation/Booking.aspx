@@ -20,7 +20,7 @@
     <div class="wrapper-inner">
         <h2>
             <asp:HiddenField ID="hdnReservationId" runat="server" />
-            Reservation</h2>
+            Reservation<asp:Literal ID="ltlReservationCode" runat="server"></asp:Literal></h2>
         <table width="100%">
             <tr>
                 <td align="left">
@@ -157,7 +157,8 @@
                                                             </td>
                                                             <td>
                                                                 <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" DropDownWindowHeight="200px"
-                                                                    DropDownWindowWidth="350px" ClientInstanceName="ddlShareNames">
+                                                                    DropDownWindowWidth="350px" ClientInstanceName="ddlShareNames" 
+                                                                    MaxLength="255">
                                                                     <DropDownWindowTemplate>
                                                                         <dx:ASPxMemo ID="memSharesNames" runat="server" Height="200px" Width="100%" ClientInstanceName="memSharesNames">
                                                                         </dx:ASPxMemo>
@@ -307,7 +308,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         OnRowDeleting="gvRoomInfo_RowDeleting" OnRowInserting="gvRoomInfo_RowInserting"
                                                         OnRowUpdating="gvRoomInfo_RowUpdating" OnDataBound="gvRoomInfo_DataBound">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" />
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" 
+                                                                DisplayFormat="Total : {0:F2}" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ShowInCustomizationForm="True" VisibleIndex="0" ButtonType="Image">
@@ -371,7 +373,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         OnRowDeleting="gvServiceInformation_RowDeleting" OnRowInserting="gvServiceInformation_RowInserting"
                                                         OnRowUpdating="gvServiceInformation_RowUpdating" OnDataBound="gvServiceInformation_DataBound">
                                                         <TotalSummary>
-                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" />
+                                                            <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" 
+                                                                DisplayFormat="Total : {0:F2}" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
@@ -440,7 +443,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                         OnRowUpdating="gvPaymentInformation_RowUpdating">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
-                                                                SummaryType="Sum" />
+                                                                SummaryType="Sum" DisplayFormat="Total : {0:F2}" />
                                                         </TotalSummary>
                                                         <Columns>
                                                             <dx:GridViewCommandColumn ButtonType="Image" ShowInCustomizationForm="True" VisibleIndex="0"

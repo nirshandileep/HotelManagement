@@ -140,7 +140,7 @@ namespace HBM
             }
         }
 
-        private void ClearForm()
+        private void ClearFormData()
         {
             try
             {
@@ -183,6 +183,18 @@ namespace HBM
                 cmbCCExpiryDateMonth.Value = null;
                 cmbCCExpiryDateYear.Value = null;
                 cmbGuestType.Value = null;
+
+                txtCustomerName.IsValid = true;
+                txtMemberCode.IsValid = true;
+                cmbGender.IsValid = true;
+                txtPhone.IsValid = true;
+                cmbGuestType.IsValid = true;
+                txtBillingAddressLine1.IsValid = true;
+                txtBillingCity.IsValid = true;
+                txtEmail.IsValid = true;
+
+                
+
             }
             catch (System.Exception)
             {
@@ -361,7 +373,7 @@ namespace HBM
                 if (string.IsNullOrEmpty(errorMSG) && CustomerObj.Save())
                 {
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
-                    ClearForm();
+                    ClearFormData();
                 }
                 else
                 {
@@ -422,7 +434,20 @@ namespace HBM
         {
             try
             {
-                ClearForm();
+                ClearFormData();
+            }
+            catch (System.Exception)
+            {
+
+
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect(Common.Constants.URL_CUSTOMERSEARCH, false);
             }
             catch (System.Exception)
             {

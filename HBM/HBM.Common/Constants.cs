@@ -54,23 +54,24 @@ namespace HBM.Common
 
         #region Page Path's
 
-        public static readonly string CONST_DEFAULTBACKPAGE = "Dashboard.aspx";
-        public static readonly string CONST_LOIN = "~/Login.aspx";
-        public static readonly string CONST_BEDTYPE = "/ControlPanel/BedType.aspx";
-        public static readonly string CONST_DEPARTMENT = "/ControlPanel/Department.aspx";
-        public static readonly string CONST_GAURANTEE = "/ControlPanel/Gaurantee.aspx";
-        public static readonly string CONST_RATEPLAN = "/ControlPanel/RatePlan.aspx";
-        public static readonly string CONST_ROOMS = "/ControlPanel/Rooms.aspx";
-        public static readonly string CONST_RATEPLANS= "/ControlPanel/RatePlans.aspx";
-        public static readonly string CONST_SOURCE = "/ControlPanel/Source.aspx";
-        public static readonly string CONST_TAXTYPES= "/ControlPanel/TaxType.aspx";
-        public static readonly string CONST_ADDITIONALSERVICETYPE = "/ControlPanel/AdditionalServiceType.aspx";
-        public static readonly string CONST_ADDITIONALSERVICE= "/ControlPanel/AdditionalService.aspx";
+        public static readonly string URL_DEFAULTBACKPAGE = "Dashboard.aspx";
+        public static readonly string URL_LOGIN = "~/Login.aspx";
+        public static readonly string URL_BEDTYPE = "/ControlPanel/BedType.aspx";
+        public static readonly string URL_DEPARTMENT = "/ControlPanel/Department.aspx";
+        public static readonly string URL_GAURANTEE = "/ControlPanel/Gaurantee.aspx";
+        public static readonly string URL_RATEPLAN = "/ControlPanel/RatePlan.aspx";
+        public static readonly string URL_ROOMS = "/ControlPanel/Rooms.aspx";
+        public static readonly string URL_RATEPLANS= "/ControlPanel/RatePlans.aspx";
+        public static readonly string URL_SOURCE = "/ControlPanel/Source.aspx";
+        public static readonly string URL_TAXTYPES= "/ControlPanel/TaxType.aspx";
+        public static readonly string URL_ADDITIONALSERVICETYPE = "/ControlPanel/AdditionalServiceType.aspx";
+        public static readonly string URL_ADDITIONALSERVICE= "/ControlPanel/AdditionalService.aspx";
 
-        public static readonly string CONST_GUESTTYPES = "/ControlPanel/GuestTypes.aspx";
-        public static readonly string CONST_CREDITCARDTYPE = "/ControlPanel/CreditCardType.aspx";
-        public static readonly string CONST_PAYMENTTYPES = "/ControlPanel/PaymentTypes.aspx";
+        public static readonly string URL_GUESTTYPES = "/ControlPanel/GuestTypes.aspx";
+        public static readonly string URL_CREDITCARDTYPE = "/ControlPanel/CreditCardType.aspx";
+        public static readonly string URL_PAYMENTTYPES = "/ControlPanel/PaymentTypes.aspx";
 
+        public static readonly string URL_CUSTOMERSEARCH = "/Customer/CustomerSearch.aspx";
        
 
         #endregion

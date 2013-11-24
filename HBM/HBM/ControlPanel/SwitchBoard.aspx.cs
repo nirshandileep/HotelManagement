@@ -15,7 +15,7 @@ namespace HBM.ControlPanel
             if (!IsPostBack)
             {
                 tcCommon.ActiveTab.Index = 0;
-                iframePage.Attributes["src"] = Constants.CONST_BEDTYPE;
+                iframePage.Attributes["src"] = Constants.URL_BEDTYPE;
             }
 
         }
@@ -26,40 +26,40 @@ namespace HBM.ControlPanel
             switch (e.Tab.Name)
             {
                 case "BedType":
-                    iframePage.Attributes["src"] = Constants.CONST_BEDTYPE;
+                    iframePage.Attributes["src"] = Constants.URL_BEDTYPE;
                     break;
                 case "Departments":
-                    iframePage.Attributes["src"] = Constants.CONST_DEPARTMENT;
+                    iframePage.Attributes["src"] = Constants.URL_DEPARTMENT;
                     break;
                 case "Gaurantee":
-                    iframePage.Attributes["src"] = Constants.CONST_GAURANTEE;
+                    iframePage.Attributes["src"] = Constants.URL_GAURANTEE;
                     break;
                 case "Rooms":
-                    iframePage.Attributes["src"] = Constants.CONST_ROOMS;
+                    iframePage.Attributes["src"] = Constants.URL_ROOMS;
                     break;
                 case "RatePlan":
-                    iframePage.Attributes["src"] = Constants.CONST_RATEPLANS;
+                    iframePage.Attributes["src"] = Constants.URL_RATEPLANS;
                     break;
                 case "Source":
-                    iframePage.Attributes["src"] = Constants.CONST_SOURCE;
+                    iframePage.Attributes["src"] = Constants.URL_SOURCE;
                     break;
                 case "TaxTypes":
-                    iframePage.Attributes["src"] = Constants.CONST_TAXTYPES;
+                    iframePage.Attributes["src"] = Constants.URL_TAXTYPES;
                     break;
                 case "AdditionalServiceType":
-                    iframePage.Attributes["src"] = Constants.CONST_ADDITIONALSERVICETYPE;
+                    iframePage.Attributes["src"] = Constants.URL_ADDITIONALSERVICETYPE;
                     break;
                 case "AdditionalService":
-                    iframePage.Attributes["src"] = Constants.CONST_ADDITIONALSERVICE;
+                    iframePage.Attributes["src"] = Constants.URL_ADDITIONALSERVICE;
                     break;
                 case "GuestType":
-                    iframePage.Attributes["src"] = Constants.CONST_GUESTTYPES;
+                    iframePage.Attributes["src"] = Constants.URL_GUESTTYPES;
                     break;
                 case "CreditCardTypes":
-                    iframePage.Attributes["src"] = Constants.CONST_CREDITCARDTYPE;
+                    iframePage.Attributes["src"] = Constants.URL_CREDITCARDTYPE;
                     break;
                 case "PaymentTypes":
-                    iframePage.Attributes["src"] = Constants.CONST_PAYMENTTYPES;
+                    iframePage.Attributes["src"] = Constants.URL_PAYMENTTYPES;
                     break;
 
             }

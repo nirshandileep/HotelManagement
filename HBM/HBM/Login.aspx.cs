@@ -50,7 +50,7 @@ namespace HBM
                         Company company=new Company();
                         company.CompanyId=users.CompanyId;
                         Session[Constants.SESSION_CURRENTCOMPANY] = company.Select();
-                        Response.Redirect(HBM.Common.Constants.CONST_DEFAULTBACKPAGE, false);
+                        Response.Redirect(HBM.Common.Constants.URL_DEFAULTBACKPAGE, false);
                     }
                 }
                 else

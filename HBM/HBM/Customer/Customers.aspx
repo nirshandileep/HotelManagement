@@ -213,7 +213,7 @@
                                     </tr>
                                     <tr>
                                         <td height="22" class="info-lbl">
-                                            Guest Type
+                                            Guest Type<span class="reqfield">*</span>
                                         </td>
                                         <td>
                                             <dx:ASPxComboBox ID="cmbGuestType" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
@@ -507,8 +507,13 @@
                                     </Image>
                                 </dx:ASPxButton>
                             </td>
-                            <td width="52" align="left">
-                                &nbsp;
+                           <td width="52" align="left">
+                                <dx:ASPxButton ID="btnSearch" runat="server" Text="Search" HorizontalAlign="Center"
+                                    ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False" AutoPostBack="false"
+                                    OnClick="btnSearch_Click" TabIndex="32">
+                                    <Image Url="~/Images/Search.png">
+                                    </Image>
+                                </dx:ASPxButton>
                             </td>
                         </tr>
                     </table>
