@@ -64,7 +64,7 @@ namespace HBM.ReservationManagement
             return HBM.Utility.Generic.Get<ReservationRoom>(this.ReservationRoomId);
         }
 
-        public bool UpdateDashboardArrivals(DataSet dsArrivals)
+        public bool UpdateDashboardArrivalsDepartures(DataSet dsArrivals)
         {
             return (new ReservationRoomDAO()).DashboardUpdateArrivalsList(dsArrivals);
         }

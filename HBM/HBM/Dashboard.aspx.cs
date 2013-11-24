@@ -9,6 +9,7 @@ using System.Data;
 using DevExpress.Web.ASPxGridView;
 using System.Collections;
 using HBM.GeneralManagement;
+using DevExpress.Web.ASPxEditors;
 
 namespace HBM
 {
@@ -16,6 +17,30 @@ namespace HBM
     {
         DataSet dsData = new DataSet();
         DataSet dsDepartures = new DataSet();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            this.LoadCleanedByUsers();
+        }
+
+        private void LoadCleanedByUsers()
+        {
+            try
+            {
+                DataSet dsCleaners = new UserManagement.Users() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset();
+                dsCleaners.Tables[0].Columns["UsersId"].ColumnName = "CleanedBy";
+                ((GridViewDataComboBoxColumn)gvDirtyRooms.Columns["CleanedBy"]).PropertiesComboBox.TextField = "UserName";
+                ((GridViewDataComboBoxColumn)gvDirtyRooms.Columns["CleanedBy"]).PropertiesComboBox.ValueField = "CleanedBy";
+                ((GridViewDataComboBoxColumn)gvDirtyRooms.Columns["CleanedBy"]).PropertiesComboBox.DataSource = dsCleaners;
+
+            }
+            catch (System.Exception)
+            {
+
+
+            }
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -137,11 +162,75 @@ namespace HBM
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (new ReservationManagement.ReservationRoom().UpdateDashboardArrivals(dsData))
+            if (new ReservationManagement.ReservationRoom().UpdateDashboardArrivalsDepartures(dsData))
             {
                 System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
 
                 LoadArrivals();
+            }
+            else
+            {
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Unsuccess + "')", true);
+            }
+        }
+
+        protected void gvDepartures_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            dsData = Session[Constants.SESSION_DEPARTURES] as DataSet;
+            ASPxGridView gridView = sender as ASPxGridView;
+            DataTable dataTable = dsData.Tables[0];
+            DataRow row = dataTable.Rows.Find(e.Keys[0]);
+            e.NewValues["UpdatedUser"] = Master.LoggedUser.UsersId;
+            IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
+            enumerator.Reset();
+            while (enumerator.MoveNext())
+            {
+                row[enumerator.Key.ToString()] = enumerator.Value == null ? DBNull.Value : enumerator.Value;
+            }
+
+            gridView.CancelEdit();
+            e.Cancel = true;
+
+            if (new ReservationManagement.ReservationRoom().UpdateDashboardArrivalsDepartures(dsData))
+            {
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
+                LoadDepartures();
+            }
+            else
+            {
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Unsuccess + "')", true);
+            }
+        }
+
+        protected void gvDirtyRooms_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+            if (e.Column.FieldName != "CleanedBy") return;
+
+            ASPxComboBox combo = e.Editor as ASPxComboBox;
+            combo.DataBindItems();
+        }
+
+        protected void gvDirtyRooms_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            DataSet dsDirtyRooms = Session[Constants.SESSION_DIRTYROOMS] as DataSet;
+            ASPxGridView gridView = sender as ASPxGridView;
+            DataTable dataTable = dsDirtyRooms.Tables[0];
+            DataRow row = dataTable.Rows.Find(e.Keys[0]);
+            e.NewValues["UpdatedUser"] = Master.LoggedUser.UsersId;
+            IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
+            enumerator.Reset();
+            while (enumerator.MoveNext())
+            {
+                row[enumerator.Key.ToString()] = enumerator.Value == null ? DBNull.Value : enumerator.Value;
+            }
+
+            gridView.CancelEdit();
+            e.Cancel = true;
+
+            if (new GeneralManagement.RoomDAO().DashboardUpdateDirtyRooms(dsDirtyRooms))
+            {
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
+                LoadDirtyRooms();
             }
             else
             {

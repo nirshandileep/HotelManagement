@@ -42,6 +42,7 @@ namespace HBM.GeneralManagement
             db.AddInParameter(commandUpdate, "@SmokingAllow", DbType.Boolean, "SmokingAllow", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
+
             
             DbCommand commandDelete = db.GetStoredProcCommand("usp_RoomDelete");
             db.AddInParameter(commandDelete, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
@@ -140,6 +141,23 @@ namespace HBM.GeneralManagement
 
             return db.ExecuteDataSet(dbCommand);
 
+        }
+
+        public bool DashboardUpdateDirtyRooms(DataSet dsDirtyRooms)
+        {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand commandUpdate = db.GetStoredProcCommand("usp_Dashboard_RoomDirtyUpdate");
+
+            db.AddInParameter(commandUpdate, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@IsDirty", DbType.Boolean, "IsDirty", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@CleaningNote", DbType.String, "CleaningNote", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@CleanedBy", DbType.Int32, "CleanedBy", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@CleanedDate", DbType.DateTime, "CleanedDate", DataRowVersion.Current);
+
+            db.UpdateDataSet(dsDirtyRooms, dsDirtyRooms.Tables[0].TableName, null, commandUpdate, null, UpdateBehavior.Transactional);
+
+            return true;
         }
 
         public bool UpdateRoomAsDirty(Room room)

@@ -106,9 +106,45 @@ namespace HBM.ReservationManagement
                 DbCommand commandUpdate = db.GetStoredProcCommand("usp_Dashboard_ReservationRoom_ArrivalsUpdate");
 
                 db.AddInParameter(commandUpdate, "@ReservationRoomId", DbType.Int64, "ReservationRoomId", DataRowVersion.Current);
+                db.AddInParameter(commandUpdate, "@ActualCheckInDate", DbType.DateTime, "ActualCheckInDate", DataRowVersion.Current);
+                db.AddInParameter(commandUpdate, "@ActualCheckOutDate", DbType.DateTime, "ActualCheckInDate", DataRowVersion.Current);
                 db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
 
                 db.UpdateDataSet(arrivalsList, arrivalsList.Tables[0].TableName, null, commandUpdate, null, null);
+
+                transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public bool DashboardUpdateDeparturesList(DataSet departuresList)
+        {
+            DbConnection connection = null;
+            DbTransaction transaction = null;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                DbCommand commandUpdate = db.GetStoredProcCommand("usp_Dashboard_ReservationRoom_DeparturesUpdate");
+
+                db.AddInParameter(commandUpdate, "@ReservationRoomId", DbType.Int64, "ReservationRoomId", DataRowVersion.Current);
+                db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
+
+                db.UpdateDataSet(departuresList, departuresList.Tables[0].TableName, null, commandUpdate, null, null);
 
                 transaction.Commit();
                 return true;

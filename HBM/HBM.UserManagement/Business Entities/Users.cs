@@ -27,6 +27,7 @@ namespace HBM.UserManagement
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
         public Int32 RolesId { get; set; }
+        public Int32 DepartmentId { get; set; }
 
 
         #endregion

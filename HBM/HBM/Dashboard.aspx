@@ -44,7 +44,7 @@
         <tr>
             <td colspan="2">
                 <div>
-                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="1" 
+                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="3" 
                         Width="100%" EnableCallbackAnimation="True" EnableCallBacks="True" 
                         SaveStateToCookies="True">
                         <TabPages>
@@ -282,7 +282,7 @@
                                             <tr>
                                                 <td>
                                                     <dx:ASPxGridView ID="gvDepartures" runat="server" AutoGenerateColumns="False" Width="100%"
-                                                        KeyFieldName="ReservationRoomId">
+                                                        KeyFieldName="ReservationRoomId" OnRowUpdating="gvDepartures_RowUpdating">
                                                         <Columns>
                                                             <dx:GridViewDataTextColumn FieldName="CustomerName" ShowInCustomizationForm="True"
                                                                 VisibleIndex="1">
@@ -340,7 +340,9 @@
                                 <ContentCollection>
                                     <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                         <dx:ASPxGridView ID="gvDirtyRooms" runat="server" AutoGenerateColumns="False" 
-                                            Width="700px" KeyFieldName="RoomId">
+                                            Width="700px" KeyFieldName="RoomId" 
+                                            OnCellEditorInitialize="gvDirtyRooms_CellEditorInitialize" 
+                                            OnRowUpdating="gvDirtyRooms_RowUpdating">
                                             <Columns>
                                                 <dx:GridViewDataTextColumn FieldName="RoomName" ReadOnly="True" ShowInCustomizationForm="True"
                                                     VisibleIndex="1">
@@ -349,7 +351,9 @@
                                                     VisibleIndex="2">
                                                 </dx:GridViewDataTextColumn>
                                                 <dx:GridViewDataComboBoxColumn FieldName="CleanedBy" ShowInCustomizationForm="True"
-                                                    UnboundType="Integer" VisibleIndex="3">
+                                                    UnboundType="Integer" VisibleIndex="3" Caption="Cleaned By">
+                                                    <PropertiesComboBox ValueType="System.Int32">
+                                                    </PropertiesComboBox>
                                                 </dx:GridViewDataComboBoxColumn>
                                                 <dx:GridViewCommandColumn ButtonType="Image" ShowInCustomizationForm="True" VisibleIndex="0">
                                                     <EditButton Visible="True">
