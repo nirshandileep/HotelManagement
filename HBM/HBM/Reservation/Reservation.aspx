@@ -145,7 +145,7 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="2" 
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" 
                                     Width="100%">
                                     <TabPages>
                                         <dx:TabPage Text="Room Info">
@@ -381,10 +381,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                             <dx:GridViewDataComboBoxColumn Caption="Service Type" FieldName="AdditionalServiceId"
                                                                 ShowInCustomizationForm="True" VisibleIndex="1" Width="150px">
                                                                 <PropertiesComboBox TextField="ServiceName" ValueField="AdditionalServiceId" ValueType="System.Int32"
-                                                                    IncrementalFilteringMode="StartsWith" TextFormatString="{1}">
+                                                                    IncrementalFilteringMode="StartsWith" TextFormatString="{0}">
                                                                     <Columns>
-                                                                        <dx:ListBoxColumn Caption="Service Code" FieldName="ServiceCode" />
                                                                         <dx:ListBoxColumn Caption="Service Name" FieldName="ServiceName" />
+                                                                        <dx:ListBoxColumn Caption="Service Code" FieldName="ServiceCode" />
                                                                         <dx:ListBoxColumn Caption="Rate" FieldName="Rate" />
                                                                     </Columns>
                                                                     <ValidationSettings>

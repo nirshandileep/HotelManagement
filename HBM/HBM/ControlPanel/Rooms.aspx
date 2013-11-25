@@ -16,10 +16,10 @@
     <div class="wrapper-switchboard">
         <h2>
             Room List</h2>
-        <table class="rooms-info-tbl">
+        <table>
             <tr>
-                <td>&nbsp;
-                    
+                <td>
+                    &nbsp;
                 </td>
             </tr>
             <tr>

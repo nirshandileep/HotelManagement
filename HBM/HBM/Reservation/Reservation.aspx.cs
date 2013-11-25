@@ -58,7 +58,16 @@ namespace HBM.Reservation
                 this.LoadRoomInformation(newReservationId);
                 this.LoadAddiotnalService(newReservationId);
                 this.LoadPaymentInformation(newReservationId);
+              
+            }
 
+            ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
+            ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CurrencyId"]).PropertiesComboBox.DataSource = new GenMan.CurrencyTypes().SelectAllDataset().Tables[0];
+            ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
+            ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
+
+            if (!IsPostBack)
+            {
                 //// Display reservation
                 if (Request.QueryString["ReservationId"] != null)
                 {
@@ -66,14 +75,7 @@ namespace HBM.Reservation
                     Int64 currentReservationId = Convert.ToInt64(this.hdnReservationId.Value);
                     this.DisplayData(currentReservationId);
                 }
-               
             }
-
-            ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
-            ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CurrencyId"]).PropertiesComboBox.DataSource = new GenMan.CurrencyTypes().SelectAllDataset().Tables[0];
-            ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
-            ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];           
-
 
         }
 
@@ -122,29 +124,39 @@ namespace HBM.Reservation
 
         private void ClearFormFields()
         {
-            cmbCustomer.SelectedIndex = -1;
-            cmbSource.SelectedIndex = -1;
-            dtCheckingDate.Text = string.Empty;
-            dtCheckOutDate.Text = string.Empty;
 
-            this.ClearRoomInfoSection();
-            this.LoadRoomInformation(newReservationId);
-            this.LoadAddiotnalService(newReservationId);
-            this.LoadPaymentInformation(newReservationId);
-            this.LoadInitialData();
-            
-            txtRoomTotal.Text = "0";
-            txtServiceTotal.Text = "0";
-            txtNetTotal.Text = "0";
-            txtDiscount.Text = "0";
-            cmbTax.SelectedIndex=-1;
-            txtTaxTotal.Text = "0";
-            txtTotal.Text = "0";
-            txtPaidAmount.Text = "0";
-            txtBalance.Text = "0";
+            if (Request.QueryString["ReservationId"] != null)
+            {
+                Response.Redirect(Constants.URL_RESERVATION, false);
+            }
+            else
+            {
+                cmbCustomer.SelectedIndex = -1;
+                cmbSource.SelectedIndex = -1;
+                dtCheckingDate.Text = string.Empty;
+                dtCheckOutDate.Text = string.Empty;
 
-            this.hdnReservationId.Value = string.Empty;
-            Response.Redirect("Booking.aspx", false);
+                this.ClearRoomInfoSection();
+                this.LoadRoomInformation(newReservationId);
+                this.LoadAddiotnalService(newReservationId);
+                this.LoadPaymentInformation(newReservationId);
+                this.LoadInitialData();
+
+                txtRoomTotal.Text = "0";
+                txtServiceTotal.Text = "0";
+                txtNetTotal.Text = "0";
+                txtDiscount.Text = "0";
+                cmbTax.SelectedIndex = -1;
+                txtTaxTotal.Text = "0";
+                txtTotal.Text = "0";
+                txtPaidAmount.Text = "0";
+                txtBalance.Text = "0";
+
+                this.hdnReservationId.Value = string.Empty;
+            }
+
+          
+          
 
         }
 
