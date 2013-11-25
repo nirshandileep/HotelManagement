@@ -148,6 +148,46 @@ namespace HBM.Reservation
 
         }
 
+        private void Calculate()
+        {
+            if (gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]) != null)
+            {
+                txtRoomTotal.Text = gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString();
+            }
+            else
+            {
+                txtRoomTotal.Text = "0";
+            }
+
+
+            if (gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]) != null)
+            {
+                txtServiceTotal.Text = gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString();
+
+            }
+            else
+            {
+                txtServiceTotal.Text = "0";
+            }
+
+
+            txtNetTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
+            txtDiscount.Text = "0";
+            txtTaxTotal.Text = "0";
+            txtTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
+
+            if (gvPaymentInformation.GetTotalSummaryValue(gvPaymentInformation.TotalSummary["Amount"]) != null)
+            {
+                txtPaidAmount.Text = gvPaymentInformation.GetTotalSummaryValue(gvPaymentInformation.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvPaymentInformation.GetTotalSummaryValue(gvPaymentInformation.TotalSummary["Amount"]).ToString();
+            }
+            else
+            {
+                txtPaidAmount.Text = "0";
+            }
+
+            txtBalance.Text = ((Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)) - Convert.ToDecimal(txtPaidAmount.Text)).ToString();
+        }
+
         #endregion
 
         #region Events
@@ -396,36 +436,7 @@ namespace HBM.Reservation
             ddlShareNames.Focus();
         }
 
-        private void Calculate()
-        {
-            if (gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]) != null)
-            {
-               txtRoomTotal.Text = gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvRoomInfo.GetTotalSummaryValue(gvRoomInfo.TotalSummary["Amount"]).ToString();
-            }
-            else
-            {
-                txtRoomTotal.Text = "0";
-            }            
-            
 
-            if (gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]) !=null)
-            {
-                txtServiceTotal.Text = gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString() == string.Empty ? "0" : gvServiceInformation.GetTotalSummaryValue(gvServiceInformation.TotalSummary["Amount"]).ToString();
-
-            }
-            else
-            {
-                txtServiceTotal.Text = "0";
-            }
-
-
-            txtNetTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
-            txtDiscount.Text = "0";
-            txtTaxTotal.Text = "0";
-            txtTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
-            txtPaidAmount.Text = "0";
-            txtBalance.Text = ((Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)) - Convert.ToDecimal(txtPaidAmount.Text)).ToString();
-        }
 
         #endregion
 
@@ -593,9 +604,7 @@ namespace HBM.Reservation
             dsAdditionalService.Tables[0].Rows.Add(row);
             
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
-            gvPaymentInformation.DataBind();
-
-            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE]=dsAdditionalService  ;
+            gvServiceInformation.DataBind();           
 
 
         }
@@ -700,8 +709,7 @@ namespace HBM.Reservation
 
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
-
-            Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
+            
 
         }
 
@@ -734,7 +742,12 @@ namespace HBM.Reservation
             combo.DataBindItems();
         }
 
+        protected void gvPaymentInformation_DataBound(object sender, EventArgs e)
+        {
+            this.Calculate();
+        }
+
         #endregion        
-        
+
     }
 }

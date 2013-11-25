@@ -72,6 +72,8 @@ namespace HBM.Common
         public static readonly string URL_PAYMENTTYPES = "/ControlPanel/PaymentTypes.aspx";
 
         public static readonly string URL_CUSTOMERSEARCH = "/Customer/CustomerSearch.aspx";
+        public static readonly string URL_CUSTOMERS = "/Customer/Customers.aspx";
+
 
         public static readonly string URL_RESERVATIONSEARCH = "/Reservation/SearchReservation.aspx";
 

@@ -134,6 +134,11 @@
                                                                 <dx:ListEditItem Text="2018" Value="2018" />
                                                                 <dx:ListEditItem Text="2019" Value="2019" />
                                                                 <dx:ListEditItem Text="2020" Value="2020" />
+                                                                <dx:ListEditItem Text="2021" Value="2021" />
+                                                                <dx:ListEditItem Text="2022" Value="2022" />
+                                                                <dx:ListEditItem Text="2023" Value="2023" />
+                                                                <dx:ListEditItem Text="2024" Value="2024" />
+                                                                <dx:ListEditItem Text="2025" Value="2025" />
                                                             </Items>
                                                         </dx:ASPxComboBox>
                                                     </td>

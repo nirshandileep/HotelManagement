@@ -21,7 +21,8 @@
             <tr>
                 <td>
                     <dx:ASPxGridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" 
-                        KeyFieldName="CustomerId" Width="100%">
+                        KeyFieldName="CustomerId" Width="100%" 
+                        onrowdeleting="gvCustomers_RowDeleting">
                         <Columns>                         
                             <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Customer Name" 
                                 FieldName="CustomerName" Width="250px" UnboundType="String">
@@ -34,32 +35,43 @@
                                 <CellStyle HorizontalAlign="Left">
                                 </CellStyle>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="MemberCode" VisibleIndex="1" 
+                            <dx:GridViewDataTextColumn FieldName="MemberCode" VisibleIndex="2" 
                                 Width="100px">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="Phone" UnboundType="String" 
-                                VisibleIndex="3" Width="150px">
+                                VisibleIndex="4" Width="150px">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="CustomerId" Visible="False" VisibleIndex="0">
+                            <dx:GridViewDataTextColumn FieldName="CustomerId" Visible="False" 
+                                VisibleIndex="1">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn Caption="Guest Type" FieldName="GuestTypeName" UnboundType="String"
-                                VisibleIndex="7" Width="150px">
+                                VisibleIndex="8" Width="150px">
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="Email" UnboundType="String" VisibleIndex="5">
+                            <dx:GridViewDataTextColumn FieldName="Email" UnboundType="String" 
+                                VisibleIndex="6">
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn Caption="Mobile" FieldName="Mobile" VisibleIndex="4">
+                            <dx:GridViewDataTextColumn Caption="Mobile" FieldName="Mobile" VisibleIndex="5">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn Caption="Company" FieldName="CompanyName" 
-                                VisibleIndex="2">
+                                VisibleIndex="3">
                             </dx:GridViewDataTextColumn>
+                            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Caption="Actions" 
+                                Width="60px">
+                                  <DeleteButton Visible="True">
+                                    <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                    </Image>
+                                </DeleteButton>
+                                <ClearFilterButton Visible="True">
+                                </ClearFilterButton>
+                            </dx:GridViewCommandColumn>
                         </Columns>
-                        <SettingsBehavior ColumnResizeMode="Control" />
+                        <SettingsBehavior ColumnResizeMode="Control" ConfirmDelete="True" />
                         <Settings ShowFilterRow="True" HorizontalScrollBarMode="Auto" />
                     </dx:ASPxGridView>
                 </td>

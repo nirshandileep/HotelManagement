@@ -16,9 +16,9 @@
         <tr>
             <td>
                 <dx:ASPxGridView ID="gvUsers" runat="server" Width="100%" AutoGenerateColumns="False"
-                    KeyFieldName="UsersId">
+                    KeyFieldName="UsersId" onrowdeleting="gvUsers_RowDeleting">
                     <Columns>
-                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="User Name" FieldName="UserId" Width="100px">
+                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="User Name" FieldName="UsersId" Width="100px">
                             <DataItemTemplate>
                                 <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Users.aspx?UserId=",Eval("UsersId")) %>'
                                     Text='<%# Eval("UserName") %>' />
@@ -33,7 +33,17 @@
                         <dx:GridViewDataTextColumn Caption="Email Address" FieldName="EmailAddress" VisibleIndex="4"
                             Width="100px">
                         </dx:GridViewDataTextColumn>
+                              <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Caption="Actions" 
+                                Width="60px">
+                                  <DeleteButton Visible="True">
+                                    <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                    </Image>
+                                </DeleteButton>
+                                <ClearFilterButton Visible="True">
+                                </ClearFilterButton>
+                            </dx:GridViewCommandColumn>
                     </Columns>
+                    <SettingsBehavior ConfirmDelete="True" />
                     <Settings ShowFilterRow="True" />
                     <Settings ShowFilterRow="True"></Settings>
                 </dx:ASPxGridView>

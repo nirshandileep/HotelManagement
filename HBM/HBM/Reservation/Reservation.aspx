@@ -145,7 +145,8 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="2" 
+                                    Width="100%">
                                     <TabPages>
                                         <dx:TabPage Text="Room Info">
                                             <ContentCollection>
@@ -346,7 +347,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                     <dx:ASPxGridView ID="gvServiceInformation" runat="server" Width="100%" AutoGenerateColumns="False"
                                                         KeyFieldName="ReservationAdditionalServiceId" OnCellEditorInitialize="gvServiceInformation_CellEditorInitialize"
                                                         OnRowDeleting="gvServiceInformation_RowDeleting" OnRowInserting="gvServiceInformation_RowInserting"
-                                                        OnRowUpdating="gvServiceInformation_RowUpdating" OnDataBound="gvServiceInformation_DataBound">
+                                                        OnRowUpdating="gvServiceInformation_RowUpdating" 
+                                                        OnDataBound="gvServiceInformation_DataBound" EnableCallBacks="False">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" DisplayFormat="Total : {0:F2}" />
                                                         </TotalSummary>
@@ -414,7 +416,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                     <dx:ASPxGridView ID="gvPaymentInformation" runat="server" Width="100%" AutoGenerateColumns="False"
                                                         KeyFieldName="ReservationPaymentId" OnCellEditorInitialize="gvPaymentInformation_CellEditorInitialize"
                                                         OnRowDeleting="gvPaymentInformation_RowDeleting" OnRowInserting="gvPaymentInformation_RowInserting"
-                                                        OnRowUpdating="gvPaymentInformation_RowUpdating">
+                                                        OnRowUpdating="gvPaymentInformation_RowUpdating" EnableCallBacks="False" 
+                                                        OnDataBound="gvPaymentInformation_DataBound">
                                                         <TotalSummary>
                                                             <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
                                                                 SummaryType="Sum" DisplayFormat="Total : {0:F2}" />

@@ -43,7 +43,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@PassportCountryOfIssue", DbType.Int32, customer.PassportCountryOfIssue);
             db.AddInParameter(command, "@PassportExpirationDate", DbType.DateTime, customer.PassportExpirationDate);
             db.AddInParameter(command, "@CreditCardTypeId", DbType.Int32, customer.CreditCardTypeId);
-            db.AddInParameter(command, "@CCNo", DbType.Int64, customer.CCNo);
+            db.AddInParameter(command, "@CCNo", DbType.String, customer.CCNo);
             db.AddInParameter(command, "@CCExpirationDate", DbType.DateTime, customer.CCExpirationDate);
             db.AddInParameter(command, "@CCNameOnCard", DbType.String, customer.CCNameOnCard);
             db.AddInParameter(command, "@Car", DbType.String, customer.Car);
@@ -91,7 +91,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@PassportCountryOfIssue", DbType.Int32, customer.PassportCountryOfIssue);
             db.AddInParameter(command, "@PassportExpirationDate", DbType.DateTime, customer.PassportExpirationDate);
             db.AddInParameter(command, "@CreditCardTypeId", DbType.Int32, customer.CreditCardTypeId);
-            db.AddInParameter(command, "@CCNo", DbType.Int64, customer.CCNo);
+            db.AddInParameter(command, "@CCNo", DbType.String, customer.CCNo);
             db.AddInParameter(command, "@CCExpirationDate", DbType.DateTime, customer.CCExpirationDate);
             db.AddInParameter(command, "@CCNameOnCard", DbType.String, customer.CCNameOnCard);
             db.AddInParameter(command, "@Car", DbType.String, customer.Car);
@@ -111,8 +111,7 @@ namespace HBM.CustomerManagement
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_CustomerDelete");
 
-            db.AddInParameter(command, "@CustomerId", DbType.Int32, customer.CustomerId);
-            db.AddInParameter(command, "@CompanyId", DbType.Int32, customer.CompanyId);
+            db.AddInParameter(command, "@CustomerId", DbType.Int32, customer.CustomerId);            
 
             db.ExecuteNonQuery(command);
 

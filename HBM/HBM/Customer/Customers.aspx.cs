@@ -87,7 +87,7 @@ namespace HBM
                 txtLicensePlate.Text = CustomerObj.CarLicensePlate;
                 CCExpiryDate = CustomerObj.CCExpirationDate;
                 txtNameOnCard.Text = CustomerObj.CCNameOnCard;
-                txtCCNumber.Text = CustomerObj.CCNo.HasValue ? CustomerObj.CCNo.Value.ToString() : string.Empty;
+                txtCCNumber.Text = string.IsNullOrEmpty(CustomerObj.CCNo) ? string.Empty : CustomerObj.CCNo.ToString();
 
                 if (CustomerObj.CreditCardTypeId.HasValue)
                 {
@@ -97,7 +97,7 @@ namespace HBM
                 txtCompanyAddressLine1.Text = CustomerObj.CompanyAddressLine1;
                 txtCompanyAddressLine2.Text = CustomerObj.CompanyAddressLine2;
                 txtCompanyCity.Text = CustomerObj.CompanyCity;
-                if (CustomerObj.CompanyCountryId.HasValue) 
+                if (CustomerObj.CompanyCountryId.HasValue)
                     cmbCompanyCountry.Value = CustomerObj.CompanyCountryId;
                 txtCompanyState.Text = CustomerObj.CompanyState;
                 txtCompanyPostCode.Text = CustomerObj.CompanyPostCode;
@@ -144,57 +144,59 @@ namespace HBM
         {
             try
             {
-                Session["CustomerObj"] = null;
-                hdnCustomerId.Value = "0";
-                txtCustomerName.Text = string.Empty;
-                txtBillingAddressLine1.Text = string.Empty;
-                //others
+                if (Request.QueryString["CustomerId"] != null && Request.QueryString["CustomerId"].Trim() != String.Empty)
+                {
+                    Response.Redirect(Constants.URL_CUSTOMERS, false);
+                }
+                else
+                {                 
+                    hdnCustomerId.Value = "0";
+                    txtCustomerName.Text = string.Empty;
+                    txtBillingAddressLine1.Text = string.Empty;
+                    
+                    txtBillingCity.Text = string.Empty;
+                    txtBillingPostCode.Text = string.Empty;
+                    txtBillingState.Text = string.Empty;
+                    txtLicensePlate.Text = string.Empty;
+                    txtNameOnCard.Text = string.Empty;
+                    txtCCNumber.Text = string.Empty;
 
-                txtBillingCity.Text = string.Empty;
-                txtBillingPostCode.Text = string.Empty;
-                txtBillingState.Text = string.Empty;
-                txtLicensePlate.Text = string.Empty;
-                txtNameOnCard.Text = string.Empty;
-                txtCCNumber.Text = string.Empty;
+                    txtCompanyAddressLine1.Text = string.Empty;
+                    txtCompanyAddressLine2.Text = string.Empty;
+                    txtCompanyCity.Text = string.Empty;
+                    txtCompanyPostCode.Text = string.Empty;
+                    txtCompanyState.Text = string.Empty;
+                    cmbCompanyCountry.Value = null;
 
-                txtCompanyAddressLine1.Text = string.Empty;
-                txtCompanyAddressLine2.Text = string.Empty;
-                txtCompanyCity.Text = string.Empty;
-                txtCompanyPostCode.Text = string.Empty;
-                txtCompanyState.Text = string.Empty;
-                cmbCompanyCountry.Value = null;
+                    txtCompanyName.Text = string.Empty;
+                    txtNotes.Text = string.Empty;
+                    txtDriveLicense.Text = string.Empty;
+                    txtEmail.Text = string.Empty;
+                    txtFax.Text = string.Empty;
+                    txtMemberCode.Text = string.Empty;
+                    txtPhone.Text = string.Empty;
+                    dtpExpiryDate.Value = null;
+                    txtPassportNumber.Text = string.Empty;
+                    txtPhone.Text = string.Empty;
 
-                txtCompanyName.Text = string.Empty;
-                txtNotes.Text = string.Empty;
-                txtDriveLicense.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-                txtFax.Text = string.Empty;
-                txtMemberCode.Text = string.Empty;
-                txtPhone.Text = string.Empty;
-                dtpExpiryDate.Value = null;
-                txtPassportNumber.Text = string.Empty;
-                txtPhone.Text = string.Empty;
+                    cmbCar.Value = null;
+                    cmbBillingCountry.Value = null;
+                    cmbCCType.Value = null;
+                    cmbGender.Value = null;
+                    cmbPassportCountryOfIssue.Value = null;
+                    cmbCCExpiryDateMonth.Value = null;
+                    cmbCCExpiryDateYear.Value = null;
+                    cmbGuestType.Value = null;
 
-                cmbCar.Value = null;
-                cmbBillingCountry.Value = null;
-                cmbCCType.Value = null;
-                cmbGender.Value = null;
-                cmbPassportCountryOfIssue.Value = null;
-                cmbCCExpiryDateMonth.Value = null;
-                cmbCCExpiryDateYear.Value = null;
-                cmbGuestType.Value = null;
-
-                txtCustomerName.IsValid = true;
-                txtMemberCode.IsValid = true;
-                cmbGender.IsValid = true;
-                txtPhone.IsValid = true;
-                cmbGuestType.IsValid = true;
-                txtBillingAddressLine1.IsValid = true;
-                txtBillingCity.IsValid = true;
-                txtEmail.IsValid = true;
-
-                
-
+                    txtCustomerName.IsValid = true;
+                    txtMemberCode.IsValid = true;
+                    cmbGender.IsValid = true;
+                    txtPhone.IsValid = true;
+                    cmbGuestType.IsValid = true;
+                    txtBillingAddressLine1.IsValid = true;
+                    txtBillingCity.IsValid = true;
+                    txtEmail.IsValid = true;
+                }
             }
             catch (System.Exception)
             {
@@ -307,15 +309,9 @@ namespace HBM
             CustomerObj.CarLicensePlate = txtLicensePlate.Text.Trim();
             CustomerObj.CCExpirationDate = CCExpiryDate;
             CustomerObj.CCNameOnCard = txtNameOnCard.Text.Trim();
-            Int64 CCNo;
-            if (Int64.TryParse(txtCCNumber.Text.Trim(), out CCNo))
-            {
-                CustomerObj.CCNo = CCNo;
-            }
-            else
-            {
-                CustomerObj.CCNo = null;
-            }
+
+            CustomerObj.CCNo = txtCCNumber.Text.Trim();
+
 
             if (cmbCCType.SelectedIndex > -1)
             {
@@ -337,7 +333,7 @@ namespace HBM
             {
                 CustomerObj.CompanyCountryId = null;
             }
-            
+
             CustomerObj.CompanyState = txtCompanyState.Text.Trim();
             CustomerObj.CompanyPostCode = txtCompanyPostCode.Text.Trim();
 
