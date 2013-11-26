@@ -18,21 +18,20 @@ namespace HBM.GeneralManagement
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand commandInsert = db.GetStoredProcCommand("usp_RoomRatePlanInsert");
 
-            db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, "CompanyId", DataRowVersion.Current);
-            db.AddInParameter(commandInsert, "@BedTypeName", DbType.String, "BedTypeName", DataRowVersion.Current);
-            db.AddInParameter(commandInsert, "@BedTypeDescription", DbType.String, "BedTypeDescription", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@RatePlanId", DbType.Int32, "RatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
-            db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_RoomRatePlanUpdate");
-            db.AddInParameter(commandUpdate, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@BedTypeName", DbType.String, "BedTypeName", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@BedTypeDescription", DbType.String, "BedTypeDescription", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@RoomRatePlanId", DbType.Int32, "RoomRatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@RatePlanId", DbType.Int32, "RatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 
             DbCommand commandDelete = db.GetStoredProcCommand("usp_RoomRatePlanDelete");
-            db.AddInParameter(commandDelete, "@BedTypeId", DbType.Int32, "BedTypeId", DataRowVersion.Current);
+            db.AddInParameter(commandDelete, "@RoomRatePlanId", DbType.Int32, "RoomRatePlanId", DataRowVersion.Current);
 
             db.UpdateDataSet(ds, ds.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, UpdateBehavior.Transactional);
 
@@ -95,6 +94,16 @@ namespace HBM.GeneralManagement
         {
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_RoomRatePlanSelectByRoomId");
+
+            db.AddInParameter(command, "@RoomId", DbType.Int32, RoomId);
+
+            return db.ExecuteDataSet(command);
+        }
+
+        public DataSet SelectUnmatchedRatePlansByRoomId(int RoomId)
+        {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_RoomRatePlanSelectUnmatchedByRoomId");
 
             db.AddInParameter(command, "@RoomId", DbType.Int32, RoomId);
 

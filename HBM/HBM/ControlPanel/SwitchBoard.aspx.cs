@@ -40,6 +40,9 @@ namespace HBM.ControlPanel
                 case "RatePlan":
                     iframePage.Attributes["src"] = Constants.URL_RATEPLANS;
                     break;
+                case "RoomRatePlan":
+                    iframePage.Attributes["src"] = Constants.URL_ROOMRATEPLANS;
+                    break;
                 case "Source":
                     iframePage.Attributes["src"] = Constants.URL_SOURCE;
                     break;

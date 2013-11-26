@@ -38,6 +38,8 @@
                             </dx:Tab>
                             <dx:Tab Name="RatePlan" Text="Rate Plan">
                             </dx:Tab>
+                             <dx:Tab Name="RoomRatePlan" Text="Room Rate Plan">
+                            </dx:Tab>
                             <dx:Tab Text="Source" Name="Source">
                             </dx:Tab>
                             <dx:Tab Name="TaxTypes" Text="Tax Types">

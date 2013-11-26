@@ -62,6 +62,7 @@ namespace HBM.Common
         public static readonly string URL_RATEPLAN = "/ControlPanel/RatePlan.aspx";
         public static readonly string URL_ROOMS = "/ControlPanel/Rooms.aspx";
         public static readonly string URL_RATEPLANS= "/ControlPanel/RatePlans.aspx";
+        public static readonly string URL_ROOMRATEPLANS = "/ControlPanel/RoomRatePlans.aspx";
         public static readonly string URL_SOURCE = "/ControlPanel/Source.aspx";
         public static readonly string URL_TAXTYPES= "/ControlPanel/TaxType.aspx";
         public static readonly string URL_ADDITIONALSERVICETYPE = "/ControlPanel/AdditionalServiceType.aspx";
@@ -104,6 +105,7 @@ namespace HBM.Common
         public static readonly string SESSION_ARRIVALS = "ArrivalsList";
         public static readonly string SESSION_DEPARTURES = "DeparturesList";
         public static readonly string SESSION_DIRTYROOMS = "DirtyRoomsList";
+        public static readonly string SESSION_ROOMRATEPLAN = "RoomRatePlan";
         
 
         #endregion
