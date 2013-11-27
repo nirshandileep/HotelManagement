@@ -64,6 +64,8 @@ namespace HBM.ControlPanel
             }
 
             dsData = new GeneralManagement.RoomRatePlanDAO().SelectByRoomId(roomId);
+            dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["RoomRatePlanId"] };
+
             Session[Constants.SESSION_ROOMRATEPLAN] = dsData;
             gvRatePlan.DataSource = dsData;
             gvRatePlan.DataBind();
