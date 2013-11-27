@@ -65,9 +65,8 @@
                             </dx:GridViewCommandColumn>
                             <dx:GridViewDataComboBoxColumn Caption="Rate Plan" FieldName="RatePlansId"
                                 VisibleIndex="3" UnboundType="Integer">
-                                <PropertiesComboBox TextField="RatePlanName" ValueField="RatePlansId"
-                                    ValueType="System.Int32" DisplayFormatString="F2" MaxLength="5" 
-                                    NullDisplayText="0">
+                                <PropertiesComboBox
+                                    ValueType="System.Int32">
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>

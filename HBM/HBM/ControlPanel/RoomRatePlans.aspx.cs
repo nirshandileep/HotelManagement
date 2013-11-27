@@ -30,10 +30,11 @@ namespace HBM.ControlPanel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cmbRooms.DataSource = new GeneralManagement.RoomDAO().SelectAll(new GeneralManagement.Room() { CompanyId = Master.CurrentCompany.CompanyId });
+            cmbRooms.DataSource = new GeneralManagement.RoomDAO().SelectAll(new GeneralManagement.Room() { CompanyId = SessionHandler.CurrentCompanyId });
             cmbRooms.ValueField = "RoomId";
             cmbRooms.DataBind();
 
+            BindGridComboBoxes();
         }
 
         protected void cmbRooms_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,9 +42,17 @@ namespace HBM.ControlPanel
             //get rate plan by room id
             int roomId = LoadRoomRatePlan();
 
-            dsRatePlansForRoom = new RatePlansDAO().SelectAll(new RatePlans() { CompanyId = Master.CurrentCompany.CompanyId });
+            BindGridComboBoxes();
+        }
+
+        private void BindGridComboBoxes()
+        {
+            dsRatePlansForRoom = new RatePlansDAO().SelectAll(new RatePlans() { CompanyId = SessionHandler.CurrentCompanyId });
             dsRatePlansForRoom.Tables[0].TableName = "RoomRatePlan";
+            ((GridViewDataComboBoxColumn)gvRatePlan.Columns["RatePlansId"]).PropertiesComboBox.TextField = "RatePlanName";
+            ((GridViewDataComboBoxColumn)gvRatePlan.Columns["RatePlansId"]).PropertiesComboBox.ValueField = "RatePlansId";
             ((GridViewDataComboBoxColumn)gvRatePlan.Columns["RatePlansId"]).PropertiesComboBox.DataSource = dsRatePlansForRoom.Tables[0];
+            
         }
 
         private int LoadRoomRatePlan()
@@ -54,7 +63,9 @@ namespace HBM.ControlPanel
                 roomId = (int)cmbRooms.Value;
             }
 
-            gvRatePlan.DataSource = new GeneralManagement.RoomRatePlanDAO().SelectByRoomId(roomId);
+            dsData = new GeneralManagement.RoomRatePlanDAO().SelectByRoomId(roomId);
+            Session[Constants.SESSION_ROOMRATEPLAN] = dsData;
+            gvRatePlan.DataSource = dsData;
             gvRatePlan.DataBind();
 
             return roomId;
