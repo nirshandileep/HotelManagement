@@ -21,7 +21,8 @@
             <tr>
                 <td>
                     <dx:ASPxComboBox ID="cmbRooms" runat="server" AutoPostBack="True" 
-                        onselectedindexchanged="cmbRooms_SelectedIndexChanged" ValueType="System.Int32">
+                        onselectedindexchanged="cmbRooms_SelectedIndexChanged" 
+                        ValueType="System.Int32" TextFormatString="{0}">
                         <Columns>
                             <dx:ListBoxColumn FieldName="RoomName" />
                             <dx:ListBoxColumn FieldName="RoomCode" />
@@ -32,6 +33,10 @@
                         </Columns>
                     </dx:ASPxComboBox>
                 </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>
