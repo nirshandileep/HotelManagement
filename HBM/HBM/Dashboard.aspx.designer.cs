@@ -31,6 +31,15 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxScheduler.ASPxScheduler schReservationDashboad;
         
         /// <summary>
+        /// ASPxRoundPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel1;
+        
+        /// <summary>
         /// dtpArrivalFromDate control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvArrivals;
+        
+        /// <summary>
+        /// ASPxRoundPanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel2;
         
         /// <summary>
         /// dtpDeparturesFrom control.
