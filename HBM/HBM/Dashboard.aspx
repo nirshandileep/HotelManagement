@@ -46,7 +46,7 @@
         <tr>
             <td colspan="2">
                 <div>
-                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="1" Width="100%"
+                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="0" Width="100%"
                         SaveStateToCookies="True">
                         <TabPages>
                             <dx:TabPage Name="Timeline" Text="Timeline">
@@ -113,7 +113,10 @@
                                                                         <td class="middle">
                                                                             <dx:ASPxDateEdit ID="dtpArrivalToDate" runat="server" ClientInstanceName="ArrivalToDate">
                                                                                 <ClientSideEvents Validation="function(s, e) {
-	
+	var ArrivalFromDateText=new Date(ArrivalFromDate.GetText());
+    var ArrivalToDateText =new Date(ArrivalToDate.GetText());
+    e.isValid = (ArrivalToDateText &gt;= ArrivalFromDateText );
+
 }" />
                                                                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip" EnableCustomValidation="True"
                                                                                     ErrorText="To date must be recent" ValidationGroup="vgArrivalsSearch">
@@ -225,6 +228,11 @@
                                                                         <td class="middle">
                                                                             <dx:ASPxDateEdit ID="dtpDeparturesTo" runat="server" 
                                                                                 ClientInstanceName="DeparturesTo">
+                                                                                <ClientSideEvents Validation="function(s, e) {
+	var DeparturesFromText=new Date(DeparturesFrom.GetText());
+    var DeparturesToText =new Date(DeparturesTo.GetText());
+    e.isValid = (DeparturesToText &gt;= DeparturesFromText );
+}" />
                                                                                 <ValidationSettings EnableCustomValidation="True" 
                                                                                     ErrorDisplayMode="ImageWithTooltip" ErrorText="To date must be recent" 
                                                                                     ValidationGroup="vgDepartureSearch">
