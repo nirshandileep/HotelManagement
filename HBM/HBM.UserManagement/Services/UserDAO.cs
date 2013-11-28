@@ -25,6 +25,7 @@ namespace HBM.UserManagement
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, users.CreatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, users.StatusId);
             db.AddInParameter(command, "@RolesId", DbType.Int32, users.RolesId);
+            db.AddInParameter(command, "@DepartmentId", DbType.Int32, users.DepartmentId);
             db.AddInParameter(command, "@CompanyId", DbType.Int32, users.CompanyId);
 
 
@@ -48,6 +49,7 @@ namespace HBM.UserManagement
             db.AddInParameter(command, "@UpdatedUser", DbType.Int32, users.UpdatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, users.StatusId);
             db.AddInParameter(command, "@RolesId", DbType.Int32, users.RolesId);
+            db.AddInParameter(command, "@DepartmentId", DbType.Int32, users.DepartmentId);
             db.AddInParameter(command, "@CompanyId", DbType.Int32, users.CompanyId);
 
             db.ExecuteNonQuery(command);

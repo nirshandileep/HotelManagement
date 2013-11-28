@@ -238,6 +238,11 @@ namespace HBM
             }
         }
 
+        protected void btnSearchArrivals_Click(object sender, EventArgs e)
+        {
+            this.LoadArrivals();
+        }
+
 
        
     }

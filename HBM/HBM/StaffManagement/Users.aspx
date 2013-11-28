@@ -136,6 +136,21 @@
                 </td>
             </tr>
             <tr>
+                <td height="21">
+                    Department <span class="reqfield">*</span>
+                </td>
+                <td>
+                    <dx:ASPxComboBox ID="ddlDepartment" runat="server" 
+                        IncrementalFilteringMode="Contains" TextFormatString="{0}" 
+                        ValueType="System.Int32">
+                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" 
+                            ValidationGroup="vgSave">
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                        </ValidationSettings>
+                    </dx:ASPxComboBox>
+                </td>
+            </tr>
+            <tr>
                 <td height="19">
                     &nbsp;
                 </td>

@@ -21,6 +21,8 @@ namespace HBM
 
             this.LoadRoles();
 
+            this.LoadDepartments();
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["UserId"] != null)
@@ -31,6 +33,14 @@ namespace HBM
 
                 
             }
+        }
+
+        private void LoadDepartments()
+        {
+            ddlDepartment.DataSource = new GeneralManagement.Departments() { CompanyId = SessionManager.SessionHandler.CurrentCompanyId }.SelectAllList();
+            ddlDepartment.ValueField = "DepartmentId";
+            ddlDepartment.TextField = "DepartmentName";
+            ddlDepartment.DataBind();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -95,6 +105,7 @@ namespace HBM
 
                         users.Password = txtPassword.Text.Trim();
                         users.RolesId = Convert.ToInt32(ddlRoles.Value);
+                        users.DepartmentId = Convert.ToInt32(ddlDepartment.Value);
                         users.CreatedUser = Master.LoggedUser.UsersId;
                         users.CompanyId = Master.CurrentCompany.CompanyId;
                         users.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
@@ -141,6 +152,7 @@ namespace HBM
                 users.UpdatedUser = Master.LoggedUser.UsersId;
                 users.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
                 users.RolesId = Convert.ToInt32(ddlRoles.Value);
+                users.DepartmentId = Convert.ToInt32(ddlDepartment.Value);
                 if (users.Save())
                 {
                     this.ClearFormData();
@@ -171,6 +183,7 @@ namespace HBM
                 txtEmail.Text = users.EmailAddress;
                 txtPassword.Text = users.Password;
                 ddlRoles.SelectedItem = ddlRoles.Items.FindByValue(users.RolesId);
+                ddlDepartment.SelectedItem = ddlDepartment.Items.FindByValue(users.DepartmentId);
 
                 currentPassword = users.Password;
 
@@ -193,6 +206,7 @@ namespace HBM
                 this.txtPassword.Text = string.Empty;
                 this.txtConfirmPassword.Text = string.Empty;
                 this.ddlRoles.SelectedIndex = -1;
+                this.ddlDepartment.SelectedIndex = -1;
                 this.txtFirstName.Focus();
 
             }

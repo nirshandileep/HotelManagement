@@ -44,8 +44,8 @@
         <tr>
             <td colspan="2">
                 <div>
-                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="3" 
-                        Width="100%" EnableCallbackAnimation="True" EnableCallBacks="True" 
+                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="1" 
+                        Width="100%" 
                         SaveStateToCookies="True">
                         <TabPages>
                             <dx:TabPage Name="Timeline" Text="Timeline">
@@ -181,7 +181,8 @@
                                                                 </dx:ASPxDateEdit>
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxButton ID="btnSearchArrivals" runat="server" Text="Search">
+                                                                <dx:ASPxButton ID="btnSearchArrivals" runat="server" Text="Search" 
+                                                                    AutoPostBack="False" OnClick="btnSearchArrivals_Click">
                                                                 </dx:ASPxButton>
                                                             </td>
                                                         </tr>
