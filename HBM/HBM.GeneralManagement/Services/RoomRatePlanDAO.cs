@@ -19,14 +19,14 @@ namespace HBM.GeneralManagement
             DbCommand commandInsert = db.GetStoredProcCommand("usp_RoomRatePlanInsert");
 
             db.AddInParameter(commandInsert, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
-            db.AddInParameter(commandInsert, "@RatePlanId", DbType.Int32, "RatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@RatePlansId", DbType.Int32, "RatePlansId", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_RoomRatePlanUpdate");
             db.AddInParameter(commandUpdate, "@RoomRatePlanId", DbType.Int32, "RoomRatePlanId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@RatePlanId", DbType.Int32, "RatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@RatePlansId", DbType.Int32, "RatePlansId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
 
@@ -46,7 +46,7 @@ namespace HBM.GeneralManagement
             DbCommand command = db.GetStoredProcCommand("usp_RoomRatePlanInsert");
 
             db.AddInParameter(command, "@RoomId", DbType.Int32, roomRatePlan.RoomId);
-            db.AddInParameter(command, "@RatePlanId", DbType.Int32, roomRatePlan.RatePlanId);
+            db.AddInParameter(command, "@RatePlansId", DbType.Int32, roomRatePlan.RatePlansId);
             db.AddInParameter(command, "@Note", DbType.String, roomRatePlan.Note);
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, roomRatePlan.CreatedUser);
 
@@ -64,7 +64,7 @@ namespace HBM.GeneralManagement
 
             db.AddInParameter(command, "@RoomRatePlanId", DbType.Int32, roomRatePlan.RoomRatePlanId);
             db.AddInParameter(command, "@RoomId", DbType.Int32, roomRatePlan.RoomId);
-            db.AddInParameter(command, "@RatePlanId", DbType.Int32, roomRatePlan.RatePlanId);
+            db.AddInParameter(command, "@RatePlansId", DbType.Int32, roomRatePlan.RatePlansId);
             db.AddInParameter(command, "@Note", DbType.String, roomRatePlan.Note);
             db.AddInParameter(command, "@UpdatedUser", DbType.Int32, roomRatePlan.UpdatedUser);
 

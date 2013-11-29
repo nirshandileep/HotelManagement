@@ -137,7 +137,7 @@
                 <td height="21">
                     Department <span class="reqfield">*</span>
                 </td>
-                <td>
+                <td >
                     <dx:ASPxComboBox ID="ddlDepartment" runat="server" IncrementalFilteringMode="Contains"
                         TextFormatString="{0}" ValueType="System.Int32" 
                         ClientInstanceName="ddlDepartment">
