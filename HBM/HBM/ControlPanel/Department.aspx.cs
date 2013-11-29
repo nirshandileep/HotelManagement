@@ -18,7 +18,7 @@ namespace HBM.Reservation
     {
 
         DataSet dsData = new DataSet();
-        GenMan.Departments departments = new GenMan.Departments();
+        GenMan.Department departments = new GenMan.Department();
 
 
         protected void Page_Load(object sender, EventArgs e)

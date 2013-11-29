@@ -66,7 +66,7 @@
                     <dx:ASPxTextBox ID="txtUserName" runat="server" Width="170px" MaxLength="50">
                         <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
-                            <RegularExpression ErrorText="Username must be more than 5 chars with no spaces]" 
+                            <RegularExpression ErrorText="Username must be more than 5 chars with no spaces]"
                                 ValidationExpression="^[a-zA-Z0-9~!@#$%^&*]{5,20}$" />
                         </ValidationSettings>
                     </dx:ASPxTextBox>
@@ -83,8 +83,7 @@
                         <ClientSideEvents Init="function(s, e) {
 	 s.SetValue(s.cp_myPassword);
 }" />
-                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" 
-                            ErrorDisplayMode="ImageWithTooltip">
+                        <ValidationSettings ValidationGroup="vgSave" Display="Dynamic" ErrorDisplayMode="ImageWithTooltip">
                             <RequiredField IsRequired="True" ErrorText="Required" />
                             <RegularExpression ErrorText="Password must be 6 charactors" ValidationExpression="^[a-zA-Z0-9~!@#$%^&*]{6,20}$" />
                         </ValidationSettings>
@@ -110,8 +109,7 @@
     e.isValid = (originalPasswd  == currentPasswd );
 }" />
                         <ValidationSettings ValidationGroup="vgSave" CausesValidation="True" Display="Dynamic"
-                            EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip" 
-                            ErrorText="Password must match">
+                            EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip" ErrorText="Password must match">
                             <RequiredField IsRequired="True" ErrorText="Required" />
                             <RegularExpression ErrorText="Password must be 6 charactors" ValidationExpression="^[a-zA-Z0-9~!@#$%^&*]{6,20}$" />
                         </ValidationSettings>
@@ -140,11 +138,17 @@
                     Department <span class="reqfield">*</span>
                 </td>
                 <td>
-                    <dx:ASPxComboBox ID="ddlDepartment" runat="server" 
-                        IncrementalFilteringMode="Contains" TextFormatString="{0}" 
-                        ValueType="System.Int32">
-                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" 
-                            ValidationGroup="vgSave">
+                    <dx:ASPxComboBox ID="ddlDepartment" runat="server" IncrementalFilteringMode="Contains"
+                        TextFormatString="{0}" ValueType="System.Int32" 
+                        ClientInstanceName="ddlDepartment">
+                        <ClientSideEvents ButtonClick="function(s, e) {
+  	ShowPopupWindow(ppcDepartment);
+}" />
+                        <Buttons>
+                            <dx:EditButton Position="Left" Text="..." ToolTip="Add/Edit Department">
+                            </dx:EditButton>
+                        </Buttons>
+                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgSave">
                             <RequiredField ErrorText="Required" IsRequired="True" />
                         </ValidationSettings>
                     </dx:ASPxComboBox>
@@ -170,6 +174,26 @@
                     </dx:ASPxButton>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                </td>
+            </tr>
         </table>
+    </div>
+    <div>
+        <dx:ASPxPopupControl ID="ppcDepartment" HeaderText="Department" AllowDragging="True"
+            runat="server" ClientInstanceName="ppcDepartment" Modal="True" PopupHorizontalAlign="WindowCenter"
+            PopupVerticalAlign="WindowCenter" Width="700px" Height="350px" ContentUrl="~/ControlPanel/Department.aspx">
+            <ClientSideEvents CloseUp="function(s, e) {
+	ddlDepartment.PerformCallback();
+}" />
+            <ContentCollection>
+                <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server" SupportsDisabledAttribute="True">
+                </dx:PopupControlContentControl>
+            </ContentCollection>
+        </dx:ASPxPopupControl>
     </div>
 </asp:Content>

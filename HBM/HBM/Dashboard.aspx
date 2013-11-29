@@ -46,7 +46,7 @@
         <tr>
             <td colspan="2">
                 <div>
-                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="0" Width="100%"
+                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="2" Width="100%"
                         SaveStateToCookies="True">
                         <TabPages>
                             <dx:TabPage Name="Timeline" Text="Timeline">
@@ -125,7 +125,7 @@
                                                                             </dx:ASPxDateEdit>
                                                                         </td>
                                                                         <td class="middle">
-                                                                            <dx:ASPxButton ID="btnSearchArrivals" runat="server" AutoPostBack="False" OnClick="btnSearchArrivals_Click"
+                                                                            <dx:ASPxButton ID="btnSearchArrivals" runat="server" OnClick="btnSearchArrivals_Click"
                                                                                 Text="Search" ValidationGroup="vgArrivalsSearch">
                                                                             </dx:ASPxButton>
                                                                         </td>
@@ -242,7 +242,7 @@
                                                                         </td>
                                                                         <td class="middle">
                                                                             <dx:ASPxButton ID="btnSearchDepartures" runat="server" Text="Search" 
-                                                                                ValidationGroup="vgDepartureSearch">
+                                                                                ValidationGroup="vgDepartureSearch" OnClick="btnSearchDepartures_Click">
                                                                             </dx:ASPxButton>
                                                                         </td>
                                                                     </tr>

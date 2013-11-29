@@ -49,7 +49,6 @@ namespace HBM.GeneralManagement
             db.AddInParameter(command, "@RatePlanId", DbType.Int32, roomRatePlan.RatePlanId);
             db.AddInParameter(command, "@Note", DbType.String, roomRatePlan.Note);
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, roomRatePlan.CreatedUser);
-            db.AddInParameter(command, "@CreatedDate", DbType.DateTime, roomRatePlan.CreatedDate);
 
 
             db.ExecuteNonQuery(command);
@@ -68,7 +67,6 @@ namespace HBM.GeneralManagement
             db.AddInParameter(command, "@RatePlanId", DbType.Int32, roomRatePlan.RatePlanId);
             db.AddInParameter(command, "@Note", DbType.String, roomRatePlan.Note);
             db.AddInParameter(command, "@UpdatedUser", DbType.Int32, roomRatePlan.UpdatedUser);
-            db.AddInParameter(command, "@UpdatedDate", DbType.DateTime, roomRatePlan.UpdatedDate);
 
 
             db.ExecuteNonQuery(command);

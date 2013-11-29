@@ -37,7 +37,7 @@ namespace HBM
 
         private void LoadDepartments()
         {
-            ddlDepartment.DataSource = new GeneralManagement.Departments() { CompanyId = SessionManager.SessionHandler.CurrentCompanyId }.SelectAllList();
+            ddlDepartment.DataSource = new GeneralManagement.Department() { CompanyId = SessionManager.SessionHandler.CurrentCompanyId }.SelectAllList();
             ddlDepartment.ValueField = "DepartmentId";
             ddlDepartment.TextField = "DepartmentName";
             ddlDepartment.DataBind();

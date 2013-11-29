@@ -57,16 +57,10 @@ namespace HBM
 
             if (!IsPostBack)
             {
-                pcPageControl.ActiveTabIndex = 0;
+                //pcPageControl.ActiveTabIndex = 0;
 
-                dtpArrivalFromDate.Date = DateTime.Now;
-                dtpArrivalToDate.Date = DateTime.Now;
-
-                dtpDeparturesFrom.Date = DateTime.Now;
-                dtpDeparturesTo.Date = DateTime.Now;
-
-                LoadArrivals();
-                LoadDepartures();
+                //LoadArrivals(DateTime.Now, DateTime.Now);
+                //LoadDepartures(DateTime.Now, DateTime.Now);
                 LoadDirtyRooms();
             }
 
@@ -94,34 +88,43 @@ namespace HBM
             DataSet dsDirtyRooms = new RoomDAO().SelectAllDirtyRooms(Master.CurrentCompany.CompanyId);
             dsDirtyRooms.Tables[0].PrimaryKey = new DataColumn[] { dsDirtyRooms.Tables[0].Columns["RoomId"] };
             Session[Constants.SESSION_DIRTYROOMS] = dsDirtyRooms;
+
+            gvDirtyRooms.DataSource = (DataSet)Session[Constants.SESSION_DIRTYROOMS];
+            gvDirtyRooms.DataBind();
         }
 
-        private void LoadArrivals()
+        private void LoadArrivals(DateTime fromDate, DateTime toDate)
         {
-            if (dtpArrivalFromDate.Date > dtpArrivalToDate.Date)
+            if (fromDate > toDate)
             {
                 dtpArrivalFromDate.ErrorText = "From date cannot be greater than To date";
                 return;
             }
 
             //Arrivals
-            dsData = new ReservationManagement.ReservationRoomDAO().DashboardSelectArrivalsList(Master.CurrentCompany.CompanyId, dtpArrivalFromDate.Date, dtpArrivalToDate.Date);
+            dsData = new ReservationManagement.ReservationRoomDAO().DashboardSelectArrivalsList(Master.CurrentCompany.CompanyId, fromDate, toDate);
             dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["ReservationRoomId"] };
             Session[Constants.SESSION_ARRIVALS] = dsData;
+
+            gvArrivals.DataSource = (DataSet)Session[Constants.SESSION_ARRIVALS];
+            gvArrivals.DataBind();
         }
 
-        private void LoadDepartures()
+        private void LoadDepartures(DateTime fromDate, DateTime toDate)
         {
-            if (dtpDeparturesFrom.Date > dtpDeparturesTo.Date)
+            if (fromDate > toDate)
             {
                 dtpArrivalFromDate.ErrorText = "From date cannot be greater than To date";
                 return;
             }
 
             //Departures
-            dsDepartures = new ReservationManagement.ReservationRoomDAO().DashboardSelectDeparturesList(Master.CurrentCompany.CompanyId, dtpDeparturesFrom.Date, dtpDeparturesTo.Date);
+            dsDepartures = new ReservationManagement.ReservationRoomDAO().DashboardSelectDeparturesList(Master.CurrentCompany.CompanyId, fromDate, toDate);
             dsDepartures.Tables[0].PrimaryKey = new DataColumn[] { dsDepartures.Tables[0].Columns["ReservationRoomId"] };
             Session[Constants.SESSION_DEPARTURES] = dsDepartures;
+
+            gvDepartures.DataSource = (DataSet)Session[Constants.SESSION_DEPARTURES];
+            gvDepartures.DataBind();
         }
 
         protected DataTable CreatDataSource()
@@ -165,8 +168,10 @@ namespace HBM
             if (new ReservationManagement.ReservationRoom().UpdateDashboardArrivalsDepartures(dsData))
             {
                 System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
-
-                LoadArrivals();
+                if (dtpArrivalFromDate.Value != null && dtpArrivalToDate.Value != null)
+                {
+                    LoadArrivals(dtpArrivalFromDate.Date, dtpArrivalToDate.Date);
+                }
             }
             else
             {
@@ -194,7 +199,10 @@ namespace HBM
             if (new ReservationManagement.ReservationRoom().UpdateDashboardArrivalsDepartures(dsData))
             {
                 System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
-                LoadDepartures();
+                if (dtpDeparturesFrom.Value != null && dtpDeparturesTo.Value != null)
+                {
+                    LoadDepartures(dtpDeparturesFrom.Date, dtpDeparturesTo.Date);
+                }
             }
             else
             {
@@ -240,7 +248,12 @@ namespace HBM
 
         protected void btnSearchArrivals_Click(object sender, EventArgs e)
         {
-            this.LoadArrivals();
+            this.LoadArrivals(dtpArrivalFromDate.Date, dtpArrivalToDate.Date);
+        }
+
+        protected void btnSearchDepartures_Click(object sender, EventArgs e)
+        {
+            this.LoadDepartures(dtpDeparturesFrom.Date, dtpDeparturesTo.Date);
         }
 
 

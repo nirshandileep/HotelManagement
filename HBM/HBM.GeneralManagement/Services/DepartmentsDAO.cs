@@ -37,7 +37,7 @@ namespace HBM.GeneralManagement
         }
 
 
-        public bool Insert(Departments department)
+        public bool Insert(Department department)
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
@@ -53,7 +53,7 @@ namespace HBM.GeneralManagement
             return true;
         }
 
-        public bool Update(Departments department)
+        public bool Update(Department department)
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
@@ -70,7 +70,7 @@ namespace HBM.GeneralManagement
             return true;
         }
 
-        public bool Delete(Departments department)
+        public bool Delete(Department department)
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
@@ -83,7 +83,7 @@ namespace HBM.GeneralManagement
             return true;
         }
 
-        public DataSet SelectAll(Departments department)
+        public DataSet SelectAll(Department department)
         {
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
