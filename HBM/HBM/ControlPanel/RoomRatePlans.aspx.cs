@@ -27,6 +27,7 @@ namespace HBM.ControlPanel
 
         }
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             cmbRooms.DataSource = new GeneralManagement.RoomDAO().SelectAll(new GeneralManagement.Room() { CompanyId = SessionHandler.CurrentCompanyId });
@@ -100,7 +101,6 @@ namespace HBM.ControlPanel
             DataRow row = dsData.Tables[0].NewRow();
             Random rd = new Random();
             e.NewValues["RoomRatePlanId"] = rd.Next();
-            e.NewValues["RoomId"] = cmbRooms.Value;
             e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
@@ -129,7 +129,6 @@ namespace HBM.ControlPanel
             ASPxGridView gridView = sender as ASPxGridView;
             DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
-            e.NewValues["RoomId"] = cmbRooms.Value;
             e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();

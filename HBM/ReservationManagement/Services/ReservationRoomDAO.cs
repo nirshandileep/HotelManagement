@@ -107,10 +107,10 @@ namespace HBM.ReservationManagement
 
                 db.AddInParameter(commandUpdate, "@ReservationRoomId", DbType.Int64, "ReservationRoomId", DataRowVersion.Current);
                 db.AddInParameter(commandUpdate, "@ActualCheckInDate", DbType.DateTime, "ActualCheckInDate", DataRowVersion.Current);
-                db.AddInParameter(commandUpdate, "@ActualCheckOutDate", DbType.DateTime, "ActualCheckInDate", DataRowVersion.Current);
+                db.AddInParameter(commandUpdate, "@ActualCheckOutDate", DbType.DateTime, "ActualCheckOutDate", DataRowVersion.Current);
                 db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
 
-                db.UpdateDataSet(arrivalsList, arrivalsList.Tables[0].TableName, null, commandUpdate, null, null);
+                db.UpdateDataSet(arrivalsList, arrivalsList.Tables[0].TableName, null, commandUpdate, null, transaction);
 
                 transaction.Commit();
                 return true;
@@ -158,6 +158,19 @@ namespace HBM.ReservationManagement
             {
                 connection.Close();
             }
+        }
+
+        public DataSet DashboardSelectBookingsByDateRange(int companyId, DateTime fromDate, DateTime toDate)
+        {
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_Dashboard_ReservationRoom_SelectBookingsByDateRange");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, companyId);
+
+            db.AddInParameter(dbCommand, "@FromDate", DbType.DateTime, fromDate);
+            db.AddInParameter(dbCommand, "@ToDate", DbType.DateTime, toDate);
+
+            return db.ExecuteDataSet(dbCommand);
         }
     }
 }

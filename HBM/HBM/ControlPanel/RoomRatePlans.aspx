@@ -1,15 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RoomRatePlans.aspx.cs"
-    Inherits="HBM.ControlPanel.RoomRatePlans" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RoomRatePlans.aspx.cs" Inherits="HBM.ControlPanel.RoomRatePlans" %>
 <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+   <title></title>
     <link href="../css/reset.css" rel="stylesheet" type="text/css" />
     <link href="../css/styles.css" rel="stylesheet" type="text/css" />
 </head>
@@ -21,39 +20,30 @@
         <table>
             <tr>
                 <td>
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                Room
-                            </td>
-                            <td>
-                                <dx:ASPxComboBox ID="cmbRooms" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbRooms_SelectedIndexChanged"
-                                    ValueType="System.Int32" TextFormatString="{0}">
-                                    <Columns>
-                                        <dx:ListBoxColumn FieldName="RoomName" />
-                                        <dx:ListBoxColumn FieldName="RoomCode" />
-                                        <dx:ListBoxColumn FieldName="RoomNumber" />
-                                        <dx:ListBoxColumn FieldName="MaxAdult" />
-                                        <dx:ListBoxColumn FieldName="MaxChildren" />
-                                        <dx:ListBoxColumn FieldName="MaxInfant" />
-                                    </Columns>
-                                </dx:ASPxComboBox>
-                            </td>
-                        </tr>
-                    </table>
+                    <dx:ASPxComboBox ID="cmbRooms" runat="server" AutoPostBack="True" 
+                        onselectedindexchanged="cmbRooms_SelectedIndexChanged" 
+                        ValueType="System.Int32" TextFormatString="{0}">
+                        <Columns>
+                            <dx:ListBoxColumn FieldName="RoomName" />
+                            <dx:ListBoxColumn FieldName="RoomCode" />
+                            <dx:ListBoxColumn FieldName="RoomNumber" />
+                            <dx:ListBoxColumn FieldName="MaxAdult" />
+                            <dx:ListBoxColumn FieldName="MaxChildren" />
+                            <dx:ListBoxColumn FieldName="MaxInfant" />
+                        </Columns>
+                    </dx:ASPxComboBox>
                 </td>
             </tr>
             <tr>
                 <td>
-                    &nbsp;
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxGridView ID="gvRatePlan" runat="server" AutoGenerateColumns="False" KeyFieldName="RoomRatePlanId"
-                        OnRowInserting="gvRatePlan_RowInserting" OnRowDeleting="gvRatePlan_RowDeleting"
-                        OnRowUpdating="gvRatePlan_RowUpdating" OnCellEditorInitialize="gvRatePlan_CellEditorInitialize"
-                        Width="550px">
+                    <dx:ASPxGridView ID="gvRatePlan" runat="server" AutoGenerateColumns="False"
+                        KeyFieldName="RoomRatePlanId" OnRowInserting="gvRatePlan_RowInserting"
+                        OnRowDeleting="gvRatePlan_RowDeleting" OnRowUpdating="gvRatePlan_RowUpdating"
+                        OnCellEditorInitialize="gvRatePlan_CellEditorInitialize" Width="550px">
                         <Columns>
                             <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">
@@ -78,15 +68,17 @@
                                     </Image>
                                 </CancelButton>
                             </dx:GridViewCommandColumn>
-                            <dx:GridViewDataComboBoxColumn Caption="Rate Plan" FieldName="RatePlansId" VisibleIndex="3"
-                                UnboundType="Integer">
-                                <PropertiesComboBox ValueType="System.Int32">
+                            <dx:GridViewDataComboBoxColumn Caption="Rate Plan" FieldName="RatePlansId"
+                                VisibleIndex="3" UnboundType="Integer">
+                                <PropertiesComboBox
+                                    ValueType="System.Int32">
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>
                                 </PropertiesComboBox>
                             </dx:GridViewDataComboBoxColumn>
-                            <dx:GridViewDataTextColumn FieldName="Note" UnboundType="String" VisibleIndex="5">
+                            <dx:GridViewDataTextColumn FieldName="Note" UnboundType="String" 
+                                VisibleIndex="5">
                             </dx:GridViewDataTextColumn>
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />

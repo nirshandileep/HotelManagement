@@ -25,7 +25,7 @@ namespace HBM.GeneralManagement
         public bool SmokingAllow { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string UpdatedBy { get; set; }
+        public int UpdatedBy { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
         public bool IsDirty { get; set; }

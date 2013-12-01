@@ -12,7 +12,7 @@ namespace HBM.GeneralManagement
 
         public int RoomRatePlanId { get; set; }
         public int RoomId { get; set; }
-        public int RatePlansId { get; set; }
+        public int RatePlanId { get; set; }
         public string Note { get; set; }
         public Int32 CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }

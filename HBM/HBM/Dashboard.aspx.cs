@@ -48,19 +48,15 @@ namespace HBM
             //Scheduler 
             schReservationDashboad.Views.WorkWeekView.Enabled = false;
             schReservationDashboad.AppointmentDataSource = this.CreatDataSource();
-            schReservationDashboad.Storage.Appointments.Mappings.AppointmentId = "Id";
-            schReservationDashboad.Storage.Appointments.Mappings.Start = "StartDate";
-            schReservationDashboad.Storage.Appointments.Mappings.End = "EndDate";
-            schReservationDashboad.Storage.Appointments.Mappings.Label = "Room";
-            schReservationDashboad.Storage.Appointments.Mappings.Subject = "Name";
+            schReservationDashboad.Storage.Appointments.Mappings.AppointmentId = "ReservationRoomId";
+            schReservationDashboad.Storage.Appointments.Mappings.Start = "CheckInDate";
+            schReservationDashboad.Storage.Appointments.Mappings.End = "CheckOutDate";
+            schReservationDashboad.Storage.Appointments.Mappings.Label = "RoomNumber";
+            schReservationDashboad.Storage.Appointments.Mappings.Subject = "CustomerName";
             schReservationDashboad.DataBind();
 
             if (!IsPostBack)
             {
-                //pcPageControl.ActiveTabIndex = 0;
-
-                //LoadArrivals(DateTime.Now, DateTime.Now);
-                //LoadDepartures(DateTime.Now, DateTime.Now);
                 LoadDirtyRooms();
             }
 
@@ -88,7 +84,10 @@ namespace HBM
             DataSet dsDirtyRooms = new RoomDAO().SelectAllDirtyRooms(Master.CurrentCompany.CompanyId);
             dsDirtyRooms.Tables[0].PrimaryKey = new DataColumn[] { dsDirtyRooms.Tables[0].Columns["RoomId"] };
             Session[Constants.SESSION_DIRTYROOMS] = dsDirtyRooms;
-
+            if (dsDirtyRooms.Tables[0].Columns.Contains("CleanedDate") == false)
+            {
+                dsDirtyRooms.Tables[0].Columns.Add("CleanedDate", Type.GetType("System.DateTime"));
+            }
             gvDirtyRooms.DataSource = (DataSet)Session[Constants.SESSION_DIRTYROOMS];
             gvDirtyRooms.DataBind();
         }
@@ -129,21 +128,27 @@ namespace HBM
 
         protected DataTable CreatDataSource()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Id", typeof(System.Int32));
-            dt.Columns.Add("StartDate",typeof(System.DateTime));
-            dt.Columns.Add("EndDate", typeof(System.DateTime));
-            dt.Columns.Add("Name", typeof(System.String));
-            dt.Columns.Add("Room",typeof(System.String));
 
-            dt.Rows.Add(1,Convert.ToDateTime("10-11-2013"), Convert.ToDateTime("12-11-2013"), "James", "Sapphire");
-            dt.Rows.Add(2,Convert.ToDateTime("20-11-2013"), Convert.ToDateTime("25-11-2013"), "Craig", "Garnet");
-            dt.Rows.Add(3,Convert.ToDateTime("22-11-2013"), Convert.ToDateTime("30-11-2013"), "Sandra", "Ruby");
-            dt.Rows.Add(1, Convert.ToDateTime("10-11-2013"), Convert.ToDateTime("12-11-2013"), "David", "Blue Sapphire");
+            #region
+            
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add("Id", typeof(System.Int32));
+            //dt.Columns.Add("StartDate",typeof(System.DateTime));
+            //dt.Columns.Add("EndDate", typeof(System.DateTime));
+            //dt.Columns.Add("Name", typeof(System.String));
+            //dt.Columns.Add("Room",typeof(System.String));
 
+            //dt.Rows.Add(1,Convert.ToDateTime("10-11-2013"), Convert.ToDateTime("12-11-2013"), "James", "Sapphire");
+            //dt.Rows.Add(2,Convert.ToDateTime("20-11-2013"), Convert.ToDateTime("25-11-2013"), "Craig", "Garnet");
+            //dt.Rows.Add(3,Convert.ToDateTime("22-11-2013"), Convert.ToDateTime("30-11-2013"), "Sandra", "Ruby");
+            //dt.Rows.Add(1, Convert.ToDateTime("10-11-2013"), Convert.ToDateTime("12-11-2013"), "David", "Blue Sapphire");
 
-            return dt;
+            #endregion
 
+            DataSet dsReservations = new ReservationManagement.ReservationRoomDAO().DashboardSelectBookingsByDateRange(Master.CurrentCompany.CompanyId,
+                DateTime.Now.AddMonths(-3), DateTime.Now.AddMonths(3));
+
+            return dsReservations.Tables[0];
 
         }
 
@@ -198,6 +203,12 @@ namespace HBM
 
             if (new ReservationManagement.ReservationRoom().UpdateDashboardArrivalsDepartures(dsData))
             {
+
+                if (row["IsDirty"] != null && Boolean.Parse(row["IsDirty"].ToString()) != false)
+                {
+                    new RoomDAO().UpdateRoomAsDirty(new Room() { RoomId = (int)row["RoomId"], UpdatedBy = Master.LoggedUser.UsersId });
+                }
+
                 System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
                 if (dtpDeparturesFrom.Value != null && dtpDeparturesTo.Value != null)
                 {
@@ -256,6 +267,33 @@ namespace HBM
             this.LoadDepartures(dtpDeparturesFrom.Date, dtpDeparturesTo.Date);
         }
 
+        protected void gvDirtyRooms_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+
+        }
+
+        protected void gvDirtyRooms_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            this.LoadDirtyRooms();
+        }
+
+        protected void gvArrivals_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            if (Session[Constants.SESSION_ARRIVALS] != null)
+            {
+                gvArrivals.DataSource = (DataSet)Session[Constants.SESSION_ARRIVALS];
+                gvArrivals.DataBind();
+            }
+        }
+
+        protected void gvDepartures_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            if (Session[Constants.SESSION_DEPARTURES] != null)
+            {
+                gvDepartures.DataSource = (DataSet)Session[Constants.SESSION_DEPARTURES];
+                gvDepartures.DataBind();
+            }
+        }
 
        
     }

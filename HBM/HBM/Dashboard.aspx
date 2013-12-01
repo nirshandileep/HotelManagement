@@ -46,30 +46,71 @@
         <tr>
             <td colspan="2">
                 <div>
-                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="2" Width="100%"
-                        SaveStateToCookies="True">
+                    <dx:ASPxPageControl ID="pcPageControl" runat="server" ActiveTabIndex="1" Width="100%"
+                        SaveStateToCookies="True" ClientInstanceName="pcPageControl">
                         <TabPages>
                             <dx:TabPage Name="Timeline" Text="Timeline">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                         <dxwschs:ASPxScheduler ID="schReservationDashboad" runat="server" ActiveViewType="Timeline"
                                             ClientIDMode="AutoID" Start="2013-11-18">
+                                            <ResourceColorSchemas>
+<cc1:SchedulerColorSchema Cell="255, 244, 188" CellBorder="243, 228, 177" CellBorderDark="234, 208, 152" CellLight="255, 255, 213" CellLightBorder="255, 239, 199" CellLightBorderDark="246, 219, 162"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="Control" CellBorder="ControlDark" CellBorderDark="ControlDark" CellLight="Window" CellLightBorder="ControlDark" CellLightBorderDark="ControlDark"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="179, 212, 151" CellBorder="168, 203, 138" CellBorderDark="140, 180, 104" CellLight="213, 236, 188" CellLightBorder="205, 228, 180" CellLightBorderDark="186, 209, 162"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="139, 158, 191" CellBorder="128, 147, 181" CellBorderDark="97, 116, 152" CellLight="207, 216, 230" CellLightBorder="193, 201, 219" CellLightBorderDark="161, 175, 204"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="190, 134, 161" CellBorder="180, 124, 149" CellBorderDark="156, 101, 122" CellLight="227, 203, 214" CellLightBorder="218, 189, 199" CellLightBorderDark="197, 163, 171"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="137, 177, 167" CellBorder="123, 168, 156" CellBorderDark="84, 142, 128" CellLight="193, 214, 209" CellLightBorder="174, 202, 195" CellLightBorderDark="145, 182, 173"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="247, 180, 127" CellBorder="235, 167, 113" CellBorderDark="202, 131, 71" CellLight="250, 208, 174" CellLightBorder="238, 196, 163" CellLightBorderDark="225, 166, 118"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="221, 140, 142" CellBorder="210, 129, 131" CellBorderDark="179, 100, 101" CellLight="239, 200, 201" CellLightBorder="233, 187, 189" CellLightBorderDark="222, 164, 166"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="137, 150, 132" CellBorder="129, 138, 122" CellBorderDark="102, 100, 89" CellLight="208, 216, 203" CellLightBorder="196, 207, 191" CellLightBorderDark="172, 181, 169"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="0, 199, 200" CellBorder="0, 186, 187" CellBorderDark="0, 151, 153" CellLight="168, 236, 236" CellLightBorder="144, 226, 227" CellLightBorderDark="84, 203, 204"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="168, 148, 207" CellBorder="155, 136, 194" CellBorderDark="118, 99, 155" CellLight="221, 213, 236" CellLightBorder="210, 199, 230" CellLightBorderDark="185, 169, 216"></cc1:SchedulerColorSchema>
+<cc1:SchedulerColorSchema Cell="204, 204, 204" CellBorder="189, 189, 189" CellBorderDark="121, 121, 121" CellLight="230, 230, 230" CellLightBorder="204, 204, 204" CellLightBorderDark="177, 177, 177"></cc1:SchedulerColorSchema>
+</ResourceColorSchemas>
+
                                             <Views>
                                                 <DayView>
                                                     <TimeRulers>
                                                         <cc1:TimeRuler />
                                                     </TimeRulers>
+<TimeSlots>
+<cc1:TimeSlot Value="01:00:00" DisplayName="60 Minutes" MenuCaption="6&amp;0 Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot Value="00:30:00" DisplayName="30 Minutes" MenuCaption="&amp;30 Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot Value="00:15:00" DisplayName="15 Minutes" MenuCaption="&amp;15 Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot Value="00:10:00" DisplayName="10 Minutes" MenuCaption="10 &amp;Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot Value="00:06:00" DisplayName="6 Minutes" MenuCaption="&amp;6 Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot DisplayName="5 Minutes" MenuCaption="&amp;5 Minutes"></cc1:TimeSlot>
+</TimeSlots>
                                                 </DayView>
                                                 <WorkWeekView>
                                                     <TimeRulers>
                                                         <cc1:TimeRuler />
                                                     </TimeRulers>
+<TimeSlots>
+<cc1:TimeSlot Value="01:00:00" DisplayName="60 Minutes" MenuCaption="6&amp;0 Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot Value="00:30:00" DisplayName="30 Minutes" MenuCaption="&amp;30 Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot Value="00:15:00" DisplayName="15 Minutes" MenuCaption="&amp;15 Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot Value="00:10:00" DisplayName="10 Minutes" MenuCaption="10 &amp;Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot Value="00:06:00" DisplayName="6 Minutes" MenuCaption="&amp;6 Minutes"></cc1:TimeSlot>
+<cc1:TimeSlot DisplayName="5 Minutes" MenuCaption="&amp;5 Minutes"></cc1:TimeSlot>
+</TimeSlots>
                                                 </WorkWeekView>
                                                 <TimelineView>
                                                     <TimelineViewStyles>
                                                         <Appointment BackColor="#FFFFCC">
                                                         </Appointment>
                                                     </TimelineViewStyles>
+<Scales>
+<cc1:TimeScaleYear Enabled="False"></cc1:TimeScaleYear>
+<cc1:TimeScaleQuarter Enabled="False"></cc1:TimeScaleQuarter>
+<cc1:TimeScaleMonth Enabled="False"></cc1:TimeScaleMonth>
+<cc1:TimeScaleWeek></cc1:TimeScaleWeek>
+<cc1:TimeScaleDay></cc1:TimeScaleDay>
+<cc1:TimeScaleHour Enabled="False"></cc1:TimeScaleHour>
+<cc1:TimeScale15Minutes Enabled="False"></cc1:TimeScale15Minutes>
+</Scales>
+
                                                     <AppointmentDisplayOptions AppointmentInterspacing="10" TimeDisplayType="Text" />
                                                 </TimelineView>
                                             </Views>
@@ -143,34 +184,49 @@
                                             </tr>
                                         </table>
                                         <dx:ASPxGridView ID="gvArrivals" runat="server" AutoGenerateColumns="False" Width="100%"
-                                            OnRowUpdating="gvArrivals_RowUpdating" KeyFieldName="ReservationRoomId">
+                                            OnRowUpdating="gvArrivals_RowUpdating" KeyFieldName="ReservationRoomId" 
+                                            ClientInstanceName="gvArrivals" OnCustomCallback="gvArrivals_CustomCallback">
                                             <Columns>
-                                                <dx:GridViewDataTextColumn FieldName="CustomerName" ShowInCustomizationForm="True"
+                                                <dx:GridViewDataTextColumn FieldName="CustomerName" ShowInCustomizationForm="False"
                                                     VisibleIndex="1" ReadOnly="True">
+                                                    <EditFormSettings Visible="False" />
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataTextColumn FieldName="ReservationCode" ShowInCustomizationForm="True"
+                                                <dx:GridViewDataTextColumn FieldName="ReservationCode" ShowInCustomizationForm="False"
                                                     VisibleIndex="3" ReadOnly="True">
                                                     <Settings FilterMode="DisplayText" />
+                                                    <EditFormSettings Visible="False" />
                                                     <DataItemTemplate>
                                                         <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/Reservation/Booking.aspx?ReservationId=",Eval("ReservationId")) %>'
                                                             Text='<%# Eval("ReservationCode") %>' />
                                                     </DataItemTemplate>
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataTextColumn FieldName="RoomName" ShowInCustomizationForm="True" VisibleIndex="4"
+                                                <dx:GridViewDataTextColumn FieldName="RoomName" ShowInCustomizationForm="False" VisibleIndex="4"
                                                     ReadOnly="True">
+                                                    <EditFormSettings Visible="False" />
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataTextColumn FieldName="RoomNumber" ShowInCustomizationForm="True"
+                                                <dx:GridViewDataTextColumn FieldName="RoomNumber" ShowInCustomizationForm="False"
                                                     VisibleIndex="5" ReadOnly="True">
+                                                    <EditFormSettings Visible="False" />
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataTextColumn FieldName="CheckInDate" ShowInCustomizationForm="True"
-                                                    UnboundType="DateTime" VisibleIndex="6" ReadOnly="True">
-                                                </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataTextColumn FieldName="CheckOutDate" ShowInCustomizationForm="True"
-                                                    UnboundType="DateTime" VisibleIndex="7" ReadOnly="True">
-                                                </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataDateColumn Caption="Actual Check In" FieldName="ActualCheckInDate"
+                                                <dx:GridViewDataDateColumn FieldName="CheckInDate" ReadOnly="True" 
+                                                    ShowInCustomizationForm="False" UnboundType="DateTime" VisibleIndex="6">
+                                                    <PropertiesDateEdit DisplayFormatString="">
+                                                    </PropertiesDateEdit>
+                                                </dx:GridViewDataDateColumn>
+                                                <dx:GridViewDataDateColumn FieldName="CheckOutDate" ReadOnly="True" 
+                                                    ShowInCustomizationForm="False" UnboundType="DateTime" VisibleIndex="7">
+                                                    <PropertiesDateEdit DisplayFormatString="">
+                                                    </PropertiesDateEdit>
+                                                    <EditFormSettings Visible="False" />
+                                                </dx:GridViewDataDateColumn>
+                                                <dx:GridViewDataDateColumn Caption="Real Check In" FieldName="ActualCheckInDate"
                                                     ShowInCustomizationForm="True" UnboundType="DateTime" VisibleIndex="8">
                                                     <PropertiesDateEdit DisplayFormatString="">
+                                                        <TimeSectionProperties Visible="True">
+                                                        </TimeSectionProperties>
+                                                        <ValidationSettings Display="Dynamic">
+                                                            <RequiredField IsRequired="True" />
+                                                        </ValidationSettings>
                                                     </PropertiesDateEdit>
                                                 </dx:GridViewDataDateColumn>
                                                 <dx:GridViewCommandColumn ButtonType="Image" Caption="#" ShowInCustomizationForm="True"
@@ -189,8 +245,9 @@
                                                         </Image>
                                                     </UpdateButton>
                                                 </dx:GridViewCommandColumn>
-                                                <dx:GridViewDataTextColumn FieldName="Sharers" ReadOnly="True" ShowInCustomizationForm="True"
+                                                <dx:GridViewDataTextColumn FieldName="Sharers" ReadOnly="True" ShowInCustomizationForm="False"
                                                     VisibleIndex="2">
+                                                    <EditFormSettings Visible="False" />
                                                 </dx:GridViewDataTextColumn>
                                             </Columns>
                                             <Settings ShowFilterRow="True" />
@@ -260,34 +317,53 @@
                                             <tr>
                                                 <td>
                                                     <dx:ASPxGridView ID="gvDepartures" runat="server" AutoGenerateColumns="False" Width="100%"
-                                                        KeyFieldName="ReservationRoomId" OnRowUpdating="gvDepartures_RowUpdating">
+                                                        KeyFieldName="ReservationRoomId" OnRowUpdating="gvDepartures_RowUpdating" 
+                                                        ClientInstanceName="gvDepartures" 
+                                                        OnCustomCallback="gvDepartures_CustomCallback">
                                                         <Columns>
-                                                            <dx:GridViewDataTextColumn FieldName="CustomerName" ShowInCustomizationForm="True"
+                                                            <dx:GridViewDataTextColumn FieldName="CustomerName" ShowInCustomizationForm="False"
                                                                 VisibleIndex="1">
+                                                                <EditFormSettings Visible="False" />
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn FieldName="ReservationCode" ShowInCustomizationForm="True"
+                                                            <dx:GridViewDataTextColumn FieldName="ReservationCode" ShowInCustomizationForm="False"
                                                                 VisibleIndex="2">
                                                                 <Settings FilterMode="DisplayText" />
+                                                                <EditFormSettings Visible="False" />
                                                                 <DataItemTemplate>
                                                                     <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/Reservation/Booking.aspx?ReservationId=",Eval("ReservationId")) %>'
                                                                         Text='<%# Eval("ReservationCode") %>' />
                                                                 </DataItemTemplate>
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn FieldName="RoomName" ShowInCustomizationForm="True" VisibleIndex="3">
+                                                            <dx:GridViewDataTextColumn FieldName="RoomName" ShowInCustomizationForm="False" 
+                                                                VisibleIndex="3">
+                                                                <EditFormSettings Visible="False" />
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn FieldName="RoomNumber" ShowInCustomizationForm="True"
+                                                            <dx:GridViewDataTextColumn FieldName="RoomNumber" ShowInCustomizationForm="False"
                                                                 VisibleIndex="4">
+                                                                <EditFormSettings Visible="False" />
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn FieldName="CheckOutDate" ShowInCustomizationForm="True"
-                                                                UnboundType="DateTime" VisibleIndex="5">
-                                                            </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn FieldName="TotalDue" ShowInCustomizationForm="True" UnboundType="Decimal"
-                                                                VisibleIndex="7">
+<dx:GridViewDataDateColumn FieldName="ActualCheckOutDate" UnboundType="DateTime" ShowInCustomizationForm="True" VisibleIndex="6">
+<PropertiesDateEdit DisplayFormatString="">
+    <TimeSectionProperties Visible="True">
+    </TimeSectionProperties>
+    </PropertiesDateEdit>
+</dx:GridViewDataDateColumn>
+                                                            <dx:GridViewDataDateColumn FieldName="CheckOutDate" 
+                                                                ShowInCustomizationForm="False" UnboundType="DateTime" VisibleIndex="5" 
+                                                                ReadOnly="True">
+                                                                <PropertiesDateEdit DisplayFormatString="" EditFormat="DateTime">
+                                                                </PropertiesDateEdit>
+                                                            </dx:GridViewDataDateColumn>
+                                                            <dx:GridViewDataTextColumn FieldName="Balance" ShowInCustomizationForm="False" UnboundType="Decimal"
+                                                                VisibleIndex="8">
                                                                 <PropertiesTextEdit DisplayFormatString="c">
                                                                 </PropertiesTextEdit>
+                                                                <EditFormSettings Visible="False" />
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataButtonEditColumn Caption="ReservationId" FieldName="ReservationId"
-                                                                ShowInCustomizationForm="True" UnboundType="Integer" VisibleIndex="6" Visible="false">
+                                                                ShowInCustomizationForm="False" UnboundType="Integer" VisibleIndex="7" 
+                                                                Visible="false">
+                                                                <EditFormSettings Visible="False" />
                                                             </dx:GridViewDataButtonEditColumn>
                                                             <dx:GridViewCommandColumn ButtonType="Image" ShowInCustomizationForm="True" VisibleIndex="0">
                                                                 <EditButton Visible="True">
@@ -295,13 +371,21 @@
 ">
                                                                     </Image>
                                                                 </EditButton>
+                                                                <CancelButton Visible="True">
+                                                                    <Image Url="~/Images/Close.png">
+                                                                    </Image>
+                                                                </CancelButton>
                                                                 <UpdateButton Visible="True">
                                                                     <Image Url="~/Images/Apply.png">
                                                                     </Image>
                                                                 </UpdateButton>
-                                                                <ClearFilterButton Visible="True">
-                                                                </ClearFilterButton>
                                                             </dx:GridViewCommandColumn>
+                                                            <dx:GridViewDataCheckColumn Caption="Dirty Room" FieldName="IsDirty" 
+                                                                ShowInCustomizationForm="True" UnboundType="Boolean" VisibleIndex="9">
+                                                                <PropertiesCheckEdit ConvertEmptyStringToNull="False" 
+                                                                    DisplayTextChecked="Dirty" DisplayTextUnchecked="Clean">
+                                                                </PropertiesCheckEdit>
+                                                            </dx:GridViewDataCheckColumn>
                                                         </Columns>
                                                         <Settings ShowFilterRow="True" />
                                                     </dx:ASPxGridView>
@@ -316,7 +400,9 @@
                                     <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                         <dx:ASPxGridView ID="gvDirtyRooms" runat="server" AutoGenerateColumns="False" Width="100%"
                                             KeyFieldName="RoomId" OnCellEditorInitialize="gvDirtyRooms_CellEditorInitialize"
-                                            OnRowUpdating="gvDirtyRooms_RowUpdating">
+                                            OnRowUpdating="gvDirtyRooms_RowUpdating" 
+                                            OnRowUpdated="gvDirtyRooms_RowUpdated" ClientInstanceName="gvDirtyRooms" 
+                                            OnCustomCallback="gvDirtyRooms_CustomCallback">
                                             <Columns>
                                                 <dx:GridViewDataTextColumn FieldName="RoomName" ReadOnly="True" ShowInCustomizationForm="True"
                                                     VisibleIndex="1">
@@ -325,7 +411,7 @@
                                                     VisibleIndex="2">
                                                 </dx:GridViewDataTextColumn>
                                                 <dx:GridViewDataComboBoxColumn FieldName="CleanedBy" ShowInCustomizationForm="True"
-                                                    UnboundType="Integer" VisibleIndex="3" Caption="Cleaned By">
+                                                    UnboundType="Integer" VisibleIndex="4" Caption="Cleaned By">
                                                     <PropertiesComboBox ValueType="System.Int32">
                                                     </PropertiesComboBox>
                                                 </dx:GridViewDataComboBoxColumn>
@@ -347,11 +433,20 @@
                                                     </UpdateButton>
                                                 </dx:GridViewCommandColumn>
                                                 <dx:GridViewDataTextColumn FieldName="CleaningNote" ShowInCustomizationForm="True"
-                                                    VisibleIndex="4">
+                                                    VisibleIndex="5">
                                                 </dx:GridViewDataTextColumn>
                                                 <dx:GridViewDataCheckColumn Caption="Dirty" FieldName="IsDirty" ShowInCustomizationForm="True"
-                                                    UnboundType="Boolean" VisibleIndex="5">
+                                                    UnboundType="Boolean" VisibleIndex="3">
+                                                    <PropertiesCheckEdit DisplayTextChecked="Dirty" DisplayTextUnchecked="Clean">
+                                                    </PropertiesCheckEdit>
                                                 </dx:GridViewDataCheckColumn>
+                                                <dx:GridViewDataDateColumn FieldName="CleanedDate" 
+                                                    ShowInCustomizationForm="True" UnboundType="DateTime" VisibleIndex="6">
+                                                    <PropertiesDateEdit DisplayFormatString="" EditFormat="DateTime">
+                                                        <TimeSectionProperties Visible="True">
+                                                        </TimeSectionProperties>
+                                                    </PropertiesDateEdit>
+                                                </dx:GridViewDataDateColumn>
                                             </Columns>
                                             <Settings ShowFilterRow="True" />
                                         </dx:ASPxGridView>
@@ -359,6 +454,17 @@
                                 </ContentCollection>
                             </dx:TabPage>
                         </TabPages>
+                        <ClientSideEvents ActiveTabChanged="function(s, e) {
+	if(1 == pcPageControl.GetActiveTabIndex())	{
+		gvArrivals.PerformCallback();
+	}
+	if(2 == pcPageControl.GetActiveTabIndex())	{
+		gvDepartures.PerformCallback();
+	}
+	if(3 == pcPageControl.GetActiveTabIndex())	{
+		gvDirtyRooms.PerformCallback();
+	}
+}" />
                     </dx:ASPxPageControl>
                 </div>
                 <div>
