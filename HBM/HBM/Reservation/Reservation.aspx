@@ -145,7 +145,7 @@
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" HeaderText="Booking information">
                         <PanelCollection>
                             <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" 
+                                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
                                     Width="100%">
                                     <TabPages>
                                         <dx:TabPage Text="Room Info">
@@ -165,10 +165,10 @@
                                                                     </DropDownWindowTemplate>
                                                                     <ClientSideEvents CloseUp="function(s, e) {
     
-	ddlShareNames.SetValue(memSharesNames.GetValue().toString());
+	ddlShareNames.SetValue(memSharesNames.GetValue());
 }" DropDown="function(s, e) {
 
-memSharesNames.SetValue(ddlShareNames.GetValue().toString());
+memSharesNames.SetValue(ddlShareNames.GetValue());
 
 }" />
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
@@ -315,15 +315,15 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                             <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" VisibleIndex="5"
                                                                 FieldName="RatePlanId" Width="60px">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataSpinEditColumn Caption="# of Adults" ShowInCustomizationForm="True"
+                                                            <dx:GridViewDataSpinEditColumn Caption="# Adults" ShowInCustomizationForm="True"
                                                                 VisibleIndex="6" FieldName="NumberOfAdults" Width="60px">
                                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
-                                                            <dx:GridViewDataTextColumn Caption="# of Childrens" ShowInCustomizationForm="True"
+                                                            <dx:GridViewDataTextColumn Caption="# Childrens" ShowInCustomizationForm="True"
                                                                 VisibleIndex="7" FieldName="NumberOfChildren" Width="60px">
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataTextColumn Caption="# of Infant" ShowInCustomizationForm="True" VisibleIndex="8"
+                                                            <dx:GridViewDataTextColumn Caption="# Infant" ShowInCustomizationForm="True" VisibleIndex="8"
                                                                 FieldName="NumberOfInfant" Width="60px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="Amount" ShowInCustomizationForm="True" VisibleIndex="10"
@@ -609,9 +609,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                 <td>
                                                                     Discount
                                                                 </td>
-                                                                <td>
-                                                                    <dx:ASPxTextBox ID="txtDiscount" runat="server" Width="170px">
-                                                                    </dx:ASPxTextBox>
+                                                                <td>                                                                    
+                                                                    <dx:ASPxSpinEdit ID="txtDiscount" runat="server" Height="21px" Number="0" 
+                                                                        AutoPostBack="True" OnValueChanged="txtDiscount_ValueChanged">
+                                                                    </dx:ASPxSpinEdit>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -627,8 +628,15 @@ memSharesNames.SetValue(ddlShareNames.GetValue().toString());
                                                                     Tax
                                                                 </td>
                                                                 <td>
-                                                                    <dx:ASPxComboBox ID="cmbTax" runat="server" ValueType="System.String">
+                                                                    <dx:ASPxComboBox ID="cmbTax" runat="server" ValueType="System.String" 
+                                                                        OnSelectedIndexChanged="cmbTax_SelectedIndexChanged" 
+                                                                        TextFormatString="{0}" EnableCallbackMode="False" AutoPostBack="True">
+                                                                        <Columns>
+                                                                            <dx:ListBoxColumn Caption="Tax Type" FieldName="TaxTypeName" />
+                                                                            <dx:ListBoxColumn Caption="(%)" FieldName="TaxPercentage" />
+                                                                        </Columns>
                                                                     </dx:ASPxComboBox>
+                                                                    <asp:HiddenField ID="hdnTaxPercent" runat="server" />
                                                                 </td>
                                                             </tr>
                                                             <tr>

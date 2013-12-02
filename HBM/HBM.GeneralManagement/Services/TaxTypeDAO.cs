@@ -20,6 +20,8 @@ namespace HBM.GeneralManagement
             db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, "CompanyId", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@TaxTypeName", DbType.String, "TaxTypeName", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Note", DbType.String, "Note", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@TaxPercentage", DbType.Decimal, "TaxPercentage", DataRowVersion.Current);
+
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 
@@ -27,6 +29,8 @@ namespace HBM.GeneralManagement
             db.AddInParameter(commandUpdate, "@TaxTypeId", DbType.Int32, "TaxTypeId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@TaxTypeName", DbType.String, "TaxTypeName", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Note", DbType.String, "Note", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@TaxPercentage", DbType.Decimal, "TaxPercentage", DataRowVersion.Current);
+
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 

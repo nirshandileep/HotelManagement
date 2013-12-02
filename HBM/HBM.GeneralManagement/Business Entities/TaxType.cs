@@ -16,8 +16,8 @@ namespace HBM.GeneralManagement
         public DateTime CreatedDate { get; set; }
         public int? UpdatedBy { get; set; }
         public DateTime UpdatedDate { get; set; }
-
-
+        public decimal TaxPercentage { get; set; }
+        
         #region Methods
 
         public bool Save(DataSet ds)

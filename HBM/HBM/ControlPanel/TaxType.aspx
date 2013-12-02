@@ -29,7 +29,7 @@
                         OnRowInserting="gvTaxTypes_RowInserting" OnRowDeleting="gvTaxTypes_RowDeleting"
                         OnRowUpdating="gvTaxTypes_RowUpdating">
                         <Columns>
-                            <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="120px" Caption="Actions"
+                            <dx:GridViewCommandColumn VisibleIndex="3" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">
                                 <DeleteButton Visible="True">
                                     <Image ToolTip="Delete" Url="~/Images/delete.png">
@@ -67,6 +67,14 @@
                                     </ValidationSettings>
                                 </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataSpinEditColumn Caption="Tax (%)" FieldName="TaxPercentage" 
+                                VisibleIndex="2">
+                                <PropertiesSpinEdit DisplayFormatString="g">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
+                                </PropertiesSpinEdit>
+                            </dx:GridViewDataSpinEditColumn>
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />
                         <SettingsText ConfirmDelete="" />

@@ -54,11 +54,11 @@ namespace HBM.Reservation
             this.LoadInitialData();
 
             if (!IsPostBack)
-            {             
+            {
                 this.LoadRoomInformation(newReservationId);
                 this.LoadAddiotnalService(newReservationId);
                 this.LoadPaymentInformation(newReservationId);
-              
+
             }
 
             ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
@@ -155,8 +155,8 @@ namespace HBM.Reservation
                 this.hdnReservationId.Value = string.Empty;
             }
 
-          
-          
+
+
 
         }
 
@@ -184,9 +184,13 @@ namespace HBM.Reservation
 
 
             txtNetTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
-            txtDiscount.Text = "0";
-            txtTaxTotal.Text = "0";
-            txtTotal.Text = (Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)).ToString();
+            txtDiscount.Text = txtDiscount.Text == string.Empty ? "0" : txtDiscount.Text;
+
+            decimal taxPercent;
+            taxPercent = Convert.ToDecimal(hdnTaxPercent.Value == string.Empty ? "0" : hdnTaxPercent.Value);
+            txtTaxTotal.Text = (Convert.ToDecimal(txtNetTotal.Text) * (taxPercent / 100)).ToString("F2");
+
+            txtTotal.Text = ((Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text) + Convert.ToDecimal(txtTaxTotal.Text) - Convert.ToDecimal(txtDiscount.Text))).ToString();
 
             if (gvPaymentInformation.GetTotalSummaryValue(gvPaymentInformation.TotalSummary["Amount"]) != null)
             {
@@ -197,7 +201,7 @@ namespace HBM.Reservation
                 txtPaidAmount.Text = "0";
             }
 
-            txtBalance.Text = ((Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text)) - Convert.ToDecimal(txtPaidAmount.Text)).ToString();
+            txtBalance.Text = ((Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text) + Convert.ToDecimal(txtTaxTotal.Text)) - (Convert.ToDecimal(txtDiscount.Text) + Convert.ToDecimal(txtPaidAmount.Text))).ToString();
         }
 
         #endregion
@@ -207,16 +211,20 @@ namespace HBM.Reservation
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
+            this.ValidateReservation();
 
             if (hdnReservationId.Value != string.Empty)
             {
                 Int64 currentReservationId;
                 currentReservationId = Convert.ToInt64(hdnReservationId.Value);
+
+
+
                 if (this.SaveData(currentReservationId))
                 {
-                    
+
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Update_Success + "')", true);
-                    
+
                 }
 
             }
@@ -224,12 +232,12 @@ namespace HBM.Reservation
             {
                 if (this.SaveData(newReservationId))
                 {
-                   
+
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
-                    
+
                 }
             }
-        
+
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -263,7 +271,7 @@ namespace HBM.Reservation
 
                 dsRoomInfomation.Tables[0].Rows.Add(dr);
                 Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
-             
+
             }
             else
             {
@@ -288,6 +296,17 @@ namespace HBM.Reservation
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             Response.Redirect(Constants.URL_RESERVATIONSEARCH, false);
+        }
+
+        protected void cmbTax_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hdnTaxPercent.Value = cmbTax.SelectedItem.GetValue("TaxPercentage").ToString();
+            this.Calculate();
+        }
+
+        protected void txtDiscount_ValueChanged(object sender, EventArgs e)
+        {
+            this.Calculate();
         }
 
         #endregion
@@ -403,11 +422,11 @@ namespace HBM.Reservation
                 reservation.ReservationId = reservationId;
                 reservation = reservation.Select();
 
-                ltlReservationCode.Text = " - " +  reservation.ReservationCode;
+                ltlReservationCode.Text = " - " + reservation.ReservationCode;
 
                 cmbCustomer.SelectedItem = cmbCustomer.Items.FindByValue(reservation.CustomerId.ToString());
-                cmbSource.SelectedItem = cmbSource.Items.FindByValue(reservation.SourceId.ToString()); 
-                                
+                cmbSource.SelectedItem = cmbSource.Items.FindByValue(reservation.SourceId.ToString());
+
                 dtCheckingDate.Value = reservation.CheckInDate;
                 dtCheckOutDate.Value = reservation.CheckOutDate;
 
@@ -419,12 +438,12 @@ namespace HBM.Reservation
                 txtTaxTotal.Text = reservation.TaxAmount.ToString();
                 txtTotal.Text = reservation.Total.ToString();
                 txtPaidAmount.Text = reservation.PaidAmount.ToString();
-                txtBalance.Text = reservation.Balance.ToString();                
-           
+                txtBalance.Text = reservation.Balance.ToString();
+
                 this.LoadRoomInformation(reservationId);
                 this.LoadAddiotnalService(reservationId);
                 this.LoadPaymentInformation(reservationId);
-                
+
                 transaction.Commit();
                 result = true;
             }
@@ -448,7 +467,17 @@ namespace HBM.Reservation
             ddlShareNames.Focus();
         }
 
-
+        private void ValidateReservation()
+        {
+            if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+            {
+                if (((DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION]).Tables[0].Rows.Count == 0)
+                {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Reservation_RoomInfoEmpty + "')", true);
+                    return;
+                }
+            }
+        }
 
         #endregion
 
@@ -485,7 +514,7 @@ namespace HBM.Reservation
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
 
-            
+
         }
 
         protected void gvRoomInfo_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -522,7 +551,7 @@ namespace HBM.Reservation
             gvRoomInfo.DataBind();
 
             Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
-            
+
         }
 
         protected void gvRoomInfo_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -546,7 +575,7 @@ namespace HBM.Reservation
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
 
-            
+
         }
 
         protected void gvRoomInfo_DataBound(object sender, EventArgs e)
@@ -581,7 +610,7 @@ namespace HBM.Reservation
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
 
-            
+
 
         }
 
@@ -614,13 +643,13 @@ namespace HBM.Reservation
             e.Cancel = true;
 
             dsAdditionalService.Tables[0].Rows.Add(row);
-            
+
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
-            gvServiceInformation.DataBind();           
+            gvServiceInformation.DataBind();
 
 
         }
-     
+
         protected void gvServiceInformation_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             dsAdditionalService = Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] as DataSet;
@@ -642,7 +671,7 @@ namespace HBM.Reservation
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
 
-            
+
         }
 
         protected void gvServiceInformation_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
@@ -656,8 +685,8 @@ namespace HBM.Reservation
         protected void gvServiceInformation_DataBound(object sender, EventArgs e)
         {
 
-                this.Calculate();
-            
+            this.Calculate();
+
         }
 
         #endregion
@@ -721,7 +750,7 @@ namespace HBM.Reservation
 
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
-            
+
 
         }
 
@@ -759,7 +788,7 @@ namespace HBM.Reservation
             this.Calculate();
         }
 
-        #endregion        
+        #endregion
 
     }
 }

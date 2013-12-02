@@ -24,6 +24,7 @@ namespace HBM.Common
         public static readonly string Duplicate_Rolename= "Role name already exists";
 
         public static readonly string Select_Role = "Please select a role";
+        public static readonly string Reservation_RoomInfoEmpty = "Can not Save, Room information is empty";
 
 
 
