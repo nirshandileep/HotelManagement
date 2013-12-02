@@ -33,6 +33,8 @@ namespace HBM.ReservationManagement
             db.AddInParameter(command, "@Balance", DbType.Decimal, reservation.Balance);
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, reservation.CreatedUser);
             db.AddInParameter(command, "@TaxTypeId", DbType.Int32, reservation.TaxTypeId);
+            db.AddInParameter(command, "@TaxPercentage", DbType.Decimal, reservation.TaxPercentage);
+
             db.AddOutParameter(command, "@NewReservationId", DbType.Int32,8);    
             
             db.ExecuteNonQuery(command);
@@ -79,6 +81,8 @@ namespace HBM.ReservationManagement
             db.AddInParameter(command, "@Balance", DbType.Decimal, reservation.Balance);
             db.AddInParameter(command, "@UpdatedUser", DbType.Int32, reservation.UpdatedUser);
             db.AddInParameter(command, "@TaxTypeId", DbType.Int32, reservation.TaxTypeId);
+            db.AddInParameter(command, "@TaxPercentage", DbType.Decimal, reservation.TaxPercentage);
+
 
             db.ExecuteNonQuery(command);
             

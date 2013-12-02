@@ -74,6 +74,7 @@ namespace HBM.Reservation
                     this.hdnReservationId.Value = Cryptography.Decrypt(Request.QueryString["ReservationId"]);
                     Int64 currentReservationId = Convert.ToInt64(this.hdnReservationId.Value);
                     this.DisplayData(currentReservationId);
+                    this.Calculate();
                 }
             }
 
@@ -356,9 +357,10 @@ namespace HBM.Reservation
                 reservation.Total = Convert.ToDecimal(txtTotal.Text.Trim());
                 reservation.PaidAmount = Convert.ToDecimal(txtPaidAmount.Text.Trim());
                 reservation.Balance = Convert.ToDecimal(txtBalance.Text.Trim());
+                reservation.TaxPercentage = Convert.ToDecimal(hdnTaxPercent.Value == string.Empty ? "0" : hdnTaxPercent.Value);
                 reservation.CreatedUser = Master.LoggedUser.UsersId;
                 reservation.UpdatedUser = Master.LoggedUser.UsersId;
-
+                
                 if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
                 {
                     reservation.ReservationRoomDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
@@ -439,6 +441,7 @@ namespace HBM.Reservation
                 txtTotal.Text = reservation.Total.ToString();
                 txtPaidAmount.Text = reservation.PaidAmount.ToString();
                 txtBalance.Text = reservation.Balance.ToString();
+                hdnTaxPercent.Value = reservation.TaxPercentage.ToString();
 
                 this.LoadRoomInformation(reservationId);
                 this.LoadAddiotnalService(reservationId);

@@ -37,6 +37,7 @@ namespace HBM.ReservationManagement
         public bool IsDeleted { get; set; }
         public ReservationRoom ReservationRoom { get; set; }
         public int TaxTypeId { get; set; }
+        public decimal TaxPercentage{ get; set; }
         public DataSet ReservationAdditionalServiceDataSet { get; set; }
         public DataSet ReservationPaymentDataSet { get; set; }
         public DataSet ReservationRoomDataSet { get; set; }
