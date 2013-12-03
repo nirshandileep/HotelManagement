@@ -43,8 +43,7 @@ namespace HBM.Reports
 
             DataSet dsRoomInfo = new DataSet();
             dsRoomInfo = reservation.ReservationRoomDataSet;
-
-       
+                   
 
             //// Room info section
             if (dsRoomInfo != null && dsRoomInfo.Tables.Count > 0 && dsRoomInfo.Tables[0] != null && dsRoomInfo.Tables[0].Rows.Count > 0)
@@ -57,8 +56,8 @@ namespace HBM.Reports
                     if (i == 0)
                     {
                         reservationInvoiceReport.xrCellCustomerName.Text = dsRoomInfo.Tables[0].Rows[i]["Sharers"] != null ? dsRoomInfo.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
-                        reservationInvoiceReport.xrCellCheckIn.Text = dsRoomInfo.Tables[0].Rows[i]["CheckInDate"] != null ? dsRoomInfo.Tables[0].Rows[i]["CheckInDate"].ToString() : string.Empty;
-                        reservationInvoiceReport.xrCellCheckOut.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellCheckIn.Text = dsRoomInfo.Tables[0].Rows[i]["CheckInDate"] != null ? Convert.ToDateTime( dsRoomInfo.Tables[0].Rows[i]["CheckInDate"].ToString()).ToShortDateString() : string.Empty;
+                        reservationInvoiceReport.xrCellCheckOut.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? Convert.ToDateTime( dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString()).ToShortDateString() : string.Empty;
                         //reservationInvoiceReport.xrCellRoom.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString() : string.Empty;
                         //reservationInvoiceReport.xrCellRate.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;                   
                         reservationInvoiceReport.xrCellNights.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;
@@ -92,8 +91,8 @@ namespace HBM.Reports
                         cell7.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
 
                         cell1.Text = dsRoomInfo.Tables[0].Rows[i]["Sharers"] != null ? dsRoomInfo.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
-                        cell2.Text = dsRoomInfo.Tables[0].Rows[i]["CheckInDate"] != null ? dsRoomInfo.Tables[0].Rows[i]["CheckInDate"].ToString() : string.Empty;
-                        cell3.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString() : string.Empty;
+                        cell2.Text = dsRoomInfo.Tables[0].Rows[i]["CheckInDate"] != null ? Convert.ToDateTime( dsRoomInfo.Tables[0].Rows[i]["CheckInDate"].ToString()).ToShortDateString() : string.Empty;
+                        cell3.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? Convert.ToDateTime( dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString()).ToShortDateString() : string.Empty;
                         //cell4.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString() : string.Empty;
                         //cell5.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;                   
                         cell6.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;
@@ -118,11 +117,75 @@ namespace HBM.Reports
                 reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowFooter);
             }
 
+            //// Additional Service section
 
+            DataSet dsAdditionalService= new DataSet();
+            dsAdditionalService = reservation.ReservationAdditionalServiceDataSet;
+
+
+
+            if (dsAdditionalService != null && dsAdditionalService.Tables.Count > 0 && dsAdditionalService.Tables[0] != null && dsAdditionalService.Tables[0].Rows.Count > 0)
+            {
+                XRTableRow blankRow = new XRTableRow();
+                reservationInvoiceReport.xrTableRoomInfo.Rows.Add(blankRow);
+
+                XRTableCell cell1 = new XRTableCell();
+                XRTableCell cell2 = new XRTableCell();
+                XRTableCell cell3 = new XRTableCell();
+
+                cell1.Text = "Service Type";
+                cell2.Text = "Note";
+                cell3.Text = "Amount";
+
+                XRTableRow headerRow = new XRTableRow();
+                headerRow.Cells.Add(cell1);
+                headerRow.Cells.Add(cell2);
+                headerRow.Cells.Add(cell3);
+
+                reservationInvoiceReport.xrTableRoomInfo.Rows.Add(headerRow);
+
+                decimal serviceTotal;
+                serviceTotal = 0;
+
+                float totalWidth = 0;
+                float amountWidth = 0;
+
+                for (int i = 0; i <= dsAdditionalService.Tables[0].Rows.Count - 1; i++)
+                {
+                    XRTableCell dataCell1 = new XRTableCell();
+                    XRTableCell dataCell2 = new XRTableCell();
+                    XRTableCell dataCell3 = new XRTableCell();
+
+                    //dataCell1.Text = dsAdditionalService.Tables[0].Rows[i]["ServiceType"] != null ? dsAdditionalService.Tables[0].Rows[i]["ServiceType"].ToString() : string.Empty;
+                    dataCell2.Text = dsAdditionalService.Tables[0].Rows[i]["Note"] != null ? dsAdditionalService.Tables[0].Rows[i]["Note"].ToString() : string.Empty;
+                    dataCell3.Text = dsAdditionalService.Tables[0].Rows[i]["Amount"] != null ? dsAdditionalService.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
+
+                    totalWidth = dataCell1.WidthF + dataCell2.WidthF;
+                    amountWidth = dataCell3.WidthF;
+                    serviceTotal = serviceTotal + Convert.ToDecimal(dataCell3.Text);
+
+                }
+
+                XRTableCell cellFooter1 = new XRTableCell();
+                XRTableCell cellFooter2 = new XRTableCell();
+                XRTableRow tableRowFooter = new XRTableRow();
+                cellFooter1.WidthF = totalWidth;
+                cellFooter2.WidthF = amountWidth;
+                cellFooter1.Text = "Total";
+                cellFooter1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+                cellFooter2.Text = serviceTotal.ToString();
+                cellFooter2.TextAlignment = reservationInvoiceReport.xrCellPaidAmount.TextAlignment;
+                tableRowFooter.Cells.Add(cellFooter1);
+                tableRowFooter.Cells.Add(cellFooter2);
+                reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowFooter);
+
+            }
+
+
+            //// Payment section
             DataSet dsPaymentSection = new DataSet();
             dsPaymentSection = reservation.ReservationPaymentDataSet;
 
-            //// Payment section
             if (dsPaymentSection != null && dsPaymentSection.Tables.Count > 0 && dsPaymentSection.Tables[0] != null && dsPaymentSection.Tables[0].Rows.Count > 0)
             {
                 decimal paymentTotal;
@@ -133,7 +196,7 @@ namespace HBM.Reports
                     if (i == 0)
                     {
                         //reservationInvoiceReport.xrCellPaymentType.Text = dsPaymentSection.Tables[0].Rows[i]["Sharers"] != null ? dsPaymentSection.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
-                        reservationInvoiceReport.xrCellPaymentDate.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellPaymentDate.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ?  Convert.ToDateTime(dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString()).ToShortDateString() : string.Empty;
                         //reservationInvoiceReport.xrCellCardType.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellCardNo.Text = dsPaymentSection.Tables[0].Rows[i]["CCNo"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNo"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellNameOnCard.Text = dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"].ToString() : string.Empty;
@@ -165,7 +228,7 @@ namespace HBM.Reports
                         cell6.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
 
                         //cell1.Text = dsPaymentSection.Tables[0].Rows[i]["Sharers"] != null ? dsPaymentSection.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
-                        cell2.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
+                        cell2.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? Convert.ToDateTime( dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString()).ToShortDateString() : string.Empty;
                         //cell3.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
                         cell4.Text = dsPaymentSection.Tables[0].Rows[i]["CCNo"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNo"].ToString() : string.Empty;
                         cell5.Text = dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"].ToString() : string.Empty;
@@ -181,7 +244,7 @@ namespace HBM.Reports
                 XRTableCell cellFooter1 = new XRTableCell();
                 XRTableCell cellFooter2 = new XRTableCell();
                 XRTableRow tableRowFooter = new XRTableRow();
-                cellFooter1.WidthF = reservationInvoiceReport.xrCellPaymentType.WidthF + reservationInvoiceReport.xrCellPaymentDate.WidthF + reservationInvoiceReport.xrCellCardType.WidthF + reservationInvoiceReport.xrCellCardNo.WidthF + reservationInvoiceReport.xrCellNameOnCard.WidthF + reservationInvoiceReport.xrCellPaidAmount.WidthF;
+                cellFooter1.WidthF = reservationInvoiceReport.xrCellPaymentType.WidthF + reservationInvoiceReport.xrCellPaymentDate.WidthF + reservationInvoiceReport.xrCellCardType.WidthF + reservationInvoiceReport.xrCellCardNo.WidthF + reservationInvoiceReport.xrCellNameOnCard.WidthF ;
                 cellFooter2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
                 cellFooter1.Text = "Total";
                 cellFooter1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
