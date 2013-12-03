@@ -44,8 +44,7 @@ namespace HBM.Reports
             DataSet dsRoomInfo = new DataSet();
             dsRoomInfo = reservation.ReservationRoomDataSet;
 
-            DataSet dsPaymentSection = new DataSet();
-            dsPaymentSection = reservation.ReservationPaymentDataSet;
+       
 
             //// Room info section
             if (dsRoomInfo != null && dsRoomInfo.Tables.Count > 0 && dsRoomInfo.Tables[0] != null && dsRoomInfo.Tables[0].Rows.Count > 0)
@@ -120,24 +119,77 @@ namespace HBM.Reports
             }
 
 
+            DataSet dsPaymentSection = new DataSet();
+            dsPaymentSection = reservation.ReservationPaymentDataSet;
+
             //// Payment section
             if (dsPaymentSection != null && dsPaymentSection.Tables.Count > 0 && dsPaymentSection.Tables[0] != null && dsPaymentSection.Tables[0].Rows.Count > 0)
             {
-                //decimal paymentTotal;
-                //paymentTotal = 0;
+                decimal paymentTotal;
+                paymentTotal = 0;
 
-                for (int i = 0; i <= dsRoomInfo.Tables[0].Rows.Count - 1; i++)
+                for (int i = 0; i <= dsPaymentSection.Tables[0].Rows.Count - 1; i++)
                 {
                     if (i == 0)
                     {
-
+                        //reservationInvoiceReport.xrCellPaymentType.Text = dsPaymentSection.Tables[0].Rows[i]["Sharers"] != null ? dsPaymentSection.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellPaymentDate.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
+                        //reservationInvoiceReport.xrCellCardType.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellCardNo.Text = dsPaymentSection.Tables[0].Rows[i]["CCNo"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNo"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellNameOnCard.Text = dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellPaidAmount.Text = dsPaymentSection.Tables[0].Rows[i]["Amount"] != null ? dsPaymentSection.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
+                        paymentTotal = Convert.ToDecimal(reservationInvoiceReport.xrCellPaidAmount.Text);
+                    
                     }
                     else
                     {
+                        XRTableCell cell1 = new XRTableCell();
+                        XRTableCell cell2 = new XRTableCell();
+                        XRTableCell cell3 = new XRTableCell();
+                        XRTableCell cell4 = new XRTableCell();
+                        XRTableCell cell5 = new XRTableCell();
+                        XRTableCell cell6 = new XRTableCell();
+
+                        cell1.WidthF = reservationInvoiceReport.xrCellPaymentType.WidthF;
+                        cell2.WidthF = reservationInvoiceReport.xrCellPaymentDate.WidthF;
+                        cell3.WidthF = reservationInvoiceReport.xrCellCardType.WidthF;
+                        cell4.WidthF = reservationInvoiceReport.xrCellCardNo.WidthF;
+                        cell5.WidthF = reservationInvoiceReport.xrCellNameOnCard.WidthF;
+                        cell6.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
+
+                        cell1.TextAlignment = reservationInvoiceReport.xrCellPaymentType.TextAlignment;
+                        cell2.TextAlignment = reservationInvoiceReport.xrCellPaymentDate.TextAlignment;
+                        cell3.TextAlignment = reservationInvoiceReport.xrCellCardType.TextAlignment;
+                        cell4.TextAlignment = reservationInvoiceReport.xrCellCardNo.TextAlignment;
+                        cell5.TextAlignment = reservationInvoiceReport.xrCellNameOnCard.TextAlignment;
+                        cell6.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
+
+                        //cell1.Text = dsPaymentSection.Tables[0].Rows[i]["Sharers"] != null ? dsPaymentSection.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
+                        cell2.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
+                        //cell3.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
+                        cell4.Text = dsPaymentSection.Tables[0].Rows[i]["CCNo"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNo"].ToString() : string.Empty;
+                        cell5.Text = dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"].ToString() : string.Empty;
+                        cell6.Text = dsPaymentSection.Tables[0].Rows[i]["Amount"] != null ? dsPaymentSection.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
+
+                        paymentTotal = paymentTotal + Convert.ToDecimal(cell6.Text);
 
                     }
 
                 }
+
+                //// Add total row
+                XRTableCell cellFooter1 = new XRTableCell();
+                XRTableCell cellFooter2 = new XRTableCell();
+                XRTableRow tableRowFooter = new XRTableRow();
+                cellFooter1.WidthF = reservationInvoiceReport.xrCellPaymentType.WidthF + reservationInvoiceReport.xrCellPaymentDate.WidthF + reservationInvoiceReport.xrCellCardType.WidthF + reservationInvoiceReport.xrCellCardNo.WidthF + reservationInvoiceReport.xrCellNameOnCard.WidthF + reservationInvoiceReport.xrCellPaidAmount.WidthF;
+                cellFooter2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
+                cellFooter1.Text = "Total";
+                cellFooter1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+                cellFooter2.Text = paymentTotal.ToString();
+                cellFooter2.TextAlignment = reservationInvoiceReport.xrCellPaidAmount.TextAlignment;
+                tableRowFooter.Cells.Add(cellFooter1);
+                tableRowFooter.Cells.Add(cellFooter2);
+                reservationInvoiceReport.xrTablePayment.Rows.Add(tableRowFooter);
 
             }
 

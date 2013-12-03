@@ -41,12 +41,12 @@
             this.xrTableCell43 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell37 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow10 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell38 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell39 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell40 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell41 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell44 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell42 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrCellPaymentType = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrCellPaymentDate = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrCellCardType = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrCellCardNo = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrCellNameOnCard = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrCellPaidAmount = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRoomInfo = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrCellCustomerName = new DevExpress.XtraReports.UI.XRTableCell();
@@ -208,54 +208,48 @@
             // xrTableRow10
             // 
             this.xrTableRow10.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell38,
-            this.xrTableCell39,
-            this.xrTableCell40,
-            this.xrTableCell41,
-            this.xrTableCell44,
-            this.xrTableCell42});
+            this.xrCellPaymentType,
+            this.xrCellPaymentDate,
+            this.xrCellCardType,
+            this.xrCellCardNo,
+            this.xrCellNameOnCard,
+            this.xrCellPaidAmount});
             this.xrTableRow10.Name = "xrTableRow10";
             this.xrTableRow10.Weight = 1D;
             // 
-            // xrTableCell38
+            // xrCellPaymentType
             // 
-            this.xrTableCell38.Name = "xrTableCell38";
-            this.xrTableCell38.Text = "Credit Card";
-            this.xrTableCell38.Weight = 0.42307695242074816D;
+            this.xrCellPaymentType.Name = "xrCellPaymentType";
+            this.xrCellPaymentType.Weight = 0.42307695242074816D;
             // 
-            // xrTableCell39
+            // xrCellPaymentDate
             // 
-            this.xrTableCell39.Name = "xrTableCell39";
-            this.xrTableCell39.Text = "05-Nov-2013";
-            this.xrTableCell39.Weight = 0.4831729302039513D;
+            this.xrCellPaymentDate.Name = "xrCellPaymentDate";
+            this.xrCellPaymentDate.Weight = 0.4831729302039513D;
             // 
-            // xrTableCell40
+            // xrCellCardType
             // 
-            this.xrTableCell40.Name = "xrTableCell40";
-            this.xrTableCell40.Text = "VISA";
-            this.xrTableCell40.Weight = 0.37980775099534247D;
+            this.xrCellCardType.Name = "xrCellCardType";
+            this.xrCellCardType.Weight = 0.37980775099534247D;
             // 
-            // xrTableCell41
+            // xrCellCardNo
             // 
-            this.xrTableCell41.Name = "xrTableCell41";
-            this.xrTableCell41.Text = "1234-5678-1478-2536";
-            this.xrTableCell41.Weight = 0.61788870004507213D;
+            this.xrCellCardNo.Name = "xrCellCardNo";
+            this.xrCellCardNo.Weight = 0.61788870004507213D;
             // 
-            // xrTableCell44
+            // xrCellNameOnCard
             // 
-            this.xrTableCell44.Name = "xrTableCell44";
-            this.xrTableCell44.Text = " N. Ibrahim";
-            this.xrTableCell44.Weight = 0.64593370877779444D;
+            this.xrCellNameOnCard.Name = "xrCellNameOnCard";
+            this.xrCellNameOnCard.Weight = 0.64593370877779444D;
             // 
-            // xrTableCell42
+            // xrCellPaidAmount
             // 
-            this.xrTableCell42.Name = "xrTableCell42";
-            this.xrTableCell42.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 2, 0, 0, 100F);
-            this.xrTableCell42.StylePriority.UsePadding = false;
-            this.xrTableCell42.StylePriority.UseTextAlignment = false;
-            this.xrTableCell42.Text = "1460.00";
-            this.xrTableCell42.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell42.Weight = 0.45011995755709122D;
+            this.xrCellPaidAmount.Name = "xrCellPaidAmount";
+            this.xrCellPaidAmount.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 2, 0, 0, 100F);
+            this.xrCellPaidAmount.StylePriority.UsePadding = false;
+            this.xrCellPaidAmount.StylePriority.UseTextAlignment = false;
+            this.xrCellPaidAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrCellPaidAmount.Weight = 0.45011995755709122D;
             // 
             // xrTableRoomInfo
             // 
@@ -580,7 +574,6 @@
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow3;
-        private DevExpress.XtraReports.UI.XRTable xrTablePayment;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow9;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell33;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell34;
@@ -609,11 +602,12 @@
         public DevExpress.XtraReports.UI.XRTableCell xrCellRate;
         public DevExpress.XtraReports.UI.XRTableCell xrCellNights;
         public DevExpress.XtraReports.UI.XRTableCell xrCellAmount;
-        public DevExpress.XtraReports.UI.XRTableCell xrTableCell38;
-        public DevExpress.XtraReports.UI.XRTableCell xrTableCell39;
-        public DevExpress.XtraReports.UI.XRTableCell xrTableCell40;
-        public DevExpress.XtraReports.UI.XRTableCell xrTableCell41;
-        public DevExpress.XtraReports.UI.XRTableCell xrTableCell44;
-        public DevExpress.XtraReports.UI.XRTableCell xrTableCell42;
+        public DevExpress.XtraReports.UI.XRTableCell xrCellPaymentType;
+        public DevExpress.XtraReports.UI.XRTableCell xrCellPaymentDate;
+        public DevExpress.XtraReports.UI.XRTableCell xrCellCardType;
+        public DevExpress.XtraReports.UI.XRTableCell xrCellCardNo;
+        public DevExpress.XtraReports.UI.XRTableCell xrCellNameOnCard;
+        public DevExpress.XtraReports.UI.XRTableCell xrCellPaidAmount;
+        public DevExpress.XtraReports.UI.XRTable xrTablePayment;
     }
 }
