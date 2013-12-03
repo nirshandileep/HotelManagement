@@ -769,10 +769,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnPrint" runat="server" Text="Print" HorizontalAlign="Center"
                                     ImageSpacing="15px" VerticalAlign="Middle" TabIndex="26" 
-                                    AutoPostBack="False" UseSubmitBehavior="False">
-                                    <ClientSideEvents Click="function(s, e) {
-		ShowPopupWindow(ppPrintPreview);
-}" />
+                                    AutoPostBack="False" UseSubmitBehavior="False" OnClick="btnPrint_Click">
+                                    
                                     <Image Url="~/Images/Print.png">
                                     </Image>
                                 </dx:ASPxButton>

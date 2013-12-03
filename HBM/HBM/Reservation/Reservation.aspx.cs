@@ -310,6 +310,12 @@ namespace HBM.Reservation
             this.Calculate();
         }
 
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+            
+            ppPrintPreview.ShowOnPageLoad = true;
+        }
+
         #endregion
 
         #region Reservation
@@ -420,7 +426,7 @@ namespace HBM.Reservation
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
-                ResMan.Reservation reservation = new GenRes.Reservation();
+                ResMan.Reservation reservation = new ResMan.Reservation();
                 reservation.ReservationId = reservationId;
                 reservation = reservation.Select();
 
