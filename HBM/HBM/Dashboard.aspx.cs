@@ -41,19 +41,12 @@ namespace HBM
             }
         }
 
+        #region Page Load
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //Scheduler 
-            schReservationDashboad.Views.WorkWeekView.Enabled = false;
-            schReservationDashboad.AppointmentDataSource = this.CreatDataSource();
-            schReservationDashboad.Storage.Appointments.Mappings.AppointmentId = "ReservationRoomId";
-            schReservationDashboad.Storage.Appointments.Mappings.Start = "CheckInDate";
-            schReservationDashboad.Storage.Appointments.Mappings.End = "CheckOutDate";
-            schReservationDashboad.Storage.Appointments.Mappings.Label = "RoomNumber";
-            schReservationDashboad.Storage.Appointments.Mappings.Subject = "CustomerName";
-            schReservationDashboad.DataBind();
+            MapSchedulerFields();
 
             if (!IsPostBack)
             {
@@ -77,6 +70,36 @@ namespace HBM
                 gvDirtyRooms.DataSource = (DataSet)Session[Constants.SESSION_DIRTYROOMS];
                 gvDirtyRooms.DataBind();
             }
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void MapSchedulerFields()
+        {
+            DataSet dsTimeLineData = GetTimelineData();
+
+            dsTimeLineData.Tables[0].PrimaryKey = new DataColumn[] { dsTimeLineData.Tables[0].Columns["ReservationRoomId"] };
+            dsTimeLineData.Tables[1].PrimaryKey = new DataColumn[] { dsTimeLineData.Tables[1].Columns["RoomId"] };
+
+            DataRelation tableRelation = new DataRelation("ReservationRoomRel", dsTimeLineData.Tables[1].Columns["RoomId"], dsTimeLineData.Tables[0].Columns["RoomId"]);
+            dsTimeLineData.Relations.Add(tableRelation);
+
+            schReservationDashboad.ResourceDataSource = dsTimeLineData.Tables[1];
+            schReservationDashboad.Storage.Resources.Mappings.ResourceId = "RoomId";
+            schReservationDashboad.Storage.Resources.Mappings.Caption = "RoomDescription";
+            //schReservationDashboad.Storage.Resources.Mappings.Color = "Red";
+
+            schReservationDashboad.Views.WorkWeekView.Enabled = false;
+            schReservationDashboad.AppointmentDataSource = dsTimeLineData.Tables[0];
+            schReservationDashboad.Storage.Appointments.Mappings.AppointmentId = "ReservationRoomId";
+            schReservationDashboad.Storage.Appointments.Mappings.Start = "CheckInDate";
+            schReservationDashboad.Storage.Appointments.Mappings.End = "CheckOutDate";
+            schReservationDashboad.Storage.Appointments.Mappings.Label = "RoomNumber";
+            schReservationDashboad.Storage.Appointments.Mappings.Subject = "CustomerName";
+            schReservationDashboad.Storage.Appointments.Mappings.ResourceId = "RoomId";
+            schReservationDashboad.DataBind();
         }
 
         private void LoadDirtyRooms()
@@ -126,31 +149,19 @@ namespace HBM
             gvDepartures.DataBind();
         }
 
-        protected DataTable CreatDataSource()
+        protected DataSet GetTimelineData()
         {
-
-            #region
-            
-            //DataTable dt = new DataTable();
-            //dt.Columns.Add("Id", typeof(System.Int32));
-            //dt.Columns.Add("StartDate",typeof(System.DateTime));
-            //dt.Columns.Add("EndDate", typeof(System.DateTime));
-            //dt.Columns.Add("Name", typeof(System.String));
-            //dt.Columns.Add("Room",typeof(System.String));
-
-            //dt.Rows.Add(1,Convert.ToDateTime("10-11-2013"), Convert.ToDateTime("12-11-2013"), "James", "Sapphire");
-            //dt.Rows.Add(2,Convert.ToDateTime("20-11-2013"), Convert.ToDateTime("25-11-2013"), "Craig", "Garnet");
-            //dt.Rows.Add(3,Convert.ToDateTime("22-11-2013"), Convert.ToDateTime("30-11-2013"), "Sandra", "Ruby");
-            //dt.Rows.Add(1, Convert.ToDateTime("10-11-2013"), Convert.ToDateTime("12-11-2013"), "David", "Blue Sapphire");
-
-            #endregion
 
             DataSet dsReservations = new ReservationManagement.ReservationRoomDAO().DashboardSelectBookingsByDateRange(Master.CurrentCompany.CompanyId,
                 DateTime.Now.AddMonths(-3), DateTime.Now.AddMonths(3));
 
-            return dsReservations.Tables[0];
+            return dsReservations;
 
         }
+
+        #endregion
+
+        #region Events
 
         protected void gvArrivals_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
@@ -295,6 +306,6 @@ namespace HBM
             }
         }
 
-       
+        #endregion
     }
 }
