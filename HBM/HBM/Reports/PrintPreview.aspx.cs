@@ -44,8 +44,15 @@ namespace HBM.Reports
             DataSet dsRoomInfo = new DataSet();
             dsRoomInfo = reservation.ReservationRoomDataSet;
 
+            DataSet dsPaymentSection = new DataSet();
+            dsPaymentSection = reservation.ReservationPaymentDataSet;
+
+            //// Room info section
             if (dsRoomInfo != null && dsRoomInfo.Tables.Count > 0 && dsRoomInfo.Tables[0] != null && dsRoomInfo.Tables[0].Rows.Count > 0)
             {
+                decimal roomInfoTotal;
+                roomInfoTotal = 0;
+
                 for (int i = 0; i <= dsRoomInfo.Tables[0].Rows.Count - 1; i++)
                 {
                     if (i == 0)
@@ -57,6 +64,7 @@ namespace HBM.Reports
                         //reservationInvoiceReport.xrCellRate.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;                   
                         reservationInvoiceReport.xrCellNights.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellAmount.Text = dsRoomInfo.Tables[0].Rows[i]["Amount"] != null ? dsRoomInfo.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
+                        roomInfoTotal = Convert.ToDecimal(reservationInvoiceReport.xrCellAmount.Text);
                     }
                     else
                     {
@@ -92,12 +100,46 @@ namespace HBM.Reports
                         cell6.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;
                         cell7.Text = dsRoomInfo.Tables[0].Rows[i]["Amount"] != null ? dsRoomInfo.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
 
-
+                        roomInfoTotal = roomInfoTotal + Convert.ToDecimal(cell7.Text);
                     }
                 }
+
+                //// Add total row
+                XRTableCell cellFooter1 = new XRTableCell();
+                XRTableCell cellFooter2 = new XRTableCell();
+                XRTableRow tableRowFooter = new XRTableRow();
+                cellFooter1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF + reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
+                cellFooter2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
+                cellFooter1.Text = "Total";
+                cellFooter1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+                cellFooter2.Text = roomInfoTotal.ToString();
+                cellFooter2.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
+                tableRowFooter.Cells.Add(cellFooter1);
+                tableRowFooter.Cells.Add(cellFooter2);
+                reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowFooter);
             }
 
 
+            //// Payment section
+            if (dsPaymentSection != null && dsPaymentSection.Tables.Count > 0 && dsPaymentSection.Tables[0] != null && dsPaymentSection.Tables[0].Rows.Count > 0)
+            {
+                //decimal paymentTotal;
+                //paymentTotal = 0;
+
+                for (int i = 0; i <= dsRoomInfo.Tables[0].Rows.Count - 1; i++)
+                {
+                    if (i == 0)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+
+            }
 
             rvReportViewer.Report = reservationInvoiceReport;
         }
