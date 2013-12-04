@@ -789,7 +789,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
             </tr>
         </table>
     </div>
-    <dx:ASPxPopupControl ID="ppPrintPreview" runat="server" ContentUrl="~/Reports/PrintPreview.aspx" 
+    <dx:ASPxPopupControl ID="ppPrintPreview" runat="server" 
         Height="600px" Modal="True" Width="838px" AllowDragging="True"  ClientIDMode="Static"
         AllowResize="True" AppearAfter="0" AutoUpdatePosition="True" DisappearAfter="0" 
         FooterText="" HeaderText="" LoadingPanelDelay="0" 

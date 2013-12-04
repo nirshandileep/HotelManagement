@@ -31,7 +31,12 @@ namespace HBM.Reports
 
 
             ResMan.Reservation reservation = new ResMan.Reservation();
-            reservation.ReservationId = 49;
+
+            if (Request.QueryString["ReservationID"] != null)
+            {
+                reservation.ReservationId =  Convert.ToInt32( Request.QueryString["ReservationID"].ToString());
+            }
+            
             reservation = reservation.Select();
 
             reservationInvoiceReport.xrCellInvoiceNo.Text = "Invoice No - INV" + reservation.ReservationId.ToString();
@@ -226,8 +231,7 @@ namespace HBM.Reports
                     dataCell3.Text = dsAdditionalService.Tables[0].Rows[i]["Amount"] != null ? dsAdditionalService.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
 
                     serviceTotal = serviceTotal + Convert.ToDecimal(dataCell3.Text);
-
-
+                    
                     dataCell1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF;
                     dataCell2.WidthF = reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
                     dataCell3.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
@@ -406,8 +410,7 @@ namespace HBM.Reports
                 cell4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
                 cell5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
                 cell6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-
-
+                
                 XRTableRow headerRow = new XRTableRow();
                 headerRow.Cells.Add(cell1);
                 headerRow.Cells.Add(cell2);
@@ -417,8 +420,7 @@ namespace HBM.Reports
                 headerRow.Cells.Add(cell6);
 
                 reservationInvoiceReport.xrTableRoomInfo.Rows.Add(headerRow);
-
-
+                
                 decimal paymentTotal;
                 paymentTotal = 0;
 
@@ -432,8 +434,7 @@ namespace HBM.Reports
                         XRTableCell dataCell4 = new XRTableCell();
                         XRTableCell dataCell5 = new XRTableCell();
                         XRTableCell dataCell6 = new XRTableCell();
-
-
+                        
                         dataCell1.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"].ToString() : string.Empty;
                         dataCell2.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? Convert.ToDateTime(dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString()).ToShortDateString() : string.Empty;
                         dataCell3.Text = dsPaymentSection.Tables[0].Rows[i]["Name"] != null ? dsPaymentSection.Tables[0].Rows[i]["Name"].ToString() : string.Empty;

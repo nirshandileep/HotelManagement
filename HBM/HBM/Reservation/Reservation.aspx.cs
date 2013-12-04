@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using ResMan = HBM.ReservationManagement;
 using GenMan = HBM.GeneralManagement;
 using HBM.CustomerManagement;
@@ -13,7 +8,6 @@ using HBM.Common;
 using HBM.SessionManager;
 using System.Collections;
 using DevExpress.Web.ASPxEditors;
-using HBM.GeneralManagement;
 using GenRes = HBM.ReservationManagement;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -89,12 +83,7 @@ namespace HBM.Reservation
             //cmbResStatus.DataSource = new GenMan.Status().SelectAllList();
             //cmbResStatus.TextField = "StatusName";
             //cmbResStatus.ValueField = "StatusId";
-            //cmbResStatus.DataBind();
-
-            //cmbGuarantee.DataSource = new GenMan.Gaurantee() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset();
-            //cmbGuarantee.TextField = "GuaranteeName";
-            //cmbGuarantee.ValueField = "GuaranteeId";
-            //cmbGuarantee.DataBind();
+            //cmbResStatus.DataBind();       
 
             cmbCustomer.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
             cmbCustomer.TextField = "CustomerName";
@@ -218,9 +207,7 @@ namespace HBM.Reservation
             {
                 Int64 currentReservationId;
                 currentReservationId = Convert.ToInt64(hdnReservationId.Value);
-
-
-
+                
                 if (this.SaveData(currentReservationId))
                 {
 
@@ -312,7 +299,7 @@ namespace HBM.Reservation
 
         protected void btnPrint_Click(object sender, EventArgs e)
         {
-            
+            ppPrintPreview.ContentUrl = Constants.URL_PRINTPREVIEW + "?ReservationID=" + hdnReservationId.Value;
             ppPrintPreview.ShowOnPageLoad = true;
         }
 
@@ -366,7 +353,7 @@ namespace HBM.Reservation
                 reservation.TaxPercentage = Convert.ToDecimal(hdnTaxPercent.Value == string.Empty ? "0" : hdnTaxPercent.Value);
                 reservation.CreatedUser = Master.LoggedUser.UsersId;
                 reservation.UpdatedUser = Master.LoggedUser.UsersId;
-                
+
                 if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
                 {
                     reservation.ReservationRoomDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
@@ -401,6 +388,9 @@ namespace HBM.Reservation
 
                 reservation.Save(db, transaction);
                 transaction.Commit();
+
+                this.hdnReservationId.Value = reservation.ReservationId.ToString();
+
                 result = true;
             }
             catch (System.Exception)

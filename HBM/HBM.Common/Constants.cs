@@ -77,6 +77,8 @@ namespace HBM.Common
 
         public static readonly string URL_RESERVATIONSEARCH = "/Reservation/SearchReservation.aspx";
         public static readonly string URL_RESERVATION = "/Reservation/Reservation.aspx";
+        public static readonly string URL_PRINTPREVIEW = "/Reports/PrintPreview.aspx";
+
 
 
        
