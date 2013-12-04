@@ -10,6 +10,9 @@ using HBM.Common;
 using ResMan = HBM.ReservationManagement;
 using System.Data;
 using DevExpress.XtraReports.UI;
+using System.Text;
+using HBM.CompanyManagement;
+using HBM.SessionManager;
 
 namespace HBM.Reports
 {
@@ -32,13 +35,33 @@ namespace HBM.Reports
             reservation = reservation.Select();
 
             reservationInvoiceReport.xrCellInvoiceNo.Text = "Invoice No - INV" + reservation.ReservationId.ToString();
-            reservationInvoiceReport.xrCellInvoiceDate.Text = "Invoice Date - "+ DateTime.Now.ToString();
+            reservationInvoiceReport.xrCellInvoiceDate.Text = "Invoice Date - " + DateTime.Now.ToString();
             reservationInvoiceReport.xrCellReservationCode.Text = "Code - " + reservation.ReservationCode;
-            reservationInvoiceReport.xrCellReservationDate.Text = "Booking Date - "+reservation.BookingDate.ToString();
+            reservationInvoiceReport.xrCellReservationDate.Text = "Booking Date - " + reservation.BookingDate.ToString();
 
-            reservationInvoiceReport.xrCellCustomer.Text = "";
-            reservationInvoiceReport.xrCellCompanyName.Text = "";
-            reservationInvoiceReport.xrCellCompnayAddress.Text = "";
+            StringBuilder sbCustomer = new StringBuilder();
+            sbCustomer.Append(reservation.CustomerName + Environment.NewLine);
+            sbCustomer.Append(reservation.BillingAddressLine1 + Environment.NewLine);
+            sbCustomer.Append(reservation.BillingAddressLine2 + Environment.NewLine);
+            sbCustomer.Append(reservation.BillingCity + ", ");
+            sbCustomer.Append(reservation.BillingPostCode + Environment.NewLine);
+            sbCustomer.Append(reservation.BillingState + ", " + reservation.CountryName);
+
+            reservationInvoiceReport.xrCellCustomer.Text = sbCustomer.ToString();
+
+            Company company = new Company();
+            company.CompanyId = SessionHandler.CurrentCompanyId;
+            company = company.Select();
+            reservationInvoiceReport.xrCellCompanyName.Text = company.CompanyName;
+
+            StringBuilder sbCompany = new StringBuilder();
+            sbCompany.Append(company.CompanyAddress + Environment.NewLine);
+            sbCompany.Append(company.CompanyCity + Environment.NewLine);
+            sbCompany.Append(company.CompanyEmail + Environment.NewLine);
+            sbCompany.Append("Tel - " + company.CompanyTelephone + Environment.NewLine);
+            sbCompany.Append("Fax - " + company.CompanyFax);
+
+            reservationInvoiceReport.xrCellCompnayAddress.Text = sbCompany.ToString();
 
 
             DataSet dsRoomInfo = new DataSet();
@@ -114,7 +137,7 @@ namespace HBM.Reports
                         cell3.WidthF = reservationInvoiceReport.xrCellCheckOut.WidthF;
                         cell4.WidthF = reservationInvoiceReport.xrCellRoom.WidthF;
                         cell5.WidthF = reservationInvoiceReport.xrCellRate.WidthF;
-                        cell6.WidthF=reservationInvoiceReport.xrCellNights.WidthF;
+                        cell6.WidthF = reservationInvoiceReport.xrCellNights.WidthF;
                         cell7.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
 
                         cell1.TextAlignment = reservationInvoiceReport.xrCellCustomerName.TextAlignment;
@@ -188,15 +211,15 @@ namespace HBM.Reports
                     XRTableCell dataCell2 = new XRTableCell();
                     XRTableCell dataCell3 = new XRTableCell();
 
-                    //dataCell1.Text = dsAdditionalService.Tables[0].Rows[i]["ServiceType"] != null ? dsAdditionalService.Tables[0].Rows[i]["ServiceType"].ToString() : string.Empty;
+                    dataCell1.Text = dsAdditionalService.Tables[0].Rows[i]["ServiceName"] != null ? dsAdditionalService.Tables[0].Rows[i]["ServiceName"].ToString() : string.Empty;
                     dataCell2.Text = dsAdditionalService.Tables[0].Rows[i]["Note"] != null ? dsAdditionalService.Tables[0].Rows[i]["Note"].ToString() : string.Empty;
                     dataCell3.Text = dsAdditionalService.Tables[0].Rows[i]["Amount"] != null ? dsAdditionalService.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
 
                     serviceTotal = serviceTotal + Convert.ToDecimal(dataCell3.Text);
 
 
-                    dataCell1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF ;
-                    dataCell2.WidthF =  reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
+                    dataCell1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF;
+                    dataCell2.WidthF = reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
                     dataCell3.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
                     dataCell3.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
 
@@ -238,9 +261,9 @@ namespace HBM.Reports
                 {
                     if (i == 0)
                     {
-                        //reservationInvoiceReport.xrCellPaymentType.Text = dsPaymentSection.Tables[0].Rows[i]["Sharers"] != null ? dsPaymentSection.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellPaymentType.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellPaymentDate.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? Convert.ToDateTime(dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString()).ToShortDateString() : string.Empty;
-                        //reservationInvoiceReport.xrCellCardType.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellCardType.Text = dsPaymentSection.Tables[0].Rows[i]["Name"] != null ? dsPaymentSection.Tables[0].Rows[i]["Name"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellCardNo.Text = dsPaymentSection.Tables[0].Rows[i]["CCNo"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNo"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellNameOnCard.Text = dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellPaidAmount.Text = dsPaymentSection.Tables[0].Rows[i]["Amount"] != null ? dsPaymentSection.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
@@ -270,9 +293,9 @@ namespace HBM.Reports
                         cell5.TextAlignment = reservationInvoiceReport.xrCellNameOnCard.TextAlignment;
                         cell6.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
 
-                        //cell1.Text = dsPaymentSection.Tables[0].Rows[i]["Sharers"] != null ? dsPaymentSection.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
+                        cell1.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"].ToString() : string.Empty;
                         cell2.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? Convert.ToDateTime(dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString()).ToShortDateString() : string.Empty;
-                        //cell3.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString() : string.Empty;
+                        cell3.Text = dsPaymentSection.Tables[0].Rows[i]["Name"] != null ? dsPaymentSection.Tables[0].Rows[i]["Name"].ToString() : string.Empty;
                         cell4.Text = dsPaymentSection.Tables[0].Rows[i]["CCNo"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNo"].ToString() : string.Empty;
                         cell5.Text = dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"].ToString() : string.Empty;
                         cell6.Text = dsPaymentSection.Tables[0].Rows[i]["Amount"] != null ? dsPaymentSection.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;

@@ -38,6 +38,15 @@ namespace HBM.ReservationManagement
         public ReservationRoom ReservationRoom { get; set; }
         public int TaxTypeId { get; set; }
         public decimal TaxPercentage{ get; set; }
+
+        public string CustomerName { get; set; }
+        public string BillingAddressLine1 { get; set; }
+        public string BillingAddressLine2 { get; set; }
+        public string BillingCity { get; set; }
+        public string BillingState { get; set; }
+        public string BillingPostCode { get; set; }
+        public string CountryName { get; set; }
+
         public DataSet ReservationAdditionalServiceDataSet { get; set; }
         public DataSet ReservationPaymentDataSet { get; set; }
         public DataSet ReservationRoomDataSet { get; set; }
