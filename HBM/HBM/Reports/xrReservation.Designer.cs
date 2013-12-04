@@ -488,7 +488,7 @@
             this.xrCellInvoiceNo.StylePriority.UsePadding = false;
             this.xrCellInvoiceNo.StylePriority.UseTextAlignment = false;
             this.xrCellInvoiceNo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrCellInvoiceNo.Weight = 0.71955137986403239D;
+            this.xrCellInvoiceNo.Weight = 1.1842950674203725D;
             // 
             // xrTableCell9
             // 
@@ -496,7 +496,7 @@
             this.xrTableCell9.Name = "xrTableCell9";
             this.xrTableCell9.StylePriority.UseFont = false;
             this.xrTableCell9.Text = "INVOICE";
-            this.xrTableCell9.Weight = 1.5729164123535153D;
+            this.xrTableCell9.Weight = 0.73637800950270427D;
             // 
             // xrCellReservationCode
             // 
@@ -505,7 +505,7 @@
             this.xrCellReservationCode.StylePriority.UsePadding = false;
             this.xrCellReservationCode.StylePriority.UseTextAlignment = false;
             this.xrCellReservationCode.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrCellReservationCode.Weight = 0.70753220778245174D;
+            this.xrCellReservationCode.Weight = 1.0793269230769229D;
             // 
             // xrTableRow4
             // 
@@ -519,17 +519,21 @@
             // xrCellInvoiceDate
             // 
             this.xrCellInvoiceDate.Name = "xrCellInvoiceDate";
-            this.xrCellInvoiceDate.Weight = 0.71955137986403239D;
+            this.xrCellInvoiceDate.StylePriority.UseTextAlignment = false;
+            this.xrCellInvoiceDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrCellInvoiceDate.Weight = 1.1842950674203725D;
             // 
             // xrTableCell10
             // 
             this.xrTableCell10.Name = "xrTableCell10";
-            this.xrTableCell10.Weight = 1.5729164123535153D;
+            this.xrTableCell10.Weight = 0.73637800950270427D;
             // 
             // xrCellReservationDate
             // 
             this.xrCellReservationDate.Name = "xrCellReservationDate";
-            this.xrCellReservationDate.Weight = 0.70753220778245174D;
+            this.xrCellReservationDate.StylePriority.UseTextAlignment = false;
+            this.xrCellReservationDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrCellReservationDate.Weight = 1.0793269230769229D;
             // 
             // PageFooter
             // 
