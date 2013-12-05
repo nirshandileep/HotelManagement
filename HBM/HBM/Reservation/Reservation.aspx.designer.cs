@@ -157,6 +157,15 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAdd;
         
         /// <summary>
+        /// hdnRate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnRate;
+        
+        /// <summary>
         /// seAdults control.
         /// </summary>
         /// <remarks>

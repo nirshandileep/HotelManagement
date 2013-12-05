@@ -13,7 +13,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="wrapper-switchboard">
+    <div class="wrapper-printpriview">
         <h2>
             Print Preview</h2>
         <div>

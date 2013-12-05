@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTableRoomInfo = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrCellCustomerName = new DevExpress.XtraReports.UI.XRTableCell();
@@ -40,6 +38,8 @@
             this.xrCellRate = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrCellNights = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrCellAmount = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
@@ -58,13 +58,13 @@
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrCellInvoiceNo = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrCellReservationCode = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrCellInvoiceDate = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrCellReservationDate = new DevExpress.XtraReports.UI.XRTableCell();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
+            this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTableRoomInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
@@ -80,30 +80,6 @@
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.StylePriority.UseFont = false;
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrLabel3
-            // 
-            this.xrLabel3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(287.5F, 37.5F);
-            this.xrLabel3.Name = "xrLabel3";
-            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(221.875F, 23F);
-            this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.StylePriority.UseTextAlignment = false;
-            this.xrLabel3.Text = "- Thank you -";
-            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel2
-            // 
-            this.xrLabel2.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
-            this.xrLabel2.Name = "xrLabel2";
-            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(221.875F, 23F);
-            this.xrLabel2.StylePriority.UseFont = false;
-            this.xrLabel2.StylePriority.UseTextAlignment = false;
-            this.xrLabel2.Text = "Invoice Due Date - Immediate";
-            this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrTableRoomInfo
             // 
@@ -183,6 +159,30 @@
             this.xrCellAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrCellAmount.Weight = 0.45011995755709122D;
             // 
+            // xrLabel3
+            // 
+            this.xrLabel3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(287.5F, 37.5F);
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(221.875F, 23F);
+            this.xrLabel3.StylePriority.UseFont = false;
+            this.xrLabel3.StylePriority.UseTextAlignment = false;
+            this.xrLabel3.Text = "- Thank you -";
+            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel2
+            // 
+            this.xrLabel2.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
+            this.xrLabel2.Name = "xrLabel2";
+            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(221.875F, 23F);
+            this.xrLabel2.StylePriority.UseFont = false;
+            this.xrLabel2.StylePriority.UseTextAlignment = false;
+            this.xrLabel2.Text = "Invoice Due Date - Immediate";
+            this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
             // TopMargin
             // 
             this.TopMargin.HeightF = 25F;
@@ -205,13 +205,13 @@
             this.xrCellCompnayAddress,
             this.xrCellCustomer,
             this.xrTable2});
-            this.PageHeader.HeightF = 226.0417F;
+            this.PageHeader.HeightF = 285.9167F;
             this.PageHeader.Name = "PageHeader";
             // 
             // xrCellCompanyName
             // 
             this.xrCellCompanyName.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrCellCompanyName.LocationFloat = new DevExpress.Utils.PointFloat(455.625F, 67.12502F);
+            this.xrCellCompanyName.LocationFloat = new DevExpress.Utils.PointFloat(455.625F, 112.0001F);
             this.xrCellCompanyName.Name = "xrCellCompanyName";
             this.xrCellCompanyName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrCellCompanyName.SizeF = new System.Drawing.SizeF(334.375F, 23F);
@@ -225,7 +225,7 @@
             this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top)
                         | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrTable1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 201.0417F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 260.9167F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
@@ -297,7 +297,7 @@
             // 
             // xrCellCompnayAddress
             // 
-            this.xrCellCompnayAddress.LocationFloat = new DevExpress.Utils.PointFloat(455.625F, 90.12502F);
+            this.xrCellCompnayAddress.LocationFloat = new DevExpress.Utils.PointFloat(455.625F, 135.0001F);
             this.xrCellCompnayAddress.Multiline = true;
             this.xrCellCompnayAddress.Name = "xrCellCompnayAddress";
             this.xrCellCompnayAddress.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -307,7 +307,7 @@
             // 
             // xrCellCustomer
             // 
-            this.xrCellCustomer.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 90.12502F);
+            this.xrCellCustomer.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 135.0001F);
             this.xrCellCustomer.Multiline = true;
             this.xrCellCustomer.Name = "xrCellCustomer";
             this.xrCellCustomer.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -320,7 +320,7 @@
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 21F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2,
@@ -350,14 +350,6 @@
             this.xrCellInvoiceNo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.xrCellInvoiceNo.Weight = 1.1842950674203725D;
             // 
-            // xrTableCell9
-            // 
-            this.xrTableCell9.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
-            this.xrTableCell9.Name = "xrTableCell9";
-            this.xrTableCell9.StylePriority.UseFont = false;
-            this.xrTableCell9.Text = "INVOICE";
-            this.xrTableCell9.Weight = 0.73637800950270427D;
-            // 
             // xrCellReservationCode
             // 
             this.xrCellReservationCode.Name = "xrCellReservationCode";
@@ -385,11 +377,6 @@
             this.xrCellInvoiceDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.xrCellInvoiceDate.Weight = 1.1842950674203725D;
             // 
-            // xrTableCell10
-            // 
-            this.xrTableCell10.Name = "xrTableCell10";
-            this.xrTableCell10.Weight = 0.73637800950270427D;
-            // 
             // xrCellReservationDate
             // 
             this.xrCellReservationDate.Name = "xrCellReservationDate";
@@ -405,6 +392,19 @@
             this.xrLabel2,
             this.xrLabel3});
             this.PageFooter.Name = "PageFooter";
+            // 
+            // xrTableCell10
+            // 
+            this.xrTableCell10.Name = "xrTableCell10";
+            this.xrTableCell10.Weight = 0.73637800950270427D;
+            // 
+            // xrTableCell9
+            // 
+            this.xrTableCell9.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.xrTableCell9.Name = "xrTableCell9";
+            this.xrTableCell9.StylePriority.UseFont = false;
+            this.xrTableCell9.Text = "INVOICE";
+            this.xrTableCell9.Weight = 0.73637800950270427D;
             // 
             // xrReservation
             // 
@@ -442,7 +442,6 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
         private DevExpress.XtraReports.UI.XRTable xrTable2;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow3;
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel3;
@@ -452,7 +451,6 @@
         public DevExpress.XtraReports.UI.XRLabel xrCellCompnayAddress;
         public DevExpress.XtraReports.UI.XRLabel xrCellCompanyName;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow4;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell10;
         public DevExpress.XtraReports.UI.XRTableCell xrCellReservationDate;
         public DevExpress.XtraReports.UI.XRTableCell xrCellInvoiceDate;
         public DevExpress.XtraReports.UI.XRTable xrTableRoomInfo;
@@ -463,5 +461,7 @@
         public DevExpress.XtraReports.UI.XRTableCell xrCellRate;
         public DevExpress.XtraReports.UI.XRTableCell xrCellNights;
         public DevExpress.XtraReports.UI.XRTableCell xrCellAmount;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell10;
     }
 }

@@ -25,6 +25,7 @@ namespace HBM.ReservationManagement
             db.AddInParameter(commandInsert, "@NumberOfInfant", DbType.Int32, "NumberOfInfant", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Days", DbType.Decimal, "Days", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Amount", DbType.Decimal, "Amount", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@Rate", DbType.Decimal, "Rate", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Decimal, "CreatedUser", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 
@@ -41,6 +42,7 @@ namespace HBM.ReservationManagement
             db.AddInParameter(commandUpdate, "@NumberOfInfant", DbType.Int32, "NumberOfInfant", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Days", DbType.Decimal, "Days", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Amount", DbType.Decimal, "Amount", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@Rate", DbType.Decimal, "Rate", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
 

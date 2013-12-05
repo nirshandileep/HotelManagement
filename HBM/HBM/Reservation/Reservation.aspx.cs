@@ -247,7 +247,7 @@ namespace HBM.Reservation
                 dr["NumberOfAdults"] = seAdults.Text;
                 dr["NumberOfChildren"] = seChildren.Text;
                 dr["NumberOfInfant"] = seInfants.Text;
-
+                dr["Rate"] = Convert.ToDecimal(hdnRate.Value == string.Empty ? "0" : hdnRate.Value); ;
                 TimeSpan tspan = Convert.ToDateTime(dtCheckOutDate.Text) - Convert.ToDateTime(dtCheckingDate.Text);
                 double totalDays = 0;
                 totalDays = tspan.TotalDays;
@@ -301,6 +301,11 @@ namespace HBM.Reservation
         {
             ppPrintPreview.ContentUrl = Constants.URL_PRINTPREVIEW + "?ReservationID=" + hdnReservationId.Value;
             ppPrintPreview.ShowOnPageLoad = true;
+        }
+
+        protected void cmbRatePlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
         }
 
         #endregion
@@ -463,6 +468,7 @@ namespace HBM.Reservation
             seAdults.Text = "0";
             seChildren.Text = "0";
             seInfants.Text = "0";
+            hdnRate.Value = string.Empty;
             ddlShareNames.Focus();
         }
 
@@ -787,7 +793,7 @@ namespace HBM.Reservation
             this.Calculate();
         }
 
-        #endregion
+        #endregion              
 
     }
 }

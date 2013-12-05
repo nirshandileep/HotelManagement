@@ -27,6 +27,7 @@ namespace HBM.ReservationManagement
         public decimal Days { get; set; }
         public decimal Amount { get; set; }
         public int StatusId { get; set; }
+        public decimal Rate{ get; set; }
         public int CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
         public int UpdatedUser { get; set; }

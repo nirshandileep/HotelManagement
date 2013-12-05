@@ -68,11 +68,9 @@ namespace HBM.Reports
 
             reservationInvoiceReport.xrCellCompnayAddress.Text = sbCompany.ToString();
 
-
             DataSet dsRoomInfo = new DataSet();
             dsRoomInfo = reservation.ReservationRoomDataSet;
-
-
+            
             //// Room info section
             if (dsRoomInfo != null && dsRoomInfo.Tables.Count > 0 && dsRoomInfo.Tables[0] != null && dsRoomInfo.Tables[0].Rows.Count > 0)
             {
@@ -86,8 +84,8 @@ namespace HBM.Reports
                         reservationInvoiceReport.xrCellCustomerName.Text = dsRoomInfo.Tables[0].Rows[i]["Sharers"] != null ? dsRoomInfo.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellCheckIn.Text = dsRoomInfo.Tables[0].Rows[i]["CheckInDate"] != null ? Convert.ToDateTime(dsRoomInfo.Tables[0].Rows[i]["CheckInDate"].ToString()).ToShortDateString() : string.Empty;
                         reservationInvoiceReport.xrCellCheckOut.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? Convert.ToDateTime(dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString()).ToShortDateString() : string.Empty;
-                        //reservationInvoiceReport.xrCellRoom.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString() : string.Empty;
-                        //reservationInvoiceReport.xrCellRate.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;                   
+                        reservationInvoiceReport.xrCellRoom.Text = dsRoomInfo.Tables[0].Rows[i]["RoomName"] != null ? dsRoomInfo.Tables[0].Rows[i]["RoomName"].ToString() : string.Empty;
+                        reservationInvoiceReport.xrCellRate.Text = dsRoomInfo.Tables[0].Rows[i]["Rate"] != null ? dsRoomInfo.Tables[0].Rows[i]["Rate"].ToString() : string.Empty;                   
                         reservationInvoiceReport.xrCellNights.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellAmount.Text = dsRoomInfo.Tables[0].Rows[i]["Amount"] != null ? dsRoomInfo.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
                         roomInfoTotal = Convert.ToDecimal(reservationInvoiceReport.xrCellAmount.Text);
@@ -100,29 +98,13 @@ namespace HBM.Reports
                         XRTableCell cell4 = new XRTableCell();
                         XRTableCell cell5 = new XRTableCell();
                         XRTableCell cell6 = new XRTableCell();
-                        XRTableCell cell7 = new XRTableCell();
-
-                        cell1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF;
-                        cell2.WidthF = reservationInvoiceReport.xrCellCheckIn.WidthF;
-                        cell3.WidthF = reservationInvoiceReport.xrCellCheckOut.WidthF;
-                        cell4.WidthF = reservationInvoiceReport.xrCellRoom.WidthF;
-                        cell5.WidthF = reservationInvoiceReport.xrCellRate.WidthF;
-                        cell6.WidthF = reservationInvoiceReport.xrCellNights.WidthF;
-                        cell7.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
-
-                        cell1.TextAlignment = reservationInvoiceReport.xrCellCustomerName.TextAlignment;
-                        cell2.TextAlignment = reservationInvoiceReport.xrCellCheckIn.TextAlignment;
-                        cell3.TextAlignment = reservationInvoiceReport.xrCellCheckOut.TextAlignment;
-                        cell4.TextAlignment = reservationInvoiceReport.xrCellRoom.TextAlignment;
-                        cell5.TextAlignment = reservationInvoiceReport.xrCellRate.TextAlignment;
-                        cell6.TextAlignment = reservationInvoiceReport.xrCellNights.TextAlignment;
-                        cell7.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
+                        XRTableCell cell7 = new XRTableCell();   
 
                         cell1.Text = dsRoomInfo.Tables[0].Rows[i]["Sharers"] != null ? dsRoomInfo.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
                         cell2.Text = dsRoomInfo.Tables[0].Rows[i]["CheckInDate"] != null ? Convert.ToDateTime(dsRoomInfo.Tables[0].Rows[i]["CheckInDate"].ToString()).ToShortDateString() : string.Empty;
                         cell3.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? Convert.ToDateTime(dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString()).ToShortDateString() : string.Empty;
-                        //cell4.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString() : string.Empty;
-                        //cell5.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;                   
+                        cell4.Text = dsRoomInfo.Tables[0].Rows[i]["RoomName"] != null ? dsRoomInfo.Tables[0].Rows[i]["RoomName"].ToString() : string.Empty;
+                        cell5.Text = dsRoomInfo.Tables[0].Rows[i]["Rate"] != null ? dsRoomInfo.Tables[0].Rows[i]["Rate"].ToString() : string.Empty;                   
                         cell6.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;
                         cell7.Text = dsRoomInfo.Tables[0].Rows[i]["Amount"] != null ? dsRoomInfo.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
 
@@ -145,12 +127,7 @@ namespace HBM.Reports
                         cell6.WidthF = reservationInvoiceReport.xrCellNights.WidthF;
                         cell7.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
 
-                        cell1.TextAlignment = reservationInvoiceReport.xrCellCustomerName.TextAlignment;
-                        cell2.TextAlignment = reservationInvoiceReport.xrCellCheckIn.TextAlignment;
-                        cell3.TextAlignment = reservationInvoiceReport.xrCellCheckOut.TextAlignment;
-                        cell4.TextAlignment = reservationInvoiceReport.xrCellRoom.TextAlignment;
-                        cell5.TextAlignment = reservationInvoiceReport.xrCellRate.TextAlignment;
-                        cell6.TextAlignment = reservationInvoiceReport.xrCellNights.TextAlignment;
+                        cell1.TextAlignment = reservationInvoiceReport.xrCellCustomerName.TextAlignment;                        
                         cell7.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
 
                         reservationInvoiceReport.xrTableRoomInfo.Rows.Add(dataRow);
@@ -190,8 +167,7 @@ namespace HBM.Reports
             dsAdditionalService = reservation.ReservationAdditionalServiceDataSet;
 
             if (dsAdditionalService != null && dsAdditionalService.Tables.Count > 0 && dsAdditionalService.Tables[0] != null && dsAdditionalService.Tables[0].Rows.Count > 0)
-            {
-              
+            {            
 
                 XRTableCell cell1 = new XRTableCell();
                 XRTableCell cell2 = new XRTableCell();
@@ -426,8 +402,7 @@ namespace HBM.Reports
 
                 for (int i = 0; i <= dsPaymentSection.Tables[0].Rows.Count - 1; i++)
                 {
-                    if (i == 0)
-                    {
+                    
                         XRTableCell dataCell1 = new XRTableCell();
                         XRTableCell dataCell2 = new XRTableCell();
                         XRTableCell dataCell3 = new XRTableCell();
@@ -461,8 +436,7 @@ namespace HBM.Reports
                         dataRow.Cells.Add(dataCell5);
                         dataRow.Cells.Add(dataCell6);
                         
-                        reservationInvoiceReport.xrTableRoomInfo.Rows.Add(dataRow);
-                    }
+                        reservationInvoiceReport.xrTableRoomInfo.Rows.Add(dataRow);                    
 
                 }
 
