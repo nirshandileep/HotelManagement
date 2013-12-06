@@ -397,7 +397,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                             </dx:GridViewDataComboBoxColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" ShowInCustomizationForm="True"
                                                                 VisibleIndex="3" Width="80px">
-                                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                                                <PropertiesSpinEdit DisplayFormatString="g" MaxLength="10" MaxValue="10000000">
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                                                     </ValidationSettings>
@@ -405,6 +405,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                             </dx:GridViewDataSpinEditColumn>
                                                             <dx:GridViewDataTextColumn Caption="Note" FieldName="Note" ShowInCustomizationForm="True"
                                                                 VisibleIndex="2">
+                                                                <PropertiesTextEdit MaxLength="500">
+                                                                </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
                                                         </Columns>
                                                         <SettingsBehavior AllowGroup="False" SortMode="DisplayText" ConfirmDelete="True" />
@@ -461,7 +463,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                             </dx:GridViewDataDateColumn>
                                                             <dx:GridViewDataTextColumn FieldName="ReferenceNumber" ShowInCustomizationForm="True"
                                                                 VisibleIndex="4" Caption="Ref No" Visible="False" Width="50px">
-                                                                <PropertiesTextEdit>
+                                                                <PropertiesTextEdit MaxLength="50">
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                                                     </ValidationSettings>
@@ -496,7 +498,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                             </dx:GridViewDataComboBoxColumn>
                                                             <dx:GridViewDataTextColumn Caption="Card No" FieldName="CCNo" ShowInCustomizationForm="True"
                                                                 VisibleIndex="6">
-                                                                <PropertiesTextEdit>
+                                                                <PropertiesTextEdit MaxLength="20">
                                                                     <ValidationSettings>
                                                                         <RequiredField ErrorText="Required" />
                                                                     </ValidationSettings>
@@ -507,10 +509,15 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                             </dx:GridViewDataDateColumn>
                                                             <dx:GridViewDataTextColumn FieldName="CCNameOnCard" ShowInCustomizationForm="True"
                                                                 VisibleIndex="8" Caption="Name on Card" Width="120px">
+                                                                <PropertiesTextEdit MaxLength="100">
+                                                                </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" ShowInCustomizationForm="True"
                                                                 VisibleIndex="11" Width="80px">
-                                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                                                <PropertiesSpinEdit DisplayFormatString="g" MaxLength="10" MaxValue="10000000">
+                                                                    <ValidationSettings>
+                                                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                    </ValidationSettings>
                                                                 </PropertiesSpinEdit>
                                                             </dx:GridViewDataSpinEditColumn>
                                                             <dx:GridViewDataTextColumn Caption="Ref No" FieldName="ReferenceNumber" ShowInCustomizationForm="True"
@@ -638,6 +645,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                                             <dx:ListBoxColumn Caption="Tax Type" FieldName="TaxTypeName" />
                                                                             <dx:ListBoxColumn Caption="(%)" FieldName="TaxPercentage" />
                                                                         </Columns>
+                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" 
+                                                                            ValidationGroup="vgSave">
+                                                                            <RequiredField ErrorText="Required" IsRequired="True" />
+                                                                        </ValidationSettings>
                                                                     </dx:ASPxComboBox>
                                                                     <asp:HiddenField ID="hdnTaxPercent" runat="server" />
                                                                 </td>
@@ -798,5 +809,13 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
         FooterText="" HeaderText="" LoadingPanelDelay="0" 
         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" 
         ScrollBars="Auto" ShowPageScrollbarWhenModal="True">
+        <ClientSideEvents Closing="function(s, e) {
+	ppPrintPreview.ContentUrl='';
+}" Shown="function(s, e) {
+
+}" />
+        <ContentCollection>
+<dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True"></dx:PopupControlContentControl>
+</ContentCollection>
     </dx:ASPxPopupControl>
 </asp:Content>

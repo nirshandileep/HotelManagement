@@ -26,7 +26,7 @@ namespace HBM.ReservationManagement
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_ReservationAdditionalServiceUpdate");
 
-            db.AddInParameter(commandUpdate, "@ReservationAdditionalServiceId", DbType.Int32, "ReservationAdditionalServiceId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@ReservationAdditionalServiceId", DbType.Int64, "ReservationAdditionalServiceId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Amount", DbType.String, "Amount", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
@@ -47,7 +47,7 @@ namespace HBM.ReservationManagement
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationAdditionalServiceSelectByReservationID");
-            db.AddInParameter(dbCommand, "@ReservationId", DbType.Int32, reservationAdditionalService.ReservationId);
+            db.AddInParameter(dbCommand, "@ReservationId", DbType.Int64, reservationAdditionalService.ReservationId);
 
             return db.ExecuteDataSet(dbCommand);
 

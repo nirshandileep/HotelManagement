@@ -16,7 +16,7 @@ namespace HBM.ReservationManagement
                         
             DbCommand commandInsert = db.GetStoredProcCommand("usp_ReservationPaymentInsert");
 
-            db.AddInParameter(commandInsert, "@ReservationId", DbType.Int32, reservationPayments.ReservationId);            
+            db.AddInParameter(commandInsert, "@ReservationId", DbType.Int64, reservationPayments.ReservationId);            
             db.AddInParameter(commandInsert, "@PaymentDate", DbType.DateTime, "PaymentDate", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@ReferenceNumber", DbType.String, "ReferenceNumber", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Notes", DbType.String, "Notes", DataRowVersion.Current);
@@ -33,7 +33,7 @@ namespace HBM.ReservationManagement
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_ReservationPaymentUpdate");
 
-            db.AddInParameter(commandUpdate, "@ReservationPaymentId", DbType.Decimal, reservationPayments.ReservationId);                       
+            db.AddInParameter(commandUpdate, "@ReservationPaymentId", DbType.Int64, "ReservationPaymentId", DataRowVersion.Current);                       
             db.AddInParameter(commandUpdate, "@PaymentDate", DbType.DateTime, "PaymentDate", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@ReferenceNumber", DbType.String, "ReferenceNumber", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Notes", DbType.String, "Notes", DataRowVersion.Current);
@@ -61,7 +61,7 @@ namespace HBM.ReservationManagement
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand dbCommand = db.GetStoredProcCommand("usp_ReservationPaymentSelectByReservationID");
-            db.AddInParameter(dbCommand, "@ReservationId", DbType.Int32, reservationPayments.ReservationId);
+            db.AddInParameter(dbCommand, "@ReservationId", DbType.Int64, reservationPayments.ReservationId);
 
             return db.ExecuteDataSet(dbCommand);
 

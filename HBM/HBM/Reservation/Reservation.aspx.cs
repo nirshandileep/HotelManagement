@@ -252,6 +252,11 @@ namespace HBM.Reservation
                 double totalDays = 0;
                 totalDays = tspan.TotalDays;
 
+                if (totalDays == 0)
+                {
+                    totalDays = 1;
+                }
+
                 dr["Days"] = totalDays;
                 dr["Amount"] = totalDays * 10;
                 dr["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
@@ -519,6 +524,7 @@ namespace HBM.Reservation
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
 
+            Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
 
         }
 
@@ -580,6 +586,7 @@ namespace HBM.Reservation
             gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
             gvRoomInfo.DataBind();
 
+            Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
 
         }
 
@@ -615,7 +622,7 @@ namespace HBM.Reservation
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
 
-
+            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] = dsAdditionalService;
 
         }
 
@@ -652,6 +659,7 @@ namespace HBM.Reservation
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
 
+            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] = dsAdditionalService;
 
         }
 
@@ -676,6 +684,7 @@ namespace HBM.Reservation
             gvServiceInformation.DataSource = dsAdditionalService.Tables[0];
             gvServiceInformation.DataBind();
 
+            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] = dsAdditionalService;
 
         }
 
@@ -715,13 +724,14 @@ namespace HBM.Reservation
 
             int i = gvPaymentInformation.FindVisibleIndexByKeyValue(e.Keys[gvPaymentInformation.KeyFieldName]);
             e.Cancel = true;
-            dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;
-            //dsData.Tables[0].Rows.Remove(dsData.Tables[0].Rows.Find(e.Keys[gvData.KeyFieldName]));
+            dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;       
 
             dsPaymentInformation.Tables[0].DefaultView.Delete(dsPaymentInformation.Tables[0].Rows.IndexOf(dsPaymentInformation.Tables[0].Rows.Find(e.Keys[gvPaymentInformation.KeyFieldName])));
 
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
+
+            Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
 
         }
 
@@ -735,8 +745,7 @@ namespace HBM.Reservation
 
             Random rd1 = new Random();
             e.NewValues["ReservationId"] = rd.Next();
-            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
-            //e.NewValues["CompanyId"] = SessionHandler.CurrentCompanyId; ;
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;            
             e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
@@ -756,6 +765,7 @@ namespace HBM.Reservation
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
 
+            Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
 
         }
 
@@ -779,6 +789,8 @@ namespace HBM.Reservation
 
             gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
             gvPaymentInformation.DataBind();
+
+            Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
         }
 
         protected void gvPaymentInformation_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)

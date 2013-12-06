@@ -32,9 +32,13 @@ namespace HBM.Reports
 
             ResMan.Reservation reservation = new ResMan.Reservation();
 
-            if (Request.QueryString["ReservationID"] != null)
+            if (Request.QueryString["ReservationID"] != null && Request.QueryString["ReservationID"] != string.Empty)
             {
-                reservation.ReservationId =  Convert.ToInt32( Request.QueryString["ReservationID"].ToString());
+                reservation.ReservationId = Convert.ToInt32(Request.QueryString["ReservationID"].ToString());
+            }
+            else
+            {
+                return;
             }
             
             reservation = reservation.Select();
