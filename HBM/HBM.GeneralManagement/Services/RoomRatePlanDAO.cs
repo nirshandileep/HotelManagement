@@ -86,8 +86,7 @@ namespace HBM.GeneralManagement
 
             return true;
         }
-
-
+        
         public DataSet SelectByRoomId(int RoomId)
         {
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);

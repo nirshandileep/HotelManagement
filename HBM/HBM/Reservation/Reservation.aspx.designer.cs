@@ -112,15 +112,6 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtCheckOutDate;
         
         /// <summary>
-        /// hdnRate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnRate;
-        
-        /// <summary>
         /// trReservationSection control.
         /// </summary>
         /// <remarks>
@@ -182,6 +173,24 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAdd;
+        
+        /// <summary>
+        /// hdnRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnRoom;
+        
+        /// <summary>
+        /// hdnRate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnRate;
         
         /// <summary>
         /// seAdults control.

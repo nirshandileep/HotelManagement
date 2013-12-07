@@ -53,7 +53,7 @@ namespace HBM.Reservation
                 this.LoadAddiotnalService(newReservationId);
                 this.LoadPaymentInformation(newReservationId);
 
-                
+
 
             }
 
@@ -116,10 +116,10 @@ namespace HBM.Reservation
             cmbRoom.ValueField = "RoomId";
             cmbRoom.DataBind();
 
-            cmbRatePlan.DataSource = new GenMan.RatePlans() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
-            cmbRatePlan.TextField = "RatePlanName";
-            cmbRatePlan.ValueField = "RatePlansId";
-            cmbRatePlan.DataBind();
+            //cmbRatePlan.DataSource = new GenMan.RatePlans() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
+            //cmbRatePlan.TextField = "RatePlanName";
+            //cmbRatePlan.ValueField = "RatePlansId";
+            //cmbRatePlan.DataBind();
 
         }
 
@@ -227,10 +227,10 @@ namespace HBM.Reservation
             {
                 Int64 currentReservationId;
                 currentReservationId = Convert.ToInt64(hdnReservationId.Value);
-                
+
                 if (this.SaveData(currentReservationId))
                 {
-
+                    btnCreate.Visible = false;
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Update_Success + "')", true);
 
                 }
@@ -240,7 +240,7 @@ namespace HBM.Reservation
             {
                 if (this.SaveData(newReservationId))
                 {
-
+                    btnCreate.Visible = false;
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
 
                 }
@@ -260,7 +260,9 @@ namespace HBM.Reservation
                 dr["ReservationRoomId"] = rd.Next();
                 dr["ReservationId"] = 0;
                 dr["RoomId"] = Convert.ToInt32(cmbRoom.Value);
+                dr["RoomName"] = cmbRoom.Text;
                 dr["RatePlanId"] = Convert.ToInt32(cmbRatePlan.Value);
+                dr["RatePlanName"] = cmbRatePlan.Text;
                 dr["Sharers"] = ddlShareNames.Text.Trim();
                 dr["CheckInDate"] = dtCheckingDate.Value;
                 dr["CheckOutDate"] = dtCheckOutDate.Value;
@@ -331,7 +333,14 @@ namespace HBM.Reservation
 
         protected void cmbRatePlan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
+            if (cmbRatePlan.SelectedItem != null)
+            {
+                hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
+            }
+            else
+            {
+                hdnRate.Value = "0";
+            }
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -343,6 +352,17 @@ namespace HBM.Reservation
             dtCheckingDate.Enabled = false;
             dtCheckOutDate.Enabled = false;
 
+        }
+
+        protected void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
+            hdnRoom.Value = currentRoomID.ToString();
+            cmbRatePlan.DataSource = new GenMan.RoomRatePlan() { RoomId = currentRoomID }.SelectByRoomId();
+            cmbRatePlan.TextField = "RatePlanName";
+            cmbRatePlan.ValueField = "RatePlansId";
+            cmbRatePlan.DataBind();
         }
 
         #endregion
@@ -756,7 +776,7 @@ namespace HBM.Reservation
 
             int i = gvPaymentInformation.FindVisibleIndexByKeyValue(e.Keys[gvPaymentInformation.KeyFieldName]);
             e.Cancel = true;
-            dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;       
+            dsPaymentInformation = Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] as DataSet;
 
             dsPaymentInformation.Tables[0].DefaultView.Delete(dsPaymentInformation.Tables[0].Rows.IndexOf(dsPaymentInformation.Tables[0].Rows.Find(e.Keys[gvPaymentInformation.KeyFieldName])));
 
@@ -777,7 +797,7 @@ namespace HBM.Reservation
 
             Random rd1 = new Random();
             e.NewValues["ReservationId"] = rd.Next();
-            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;            
+            e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
             e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
@@ -837,9 +857,11 @@ namespace HBM.Reservation
             this.Calculate();
         }
 
-        #endregion              
+        #endregion
 
      
+
+
 
     }
 }

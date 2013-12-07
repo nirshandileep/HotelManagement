@@ -123,7 +123,6 @@
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
                                                 </ValidationSettings>
                                             </dx:ASPxDateEdit>
-                                            <asp:HiddenField ID="hdnRate" runat="server" />
                                         </td>
                                     </tr>
                                 </table>
@@ -182,7 +181,9 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                                 Room
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.String" TextFormatString="{1}">
+                                                                <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.String" 
+                                                                    TextFormatString="{1}" AutoPostBack="True" 
+                                                                    OnSelectedIndexChanged="cmbRoom_SelectedIndexChanged">
                                                                     <Columns>
                                                                         <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" Width="50px" />
                                                                         <dx:ListBoxColumn Caption="Name" FieldName="RoomName" Width="125px" />
@@ -236,11 +237,13 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                             <td valign="middle">
                                                                 &nbsp;</td>
                                                             <td>
-                                                                &nbsp;</td>
+                                                                <asp:HiddenField ID="hdnRoom" runat="server" />
+                                                            </td>
                                                             <td valign="middle">
                                                                 &nbsp;</td>
                                                             <td>
-                                                                &nbsp;</td>
+                                                                <asp:HiddenField ID="hdnRate" runat="server" />
+                                                            </td>
                                                         </tr>
                                        
                                                         <tr valign="middle">
@@ -309,10 +312,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                                 </PropertiesTextEdit>
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="Room" ShowInCustomizationForm="True" VisibleIndex="4"
-                                                                FieldName="RoomId" Width="100px">
+                                                                FieldName="RoomName" Width="100px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataTextColumn Caption="Rate Plan" ShowInCustomizationForm="True" VisibleIndex="5"
-                                                                FieldName="RatePlanId" Width="60px">
+                                                                FieldName="RatePlanName" Width="60px">
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataSpinEditColumn Caption="# Adults" FieldName="NumberOfAdults" ShowInCustomizationForm="True"
                                                                 VisibleIndex="7" Width="60px">

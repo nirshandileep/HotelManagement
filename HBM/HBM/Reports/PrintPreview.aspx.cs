@@ -345,7 +345,7 @@ namespace HBM.Reports
             cellBalance2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
             cellBalance1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             cellBalance2.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
-                        
+            tableRowBalance.Cells.Add(cellBalance1);                        
             tableRowBalance.Cells.Add(cellBalance2);
             reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowBalance);           
 
