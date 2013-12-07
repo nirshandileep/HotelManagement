@@ -398,6 +398,21 @@
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="info-lbl" height="22">
+                                            &nbsp;</td>
+                                        <td>
+                                            <dx:ASPxCheckBox ID="chkUseSameBillingAddress" runat="server" Checked="True" 
+                                                CheckState="Checked" Text="Use Same Billing Address">
+                                            </dx:ASPxCheckBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;</td>
+                                        <td>
+                                            &nbsp;</td>
+                                        <td>
+                                            &nbsp;</td>
+                                    </tr>
                                 </table>
                             </dx:PanelContent>
                         </PanelCollection>
@@ -417,12 +432,13 @@
                                 <table class="customers-tbl">
                                     <tr>
                                         <td height="22" class="info-lbl">
-                                            Billing Address<span class="reqfield">*</span>
+                                            Billing Address Line 1<span class="reqfield">*</span>
                                         </td>
                                         <td>
                                             <dx:ASPxTextBox ID="txtBillingAddressLine1" runat="server" Width="170px" TabIndex="27">
-                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
-                                                    <RequiredField IsRequired="True" ErrorText="Required" />
+                                                <ValidationSettings ValidationGroup="vgCustomer" 
+                                                    ErrorDisplayMode="ImageWithTooltip" Display="Dynamic">
+                                                    <RequiredField ErrorText="Required" />
                                                 </ValidationSettings>
                                             </dx:ASPxTextBox>
                                         </td>
@@ -430,11 +446,36 @@
                                             &nbsp;
                                         </td>
                                         <td>
+                                            State/County
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtBillingState" runat="server" TabIndex="28" Width="170px">
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="22" class="info-lbl">
+                                            Billing Address Line 2<span class="reqfield">*</span>
+                                        </td>
+                                        <td>
+                                            <dx:ASPxTextBox ID="txtBillingAddressLine2" runat="server" TabIndex="27" 
+                                                Width="170px">
+                                                <ValidationSettings 
+                                                    ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer" 
+                                                    Display="Dynamic">
+                                                    <RequiredField ErrorText="Required" />
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
                                             Country
                                         </td>
                                         <td>
-                                            <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" ValueType="System.Int32" IncrementalFilteringMode="Contains"
-                                                TabIndex="29">
+                                            <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" 
+                                                IncrementalFilteringMode="Contains" TabIndex="29" ValueType="System.Int32">
                                             </dx:ASPxComboBox>
                                         </td>
                                     </tr>
@@ -443,10 +484,11 @@
                                             Billing City<span class="reqfield">*</span>
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingCity" runat="server" Width="170px" TabIndex="28">
-                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip"
-                                                    ErrorText="Required">
-                                                    <RequiredField IsRequired="True" ErrorText="Required" />
+                                            <dx:ASPxTextBox ID="txtBillingCity" runat="server" TabIndex="28" Width="170px">
+                                                <ValidationSettings 
+                                                    ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" 
+                                                    ValidationGroup="vgCustomer" Display="Dynamic">
+                                                    <RequiredField ErrorText="Required" />
                                                 </ValidationSettings>
                                             </dx:ASPxTextBox>
                                         </td>
@@ -454,31 +496,28 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            Zip Code/Post code
+                                            Zip Code/Post code &nbsp;
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" Width="170px" TabIndex="30">
+                                            
+                                            <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" TabIndex="30" 
+                                                Width="170px">
                                             </dx:ASPxTextBox>
+                                            
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td height="22" class="info-lbl">
-                                            State/County
-                                        </td>
+                                        <td class="info-lbl" height="22">
+                                            &nbsp;</td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingState" runat="server" Width="170px" TabIndex="28">
-                                            </dx:ASPxTextBox>
-                                        </td>
+                                            &nbsp;</td>
                                         <td>
-                                            &nbsp;
-                                        </td>
+                                            &nbsp;</td>
                                         <td>
-                                            &nbsp;
-                                        </td>
+                                            &nbsp;</td>
                                         <td>
                                             <asp:HiddenField ID="hdnCustomerId" runat="server" Value="0" />
-                                            <asp:HiddenField ID="hdnFromURL" runat="server" />
-                                        </td>
+                                            <asp:HiddenField ID="hdnFromURL" runat="server" /></td>
                                     </tr>
                                 </table>
                             </dx:PanelContent>

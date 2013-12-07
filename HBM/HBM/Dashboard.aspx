@@ -52,8 +52,11 @@
                             <dx:TabPage Name="Timeline" Text="Timeline">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                                        <dxwschs:ASPxResourceNavigator ID="ASPxResourceNavigator1" runat="server" 
+                                            MasterControlID="schReservationDashboad">
+                                        </dxwschs:ASPxResourceNavigator>
                                         <dxwschs:ASPxScheduler ID="schReservationDashboad" runat="server" ActiveViewType="Timeline"
-                                            ClientIDMode="AutoID" Start="2013-12-01" EnableCallbackAnimation="True" 
+                                            ClientIDMode="AutoID" Start="2013-12-07" EnableCallbackAnimation="True" 
                                             EnableChangeVisibleIntervalCallbackAnimation="True" GroupType="Resource">
                                             <Storage EnableReminders="False">
                                             </Storage>
@@ -69,8 +72,11 @@
                                                         <cc1:TimeRuler />
                                                     </TimeRulers>
                                                 </WorkWeekView>
-                                                <TimelineView>
+                                                <TimelineView ResourcesPerPage="10">
                                                     <TimelineViewStyles>
+                                                        <TimelineCellBody Height="150px" HorizontalAlign="Left" VerticalAlign="Top" 
+                                                            Wrap="False">
+                                                        </TimelineCellBody>
                                                         <Appointment BackColor="#FFFFCC">
                                                         </Appointment>
                                                     </TimelineViewStyles>
@@ -84,6 +90,8 @@
                                                 AllowDisplayAppointmentForm="Never" AllowInplaceEditor="None" />
                                             <OptionsBehavior RecurrentAppointmentDeleteAction="Cancel" 
                                                 RecurrentAppointmentEditAction="Cancel" />
+                                            <OptionsForms GotoDateFormVisibility="None" />
+                                            <ResourceNavigator Visibility="Never" />
                                         </dxwschs:ASPxScheduler>
                                     </dx:ContentControl>
                                 </ContentCollection>

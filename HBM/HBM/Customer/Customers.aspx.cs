@@ -64,9 +64,14 @@ namespace HBM
 
                 CustomerObj = CustomerObj.Select();
 
+                if (CustomerObj.CustomerId > 0)
+                {
+                    chkUseSameBillingAddress.Checked = false;
+                }
+
                 txtCustomerName.Text = CustomerObj.CustomerName;
                 txtBillingAddressLine1.Text = CustomerObj.BillingAddressLine1;
-                //txtBillingAddressLine2.Text = CustomerObj.BillingAddressLine2;
+                txtBillingAddressLine2.Text = CustomerObj.BillingAddressLine2;
 
                 txtBillingCity.Text = CustomerObj.BillingCity;
 
@@ -153,6 +158,7 @@ namespace HBM
                     hdnCustomerId.Value = "0";
                     txtCustomerName.Text = string.Empty;
                     txtBillingAddressLine1.Text = string.Empty;
+                    txtBillingAddressLine2.Text = string.Empty;
                     
                     txtBillingCity.Text = string.Empty;
                     txtBillingPostCode.Text = string.Empty;
@@ -279,24 +285,6 @@ namespace HBM
             CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
             CustomerObj.CustomerName = txtCustomerName.Text.Trim();
 
-            CustomerObj.BillingAddressLine1 = txtBillingAddressLine1.Text.Trim();
-            //adress lines
-
-            CustomerObj.BillingCity = txtBillingCity.Text.Trim();
-
-            if (cmbBillingCountry.SelectedIndex > -1
-                && (int)cmbBillingCountry.SelectedItem.Value > 0)
-            {
-                CustomerObj.BillingCountryId = (int)cmbBillingCountry.SelectedItem.Value;
-            }
-            else
-            {
-                CustomerObj.BillingCountryId = null;
-            }
-
-            CustomerObj.BillingPostCode = txtBillingPostCode.Text.Trim();
-            CustomerObj.BillingState = txtBillingState.Text.Trim();
-
             if (cmbCar.SelectedIndex > -1)
             {
                 CustomerObj.Car = cmbCar.SelectedItem.Text;
@@ -322,6 +310,8 @@ namespace HBM
                 CustomerObj.CreditCardTypeId = null;
             }
 
+            #region Company section
+
             CustomerObj.CompanyAddressLine1 = txtCompanyAddressLine1.Text.Trim();
             CustomerObj.CompanyAddressLine2 = txtCompanyAddressLine2.Text.Trim();
             CustomerObj.CompanyCity = txtCompanyCity.Text.Trim();
@@ -336,9 +326,47 @@ namespace HBM
 
             CustomerObj.CompanyState = txtCompanyState.Text.Trim();
             CustomerObj.CompanyPostCode = txtCompanyPostCode.Text.Trim();
-
             CustomerObj.CompanyName = txtCompanyName.Text.Trim();
             CustomerObj.CompanyNotes = txtNotes.Text.Trim();
+
+            #endregion
+
+            if (chkUseSameBillingAddress.Checked)
+            {
+                CustomerObj.BillingAddressLine1 = CustomerObj.CompanyAddressLine1;
+                CustomerObj.BillingAddressLine2 = CustomerObj.CompanyAddressLine2;
+                CustomerObj.BillingCity = CustomerObj.CompanyCity;
+                CustomerObj.BillingCountryId = CustomerObj.CompanyCountryId;
+                CustomerObj.BillingPostCode = CustomerObj.CompanyPostCode;
+                CustomerObj.BillingState = CustomerObj.CompanyState;
+            }
+            else
+            {
+                if (txtBillingAddressLine1.Text.Trim() == string.Empty 
+                    || txtBillingAddressLine2.Text.Trim() == string.Empty
+                    || txtBillingCity.Text.Trim() == string.Empty)
+                {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Save_Unsuccess_BillingAddress_Notprovided + "')", true);
+                }
+                #region Billing section
+                CustomerObj.BillingAddressLine1 = txtBillingAddressLine1.Text.Trim();
+                CustomerObj.BillingAddressLine2 = txtBillingAddressLine2.Text.Trim();
+                CustomerObj.BillingCity = txtBillingCity.Text.Trim();
+                if (cmbBillingCountry.SelectedIndex > -1
+                    && (int)cmbBillingCountry.SelectedItem.Value > 0)
+                {
+                    CustomerObj.BillingCountryId = (int)cmbBillingCountry.SelectedItem.Value;
+                }
+                else
+                {
+                    CustomerObj.BillingCountryId = null;
+                }
+                CustomerObj.BillingPostCode = txtBillingPostCode.Text.Trim();
+                CustomerObj.BillingState = txtBillingState.Text.Trim();
+                #endregion
+            }
+           
+
             CustomerObj.DriverLicense = txtDriveLicense.Text.Trim();
             CustomerObj.Email = txtEmail.Text.Trim();
             CustomerObj.Fax = txtFax.Text.Trim();
@@ -373,7 +401,7 @@ namespace HBM
                 }
                 else
                 {
-                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Unsuccess + "')", true);
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Save_Unsuccess + "')", true);
                 }
 
             }

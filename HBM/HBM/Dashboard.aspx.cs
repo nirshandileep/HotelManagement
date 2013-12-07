@@ -89,7 +89,6 @@ namespace HBM
             schReservationDashboad.ResourceDataSource = dsTimeLineData.Tables[1];
             schReservationDashboad.Storage.Resources.Mappings.ResourceId = "RoomId";
             schReservationDashboad.Storage.Resources.Mappings.Caption = "RoomDescription";
-            //schReservationDashboad.Storage.Resources.Mappings.Color = "Red";
 
             schReservationDashboad.Views.WorkWeekView.Enabled = false;
             schReservationDashboad.AppointmentDataSource = dsTimeLineData.Tables[0];
@@ -97,7 +96,7 @@ namespace HBM
             schReservationDashboad.Storage.Appointments.Mappings.Start = "CheckInDate";
             schReservationDashboad.Storage.Appointments.Mappings.End = "CheckOutDate";
             schReservationDashboad.Storage.Appointments.Mappings.Label = "RoomNumber";
-            schReservationDashboad.Storage.Appointments.Mappings.Subject = "CustomerName";
+            schReservationDashboad.Storage.Appointments.Mappings.Subject = "Subject";
             schReservationDashboad.Storage.Appointments.Mappings.ResourceId = "RoomId";
             schReservationDashboad.DataBind();
         }
