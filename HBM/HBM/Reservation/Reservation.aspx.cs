@@ -53,6 +53,8 @@ namespace HBM.Reservation
                 this.LoadAddiotnalService(newReservationId);
                 this.LoadPaymentInformation(newReservationId);
 
+                
+
             }
 
             ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
@@ -69,6 +71,15 @@ namespace HBM.Reservation
                     Int64 currentReservationId = Convert.ToInt64(this.hdnReservationId.Value);
                     this.DisplayData(currentReservationId);
                     this.Calculate();
+
+                    trReservationSection.Visible = true;
+                    trSummarySection.Visible = true;
+                    trButtonSection.Visible = true;
+
+                    dtCheckingDate.Enabled = false;
+                    dtCheckOutDate.Enabled = false;
+                    btnCreate.Visible = false;
+
                 }
             }
 
@@ -143,6 +154,15 @@ namespace HBM.Reservation
                 txtBalance.Text = "0";
 
                 this.hdnReservationId.Value = string.Empty;
+
+                trReservationSection.Visible = false;
+                trSummarySection.Visible = false;
+                trButtonSection.Visible = false;
+
+                dtCheckingDate.Enabled = true;
+                dtCheckOutDate.Enabled = true;
+                btnCreate.Visible = true;
+
             }
 
 
@@ -284,6 +304,7 @@ namespace HBM.Reservation
         protected void btnNew_Click(object sender, EventArgs e)
         {
             this.ClearFormFields();
+
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -311,6 +332,17 @@ namespace HBM.Reservation
         protected void cmbRatePlan_SelectedIndexChanged(object sender, EventArgs e)
         {
             hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
+        }
+
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+            trReservationSection.Visible = true;
+            trSummarySection.Visible = true;
+            trButtonSection.Visible = true;
+
+            dtCheckingDate.Enabled = false;
+            dtCheckOutDate.Enabled = false;
+
         }
 
         #endregion
@@ -806,6 +838,8 @@ namespace HBM.Reservation
         }
 
         #endregion              
+
+     
 
     }
 }

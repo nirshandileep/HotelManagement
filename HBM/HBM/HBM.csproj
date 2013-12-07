@@ -129,6 +129,7 @@
     <Content Include="Images\Clear.png" />
     <Content Include="Images\Company.png" />
     <Content Include="Images\Close.png" />
+    <Content Include="Images\Create.png" />
     <Content Include="Images\Customer.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\header-back.png" />

@@ -67,6 +67,15 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbSource;
         
         /// <summary>
+        /// btnCreate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnCreate;
+        
+        /// <summary>
         /// ASPxRoundPanel2 control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,24 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtCheckOutDate;
+        
+        /// <summary>
+        /// hdnRate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnRate;
+        
+        /// <summary>
+        /// trReservationSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trReservationSection;
         
         /// <summary>
         /// ASPxRoundPanel3 control.
@@ -157,15 +184,6 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAdd;
         
         /// <summary>
-        /// hdnRate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnRate;
-        
-        /// <summary>
         /// seAdults control.
         /// </summary>
         /// <remarks>
@@ -218,6 +236,15 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvPaymentInformation;
+        
+        /// <summary>
+        /// trSummarySection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trSummarySection;
         
         /// <summary>
         /// ASPxRoundPanel4 control.
@@ -317,6 +344,15 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtBalance;
+        
+        /// <summary>
+        /// trButtonSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trButtonSection;
         
         /// <summary>
         /// btnSave control.
