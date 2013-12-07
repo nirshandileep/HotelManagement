@@ -529,6 +529,18 @@ td.dxeSBC{
     vertical-align:middle;
 }
 
+#ctl00_ContentPlaceHolder1_pcPageControl_ASPxResourceNavigator1_D_CD,
+#ctl00_ContentPlaceHolder1_pcPageControl_ASPxResourceNavigator1_I_CD,
+#ctl00_ContentPlaceHolder1_pcPageControl_ASPxResourceNavigator1_L_CD,
+#ctl00_ContentPlaceHolder1_pcPageControl_ASPxResourceNavigator1_NP_CD,
+#ctl00_ContentPlaceHolder1_pcPageControl_ASPxResourceNavigator1_N_CD,
+#ctl00_ContentPlaceHolder1_pcPageControl_ASPxResourceNavigator1_P_CD,
+#ctl00_ContentPlaceHolder1_pcPageControl_ASPxResourceNavigator1_PP_CD,
+#ctl00_ContentPlaceHolder1_pcPageControl_ASPxResourceNavigator1_F_CD
+{
+    margin-top: -19px;
+}
+
 /* End Dashboard */
 
 
