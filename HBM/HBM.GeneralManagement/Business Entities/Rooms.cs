@@ -16,6 +16,7 @@ namespace HBM.GeneralManagement
 
         public int CompanyId { get; set; }
         public int RoomId { get; set; }
+        public string RoomCode { get; set; }
         public string RoomName { get; set; }
         public string RoomNumber { get; set; }
         public int BedTypeId { get; set; }
@@ -120,6 +121,11 @@ namespace HBM.GeneralManagement
         public bool MarkRoomAsDirty()
         {
             return (new RoomDAO()).UpdateRoomAsDirty(this);
+        }
+
+        public bool IsDuplicateTypeName()
+        {
+            return (new RoomDAO()).IsDuplicateTypeName(this);
         }
 
 

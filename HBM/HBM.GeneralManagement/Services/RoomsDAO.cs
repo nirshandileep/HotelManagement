@@ -51,8 +51,7 @@ namespace HBM.GeneralManagement
 
             return true;
         }
-
-
+        
         public bool Insert(Room room)
         {
 
@@ -172,6 +171,25 @@ namespace HBM.GeneralManagement
             db.ExecuteNonQuery(command);
 
             return true;
+        }
+
+        public bool IsDuplicateTypeName(Room room)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_RoomIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, room.CompanyId);
+            db.AddInParameter(dbCommand, "@RoomId", DbType.Int32, room.RoomId);
+            db.AddInParameter(dbCommand, "@RoomCode", DbType.String, room.RoomCode);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
         }
 
     }

@@ -35,8 +35,7 @@ namespace HBM.GeneralManagement
 
             return true;
         }
-
-
+        
         public bool Insert(Department department)
         {
 
@@ -93,6 +92,25 @@ namespace HBM.GeneralManagement
             return db.ExecuteDataSet(dbCommand);
 
 
+        }
+
+        public bool IsDuplicateTypeName(Department department)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_DepartmentIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, department.CompanyId);
+            db.AddInParameter(dbCommand, "@DepartmentId", DbType.Int32, department.DepartmentId);
+            db.AddInParameter(dbCommand, "@DepartmentName", DbType.String, department.DepartmentName);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
         }
 
     }

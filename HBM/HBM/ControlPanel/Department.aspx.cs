@@ -96,10 +96,21 @@ namespace HBM.Reservation
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (departments.Save(dsData))
+            departments.DepartmentName = e.NewValues["DepartmentName"].ToString();
+            
+            if (!departments.IsDuplicateName())
             {
-                this.LoadDepartments();
+
+                if (departments.Save(dsData))
+                {
+                    this.LoadDepartments();
+                }
             }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
+
 
         }
 
@@ -121,9 +132,19 @@ namespace HBM.Reservation
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (departments.Save(dsData))
+            departments.DepartmentId = Convert.ToInt32(e.Keys["DepartmentId"].ToString());
+            departments.DepartmentName = e.NewValues["DepartmentName"].ToString();
+
+            if (!departments.IsDuplicateName())
             {
-                this.LoadDepartments();
+                if (departments.Save(dsData))
+                {
+                    this.LoadDepartments();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
             }
         }
     }

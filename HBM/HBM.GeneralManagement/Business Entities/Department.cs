@@ -39,7 +39,6 @@ namespace HBM.GeneralManagement
             return result;
         }
 
-
         public bool Save()
         {
             bool result = false;
@@ -94,6 +93,12 @@ namespace HBM.GeneralManagement
         {
             return (new DepartmentsDAO()).SelectAll(this);
         }
+
+        public bool IsDuplicateName()
+        {
+            return (new DepartmentsDAO()).IsDuplicateTypeName(this);
+        }
+
 
         #endregion
 

@@ -78,11 +78,20 @@ namespace HBM.Reservation
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (ratePlans.Save(dsData))
-            {
-                this.LoadRatePlans();
-            }
+            ratePlans.RatePlanName = e.NewValues["RatePlanName"].ToString();
 
+              if (!ratePlans.IsDuplicateTypeName())
+              {
+
+                  if (ratePlans.Save(dsData))
+                  {
+                      this.LoadRatePlans();
+                  }
+              }
+              else
+              {
+                  throw new System.Exception(Messages.Duplicate_record);
+              }
 
         }
 
@@ -104,10 +113,21 @@ namespace HBM.Reservation
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (ratePlans.Save(dsData))
+            ratePlans.RatePlansId = Convert.ToInt32(e.Keys["RatePlansId"].ToString());
+            ratePlans.RatePlanName = e.NewValues["RatePlanName"].ToString();
+
+            if (!ratePlans.IsDuplicateTypeName())
             {
-                this.LoadRatePlans();
+                if (ratePlans.Save(dsData))
+                {
+                    this.LoadRatePlans();
+                }
             }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
+
 
         }
 

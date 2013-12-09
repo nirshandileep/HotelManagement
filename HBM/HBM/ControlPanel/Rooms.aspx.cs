@@ -17,7 +17,7 @@ namespace HBM.Reservation
     public partial class Rooms : System.Web.UI.Page
     {
         DataSet dsData = new DataSet();
-        DataSet dsBedTypes = new DataSet(); 
+        DataSet dsBedTypes = new DataSet();
 
         GenMan.Room rooms = new GenMan.Room();
         GenMan.BedType bedTypes = new GenMan.BedType();
@@ -27,8 +27,8 @@ namespace HBM.Reservation
             gvRooms.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
 
             this.LoadRooms();
-            this.LoadBedType();        
-         
+            this.LoadBedType();
+
 
         }
 
@@ -79,12 +79,11 @@ namespace HBM.Reservation
 
 
             }
-        }   
+        }
 
         protected void gvRooms_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            try
-            {
+
             dsData = Session[Constants.SESSION_ROOMS] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
             DataRow row = dsData.Tables[0].NewRow();
@@ -108,17 +107,20 @@ namespace HBM.Reservation
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (rooms.Save(dsData))
+            rooms.RoomCode = e.NewValues["RoomCode"].ToString();
+
+            if (!rooms.IsDuplicateTypeName())
             {
-                this.LoadRooms();
+                if (rooms.Save(dsData))
+                {
+                    this.LoadRooms();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
             }
 
-            }
-            catch (System.Exception ex)
-            {
-
-                throw ex;
-            }
         }
 
         protected void gvRooms_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -139,9 +141,19 @@ namespace HBM.Reservation
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (rooms.Save(dsData))
+            rooms.RoomId = Convert.ToInt32(e.Keys["RoomId"].ToString());
+            rooms.RoomCode = e.NewValues["RoomCode"].ToString();
+
+            if (!rooms.IsDuplicateTypeName())
             {
-                this.LoadRooms();
+                if (rooms.Save(dsData))
+                {
+                    this.LoadRooms();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
             }
 
         }
@@ -167,7 +179,7 @@ namespace HBM.Reservation
         {
             if (e.Column.FieldName != "BedTypeId") return;
 
-            ASPxComboBox combo = e.Editor as ASPxComboBox;                      
+            ASPxComboBox combo = e.Editor as ASPxComboBox;
             combo.DataBindItems();
         }
     }

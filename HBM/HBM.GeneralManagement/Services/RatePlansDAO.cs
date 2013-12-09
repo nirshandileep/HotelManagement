@@ -60,5 +60,24 @@ namespace HBM.GeneralManagement
 
         }
 
+        public bool IsDuplicateTypeName(RatePlans ratePlan)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_RatePlansIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, ratePlan.CompanyId);
+            db.AddInParameter(dbCommand, "@RatePlansId", DbType.Int32, ratePlan.RatePlansId);
+            db.AddInParameter(dbCommand, "@RatePlanName", DbType.String, ratePlan.RatePlanName);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
+        }
+
     }
 }

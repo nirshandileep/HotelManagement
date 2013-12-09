@@ -78,9 +78,19 @@ namespace HBM.ControlPanel
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (paymentTypes.Save(dsData))
+            paymentTypes.PaymentTypeName = e.NewValues["PaymentTypeName"].ToString();
+
+
+            if (!paymentTypes.IsDuplicateTypeName())
             {
-                this.LoadPaymentTypes();
+                if (paymentTypes.Save(dsData))
+                {
+                    this.LoadPaymentTypes();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
             }
 
 
@@ -104,11 +114,20 @@ namespace HBM.ControlPanel
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (paymentTypes.Save(dsData))
+            paymentTypes.PaymentTypeId = Convert.ToInt32(e.Keys["PaymentTypeId"].ToString());
+            paymentTypes.PaymentTypeName = e.NewValues["PaymentTypeName"].ToString();
+            
+            if (!paymentTypes.IsDuplicateTypeName())
             {
-                this.LoadPaymentTypes();
+                if (paymentTypes.Save(dsData))
+                {
+                    this.LoadPaymentTypes();
+                }
             }
-
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
         }
 
         protected void gvPaymentTypes_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)

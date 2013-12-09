@@ -59,15 +59,14 @@
                                 </CancelButton>
                             </dx:GridViewCommandColumn>
                             <dx:GridViewDataDateColumn Caption="Effective From" VisibleIndex="1" FieldName="EffectiveFrom">
-                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d" 
-                                    EditFormat="Custom">
+                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d">
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>
                                 </PropertiesDateEdit>
                             </dx:GridViewDataDateColumn>
                             <dx:GridViewDataDateColumn Caption="Effective To" VisibleIndex="2" FieldName="EffectiveTo">
-                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormat="Custom" EditFormatString="d">
+                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d">
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>

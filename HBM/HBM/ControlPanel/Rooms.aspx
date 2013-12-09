@@ -28,7 +28,7 @@
                         OnRowDeleting="gvRooms_RowDeleting" OnRowInserting="gvRooms_RowInserting" OnRowUpdating="gvRooms_RowUpdating"
                         OnCellEditorInitialize="gvRooms_CellEditorInitialize">
                         <Columns>
-                            <dx:GridViewDataTextColumn Caption="Room Name" FieldName="RoomName" VisibleIndex="0"
+                            <dx:GridViewDataTextColumn Caption="Room Name" FieldName="RoomName" VisibleIndex="1"
                                 Name="BedTypeName">
                                 <PropertiesTextEdit>
                                     <ValidationSettings>
@@ -59,7 +59,7 @@
                                     </Image>
                                 </CancelButton>
                             </dx:GridViewCommandColumn>
-                            <dx:GridViewDataTextColumn Caption="Code" VisibleIndex="1" FieldName="RoomCode">
+                            <dx:GridViewDataTextColumn Caption="Code" VisibleIndex="0" FieldName="RoomCode">
                                 <PropertiesTextEdit>
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />

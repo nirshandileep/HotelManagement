@@ -49,6 +49,12 @@ namespace HBM.GeneralManagement
             return (new PaymentTypeDAO()).SelectAll(this);
         }
 
+        public bool IsDuplicateTypeName()
+        {
+            return (new PaymentTypeDAO()).IsDuplicateTypeName(this);
+        }
+
+
         #endregion
     }
 }

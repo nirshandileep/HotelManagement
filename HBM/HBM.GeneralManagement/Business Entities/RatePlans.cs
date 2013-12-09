@@ -55,6 +55,12 @@ namespace HBM.GeneralManagement
             return (new RatePlansDAO()).SelectAll(this);
         }
 
+        public bool IsDuplicateTypeName()
+        {
+            return (new RatePlansDAO()).IsDuplicateTypeName(this);
+        }
+
+
         #endregion      
 
     }

@@ -48,5 +48,24 @@ namespace HBM.GeneralManagement
 
         }
 
+        public bool IsDuplicateTypeName(PaymentType paymentType)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_PaymentTypeIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, paymentType.CompanyId);
+            db.AddInParameter(dbCommand, "@PaymentTypeId", DbType.Int32, paymentType.PaymentTypeId);
+            db.AddInParameter(dbCommand, "@PaymentTypeName", DbType.String, paymentType.PaymentTypeName);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
+        }
+
     }
 }
