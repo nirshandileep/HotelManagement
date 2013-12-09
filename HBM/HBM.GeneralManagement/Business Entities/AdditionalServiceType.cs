@@ -38,12 +38,10 @@ namespace HBM.GeneralManagement
             return result;
         }
 
-
         public DataSet SelectAllDataset()
         {
             return (new AdditionalServiceTypeDAO()).SelectAll(this);
         }
-
 
         public bool IsDuplicateTypeName()
         {

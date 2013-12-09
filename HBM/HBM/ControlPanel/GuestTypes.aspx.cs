@@ -79,9 +79,21 @@ namespace HBM.ControlPanel
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (guestType.Save(dsData))
+            guestType.GuestTypeName = e.NewValues["GuestTypeName"].ToString();
+
+
+            if (!guestType.IsDuplicateTypeName())
             {
-                this.LoadGuestTypes();
+
+                if (guestType.Save(dsData))
+                {
+                    this.LoadGuestTypes();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+
             }
 
 
@@ -105,11 +117,21 @@ namespace HBM.ControlPanel
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (guestType.Save(dsData))
-            {
-                this.LoadGuestTypes();
-            }
+            guestType.GuestTypeId = Convert.ToInt32(e.Keys["GuestTypeId"].ToString());
+            guestType.GuestTypeName = e.NewValues["GuestTypeName"].ToString();
 
+            if (!guestType.IsDuplicateTypeName())
+            {
+                if (guestType.Save(dsData))
+                {
+                    this.LoadGuestTypes();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+
+            }
         }
 
         protected void gvGuestTypes_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)

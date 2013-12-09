@@ -12,7 +12,7 @@ namespace HBM.GeneralManagement
         #region Properties
 
         public int CompanyId { get; set; }
-        public int BedTypeId { get; set; }
+        public int GuestTypeId { get; set; }
         public string GuestTypeName { get; set; }
         public string GuestTypeDescription { get; set; }
         public string CreatedBy { get; set; }
@@ -44,6 +44,12 @@ namespace HBM.GeneralManagement
         {
             return (new GuestTypeDAO()).SelectAll(this);
         }
+
+        public bool IsDuplicateTypeName()
+        {
+            return (new GuestTypeDAO()).IsDuplicateTypeName(this);
+        }
+
 
         #endregion
     }

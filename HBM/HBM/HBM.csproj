@@ -485,6 +485,7 @@
     <None Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\xrReservation.resx">
       <DependentUpon>xrReservation.cs</DependentUpon>
     </EmbeddedResource>

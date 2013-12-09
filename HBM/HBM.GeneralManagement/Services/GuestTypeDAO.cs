@@ -38,7 +38,6 @@ namespace HBM.GeneralManagement
             return true;
         }
 
-
         public DataSet SelectAll(GuestType guestType)
         {
 
@@ -50,6 +49,26 @@ namespace HBM.GeneralManagement
 
 
         }
+
+        public bool IsDuplicateTypeName(GuestType guestType)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("GuestTypeIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, guestType.CompanyId);
+            db.AddInParameter(dbCommand, "@GuestTypeId", DbType.Int32, guestType.GuestTypeId);
+            db.AddInParameter(dbCommand, "@GuestTypeName", DbType.String, guestType.GuestTypeName);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
+        }
+
 
     }
 }
