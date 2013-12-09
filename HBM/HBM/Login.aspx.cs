@@ -14,13 +14,16 @@ namespace HBM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 #if DEBUG
-            txtUserName.Text = "admin";
-            txtPassword.Text = "letmein";
+                txtUserName.Text = "admin";
+                txtPassword.Text = "letmein";
 #else
-            txtUserName.Text = "";
-            txtPassword.Text = "";
+                txtUserName.Text = "";
+                txtPassword.Text = "";
 #endif
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

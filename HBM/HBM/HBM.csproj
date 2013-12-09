@@ -119,15 +119,6 @@
     <Content Include="Global.asax" />
     <Content Include="Images\Add.png" />
     <Content Include="Images\Apply.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\BottomLeftCorner.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\BottomRightCorner.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\HeaderContent.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\HeaderLeftEdge.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\HeaderRightEdge.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\NoHeaderTopLeftCorner.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\NoHeaderTopRightCorner.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\TopLeftCorner.png" />
-    <Content Include="Images\ASPxRoundPanel\2044981245\TopRightCorner.png" />
     <Content Include="Images\back.jpg" />
     <Content Include="Images\Clear.png" />
     <Content Include="Images\Company.png" />
@@ -494,7 +485,6 @@
     <None Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\xrReservation.resx">
       <DependentUpon>xrReservation.cs</DependentUpon>
     </EmbeddedResource>
