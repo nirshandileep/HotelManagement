@@ -104,5 +104,24 @@ namespace HBM.GeneralManagement
 
         }
 
+        public bool IsDuplicateTypeName(BedType bedType)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_BedTypeIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, bedType.CompanyId);
+            db.AddInParameter(dbCommand, "@BedTypeId", DbType.Int32, bedType.BedTypeId);
+            db.AddInParameter(dbCommand, "@BedTypeName", DbType.String, bedType.BedTypeName);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
+        }
+
     }
 }

@@ -55,7 +55,7 @@ namespace HBM.GeneralManagement
             bool result = false;
 
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-            DbCommand dbCommand = db.GetStoredProcCommand("GuestTypeIsDuplicateTypeName");
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_GuestTypeIsDuplicateTypeName");
             db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, guestType.CompanyId);
             db.AddInParameter(dbCommand, "@GuestTypeId", DbType.Int32, guestType.GuestTypeId);
             db.AddInParameter(dbCommand, "@GuestTypeName", DbType.String, guestType.GuestTypeName);

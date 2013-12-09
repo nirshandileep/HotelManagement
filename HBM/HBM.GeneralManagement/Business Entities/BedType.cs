@@ -94,6 +94,12 @@ namespace HBM.GeneralManagement
             return (new BedTypeDAO()).SelectAll(this);
         }
 
+        public bool IsDuplicateTypeName()
+        {
+            return (new BedTypeDAO()).IsDuplicateTypeName(this);
+        }
+
+
         #endregion
     }
 }

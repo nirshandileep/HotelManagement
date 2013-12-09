@@ -78,11 +78,23 @@ namespace HBM.ControlPanel
             e.Cancel = true;
 
             dsData.Tables[0].Rows.Add(row);
-            
-            if (bedType.Save(dsData))
+
+            bedType.BedTypeName = e.NewValues["BedTypeName"].ToString();
+
+
+            if (!bedType.IsDuplicateTypeName())
             {
-                this.LoadBedTypes();
+
+                if (bedType.Save(dsData))
+                {
+                    this.LoadBedTypes();
+                }
             }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
+
 
 
         }
@@ -104,11 +116,22 @@ namespace HBM.ControlPanel
 
             gridView.CancelEdit();
             e.Cancel = true;
-            
-            if (bedType.Save(dsData))
+
+            bedType.BedTypeId = Convert.ToInt32(e.Keys["BedTypeId"].ToString());
+            bedType.BedTypeName = e.NewValues["BedTypeName"].ToString();
+
+            if (!bedType.IsDuplicateTypeName())
             {
-                this.LoadBedTypes();
+                if (bedType.Save(dsData))
+                {
+                    this.LoadBedTypes();
+                }
             }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
+
 
         }
 
