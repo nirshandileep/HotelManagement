@@ -40,7 +40,6 @@ namespace HBM.GeneralManagement
             return result;
         }
 
-
         public List<CreditCardType> SelectAllList()
         {
             return HBM.Utility.Generic.GetAll<CreditCardType>(CompanyId);
@@ -50,6 +49,12 @@ namespace HBM.GeneralManagement
         {
             return (new CreditCardTypeDAO()).SelectAll(this);
         }
+
+        public bool IsDuplicateTypeName()
+        {
+            return (new CreditCardTypeDAO()).IsDuplicateTypeName(this);
+        }
+
 
         #endregion
     }

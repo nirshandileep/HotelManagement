@@ -78,9 +78,19 @@ namespace HBM.ControlPanel
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (creditCardType.Save(dsData))
+            creditCardType.Name = e.NewValues["Name"].ToString();
+            
+            if (!creditCardType.IsDuplicateTypeName())
             {
-                this.LoadCreditCardTypes();
+                if (creditCardType.Save(dsData))
+                {
+                    this.LoadCreditCardTypes();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+
             }
 
 
@@ -104,9 +114,20 @@ namespace HBM.ControlPanel
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (creditCardType.Save(dsData))
+            creditCardType.CreditCardTypeId = Convert.ToInt32(e.Keys["CreditCardTypeId"].ToString());
+            creditCardType.Name = e.NewValues["Name"].ToString();
+
+            if (!creditCardType.IsDuplicateTypeName())
             {
-                this.LoadCreditCardTypes();
+                if (creditCardType.Save(dsData))
+                {
+                    this.LoadCreditCardTypes();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+
             }
 
         }

@@ -50,5 +50,25 @@ namespace HBM.GeneralManagement
 
         }
 
+        public bool IsDuplicateTypeName(CreditCardType creditCardType)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_CreditCardTypeIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, creditCardType.CompanyId);
+            db.AddInParameter(dbCommand, "@CreditCardTypeId", DbType.Int32, creditCardType.CreditCardTypeId);
+            db.AddInParameter(dbCommand, "@Name", DbType.String, creditCardType.Name);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
+        }
+
+
     }
 }
