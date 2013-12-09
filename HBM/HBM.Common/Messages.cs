@@ -28,6 +28,9 @@ namespace HBM.Common
 
         public static readonly string Save_Unsuccess_BillingAddress_Notprovided = Save_Unsuccess + " Billing Address details are not properly provided";
 
+        public static readonly string Duplicate_record = "Can not continue. Record is already exists!";
+
+
 
 
     }

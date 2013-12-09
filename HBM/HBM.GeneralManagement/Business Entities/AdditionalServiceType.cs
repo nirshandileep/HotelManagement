@@ -12,7 +12,7 @@ namespace HBM.GeneralManagement
 
         public int CompanyId { get; set; }
         public int AdditionalServiceTypeId { get; set; }
-        public string AdditionalServiceTypeName { get; set; }        
+        public string AdditionalServiceTypeName { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
@@ -37,11 +37,17 @@ namespace HBM.GeneralManagement
             }
             return result;
         }
-               
+
 
         public DataSet SelectAllDataset()
         {
             return (new AdditionalServiceTypeDAO()).SelectAll(this);
+        }
+
+
+        public bool IsDuplicateTypeName()
+        {
+            return (new AdditionalServiceTypeDAO()).IsDuplicateTypeName(this);
         }
 
         #endregion

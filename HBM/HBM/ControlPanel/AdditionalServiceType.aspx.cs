@@ -78,11 +78,19 @@ namespace HBM.ControlPanel
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (additionalServiceType.Save(dsData))
-            {
-                this.LoadAdditionalServiceTypes();
-            }
+            additionalServiceType.AdditionalServiceTypeName = e.NewValues["AdditionalServiceType"].ToString();
 
+            if (!additionalServiceType.IsDuplicateTypeName())
+            {
+                if (additionalServiceType.Save(dsData))
+                {
+                    this.LoadAdditionalServiceTypes();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
 
         }
 
@@ -104,10 +112,22 @@ namespace HBM.ControlPanel
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (additionalServiceType.Save(dsData))
+            additionalServiceType.AdditionalServiceTypeId = Convert.ToInt32(e.Keys["AdditionalServiceTypeId"].ToString());
+            additionalServiceType.AdditionalServiceTypeName = e.NewValues["AdditionalServiceType"].ToString();
+
+            if (!additionalServiceType.IsDuplicateTypeName())
             {
-                this.LoadAdditionalServiceTypes();
+
+                if (additionalServiceType.Save(dsData))
+                {
+                    this.LoadAdditionalServiceTypes();
+                }
             }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
+
 
         }
 
