@@ -66,9 +66,9 @@ namespace HBM.GeneralManagement
             db.AddInParameter(command, "@MaxChildren", DbType.Int32, room.MaxChildren);
             db.AddInParameter(command, "@MaxInfant", DbType.Int32, room.MaxInfant);
             db.AddInParameter(command, "@SmokingAllow", DbType.Boolean, room.SmokingAllow);
-            db.AddInParameter(command, "@CreatedBy", DbType.Int32, room.CreatedBy);
+            db.AddInParameter(command, "@CreatedBy", DbType.Int32, room.CreatedUser);
             db.AddInParameter(command, "@CreatedDate", DbType.DateTime, room.CreatedDate);
-            db.AddInParameter(command, "@UpdatedBy", DbType.Int32, room.UpdatedBy);
+            db.AddInParameter(command, "@UpdatedBy", DbType.Int32, room.UpdatedUser);
             db.AddInParameter(command, "@UpdatedDate", DbType.DateTime, room.UpdatedDate);
             db.AddInParameter(command, "@StatusId", DbType.Int32, room.StatusId);
 
@@ -92,9 +92,9 @@ namespace HBM.GeneralManagement
             db.AddInParameter(command, "@MaxChildren", DbType.Int32, room.MaxChildren);
             db.AddInParameter(command, "@MaxInfant", DbType.Int32, room.MaxInfant);
             db.AddInParameter(command, "@SmokingAllow", DbType.Boolean, room.SmokingAllow);
-            db.AddInParameter(command, "@CreatedBy", DbType.Int32, room.CreatedBy);
+            db.AddInParameter(command, "@CreatedBy", DbType.Int32, room.CreatedUser);
             db.AddInParameter(command, "@CreatedDate", DbType.DateTime, room.CreatedDate);
-            db.AddInParameter(command, "@UpdatedBy", DbType.Int32, room.UpdatedBy);
+            db.AddInParameter(command, "@UpdatedBy", DbType.Int32, room.UpdatedUser);
             db.AddInParameter(command, "@UpdatedDate", DbType.DateTime, room.UpdatedDate);
             db.AddInParameter(command, "@StatusId", DbType.Int32, room.StatusId);
 
@@ -166,7 +166,7 @@ namespace HBM.GeneralManagement
             DbCommand command = db.GetStoredProcCommand("usp_RoomMarkDirty");
 
             db.AddInParameter(command, "@RoomId", DbType.Int32, room.RoomId);
-            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, room.UpdatedBy);
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, room.UpdatedUser);
 
             db.ExecuteNonQuery(command);
 

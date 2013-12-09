@@ -130,7 +130,7 @@ namespace HBM.Reservation
             DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
-            e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser;
+            e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();
             while (enumerator.MoveNext())

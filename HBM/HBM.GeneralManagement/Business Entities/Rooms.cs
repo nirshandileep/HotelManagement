@@ -24,9 +24,9 @@ namespace HBM.GeneralManagement
         public int MaxChildren { get; set; }
         public int MaxInfant { get; set; }
         public bool SmokingAllow { get; set; }
-        public string CreatedBy { get; set; }
+        public string CreatedUser { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int UpdatedBy { get; set; }
+        public int UpdatedUser { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
         public bool IsDirty { get; set; }

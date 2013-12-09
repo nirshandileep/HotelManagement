@@ -216,7 +216,7 @@ namespace HBM
 
                 if (row["IsDirty"] != null && Boolean.Parse(row["IsDirty"].ToString()) != false)
                 {
-                    new RoomDAO().UpdateRoomAsDirty(new Room() { RoomId = (int)row["RoomId"], UpdatedBy = Master.LoggedUser.UsersId });
+                    new RoomDAO().UpdateRoomAsDirty(new Room() { RoomId = (int)row["RoomId"], UpdatedUser = Master.LoggedUser.UsersId });
                 }
 
                 System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
