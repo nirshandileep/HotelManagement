@@ -48,5 +48,25 @@ namespace HBM.GeneralManagement
 
 
         }
+
+        public bool IsDuplicateTypeName(Source source)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_SourceIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, source.CompanyId);
+            db.AddInParameter(dbCommand, "@SourceId", DbType.Int32, source.SourceId);
+            db.AddInParameter(dbCommand, "@SourceName", DbType.String, source.SourceName);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
+        }
+
     }
 }

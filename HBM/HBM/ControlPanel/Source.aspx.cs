@@ -85,10 +85,21 @@ namespace HBM.Reservation
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (source.Save(dsData))
+            source.SourceName = e.NewValues["SourceName"].ToString();
+
+            if (!source.IsDuplicateTypeName())
             {
-                this.LoadSource();
+
+                if (source.Save(dsData))
+                {
+                    this.LoadSource();
+                }
             }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
+
 
         }
 
@@ -110,10 +121,21 @@ namespace HBM.Reservation
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (source.Save(dsData))
+            source.SourceId = Convert.ToInt32(e.Keys["SourceId"].ToString());
+            source.SourceName = e.NewValues["SourceName"].ToString();
+
+            if (!source.IsDuplicateTypeName())
             {
-                this.LoadSource();
+                if (source.Save(dsData))
+                {
+                    this.LoadSource();
+                }
             }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
+            }
+
         }
     }
 }

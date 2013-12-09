@@ -78,10 +78,19 @@ namespace HBM.ControlPanel
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (taxType.Save(dsData))
-            {
-                this.LoadTaxTypes();
-            }
+            taxType.TaxTypeName = e.NewValues["TaxTypeName"].ToString();
+
+             if (!taxType.IsDuplicateTypeName())
+             {
+                 if (taxType.Save(dsData))
+                 {
+                     this.LoadTaxTypes();
+                 }
+             }
+             else
+             {
+                 throw new System.Exception(Messages.Duplicate_record);
+             }
 
 
         }
@@ -104,9 +113,20 @@ namespace HBM.ControlPanel
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (taxType.Save(dsData))
+            taxType.TaxTypeId = Convert.ToInt32(e.Keys["TaxTypeId"].ToString());
+            taxType.TaxTypeName = e.NewValues["TaxTypeName"].ToString();
+
+            if (!taxType.IsDuplicateTypeName())
             {
-                this.LoadTaxTypes();
+
+                if (taxType.Save(dsData))
+                {
+                    this.LoadTaxTypes();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
             }
 
         }

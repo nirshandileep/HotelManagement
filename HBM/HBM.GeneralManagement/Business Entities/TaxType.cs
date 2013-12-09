@@ -45,6 +45,12 @@ namespace HBM.GeneralManagement
             return (new TaxTypeDAO()).SelectAll(this);
         }
 
+        public bool IsDuplicateTypeName()
+        {
+            return (new TaxTypeDAO()).IsDuplicateTypeName(this);
+        }
+
+
         #endregion
     }
 }

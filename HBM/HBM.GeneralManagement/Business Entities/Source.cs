@@ -44,6 +44,12 @@ namespace HBM.GeneralManagement
             return (new SourceDAO()).SelectAll(this);
         }
 
+        public bool IsDuplicateTypeName()
+        {
+            return (new SourceDAO()).IsDuplicateTypeName(this);
+        }
+
+
         #endregion
     }
 }

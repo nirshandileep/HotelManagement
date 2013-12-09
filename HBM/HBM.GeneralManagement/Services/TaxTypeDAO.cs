@@ -53,5 +53,25 @@ namespace HBM.GeneralManagement
 
 
         }
+
+        public bool IsDuplicateTypeName(TaxType taxType)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_TaxTypeIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, taxType.CompanyId);
+            db.AddInParameter(dbCommand, "@TaxTypeId", DbType.Int32, taxType.TaxTypeId);
+            db.AddInParameter(dbCommand, "@TaxTypeName", DbType.String, taxType.TaxTypeName);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
+        }
+
     }
 }
