@@ -39,17 +39,20 @@ namespace HBM.GeneralManagement
             }
             return result;
         }
-
-
+        
         public DataSet SelectAllDataset()
         {
             return (new AdditionalServiceDAO()).SelectAll(this);
         }
-
-
+        
         public List<AdditionalService> SelectAllList()
         {
             return HBM.Utility.Generic.GetAll<AdditionalService>(this.CompanyId);
+        }
+
+        public bool IsDuplicateTypeName()
+        {
+            return (new AdditionalServiceDAO()).IsDuplicateServiceCode(this);
         }
 
         #endregion

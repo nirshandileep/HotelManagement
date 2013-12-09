@@ -53,5 +53,25 @@ namespace HBM.GeneralManagement
 
 
         }
+
+        public bool IsDuplicateServiceCode(AdditionalService additionalService)
+        {
+            bool result = false;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_AdditionalServiceIsDuplicateTypeName");
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, additionalService.CompanyId);
+            db.AddInParameter(dbCommand, "@AdditionalServiceId", DbType.Int32, additionalService.AdditionalServiceId);
+            db.AddInParameter(dbCommand, "@ServiceCode", DbType.String, additionalService.ServiceCode);
+            db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
+
+            db.ExecuteNonQuery(dbCommand);
+
+            result = Convert.ToBoolean(db.GetParameterValue(dbCommand, "@IsExist").ToString());
+
+
+            return result;
+        }
+
     }
 }

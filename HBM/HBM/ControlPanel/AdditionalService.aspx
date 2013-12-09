@@ -79,7 +79,7 @@
                             </dx:GridViewDataComboBoxColumn>
                             <dx:GridViewDataSpinEditColumn Caption="Rate" FieldName="Rate" VisibleIndex="4">
                                 <PropertiesSpinEdit DisplayFormatString="F2" MaxLength="5" MaxValue="100000" NullDisplayText="0"
-                                    NullText="0" NumberFormat="Custom">
+                                    NullText="0" NumberFormat="Custom" DecimalPlaces="2">
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>

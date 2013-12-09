@@ -110,12 +110,21 @@ namespace HBM.ControlPanel
 
             dsData.Tables[0].Rows.Add(row);
 
-            if (additionalService.Save(dsData))
+            additionalService.ServiceCode = e.NewValues["ServiceCode"].ToString();
+            
+            if (!additionalService.IsDuplicateTypeName())
             {
-                this.LoadAdditionalService();
+
+                if (additionalService.Save(dsData))
+                {
+                    this.LoadAdditionalService();
+                }
             }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
 
-
+            }
         }
 
         protected void gvAdditionalService_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -136,9 +145,19 @@ namespace HBM.ControlPanel
             gridView.CancelEdit();
             e.Cancel = true;
 
-            if (additionalService.Save(dsData))
+            additionalService.AdditionalServiceId = Convert.ToInt32(e.Keys["AdditionalServiceId"].ToString());
+            additionalService.ServiceCode = e.NewValues["ServiceCode"].ToString();
+            
+            if (!additionalService.IsDuplicateTypeName())
             {
-                this.LoadAdditionalService();
+                if (additionalService.Save(dsData))
+                {
+                    this.LoadAdditionalService();
+                }
+            }
+            else
+            {
+                throw new System.Exception(Messages.Duplicate_record);
             }
 
         }
