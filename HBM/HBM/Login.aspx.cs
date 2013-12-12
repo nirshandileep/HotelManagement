@@ -14,16 +14,7 @@ namespace HBM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-#if DEBUG
-                txtUserName.Text = "admin";
-                txtPassword.Text = "letmein";
-#else
-                txtUserName.Text = "";
-                txtPassword.Text = "";
-#endif
-            }
+          
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -42,8 +33,11 @@ namespace HBM
                 string password = txtPassword.Text;
                 int userID = 0;
                 int companyId = 0;
+
+           
                 if (users.IsUserAuthenticated(userName, password, out userID, out companyId))
                 {
+                  
                     if (userID > 0)
                     {
                         users.UsersId = userID;
@@ -63,8 +57,10 @@ namespace HBM
                     lblError.Visible = true;
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception )
             {
+
+              
 
 
             }

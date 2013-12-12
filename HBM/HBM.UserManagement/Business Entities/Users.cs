@@ -8,8 +8,7 @@ namespace HBM.UserManagement
 {
     /// <summary>
     /// Keep this class simple as possible
-    /// </summary>
-    [Serializable]
+    /// </summary>   
     public class Users
     {
         #region Properties
