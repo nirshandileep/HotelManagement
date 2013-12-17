@@ -102,7 +102,7 @@
                                     <Image Url="~/Images/Switchboard.png">
                                     </Image>
                                 </dx:MenuItem>
-                                <dx:MenuItem Text="Reports" Visible="False">
+                                <dx:MenuItem Text="Reports" NavigateUrl="~/Reports/ReportGenerator.aspx">
                                     <Image Url="~/Images/Report.png">
                                     </Image>
                                 </dx:MenuItem>

@@ -49,6 +49,7 @@
     <Reference Include="DevExpress.PivotGrid.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxScheduler.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -56,6 +57,7 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v12.2.Web, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -152,6 +154,7 @@
     <Content Include="JS\HBMCommon.js" />
     <Content Include="Login.aspx" />
     <Content Include="Reports\PrintPreview.aspx" />
+    <Content Include="Reports\ReportGenerator.aspx" />
     <Content Include="Reservation\Reservation.aspx" />
     <Content Include="Reservation\SearchReservation.aspx" />
     <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
@@ -324,6 +327,13 @@
     <Compile Include="Reports\PrintPreview.aspx.designer.cs">
       <DependentUpon>PrintPreview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ReportGenerator.aspx.cs">
+      <DependentUpon>ReportGenerator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportGenerator.aspx.designer.cs">
+      <DependentUpon>ReportGenerator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\xrReservation.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -396,6 +406,10 @@
     <ProjectReference Include="..\HBM.GeneralManagement\HBM.GeneralManagement.csproj">
       <Project>{3B0EB80B-EE3A-4F4E-9A31-4DF84417C23F}</Project>
       <Name>HBM.GeneralManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HBM.Reporting\HBM.Reporting.csproj">
+      <Project>{A5E9948F-B128-44A5-A2DD-24296ED9E69F}</Project>
+      <Name>HBM.Reporting</Name>
     </ProjectReference>
     <ProjectReference Include="..\HBM.SessionManager\HBM.SessionManager.csproj">
       <Project>{5F38975E-16E4-49D4-9F42-0C6FFAA3DCE4}</Project>

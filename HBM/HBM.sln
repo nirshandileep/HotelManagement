@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBM.SessionManager", "HBM.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBM.ReservationManagement", "ReservationManagement\HBM.ReservationManagement.csproj", "{72B2DF31-E167-4446-A169-22EA49AEF064}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBM.Reporting", "HBM.Reporting\HBM.Reporting.csproj", "{A5E9948F-B128-44A5-A2DD-24296ED9E69F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,16 @@ Global
 		{72B2DF31-E167-4446-A169-22EA49AEF064}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{72B2DF31-E167-4446-A169-22EA49AEF064}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{72B2DF31-E167-4446-A169-22EA49AEF064}.Release|x86.ActiveCfg = Release|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A5E9948F-B128-44A5-A2DD-24296ED9E69F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
