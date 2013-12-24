@@ -17,12 +17,16 @@ namespace HBM.Reports
     {
         protected void Page_Init(object sender, EventArgs e)
         {
+            gvReports.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+
             this.LoadReportList();
 
             if (Session[Constants.SESSION_CURRENTREPORT] != null)
             {
                 gvReports.DataSource = (DataTable)Session[Constants.SESSION_CURRENTREPORT];
                 gvReports.DataBind();
+
+             
             }
 
         }
@@ -46,6 +50,7 @@ namespace HBM.Reports
                     break;
 
                 case "1":
+                    this.LoadReservationList();
                     break;
             }
         }
@@ -65,16 +70,38 @@ namespace HBM.Reports
 
         }
 
+        private void LoadReservationList()
+        {
+            Reporting.Reports report = new Reporting.Reports();
+            gvReports.DataSource = report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0];
+            gvReports.DataBind();
+
+            if (report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0] != null && report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0].Rows.Count > 0)
+            {
+                Session[Constants.SESSION_CURRENTREPORT] = report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0];
+                cbmExporter.Visible = true;
+                gvExporter.FileName = "Reservation List";
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "ReservationCode");
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "RoomTotal");
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ServiceTotal");
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "NetTotal");
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Discount");
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TaxAmount");
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Total");
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "PaidAmount");
+                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Balance"); 
+
+            }
+        }
+
         protected void cbmExporter_ButtonClick(object source, DevExpress.Web.ASPxEditors.ButtonEditClickEventArgs e)
         {
             if (e.ButtonIndex == 0)
             {
-
                 switch (cbmExporter.Text)
                 {
                     case "PDF":
                         gvExporter.GridViewID = gvReports.ID;    
-                        
                         gvExporter.WritePdfToResponse();
                         break;
 
@@ -92,13 +119,8 @@ namespace HBM.Reports
                         gvExporter.GridViewID = gvReports.ID;                       
                         gvExporter.WriteCsvToResponse();
                         break;
-
                 }
-
-
-
             }
-
         }
     }
 

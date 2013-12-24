@@ -37,7 +37,8 @@
             <tr>
                 <td colspan="2">
                     <dx:ASPxGridView ID="gvReports" runat="server" Width="100%">
-                        <Settings HorizontalScrollBarMode="Auto" ShowFilterRow="True" />
+                        <Settings HorizontalScrollBarMode="Auto" ShowFilterRow="True" 
+                            ShowFooter="True" />
                     </dx:ASPxGridView>
                 </td>
             </tr>

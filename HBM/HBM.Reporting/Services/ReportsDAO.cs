@@ -31,5 +31,16 @@ namespace HBM.Reporting
 
             return db.ExecuteDataSet(command);
         }
+
+        public DataSet GetReservationList(int companyID)
+        {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_ReportsReservationList");
+
+            db.AddInParameter(command, "@CompanyId", DbType.Int32, companyID);
+
+            return db.ExecuteDataSet(command);
+        }
+
     }
 }

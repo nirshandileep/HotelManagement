@@ -14,5 +14,10 @@ namespace HBM.Reporting
         {
             return (new ReportsDAO()).GetCustomerList(companyID);
         }
+
+        public DataSet GetReservationList(int companyID)
+        {
+            return (new ReportsDAO()).GetReservationList(companyID);
+        }
     }
 }
