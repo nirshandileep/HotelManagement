@@ -108,6 +108,9 @@ namespace HBM.Common
         public static readonly string SESSION_DEPARTURES = "DeparturesList";
         public static readonly string SESSION_DIRTYROOMS = "DirtyRoomsList";
         public static readonly string SESSION_ROOMRATEPLAN = "RoomRatePlan";
+        public static readonly string SESSION_CURRENTREPORT = "CurrentReport";
+
+         
         
 
         #endregion

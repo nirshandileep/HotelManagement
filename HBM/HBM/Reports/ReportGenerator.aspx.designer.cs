@@ -31,13 +31,13 @@ namespace HBM.Reports {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvReports;
         
         /// <summary>
-        /// aspxGVEporter control.
+        /// gvExporter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter aspxGVEporter;
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gvExporter;
         
         /// <summary>
         /// cbmExporter control.

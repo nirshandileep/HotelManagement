@@ -43,7 +43,8 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <dx:ASPxGridViewExporter ID="aspxGVEporter" runat="server" GridViewID="gvReports">
+                    <dx:ASPxGridViewExporter ID="gvExporter" runat="server" GridViewID="gvReports" 
+                        BottomMargin="20" LeftMargin="20" RightMargin="20" TopMargin="20">
                     </dx:ASPxGridViewExporter>
                 </td>
             </tr>
@@ -55,12 +56,13 @@
                 <tr>
                     <td colspan="2">
                         <dx:ASPxComboBox ID="cbmExporter" runat="server" 
-                            onbuttonclick="cbmExporter_ButtonClick" Width="200px">
+                            onbuttonclick="cbmExporter_ButtonClick" Width="200px" SelectedIndex="0" 
+                            Visible="False">
                             <Items>
+                                <dx:ListEditItem Text="PDF" Value="PDF" Selected="True" />
+                                <dx:ListEditItem Text="RTF" Value="RTF" />
                                 <dx:ListEditItem Text="Excel" Value="Excel" />
-                                <dx:ListEditItem Text="PDF" Value="PDF" />
                                 <dx:ListEditItem Text="CSV" Value="CSV" />
-                                <dx:ListEditItem Text="Word" Value="Word" />
                             </Items>
                             <DropDownButton Position="Left">
                             </DropDownButton>

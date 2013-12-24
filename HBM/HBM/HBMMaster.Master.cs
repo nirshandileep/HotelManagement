@@ -63,12 +63,29 @@ namespace HBM
         /// Clear all sessions in the system, all newly added sessions needs to be added to this method
         /// </summary>
         public void ClearSessions()
-        {
-            ///
-            /// Customer
-            ///
+        {       
             Session[Constants.SESSION_LOGGEDUSER] = null;
-
+            Session[Constants.SESSION_BEDTYPES] = null;
+            Session[Constants.SESSION_DEPARTMENT] = null;
+            Session[Constants.SESSION_GAURANTEE] = null;
+            Session[Constants.SESSION_ROOMS] = null;
+            Session[Constants.SESSION_SOURCE] = null;
+            Session[Constants.SESSION_CURRENTCOMPANY] = null;
+            Session[Constants.SESSION_RATEPLANS] = null;
+            Session[Constants.SESSION_TAXTYPES] = null;
+            Session[Constants.SESSION_ADDITIONALSERVICETYPE] = null;
+            Session[Constants.SESSION_ADDITIONALSERVICE] = null;
+            Session[Constants.SESSION_CREDITCARDTYPE] = null;            
+            Session[Constants.SESSION_GUESTTYPE] = null;
+            Session[Constants.SESSION_PAYMENTTYPES] = null;
+            Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] = null;
+            Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = null;
+            Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = null;
+            Session[Constants.SESSION_ARRIVALS] = null;
+            Session[Constants.SESSION_DEPARTURES] = null;
+            Session[Constants.SESSION_DIRTYROOMS] = null;
+            Session[Constants.SESSION_ROOMRATEPLAN] = null;
+            Session[Constants.SESSION_CURRENTREPORT] = null;
         }
 
         /// <summary>
