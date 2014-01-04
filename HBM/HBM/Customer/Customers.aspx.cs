@@ -93,6 +93,7 @@ namespace HBM
                 CCExpiryDate = CustomerObj.CCExpirationDate;
                 txtNameOnCard.Text = CustomerObj.CCNameOnCard;
                 txtCCNumber.Text = string.IsNullOrEmpty(CustomerObj.CCNo) ? string.Empty : CustomerObj.CCNo.ToString();
+                txtCardSecurityCode.Text = CustomerObj.CardSecurityCode;
 
                 if (CustomerObj.CreditCardTypeId.HasValue)
                 {
@@ -166,6 +167,7 @@ namespace HBM
                     txtLicensePlate.Text = string.Empty;
                     txtNameOnCard.Text = string.Empty;
                     txtCCNumber.Text = string.Empty;
+                    txtCardSecurityCode.Text = string.Empty;
 
                     txtCompanyAddressLine1.Text = string.Empty;
                     txtCompanyAddressLine2.Text = string.Empty;
@@ -300,6 +302,7 @@ namespace HBM
 
             CustomerObj.CCNo = txtCCNumber.Text.Trim();
 
+            CustomerObj.CardSecurityCode = txtCardSecurityCode.Text.Trim();
 
             if (cmbCCType.SelectedIndex > -1)
             {
@@ -309,6 +312,8 @@ namespace HBM
             {
                 CustomerObj.CreditCardTypeId = null;
             }
+
+
 
             #region Company section
 

@@ -51,6 +51,8 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@DriverLicense", DbType.String, customer.DriverLicense);
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, customer.CreatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, customer.StatusId);
+            db.AddInParameter(command, "@CardSecurityCode", DbType.String, customer.CardSecurityCode);
+
 
             db.ExecuteNonQuery(command);
 
@@ -99,6 +101,8 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@DriverLicense", DbType.String, customer.DriverLicense);
             db.AddInParameter(command, "@UpdatedUser", DbType.Int32, customer.UpdatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, customer.StatusId);
+            db.AddInParameter(command, "@CardSecurityCode", DbType.String, customer.CardSecurityCode);
+
 
             db.ExecuteNonQuery(command);
 
