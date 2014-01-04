@@ -25,7 +25,7 @@ namespace HBM.UserManagement
         
         public Rights Select()
         {
-            return HBM.Utility.Generic.Get<Rights>(this.RightId,0 );
+            return HBM.Utility.Generic.Get<Rights>(this.RightId);
         }
 
         public List<Rights> SelectAllList()
@@ -43,7 +43,10 @@ namespace HBM.UserManagement
             return (new RightsDAO()).SelectByRolesId(this);
         }
 
-       
+        public List<Rights> SelectRightsByUserId(int userId)
+        {
+            return HBM.Utility.Generic.GetAllByFieldValue<Rights>("UsersId", userId.ToString());
+        }
 
         #endregion
     }

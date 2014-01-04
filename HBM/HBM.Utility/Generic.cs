@@ -156,5 +156,36 @@ namespace HBM.Utility
             return returnEntityCollection;
         }
 
+        /// <summary>
+        /// Returns a collection of T. T must be an Entity class
+        /// </summary>
+        public static List<T> GetAllByFieldValue<T>(string fieldName, string fieldValue, int companyId = 0) where T : new()
+        {
+            List<T> returnEntityCollection = new List<T>();
+
+            string TypeName = typeof(T).Name;
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_" + TypeName + "SelectAllBy" + fieldName);
+
+            if (companyId != 0)
+                db.AddInParameter(dbCommand, "companyId", DbType.Int32, companyId);
+
+            db.AddInParameter(dbCommand, fieldName, DbType.String, fieldValue);
+
+            using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+            {
+                while (dataReader.Read())
+                {
+                    T entity = new T();
+
+                    AssignDataReaderToEntity(dataReader, entity);
+                    returnEntityCollection.Add(entity);
+                }
+            }
+
+            return returnEntityCollection;
+        }
+
     }
 }

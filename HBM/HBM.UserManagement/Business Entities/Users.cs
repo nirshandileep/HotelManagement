@@ -27,7 +27,7 @@ namespace HBM.UserManagement
         public Int32 StatusId { get; set; }
         public Int32 RolesId { get; set; }
         public Int32 DepartmentId { get; set; }
-
+        public List<Rights> AllRights { get; set; }
 
         #endregion
 
@@ -85,7 +85,9 @@ namespace HBM.UserManagement
 
         public Users Select()
         {
-            return HBM.Utility.Generic.Get<Users>(this.UsersId, this.CompanyId);
+            Users user = HBM.Utility.Generic.Get<Users>(this.UsersId, this.CompanyId);
+            user.AllRights = new Rights().SelectRightsByUserId(this.UsersId);
+            return user;
         }
 
         public List<Users> SelectAllList()
