@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using GenMan = HBM.GeneralManagement;
+using ComMan = HBM.CompanyManagement;
 using Status = HBM.Common.Enums;
 using System.Drawing;
 using HBM.Common;
@@ -22,14 +22,14 @@ namespace HBM.ControlPanel
             }
         }
 
-        GenMan.Company company = new GenMan.Company();
+        ComMan.Company company = new ComMan.Company();
 
         protected void LoadCompany()
         {
             try
             {
                 company.CompanyId = SessionManager.SessionHandler.CurrentCompanyId;
-                GenMan.Company currentCompany = new GenMan.Company();
+                ComMan.Company currentCompany = new ComMan.Company();
                 currentCompany = company.Select();
                 txtCompanyName.Text = currentCompany.CompanyName;
                 txtCompanyAddress.Text = currentCompany.CompanyAddress;
@@ -37,6 +37,11 @@ namespace HBM.ControlPanel
                 txtCompanyEmail.Text = currentCompany.CompanyEmail;
                 txtCompanyTelephone.Text = currentCompany.CompanyTelephone;
                 txtCompanyFax.Text = currentCompany.CompanyFax;
+                txtWebURL.Text = currentCompany.WebURL;
+                txtRegistrationNo.Text = currentCompany.RegistrationNo;
+                txtVATNo.Text = currentCompany.VATNo;
+                txtAdditionalDetails1.Text = currentCompany.AdditionalDetails1;
+                txtAdditionalDetails2.Text = currentCompany.AdditionalDetails2;
 
                 if (currentCompany.CompanyLogo.Length > 0)
                 {
@@ -69,6 +74,12 @@ namespace HBM.ControlPanel
                 company.CompanyEmail = txtCompanyEmail.Text.Trim();
                 company.CompanyTelephone = txtCompanyTelephone.Text.Trim();
                 company.CompanyFax = txtCompanyFax.Text.Trim();
+                company.WebURL = txtWebURL.Text.Trim();
+                company.RegistrationNo = txtRegistrationNo.Text.Trim();
+                company.VATNo = txtVATNo.Text.Trim();
+                company.AdditionalDetails1 = txtAdditionalDetails1.Text.Trim();
+                company.AdditionalDetails2 = txtAdditionalDetails2.Text.Trim();
+
                 company.StatusId = (int)Enums.HBMStatus.Modify;
 
 

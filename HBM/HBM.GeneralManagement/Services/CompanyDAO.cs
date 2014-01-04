@@ -32,6 +32,14 @@ namespace HBM.GeneralManagement
             db.AddInParameter(command, "@StatusId", DbType.Int32, company.StatusId);
             db.AddInParameter(command, "@CompanyFax", DbType.String, company.CompanyFax);
             db.AddInParameter(command, "@CompanyLogo", DbType.Binary, company.CompanyLogo);
+            db.AddInParameter(command, "@WebURL", DbType.String, company.WebURL);
+            db.AddInParameter(command, "@RegistrationNo", DbType.String, company.RegistrationNo);
+            db.AddInParameter(command, "@VATNo", DbType.String, company.VATNo);
+            db.AddInParameter(command, "@AdditionalDetails1", DbType.String, company.AdditionalDetails1);
+            db.AddInParameter(command, "@AdditionalDetails2", DbType.String, company.AdditionalDetails2);
+
+
+
 
             db.ExecuteNonQuery(command);
 
@@ -54,6 +62,12 @@ namespace HBM.GeneralManagement
             db.AddInParameter(command, "@StatusId", DbType.Int32, company.StatusId);
             db.AddInParameter(command, "@CompanyFax", DbType.String, company.CompanyFax);
             db.AddInParameter(command, "@CompanyLogo", DbType.Binary, company.CompanyLogo);
+            db.AddInParameter(command, "@WebURL", DbType.String, company.WebURL);
+            db.AddInParameter(command, "@RegistrationNo", DbType.String, company.RegistrationNo);
+            db.AddInParameter(command, "@VATNo", DbType.String, company.VATNo);
+            db.AddInParameter(command, "@AdditionalDetails1", DbType.String, company.AdditionalDetails1);
+            db.AddInParameter(command, "@AdditionalDetails2", DbType.String, company.AdditionalDetails2);
+
 
             db.ExecuteNonQuery(command);
 

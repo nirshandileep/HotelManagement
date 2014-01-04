@@ -100,6 +100,72 @@
             </tr>
             <tr>
                 <td height="22">
+                    Web URL</td>
+                <td>
+                    <dx:ASPxTextBox ID="txtWebURL" runat="server" Width="170px" MaxLength="50">
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                            <RegularExpression ErrorText="Format should be http://www.example.com" 
+                                ValidationExpression="http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?" />
+                        </ValidationSettings>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>
+            <tr>
+                <td height="22">
+                    Registration No</td>
+                <td>
+                    <dx:ASPxTextBox ID="txtRegistrationNo" runat="server" Width="170px" 
+                        MaxLength="50">
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                            <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
+                        </ValidationSettings>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>
+            <tr>
+                <td height="22">
+                    VAT No</td>
+                <td>
+                    <dx:ASPxTextBox ID="txtVATNo" runat="server" Width="170px" 
+                        MaxLength="50">
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                            <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
+                        </ValidationSettings>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>
+            <tr>
+                <td height="22">
+                    Additional Details 1</td>
+                <td>
+                    <dx:ASPxTextBox ID="txtAdditionalDetails1" runat="server" Width="170px" 
+                        MaxLength="50">
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                            <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
+                        </ValidationSettings>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>
+            <tr>
+                <td height="22">
+                    Additional Details 2</td>
+                <td>
+                        <dx:ASPxTextBox ID="txtAdditionalDetails2" runat="server" Width="170px" 
+                        MaxLength="50">
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                            <RequiredField IsRequired="True" ErrorText="Required"></RequiredField>
+                        </ValidationSettings>
+                    </dx:ASPxTextBox></td>
+            </tr>
+      
+            <tr>
+                <td height="22">
                     Company Logo
                 </td>
                 <td>

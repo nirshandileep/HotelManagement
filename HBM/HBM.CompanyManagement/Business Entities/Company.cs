@@ -28,6 +28,11 @@ namespace HBM.CompanyManagement
         public Int32 StatusId { get; set; }
         public string CompanyFax { get; set; }
         public byte[] CompanyLogo { get; set; }
+        public string WebURL { get; set; }
+        public string VATNo { get; set; }
+        public string RegistrationNo { get; set; }
+        public string AdditionalDetails1 { get; set; }
+        public string AdditionalDetails2 { get; set; }
 
         #endregion
 

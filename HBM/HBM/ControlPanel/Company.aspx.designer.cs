@@ -76,6 +76,51 @@ namespace HBM.ControlPanel {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCompanyFax;
         
         /// <summary>
+        /// txtWebURL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtWebURL;
+        
+        /// <summary>
+        /// txtRegistrationNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtRegistrationNo;
+        
+        /// <summary>
+        /// txtVATNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtVATNo;
+        
+        /// <summary>
+        /// txtAdditionalDetails1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtAdditionalDetails1;
+        
+        /// <summary>
+        /// txtAdditionalDetails2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtAdditionalDetails2;
+        
+        /// <summary>
         /// ucCompanyLogo control.
         /// </summary>
         /// <remarks>
