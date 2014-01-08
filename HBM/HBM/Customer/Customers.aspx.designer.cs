@@ -130,13 +130,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtEmail;
         
         /// <summary>
-        /// cmbCar control.
+        /// dtStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCar;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtStartDate;
         
         /// <summary>
         /// cmbGuestType control.
@@ -148,13 +148,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbGuestType;
         
         /// <summary>
-        /// txtLicensePlate control.
+        /// txtCardIssueNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtLicensePlate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCardIssueNo;
         
         /// <summary>
         /// txtPassportNumber control.
@@ -166,13 +166,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtPassportNumber;
         
         /// <summary>
-        /// txtDriveLicense control.
+        /// cmbCar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtDriveLicense;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCar;
         
         /// <summary>
         /// cmbPassportCountryOfIssue control.
@@ -184,6 +184,15 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbPassportCountryOfIssue;
         
         /// <summary>
+        /// txtLicensePlate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtLicensePlate;
+        
+        /// <summary>
         /// dtpExpiryDate control.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtpExpiryDate;
+        
+        /// <summary>
+        /// txtDriveLicense control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtDriveLicense;
         
         /// <summary>
         /// ASPxRoundPanel2 control.
@@ -280,7 +298,7 @@ namespace HBM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtNotes;
+        protected global::DevExpress.Web.ASPxEditors.ASPxMemo txtNotes;
         
         /// <summary>
         /// chkUseSameBillingAddress control.

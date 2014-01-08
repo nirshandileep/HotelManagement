@@ -52,6 +52,8 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@CreatedUser", DbType.Int32, customer.CreatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, customer.StatusId);
             db.AddInParameter(command, "@CardSecurityCode", DbType.String, customer.CardSecurityCode);
+            db.AddInParameter(command, "@CardStartDate", DbType.DateTime, customer.CardStartDate);
+            db.AddInParameter(command, "@CardIssueNo", DbType.String, customer.CardIssueNo);
 
 
             db.ExecuteNonQuery(command);
@@ -102,7 +104,8 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@UpdatedUser", DbType.Int32, customer.UpdatedUser);
             db.AddInParameter(command, "@StatusId", DbType.Int32, customer.StatusId);
             db.AddInParameter(command, "@CardSecurityCode", DbType.String, customer.CardSecurityCode);
-
+            db.AddInParameter(command, "@CardStartDate", DbType.DateTime, customer.CardStartDate);
+            db.AddInParameter(command, "@CardIssueNo", DbType.String, customer.CardIssueNo);
 
             db.ExecuteNonQuery(command);
 

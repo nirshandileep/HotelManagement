@@ -95,6 +95,18 @@ namespace HBM
                 txtCCNumber.Text = string.IsNullOrEmpty(CustomerObj.CCNo) ? string.Empty : CustomerObj.CCNo.ToString();
                 txtCardSecurityCode.Text = CustomerObj.CardSecurityCode;
 
+                if (CustomerObj.CardStartDate == null)
+                {
+                      dtStartDate.Text =string.Empty;
+                }
+                else
+                {
+                      dtStartDate.Value =CustomerObj.CardStartDate;
+                }
+              
+
+                txtCardIssueNo.Text = CustomerObj.CardIssueNo;
+
                 if (CustomerObj.CreditCardTypeId.HasValue)
                 {
                     cmbCCType.Value = CustomerObj.CreditCardTypeId.Value;
@@ -155,12 +167,12 @@ namespace HBM
                     Response.Redirect(Constants.URL_CUSTOMERS, false);
                 }
                 else
-                {                 
+                {
                     hdnCustomerId.Value = "0";
                     txtCustomerName.Text = string.Empty;
                     txtBillingAddressLine1.Text = string.Empty;
                     txtBillingAddressLine2.Text = string.Empty;
-                    
+
                     txtBillingCity.Text = string.Empty;
                     txtBillingPostCode.Text = string.Empty;
                     txtBillingState.Text = string.Empty;
@@ -304,6 +316,18 @@ namespace HBM
 
             CustomerObj.CardSecurityCode = txtCardSecurityCode.Text.Trim();
 
+            if (dtStartDate.Text.ToString() == string.Empty)
+            {
+                CustomerObj.CardStartDate = null;
+            }
+            else
+            {
+                CustomerObj.CardStartDate = Convert.ToDateTime(dtStartDate.Text);
+            }
+
+
+            CustomerObj.CardIssueNo = txtCardIssueNo.Text.Trim();
+
             if (cmbCCType.SelectedIndex > -1)
             {
                 CustomerObj.CreditCardTypeId = int.Parse(cmbCCType.SelectedItem.Value.ToString());
@@ -347,7 +371,7 @@ namespace HBM
             }
             else
             {
-                if (txtBillingAddressLine1.Text.Trim() == string.Empty 
+                if (txtBillingAddressLine1.Text.Trim() == string.Empty
                     || txtBillingAddressLine2.Text.Trim() == string.Empty
                     || txtBillingCity.Text.Trim() == string.Empty)
                 {
@@ -370,7 +394,7 @@ namespace HBM
                 CustomerObj.BillingState = txtBillingState.Text.Trim();
                 #endregion
             }
-           
+
 
             CustomerObj.DriverLicense = txtDriveLicense.Text.Trim();
             CustomerObj.Email = txtEmail.Text.Trim();

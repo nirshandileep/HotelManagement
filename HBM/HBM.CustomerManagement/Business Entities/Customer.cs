@@ -58,6 +58,10 @@ namespace HBM.CustomerManagement
         public DateTime UpdatedDate { get; set; }
         public Int32 StatusId { get; set; }
         public string CardSecurityCode { get; set; }
+        public DateTime? CardStartDate { get; set; }
+        public string CardIssueNo { get; set; }
+
+
         #endregion
 
         #region Methods

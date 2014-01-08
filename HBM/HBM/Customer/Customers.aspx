@@ -204,16 +204,10 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            Car
-                                        </td>
+                                            Card Start Date</td>
                                         <td>
-                                            <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" IncrementalFilteringMode="Contains"
-                                                TabIndex="16">
-                                                <Items>
-                                                    <dx:ListEditItem Text="No" Value="No" />
-                                                    <dx:ListEditItem Text="Yes" Value="Yes" />
-                                                </Items>
-                                            </dx:ASPxComboBox>
+                                            <dx:ASPxDateEdit ID="dtStartDate" runat="server">
+                                            </dx:ASPxDateEdit>
                                         </td>
                                     </tr>
                                     <tr>
@@ -240,10 +234,9 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            License Plate
-                                        </td>
+                                            Card Issue No</td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtLicensePlate" runat="server" Width="170px" TabIndex="17">
+                                            <dx:ASPxTextBox ID="txtCardIssueNo" runat="server" TabIndex="18" Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
@@ -259,11 +252,16 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            Drive License
+                                            Car
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtDriveLicense" runat="server" Width="170px" TabIndex="18">
-                                            </dx:ASPxTextBox>
+                                            <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" 
+                                                IncrementalFilteringMode="Contains" TabIndex="16">
+                                                <Items>
+                                                    <dx:ListEditItem Text="No" Value="No" />
+                                                    <dx:ListEditItem Text="Yes" Value="Yes" />
+                                                </Items>
+                                            </dx:ASPxComboBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -279,10 +277,11 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            &nbsp;
+                                            License Plate &nbsp;
                                         </td>
                                         <td>
-                                            &nbsp;
+                                            <dx:ASPxTextBox ID="txtLicensePlate" runat="server" TabIndex="17" Width="170px">
+                                            </dx:ASPxTextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -297,9 +296,11 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            &nbsp;
+                                            &nbsp; Drive License
                                         </td>
                                         <td>
+                                            <dx:ASPxTextBox ID="txtDriveLicense" runat="server" TabIndex="18" Width="170px">
+                                            </dx:ASPxTextBox>
                                             &nbsp;
                                         </td>
                                     </tr>
@@ -331,7 +332,7 @@
                                         <td width="50px">
                                             &nbsp;
                                         </td>
-                                        <td height="22" class="info-lbl">
+                                        <td height="22" class="info-lbl" width="50px">
                                             State/County
                                         </td>
                                         <td>
@@ -395,9 +396,9 @@
                                         <td>
                                             Notes
                                         </td>
-                                        <td>
-                                            <dx:ASPxTextBox ID="txtNotes" runat="server" Width="170px" TabIndex="26">
-                                            </dx:ASPxTextBox>
+                                        <td rowspan="2">
+                                            <dx:ASPxMemo ID="txtNotes" runat="server" Height="71px" Width="170px">
+                                            </dx:ASPxMemo>
                                         </td>
                                     </tr>
                                     <tr>
@@ -408,8 +409,6 @@
                                                 CheckState="Checked" Text="Use Same Billing Address">
                                             </dx:ASPxCheckBox>
                                         </td>
-                                        <td>
-                                            &nbsp;</td>
                                         <td>
                                             &nbsp;</td>
                                         <td>
