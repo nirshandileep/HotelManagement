@@ -384,14 +384,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeef4', end
 .info-lbl {
 width: 150px;
 }
-#ContentPlaceHolder1_btnSave_CD, #ContentPlaceHolder1_btnClear_CD, #ContentPlaceHolder1_btnSearch_CD{
+#ContentPlaceHolder1_btnSave_CD, #ContentPlaceHolder1_btnClear_CD, #ContentPlaceHolder1_btnSearch_CD, #ContentPlaceHolder1_btnReservation_CD{
 	height:20px;
 }
 #customer-info-btn-tbl{margin-top:10px;}
 #customer-info-btn-tbl td{
 	padding-right:10px;
 }
-#ContentPlaceHolder1_btnSave_BTC span, #ContentPlaceHolder1_btnClear_BTC span,  #ContentPlaceHolder1_btnSearch_BTC span{
+#ContentPlaceHolder1_btnSave_BTC span, #ContentPlaceHolder1_btnClear_BTC span,  #ContentPlaceHolder1_btnSearch_BTC span, #ContentPlaceHolder1_btnReservation_BTC span{
 	float:left;
 	margin-top:5px;
 	font-weight:bold;	

@@ -13,7 +13,6 @@ namespace HBM
 {
     public partial class Customers : System.Web.UI.Page
     {
-
         #region Properties
 
         public DateTime? CCExpiryDate
@@ -267,6 +266,7 @@ namespace HBM
                 {
                     hdnCustomerId.Value = Cryptography.Decrypt(Request.QueryString["CustomerId"]);
                     Page.Title = "View Customer";
+                    this.btnReservation.Visible = true;
                 }
             }
             catch (System.Exception)
@@ -501,6 +501,19 @@ namespace HBM
             try
             {
                 Response.Redirect(Common.Constants.URL_CUSTOMERSEARCH, false);
+            }
+            catch (System.Exception)
+            {
+
+
+            }
+        }
+
+        protected void btnReservation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect(Common.Constants.URL_RESERVATION+"?CustomerID="+  Cryptography.Encrypt( hdnCustomerId.Value), false);
             }
             catch (System.Exception)
             {

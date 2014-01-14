@@ -79,8 +79,13 @@ namespace HBM.Reservation
                     dtCheckingDate.Enabled = false;
                     dtCheckOutDate.Enabled = false;
                     btnCreate.Visible = false;
-
                 }
+
+                if (Request.QueryString["CustomerID"]!=null)
+                {                    
+                    cmbCustomer.SelectedItem = cmbCustomer.Items.FindByValue(Cryptography.Decrypt(Request.QueryString["CustomerID"]));
+                }
+
             }
 
         }
