@@ -186,7 +186,7 @@
                                             <dx:ASPxTextBox ID="txtCardSecurityCode" runat="server" MaxLength="3" TabIndex="16"
                                                 Width="170px">
                                             </dx:ASPxTextBox>
-                                            &nbsp;
+                                           
                                         </td>
                                     </tr>
                                     <tr>
@@ -208,7 +208,7 @@
                                             Card Start Date
                                         </td>
                                         <td>
-                                            <dx:ASPxDateEdit ID="dtStartDate" runat="server">
+                                            <dx:ASPxDateEdit ID="dtStartDate" runat="server" TabIndex="17">
                                             </dx:ASPxDateEdit>
                                         </td>
                                     </tr>
@@ -259,7 +259,7 @@
                                         </td>
                                         <td>
                                             <dx:ASPxComboBox ID="cmbCar" runat="server" AnimationType="Fade" IncrementalFilteringMode="Contains"
-                                                TabIndex="16">
+                                                TabIndex="19">
                                                 <Items>
                                                     <dx:ListEditItem Text="No" Value="No" />
                                                     <dx:ListEditItem Text="Yes" Value="Yes" />
@@ -283,7 +283,7 @@
                                             License Plate &nbsp;
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtLicensePlate" runat="server" TabIndex="17" Width="170px">
+                                            <dx:ASPxTextBox ID="txtLicensePlate" runat="server" TabIndex="20" Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
@@ -299,10 +299,10 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            &nbsp; Drive License
+                                            Drive License
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtDriveLicense" runat="server" TabIndex="18" Width="170px">
+                                            <dx:ASPxTextBox ID="txtDriveLicense" runat="server" TabIndex="21" Width="170px">
                                             </dx:ASPxTextBox>
                                             &nbsp;
                                         </td>
@@ -329,7 +329,7 @@
                                             Company Name
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px" TabIndex="19">
+                                            <dx:ASPxTextBox ID="txtCompanyName" runat="server" Width="170px" TabIndex="21">
                                             </dx:ASPxTextBox>
                                         </td>
                                         <td width="50px">
@@ -339,7 +339,7 @@
                                             State/County
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtCompanyState" runat="server" Width="170px" TabIndex="24" MaxLength="50">
+                                            <dx:ASPxTextBox ID="txtCompanyState" runat="server" Width="170px" TabIndex="26" MaxLength="50">
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
@@ -348,7 +348,7 @@
                                             Company Address Line 1
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtCompanyAddressLine1" runat="server" Width="170px" TabIndex="20"
+                                            <dx:ASPxTextBox ID="txtCompanyAddressLine1" runat="server" Width="170px" TabIndex="22"
                                                 MaxLength="150">
                                             </dx:ASPxTextBox>
                                         </td>
@@ -360,7 +360,7 @@
                                         </td>
                                         <td>
                                             <dx:ASPxComboBox ID="cmbCompanyCountry" runat="server" ValueType="System.Int32" IncrementalFilteringMode="Contains"
-                                                TabIndex="24">
+                                                TabIndex="27">
                                             </dx:ASPxComboBox>
                                         </td>
                                     </tr>
@@ -369,7 +369,7 @@
                                             Company Address Line 2
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtCompanyAddressLine2" runat="server" Width="170px" TabIndex="21"
+                                            <dx:ASPxTextBox ID="txtCompanyAddressLine2" runat="server" Width="170px" TabIndex="23"
                                                 MaxLength="150">
                                             </dx:ASPxTextBox>
                                         </td>
@@ -380,7 +380,7 @@
                                             Zip Code/Post code
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtCompanyPostCode" runat="server" MaxLength="50" TabIndex="25"
+                                            <dx:ASPxTextBox ID="txtCompanyPostCode" runat="server" MaxLength="50" TabIndex="28"
                                                 Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
@@ -390,7 +390,7 @@
                                             City
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtCompanyCity" runat="server" Width="170px" TabIndex="22" MaxLength="50">
+                                            <dx:ASPxTextBox ID="txtCompanyCity" runat="server" Width="170px" TabIndex="24" MaxLength="50">
                                             </dx:ASPxTextBox>
                                         </td>
                                         <td>
@@ -400,7 +400,7 @@
                                             Notes
                                         </td>
                                         <td rowspan="2">
-                                            <dx:ASPxMemo ID="txtNotes" runat="server" Height="71px" Width="170px">
+                                            <dx:ASPxMemo ID="txtNotes" runat="server" Height="71px" Width="170px" TabIndex="29">
                                             </dx:ASPxMemo>
                                         </td>
                                     </tr>
@@ -409,8 +409,9 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            <dx:ASPxCheckBox ID="chkUseSameBillingAddress" runat="server" Checked="True" CheckState="Checked"
-                                                Text="Use Same Billing Address">
+                                            <dx:ASPxCheckBox ID="chkUseSameBillingAddress" runat="server" 
+                                                Text="Use Same Billing Address" AutoPostBack="True" 
+                                                OnCheckedChanged="chkUseSameBillingAddress_CheckedChanged">
                                             </dx:ASPxCheckBox>
                                         </td>
                                         <td>
@@ -442,7 +443,7 @@
                                             Billing Address Line 1<span class="reqfield">*</span>
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingAddressLine1" runat="server" Width="170px" TabIndex="27">
+                                            <dx:ASPxTextBox ID="txtBillingAddressLine1" runat="server" Width="170px" TabIndex="30">
                                                 <ValidationSettings EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
                                                     ValidationGroup="vgCustomer" SetFocusOnError="True">
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
@@ -456,7 +457,7 @@
                                             State/County
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingState" runat="server" TabIndex="28" Width="170px">
+                                            <dx:ASPxTextBox ID="txtBillingState" runat="server" TabIndex="33" Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
@@ -465,7 +466,7 @@
                                             Billing Address Line 2<span class="reqfield">*</span>
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingAddressLine2" runat="server" TabIndex="27" Width="170px">
+                                            <dx:ASPxTextBox ID="txtBillingAddressLine2" runat="server" TabIndex="31" Width="170px">
                                                 <ValidationSettings EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
                                                     ValidationGroup="vgCustomer" SetFocusOnError="True">
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
@@ -480,7 +481,7 @@
                                         </td>
                                         <td>
                                             <dx:ASPxComboBox ID="cmbBillingCountry" runat="server" IncrementalFilteringMode="Contains"
-                                                TabIndex="29" ValueType="System.Int32">
+                                                TabIndex="34" ValueType="System.Int32">
                                          
                                             </dx:ASPxComboBox>
                                         </td>
@@ -490,7 +491,7 @@
                                             Billing City<span class="reqfield">*</span>
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingCity" runat="server" TabIndex="28" Width="170px">
+                                            <dx:ASPxTextBox ID="txtBillingCity" runat="server" TabIndex="32" Width="170px">
                                                 <ValidationSettings EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
                                                     ValidationGroup="vgCustomer" SetFocusOnError="True">
                                                     <RequiredField ErrorText="Required" IsRequired="True" />
@@ -504,7 +505,7 @@
                                             Zip Code/Post code &nbsp;
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" TabIndex="30" Width="170px">
+                                            <dx:ASPxTextBox ID="txtBillingPostCode" runat="server" TabIndex="35" Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
@@ -542,7 +543,7 @@
                         <tr>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgCustomer"
-                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" TabIndex="31">
+                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" TabIndex="36">
                                     <Image Url="~/Images/Save.png">
                                     </Image>
                                 </dx:ASPxButton>
@@ -550,7 +551,7 @@
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnClear" runat="server" Text="Clear" HorizontalAlign="Center"
                                     ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False" AutoPostBack="false"
-                                    OnClick="btnClear_Click" TabIndex="32">
+                                    OnClick="btnClear_Click" TabIndex="37">
                                     <Image Url="~/Images/Clear.png">
                                     </Image>
                                 </dx:ASPxButton>
@@ -558,7 +559,7 @@
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnSearch" runat="server" Text="Search" HorizontalAlign="Center"
                                     ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False" AutoPostBack="false"
-                                    OnClick="btnSearch_Click" TabIndex="32">
+                                    OnClick="btnSearch_Click" TabIndex="38">
                                     <Image Url="~/Images/Search.png">
                                     </Image>
                                 </dx:ASPxButton>
@@ -566,7 +567,7 @@
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnReservation" runat="server" Text="Reservation" HorizontalAlign="Center"
                                     ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False" AutoPostBack="false"
-                                    OnClick="btnReservation_Click" TabIndex="33" Visible="false">
+                                    OnClick="btnReservation_Click" TabIndex="39" Visible="false">
                                     <Image Url="../Images/Reservation.png">
                                     </Image>
                                 </dx:ASPxButton>

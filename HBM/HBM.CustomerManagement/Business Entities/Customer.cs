@@ -60,7 +60,7 @@ namespace HBM.CustomerManagement
         public string CardSecurityCode { get; set; }
         public DateTime? CardStartDate { get; set; }
         public string CardIssueNo { get; set; }
-
+        public bool UseSameBillingAddress { get; set; }
 
         #endregion
 

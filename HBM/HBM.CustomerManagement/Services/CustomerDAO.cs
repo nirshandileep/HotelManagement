@@ -54,8 +54,9 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@CardSecurityCode", DbType.String, customer.CardSecurityCode);
             db.AddInParameter(command, "@CardStartDate", DbType.DateTime, customer.CardStartDate);
             db.AddInParameter(command, "@CardIssueNo", DbType.String, customer.CardIssueNo);
+            db.AddInParameter(command, "@UseSameBillingAddress", DbType.Boolean, customer.UseSameBillingAddress);
 
-
+            
             db.ExecuteNonQuery(command);
 
             return true;
@@ -106,6 +107,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@CardSecurityCode", DbType.String, customer.CardSecurityCode);
             db.AddInParameter(command, "@CardStartDate", DbType.DateTime, customer.CardStartDate);
             db.AddInParameter(command, "@CardIssueNo", DbType.String, customer.CardIssueNo);
+            db.AddInParameter(command, "@UseSameBillingAddress", DbType.Boolean, customer.UseSameBillingAddress);
 
             db.ExecuteNonQuery(command);
 
