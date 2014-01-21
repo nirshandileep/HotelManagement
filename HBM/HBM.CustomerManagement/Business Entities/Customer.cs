@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
+using HBM.Common;
 
 namespace HBM.CustomerManagement
 {
@@ -61,6 +62,17 @@ namespace HBM.CustomerManagement
         public DateTime? CardStartDate { get; set; }
         public string CardIssueNo { get; set; }
         public bool UseSameBillingAddress { get; set; }
+        public int? GroupId { get; set; }
+        public bool? IsGroupCustomer { get; set; }
+        /// <summary>
+        /// CustomerId
+        /// CustomerName
+        /// MemberCode
+        /// Gender
+        /// GuestTypeId
+        /// Phone
+        /// </summary>
+        public DataSet DsGroupCustomers { get; set; }
 
         #endregion
 
@@ -71,22 +83,40 @@ namespace HBM.CustomerManagement
         public bool Save()
         {
             bool result = false;
+            
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbConnection connection = db.CreateConnection();
+            connection.Open();
+            DbTransaction transaction = connection.BeginTransaction();
+
             try
             {
                 if (this.CustomerId > 0)
                 {
-                    result = (new CustomerDAO()).Update(this);
+                    result = (new CustomerDAO()).Update(this, db, transaction);
                 }
                 else
                 {
-                    result = (new CustomerDAO()).Insert(this);
+                    result = (new CustomerDAO()).Insert(this, db, transaction);
                 }
+
+                if (this.IsGroupCustomer.HasValue && this.IsGroupCustomer.Value)
+                {
+                    (new CustomerDAO()).InsertUpdateDelete(this, db, transaction);
+
+                }
+                transaction.Commit();
             }
             catch (System.Exception ex)
             {
+                transaction.Rollback();
                 result = false;
                 throw ex;
             }
+            finally 
+            {
+                connection.Close();
+            } 
             return result;
         }
 
@@ -118,7 +148,16 @@ namespace HBM.CustomerManagement
 
         public Customer Select()
         {
-            return HBM.Utility.Generic.Get<Customer>(this.CustomerId, this.CompanyId);
+            Customer customer = HBM.Utility.Generic.Get<Customer>(this.CustomerId, this.CompanyId);
+
+            //Check if group customer record
+            if (customer != null && customer.IsGroupCustomer.HasValue && customer.IsGroupCustomer.Value && customer.GroupId.HasValue == false)
+            {
+                //customer.DsGroupCustomers = new DataSet();
+                customer.DsGroupCustomers = (new CustomerDAO()).SelectGroupByGroupId(customer.GroupId.Value);
+            }
+            
+            return customer;
         }
 
         public List<Customer> SelectAllList()

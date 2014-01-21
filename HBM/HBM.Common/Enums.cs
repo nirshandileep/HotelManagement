@@ -28,6 +28,15 @@ namespace HBM.Common
         {
             Hote=1
         }
+
+        /// <summary>
+        /// Different types of customers
+        /// </summary>
+        public enum CustomerModes
+        {
+            Individual = 1,
+            Group = 2,
+        }
        
     }
 }

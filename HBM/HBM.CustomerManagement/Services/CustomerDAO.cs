@@ -11,9 +11,8 @@ namespace HBM.CustomerManagement
 {
     public class CustomerDAO
     {
-        public bool Insert(Customer customer)
+        public bool Insert(Customer customer, Database db, DbTransaction transaction)
         {
-            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_CustomerInsert");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, customer.CompanyId);
@@ -55,17 +54,19 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@CardStartDate", DbType.DateTime, customer.CardStartDate);
             db.AddInParameter(command, "@CardIssueNo", DbType.String, customer.CardIssueNo);
             db.AddInParameter(command, "@UseSameBillingAddress", DbType.Boolean, customer.UseSameBillingAddress);
+            db.AddInParameter(command, "@IsGroupCustomer", DbType.Boolean, customer.IsGroupCustomer);
+            db.AddOutParameter(command, "@CustomerId", DbType.Int32, 8);
 
-            
-            db.ExecuteNonQuery(command);
+            db.ExecuteNonQuery(command, transaction);
+
+            customer.CustomerId = int.Parse(db.GetParameterValue(command, "@CustomerId").ToString());
 
             return true;
         }
 
-        public bool Update(Customer customer)
+        public bool Update(Customer customer, Database db, DbTransaction transacion)
         {
 
-            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_CustomerUpdate");
 
             db.AddInParameter(command, "@CustomerId", DbType.Int32, customer.CustomerId);
@@ -109,7 +110,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(command, "@CardIssueNo", DbType.String, customer.CardIssueNo);
             db.AddInParameter(command, "@UseSameBillingAddress", DbType.Boolean, customer.UseSameBillingAddress);
 
-            db.ExecuteNonQuery(command);
+            db.ExecuteNonQuery(command, transacion);
 
             return true;
         }
@@ -137,6 +138,46 @@ namespace HBM.CustomerManagement
             return db.ExecuteDataSet(command);
         }
 
+        public DataSet SelectGroupByGroupId(int groupId)
+        {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CustomerGroupSelectByGroupId");
 
+            db.AddInParameter(command, "@GroupId", DbType.Int32, groupId);
+
+            return db.ExecuteDataSet(command);
+        }
+
+        public bool InsertUpdateDelete(Customer customer, Database db, DbTransaction transaction)
+        {
+            DbCommand commandInsert = db.GetStoredProcCommand("usp_CustomerGroupInsert");
+            db.AddInParameter(commandInsert, "@GroupId", DbType.Int64, customer.CustomerId);
+            db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, customer.CompanyId);
+            db.AddInParameter(commandInsert, "@CustomerName", DbType.String, "CustomerName", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@MemberCode", DbType.String, "MemberCode", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@Gender", DbType.String, "Gender", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@GuestTypeId", DbType.Int32, "GuestTypeId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@Phone", DbType.String, "Phone", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, (int)HBM.Common.Enums.HBMStatus.Active);
+            db.AddInParameter(commandInsert, "@IsGroupCustomer", DbType.Boolean, customer.IsGroupCustomer);
+            db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
+
+            DbCommand commandUpdate = db.GetStoredProcCommand("usp_CustomerGroupUpdate");
+            db.AddInParameter(commandUpdate, "@CustomerId", DbType.Int64, "CustomerId");
+            db.AddInParameter(commandUpdate, "@CustomerName", DbType.String, "CustomerName", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@MemberCode", DbType.String, "MemberCode", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@Gender", DbType.String, "Gender", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@GuestTypeId", DbType.Int32, "GuestTypeId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@Phone", DbType.String, "Phone", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, (int)HBM.Common.Enums.HBMStatus.Active);
+            db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
+
+            DbCommand commandDelete = db.GetStoredProcCommand("usp_CustomerDelete");
+            db.AddInParameter(commandDelete, "@CustomerId", DbType.Int32, "CustomerId", DataRowVersion.Current);
+
+            db.UpdateDataSet(customer.DsGroupCustomers, customer.DsGroupCustomers.Tables[0].TableName, commandInsert, commandUpdate, commandDelete, transaction);
+
+            return true;
+        }
     }
 }
