@@ -93,7 +93,9 @@ namespace HBM
 
                 if (Session["DSGroupCustomers"] == null)
                 {
-                    Session["DSGroupCustomers"] = new CustomerDAO().SelectGroupByGroupId(0);
+                    DataSet ds = new CustomerDAO().SelectGroupByGroupId(0);
+                    ds.Tables[0].PrimaryKey = new DataColumn[] { ds.Tables[0].Columns["CustomerId"] };
+                    Session["DSGroupCustomers"] = ds;
                 }
                 return (DataSet)Session["DSGroupCustomers"];
             }
@@ -117,6 +119,8 @@ namespace HBM
                 CustomerObj = CustomerObj.Select();
 
                 //this.DSGroupCustomers = CustomerObj.DsGroupCustomers;
+                gvGroupMembers.DataSource = DSGroupCustomers;
+                gvGroupMembers.DataBind();
 
                 if (CustomerObj == null)
                 {
@@ -999,12 +1003,9 @@ namespace HBM
 
             ASPxGridView gridView = sender as ASPxGridView;
             DataRow row = DSGroupCustomers.Tables[0].NewRow();
+            
             Random rd = new Random();
-
             e.NewValues["CustomerId"] = rd.Next();
-
-            Random rd1 = new Random();
-            e.NewValues["ReservationId"] = rd.Next();
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
             e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
