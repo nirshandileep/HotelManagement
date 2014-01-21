@@ -662,6 +662,7 @@ namespace HBM
             currentCustomer.UpdatedUser = Master.LoggedUser.UsersId;
             currentCustomer.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
             currentCustomer.IsGroupCustomer = true;
+            currentCustomer.DsGroupCustomers = DSGroupCustomers;
         }
 
         private void SaveIndividualCustomerData(CustMan.Customer currentCustomer)
