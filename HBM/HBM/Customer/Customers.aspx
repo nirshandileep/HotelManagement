@@ -22,22 +22,38 @@
             Add Customer</h2>
         <table>
             <tr runat="server" id="trCustomerMode">
+                <td align="center">
+                    <dx:ASPxRoundPanel ID="ASPxRoundPanel8" runat="server" Width="850px" HeaderText="Customer Type">
+                        <PanelCollection>
+                            <dx:PanelContent ID="PanelContent7" runat="server" SupportsDisabledAttribute="True">
+                                <table class="customers-tbl" align="center">
+                                    <tr>
+                                        <td align="center" valign="middle">
+                                            <asp:RadioButtonList ID="rblCustomerMode" runat="server" RepeatDirection="Horizontal"
+                                                OnSelectedIndexChanged="rblCustomerMode_SelectedIndexChanged" AutoPostBack="True"
+                                                Width="50%" CellPadding="10" CellSpacing="10">
+                                                <asp:ListItem Value="1" Selected="True">Single Customer</asp:ListItem>
+                                                <asp:ListItem Value="2">Group Customer</asp:ListItem>
+                                            </asp:RadioButtonList>
+                                            <asp:HiddenField ID="hdnCustomerMode" runat="server" Value="2" />
+                                            <asp:HiddenField ID="hdnCustomerId" runat="server" Value="0" />
+                                            <asp:HiddenField ID="hdnFromURL" runat="server" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxRoundPanel>
+                </td>
+            </tr>
+            <tr>
                 <td>
-                    <asp:RadioButtonList ID="rblCustomerMode" runat="server" RepeatDirection="Horizontal"
-                        RepeatLayout="Flow" 
-                        OnSelectedIndexChanged="rblCustomerMode_SelectedIndexChanged" 
-                        AutoPostBack="True">
-                        <asp:ListItem Value="1" Selected="True">Single Customer</asp:ListItem>
-                        <asp:ListItem Value="2">Group Customer</asp:ListItem>
-                    </asp:RadioButtonList>
-                    <asp:HiddenField ID="hdnCustomerMode" runat="server" Value="2"/>
-                    <asp:HiddenField ID="hdnCustomerId" runat="server" Value="0" />
-                    <asp:HiddenField ID="hdnFromURL" runat="server" />
+                    &nbsp;
                 </td>
             </tr>
         </table>
         <table id="tblGroupCustomer" runat="server" visible="false">
-            <tr >
+            <tr>
                 <td>
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel4" runat="server" Width="800px" HeaderText="Group Information">
                         <PanelCollection>
@@ -362,8 +378,8 @@
                                             Zip Code/Post code
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtCompanyPostCodeGrp" runat="server" MaxLength="50" 
-                                                TabIndex="28" Width="170px">
+                                            <dx:ASPxTextBox ID="txtCompanyPostCodeGrp" runat="server" MaxLength="50" TabIndex="28"
+                                                Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
@@ -372,8 +388,8 @@
                                             City
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtCompanyCityGrp" runat="server" Width="170px" 
-                                                TabIndex="24" MaxLength="50">
+                                            <dx:ASPxTextBox ID="txtCompanyCityGrp" runat="server" Width="170px" TabIndex="24"
+                                                MaxLength="50">
                                             </dx:ASPxTextBox>
                                         </td>
                                         <td>
@@ -383,8 +399,7 @@
                                             Notes
                                         </td>
                                         <td rowspan="2">
-                                            <dx:ASPxMemo ID="txtCompanyNotesGrp" runat="server" Height="71px" Width="170px" 
-                                                TabIndex="29">
+                                            <dx:ASPxMemo ID="txtCompanyNotesGrp" runat="server" Height="71px" Width="170px" TabIndex="29">
                                             </dx:ASPxMemo>
                                         </td>
                                     </tr>
@@ -440,8 +455,7 @@
                                             State/County
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingStateGrp" runat="server" TabIndex="33" 
-                                                Width="170px">
+                                            <dx:ASPxTextBox ID="txtBillingStateGrp" runat="server" TabIndex="33" Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
@@ -488,8 +502,7 @@
                                             Zip Code/Post code &nbsp;
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtBillingZipPostalCodeGrp" runat="server" TabIndex="35" 
-                                                Width="170px">
+                                            <dx:ASPxTextBox ID="txtBillingZipPostalCodeGrp" runat="server" TabIndex="35" Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
@@ -522,81 +535,83 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxRoundPanel ID="ASPxRoundPanel7" runat="server" Width="200px" HeaderText="Group Members">
+                    <dx:ASPxRoundPanel ID="ASPxRoundPanel7" runat="server" Width="850px" HeaderText="Group Members">
                         <PanelCollection>
                             <dx:PanelContent ID="PanelContent6" runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxGridView ID="gvGroupMembers" runat="server" AutoGenerateColumns="False"
-                                    KeyFieldName="CustomerId" OnRowInserting="gvGroupMembers_RowInserting"
-                                    OnRowDeleting="gvGroupMembers_RowDeleting" OnRowUpdating="gvGroupMembers_RowUpdating"
-                                    OnCellEditorInitialize="gvGroupMembers_CellEditorInitialize">
-                                    <Columns>
-                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="120px" Caption="Actions"
-                                            FixedStyle="Left">
-                                            <DeleteButton Visible="True">
-                                                <Image ToolTip="Delete" Url="~/Images/delete.png">
-                                                </Image>
-                                            </DeleteButton>
-                                            <EditButton Visible="True">
-                                                <Image ToolTip="Edit" Url="~/Images/update.png">
-                                                </Image>
-                                            </EditButton>
-                                            <NewButton Visible="True">
-                                                <Image ToolTip="New" Url="~/Images/new.png">
-                                                </Image>
-                                            </NewButton>
-                                            <UpdateButton Visible="True">
-                                                <Image Url="~/Images/Apply.png">
-                                                </Image>
-                                            </UpdateButton>
-                                            <CancelButton Visible="True">
-                                                <Image Url="~/Images/Close.png" ToolTip="Cancel">
-                                                </Image>
-                                            </CancelButton>
-                                        </dx:GridViewCommandColumn>
-                                        <dx:GridViewDataTextColumn Caption="Member Code" FieldName="MemberCode" 
-                                            VisibleIndex="2">
-                                            <PropertiesTextEdit MaxLength="50">
-                                                <ValidationSettings Display="Dynamic">
-                                                    <RequiredField ErrorText="Required" IsRequired="True" />
-                                                </ValidationSettings>
-                                            </PropertiesTextEdit>
-                                        </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn Caption="Customer Name" FieldName="CustomerName" 
-                                            VisibleIndex="1" UnboundType="String">
-                                            <PropertiesTextEdit>
-                                                <ValidationSettings Display="Dynamic">
-                                                    <RequiredField ErrorText="Required" IsRequired="True" />
-                                                </ValidationSettings>
-                                            </PropertiesTextEdit>
-                                        </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataComboBoxColumn Caption="Gender" FieldName="Gender"
-                                            VisibleIndex="3">
-                                            <PropertiesComboBox ValueField="Gender">
-                                                <Items>
-                                                    <dx:ListEditItem Text="Male" Value="Male" />
-                                                    <dx:ListEditItem Text="Female" Value="Female" />
-                                                </Items>
-                                                <ValidationSettings Display="Dynamic">
-                                                    <RequiredField ErrorText="Required" IsRequired="True" />
-                                                </ValidationSettings>
-                                            </PropertiesComboBox>
-                                        </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataComboBoxColumn Caption="Guest Type" FieldName="GuestTypeId" 
-                                            ShowInCustomizationForm="True" UnboundType="Integer" VisibleIndex="4">
-                                            <PropertiesComboBox TextField="GuestTypeName" ValueField="GuestTypeId" 
-                                                ValueType="System.Int32">
-                                                <ValidationSettings Display="Dynamic">
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                            </PropertiesComboBox>
-                                        </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataTextColumn FieldName="Phone" ShowInCustomizationForm="True" 
-                                            UnboundType="String" VisibleIndex="5">
-                                        </dx:GridViewDataTextColumn>
-                                    </Columns>
-                                    <SettingsBehavior ConfirmDelete="True" />
-                                    <SettingsText ConfirmDelete="" />
-                                </dx:ASPxGridView>
+                                <table class="customers-tbl">
+                                    <tr>
+                                        <td>
+                                            <dx:ASPxGridView ID="gvGroupMembers" runat="server" AutoGenerateColumns="False" KeyFieldName="CustomerId"
+                                                OnRowInserting="gvGroupMembers_RowInserting" OnRowDeleting="gvGroupMembers_RowDeleting"
+                                                OnRowUpdating="gvGroupMembers_RowUpdating" OnCellEditorInitialize="gvGroupMembers_CellEditorInitialize" Width="100%" >
+                                                <Columns>
+                                                    <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="120px" Caption="Actions"
+                                                        FixedStyle="Left">
+                                                        <DeleteButton Visible="True">
+                                                            <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                                            </Image>
+                                                        </DeleteButton>
+                                                        <EditButton Visible="True">
+                                                            <Image ToolTip="Edit" Url="~/Images/update.png">
+                                                            </Image>
+                                                        </EditButton>
+                                                        <NewButton Visible="True">
+                                                            <Image ToolTip="New" Url="~/Images/new.png">
+                                                            </Image>
+                                                        </NewButton>
+                                                        <UpdateButton Visible="True">
+                                                            <Image Url="~/Images/Apply.png">
+                                                            </Image>
+                                                        </UpdateButton>
+                                                        <CancelButton Visible="True">
+                                                            <Image Url="~/Images/Close.png" ToolTip="Cancel">
+                                                            </Image>
+                                                        </CancelButton>
+                                                    </dx:GridViewCommandColumn>
+                                                    <dx:GridViewDataTextColumn Caption="Member Code" FieldName="MemberCode" VisibleIndex="2">
+                                                        <PropertiesTextEdit MaxLength="50">
+                                                            <ValidationSettings Display="Dynamic">
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
+                                                        </PropertiesTextEdit>
+                                                    </dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn Caption="Customer Name" FieldName="CustomerName" VisibleIndex="1"
+                                                        UnboundType="String">
+                                                        <PropertiesTextEdit>
+                                                            <ValidationSettings Display="Dynamic">
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
+                                                        </PropertiesTextEdit>
+                                                    </dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataComboBoxColumn Caption="Gender" FieldName="Gender" VisibleIndex="3">
+                                                        <PropertiesComboBox ValueField="Gender">
+                                                            <Items>
+                                                                <dx:ListEditItem Text="Male" Value="Male" />
+                                                                <dx:ListEditItem Text="Female" Value="Female" />
+                                                            </Items>
+                                                            <ValidationSettings Display="Dynamic">
+                                                                <RequiredField ErrorText="Required" IsRequired="True" />
+                                                            </ValidationSettings>
+                                                        </PropertiesComboBox>
+                                                    </dx:GridViewDataComboBoxColumn>
+                                                    <dx:GridViewDataComboBoxColumn Caption="Guest Type" FieldName="GuestTypeId" ShowInCustomizationForm="True"
+                                                        UnboundType="Integer" VisibleIndex="4">
+                                                        <PropertiesComboBox TextField="GuestTypeName" ValueField="GuestTypeId" ValueType="System.Int32">
+                                                            <ValidationSettings Display="Dynamic">
+                                                                <RequiredField IsRequired="True" />
+                                                            </ValidationSettings>
+                                                        </PropertiesComboBox>
+                                                    </dx:GridViewDataComboBoxColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="Phone" ShowInCustomizationForm="True" UnboundType="String"
+                                                        VisibleIndex="5">
+                                                    </dx:GridViewDataTextColumn>
+                                                </Columns>
+                                                <SettingsBehavior ConfirmDelete="True" />
+                                                <SettingsText ConfirmDelete="" />
+                                            </dx:ASPxGridView>
+                                        </td>
+                                    </tr>
+                                </table>
                             </dx:PanelContent>
                         </PanelCollection>
                     </dx:ASPxRoundPanel>

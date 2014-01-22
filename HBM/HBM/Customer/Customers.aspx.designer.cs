@@ -22,6 +22,24 @@ namespace HBM {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trCustomerMode;
         
         /// <summary>
+        /// ASPxRoundPanel8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel8;
+        
+        /// <summary>
+        /// PanelContent7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent7;
+        
+        /// <summary>
         /// rblCustomerMode control.
         /// </summary>
         /// <remarks>
