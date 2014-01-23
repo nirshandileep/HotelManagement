@@ -25,7 +25,7 @@
                 <td align="center">
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel8" runat="server" Width="850px" HeaderText="Customer Type">
                         <PanelCollection>
-                            <dx:PanelContent ID="PanelContent7" runat="server" SupportsDisabledAttribute="True">
+                            <dx:PanelContent ID="PanelContent7" runat="server" SupportsDisabledAttribute="True" >
                                 <table class="customers-tbl" align="center">
                                     <tr>
                                         <td align="center" valign="middle">
@@ -263,47 +263,6 @@
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td height="22" class="info-lbl">
-                                        </td>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                        </td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td height="22" class="info-lbl">
-                                        </td>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td height="22" class="info-lbl">
-                                        </td>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                    </tr>
                                 </table>
                             </dx:PanelContent>
                         </PanelCollection>
@@ -506,22 +465,7 @@
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="info-lbl" height="22">
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                        </td>
-                                    </tr>
+                         
                                 </table>
                             </dx:PanelContent>
                         </PanelCollection>
@@ -543,7 +487,7 @@
                                         <td>
                                             <dx:ASPxGridView ID="gvGroupMembers" runat="server" AutoGenerateColumns="False" KeyFieldName="CustomerId"
                                                 OnRowInserting="gvGroupMembers_RowInserting" OnRowDeleting="gvGroupMembers_RowDeleting"
-                                                OnRowUpdating="gvGroupMembers_RowUpdating" OnCellEditorInitialize="gvGroupMembers_CellEditorInitialize" Width="100%" >
+                                                OnRowUpdating="gvGroupMembers_RowUpdating" OnCellEditorInitialize="gvGroupMembers_CellEditorInitialize" Width="97%" >
                                                 <Columns>
                                                     <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="120px" Caption="Actions"
                                                         FixedStyle="Left">
@@ -1136,7 +1080,7 @@
                         <tr>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgCustomer"
-                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" TabIndex="36">
+                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" TabIndex="36" UseSubmitBehavior="false">
                                     <Image Url="~/Images/Save.png">
                                     </Image>
                                 </dx:ASPxButton>

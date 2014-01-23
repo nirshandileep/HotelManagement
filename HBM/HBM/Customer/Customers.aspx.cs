@@ -88,7 +88,7 @@ namespace HBM
 
         public DataSet DSGroupCustomers
         {
-            get 
+            get
             {
 
                 if (Session["DSGroupCustomers"] == null)
@@ -99,7 +99,7 @@ namespace HBM
                 }
                 return (DataSet)Session["DSGroupCustomers"];
             }
-            set 
+            set
             {
                 Session["DSGroupCustomers"] = value;
             }
@@ -118,8 +118,8 @@ namespace HBM
                 CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
                 CustomerObj = CustomerObj.Select();
 
-                //this.DSGroupCustomers = CustomerObj.DsGroupCustomers;
-                gvGroupMembers.DataSource = DSGroupCustomers;
+                this.DSGroupCustomers = CustomerObj.DsGroupCustomers;
+                
                 gvGroupMembers.DataBind();
 
                 if (CustomerObj == null)
@@ -529,13 +529,12 @@ namespace HBM
             {
                 if (string.IsNullOrEmpty(errorMSG) && currentCustomer.Save())
                 {
-                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);                    
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
                 }
                 else
                 {
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Save_Unsuccess + "')", true);
                 }
-
             }
         }
 
@@ -956,8 +955,6 @@ namespace HBM
             }
         }
 
-        #endregion
-
         protected void rblCustomerMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             //hdnCustomerId.Value = rblCustomerMode.SelectedValue;
@@ -1004,7 +1001,7 @@ namespace HBM
 
             ASPxGridView gridView = sender as ASPxGridView;
             DataRow row = DSGroupCustomers.Tables[0].NewRow();
-            
+
             Random rd = new Random();
             e.NewValues["CustomerId"] = rd.Next();
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Active;
@@ -1053,5 +1050,7 @@ namespace HBM
 
             Session["DSGroupCustomers"] = DSGroupCustomers;
         }
+
+        #endregion
     }
 }
