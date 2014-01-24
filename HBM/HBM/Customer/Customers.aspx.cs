@@ -118,6 +118,8 @@ namespace HBM
                 CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
                 CustomerObj = CustomerObj.Select();
 
+                
+
                 this.DSGroupCustomers = CustomerObj.DsGroupCustomers;
                 
                 gvGroupMembers.DataBind();
@@ -146,6 +148,8 @@ namespace HBM
         {
             hdnCustomerMode.Value = ((int)Common.Enums.CustomerModes.Individual).ToString();
             chkUseSameBillingAddress.Checked = CustomerObj.UseSameBillingAddress;
+
+            hdnCustomerMode.Value = "2";
 
             if (CustomerObj.UseSameBillingAddress)
             {
@@ -259,6 +263,8 @@ namespace HBM
 
             hdnCustomerMode.Value = ((int)Common.Enums.CustomerModes.Group).ToString();
             chkUseSameBillingAddressGrp.Checked = CustomerObj.UseSameBillingAddress;
+
+            hdnCustomerMode.Value = "1";
 
             if (CustomerObj.UseSameBillingAddress)
             {

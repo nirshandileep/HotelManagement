@@ -83,7 +83,7 @@ namespace HBM.CustomerManagement
         public bool Save()
         {
             bool result = false;
-            
+
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbConnection connection = db.CreateConnection();
             connection.Open();
@@ -113,10 +113,10 @@ namespace HBM.CustomerManagement
                 result = false;
                 throw ex;
             }
-            finally 
+            finally
             {
                 connection.Close();
-            } 
+            }
             return result;
         }
 
@@ -156,7 +156,7 @@ namespace HBM.CustomerManagement
                 //customer.DsGroupCustomers = new DataSet();
                 customer.DsGroupCustomers = (new CustomerDAO()).SelectGroupByGroupId(customer.GroupId.Value);
             }
-            
+
             return customer;
         }
 
