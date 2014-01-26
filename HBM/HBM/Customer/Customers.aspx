@@ -108,8 +108,15 @@
                                     </tr>
                                     <tr>
                                         <td height="22" class="info-lbl">
+                                            Phone<span class="reqfield">*</span>
                                         </td>
                                         <td>
+                                            <dx:ASPxTextBox ID="txtPhoneGrp" runat="server" TabIndex="4" Width="170px">
+                                                <ValidationSettings EnableCustomValidation="True" 
+                                                    ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
+                                                </ValidationSettings>
+                                            </dx:ASPxTextBox>
                                         </td>
                                         <td>
                                             &nbsp;
@@ -169,13 +176,10 @@
                                     </tr>
                                     <tr>
                                         <td height="22" class="info-lbl">
-                                            Phone<span class="reqfield">*</span>
+                                            Fax
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtPhoneGrp" runat="server" Width="170px" TabIndex="4">
-                                                <ValidationSettings EnableCustomValidation="True" ValidationGroup="vgCustomer" ErrorDisplayMode="ImageWithTooltip">
-                                                    <RequiredField IsRequired="True" ErrorText="Required" />
-                                                </ValidationSettings>
+                                            <dx:ASPxTextBox ID="txtFaxGrp" runat="server" TabIndex="5" Width="170px">
                                             </dx:ASPxTextBox>
                                         </td>
                                         <td>
@@ -191,10 +195,16 @@
                                     </tr>
                                     <tr>
                                         <td height="22" class="info-lbl">
-                                            Fax
+                                            Email
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtFaxGrp" runat="server" Width="170px" TabIndex="5">
+                                            <dx:ASPxTextBox ID="txtEmailGrp" runat="server" TabIndex="6" Width="170px">
+                                                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" 
+                                                    ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True" 
+                                                    ValidationGroup="vgCustomer">
+                                                    <RegularExpression ErrorText="Incorrect Email" 
+                                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
+                                                </ValidationSettings>
                                             </dx:ASPxTextBox>
                                         </td>
                                         <td>
@@ -211,15 +221,24 @@
                                     </tr>
                                     <tr>
                                         <td height="22" class="info-lbl">
-                                            Email
+                                            Guest Type<span class="reqfield">*</span>
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtEmailGrp" runat="server" Width="170px" TabIndex="6">
-                                                <ValidationSettings Display="Dynamic" EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
-                                                    SetFocusOnError="True" ValidationGroup="vgCustomer">
-                                                    <RegularExpression ErrorText="Incorrect Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
+                                            <dx:ASPxComboBox ID="cmbGuestTypeGrp" runat="server" 
+                                                ClientInstanceName="cmbGuestTypeGrp" DropDownStyle="DropDown" TabIndex="7" 
+                                                ValueType="System.Int32">
+                                                <ClientSideEvents ButtonClick="function(s, e) {
+  	ShowPopupWindow(ppcGuestType);
+}" />
+                                                <Buttons>
+                                                    <dx:EditButton Position="Left" ToolTip="Add/Edit guest type">
+                                                    </dx:EditButton>
+                                                </Buttons>
+                                                <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" 
+                                                    ValidationGroup="vgCustomer">
+                                                    <RequiredField ErrorText="Required" IsRequired="True" />
                                                 </ValidationSettings>
-                                            </dx:ASPxTextBox>
+                                            </dx:ASPxComboBox>
                                         </td>
                                         <td>
                                             &nbsp;
@@ -234,24 +253,9 @@
                                     </tr>
                                     <tr>
                                         <td height="22" class="info-lbl">
-                                            Guest Type<span class="reqfield">*</span>
-                                        </td>
+                                            &nbsp;</td>
                                         <td>
-                                            <dx:ASPxComboBox ID="cmbGuestTypeGrp" runat="server" ValueType="System.Int32" DropDownStyle="DropDown"
-                                                TabIndex="7" ClientInstanceName="cmbGuestTypeGrp">
-                                                <ClientSideEvents ButtonClick="function(s, e) {
-  	ShowPopupWindow(ppcGuestType);
-}" />
-                                                <Buttons>
-                                                    <dx:EditButton Position="Left" ToolTip="Add/Edit guest type">
-                                                    </dx:EditButton>
-                                                </Buttons>
-                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgCustomer"
-                                                    Display="Dynamic">
-                                                    <RequiredField ErrorText="Required" IsRequired="True" />
-                                                </ValidationSettings>
-                                            </dx:ASPxComboBox>
-                                        </td>
+                                            &nbsp;</td>
                                         <td>
                                             &nbsp;
                                         </td>

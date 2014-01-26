@@ -247,10 +247,7 @@ namespace HBM
 
             txtPassportNumber.Text = CustomerObj.PassportNumber;
             txtPhone.Text = CustomerObj.Phone;
-
-            //Load the grid
-            gvGroupMembers.DataSource = dsData;
-            gvGroupMembers.DataBind();
+                        
             rblCustomerMode.Enabled = false;
         }
 
@@ -344,7 +341,7 @@ namespace HBM
 
             //Load the grid
             gvGroupMembers.DataSource = CustomerObj.DsGroupCustomers;
-            gvGroupMembers.DataBind();            
+            gvGroupMembers.DataBind();
             dsData = CustomerObj.DsGroupCustomers;
             Session[Constants.SESSION_GROUPCUSTOMERS] = dsData;
             dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["CustomerId"] };
@@ -421,7 +418,9 @@ namespace HBM
                     tblIndividualCustomer.Visible = true;
                     tblGroupCustomer.Visible = false;
                     hdnCustomerMode.Value = "1";
-
+                    hdnCustomerMode.Value = "1";
+                    rblCustomerMode.SelectedValue = ((int)Common.Enums.CustomerModes.Individual).ToString();
+                    
                 }
             }
             catch (System.Exception)
@@ -564,7 +563,7 @@ namespace HBM
         {
             currentCustomer.CustomerName = txtCustomerName.Value.ToString();
 
-            if (cmbCar.SelectedItem!=null && cmbCar.SelectedItem.Value != null && cmbCar.SelectedItem.Value.ToString() != string.Empty)
+            if (cmbCar.SelectedItem != null && cmbCar.SelectedItem.Value != null && cmbCar.SelectedItem.Value.ToString() != string.Empty)
             {
                 currentCustomer.Car = cmbCar.SelectedItem.Value.ToString();
             }
@@ -575,11 +574,11 @@ namespace HBM
 
             currentCustomer.CarLicensePlate = txtLicensePlate.Value == null ? string.Empty : txtLicensePlate.Value.ToString();
             currentCustomer.CCExpirationDate = CCExpiryDate;
-            currentCustomer.CCNameOnCard = txtNameOnCard.Value.ToString();
-            currentCustomer.CCNo = txtCCNumber.Value.ToString();
-            currentCustomer.CardSecurityCode = txtCardSecurityCode.Value.ToString();
+            currentCustomer.CCNameOnCard = txtNameOnCard.Value == null ? string.Empty : txtNameOnCard.Value.ToString();
+            currentCustomer.CCNo = txtCCNumber.Value == null ? string.Empty : txtCCNumber.Value.ToString();
+            currentCustomer.CardSecurityCode = txtCardSecurityCode.Value == null ? string.Empty : txtCardSecurityCode.Value.ToString();
 
-            if (dtStartDate.Value.ToString() == string.Empty)
+            if (dtStartDate.Value == null || dtStartDate.Value.ToString() == string.Empty)
             {
                 currentCustomer.CardStartDate = null;
             }
@@ -589,10 +588,10 @@ namespace HBM
             }
 
 
-            currentCustomer.CardIssueNo = txtCardIssueNo.Value.ToString();
+            currentCustomer.CardIssueNo = txtCardIssueNo.Value == null ? string.Empty : txtCardIssueNo.Value.ToString();
 
 
-            if (cmbCCType.SelectedItem.Value != null && cmbCCType.SelectedItem.Value.ToString() != string.Empty)
+            if (cmbCCType.SelectedItem != null && cmbCCType.SelectedItem.Value != null && cmbCCType.SelectedItem.Value.ToString() != string.Empty)
             {
                 currentCustomer.CreditCardTypeId = Convert.ToInt32(cmbCCType.SelectedItem.Value.ToString());
             }
@@ -601,8 +600,8 @@ namespace HBM
                 currentCustomer.CreditCardTypeId = null;
             }
 
-            currentCustomer.CompanyName = txtCompanyName.Value.ToString();
-            currentCustomer.CompanyNotes = txtNotes.Value.ToString();
+            currentCustomer.CompanyName = txtCompanyName.Value == null ? string.Empty : txtCompanyName.Value.ToString();
+            currentCustomer.CompanyNotes = txtNotes.Value == null ? string.Empty : txtNotes.Value.ToString();
 
             currentCustomer.UseSameBillingAddress = chkUseSameBillingAddress.Checked == true ? true : false;
 
@@ -617,11 +616,11 @@ namespace HBM
             }
             else
             {
-                currentCustomer.CompanyAddressLine1 = txtCompanyAddressLine1.Value.ToString();
-                currentCustomer.CompanyAddressLine2 = txtCompanyAddressLine2.Value.ToString();
+                currentCustomer.CompanyAddressLine1 = txtCompanyAddressLine1.Value == null ? string.Empty : txtCompanyAddressLine1.Value.ToString();
+                currentCustomer.CompanyAddressLine2 = txtCompanyAddressLine2.Value == null ? string.Empty : txtCompanyAddressLine2.Value.ToString();
                 currentCustomer.CompanyCity = txtCompanyCity.Text.Trim();
 
-                if (cmbCompanyCountry.SelectedItem.Value != null && cmbCompanyCountry.SelectedItem.Value.ToString() != string.Empty)
+                if (cmbCompanyCountry.SelectedItem != null && cmbCompanyCountry.SelectedItem.Value != null && cmbCompanyCountry.SelectedItem.Value.ToString() != string.Empty)
                 {
                     currentCustomer.CompanyCountryId = Convert.ToInt32(cmbCompanyCountry.SelectedItem.Value.ToString());
                 }
@@ -630,16 +629,16 @@ namespace HBM
                     currentCustomer.CompanyCountryId = null;
                 }
 
-                currentCustomer.CompanyState = txtCompanyState.Value.ToString();
-                currentCustomer.CompanyPostCode = txtCompanyPostCode.Value.ToString();
+                currentCustomer.CompanyState = txtCompanyState.Value == null ? string.Empty : txtCompanyState.Value.ToString();
+                currentCustomer.CompanyPostCode = txtCompanyPostCode.Value == null ? string.Empty : txtCompanyPostCode.Value.ToString();
             }
 
-            currentCustomer.BillingAddressLine1 = txtBillingAddressLine1.Value.ToString();
-            currentCustomer.BillingAddressLine2 = txtBillingAddressLine2.Value.ToString();
+            currentCustomer.BillingAddressLine1 = txtBillingAddressLine1.Value == null ? string.Empty : txtBillingAddressLine1.Value.ToString();
+            currentCustomer.BillingAddressLine2 = txtBillingAddressLine2.Value == null ? string.Empty : txtBillingAddressLine2.Value.ToString();
             currentCustomer.BillingCity = txtBillingCity.Value.ToString();
-            currentCustomer.BillingState = txtBillingState.Value.ToString();
+            currentCustomer.BillingState = txtBillingState.Value == null ? string.Empty : txtBillingState.Value.ToString();
 
-            if (cmbBillingCountry.SelectedItem.Value != null && cmbBillingCountry.SelectedItem.Value.ToString() != string.Empty)
+            if (cmbBillingCountry.SelectedItem != null && cmbBillingCountry.SelectedItem.Value != null && cmbBillingCountry.SelectedItem.Value.ToString() != string.Empty)
             {
                 currentCustomer.BillingCountryId = Convert.ToInt32(cmbBillingCountry.SelectedItem.Value);
             }
@@ -648,17 +647,21 @@ namespace HBM
                 currentCustomer.BillingCountryId = null;
             }
 
-            currentCustomer.BillingPostCode = txtBillingPostCode.Value.ToString();
+            currentCustomer.BillingPostCode = txtBillingPostCode.Value == null ? string.Empty : txtBillingPostCode.Value.ToString();
 
-            currentCustomer.DriverLicense = txtDriveLicense.Value.ToString();
-            currentCustomer.Email = txtEmail.Value.ToString();
-            currentCustomer.Fax = txtFax.Value.ToString();
-            currentCustomer.Gender = cmbGender.SelectedItem.Value.ToString();
-            currentCustomer.MemberCode = txtMemberCode.Value.ToString();
-            currentCustomer.Mobile = txtPhone.Value.ToString();
-            currentCustomer.GuestTypeId = (int)cmbGuestType.SelectedItem.Value;
+            currentCustomer.DriverLicense = txtDriveLicense.Value == null ? string.Empty : txtDriveLicense.Value.ToString();
+            currentCustomer.Email = txtEmail.Value == null ? string.Empty : txtEmail.Value.ToString();
+            currentCustomer.Fax = txtFax.Value == null ? string.Empty : txtFax.Value.ToString();
+            currentCustomer.Gender = cmbGender.SelectedItem == null ? string.Empty : cmbGender.SelectedItem.Value.ToString();
+            currentCustomer.MemberCode = txtMemberCode.Value == null ? string.Empty : txtMemberCode.Value.ToString();
+            currentCustomer.Mobile = txtPhone.Value == null ? string.Empty : txtPhone.Value.ToString();
 
-            if (cmbPassportCountryOfIssue.SelectedItem.Value != null && cmbPassportCountryOfIssue.SelectedItem.Value.ToString() != string.Empty)
+            if (cmbGuestType.SelectedItem != null)
+            {
+                currentCustomer.GuestTypeId = (int)cmbGuestType.SelectedItem.Value;
+            }
+
+            if (cmbPassportCountryOfIssue.SelectedItem != null && cmbPassportCountryOfIssue.SelectedItem.Value != null && cmbPassportCountryOfIssue.SelectedItem.Value.ToString() != string.Empty)
             {
                 currentCustomer.PassportCountryOfIssue = Convert.ToInt32(cmbPassportCountryOfIssue.SelectedItem.Value);
             }
@@ -667,9 +670,13 @@ namespace HBM
                 currentCustomer.PassportCountryOfIssue = null;
             }
 
-            currentCustomer.PassportExpirationDate = (DateTime?)dtpExpiryDate.Value;
-            currentCustomer.PassportNumber = txtPassportNumber.Value.ToString();
-            currentCustomer.Phone = txtPhone.Value.ToString();
+
+            if (dtpExpiryDate.Value != null)
+            {
+                currentCustomer.PassportExpirationDate = (DateTime?)dtpExpiryDate.Value;
+            }
+            currentCustomer.PassportNumber = txtPassportNumber.Value == null ? string.Empty :  txtPassportNumber.Value.ToString();
+            currentCustomer.Phone = txtPhone.Value==null ? string.Empty : txtPhone.Value.ToString();
             currentCustomer.CreatedUser = Master.LoggedUser.UsersId;
             currentCustomer.UpdatedUser = Master.LoggedUser.UsersId;
             currentCustomer.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
@@ -830,20 +837,16 @@ namespace HBM
         {
             try
             {
-
                 LoadInitData();
 
                 if (!IsPostBack)
                 {
-                    CheckFromURL();
+                    this.CheckFromURL();
                     IsEditCustomer();
                     LoadInitialData();
                     ViewData();
                 }
-                if (IsCallback)
-                {
-
-                }
+               
             }
             catch (System.Exception)
             {
@@ -949,32 +952,32 @@ namespace HBM
 
         protected void chkUseSameBillingAddressGrp_CheckedChanged(object sender, EventArgs e)
         {
-            //Todo
+            
             if (chkUseSameBillingAddress.Checked)
             {
-                txtCompanyAddressLine1.Value = null;
-                txtCompanyAddressLine2.Value = null;
-                txtCompanyState.Value = null;
-                cmbCompanyCountry.SelectedIndex = -1;
-                txtCompanyPostCode.Value = null;
-                txtCompanyCity.Value = null;
+                txtCompanyAddressLine1Grp.Value = null;
+                txtCompanyAddressLine2Grp.Value = null;
+                txtCompanyStateGrp.Value = null;
+                cmbCompanyCountryGrp.SelectedIndex = -1;
+                txtCompanyPostCodeGrp.Value = null;
+                txtCompanyCityGrp.Value = null;
 
-                txtCompanyAddressLine1.Enabled = false;
-                txtCompanyAddressLine2.Enabled = false;
-                txtCompanyState.Enabled = false;
-                cmbCompanyCountry.Enabled = false;
-                txtCompanyPostCode.Enabled = false;
-                txtCompanyCity.Enabled = false;
+                txtCompanyAddressLine1Grp.Enabled = false;
+                txtCompanyAddressLine2Grp.Enabled = false;
+                txtCompanyStateGrp.Enabled = false;
+                cmbCompanyCountryGrp.Enabled = false;
+                txtCompanyPostCodeGrp.Enabled = false;
+                txtCompanyCityGrp.Enabled = false;
 
             }
             else
             {
-                txtCompanyAddressLine1.Enabled = true;
-                txtCompanyAddressLine2.Enabled = true;
-                txtCompanyState.Enabled = true;
-                cmbCompanyCountry.Enabled = true;
-                txtCompanyPostCode.Enabled = true;
-                txtCompanyCity.Enabled = true;
+                txtCompanyAddressLine1Grp.Enabled = true;
+                txtCompanyAddressLine2Grp.Enabled = true;
+                txtCompanyStateGrp.Enabled = true;
+                cmbCompanyCountryGrp.Enabled = true;
+                txtCompanyPostCodeGrp.Enabled = true;
+                txtCompanyCityGrp.Enabled = true;
 
             }
         }

@@ -139,6 +139,15 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCCNoGrp;
         
         /// <summary>
+        /// txtPhoneGrp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtPhoneGrp;
+        
+        /// <summary>
         /// cmbCCExpiryDateMonthGrp control.
         /// </summary>
         /// <remarks>
@@ -157,13 +166,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCCExpiryDateYearGrp;
         
         /// <summary>
-        /// txtPhoneGrp control.
+        /// txtFaxGrp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtPhoneGrp;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtFaxGrp;
         
         /// <summary>
         /// txtNameOnCardGrp control.
@@ -175,13 +184,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtNameOnCardGrp;
         
         /// <summary>
-        /// txtFaxGrp control.
+        /// txtEmailGrp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtFaxGrp;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtEmailGrp;
         
         /// <summary>
         /// txtCardSecurityCodeGrp control.
@@ -193,13 +202,13 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCardSecurityCodeGrp;
         
         /// <summary>
-        /// txtEmailGrp control.
+        /// cmbGuestTypeGrp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtEmailGrp;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbGuestTypeGrp;
         
         /// <summary>
         /// dtStartDateGrp control.
@@ -209,15 +218,6 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtStartDateGrp;
-        
-        /// <summary>
-        /// cmbGuestTypeGrp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbGuestTypeGrp;
         
         /// <summary>
         /// txtCardIssueNoGrp control.
