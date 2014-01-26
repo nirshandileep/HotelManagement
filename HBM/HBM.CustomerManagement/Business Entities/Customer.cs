@@ -122,7 +122,6 @@ namespace HBM.CustomerManagement
 
         #endregion
 
-
         #region Delete
 
         public bool Delete()
@@ -154,7 +153,7 @@ namespace HBM.CustomerManagement
             if (customer != null && customer.IsGroupCustomer.HasValue && customer.IsGroupCustomer.Value && customer.GroupId.HasValue == false)
             {
                 //customer.DsGroupCustomers = new DataSet();
-                customer.DsGroupCustomers = (new CustomerDAO()).SelectGroupByGroupId(customer.GroupId.Value);
+                customer.DsGroupCustomers = (new CustomerDAO()).SelectGroupByGroupId(customer.CustomerId);
             }
 
             return customer;
@@ -168,6 +167,12 @@ namespace HBM.CustomerManagement
         public DataSet SelectAllDataset()
         {
             return (new CustomerDAO()).SelectAll(this);
+        }
+
+
+        public DataSet SelectGroupByGroupId(int groupId)
+        {
+            return (new CustomerDAO()).SelectGroupByGroupId(groupId);
         }
 
         #endregion

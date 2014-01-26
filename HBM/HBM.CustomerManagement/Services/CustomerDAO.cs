@@ -151,7 +151,7 @@ namespace HBM.CustomerManagement
         public bool InsertUpdateDelete(Customer customer, Database db, DbTransaction transaction)
         {
             DbCommand commandInsert = db.GetStoredProcCommand("usp_CustomerGroupInsert");
-            db.AddInParameter(commandInsert, "@GroupId", DbType.Int64, customer.CustomerId);
+            db.AddInParameter(commandInsert, "@GroupId", DbType.Int32, customer.CustomerId);
             db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, customer.CompanyId);
             db.AddInParameter(commandInsert, "@CustomerName", DbType.String, "CustomerName", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@MemberCode", DbType.String, "MemberCode", DataRowVersion.Current);
@@ -163,7 +163,7 @@ namespace HBM.CustomerManagement
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_CustomerGroupUpdate");
-            db.AddInParameter(commandUpdate, "@CustomerId", DbType.Int64, "CustomerId");
+            db.AddInParameter(commandUpdate, "@CustomerId", DbType.Int32, "CustomerId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@CustomerName", DbType.String, "CustomerName", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@MemberCode", DbType.String, "MemberCode", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Gender", DbType.String, "Gender", DataRowVersion.Current);

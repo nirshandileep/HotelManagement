@@ -25,7 +25,7 @@
                 <td align="center">
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel8" runat="server" Width="850px" HeaderText="Customer Type">
                         <PanelCollection>
-                            <dx:PanelContent ID="PanelContent7" runat="server" SupportsDisabledAttribute="True" >
+                            <dx:PanelContent ID="PanelContent7" runat="server" SupportsDisabledAttribute="True">
                                 <table class="customers-tbl" align="center">
                                     <tr>
                                         <td align="center" valign="middle">
@@ -35,7 +35,7 @@
                                                 <asp:ListItem Value="1" Selected="True">Single Customer</asp:ListItem>
                                                 <asp:ListItem Value="2">Group Customer</asp:ListItem>
                                             </asp:RadioButtonList>
-                                            <asp:HiddenField ID="hdnCustomerMode" runat="server" Value="2" />
+                                            <asp:HiddenField ID="hdnCustomerMode" runat="server" Value="1" />
                                             <asp:HiddenField ID="hdnCustomerId" runat="server" Value="0" />
                                             <asp:HiddenField ID="hdnFromURL" runat="server" />
                                         </td>
@@ -465,7 +465,6 @@
                                             </dx:ASPxTextBox>
                                         </td>
                                     </tr>
-                         
                                 </table>
                             </dx:PanelContent>
                         </PanelCollection>
@@ -487,7 +486,8 @@
                                         <td>
                                             <dx:ASPxGridView ID="gvGroupMembers" runat="server" AutoGenerateColumns="False" KeyFieldName="CustomerId"
                                                 OnRowInserting="gvGroupMembers_RowInserting" OnRowDeleting="gvGroupMembers_RowDeleting"
-                                                OnRowUpdating="gvGroupMembers_RowUpdating" OnCellEditorInitialize="gvGroupMembers_CellEditorInitialize" Width="97%" >
+                                                OnRowUpdating="gvGroupMembers_RowUpdating" OnCellEditorInitialize="gvGroupMembers_CellEditorInitialize"
+                                                Width="97%">
                                                 <Columns>
                                                     <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="120px" Caption="Actions"
                                                         FixedStyle="Left">
@@ -552,6 +552,7 @@
                                                 </Columns>
                                                 <SettingsBehavior ConfirmDelete="True" />
                                                 <SettingsText ConfirmDelete="" />
+                                                <SettingsEditing NewItemRowPosition="Bottom" />
                                             </dx:ASPxGridView>
                                         </td>
                                     </tr>
@@ -1080,7 +1081,8 @@
                         <tr>
                             <td width="52" align="left">
                                 <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgCustomer"
-                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" TabIndex="36" UseSubmitBehavior="false">
+                                    HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" TabIndex="36"
+                                    UseSubmitBehavior="false">
                                     <Image Url="~/Images/Save.png">
                                     </Image>
                                 </dx:ASPxButton>

@@ -20,6 +20,8 @@ namespace HBM
     {
         #region Properties
 
+        DataSet dsData = new DataSet();
+
         public DateTime? CCExpiryDate
         {
             get
@@ -86,24 +88,7 @@ namespace HBM
             }
         }
 
-        public DataSet DSGroupCustomers
-        {
-            get
-            {
 
-                if (Session["DSGroupCustomers"] == null)
-                {
-                    DataSet ds = new CustomerDAO().SelectGroupByGroupId(0);
-                    ds.Tables[0].PrimaryKey = new DataColumn[] { ds.Tables[0].Columns["CustomerId"] };
-                    Session["DSGroupCustomers"] = ds;
-                }
-                return (DataSet)Session["DSGroupCustomers"];
-            }
-            set
-            {
-                Session["DSGroupCustomers"] = value;
-            }
-        }
 
         #endregion
 
@@ -115,28 +100,36 @@ namespace HBM
             {
                 CustMan.Customer CustomerObj = new CustMan.Customer();
                 CustomerObj.CustomerId = Int32.Parse(hdnCustomerId.Value.Trim() == String.Empty ? "0" : hdnCustomerId.Value.Trim());
-                CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
-                CustomerObj = CustomerObj.Select();
 
-                
-
-                this.DSGroupCustomers = CustomerObj.DsGroupCustomers;
-                
-                gvGroupMembers.DataBind();
-
-                if (CustomerObj == null)
+                if (CustomerObj.CustomerId > 0)
                 {
-                    return;
-                }
+                    CustomerObj.CompanyId = Master.CurrentCompany.CompanyId;
+                    CustomerObj = CustomerObj.Select();
 
-                if (CustomerObj.IsGroupCustomer.HasValue && CustomerObj.IsGroupCustomer == true)
-                {
-                    LoadGroupCustomers(CustomerObj);
+                    if (CustomerObj.IsGroupCustomer.HasValue && CustomerObj.IsGroupCustomer == true)
+                    {
+                        LoadGroupCustomers(CustomerObj);
+                    }
+                    else
+                    {
+                        LoadIndividualCustomers(CustomerObj);
+                    }
+
                 }
                 else
                 {
-                    LoadIndividualCustomers(CustomerObj);
+                    CustMan.Customer CustomerObj1 = new CustMan.Customer();
+                    dsData = CustomerObj1.SelectGroupByGroupId(0);
+                    gvGroupMembers.DataSource = dsData;
+                    gvGroupMembers.DataBind();
+                    dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["CustomerId"] };
+                    Session[Constants.SESSION_GROUPCUSTOMERS] = dsData;
                 }
+
+
+
+
+
             }
             catch (System.Exception)
             {
@@ -147,9 +140,11 @@ namespace HBM
         private void LoadIndividualCustomers(CustMan.Customer CustomerObj)
         {
             hdnCustomerMode.Value = ((int)Common.Enums.CustomerModes.Individual).ToString();
-            chkUseSameBillingAddress.Checked = CustomerObj.UseSameBillingAddress;
+            rblCustomerMode.SelectedValue = ((int)Common.Enums.CustomerModes.Individual).ToString();
+            tblIndividualCustomer.Visible = true;
+            tblGroupCustomer.Visible = false;
 
-            hdnCustomerMode.Value = "2";
+            chkUseSameBillingAddress.Checked = CustomerObj.UseSameBillingAddress;
 
             if (CustomerObj.UseSameBillingAddress)
             {
@@ -254,17 +249,21 @@ namespace HBM
             txtPhone.Text = CustomerObj.Phone;
 
             //Load the grid
-            gvGroupMembers.DataSource = DSGroupCustomers;
+            gvGroupMembers.DataSource = dsData;
             gvGroupMembers.DataBind();
+            rblCustomerMode.Enabled = false;
         }
 
         private void LoadGroupCustomers(CustMan.Customer CustomerObj)
         {
 
             hdnCustomerMode.Value = ((int)Common.Enums.CustomerModes.Group).ToString();
+            rblCustomerMode.SelectedValue = ((int)Common.Enums.CustomerModes.Group).ToString();
+
             chkUseSameBillingAddressGrp.Checked = CustomerObj.UseSameBillingAddress;
 
-            hdnCustomerMode.Value = "1";
+            tblIndividualCustomer.Visible = false;
+            tblGroupCustomer.Visible = true;
 
             if (CustomerObj.UseSameBillingAddress)
             {
@@ -344,8 +343,13 @@ namespace HBM
             txtPhoneGrp.Text = CustomerObj.Phone;
 
             //Load the grid
-            gvGroupMembers.DataSource = DSGroupCustomers;
-            gvGroupMembers.DataBind();
+            gvGroupMembers.DataSource = CustomerObj.DsGroupCustomers;
+            gvGroupMembers.DataBind();            
+            dsData = CustomerObj.DsGroupCustomers;
+            Session[Constants.SESSION_GROUPCUSTOMERS] = dsData;
+            dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["CustomerId"] };
+            rblCustomerMode.Enabled = false;
+
         }
 
         private void ClearFormData()
@@ -413,6 +417,11 @@ namespace HBM
                     cmbCompanyCountry.Enabled = true;
                     txtCompanyPostCode.Enabled = true;
                     txtCompanyCity.Enabled = true;
+                    rblCustomerMode.Enabled = true;
+                    tblIndividualCustomer.Visible = true;
+                    tblGroupCustomer.Visible = false;
+                    hdnCustomerMode.Value = "1";
+
                 }
             }
             catch (System.Exception)
@@ -523,11 +532,11 @@ namespace HBM
 
             if (hdnCustomerMode.Value.Trim() == "1")
             {
-                SaveIndividualCustomerData(currentCustomer);
+                SaveSingleCustomerData(currentCustomer);
             }
             else
             {
-                SaveGroupCustomerData(currentCustomer);
+                SaveCustomerGroupData(currentCustomer);
             }
 
             string errorMSG;
@@ -535,6 +544,13 @@ namespace HBM
             {
                 if (string.IsNullOrEmpty(errorMSG) && currentCustomer.Save())
                 {
+                    hdnCustomerId.Value = currentCustomer.CustomerId.ToString();
+                    dsData = currentCustomer.SelectGroupByGroupId(currentCustomer.CustomerId);
+                    gvGroupMembers.DataSource = dsData;
+                    gvGroupMembers.DataBind();
+                    dsData.Tables[0].PrimaryKey = new DataColumn[] { dsData.Tables[0].Columns["CustomerId"] };
+                    Session[Constants.SESSION_GROUPCUSTOMERS] = dsData;
+
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
                 }
                 else
@@ -544,7 +560,123 @@ namespace HBM
             }
         }
 
-        private void SaveGroupCustomerData(CustMan.Customer currentCustomer)
+        private void SaveSingleCustomerData(CustMan.Customer currentCustomer)
+        {
+            currentCustomer.CustomerName = txtCustomerName.Value.ToString();
+
+            if (cmbCar.SelectedItem!=null && cmbCar.SelectedItem.Value != null && cmbCar.SelectedItem.Value.ToString() != string.Empty)
+            {
+                currentCustomer.Car = cmbCar.SelectedItem.Value.ToString();
+            }
+            else
+            {
+                currentCustomer.Car = null;
+            }
+
+            currentCustomer.CarLicensePlate = txtLicensePlate.Value == null ? string.Empty : txtLicensePlate.Value.ToString();
+            currentCustomer.CCExpirationDate = CCExpiryDate;
+            currentCustomer.CCNameOnCard = txtNameOnCard.Value.ToString();
+            currentCustomer.CCNo = txtCCNumber.Value.ToString();
+            currentCustomer.CardSecurityCode = txtCardSecurityCode.Value.ToString();
+
+            if (dtStartDate.Value.ToString() == string.Empty)
+            {
+                currentCustomer.CardStartDate = null;
+            }
+            else
+            {
+                currentCustomer.CardStartDate = Convert.ToDateTime(dtStartDate.Value.ToString());
+            }
+
+
+            currentCustomer.CardIssueNo = txtCardIssueNo.Value.ToString();
+
+
+            if (cmbCCType.SelectedItem.Value != null && cmbCCType.SelectedItem.Value.ToString() != string.Empty)
+            {
+                currentCustomer.CreditCardTypeId = Convert.ToInt32(cmbCCType.SelectedItem.Value.ToString());
+            }
+            else
+            {
+                currentCustomer.CreditCardTypeId = null;
+            }
+
+            currentCustomer.CompanyName = txtCompanyName.Value.ToString();
+            currentCustomer.CompanyNotes = txtNotes.Value.ToString();
+
+            currentCustomer.UseSameBillingAddress = chkUseSameBillingAddress.Checked == true ? true : false;
+
+            if (chkUseSameBillingAddress.Checked)
+            {
+                currentCustomer.CompanyAddressLine1 = string.Empty;
+                currentCustomer.CompanyAddressLine2 = string.Empty;
+                currentCustomer.CompanyCity = string.Empty;
+                currentCustomer.CompanyCountryId = null;
+                currentCustomer.CompanyState = string.Empty;
+                currentCustomer.CompanyPostCode = string.Empty;
+            }
+            else
+            {
+                currentCustomer.CompanyAddressLine1 = txtCompanyAddressLine1.Value.ToString();
+                currentCustomer.CompanyAddressLine2 = txtCompanyAddressLine2.Value.ToString();
+                currentCustomer.CompanyCity = txtCompanyCity.Text.Trim();
+
+                if (cmbCompanyCountry.SelectedItem.Value != null && cmbCompanyCountry.SelectedItem.Value.ToString() != string.Empty)
+                {
+                    currentCustomer.CompanyCountryId = Convert.ToInt32(cmbCompanyCountry.SelectedItem.Value.ToString());
+                }
+                else
+                {
+                    currentCustomer.CompanyCountryId = null;
+                }
+
+                currentCustomer.CompanyState = txtCompanyState.Value.ToString();
+                currentCustomer.CompanyPostCode = txtCompanyPostCode.Value.ToString();
+            }
+
+            currentCustomer.BillingAddressLine1 = txtBillingAddressLine1.Value.ToString();
+            currentCustomer.BillingAddressLine2 = txtBillingAddressLine2.Value.ToString();
+            currentCustomer.BillingCity = txtBillingCity.Value.ToString();
+            currentCustomer.BillingState = txtBillingState.Value.ToString();
+
+            if (cmbBillingCountry.SelectedItem.Value != null && cmbBillingCountry.SelectedItem.Value.ToString() != string.Empty)
+            {
+                currentCustomer.BillingCountryId = Convert.ToInt32(cmbBillingCountry.SelectedItem.Value);
+            }
+            else
+            {
+                currentCustomer.BillingCountryId = null;
+            }
+
+            currentCustomer.BillingPostCode = txtBillingPostCode.Value.ToString();
+
+            currentCustomer.DriverLicense = txtDriveLicense.Value.ToString();
+            currentCustomer.Email = txtEmail.Value.ToString();
+            currentCustomer.Fax = txtFax.Value.ToString();
+            currentCustomer.Gender = cmbGender.SelectedItem.Value.ToString();
+            currentCustomer.MemberCode = txtMemberCode.Value.ToString();
+            currentCustomer.Mobile = txtPhone.Value.ToString();
+            currentCustomer.GuestTypeId = (int)cmbGuestType.SelectedItem.Value;
+
+            if (cmbPassportCountryOfIssue.SelectedItem.Value != null && cmbPassportCountryOfIssue.SelectedItem.Value.ToString() != string.Empty)
+            {
+                currentCustomer.PassportCountryOfIssue = Convert.ToInt32(cmbPassportCountryOfIssue.SelectedItem.Value);
+            }
+            else
+            {
+                currentCustomer.PassportCountryOfIssue = null;
+            }
+
+            currentCustomer.PassportExpirationDate = (DateTime?)dtpExpiryDate.Value;
+            currentCustomer.PassportNumber = txtPassportNumber.Value.ToString();
+            currentCustomer.Phone = txtPhone.Value.ToString();
+            currentCustomer.CreatedUser = Master.LoggedUser.UsersId;
+            currentCustomer.UpdatedUser = Master.LoggedUser.UsersId;
+            currentCustomer.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
+
+        }
+
+        private void SaveCustomerGroupData(CustMan.Customer currentCustomer)
         {
             currentCustomer.CustomerName = txtGroupName.Value.ToString();
 
@@ -667,122 +799,9 @@ namespace HBM
             currentCustomer.UpdatedUser = Master.LoggedUser.UsersId;
             currentCustomer.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
             currentCustomer.IsGroupCustomer = true;
-            currentCustomer.DsGroupCustomers = DSGroupCustomers;
-        }
-
-        private void SaveIndividualCustomerData(CustMan.Customer currentCustomer)
-        {
-            currentCustomer.CustomerName = txtCustomerName.Value.ToString();
-
-            if (cmbCar.SelectedItem.Value != null && cmbCar.SelectedItem.Value.ToString() != string.Empty)
-            {
-                currentCustomer.Car = cmbCar.SelectedItem.Value.ToString();
-            }
-            else
-            {
-                currentCustomer.Car = null;
-            }
-
-            currentCustomer.CarLicensePlate = txtLicensePlate.Value.ToString();
-            currentCustomer.CCExpirationDate = CCExpiryDate;
-            currentCustomer.CCNameOnCard = txtNameOnCard.Value.ToString();
-            currentCustomer.CCNo = txtCCNumber.Value.ToString();
-            currentCustomer.CardSecurityCode = txtCardSecurityCode.Value.ToString();
-
-            if (dtStartDate.Value.ToString() == string.Empty)
-            {
-                currentCustomer.CardStartDate = null;
-            }
-            else
-            {
-                currentCustomer.CardStartDate = Convert.ToDateTime(dtStartDate.Value.ToString());
-            }
+            currentCustomer.DsGroupCustomers = (DataSet)Session[Constants.SESSION_GROUPCUSTOMERS];
 
 
-            currentCustomer.CardIssueNo = txtCardIssueNo.Value.ToString();
-
-
-            if (cmbCCType.SelectedItem.Value != null && cmbCCType.SelectedItem.Value.ToString() != string.Empty)
-            {
-                currentCustomer.CreditCardTypeId = Convert.ToInt32(cmbCCType.SelectedItem.Value.ToString());
-            }
-            else
-            {
-                currentCustomer.CreditCardTypeId = null;
-            }
-
-            currentCustomer.CompanyName = txtCompanyName.Value.ToString();
-            currentCustomer.CompanyNotes = txtNotes.Value.ToString();
-
-            currentCustomer.UseSameBillingAddress = chkUseSameBillingAddress.Checked == true ? true : false;
-
-            if (chkUseSameBillingAddress.Checked)
-            {
-                currentCustomer.CompanyAddressLine1 = string.Empty;
-                currentCustomer.CompanyAddressLine2 = string.Empty;
-                currentCustomer.CompanyCity = string.Empty;
-                currentCustomer.CompanyCountryId = null;
-                currentCustomer.CompanyState = string.Empty;
-                currentCustomer.CompanyPostCode = string.Empty;
-            }
-            else
-            {
-                currentCustomer.CompanyAddressLine1 = txtCompanyAddressLine1.Value.ToString();
-                currentCustomer.CompanyAddressLine2 = txtCompanyAddressLine2.Value.ToString();
-                currentCustomer.CompanyCity = txtCompanyCity.Text.Trim();
-
-                if (cmbCompanyCountry.SelectedItem.Value != null && cmbCompanyCountry.SelectedItem.Value.ToString() != string.Empty)
-                {
-                    currentCustomer.CompanyCountryId = Convert.ToInt32(cmbCompanyCountry.SelectedItem.Value.ToString());
-                }
-                else
-                {
-                    currentCustomer.CompanyCountryId = null;
-                }
-
-                currentCustomer.CompanyState = txtCompanyState.Value.ToString();
-                currentCustomer.CompanyPostCode = txtCompanyPostCode.Value.ToString();
-            }
-
-            currentCustomer.BillingAddressLine1 = txtBillingAddressLine1.Value.ToString();
-            currentCustomer.BillingAddressLine2 = txtBillingAddressLine2.Value.ToString();
-            currentCustomer.BillingCity = txtBillingCity.Value.ToString();
-            currentCustomer.BillingState = txtBillingState.Value.ToString();
-
-            if (cmbBillingCountry.SelectedItem.Value != null && cmbBillingCountry.SelectedItem.Value.ToString() != string.Empty)
-            {
-                currentCustomer.BillingCountryId = Convert.ToInt32(cmbBillingCountry.SelectedItem.Value);
-            }
-            else
-            {
-                currentCustomer.BillingCountryId = null;
-            }
-
-            currentCustomer.BillingPostCode = txtBillingPostCode.Value.ToString();
-
-            currentCustomer.DriverLicense = txtDriveLicense.Value.ToString();
-            currentCustomer.Email = txtEmail.Value.ToString();
-            currentCustomer.Fax = txtFax.Value.ToString();
-            currentCustomer.Gender = cmbGender.SelectedItem.Value.ToString();
-            currentCustomer.MemberCode = txtMemberCode.Value.ToString();
-            currentCustomer.Mobile = txtPhone.Value.ToString();
-            currentCustomer.GuestTypeId = (int)cmbGuestType.SelectedItem.Value;
-
-            if (cmbPassportCountryOfIssue.SelectedItem.Value != null && cmbPassportCountryOfIssue.SelectedItem.Value.ToString() != string.Empty)
-            {
-                currentCustomer.PassportCountryOfIssue = Convert.ToInt32(cmbPassportCountryOfIssue.SelectedItem.Value);
-            }
-            else
-            {
-                currentCustomer.PassportCountryOfIssue = null;
-            }
-
-            currentCustomer.PassportExpirationDate = (DateTime?)dtpExpiryDate.Value;
-            currentCustomer.PassportNumber = txtPassportNumber.Value.ToString();
-            currentCustomer.Phone = txtPhone.Value.ToString();
-            currentCustomer.CreatedUser = Master.LoggedUser.UsersId;
-            currentCustomer.UpdatedUser = Master.LoggedUser.UsersId;
-            currentCustomer.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
         }
 
         private void LoadGridLookupValues()
@@ -851,7 +870,6 @@ namespace HBM
             try
             {
                 this.SaveData();
-
             }
             catch (System.Exception ex)
             {
@@ -976,6 +994,7 @@ namespace HBM
                 tblIndividualCustomer.Visible = false;
                 tblGroupCustomer.Visible = true;
                 hdnCustomerMode.Value = "2";
+
             }
 
             //rblCustomerMode.Enabled = false;
@@ -992,21 +1011,21 @@ namespace HBM
         {
             int i = gvGroupMembers.FindVisibleIndexByKeyValue(e.Keys[gvGroupMembers.KeyFieldName]);
             e.Cancel = true;
+            dsData = Session[Constants.SESSION_GROUPCUSTOMERS] as DataSet;
+            dsData.Tables[0].DefaultView.Delete(dsData.Tables[0]
+                .Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvGroupMembers.KeyFieldName])));
 
-            DSGroupCustomers.Tables[0].DefaultView.Delete(DSGroupCustomers.Tables[0]
-                .Rows.IndexOf(DSGroupCustomers.Tables[0].Rows.Find(e.Keys[gvGroupMembers.KeyFieldName])));
-
-            gvGroupMembers.DataSource = DSGroupCustomers.Tables[0];
+            gvGroupMembers.DataSource = dsData.Tables[0];
             gvGroupMembers.DataBind();
 
-            Session["DSGroupCustomers"] = DSGroupCustomers;
+            Session[Constants.SESSION_GROUPCUSTOMERS] = dsData;
         }
 
         protected void gvGroupMembers_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-
+            dsData = Session[Constants.SESSION_GROUPCUSTOMERS] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
-            DataRow row = DSGroupCustomers.Tables[0].NewRow();
+            DataRow row = dsData.Tables[0].NewRow();
 
             Random rd = new Random();
             e.NewValues["CustomerId"] = rd.Next();
@@ -1025,19 +1044,20 @@ namespace HBM
             gridView.CancelEdit();
             e.Cancel = true;
 
-            DSGroupCustomers.Tables[0].Rows.Add(row);
+            dsData.Tables[0].Rows.Add(row);
 
-            gvGroupMembers.DataSource = DSGroupCustomers.Tables[0];
+            gvGroupMembers.DataSource = dsData.Tables[0];
             gvGroupMembers.DataBind();
 
-            Session["DSGroupCustomers"] = DSGroupCustomers;
+            Session[Constants.SESSION_GROUPCUSTOMERS] = dsData;
 
         }
 
         protected void gvGroupMembers_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
+            dsData = Session[Constants.SESSION_GROUPCUSTOMERS] as DataSet;
             ASPxGridView gridView = sender as ASPxGridView;
-            DataTable dataTable = DSGroupCustomers.Tables[0];
+            DataTable dataTable = dsData.Tables[0];
             DataRow row = dataTable.Rows.Find(e.Keys[0]);
             e.NewValues["StatusId"] = (int)Enums.HBMStatus.Modify;
             e.NewValues["UpdatedUser"] = SessionHandler.LoggedUser.UsersId;
@@ -1051,10 +1071,10 @@ namespace HBM
             gridView.CancelEdit();
             e.Cancel = true;
 
-            gvGroupMembers.DataSource = DSGroupCustomers.Tables[0];
+            gvGroupMembers.DataSource = dsData.Tables[0];
             gvGroupMembers.DataBind();
 
-            Session["DSGroupCustomers"] = DSGroupCustomers;
+            Session[Constants.SESSION_GROUPCUSTOMERS] = dsData;
         }
 
         #endregion
