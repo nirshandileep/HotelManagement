@@ -19,7 +19,7 @@ namespace HBM.GeneralManagement
             DbCommand commandInsert = db.GetStoredProcCommand("usp_RoomRatePlanInsert");
 
             db.AddInParameter(commandInsert, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
-            db.AddInParameter(commandInsert, "@RatePlanId", DbType.Int32, "RatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@RatePlanId", DbType.Int32, "RatePlansId", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
 

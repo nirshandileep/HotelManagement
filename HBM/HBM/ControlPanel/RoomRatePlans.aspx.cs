@@ -102,6 +102,7 @@ namespace HBM.ControlPanel
             Random rd = new Random();
             e.NewValues["RoomRatePlanId"] = rd.Next();
             e.NewValues["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
+            e.NewValues["RoomId"] = cmbRooms.Value;
 
             IDictionaryEnumerator enumerator = e.NewValues.GetEnumerator();
             enumerator.Reset();
