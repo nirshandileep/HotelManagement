@@ -175,6 +175,13 @@ namespace HBM.CustomerManagement
             return (new CustomerDAO()).SelectGroupByGroupId(groupId);
         }
 
+
+        public DataSet SelectById(int customerID)
+        {
+            return (new CustomerDAO()).SelectById(customerID);
+
+        }
+
         #endregion
 
 

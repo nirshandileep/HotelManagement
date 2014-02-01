@@ -179,5 +179,17 @@ namespace HBM.CustomerManagement
 
             return true;
         }
+
+
+        public DataSet SelectById(int customerID)
+        {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CustomerSelectByID");
+
+            db.AddInParameter(command, "@CustomerId", DbType.Int32, customerID);
+
+            return db.ExecuteDataSet(command);
+        }
+
     }
 }

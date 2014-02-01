@@ -106,6 +106,8 @@ namespace HBM.Reservation
             cmbCustomer.ValueField = "CustomerId";
             cmbCustomer.DataBind();
 
+
+
             cmbTax.DataSource = new GenMan.TaxType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
             cmbTax.TextField = "TaxTypeName";
             cmbTax.ValueField = "TaxTypeId";
@@ -357,6 +359,11 @@ namespace HBM.Reservation
             dtCheckingDate.Enabled = false;
             dtCheckOutDate.Enabled = false;
 
+            if (cmbCustomer.SelectedItem != null && (string.Empty != cmbCustomer.SelectedItem.Value.ToString()))
+            {
+                this.LoadCardInformationByCustomer(Convert.ToInt32( cmbCustomer.SelectedItem.Value));
+            }
+
         }
 
         protected void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
@@ -441,8 +448,7 @@ namespace HBM.Reservation
                     reservationAdditionalService.ReservationId = reservationId;
                     reservation.ReservationAdditionalServiceDataSet = reservationAdditionalService.SelectAllDataSetByReservationID();
                 }
-
-
+                
                 if (Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] != null)
                 {
                     reservation.ReservationPaymentDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION];
@@ -862,10 +868,44 @@ namespace HBM.Reservation
             this.Calculate();
         }
 
+        private void LoadCardInformationByCustomer(int customerID)
+        {
+            DataSet dsCustomers = new DataSet();
+            Customer customer = new Customer();
+            dsCustomers = customer.SelectById(customerID);            
+            
+            reservationPayments.ReservationId = 0;
+            dsPaymentInformation = reservationPayments.SelectAllDataSetByReservationID();
+            dsPaymentInformation.Tables[0].PrimaryKey = new DataColumn[] { dsPaymentInformation.Tables[0].Columns["ReservationPaymentId"] };
+
+            DataRow dataRow = dsPaymentInformation.Tables[0].NewRow();
+            
+            Random rd = new Random();
+            dataRow["ReservationPaymentId"] = rd.Next();
+            dataRow["PaymentDate"] = DateTime.Today;
+            dataRow["PaymentTypeId"] = 3;                       
+            dataRow["CreditCardTypeId"] = dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"]!= null ? dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] : "1" ;
+            dataRow["CCNo"] = dsCustomers.Tables[0].Rows[0]["CCNo"] != null ? dsCustomers.Tables[0].Rows[0]["CCNo"] : string.Empty;
+            dataRow["CCExpirationDate"] = dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] != null ? dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] : string.Empty;
+            dataRow["CCNameOnCard"] = dsCustomers.Tables[0].Rows[0]["CCNameOnCard"] != null ? dsCustomers.Tables[0].Rows[0]["CCNameOnCard"] : string.Empty;
+            dataRow["Amount"] = "0.00";
+            dataRow["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
+            dataRow["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
+
+            
+            if (dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null)
+            {
+                dsPaymentInformation.Tables[0].Rows.Add(dataRow);
+
+                gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
+                gvPaymentInformation.DataBind();
+
+                Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
+            }
+
+        }
+
         #endregion
-
-     
-
 
 
     }
