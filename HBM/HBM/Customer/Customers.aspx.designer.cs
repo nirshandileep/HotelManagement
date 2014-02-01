@@ -22,24 +22,6 @@ namespace HBM {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trCustomerMode;
         
         /// <summary>
-        /// ASPxRoundPanel8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel8;
-        
-        /// <summary>
-        /// PanelContent7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent7;
-        
-        /// <summary>
         /// rblCustomerMode control.
         /// </summary>
         /// <remarks>
@@ -83,24 +65,6 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTable tblGroupCustomer;
-        
-        /// <summary>
-        /// ASPxRoundPanel4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel4;
-        
-        /// <summary>
-        /// PanelContent3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent3;
         
         /// <summary>
         /// txtGroupName control.
@@ -229,24 +193,6 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtCardIssueNoGrp;
         
         /// <summary>
-        /// ASPxRoundPanel5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel5;
-        
-        /// <summary>
-        /// PanelContent4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent4;
-        
-        /// <summary>
         /// txtCompanyNameGrp control.
         /// </summary>
         /// <remarks>
@@ -328,24 +274,6 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox chkUseSameBillingAddressGrp;
         
         /// <summary>
-        /// ASPxRoundPanel6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel6;
-        
-        /// <summary>
-        /// PanelContent5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent5;
-        
-        /// <summary>
         /// txtBillingAddressLine1Grp control.
         /// </summary>
         /// <remarks>
@@ -400,24 +328,6 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtBillingZipPostalCodeGrp;
         
         /// <summary>
-        /// ASPxRoundPanel7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel7;
-        
-        /// <summary>
-        /// PanelContent6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent6;
-        
-        /// <summary>
         /// gvGroupMembers control.
         /// </summary>
         /// <remarks>
@@ -434,15 +344,6 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTable tblIndividualCustomer;
-        
-        /// <summary>
-        /// ASPxRoundPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel1;
         
         /// <summary>
         /// txtCustomerName control.
@@ -634,24 +535,6 @@ namespace HBM {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtDriveLicense;
         
         /// <summary>
-        /// ASPxRoundPanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel2;
-        
-        /// <summary>
-        /// PanelContent1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent1;
-        
-        /// <summary>
         /// txtCompanyName control.
         /// </summary>
         /// <remarks>
@@ -731,24 +614,6 @@ namespace HBM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox chkUseSameBillingAddress;
-        
-        /// <summary>
-        /// ASPxRoundPanel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel3;
-        
-        /// <summary>
-        /// PanelContent2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent2;
         
         /// <summary>
         /// txtBillingAddressLine1 control.
