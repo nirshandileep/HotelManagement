@@ -71,6 +71,7 @@
     <Compile Include="Business Entities\RatePlans.cs" />
     <Compile Include="Business Entities\RoomRatePlan.cs" />
     <Compile Include="Business Entities\Rooms.cs" />
+    <Compile Include="Business Entities\ServiceMethods.cs" />
     <Compile Include="Business Entities\Source.cs" />
     <Compile Include="Business Entities\Status.cs" />
     <Compile Include="Business Entities\TaxType.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Services\RatePlansDAO.cs" />
     <Compile Include="Services\RoomRatePlanDAO.cs" />
     <Compile Include="Services\RoomsDAO.cs" />
+    <Compile Include="Services\ServiceMethodsDAO.cs" />
     <Compile Include="Services\SourceDAO.cs" />
     <Compile Include="Services\TaxTypeDAO.cs" />
   </ItemGroup>

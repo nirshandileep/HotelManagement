@@ -100,6 +100,7 @@
     <Content Include="ControlPanel\AdditionalServiceType.aspx" />
     <Content Include="ControlPanel\BedType.aspx" />
     <Content Include="ControlPanel\Company.aspx" />
+    <Content Include="ControlPanel\ServiceMethod.aspx" />
     <Content Include="ControlPanel\CreditCardType.aspx" />
     <Content Include="ControlPanel\Department.aspx" />
     <Content Include="ControlPanel\Gaurantee.aspx" />
@@ -202,6 +203,13 @@
     </Compile>
     <Compile Include="ControlPanel\Company.aspx.designer.cs">
       <DependentUpon>Company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanel\ServiceMethod.aspx.cs">
+      <DependentUpon>ServiceMethod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPanel\ServiceMethod.aspx.designer.cs">
+      <DependentUpon>ServiceMethod.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\CreditCardType.aspx.cs">
       <DependentUpon>CreditCardType.aspx</DependentUpon>

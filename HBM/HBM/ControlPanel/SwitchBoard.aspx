@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="0" OnTabClick="tcCommon_TabClick"
+                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="11" OnTabClick="tcCommon_TabClick"
                         Width="900px" Height="25px" TabAlign="Justify" 
                         EnableTheming="True" TabSpacing="0px">
                         <Tabs>
@@ -38,22 +38,23 @@
                             </dx:Tab>
                             <dx:Tab Name="RatePlan" Text="Rate Plan">
                             </dx:Tab>
-                             <dx:Tab Name="RoomRatePlan" Text="Room Rate Plan">
+                             <dx:Tab Name="RoomRatePlan" Text="Room Rate Plan" NewLine="True">
                             </dx:Tab>
                             <dx:Tab Text="Source" Name="Source">
                             </dx:Tab>
                             <dx:Tab Name="TaxTypes" Text="Tax Types">
                             </dx:Tab>
-                            <dx:Tab Name="AdditionalServiceType" Text="Additional Service Type" 
-                                NewLine="True">
+                            <dx:Tab Name="AdditionalServiceType" Text="Additional Service Type">
                             </dx:Tab>
                             <dx:Tab Name="AdditionalService" Text="Additional Service">
                             </dx:Tab>
-                            <dx:Tab Name="GuestType" Text="Guest Types">
+                            <dx:Tab Name="GuestType" Text="Guest Types" NewLine="True">
                             </dx:Tab>
                             <dx:Tab Name="CreditCardTypes" Text="Credit Card Types">
                             </dx:Tab>
                             <dx:Tab Name="PaymentTypes" Text="Payment Types">
+                            </dx:Tab>
+                            <dx:Tab Name="ServiceMethods" Text="Service Methods">
                             </dx:Tab>
                         </Tabs>
                     </dx:ASPxTabControl>

@@ -64,6 +64,9 @@ namespace HBM.ControlPanel
                 case "PaymentTypes":
                     iframePage.Attributes["src"] = Constants.URL_PAYMENTTYPES;
                     break;
+                case "ServiceMethods":
+                    iframePage.Attributes["src"] = Constants.URL_SERVICEMETHODS;
+                    break;
 
             }
 

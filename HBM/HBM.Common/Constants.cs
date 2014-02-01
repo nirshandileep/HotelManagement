@@ -79,6 +79,7 @@ namespace HBM.Common
         public static readonly string URL_RESERVATION = "/Reservation/Reservation.aspx";
         public static readonly string URL_PRINTPREVIEW = "/Reports/PrintPreview.aspx";
 
+        public static readonly string URL_SERVICEMETHODS = "/ControlPanel/ServiceMethod.aspx";
 
 
        
@@ -110,6 +111,8 @@ namespace HBM.Common
         public static readonly string SESSION_ROOMRATEPLAN = "RoomRatePlan";
         public static readonly string SESSION_CURRENTREPORT = "CurrentReport";
         public static readonly string SESSION_GROUPCUSTOMERS = "GroupCustomers";
+        public static readonly string SESSION_SERVICEMETHODS = "Servicemethods";
+
 
          
         

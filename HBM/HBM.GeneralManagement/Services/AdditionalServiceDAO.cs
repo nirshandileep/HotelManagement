@@ -24,6 +24,8 @@ namespace HBM.GeneralManagement
             db.AddInParameter(commandInsert, "@Rate", DbType.Decimal, "Rate", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@CreatedUser", DbType.Int32, "CreatedUser", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@ServiceMethodID", DbType.Int32, "ServiceMethodID", DataRowVersion.Current);
+            
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_AdditionalServiceUpdate");
             db.AddInParameter(commandUpdate, "@AdditionalServiceId", DbType.Int32, "AdditionalServiceId", DataRowVersion.Current);
@@ -33,6 +35,8 @@ namespace HBM.GeneralManagement
             db.AddInParameter(commandUpdate, "@Rate", DbType.Decimal, "Rate", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@StatusId", DbType.Int32, "StatusId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@ServiceMethodID", DbType.Int32, "ServiceMethodID", DataRowVersion.Current);
+
 
             DbCommand commandDelete = db.GetStoredProcCommand("usp_AdditionalServiceDelete");
             db.AddInParameter(commandDelete, "@AdditionalServiceId", DbType.Int32, "AdditionalServiceId", DataRowVersion.Current);

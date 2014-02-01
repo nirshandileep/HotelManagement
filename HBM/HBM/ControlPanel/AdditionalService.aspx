@@ -68,7 +68,7 @@
                                     </ValidationSettings>
                                 </PropertiesTextEdit>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataComboBoxColumn Caption="Additional ServiceType" FieldName="AdditionalServiceTypeId"
+                            <dx:GridViewDataComboBoxColumn Caption="Additional Service Type" FieldName="AdditionalServiceTypeId"
                                 VisibleIndex="3">
                                 <PropertiesComboBox TextField="AdditionalServiceType" ValueField="AdditionalServiceTypeId"
                                     ValueType="System.Int32">
@@ -85,6 +85,15 @@
                                     </ValidationSettings>
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
+                            <dx:GridViewDataComboBoxColumn Caption="Service Method" 
+                                FieldName="ServiceMethodID" VisibleIndex="5">
+                                <PropertiesComboBox TextField="ServiceMethod" ValueField="ServiceMethodID" 
+                                    ValueType="System.Int32">
+                                    <ValidationSettings>
+                                        <RequiredField ErrorText="Required" IsRequired="True" />
+                                    </ValidationSettings>
+                                </PropertiesComboBox>
+                            </dx:GridViewDataComboBoxColumn>
                         </Columns>
                         <SettingsBehavior ConfirmDelete="True" />
                         <SettingsText ConfirmDelete="" />

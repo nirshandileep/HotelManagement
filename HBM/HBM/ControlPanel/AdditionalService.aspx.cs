@@ -18,10 +18,13 @@ namespace HBM.ControlPanel
     {
         DataSet dsData = new DataSet();
         DataSet dsAdditionalServiceType = new DataSet();
+        DataSet dsServiceMethods = new DataSet();
 
 
         GenMan.AdditionalService additionalService = new GenMan.AdditionalService();
         GenMan.AdditionalServiceType additionalServiceType = new GenMan.AdditionalServiceType();
+        GenMan.ServiceMethods serviceMethods = new GenMan.ServiceMethods();
+
 
 
         protected void Page_Init(object sender, EventArgs e)
@@ -29,7 +32,8 @@ namespace HBM.ControlPanel
             gvAdditionalService.SettingsText.ConfirmDelete = Messages.Delete_Confirm;
 
             this.LoadAdditionalService();
-            this.LoadAdditionalServiceTypes(); 
+            this.LoadAdditionalServiceTypes();
+            this.LoadServiceMethods();
 
         }
 
@@ -74,7 +78,7 @@ namespace HBM.ControlPanel
             {
                 additionalServiceType.CompanyId = SessionHandler.CurrentCompanyId;
                 dsAdditionalServiceType = additionalServiceType.SelectAllDataset();
-                dsAdditionalServiceType.Tables[0].TableName = "AdditionalServiceType";
+                dsAdditionalServiceType.Tables[0].TableName = "AdditionalService";
                 ((GridViewDataComboBoxColumn)gvAdditionalService.Columns["AdditionalServiceTypeId"]).PropertiesComboBox.DataSource = dsAdditionalServiceType.Tables[0];
 
             }
@@ -84,6 +88,25 @@ namespace HBM.ControlPanel
 
             }
         }
+
+
+        protected void LoadServiceMethods()
+        {
+            try
+            {
+                serviceMethods.CompanyId = SessionHandler.CurrentCompanyId;
+                dsServiceMethods = serviceMethods.SelectAllDataset();
+                dsServiceMethods.Tables[0].TableName = "ServiceMethods";
+                ((GridViewDataComboBoxColumn)gvAdditionalService.Columns["ServiceMethodID"]).PropertiesComboBox.DataSource = dsServiceMethods.Tables[0];
+
+            }
+            catch (System.Exception)
+            {
+
+
+            }
+        }
+
 
         protected void gvAdditionalService_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
@@ -111,7 +134,7 @@ namespace HBM.ControlPanel
             dsData.Tables[0].Rows.Add(row);
 
             additionalService.ServiceCode = e.NewValues["ServiceCode"].ToString();
-            
+
             if (!additionalService.IsDuplicateTypeName())
             {
 
@@ -147,7 +170,7 @@ namespace HBM.ControlPanel
 
             additionalService.AdditionalServiceId = Convert.ToInt32(e.Keys["AdditionalServiceId"].ToString());
             additionalService.ServiceCode = e.NewValues["ServiceCode"].ToString();
-            
+
             if (!additionalService.IsDuplicateTypeName())
             {
                 if (additionalService.Save(dsData))
@@ -183,7 +206,7 @@ namespace HBM.ControlPanel
 
         protected void gvAdditionalService_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
-            if (e.Column.FieldName != "AdditionalServiceTypeId") return;
+            if (e.Column.FieldName != "AdditionalServiceTypeId" && e.Column.FieldName != "ServiceMethodID") return;
 
             ASPxComboBox combo = e.Editor as ASPxComboBox;
             combo.DataBindItems();
