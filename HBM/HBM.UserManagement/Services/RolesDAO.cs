@@ -47,7 +47,6 @@ namespace HBM.UserManagement
         {
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand command = db.GetStoredProcCommand("usp_RolesDelete");
-
             db.AddInParameter(command, "@RolesId", DbType.String, roles.RolesId);
             db.ExecuteNonQuery(command);
 
@@ -58,7 +57,7 @@ namespace HBM.UserManagement
         {
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
             DbCommand dbCommand = db.GetStoredProcCommand("usp_RolesSelectAll");
-            //db.AddInParameter(dbCommand, "@CompanyId", DbType.String, roles.CompanyId);
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.String, roles.CompanyId);
             return db.ExecuteDataSet(dbCommand);
         }
 

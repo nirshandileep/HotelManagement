@@ -9,46 +9,46 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="wrapper-inner">
-    <h2 class="w875">
-        Search Users</h2>
-    <table>
-        <tr>
-            <td>
-                <dx:ASPxGridView ID="gvUsers" runat="server" Width="100%" AutoGenerateColumns="False"
-                    KeyFieldName="UsersId" onrowdeleting="gvUsers_RowDeleting">
-                    <Columns>
-                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="User Name" FieldName="UsersId" Width="100px">
-                            <DataItemTemplate>
-                                <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Users.aspx?UserId=",Eval("UsersId")) %>'
-                                    Text='<%# Eval("UserName") %>' />
-                            </DataItemTemplate>
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="First Name" FieldName="FirstName" VisibleIndex="2"
-                            Width="100px">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Last Name" FieldName="LastName"
-                            Width="100px">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Email Address" FieldName="EmailAddress" VisibleIndex="4"
-                            Width="100px">
-                        </dx:GridViewDataTextColumn>
-                              <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Caption="Actions" 
-                                Width="60px">
-                                  <DeleteButton Visible="True">
+    <div class="wrapper-inner">
+        <h2 class="w875">
+            Search Users</h2>
+        <table>
+            <tr>
+                <td>
+                    <dx:ASPxGridView ID="gvUsers" runat="server" Width="100%" AutoGenerateColumns="False"
+                        KeyFieldName="UsersId" OnRowDeleting="gvUsers_RowDeleting">
+                        <Columns>
+                            <dx:GridViewDataTextColumn VisibleIndex="1" Caption="User Name" FieldName="UsersId"
+                                Width="100px">
+                                <DataItemTemplate>
+                                    <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Users.aspx?UserId=",Eval("UsersId")) %>'
+                                        Text='<%# Eval("UserName") %>' />
+                                </DataItemTemplate>
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="First Name" FieldName="FirstName" VisibleIndex="2"
+                                Width="100px">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Last Name" FieldName="LastName"
+                                Width="100px">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Email Address" FieldName="EmailAddress" VisibleIndex="4"
+                                Width="100px">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Caption="Actions" Width="60px">
+                                <DeleteButton Visible="True">
                                     <Image ToolTip="Delete" Url="~/Images/delete.png">
                                     </Image>
                                 </DeleteButton>
                                 <ClearFilterButton Visible="True">
                                 </ClearFilterButton>
                             </dx:GridViewCommandColumn>
-                    </Columns>
-                    <SettingsBehavior ConfirmDelete="True" />
-                    <Settings ShowFilterRow="True" />
-                    <Settings ShowFilterRow="True"></Settings>
-                </dx:ASPxGridView>
-            </td>
-        </tr>
-    </table>
+                        </Columns>
+                        <SettingsBehavior ConfirmDelete="True" />
+                        <Settings ShowFilterRow="True" />
+                        <Settings ShowFilterRow="True"></Settings>
+                    </dx:ASPxGridView>
+                </td>
+            </tr>
+        </table>
     </div>
 </asp:Content>

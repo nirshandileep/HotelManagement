@@ -9,30 +9,38 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="wrapper-inner">
-    <h2 class="w875">
-        Search Roles</h2>
-    <table class="style1">
-        <tr>
-            <td>
-                <dx:ASPxGridView ID="gvRoles" runat="server" Width="100%" AutoGenerateColumns="False"
-                    KeyFieldName="RolesId">
-                    <Columns>
-                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Role Name" FieldName="RolesId">
-                            <DataItemTemplate>
-                                <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Roles.aspx?RolesId=",Eval("RolesId")) %>'
-                                    Text='<%# Eval("RoleName") %>' />
-                            </DataItemTemplate>
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Role Description" FieldName="RoleDescription"
-                            VisibleIndex="2">
-                        </dx:GridViewDataTextColumn>                     
-                    </Columns>
-                    <Settings ShowFilterRow="True" />
-                </dx:ASPxGridView>
-            </td>
-        </tr>
-    </table>
+    <div class="wrapper-inner">
+        <h2 class="w875">
+            Search Roles</h2>
+        <table class="style1">
+            <tr>
+                <td>
+                    <dx:ASPxGridView ID="gvRoles" runat="server" Width="100%" AutoGenerateColumns="False"
+                        KeyFieldName="RolesId" onrowdeleting="gvRoles_RowDeleting">
+                        <Columns>
+                            <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Role Name" FieldName="RolesId">
+                                <DataItemTemplate>
+                                    <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Roles.aspx?RolesId=",Eval("RolesId")) %>'
+                                        Text='<%# Eval("RoleName") %>' />
+                                </DataItemTemplate>
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Role Description" FieldName="RoleDescription"
+                                VisibleIndex="2">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Caption="Actions" Width="60px">
+                                <DeleteButton Visible="True">
+                                    <Image ToolTip="Delete" Url="~/Images/delete.png">
+                                    </Image>
+                                </DeleteButton>
+                                <ClearFilterButton Visible="True">
+                                </ClearFilterButton>
+                            </dx:GridViewCommandColumn>
+                        </Columns>
+                        <SettingsBehavior ConfirmDelete="True" />
+                        <Settings ShowFilterRow="True" />
+                    </dx:ASPxGridView>
+                </td>
+            </tr>
+        </table>
     </div>
-
 </asp:Content>

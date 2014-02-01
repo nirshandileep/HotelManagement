@@ -25,8 +25,6 @@ namespace HBM.Reports
             {
                 gvReports.DataSource = (DataTable)Session[Constants.SESSION_CURRENTREPORT];
                 gvReports.DataBind();
-
-             
             }
 
         }
