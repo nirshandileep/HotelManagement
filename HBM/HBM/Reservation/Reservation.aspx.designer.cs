@@ -31,24 +31,6 @@ namespace HBM.Reservation {
         protected global::System.Web.UI.WebControls.Literal ltlReservationCode;
         
         /// <summary>
-        /// ASPxRoundPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel1;
-        
-        /// <summary>
-        /// PanelContent1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent1;
-        
-        /// <summary>
         /// cmbCustomer control.
         /// </summary>
         /// <remarks>
@@ -58,13 +40,13 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbCustomer;
         
         /// <summary>
-        /// cmbSource control.
+        /// dtCheckingDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbSource;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtCheckingDate;
         
         /// <summary>
         /// btnCreate control.
@@ -76,31 +58,13 @@ namespace HBM.Reservation {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnCreate;
         
         /// <summary>
-        /// ASPxRoundPanel2 control.
+        /// cmbSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel2;
-        
-        /// <summary>
-        /// PanelContent2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent PanelContent2;
-        
-        /// <summary>
-        /// dtCheckingDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dtCheckingDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbSource;
         
         /// <summary>
         /// dtCheckOutDate control.
@@ -119,15 +83,6 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trReservationSection;
-        
-        /// <summary>
-        /// ASPxRoundPanel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel3;
         
         /// <summary>
         /// ASPxPageControl1 control.
@@ -254,15 +209,6 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trSummarySection;
-        
-        /// <summary>
-        /// ASPxRoundPanel4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel4;
         
         /// <summary>
         /// txtRoomTotal control.

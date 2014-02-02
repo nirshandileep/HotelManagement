@@ -553,3 +553,14 @@ td.dxeSBC{
 	}
 
 /*end Prin preview*/
+
+
+.dxbButton_Glass {
+color: #000000;
+font: normal 12px Tahoma;
+vertical-align: baseline;
+border: 1px solid #B2BCBE;
+background: #DADFE0 url('/DXR.axd?r=0_881-ijkD7') repeat-x top;
+padding: 10px;
+cursor: pointer;
+}
