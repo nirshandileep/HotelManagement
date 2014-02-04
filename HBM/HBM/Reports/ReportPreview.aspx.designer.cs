@@ -10,45 +10,42 @@
 namespace HBM.Reports {
     
     
-    public partial class ReportGenerator {
+    public partial class ReportPreview {
         
         /// <summary>
-        /// cmbReportType control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cmbReportType;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// btnPreview control.
+        /// gvReports control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnPreview;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvReports;
         
         /// <summary>
-        /// iframePage control.
+        /// gvExporter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl iframePage;
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gvExporter;
         
         /// <summary>
-        /// Master property.
+        /// cbmExporter control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new HBM.HBMMaster Master {
-            get {
-                return ((HBM.HBMMaster)(base.Master));
-            }
-        }
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cbmExporter;
     }
 }

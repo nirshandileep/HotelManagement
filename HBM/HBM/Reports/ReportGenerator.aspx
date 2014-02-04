@@ -27,6 +27,21 @@
                 </td>
             </tr>
             <tr>
+                <td width="100px">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    &nbsp;</td>
+                <td>
+                    <dx:ASPxButton ID="btnPreview" runat="server" onclick="btnPreview_Click" 
+                        Text="Preview">
+                    </dx:ASPxButton>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     &nbsp;
                 </td>
@@ -36,44 +51,21 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <dx:ASPxGridView ID="gvReports" runat="server" Width="100%">
-                        <Settings HorizontalScrollBarMode="Auto" ShowFilterRow="True" 
-                            ShowFooter="True" />
-                    </dx:ASPxGridView>
-                </td>
+                  <iframe id="iframePage" runat="server" width="900px" height="500px"></iframe></td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <dx:ASPxGridViewExporter ID="gvExporter" runat="server" GridViewID="gvReports" 
-                        BottomMargin="20" LeftMargin="20" RightMargin="20" TopMargin="20">
-                    </dx:ASPxGridViewExporter>
-                </td>
-            </tr>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>            
+            
             <tr>
                 <td colspan="2">
                     &nbsp;
                 </td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <dx:ASPxComboBox ID="cbmExporter" runat="server" 
-                            onbuttonclick="cbmExporter_ButtonClick" Width="200px" SelectedIndex="0" 
-                            Visible="False">
-                            <Items>
-                                <dx:ListEditItem Text="PDF" Value="PDF" Selected="True" />
-                                <dx:ListEditItem Text="RTF" Value="RTF" />
-                                <dx:ListEditItem Text="Excel" Value="Excel" />
-                                <dx:ListEditItem Text="CSV" Value="CSV" />
-                            </Items>
-                            <DropDownButton Position="Left">
-                            </DropDownButton>
-                            <Buttons>
-                                <dx:EditButton Text="Export Report" Width="100px">
-                                </dx:EditButton>
-                            </Buttons>
-                        </dx:ASPxComboBox>
-                    </td>
-            </tr>
+            
         </table>
     </div>
 </asp:Content>

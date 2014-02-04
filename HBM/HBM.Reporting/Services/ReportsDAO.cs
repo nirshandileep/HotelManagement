@@ -14,11 +14,14 @@ namespace HBM.Reporting
         public Dictionary<int, string> GetReportTypes()
         {
             Dictionary<int, string> dictionary = new Dictionary<int,string>();
-            dictionary.Add(0, "Customer List");
-            dictionary.Add(1, "Reservation List");
-            dictionary.Add(2, "Reservation Payment");
-            dictionary.Add(3, "Dirty Room List");
-
+            dictionary.Add(0, "Guest Report");
+            dictionary.Add(1, "Reservation Report");
+            dictionary.Add(2, "Reservation Payment Report");            
+            dictionary.Add(3, "Dirty Room Report");
+            dictionary.Add(4, "Reservation Services Report");
+            dictionary.Add(5, "Rooms Report");
+            dictionary.Add(6, "Occupancy Report");
+                        
             return dictionary;
         }
 

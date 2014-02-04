@@ -156,6 +156,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Reports\PrintPreview.aspx" />
     <Content Include="Reports\ReportGenerator.aspx" />
+    <Content Include="Reports\ReportPreview.aspx" />
     <Content Include="Reservation\Reservation.aspx" />
     <Content Include="Reservation\SearchReservation.aspx" />
     <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
@@ -341,6 +342,13 @@
     </Compile>
     <Compile Include="Reports\ReportGenerator.aspx.designer.cs">
       <DependentUpon>ReportGenerator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportPreview.aspx.cs">
+      <DependentUpon>ReportPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportPreview.aspx.designer.cs">
+      <DependentUpon>ReportPreview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\xrReservation.cs">
       <SubType>Component</SubType>

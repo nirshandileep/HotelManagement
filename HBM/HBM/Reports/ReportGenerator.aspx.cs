@@ -17,16 +17,16 @@ namespace HBM.Reports
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            gvReports.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
+          
 
             this.LoadReportList();
 
-            if (Session[Constants.SESSION_CURRENTREPORT] != null)
-            {
-                gvReports.DataSource = (DataTable)Session[Constants.SESSION_CURRENTREPORT];
-                gvReports.DataBind();
-            }
 
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
         }
 
         private void LoadReportList()
@@ -41,85 +41,107 @@ namespace HBM.Reports
 
         protected void cmbReportType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbReportType.SelectedItem.Value.ToString())
-            {
-                case "0":
-                    this.LoadCustomerList();
-                    break;
+            //switch (cmbReportType.SelectedItem.Value.ToString())
+            //{
+            //    case "0":
+            //        this.LoadCustomerReport();
+            //        break;
 
-                case "1":
-                    this.LoadReservationList();
-                    break;
-            }
+            //    case "1":
+            //        this.LoadReservationReport();
+            //        break;
+            //}
         }
 
-        private void LoadCustomerList()
+        private void LoadCustomerReport()
         {
             Reporting.Reports report = new Reporting.Reports();
-            gvReports.DataSource = report.GetCustomerList(SessionHandler.CurrentCompanyId).Tables[0];
-            gvReports.DataBind();
+
+            Session[Constants.SESSION_CURRENTREPORT] = report.GetCustomerList(SessionHandler.CurrentCompanyId).Tables[0];
+
+            //gvReports.DataSource = report.GetCustomerList(SessionHandler.CurrentCompanyId).Tables[0];
+            //gvReports.DataBind();
 
             if (report.GetCustomerList(SessionHandler.CurrentCompanyId).Tables[0] != null && report.GetCustomerList(SessionHandler.CurrentCompanyId).Tables[0].Rows.Count > 0)
-            {
-                Session[Constants.SESSION_CURRENTREPORT] = report.GetCustomerList(SessionHandler.CurrentCompanyId).Tables[0];
-                cbmExporter.Visible = true;
-                gvExporter.FileName = "Customer List";
+            {                
+                //cbmExporter.Visible = true;
+              
             }
 
         }
 
-        private void LoadReservationList()
+        private void LoadReservationReport()
         {
             Reporting.Reports report = new Reporting.Reports();
-            gvReports.DataSource = report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0];
-            gvReports.DataBind();
+  
+            Session[Constants.SESSION_CURRENTREPORT] = report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0];
+
+            //gvReports.DataSource = report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0];
+            //gvReports.DataBind();
 
             if (report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0] != null && report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0].Rows.Count > 0)
-            {
-                Session[Constants.SESSION_CURRENTREPORT] = report.GetReservationList(SessionHandler.CurrentCompanyId).Tables[0];
-                cbmExporter.Visible = true;
-                gvExporter.FileName = "Reservation List";
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "ReservationCode");
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "RoomTotal");
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ServiceTotal");
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "NetTotal");
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Discount");
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TaxAmount");
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Total");
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "PaidAmount");
-                gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Balance"); 
+            {                
+                //cbmExporter.Visible = true;
+                //gvExporter.FileName = "Reservation Report";
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "ReservationCode");
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "RoomTotal");
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ServiceTotal");
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "NetTotal");
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Discount");
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TaxAmount");
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Total");
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "PaidAmount");
+                //gvReports.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Balance");
 
             }
         }
 
         protected void cbmExporter_ButtonClick(object source, DevExpress.Web.ASPxEditors.ButtonEditClickEventArgs e)
         {
-            if (e.ButtonIndex == 0)
-            {
-                switch (cbmExporter.Text)
-                {
-                    case "PDF":
-                        gvExporter.GridViewID = gvReports.ID;    
-                        gvExporter.WritePdfToResponse();
-                        break;
+            //if (e.ButtonIndex == 0)
+            //{
+            //    switch (cbmExporter.Text)
+            //    {
+            //        case "PDF":
+            //            gvExporter.GridViewID = gvReports.ID;
+            //            gvExporter.WritePdfToResponse();
+            //            break;
 
-                    case "RTF":
-                        gvExporter.GridViewID = gvReports.ID;
-                        gvExporter.WriteRtfToResponse();                                          
-                        break;
+            //        case "RTF":
+            //            gvExporter.GridViewID = gvReports.ID;
+            //            gvExporter.WriteRtfToResponse();
+            //            break;
 
-                    case "Excel":
-                        gvExporter.GridViewID = gvReports.ID;                       
-                        gvExporter.WriteXlsToResponse();
-                        break;
+            //        case "Excel":
+            //            gvExporter.GridViewID = gvReports.ID;
+            //            gvExporter.WriteXlsToResponse();
+            //            break;
 
-                    case "CSV":
-                        gvExporter.GridViewID = gvReports.ID;                       
-                        gvExporter.WriteCsvToResponse();
-                        break;
-                }
-            }
+            //        case "CSV":
+            //            gvExporter.GridViewID = gvReports.ID;
+            //            gvExporter.WriteCsvToResponse();
+            //            break;
+            //    }
+            //}
         }
+
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            switch (cmbReportType.SelectedItem.Value.ToString())
+            {
+                case "0":
+                    this.LoadCustomerReport();
+                    break;
+
+                case "1":
+                    this.LoadReservationReport();
+                    break;
+            }
+            
+            iframePage.Attributes["src"] = "/Reports/ReportPreview.aspx";
+        }
+
+     
     }
 
 

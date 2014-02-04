@@ -86,6 +86,8 @@ namespace HBM
             Session[Constants.SESSION_DIRTYROOMS] = null;
             Session[Constants.SESSION_ROOMRATEPLAN] = null;
             Session[Constants.SESSION_CURRENTREPORT] = null;
+            
+
         }
 
         /// <summary>
