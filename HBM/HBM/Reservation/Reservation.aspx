@@ -17,6 +17,33 @@
     Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script language="javascript" type="text/javascript">
+        function OnSelectedIndexChanged(s, e) {
+
+            var value = s.GetText();
+            alert(value);
+            if (value == 'Credit Card') {                
+                cgvPaymentInformation.GetEditor('ColCardType').SetEnabled(true);
+                cgvPaymentInformation.GetEditor('ColCardNo').SetEnabled(true);
+                cgvPaymentInformation.GetEditor('ColExpireDate').SetEnabled(true);
+                cgvPaymentInformation.GetEditor('ColNameOnCard').SetEnabled(true);                
+          
+            }
+            else {
+                cgvPaymentInformation.GetEditor('ColCardType').SetEnabled(false);
+                cgvPaymentInformation.GetEditor('ColCardNo').SetEnabled(false);
+                cgvPaymentInformation.GetEditor('ColExpireDate').SetEnabled(false);
+                cgvPaymentInformation.GetEditor('ColNameOnCard').SetEnabled(false);
+
+                cgvPaymentInformation.GetEditor('ColCardType').SetText("");
+                cgvPaymentInformation.GetEditor('ColCardNo').SetText("");
+                cgvPaymentInformation.GetEditor('ColExpireDate').SetText("");
+                cgvPaymentInformation.GetEditor('ColNameOnCard').SetText("");                
+                           
+
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-inner">
@@ -129,7 +156,8 @@
                     </dx:ASPxRoundPanel>--%>
                     <h2>
                         Booking information</h2>
-                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
+                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="2" 
+                        Width="100%">
                         <TabPages>
                             <dx:TabPage Text="Room Info">
                                 <ContentCollection>
@@ -159,7 +187,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                         </ValidationSettings>
                                                     </dx:ASPxDropDownEdit>
                                                 </td>
-                                                <td valign="middle">
+                                                <td valign="middle>"
                                                     Room
                                                 </td>
                                                 <td>
@@ -403,7 +431,9 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                         <dx:ASPxGridView ID="gvPaymentInformation" runat="server" Width="100%" AutoGenerateColumns="False"
                                             KeyFieldName="ReservationPaymentId" OnCellEditorInitialize="gvPaymentInformation_CellEditorInitialize"
                                             OnRowDeleting="gvPaymentInformation_RowDeleting" OnRowInserting="gvPaymentInformation_RowInserting"
-                                            OnRowUpdating="gvPaymentInformation_RowUpdating" EnableCallBacks="False" OnDataBound="gvPaymentInformation_DataBound">
+                                            OnRowUpdating="gvPaymentInformation_RowUpdating" EnableCallBacks="False" 
+                                            OnDataBound="gvPaymentInformation_DataBound" 
+                                            ClientInstanceName="cgvPaymentInformation">
                                             <TotalSummary>
                                                 <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" ShowInGroupFooterColumn="Amount"
                                                     SummaryType="Sum" DisplayFormat="Total : {0:F2}" />
@@ -454,8 +484,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     VisibleIndex="10">
                                                 </dx:GridViewDataMemoColumn>
                                                 <dx:GridViewDataComboBoxColumn Caption="Type" FieldName="PaymentTypeId" ShowInCustomizationForm="True"
-                                                    VisibleIndex="1" Width="60px">
-                                                    <PropertiesComboBox TextField="PaymentTypeName" ValueField="PaymentTypeId" ValueType="System.Int32">
+                                                    VisibleIndex="1" Width="60px" Name="ColType">
+                                                    <PropertiesComboBox TextField="PaymentTypeName" ValueField="PaymentTypeId" 
+                                                        ValueType="System.Int32" ClientInstanceName="ColType">
+                                                        <ClientSideEvents SelectedIndexChanged="OnSelectedIndexChanged" />
                                                         <ValidationSettings>
                                                             <RequiredField ErrorText="Required" IsRequired="True" />
                                                         </ValidationSettings>
@@ -470,7 +502,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     </PropertiesComboBox>
                                                 </dx:GridViewDataComboBoxColumn>
                                                 <dx:GridViewDataComboBoxColumn Caption="Card Type" FieldName="CreditCardTypeId" ShowInCustomizationForm="True"
-                                                    VisibleIndex="5">
+                                                    VisibleIndex="5" Name="ColCardType">
                                                     <PropertiesComboBox TextField="Name" ValueField="CreditCardTypeId" ValueType="System.Int32">
                                                         <ValidationSettings>
                                                             <RequiredField ErrorText="Required" />
@@ -478,7 +510,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     </PropertiesComboBox>
                                                 </dx:GridViewDataComboBoxColumn>
                                                 <dx:GridViewDataTextColumn Caption="Card No" FieldName="CCNo" ShowInCustomizationForm="True"
-                                                    VisibleIndex="6">
+                                                    VisibleIndex="6" Name="ColCardNo" >
                                                     <PropertiesTextEdit MaxLength="20">
                                                         <ValidationSettings>
                                                             <RequiredField ErrorText="Required" />
@@ -486,10 +518,10 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     </PropertiesTextEdit>
                                                 </dx:GridViewDataTextColumn>
                                                 <dx:GridViewDataDateColumn Caption="Expire Date" FieldName="CCExpirationDate" ShowInCustomizationForm="True"
-                                                    VisibleIndex="7" Width="60px">
+                                                    VisibleIndex="7" Width="60px" Name="ColExpireDate">
                                                 </dx:GridViewDataDateColumn>
                                                 <dx:GridViewDataTextColumn FieldName="CCNameOnCard" ShowInCustomizationForm="True"
-                                                    VisibleIndex="8" Caption="Name on Card" Width="120px">
+                                                    VisibleIndex="8" Caption="Name on Card" Width="120px" Name="ColNameOnCard">
                                                     <PropertiesTextEdit MaxLength="100">
                                                     </PropertiesTextEdit>
                                                 </dx:GridViewDataTextColumn>
@@ -502,7 +534,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataTextColumn Caption="Ref No" FieldName="ReferenceNumber" ShowInCustomizationForm="True"
-                                                    VisibleIndex="9">
+                                                    VisibleIndex="9" Name="ColRefNo">
                                                 </dx:GridViewDataTextColumn>
                                             </Columns>
                                             <SettingsBehavior ConfirmDelete="True" EnableCustomizationWindow="True" />

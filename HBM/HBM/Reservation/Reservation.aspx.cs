@@ -81,13 +81,59 @@ namespace HBM.Reservation
                     btnCreate.Visible = false;
                 }
 
-                if (Request.QueryString["CustomerID"]!=null)
-                {                    
+                if (Request.QueryString["CustomerID"] != null)
+                {
                     cmbCustomer.SelectedItem = cmbCustomer.Items.FindByValue(Cryptography.Decrypt(Request.QueryString["CustomerID"]));
                 }
 
             }
 
+
+
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            //if (gvPaymentInformation.IsEditing)
+            //{
+
+            //    ASPxComboBox colType = gvPaymentInformation.FindEditFormTemplateControl("ColType") as ASPxComboBox;
+
+            //    if (colType.Text == "Credit Card")
+            //    {
+            //        ASPxComboBox colCardType = gvPaymentInformation.FindEditFormTemplateControl("ColCardType") as ASPxComboBox;
+            //        colCardType.Enabled = true;
+
+            //        ASPxTextBox colCardNo = gvPaymentInformation.FindEditFormTemplateControl("ColCardType") as ASPxTextBox;
+            //        colCardNo.Enabled = true;
+
+            //        ASPxDateEdit colExpireDate = gvPaymentInformation.FindEditFormTemplateControl("ColExpireDate") as ASPxDateEdit;
+            //        colExpireDate.Enabled = true;
+
+            //        ASPxTextBox colNameOnCard = gvPaymentInformation.FindEditFormTemplateControl("ColNameOnCard") as ASPxTextBox;
+            //        colNameOnCard.Enabled = true;
+
+            //    }
+            //    else
+            //    {
+            //        ASPxComboBox colCardType = gvPaymentInformation.FindEditFormTemplateControl("ColCardType") as ASPxComboBox;
+            //        colCardType.Value = null;
+            //        colCardType.Enabled = false;
+
+            //        ASPxTextBox colCardNo = gvPaymentInformation.FindEditFormTemplateControl("ColCardType") as ASPxTextBox;
+            //        colCardNo.Value = null;
+            //        colCardNo.Enabled = false;
+
+            //        ASPxDateEdit colExpireDate = gvPaymentInformation.FindEditFormTemplateControl("ColExpireDate") as ASPxDateEdit;
+            //        colExpireDate.Value = null;
+            //        colExpireDate.Enabled = false;
+
+            //        ASPxTextBox colNameOnCard = gvPaymentInformation.FindEditFormTemplateControl("ColNameOnCard") as ASPxTextBox;
+            //        colNameOnCard.Value = null;
+            //        colNameOnCard.Enabled = false;
+
+            //    }
+            //}
         }
 
         #endregion
@@ -361,7 +407,7 @@ namespace HBM.Reservation
 
             if (cmbCustomer.SelectedItem != null && (string.Empty != cmbCustomer.SelectedItem.Value.ToString()))
             {
-                this.LoadCardInformationByCustomer(Convert.ToInt32( cmbCustomer.SelectedItem.Value));
+                this.LoadCardInformationByCustomer(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
             }
 
         }
@@ -448,7 +494,7 @@ namespace HBM.Reservation
                     reservationAdditionalService.ReservationId = reservationId;
                     reservation.ReservationAdditionalServiceDataSet = reservationAdditionalService.SelectAllDataSetByReservationID();
                 }
-                
+
                 if (Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] != null)
                 {
                     reservation.ReservationPaymentDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION];
@@ -858,9 +904,80 @@ namespace HBM.Reservation
 
         protected void gvPaymentInformation_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
+            if (gvPaymentInformation.IsEditing)
+            {
+                if (e.Editor.ClientInstanceName == "ColType")
+                {
+                    if (((DevExpress.Web.ASPxEditors.ASPxComboBox)(e.Editor)).SelectedItem != null && ((DevExpress.Web.ASPxEditors.ASPxComboBox)(e.Editor)).SelectedItem.Text == "Credit Card")
+                    {
+                        ViewState["currentType"] = "Credit Card";
+                    }
+                    else
+                    {
+                        ViewState["currentType"] = string.Empty;
+                    }
+                }
+                else
+                {
+                    if (ViewState["currentType"].ToString() == "Credit Card")
+                    {
+                        if (e.Column.FieldName == "CreditCardTypeId")
+                        {
+                            e.Editor.Enabled = true;
+                        }
+                        if (e.Column.FieldName == "CCNo")
+                        {
+                            e.Editor.Enabled = true;
+                        }
+                        if (e.Column.FieldName == "CCExpirationDate")
+                        {
+                            e.Editor.Enabled = true;
+                        }
+                        if (e.Column.FieldName == "CCNameOnCard")
+                        {
+                            e.Editor.Enabled = true;
+                        }
+
+                      
+                    }
+                    else
+                    {
+                        if (e.Column.FieldName == "CreditCardTypeId")
+                        {
+                            e.Editor.Enabled = false;
+                        }
+                        if (e.Column.FieldName == "CCNo")
+                        {
+                            e.Editor.Enabled = false;
+                        }
+                        if (e.Column.FieldName == "CCExpirationDate")
+                        {
+                            e.Editor.Enabled = false;
+                        }
+                        if (e.Column.FieldName == "CCNameOnCard")
+                        {
+                            e.Editor.Enabled = false;
+                        }
+                    }
+
+                }
+
+              
+
+
+            }
+
+
             if (e.Column.FieldName != "PaymentTypeId" && e.Column.FieldName != "CreditCardTypeId" && e.Column.FieldName != "CurrencyId") return;
             ASPxComboBox combo = e.Editor as ASPxComboBox;
             combo.DataBindItems();
+
+
+
+
+            
+          
+
         }
 
         protected void gvPaymentInformation_DataBound(object sender, EventArgs e)
@@ -872,26 +989,25 @@ namespace HBM.Reservation
         {
             DataSet dsCustomers = new DataSet();
             Customer customer = new Customer();
-            dsCustomers = customer.SelectById(customerID);            
-            
+            dsCustomers = customer.SelectById(customerID);
+
             reservationPayments.ReservationId = 0;
             dsPaymentInformation = reservationPayments.SelectAllDataSetByReservationID();
             dsPaymentInformation.Tables[0].PrimaryKey = new DataColumn[] { dsPaymentInformation.Tables[0].Columns["ReservationPaymentId"] };
 
             DataRow dataRow = dsPaymentInformation.Tables[0].NewRow();
-            
+
             Random rd = new Random();
             dataRow["ReservationPaymentId"] = rd.Next();
             dataRow["PaymentDate"] = DateTime.Today;
-            dataRow["PaymentTypeId"] = 3;                       
-            dataRow["CreditCardTypeId"] = dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"]!= null ? dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] : "1" ;
+            dataRow["PaymentTypeId"] = 3;
+            dataRow["CreditCardTypeId"] = dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null ? dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] : "1";
             dataRow["CCNo"] = dsCustomers.Tables[0].Rows[0]["CCNo"] != null ? dsCustomers.Tables[0].Rows[0]["CCNo"] : string.Empty;
             dataRow["CCExpirationDate"] = dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] != null ? dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] : string.Empty;
             dataRow["CCNameOnCard"] = dsCustomers.Tables[0].Rows[0]["CCNameOnCard"] != null ? dsCustomers.Tables[0].Rows[0]["CCNameOnCard"] : string.Empty;
             dataRow["Amount"] = "0.00";
             dataRow["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
             dataRow["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
-
             
             if (dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null)
             {
@@ -906,6 +1022,8 @@ namespace HBM.Reservation
         }
 
         #endregion
+
+
 
 
     }
