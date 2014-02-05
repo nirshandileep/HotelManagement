@@ -52,7 +52,7 @@
                                     </Image>
                                 </CancelButton>
                             </dx:GridViewCommandColumn>
-                            <dx:GridViewDataTextColumn Caption="PaymentTypeName" FieldName="PaymentTypeName"
+                            <dx:GridViewDataTextColumn Caption="Payment Type Name" FieldName="PaymentTypeName"
                                 VisibleIndex="0">
                                 <PropertiesTextEdit MaxLength="50">
                                     <ValidationSettings>
