@@ -20,7 +20,7 @@
                 </td>
             </tr>
             <tr>
-                <td width="110" height="22">
+                <td width="130" height="22">
                     Company Name<span class="reqfield">*</span>
                 </td>
                 <td>
@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Web URL</td>
+                    Web URL<span class="reqfield">*</span></td>
                 <td>
                     <dx:ASPxTextBox ID="txtWebURL" runat="server" Width="170px" MaxLength="50">
                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
@@ -114,7 +114,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Registration No</td>
+                    Registration No<span class="reqfield">*</span></td>
                 <td>
                     <dx:ASPxTextBox ID="txtRegistrationNo" runat="server" Width="170px" 
                         MaxLength="50">
@@ -127,7 +127,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    VAT No</td>
+                    VAT No<span class="reqfield">*</span></td>
                 <td>
                     <dx:ASPxTextBox ID="txtVATNo" runat="server" Width="170px" 
                         MaxLength="50">
@@ -140,7 +140,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Additional Details 1</td>
+                    Additional Details 1<span class="reqfield">*</span></td>
                 <td>
                     <dx:ASPxTextBox ID="txtAdditionalDetails1" runat="server" Width="170px" 
                         MaxLength="50">
@@ -153,7 +153,7 @@
             </tr>
             <tr>
                 <td height="22">
-                    Additional Details 2</td>
+                    Additional Details 2<span class="reqfield">*</span></td>
                 <td>
                         <dx:ASPxTextBox ID="txtAdditionalDetails2" runat="server" Width="170px" 
                         MaxLength="50">
