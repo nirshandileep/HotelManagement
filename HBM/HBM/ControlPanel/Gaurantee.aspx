@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
     <div class="wrapper-switchboard">
         <h2>
-            Gaurantee List</h2>
+            Guarantee List</h2>
         <table>
             <tr>
                 <td>&nbsp;
@@ -28,7 +28,7 @@
                         OnRowDeleting="gvGaurantee_RowDeleting" OnRowInserting="gvGaurantee_RowInserting"
                         OnRowUpdating="gvGaurantee_RowUpdating">
                         <Columns>
-                            <dx:GridViewDataTextColumn Caption="Gaurantee Name" VisibleIndex="0" FieldName="GuaranteeName">
+                            <dx:GridViewDataTextColumn Caption="Guarantee Name" VisibleIndex="0" FieldName="GuaranteeName">
                                 <PropertiesTextEdit>
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
