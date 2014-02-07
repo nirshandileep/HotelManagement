@@ -21,7 +21,7 @@
         function OnSelectedIndexChanged(s, e) {
 
             var value = s.GetText();
-            alert(value);
+      
             if (value == 'Credit Card') {                
                 cgvPaymentInformation.GetEditor('ColCardType').SetEnabled(true);
                 cgvPaymentInformation.GetEditor('ColCardNo').SetEnabled(true);

@@ -59,15 +59,34 @@
                                 </CancelButton>
                             </dx:GridViewCommandColumn>
                             <dx:GridViewDataDateColumn Caption="Effective From" VisibleIndex="1" FieldName="EffectiveFrom">
-                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d">
+                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d" 
+                                    ClientInstanceName="effectiveFromDate">
                                     <ValidationSettings>
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>
                                 </PropertiesDateEdit>
                             </dx:GridViewDataDateColumn>
                             <dx:GridViewDataDateColumn Caption="Effective To" VisibleIndex="2" FieldName="EffectiveTo">
-                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d">
+                                <PropertiesDateEdit DisplayFormatInEditMode="True" EditFormatString="d" 
+                                    ClientInstanceName="effectiveToDate">
+                                    <ClientSideEvents Validation="function(s, e) {
+	var effectiveFrom=new Date(effectiveFromDate.GetText());
+    var effectiveTo =new Date(effectiveToDate.GetText());
+
+	if (effectiveFrom &gt; effectiveTo )   
+	{
+		e.isValid = false;
+	}
+	else
+	{
+		e.isValid = true;
+	}
+
+
+
+}" />
                                     <ValidationSettings>
+                                        <RegularExpression ErrorText="To date must be recent" />
                                         <RequiredField ErrorText="Required" IsRequired="True" />
                                     </ValidationSettings>
                                 </PropertiesDateEdit>
