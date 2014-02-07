@@ -52,6 +52,20 @@
                                 </dx:MenuItem>
                             </Items>
                         </dx:MenuItem>
+                        <dx:MenuItem Text="Reservation" DropDownMode="True">
+                            <Items>
+                                <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" 
+                                    Text="Add Reservation">
+                                    <Image Url="~/Images/Reservation.png">
+                                    </Image>
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" 
+                                    Text="Search Reservation">
+                                    <Image Url="~/Images/Search.png">
+                                    </Image>
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
                         <dx:MenuItem Text="Staff Management" DropDownMode="True">
                             <Items>
                                 <dx:MenuItem NavigateUrl="~/StaffManagement/Users.aspx" Text="Add Users">
@@ -67,20 +81,6 @@
                                     </Image>
                                 </dx:MenuItem>
                                 <dx:MenuItem NavigateUrl="~/StaffManagement/RoleSearch.aspx" Text="Search Role">
-                                    <Image Url="~/Images/Search.png">
-                                    </Image>
-                                </dx:MenuItem>
-                            </Items>
-                        </dx:MenuItem>
-                        <dx:MenuItem Text="Reservation" DropDownMode="True">
-                            <Items>
-                                <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" 
-                                    Text="Add Reservation">
-                                    <Image Url="~/Images/Reservation.png">
-                                    </Image>
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" 
-                                    Text="Search Reservation">
                                     <Image Url="~/Images/Search.png">
                                     </Image>
                                 </dx:MenuItem>

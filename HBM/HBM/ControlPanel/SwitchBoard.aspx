@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="11" OnTabClick="tcCommon_TabClick"
+                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="4" OnTabClick="tcCommon_TabClick"
                         Width="900px" Height="25px" TabAlign="Justify" 
                         EnableTheming="True" TabSpacing="0px">
                         <Tabs>
@@ -32,7 +32,7 @@
                             </dx:Tab>
                             <dx:Tab Text="Departments" Name="Departments">
                             </dx:Tab>
-                            <dx:Tab Text="Guarantee" Name="Gaurantee">
+                            <dx:Tab Text="Guarantee" Name="Gaurantee" Visible="False">
                             </dx:Tab>
                             <dx:Tab Text="Rooms" Name="Rooms">
                             </dx:Tab>
@@ -52,7 +52,7 @@
                             </dx:Tab>
                             <dx:Tab Name="CreditCardTypes" Text="Credit Card Types">
                             </dx:Tab>
-                            <dx:Tab Name="PaymentTypes" Text="Payment Types">
+                            <dx:Tab Name="PaymentTypes" Text="Payment Types" Visible="False">
                             </dx:Tab>
                             <dx:Tab Name="ServiceMethods" Text="Service Methods">
                             </dx:Tab>

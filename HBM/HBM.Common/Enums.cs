@@ -26,7 +26,7 @@ namespace HBM.Common
         /// </summary>
         public enum HBMCompanyTypes
         {
-            Hote=1
+            Hote = 1
         }
 
         /// <summary>
@@ -37,6 +37,18 @@ namespace HBM.Common
             Individual = 1,
             Group = 2,
         }
-       
+
+        /// <summary>
+        /// Types of Payments
+        /// </summary>
+        public enum PaymentType
+        {
+            Cash = 1,
+            CreditCard = 2,
+            Check = 3,
+            BankTransfer = 4,
+            Other = 5
+        }
+
     }
 }

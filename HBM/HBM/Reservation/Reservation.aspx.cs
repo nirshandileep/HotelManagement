@@ -1000,7 +1000,7 @@ namespace HBM.Reservation
             Random rd = new Random();
             dataRow["ReservationPaymentId"] = rd.Next();
             dataRow["PaymentDate"] = DateTime.Today;
-            dataRow["PaymentTypeId"] = 3;
+            dataRow["PaymentTypeId"] = (int)HBM.Common.Enums.PaymentType.CreditCard;
             dataRow["CreditCardTypeId"] = dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null ? dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] : "1";
             dataRow["CCNo"] = dsCustomers.Tables[0].Rows[0]["CCNo"] != null ? dsCustomers.Tables[0].Rows[0]["CCNo"] : string.Empty;
             dataRow["CCExpirationDate"] = dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] != null ? dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] : string.Empty;

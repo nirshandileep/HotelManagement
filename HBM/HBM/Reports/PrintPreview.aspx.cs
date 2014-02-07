@@ -29,18 +29,14 @@ namespace HBM.Reports
         {
             xrReservation reservationInvoiceReport = new xrReservation();
 
-
-            ResMan.Reservation reservation = new ResMan.Reservation();
-
-            if (Request.QueryString["ReservationID"] != null && Request.QueryString["ReservationID"] != string.Empty)
-            {
-                reservation.ReservationId = Convert.ToInt32(Request.QueryString["ReservationID"].ToString());
-            }
-            else
+            if (Request.QueryString["ReservationID"] == null || Request.QueryString["ReservationID"] == string.Empty)
             {
                 return;
             }
             
+
+            ResMan.Reservation reservation = new ResMan.Reservation();
+            reservation.ReservationId = Convert.ToInt64(Request.QueryString["ReservationID"].ToString());
             reservation = reservation.Select();
 
             reservationInvoiceReport.xrCellInvoiceNo.Text = "Invoice No - INV" + reservation.ReservationId.ToString();

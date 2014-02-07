@@ -49,7 +49,7 @@
                                 VisibleIndex="1">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn Caption="Guest Type" FieldName="GuestTypeName" UnboundType="String"
-                                VisibleIndex="8" Width="150px">
+                                VisibleIndex="7" Width="150px">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="Email" UnboundType="String" 
                                 VisibleIndex="6">
@@ -70,6 +70,9 @@
                                 <ClearFilterButton Visible="True">
                                 </ClearFilterButton>
                             </dx:GridViewCommandColumn>
+                            <dx:GridViewDataCheckColumn Caption="Is Group" FieldName="IsGroupCustomer" 
+                                VisibleIndex="9">
+                            </dx:GridViewDataCheckColumn>
                         </Columns>
                         <SettingsBehavior ColumnResizeMode="Control" ConfirmDelete="True" />
                         <Settings ShowFilterRow="True" HorizontalScrollBarMode="Auto" />
