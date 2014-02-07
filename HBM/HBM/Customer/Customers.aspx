@@ -91,14 +91,11 @@
                         </tr>
                         <tr>
                             <td height="22" class="info-lbl">
-                                Member Code<span class="reqfield">*</span>
+                                Member Code
                             </td>
                             <td>
-                                <dx:ASPxTextBox ID="txtMemberCodeGrp" runat="server" TabIndex="2" Width="170px">
-                                    <ValidationSettings EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
-                                        ValidationGroup="vgCustomer">
-                                        <RequiredField ErrorText="Required" IsRequired="True" />
-                                    </ValidationSettings>
+                                <dx:ASPxTextBox ID="txtMemberCodeGrp" runat="server" TabIndex="2" Width="170px" 
+                                    Enabled="False" EnableTheming="True">                            
                                 </dx:ASPxTextBox>
                             </td>
                             <td>
@@ -616,14 +613,11 @@
                                     </tr>
                                     <tr>
                                         <td height="22" class="info-lbl">
-                                            Member Code<span class="reqfield">*</span>
+                                            Member Code
                                         </td>
                                         <td>
-                                            <dx:ASPxTextBox ID="txtMemberCode" runat="server" TabIndex="2" Width="170px">
-                                                <ValidationSettings EnableCustomValidation="True" ErrorDisplayMode="ImageWithTooltip"
-                                                    ValidationGroup="vgCustomer">
-                                                    <RequiredField ErrorText="Required" IsRequired="True" />
-                                                </ValidationSettings>
+                                            <dx:ASPxTextBox ID="txtMemberCode" runat="server" TabIndex="2" Width="170px"   Enabled="False">
+                                                
                                             </dx:ASPxTextBox>
                                         </td>
                                         <td>

@@ -16,8 +16,7 @@ namespace HBM.CustomerManagement
             DbCommand command = db.GetStoredProcCommand("usp_CustomerInsert");
 
             db.AddInParameter(command, "@CompanyId", DbType.Int32, customer.CompanyId);
-            db.AddInParameter(command, "@CustomerName", DbType.String, customer.CustomerName);
-            db.AddInParameter(command, "@MemberCode", DbType.String, customer.MemberCode);
+            db.AddInParameter(command, "@CustomerName", DbType.String, customer.CustomerName);            
             db.AddInParameter(command, "@Gender", DbType.String, customer.Gender);
             db.AddInParameter(command, "@GuestTypeId", DbType.Int32, customer.GuestTypeId);
             db.AddInParameter(command, "@Phone", DbType.String, customer.Phone);
@@ -71,8 +70,7 @@ namespace HBM.CustomerManagement
 
             db.AddInParameter(command, "@CustomerId", DbType.Int32, customer.CustomerId);
             db.AddInParameter(command, "@CompanyId", DbType.Int32, customer.CompanyId);
-            db.AddInParameter(command, "@CustomerName", DbType.String, customer.CustomerName);
-            db.AddInParameter(command, "@MemberCode", DbType.String, customer.MemberCode);
+            db.AddInParameter(command, "@CustomerName", DbType.String, customer.CustomerName);            
             db.AddInParameter(command, "@Gender", DbType.String, customer.Gender);
             db.AddInParameter(command, "@GuestTypeId", DbType.Int32, customer.GuestTypeId);
             db.AddInParameter(command, "@Phone", DbType.String, customer.Phone);
