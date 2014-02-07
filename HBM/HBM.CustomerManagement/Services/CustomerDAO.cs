@@ -151,8 +151,7 @@ namespace HBM.CustomerManagement
             DbCommand commandInsert = db.GetStoredProcCommand("usp_CustomerGroupInsert");
             db.AddInParameter(commandInsert, "@GroupId", DbType.Int32, customer.CustomerId);
             db.AddInParameter(commandInsert, "@CompanyId", DbType.Int32, customer.CompanyId);
-            db.AddInParameter(commandInsert, "@CustomerName", DbType.String, "CustomerName", DataRowVersion.Current);
-            db.AddInParameter(commandInsert, "@MemberCode", DbType.String, "MemberCode", DataRowVersion.Current);
+            db.AddInParameter(commandInsert, "@CustomerName", DbType.String, "CustomerName", DataRowVersion.Current);            
             db.AddInParameter(commandInsert, "@Gender", DbType.String, "Gender", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@GuestTypeId", DbType.Int32, "GuestTypeId", DataRowVersion.Current);
             db.AddInParameter(commandInsert, "@Phone", DbType.String, "Phone", DataRowVersion.Current);
@@ -162,8 +161,7 @@ namespace HBM.CustomerManagement
 
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_CustomerGroupUpdate");
             db.AddInParameter(commandUpdate, "@CustomerId", DbType.Int32, "CustomerId", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@CustomerName", DbType.String, "CustomerName", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@MemberCode", DbType.String, "MemberCode", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@CustomerName", DbType.String, "CustomerName", DataRowVersion.Current);            
             db.AddInParameter(commandUpdate, "@Gender", DbType.String, "Gender", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@GuestTypeId", DbType.Int32, "GuestTypeId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Phone", DbType.String, "Phone", DataRowVersion.Current);

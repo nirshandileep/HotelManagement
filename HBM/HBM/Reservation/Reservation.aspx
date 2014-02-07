@@ -126,8 +126,16 @@
                                     <ClientSideEvents Validation="function(s, e) {
 	
 	var checkindateText=new Date(checkindate.GetText());
-    var checkoutdateText =new Date(checkoutdate.GetText());
-    e.isValid = (checkoutdateText  &gt;= checkindateText );
+    var checkoutdateText =new Date(checkoutdate.GetText());     
+	
+	if(checkoutdateText  &gt; checkindateText )
+	{
+		    e.isValid = true;
+	}
+	else
+	{
+    		e.isValid = false;
+	}
 
 }" />
                                     <ValidationSettings ValidationGroup="vgCreate" ErrorDisplayMode="ImageWithTooltip"

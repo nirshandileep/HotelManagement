@@ -17,11 +17,6 @@
     <link href="css/stickyfooter.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript" src="../Scripts/jquery-2.0.3.min.js"></script>
     <script language="javascript" type="text/javascript" src="../JS/HBMCommon.js"></script>
-    <!--[if !IE 7]>
-	<style type="text/css">
-		#wrap {display:table;height:100%}
-	</style>
-    <![endif]-->
    
 </head>
 <body>
@@ -33,8 +28,7 @@
     </div>
     <div class="header2">
         <div class="wrapper">
-            <div class="hotel-logo">
-                <%--<img src="../Images/hotel-logo.png" width="133" height="77" alt="logo" />--%>
+            <div class="hotel-logo">                
                 <dx:ASPxBinaryImage ID="bimgLogo" runat="server" width="133" height="77" alt="logo">
                 </dx:ASPxBinaryImage>
             </div>

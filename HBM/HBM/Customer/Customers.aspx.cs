@@ -544,6 +544,7 @@ namespace HBM
                 if (string.IsNullOrEmpty(errorMSG) && currentCustomer.Save())
                 {
                     hdnCustomerId.Value = currentCustomer.CustomerId.ToString();
+                    this.ViewData();
                     dsData = currentCustomer.SelectGroupByGroupId(currentCustomer.CustomerId);
                     gvGroupMembers.DataSource = dsData;
                     gvGroupMembers.DataBind();
