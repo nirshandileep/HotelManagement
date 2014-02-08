@@ -2,6 +2,9 @@
     CodeBehind="Reservation.aspx.cs" Inherits="HBM.Reservation.Reservation" %>
 
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dx" %>
@@ -16,6 +19,7 @@
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
+<%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxLoadingPanel" tagprefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script language="javascript" type="text/javascript">
         function OnSelectedIndexChanged(s, e) {
@@ -91,7 +95,7 @@
                             </td>
                             <td rowspan="3" valign="bottom">
                                 <dx:ASPxButton ID="btnCreate" runat="server" onclick="btnCreate_Click" 
-                                    Text="Create" ValidationGroup="vgCreate">
+                                    Text="Create" ValidationGroup="vgCreate" Height="40px">
                                 </dx:ASPxButton>
                             </td>
                         </tr>
@@ -164,25 +168,31 @@
                     </dx:ASPxRoundPanel>--%>
                     <h2>
                         Booking information</h2>
+                    <dx:ASPxLoadingPanel ID="aspxLoadingPanel" runat="server" 
+                        ClientInstanceName="cinaspxLoadingPanel" Modal="True">
+                    </dx:ASPxLoadingPanel>
                     <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
                         Width="100%">
                         <TabPages>
                             <dx:TabPage Text="Room Info">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                        <table width="100%">
-                                            <tr valign="middle">
-                                                <td height="22" valign="middle">
-                                                    Sharers
-                                                </td>
-                                                <td>
-                                                    <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" DropDownWindowHeight="200px"
-                                                        DropDownWindowWidth="350px" ClientInstanceName="ddlShareNames" MaxLength="255">
-                                                        <DropDownWindowTemplate>
-                                                            <dx:ASPxMemo ID="memSharesNames" runat="server" Height="200px" Width="100%" ClientInstanceName="memSharesNames">
-                                                            </dx:ASPxMemo>
-                                                        </DropDownWindowTemplate>
-                                                        <ClientSideEvents CloseUp="function(s, e) {
+                                      
+                                      <table width="100%">
+        <tr valign="middle">
+            <td height="22" valign="middle">
+                Sharers
+            </td>
+            <td>
+                <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" 
+                    ClientInstanceName="ddlShareNames" DropDownWindowHeight="200px" 
+                    DropDownWindowWidth="350px" MaxLength="255">
+                    <DropDownWindowTemplate>
+                        <dx:ASPxMemo ID="memSharesNames" runat="server" 
+                            ClientInstanceName="memSharesNames" Height="200px" Width="100%">
+                        </dx:ASPxMemo>
+                    </DropDownWindowTemplate>
+                    <ClientSideEvents CloseUp="function(s, e) {
     
 	ddlShareNames.SetValue(memSharesNames.GetValue());
 }" DropDown="function(s, e) {
@@ -190,118 +200,136 @@
 memSharesNames.SetValue(ddlShareNames.GetValue());
 
 }" />
-                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
-                                                            <RequiredField ErrorText="Required" IsRequired="True" />
-                                                        </ValidationSettings>
-                                                    </dx:ASPxDropDownEdit>
-                                                </td>
-                                                <td valign="middle>"
-                                                    Room
-                                                </td>
-                                                <td>
-                                                    <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.Int32" TextFormatString="{1}"
-                                                        AutoPostBack="True" OnSelectedIndexChanged="cmbRoom_SelectedIndexChanged">
-                                                        <Columns>
-                                                            <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" Width="50px" />
-                                                            <dx:ListBoxColumn Caption="Name" FieldName="RoomName" Width="125px" />
-                                                            <dx:ListBoxColumn Caption="Room Number" FieldName="RoomNumber" Width="100px" />
-                                                            <dx:ListBoxColumn Caption="Max Adult" FieldName="MaxAdult" Width="50px" />
-                                                            <dx:ListBoxColumn Caption="Max Children" FieldName="MaxChildren" Width="90px" />
-                                                            <dx:ListBoxColumn Caption="Max Infant" FieldName="MaxInfant" Width="90px" />
-                                                            <dx:ListBoxColumn Caption="Smoking Allow" FieldName="SmokingAllow" Width="90px" />
-                                                            <dx:ListBoxColumn Caption="Bed Type" FieldName="BedTypeName" Width="100px" />
-                                                            <dx:ListBoxColumn Caption="Description" FieldName="BedTypeDescription" Width="100px" />
-                                                        </Columns>
-                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
-                                                            <RequiredField ErrorText="Required" IsRequired="True" />
-                                                        </ValidationSettings>
-                                                    </dx:ASPxComboBox>
-                                                </td>
-                                                <td valign="middle">
-                                                    Rate Plan
-                                                </td>
-                                                <td>
-                                                    <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.Int32" TextFormatString="{0}"
-                                                        OnSelectedIndexChanged="cmbRatePlan_SelectedIndexChanged" 
-                                                        AutoPostBack="True">
-                                                        <Columns>
-                                                            <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" Width="100px" />
-                                                            <dx:ListBoxColumn Caption="Effective From" FieldName="EffectiveFrom" Width="100px" />
-                                                            <dx:ListBoxColumn Caption="Effective To" FieldName="EffectiveTo" Width="100px" />
-                                                            <dx:ListBoxColumn Caption="Rate" FieldName="Rate" Width="50px" />
-                                                            <dx:ListBoxColumn Caption="Adult Rate" FieldName="AdditionalAdultRate" Width="100px" />
-                                                            <dx:ListBoxColumn Caption="Children Rate" FieldName="AdditionalChildrenRate" Width="100px" />
-                                                            <dx:ListBoxColumn Caption="Infant Rate" FieldName="AdditionalInfantRate" Width="100px" />
-                                                        </Columns>
-                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
-                                                            <RequiredField ErrorText="Required" IsRequired="True" />
-                                                        </ValidationSettings>
-                                                    </dx:ASPxComboBox>
-                                                </td>
-                                                <td rowspan="3">
-                                                    <dx:ASPxButton ID="btnAdd" runat="server" Height="40px" OnClick="btnAdd_Click" Text="Add"
-                                                        ValidationGroup="vgAdd">
-                                                        <Image Url="~/Images/Add.png">
-                                                        </Image>
-                                                    </dx:ASPxButton>
-                                                </td>
-                                            </tr>
-                                            <tr valign="middle">
-                                                <td height="22" valign="middle">
-                                                    &nbsp;
-                                                </td>
-                                                <td>
-                                                    &nbsp;
-                                                </td>
-                                                <td valign="middle">
-                                                    &nbsp;
-                                                </td>
-                                                <td>
-                                                    <asp:HiddenField ID="hdnRoom" runat="server" />
-                                                </td>
-                                                <td valign="middle">
-                                                    &nbsp;
-                                                </td>
-                                                <td>
-                                                    <asp:HiddenField ID="hdnRate" runat="server" />
-                                                </td>
-                                            </tr>
-                                            <tr valign="middle">
-                                                <td height="22" valign="middle">
-                                                    # Adults
-                                                </td>
-                                                <td>
-                                                    <dx:ASPxSpinEdit ID="seAdults" runat="server" Height="21px" Number="0" MaxLength="3"
-                                                        MaxValue="100" NullText="0">
-                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
-                                                            <RequiredField ErrorText="Required" IsRequired="True" />
-                                                        </ValidationSettings>
-                                                    </dx:ASPxSpinEdit>
-                                                </td>
-                                                <td valign="middle">
-                                                    # Children
-                                                </td>
-                                                <td>
-                                                    <dx:ASPxSpinEdit ID="seChildren" runat="server" Height="21px" Number="0" MaxLength="3"
-                                                        MaxValue="100" NullText="0">
-                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
-                                                            <RequiredField ErrorText="Required" IsRequired="True" />
-                                                        </ValidationSettings>
-                                                    </dx:ASPxSpinEdit>
-                                                </td>
-                                                <td valign="middle">
-                                                    # Infants
-                                                </td>
-                                                <td>
-                                                    <dx:ASPxSpinEdit ID="seInfants" runat="server" Height="21px" Number="0" MaxLength="3"
-                                                        MaxValue="100" NullText="0">
-                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
-                                                            <RequiredField ErrorText="Required" IsRequired="True" />
-                                                        </ValidationSettings>
-                                                    </dx:ASPxSpinEdit>
-                                                </td>
-                                            </tr>
-                                        </table>
+                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                        <RequiredField ErrorText="Required" IsRequired="True" />
+                    </ValidationSettings>
+                </dx:ASPxDropDownEdit>
+            </td>
+            <td </td="" Room="" valign="middle&gt;">
+                Room<td>
+                    <dx:ASPxComboBox ID="cmbRoom" runat="server" AutoPostBack="True" 
+                        EnableCallbackMode="True" OnSelectedIndexChanged="cmbRoom_SelectedIndexChanged" 
+                        TextFormatString="{1}" ValueType="System.Int32">
+                        <ClientSideEvents BeginCallback="function(s, e) {
+
+}" EndCallback="function(s, e) {
+		
+}" SelectedIndexChanged="function(s, e) {
+	cinaspxLoadingPanel.Show();	
+}" />
+                        <Columns>
+                            <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" Width="50px" />
+                            <dx:ListBoxColumn Caption="Name" FieldName="RoomName" Width="125px" />
+                            <dx:ListBoxColumn Caption="Room Number" FieldName="RoomNumber" Width="100px" />
+                            <dx:ListBoxColumn Caption="Max Adult" FieldName="MaxAdult" Width="50px" />
+                            <dx:ListBoxColumn Caption="Max Children" FieldName="MaxChildren" Width="90px" />
+                            <dx:ListBoxColumn Caption="Max Infant" FieldName="MaxInfant" Width="90px" />
+                            <dx:ListBoxColumn Caption="Smoking Allow" FieldName="SmokingAllow" 
+                                Width="90px" />
+                            <dx:ListBoxColumn Caption="Bed Type" FieldName="BedTypeName" Width="100px" />
+                            <dx:ListBoxColumn Caption="Description" FieldName="BedTypeDescription" 
+                                Width="100px" />
+                        </Columns>
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                        </ValidationSettings>
+                    </dx:ASPxComboBox>
+                </td>
+                <td valign="middle">
+                    Rate Plan
+                </td>
+                <td>
+                    <dx:ASPxComboBox ID="cmbRatePlan" runat="server" EnableCallbackMode="True" 
+                        OnSelectedIndexChanged="cmbRatePlan_SelectedIndexChanged" 
+                        TextFormatString="{0}" ValueType="System.Int32" AutoPostBack="True">
+                        <ClientSideEvents SelectedIndexChanged="function(s, e) {
+	cinaspxLoadingPanel.Show();	
+}" />
+                        <Columns>
+                            <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" Width="100px" />
+                            <dx:ListBoxColumn Caption="Effective From" FieldName="EffectiveFrom" 
+                                Width="100px" />
+                            <dx:ListBoxColumn Caption="Effective To" FieldName="EffectiveTo" 
+                                Width="100px" />
+                            <dx:ListBoxColumn Caption="Rate" FieldName="Rate" Width="50px" />
+                            <dx:ListBoxColumn Caption="Adult Rate" FieldName="AdditionalAdultRate" 
+                                Width="100px" />
+                            <dx:ListBoxColumn Caption="Children Rate" FieldName="AdditionalChildrenRate" 
+                                Width="100px" />
+                            <dx:ListBoxColumn Caption="Infant Rate" FieldName="AdditionalInfantRate" 
+                                Width="100px" />
+                        </Columns>
+                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                            <RequiredField ErrorText="Required" IsRequired="True" />
+                        </ValidationSettings>
+                    </dx:ASPxComboBox>
+                </td>
+                <td rowspan="3">
+                    <dx:ASPxButton ID="btnAdd" runat="server" Height="40px" OnClick="btnAdd_Click" 
+                        Text="Add" ValidationGroup="vgAdd">
+                        <Image Url="~/Images/Add.png">
+                        </Image>
+                    </dx:ASPxButton>
+                </td>
+            </td>
+        </tr>
+        <tr valign="middle">
+            <td height="22" valign="middle">
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td valign="middle">
+                &nbsp;
+            </td>
+            <td>
+                <asp:HiddenField ID="hdnRoom" runat="server" />
+            </td>
+            <td valign="middle">
+                &nbsp;
+            </td>
+            <td>
+                <asp:HiddenField ID="hdnRate" runat="server" />
+            </td>
+        </tr>
+        <tr valign="middle">
+            <td height="22" valign="middle">
+                # Adults
+            </td>
+            <td>
+                <dx:ASPxSpinEdit ID="seAdults" runat="server" Height="21px" MaxLength="3" 
+                    MaxValue="100" NullText="0" Number="0">
+                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                        <RequiredField ErrorText="Required" IsRequired="True" />
+                    </ValidationSettings>
+                </dx:ASPxSpinEdit>
+            </td>
+            <td valign="middle">
+                # Children
+            </td>
+            <td>
+                <dx:ASPxSpinEdit ID="seChildren" runat="server" Height="21px" MaxLength="3" 
+                    MaxValue="100" NullText="0" Number="0">
+                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                        <RequiredField ErrorText="Required" IsRequired="True" />
+                    </ValidationSettings>
+                </dx:ASPxSpinEdit>
+            </td>
+            <td valign="middle">
+                # Infants
+            </td>
+            <td>
+                <dx:ASPxSpinEdit ID="seInfants" runat="server" Height="21px" MaxLength="3" 
+                    MaxValue="100" NullText="0" Number="0">
+                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
+                        <RequiredField ErrorText="Required" IsRequired="True" />
+                    </ValidationSettings>
+                </dx:ASPxSpinEdit>
+            </td>
+        </tr>
+    </table>
+
                                         <dx:ASPxGridView ID="gvRoomInfo" runat="server" AutoGenerateColumns="False" Width="100%"
                                             OnCellEditorInitialize="gvRoomInfo_CellEditorInitialize" KeyFieldName="ReservationRoomId"
                                             OnRowDeleting="gvRoomInfo_RowDeleting" OnRowInserting="gvRoomInfo_RowInserting"
@@ -571,7 +599,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                         </PanelCollection>
                     </dx:ASPxRoundPanel>--%>
                     <h2>
-                        Summary</h2>
+                        Summary             Summary</h2>
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tr>
                             <td>

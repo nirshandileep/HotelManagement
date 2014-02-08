@@ -154,14 +154,8 @@ namespace HBM
 
         #region Events
 
-        /// <summary>
-        /// Page Loadf
-        /// </summary>
-        /// <param name="sender">object as sender</param>
-        /// <param name="e">e Event argument</param>
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
-            //Called everytime to check it the user session is null
             if (Session[Constants.SESSION_LOGGEDUSER] == null)
             {
                 ClearSessions();
@@ -182,8 +176,18 @@ namespace HBM
             {
                 Response.Redirect(HBM.Common.Constants.URL_LOGIN, false);
             }
+        }
 
 
+        /// <summary>
+        /// Page Load
+        /// </summary>
+        /// <param name="sender">object as sender</param>
+        /// <param name="e">e Event argument</param>
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //Called everytime to check it the user session is null
+           
 
         }
 

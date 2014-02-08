@@ -95,8 +95,24 @@ namespace HBM.Reservation
         protected void Page_PreRender(object sender, EventArgs e)
         {
 
-        
+            if (hdnRoom.Value != string.Empty)
+            {
+                int currentRoomID = Convert.ToInt32(hdnRoom.Value);
+                cmbRatePlan.DataSource = new GenMan.RoomRatePlan() { RoomId = currentRoomID }.SelectByRoomId();
+                cmbRatePlan.TextField = "RatePlanName";
+                cmbRatePlan.ValueField = "RatePlansId";
+                cmbRatePlan.DataBind();
+            }
 
+
+            if (cmbRatePlan.SelectedItem != null)
+            {
+                hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
+            }
+            else
+            {
+                hdnRate.Value = "0";
+            }
 
             //if (gvPaymentInformation.IsEditing)
             //{
@@ -326,17 +342,6 @@ namespace HBM.Reservation
                 dr["NumberOfAdults"] = seAdults.Text;
                 dr["NumberOfChildren"] = seChildren.Text;
                 dr["NumberOfInfant"] = seInfants.Text;
-
-
-                if (cmbRatePlan.SelectedItem != null && cmbRatePlan.SelectedItem.Value != null)
-                {
-                    hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
-                }
-                else
-                {
-                    hdnRate.Value = "0";
-                }
-
                 dr["Rate"] = Convert.ToDecimal(hdnRate.Value == string.Empty ? "0" : hdnRate.Value); ;
                 TimeSpan tspan = Convert.ToDateTime(dtCheckOutDate.Text) - Convert.ToDateTime(dtCheckingDate.Text);
                 double totalDays = 0;
@@ -403,14 +408,7 @@ namespace HBM.Reservation
 
         protected void cmbRatePlan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbRatePlan.SelectedItem != null)
-            {
-                hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
-            }
-            else
-            {
-                hdnRate.Value = "0";
-            }
+            
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -431,13 +429,9 @@ namespace HBM.Reservation
 
         protected void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
             hdnRoom.Value = currentRoomID.ToString();
-            cmbRatePlan.DataSource = new GenMan.RoomRatePlan() { RoomId = currentRoomID }.SelectByRoomId();
-            cmbRatePlan.TextField = "RatePlanName";
-            cmbRatePlan.ValueField = "RatePlansId";
-            cmbRatePlan.DataBind();
+           
         }
 
         #endregion

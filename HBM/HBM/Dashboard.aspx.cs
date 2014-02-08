@@ -306,5 +306,10 @@ namespace HBM
         }
 
         #endregion
+
+        protected void pcPageControl_ActiveTabChanged(object source, DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
+        {
+
+        }
     }
 }
