@@ -109,17 +109,17 @@ namespace HBM.Reservation
 
             rooms.RoomCode = e.NewValues["RoomCode"].ToString();
 
-            if (!rooms.IsDuplicateTypeName())
-            {
+            //if (!rooms.IsDuplicateTypeName())
+            //{
                 if (rooms.Save(dsData))
                 {
                     this.LoadRooms();
                 }
-            }
-            else
-            {
-                throw new System.Exception(Messages.Duplicate_record);
-            }
+            //}
+            //else
+            //{
+                //throw new System.Exception(Messages.Duplicate_record);
+            //}
 
         }
 
@@ -144,17 +144,17 @@ namespace HBM.Reservation
             rooms.RoomId = Convert.ToInt32(e.Keys["RoomId"].ToString());
             rooms.RoomCode = e.NewValues["RoomCode"].ToString();
 
-            if (!rooms.IsDuplicateTypeName())
-            {
+            //if (!rooms.IsDuplicateTypeName())
+            //{
                 if (rooms.Save(dsData))
                 {
                     this.LoadRooms();
                 }
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 throw new System.Exception(Messages.Duplicate_record);
-            }
+            //}
 
         }
 

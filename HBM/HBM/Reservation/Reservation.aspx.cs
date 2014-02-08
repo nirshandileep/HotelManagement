@@ -94,6 +94,10 @@ namespace HBM.Reservation
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
+
+        
+
+
             //if (gvPaymentInformation.IsEditing)
             //{
 
@@ -322,6 +326,17 @@ namespace HBM.Reservation
                 dr["NumberOfAdults"] = seAdults.Text;
                 dr["NumberOfChildren"] = seChildren.Text;
                 dr["NumberOfInfant"] = seInfants.Text;
+
+
+                if (cmbRatePlan.SelectedItem != null && cmbRatePlan.SelectedItem.Value != null)
+                {
+                    hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
+                }
+                else
+                {
+                    hdnRate.Value = "0";
+                }
+
                 dr["Rate"] = Convert.ToDecimal(hdnRate.Value == string.Empty ? "0" : hdnRate.Value); ;
                 TimeSpan tspan = Convert.ToDateTime(dtCheckOutDate.Text) - Convert.ToDateTime(dtCheckingDate.Text);
                 double totalDays = 0;
@@ -332,8 +347,10 @@ namespace HBM.Reservation
                     totalDays = 1;
                 }
 
+
+
                 dr["Days"] = totalDays;
-                dr["Amount"] = totalDays * 10;
+                dr["Amount"] =  totalDays * (Convert.ToDouble(hdnRate.Value == string.Empty ? "0" : hdnRate.Value));
                 dr["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
                 dr["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 

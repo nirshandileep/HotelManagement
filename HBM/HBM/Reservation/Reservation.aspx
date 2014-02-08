@@ -164,7 +164,7 @@
                     </dx:ASPxRoundPanel>--%>
                     <h2>
                         Booking information</h2>
-                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="2" 
+                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
                         Width="100%">
                         <TabPages>
                             <dx:TabPage Text="Room Info">
@@ -199,7 +199,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     Room
                                                 </td>
                                                 <td>
-                                                    <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.String" TextFormatString="{1}"
+                                                    <dx:ASPxComboBox ID="cmbRoom" runat="server" ValueType="System.Int32" TextFormatString="{1}"
                                                         AutoPostBack="True" OnSelectedIndexChanged="cmbRoom_SelectedIndexChanged">
                                                         <Columns>
                                                             <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" Width="50px" />
@@ -221,8 +221,9 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     Rate Plan
                                                 </td>
                                                 <td>
-                                                    <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.String" TextFormatString="{0}"
-                                                        OnSelectedIndexChanged="cmbRatePlan_SelectedIndexChanged">
+                                                    <dx:ASPxComboBox ID="cmbRatePlan" runat="server" ValueType="System.Int32" TextFormatString="{0}"
+                                                        OnSelectedIndexChanged="cmbRatePlan_SelectedIndexChanged" 
+                                                        AutoPostBack="True">
                                                         <Columns>
                                                             <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" Width="100px" />
                                                             <dx:ListBoxColumn Caption="Effective From" FieldName="EffectiveFrom" Width="100px" />

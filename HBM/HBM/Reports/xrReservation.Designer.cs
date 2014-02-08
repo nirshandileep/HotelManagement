@@ -64,6 +64,7 @@
             this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrCellReservationDate = new DevExpress.XtraReports.UI.XRTableCell();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
+            this.xrPbLogo = new DevExpress.XtraReports.UI.XRPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.xrTableRoomInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
@@ -187,6 +188,7 @@
             // PageHeader
             // 
             this.PageHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPbLogo,
             this.xrCellCompanyName,
             this.xrTable1,
             this.xrCellCompnayAddress,
@@ -198,7 +200,7 @@
             // xrCellCompanyName
             // 
             this.xrCellCompanyName.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrCellCompanyName.LocationFloat = new DevExpress.Utils.PointFloat(455.625F, 112.0001F);
+            this.xrCellCompanyName.LocationFloat = new DevExpress.Utils.PointFloat(454.625F, 5F);
             this.xrCellCompanyName.Name = "xrCellCompanyName";
             this.xrCellCompanyName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrCellCompanyName.SizeF = new System.Drawing.SizeF(334.375F, 23F);
@@ -284,21 +286,21 @@
             // 
             // xrCellCompnayAddress
             // 
-            this.xrCellCompnayAddress.LocationFloat = new DevExpress.Utils.PointFloat(455.625F, 135.0001F);
+            this.xrCellCompnayAddress.LocationFloat = new DevExpress.Utils.PointFloat(454.625F, 30.08344F);
             this.xrCellCompnayAddress.Multiline = true;
             this.xrCellCompnayAddress.Name = "xrCellCompnayAddress";
             this.xrCellCompnayAddress.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrCellCompnayAddress.SizeF = new System.Drawing.SizeF(334.375F, 87.91666F);
+            this.xrCellCompnayAddress.SizeF = new System.Drawing.SizeF(334.375F, 76.41668F);
             this.xrCellCompnayAddress.StylePriority.UseTextAlignment = false;
             this.xrCellCompnayAddress.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // xrCellCustomer
             // 
-            this.xrCellCustomer.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 135.0001F);
+            this.xrCellCustomer.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 167.0001F);
             this.xrCellCustomer.Multiline = true;
             this.xrCellCustomer.Name = "xrCellCustomer";
             this.xrCellCustomer.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrCellCustomer.SizeF = new System.Drawing.SizeF(334.375F, 87.91666F);
+            this.xrCellCustomer.SizeF = new System.Drawing.SizeF(389.5F, 87.91666F);
             // 
             // xrTable2
             // 
@@ -307,7 +309,7 @@
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 21F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 111.0001F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2,
@@ -392,6 +394,13 @@
             this.xrLabel3});
             this.PageFooter.Name = "PageFooter";
             // 
+            // xrPbLogo
+            // 
+            this.xrPbLogo.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 7.000007F);
+            this.xrPbLogo.Name = "xrPbLogo";
+            this.xrPbLogo.SizeF = new System.Drawing.SizeF(96.2395F, 64.00011F);
+            this.xrPbLogo.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Squeeze;
+            // 
             // xrReservation
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -448,5 +457,6 @@
         public DevExpress.XtraReports.UI.XRTableCell xrCellAmount;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell10;
+        public DevExpress.XtraReports.UI.XRPictureBox xrPbLogo;
     }
 }

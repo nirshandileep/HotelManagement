@@ -13,6 +13,7 @@ using DevExpress.XtraReports.UI;
 using System.Text;
 using HBM.CompanyManagement;
 using HBM.SessionManager;
+using System.Drawing;
 
 namespace HBM.Reports
 {
@@ -33,7 +34,7 @@ namespace HBM.Reports
             {
                 return;
             }
-            
+
 
             ResMan.Reservation reservation = new ResMan.Reservation();
             reservation.ReservationId = Convert.ToInt64(Request.QueryString["ReservationID"].ToString());
@@ -57,6 +58,13 @@ namespace HBM.Reports
             Company company = new Company();
             company.CompanyId = SessionHandler.CurrentCompanyId;
             company = company.Select();
+
+
+            if (company.CompanyLogo != null)
+            {
+                reservationInvoiceReport.xrPbLogo.Image = (Bitmap)((new ImageConverter()).ConvertFrom(company.CompanyLogo)); ;
+            }
+
             reservationInvoiceReport.xrCellCompanyName.Text = company.CompanyName;
 
             StringBuilder sbCompany = new StringBuilder();
@@ -70,7 +78,7 @@ namespace HBM.Reports
 
             DataSet dsRoomInfo = new DataSet();
             dsRoomInfo = reservation.ReservationRoomDataSet;
-            
+
             //// Room info section
             if (dsRoomInfo != null && dsRoomInfo.Tables.Count > 0 && dsRoomInfo.Tables[0] != null && dsRoomInfo.Tables[0].Rows.Count > 0)
             {
@@ -85,7 +93,7 @@ namespace HBM.Reports
                         reservationInvoiceReport.xrCellCheckIn.Text = dsRoomInfo.Tables[0].Rows[i]["CheckInDate"] != null ? Convert.ToDateTime(dsRoomInfo.Tables[0].Rows[i]["CheckInDate"].ToString()).ToShortDateString() : string.Empty;
                         reservationInvoiceReport.xrCellCheckOut.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? Convert.ToDateTime(dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString()).ToShortDateString() : string.Empty;
                         reservationInvoiceReport.xrCellRoom.Text = dsRoomInfo.Tables[0].Rows[i]["RoomName"] != null ? dsRoomInfo.Tables[0].Rows[i]["RoomName"].ToString() : string.Empty;
-                        reservationInvoiceReport.xrCellRate.Text = dsRoomInfo.Tables[0].Rows[i]["Rate"] != null ? dsRoomInfo.Tables[0].Rows[i]["Rate"].ToString() : string.Empty;                   
+                        reservationInvoiceReport.xrCellRate.Text = dsRoomInfo.Tables[0].Rows[i]["Rate"] != null ? dsRoomInfo.Tables[0].Rows[i]["Rate"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellNights.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;
                         reservationInvoiceReport.xrCellAmount.Text = dsRoomInfo.Tables[0].Rows[i]["Amount"] != null ? dsRoomInfo.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
                         roomInfoTotal = Convert.ToDecimal(reservationInvoiceReport.xrCellAmount.Text);
@@ -98,13 +106,13 @@ namespace HBM.Reports
                         XRTableCell cell4 = new XRTableCell();
                         XRTableCell cell5 = new XRTableCell();
                         XRTableCell cell6 = new XRTableCell();
-                        XRTableCell cell7 = new XRTableCell();   
+                        XRTableCell cell7 = new XRTableCell();
 
                         cell1.Text = dsRoomInfo.Tables[0].Rows[i]["Sharers"] != null ? dsRoomInfo.Tables[0].Rows[i]["Sharers"].ToString() : string.Empty;
                         cell2.Text = dsRoomInfo.Tables[0].Rows[i]["CheckInDate"] != null ? Convert.ToDateTime(dsRoomInfo.Tables[0].Rows[i]["CheckInDate"].ToString()).ToShortDateString() : string.Empty;
                         cell3.Text = dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"] != null ? Convert.ToDateTime(dsRoomInfo.Tables[0].Rows[i]["CheckOutDate"].ToString()).ToShortDateString() : string.Empty;
                         cell4.Text = dsRoomInfo.Tables[0].Rows[i]["RoomName"] != null ? dsRoomInfo.Tables[0].Rows[i]["RoomName"].ToString() : string.Empty;
-                        cell5.Text = dsRoomInfo.Tables[0].Rows[i]["Rate"] != null ? dsRoomInfo.Tables[0].Rows[i]["Rate"].ToString() : string.Empty;                   
+                        cell5.Text = dsRoomInfo.Tables[0].Rows[i]["Rate"] != null ? dsRoomInfo.Tables[0].Rows[i]["Rate"].ToString() : string.Empty;
                         cell6.Text = dsRoomInfo.Tables[0].Rows[i]["Days"] != null ? dsRoomInfo.Tables[0].Rows[i]["Days"].ToString() : string.Empty;
                         cell7.Text = dsRoomInfo.Tables[0].Rows[i]["Amount"] != null ? dsRoomInfo.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
 
@@ -127,7 +135,7 @@ namespace HBM.Reports
                         cell6.WidthF = reservationInvoiceReport.xrCellNights.WidthF;
                         cell7.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
 
-                        cell1.TextAlignment = reservationInvoiceReport.xrCellCustomerName.TextAlignment;                        
+                        cell1.TextAlignment = reservationInvoiceReport.xrCellCustomerName.TextAlignment;
                         cell7.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
 
                         reservationInvoiceReport.xrTableRoomInfo.Rows.Add(dataRow);
@@ -141,7 +149,7 @@ namespace HBM.Reports
 
                 cellFooter1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
                 cellFooter2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-                
+
                 XRTableRow tableRowFooter = new XRTableRow();
                 cellFooter1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF + reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
                 cellFooter2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
@@ -167,7 +175,7 @@ namespace HBM.Reports
             dsAdditionalService = reservation.ReservationAdditionalServiceDataSet;
 
             if (dsAdditionalService != null && dsAdditionalService.Tables.Count > 0 && dsAdditionalService.Tables[0] != null && dsAdditionalService.Tables[0].Rows.Count > 0)
-            {            
+            {
 
                 XRTableCell cell1 = new XRTableCell();
                 XRTableCell cell2 = new XRTableCell();
@@ -207,7 +215,7 @@ namespace HBM.Reports
                     dataCell3.Text = dsAdditionalService.Tables[0].Rows[i]["Amount"] != null ? dsAdditionalService.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
 
                     serviceTotal = serviceTotal + Convert.ToDecimal(dataCell3.Text);
-                    
+
                     dataCell1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF;
                     dataCell2.WidthF = reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
                     dataCell3.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
@@ -224,10 +232,10 @@ namespace HBM.Reports
 
                 XRTableCell cellFooter1 = new XRTableCell();
                 XRTableCell cellFooter2 = new XRTableCell();
-                
+
                 cellFooter1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
                 cellFooter2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-                
+
                 XRTableRow tableRowFooter = new XRTableRow();
                 cellFooter1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF + reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
                 cellFooter2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
@@ -249,22 +257,22 @@ namespace HBM.Reports
 
             //// Display Net Total
             XRTableRow tableRowNetTotal = new XRTableRow();
-            XRTableCell cellNetTotal1= new XRTableCell();
-            XRTableCell cellNetTotal2= new XRTableCell();
+            XRTableCell cellNetTotal1 = new XRTableCell();
+            XRTableCell cellNetTotal2 = new XRTableCell();
             cellNetTotal1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             cellNetTotal2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             cellNetTotal1.Text = "Net Total";
             cellNetTotal2.Text = reservation.NetTotal.ToString();
             cellNetTotal1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF + reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
-            cellNetTotal2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;            
+            cellNetTotal2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
             cellNetTotal1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             cellNetTotal2.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
             tableRowNetTotal.Cells.Add(cellNetTotal1);
             tableRowNetTotal.Cells.Add(cellNetTotal2);
             reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowNetTotal);
-            
+
             //// Display Discount
-            XRTableRow tableRowDiscount= new XRTableRow();
+            XRTableRow tableRowDiscount = new XRTableRow();
             XRTableCell cellDiscount1 = new XRTableCell();
             XRTableCell cellDiscount2 = new XRTableCell();
             cellDiscount1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
@@ -295,7 +303,7 @@ namespace HBM.Reports
             tableRowTaxType.Cells.Add(cellTaxType1);
             tableRowTaxType.Cells.Add(cellTaxType2);
             reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowTaxType);
-            
+
 
             //// Display Total
             XRTableRow tableRowTotal = new XRTableRow();
@@ -312,7 +320,7 @@ namespace HBM.Reports
             tableRowTotal.Cells.Add(cellTotal1);
             tableRowTotal.Cells.Add(cellTotal2);
             reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowTotal);
-            
+
             //// Display Paid Amount
             XRTableRow tableRowPaidAmount = new XRTableRow();
             XRTableCell cellPaidAmount1 = new XRTableCell();
@@ -328,7 +336,7 @@ namespace HBM.Reports
             tableRowPaidAmount.Cells.Add(cellPaidAmount1);
             tableRowPaidAmount.Cells.Add(cellPaidAmount2);
             reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowPaidAmount);
-            
+
             //// Display Balance
             XRTableRow tableRowBalance = new XRTableRow();
             XRTableCell cellBalance1 = new XRTableCell();
@@ -341,9 +349,9 @@ namespace HBM.Reports
             cellBalance2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
             cellBalance1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             cellBalance2.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
-            tableRowBalance.Cells.Add(cellBalance1);                        
+            tableRowBalance.Cells.Add(cellBalance1);
             tableRowBalance.Cells.Add(cellBalance2);
-            reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowBalance);           
+            reservationInvoiceReport.xrTableRoomInfo.Rows.Add(tableRowBalance);
 
             //// Payment section
             DataSet dsPaymentSection = new DataSet();
@@ -386,7 +394,7 @@ namespace HBM.Reports
                 cell4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
                 cell5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
                 cell6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-                
+
                 XRTableRow headerRow = new XRTableRow();
                 headerRow.Cells.Add(cell1);
                 headerRow.Cells.Add(cell2);
@@ -396,47 +404,47 @@ namespace HBM.Reports
                 headerRow.Cells.Add(cell6);
 
                 reservationInvoiceReport.xrTableRoomInfo.Rows.Add(headerRow);
-                
+
                 decimal paymentTotal;
                 paymentTotal = 0;
 
                 for (int i = 0; i <= dsPaymentSection.Tables[0].Rows.Count - 1; i++)
                 {
-                    
-                        XRTableCell dataCell1 = new XRTableCell();
-                        XRTableCell dataCell2 = new XRTableCell();
-                        XRTableCell dataCell3 = new XRTableCell();
-                        XRTableCell dataCell4 = new XRTableCell();
-                        XRTableCell dataCell5 = new XRTableCell();
-                        XRTableCell dataCell6 = new XRTableCell();
-                        
-                        dataCell1.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"].ToString() : string.Empty;
-                        dataCell2.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? Convert.ToDateTime(dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString()).ToShortDateString() : string.Empty;
-                        dataCell3.Text = dsPaymentSection.Tables[0].Rows[i]["Name"] != null ? dsPaymentSection.Tables[0].Rows[i]["Name"].ToString() : string.Empty;
-                        dataCell4.Text = dsPaymentSection.Tables[0].Rows[i]["CCNo"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNo"].ToString() : string.Empty;
-                        dataCell5.Text = dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"].ToString() : string.Empty;
-                        dataCell6.Text = dsPaymentSection.Tables[0].Rows[i]["Amount"] != null ? dsPaymentSection.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
 
-                        paymentTotal = paymentTotal + Convert.ToDecimal(dataCell6.Text);
+                    XRTableCell dataCell1 = new XRTableCell();
+                    XRTableCell dataCell2 = new XRTableCell();
+                    XRTableCell dataCell3 = new XRTableCell();
+                    XRTableCell dataCell4 = new XRTableCell();
+                    XRTableCell dataCell5 = new XRTableCell();
+                    XRTableCell dataCell6 = new XRTableCell();
 
-                        dataCell1.WidthF = 110;
-                        dataCell2.WidthF = 126;
-                        dataCell3.WidthF = 99;
-                        dataCell4.WidthF = 161;
-                        dataCell5.WidthF = 168;
-                        dataCell6.WidthF = 117;
+                    dataCell1.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"] != null ? dsPaymentSection.Tables[0].Rows[i]["PaymentTypeName"].ToString() : string.Empty;
+                    dataCell2.Text = dsPaymentSection.Tables[0].Rows[i]["PaymentDate"] != null ? Convert.ToDateTime(dsPaymentSection.Tables[0].Rows[i]["PaymentDate"].ToString()).ToShortDateString() : string.Empty;
+                    dataCell3.Text = dsPaymentSection.Tables[0].Rows[i]["Name"] != null ? dsPaymentSection.Tables[0].Rows[i]["Name"].ToString() : string.Empty;
+                    dataCell4.Text = dsPaymentSection.Tables[0].Rows[i]["CCNo"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNo"].ToString() : string.Empty;
+                    dataCell5.Text = dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"] != null ? dsPaymentSection.Tables[0].Rows[i]["CCNameOnCard"].ToString() : string.Empty;
+                    dataCell6.Text = dsPaymentSection.Tables[0].Rows[i]["Amount"] != null ? dsPaymentSection.Tables[0].Rows[i]["Amount"].ToString() : string.Empty;
 
-                        dataCell6.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
+                    paymentTotal = paymentTotal + Convert.ToDecimal(dataCell6.Text);
 
-                        XRTableRow dataRow = new XRTableRow();
-                        dataRow.Cells.Add(dataCell1);
-                        dataRow.Cells.Add(dataCell2);
-                        dataRow.Cells.Add(dataCell3);
-                        dataRow.Cells.Add(dataCell4);
-                        dataRow.Cells.Add(dataCell5);
-                        dataRow.Cells.Add(dataCell6);
-                        
-                        reservationInvoiceReport.xrTableRoomInfo.Rows.Add(dataRow);                    
+                    dataCell1.WidthF = 110;
+                    dataCell2.WidthF = 126;
+                    dataCell3.WidthF = 99;
+                    dataCell4.WidthF = 161;
+                    dataCell5.WidthF = 168;
+                    dataCell6.WidthF = 117;
+
+                    dataCell6.TextAlignment = reservationInvoiceReport.xrCellAmount.TextAlignment;
+
+                    XRTableRow dataRow = new XRTableRow();
+                    dataRow.Cells.Add(dataCell1);
+                    dataRow.Cells.Add(dataCell2);
+                    dataRow.Cells.Add(dataCell3);
+                    dataRow.Cells.Add(dataCell4);
+                    dataRow.Cells.Add(dataCell5);
+                    dataRow.Cells.Add(dataCell6);
+
+                    reservationInvoiceReport.xrTableRoomInfo.Rows.Add(dataRow);
 
                 }
 
@@ -445,7 +453,7 @@ namespace HBM.Reports
 
                 cellFooter1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
                 cellFooter2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-                
+
                 XRTableRow tableRowFooter = new XRTableRow();
                 cellFooter1.WidthF = reservationInvoiceReport.xrCellCustomerName.WidthF + reservationInvoiceReport.xrCellCheckIn.WidthF + reservationInvoiceReport.xrCellCheckOut.WidthF + reservationInvoiceReport.xrCellRoom.WidthF + reservationInvoiceReport.xrCellRate.WidthF + reservationInvoiceReport.xrCellNights.WidthF;
                 cellFooter2.WidthF = reservationInvoiceReport.xrCellAmount.WidthF;
