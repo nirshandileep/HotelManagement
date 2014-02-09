@@ -40,7 +40,6 @@ namespace HBM.ControlPanel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
                 gvAdditionalService.DataBind();
@@ -48,9 +47,9 @@ namespace HBM.ControlPanel
             catch (System.Exception)
             {
 
-
             }
         }
+
 
         protected void LoadAdditionalService()
         {
@@ -210,6 +209,24 @@ namespace HBM.ControlPanel
 
             ASPxComboBox combo = e.Editor as ASPxComboBox;
             combo.DataBindItems();
+        }
+
+        protected void gvAdditionalService_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+        {
+            if (e.VisibleIndex == -1) return;
+
+            switch (e.ButtonType)
+            {
+                case ColumnCommandButtonType.New:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_AdditionalServices_Add);
+                    break;
+                case ColumnCommandButtonType.Edit:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_AdditionalServices_Edit);
+                    break;
+                case ColumnCommandButtonType.Delete:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_AdditionalServices_Delete);
+                    break;
+            }
         }
     }
 }

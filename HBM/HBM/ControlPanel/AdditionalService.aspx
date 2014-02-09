@@ -29,7 +29,8 @@
                     <dx:ASPxGridView ID="gvAdditionalService" runat="server" AutoGenerateColumns="False"
                         KeyFieldName="AdditionalServiceId" OnRowInserting="gvAdditionalService_RowInserting"
                         OnRowDeleting="gvAdditionalService_RowDeleting" OnRowUpdating="gvAdditionalService_RowUpdating"
-                        OnCellEditorInitialize="gvAdditionalService_CellEditorInitialize">
+                        OnCellEditorInitialize="gvAdditionalService_CellEditorInitialize" 
+                        oncommandbuttoninitialize="gvAdditionalService_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">

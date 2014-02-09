@@ -30,7 +30,7 @@ namespace HBM.Common
 
         public static readonly string Duplicate_record = "Can not continue. Record is already exists!";
 
-
+        public static readonly string UnauthorisedExceptionMessage = "You are not authorised to do this task";
 
 
     }

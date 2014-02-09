@@ -26,7 +26,8 @@
                 <td>
                     <dx:ASPxGridView ID="gvDepartment" runat="server" AutoGenerateColumns="False" KeyFieldName="DepartmentId"
                         OnRowDeleting="gvDepartment_RowDeleting" OnRowInserting="gvDepartment_RowInserting"
-                        OnRowUpdating="gvDepartment_RowUpdating">
+                        OnRowUpdating="gvDepartment_RowUpdating" 
+                        oncommandbuttoninitialize="gvDepartment_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewDataTextColumn Caption="Department Name" VisibleIndex="0" FieldName="DepartmentName">
                                 <PropertiesTextEdit>

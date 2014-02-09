@@ -120,14 +120,28 @@ namespace HBM.Reservation
 
             dsData.Tables[0].DefaultView.Delete(dsData.Tables[0].Rows.IndexOf(dsData.Tables[0].Rows.Find(e.Keys[gvGaurantee.KeyFieldName])));
 
-
             if (gaurantee.Save(dsData))
             {
                 this.LoadGaurantee();
             }
+        }
 
+        protected void gvGaurantee_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+        {
+            if (e.VisibleIndex == -1) return;
 
-
+            switch (e.ButtonType)
+            {
+                case ColumnCommandButtonType.New:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Gaurantee_Add);
+                    break;
+                case ColumnCommandButtonType.Edit:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Gaurantee_Edit);
+                    break;
+                case ColumnCommandButtonType.Delete:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Gaurantee_Delete);
+                    break;
+            }
         }
       
     }

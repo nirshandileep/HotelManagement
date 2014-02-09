@@ -147,5 +147,23 @@ namespace HBM.Reservation
                 throw new System.Exception(Messages.Duplicate_record);
             }
         }
+
+        protected void gvDepartment_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+        {
+            if (e.VisibleIndex == -1) return;
+
+            switch (e.ButtonType)
+            {
+                case ColumnCommandButtonType.New:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Departments_Add);
+                    break;
+                case ColumnCommandButtonType.Edit:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Departments_Edit);
+                    break;
+                case ColumnCommandButtonType.Delete:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Departments_Delete);
+                    break;
+            }
+        }
     }
 }

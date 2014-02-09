@@ -20,6 +20,13 @@ namespace HBM.ControlPanel
             {
                 this.LoadCompany();
             }
+            AuthoriseUser();
+        }
+
+        private void AuthoriseUser()
+        {
+            btnSave.Visible = Master.LoggedUser.IsUserAuthorised(Enums.Rights.CompanyManagement_Company_Add) ||
+                                Master.LoggedUser.IsUserAuthorised(Enums.Rights.CompanyManagement_Company_Edit);
         }
 
         ComMan.Company company = new ComMan.Company();

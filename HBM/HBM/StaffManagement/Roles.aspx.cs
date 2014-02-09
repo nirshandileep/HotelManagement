@@ -22,8 +22,6 @@ namespace HBM
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             if (!IsPostBack)
             {
                 if (Request.QueryString["RolesId"] != null)
@@ -34,7 +32,18 @@ namespace HBM
             }
 
             this.LoadRights();
+            AuthoriseUser();
+        }
 
+        private void AuthoriseUser()
+        {
+            btnSave.Visible = (Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_Roles_Add)
+                || Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_Roles_Edit));
+
+            if (!Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_Roles_View))
+            {
+                Response.Redirect(Constants.URL_UNAUTHORISEDACTION, false);
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)

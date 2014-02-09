@@ -25,9 +25,11 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxGridView ID="gvAdditionalServiceType" runat="server" AutoGenerateColumns="False" KeyFieldName="AdditionalServiceTypeId"
+                    <dx:ASPxGridView ID="gvAdditionalServiceType" runat="server" 
+                        AutoGenerateColumns="False" KeyFieldName="AdditionalServiceTypeId"
                         OnRowInserting="gvAdditionalServiceType_RowInserting" OnRowDeleting="gvAdditionalServiceType_RowDeleting"
-                        OnRowUpdating="gvAdditionalServiceType_RowUpdating">
+                        OnRowUpdating="gvAdditionalServiceType_RowUpdating" 
+                        oncommandbuttoninitialize="gvAdditionalServiceType_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">

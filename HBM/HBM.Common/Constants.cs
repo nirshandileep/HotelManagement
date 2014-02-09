@@ -81,7 +81,7 @@ namespace HBM.Common
 
         public static readonly string URL_SERVICEMETHODS = "/ControlPanel/ServiceMethod.aspx";
 
-
+        public static readonly string URL_UNAUTHORISEDACTION = "/UnauthorisedAction.aspx";
        
 
         #endregion

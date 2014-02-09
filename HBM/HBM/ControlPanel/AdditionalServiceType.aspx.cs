@@ -149,5 +149,23 @@ namespace HBM.ControlPanel
 
 
         }
+
+        protected void gvAdditionalServiceType_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+        {
+            if (e.VisibleIndex == -1) return;
+
+            switch (e.ButtonType)
+            {
+                case ColumnCommandButtonType.New:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_AdditionalServiceType_Add);
+                    break;
+                case ColumnCommandButtonType.Edit:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_AdditionalServiceType_Edit);
+                    break;
+                case ColumnCommandButtonType.Delete:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_AdditionalServiceType_Delete);
+                    break;
+            }
+        }
     }
 }

@@ -27,10 +27,24 @@ namespace HBM
             try
             {
                 this.LoadUsers();
+                AuthoriseUser();
             }
             catch (System.Exception)
             {
 
+            }
+        }
+
+        private void AuthoriseUser()
+        {
+            gvUsers.Columns[0].Visible = Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_User_Delete);
+            gvUsers.Columns[1].Visible = Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_User_Edit) ||
+                Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_User_View);
+            gvUsers.Columns[2].Visible = !gvUsers.Columns[1].Visible;
+
+            if (!Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_User_Search))
+            {
+                Response.Redirect(Constants.URL_UNAUTHORISEDACTION, false);
             }
         }
 

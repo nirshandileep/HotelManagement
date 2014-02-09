@@ -116,6 +116,11 @@ namespace HBM.UserManagement
 
         }
 
+        public bool IsUserAuthorised(Common.Enums.Rights right)
+        {
+            return new UserManager().IsUserAuthorised(right, this);
+        }
+
 
         #endregion
     }

@@ -148,13 +148,13 @@ namespace HBM.ControlPanel {
         protected global::DevExpress.Web.ASPxEditors.ASPxBinaryImage bimgLogo;
         
         /// <summary>
-        /// ASPxButton1 control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSave;
         
         /// <summary>
         /// Master property.

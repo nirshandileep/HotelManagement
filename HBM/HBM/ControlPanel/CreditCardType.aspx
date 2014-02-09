@@ -25,9 +25,11 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxGridView ID="gvCreditCardTypes" runat="server" AutoGenerateColumns="False" KeyFieldName="CreditCardTypeId"
+                    <dx:ASPxGridView ID="gvCreditCardTypes" runat="server" 
+                        AutoGenerateColumns="False" KeyFieldName="CreditCardTypeId"
                         OnRowInserting="gvCreditCardTypes_RowInserting" OnRowDeleting="gvCreditCardTypes_RowDeleting"
-                        OnRowUpdating="gvCreditCardTypes_RowUpdating">
+                        OnRowUpdating="gvCreditCardTypes_RowUpdating" 
+                        oncommandbuttoninitialize="gvCreditCardTypes_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">

@@ -17,7 +17,25 @@ namespace HBM.ControlPanel
                 tcCommon.ActiveTab.Index = 0;
                 iframePage.Attributes["src"] = Constants.URL_BEDTYPE;
             }
+            AuthoriseUser();
+        }
 
+        private void AuthoriseUser()
+        {
+            tcCommon.Tabs.FindByName("BedType").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Bedtypes_View);
+            tcCommon.Tabs.FindByName("Departments").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Departments_View);
+            tcCommon.Tabs.FindByName("Gaurantee").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Gaurantee_View);
+            tcCommon.Tabs.FindByName("Rooms").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Rooms_View);
+            tcCommon.Tabs.FindByName("RatePlan").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_RatePlan_View);
+            tcCommon.Tabs.FindByName("RoomRatePlan").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_RoomRatePlan_View);
+            tcCommon.Tabs.FindByName("Source").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_Source_View);
+            tcCommon.Tabs.FindByName("TaxTypes").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_TaxType_View);
+            tcCommon.Tabs.FindByName("AdditionalServiceType").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_AdditionalServiceType_View);
+            tcCommon.Tabs.FindByName("AdditionalService").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_AdditionalServices_View);
+            tcCommon.Tabs.FindByName("GuestType").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_GuestType_View);
+            tcCommon.Tabs.FindByName("CreditCardTypes").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_CreditCardType_View);
+            tcCommon.Tabs.FindByName("PaymentTypes").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_PaymentType_View);
+            tcCommon.Tabs.FindByName("ServiceMethods").Visible = SessionManager.SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_ServiceMethod_View);
         }
 
 

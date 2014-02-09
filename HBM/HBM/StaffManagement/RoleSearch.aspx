@@ -18,6 +18,9 @@
                     <dx:ASPxGridView ID="gvRoles" runat="server" Width="100%" AutoGenerateColumns="False"
                         KeyFieldName="RolesId" onrowdeleting="gvRoles_RowDeleting">
                         <Columns>
+                            <dx:GridViewDataTextColumn Caption="Role Name" FieldName="RoleName" 
+                                Visible="False" VisibleIndex="2">
+                            </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Role Name" FieldName="RolesId">
                                 <DataItemTemplate>
                                     <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" NavigateUrl='<%# HBM.Utility.CommonTools.CreateURLQueryString("~/StaffManagement/Roles.aspx?RolesId=",Eval("RolesId")) %>'
@@ -25,7 +28,7 @@
                                 </DataItemTemplate>
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn Caption="Role Description" FieldName="RoleDescription"
-                                VisibleIndex="2">
+                                VisibleIndex="3">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Caption="Actions" Width="60px">
                                 <DeleteButton Visible="True">

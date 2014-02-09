@@ -43,7 +43,8 @@
                     <dx:ASPxGridView ID="gvRatePlan" runat="server" AutoGenerateColumns="False"
                         KeyFieldName="RoomRatePlanId" OnRowInserting="gvRatePlan_RowInserting"
                         OnRowDeleting="gvRatePlan_RowDeleting" OnRowUpdating="gvRatePlan_RowUpdating"
-                        OnCellEditorInitialize="gvRatePlan_CellEditorInitialize" Width="550px">
+                        OnCellEditorInitialize="gvRatePlan_CellEditorInitialize" Width="550px" 
+                        oncommandbuttoninitialize="gvRatePlan_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">

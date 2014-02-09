@@ -26,7 +26,8 @@
                 <td>
                     <dx:ASPxGridView ID="gvRooms" runat="server" AutoGenerateColumns="False" KeyFieldName="RoomId"
                         OnRowDeleting="gvRooms_RowDeleting" OnRowInserting="gvRooms_RowInserting" OnRowUpdating="gvRooms_RowUpdating"
-                        OnCellEditorInitialize="gvRooms_CellEditorInitialize">
+                        OnCellEditorInitialize="gvRooms_CellEditorInitialize" 
+                        oncommandbuttoninitialize="gvRooms_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewDataTextColumn Caption="Room Name" FieldName="RoomName" VisibleIndex="1"
                                 Name="BedTypeName">

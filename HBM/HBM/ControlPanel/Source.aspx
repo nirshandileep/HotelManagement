@@ -25,7 +25,9 @@
             <tr>
                 <td>
                     <dx:ASPxGridView ID="gvSource" runat="server" AutoGenerateColumns="False" KeyFieldName="SourceId"
-                        OnRowDeleting="gvSource_RowDeleting" OnRowInserting="gvSource_RowInserting" OnRowUpdating="gvSource_RowUpdating">
+                        OnRowDeleting="gvSource_RowDeleting" 
+                        OnRowInserting="gvSource_RowInserting" OnRowUpdating="gvSource_RowUpdating" 
+                        oncommandbuttoninitialize="gvSource_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewDataTextColumn Caption="Source Name" VisibleIndex="0" FieldName="SourceName">
                                 <PropertiesTextEdit>

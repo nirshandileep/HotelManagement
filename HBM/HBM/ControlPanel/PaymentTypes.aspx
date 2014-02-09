@@ -27,7 +27,8 @@
                 <td>
                     <dx:ASPxGridView ID="gvPaymentTypes" runat="server" AutoGenerateColumns="False" KeyFieldName="PaymentTypeId"
                         OnRowInserting="gvPaymentTypes_RowInserting" OnRowDeleting="gvPaymentTypes_RowDeleting"
-                        OnRowUpdating="gvPaymentTypes_RowUpdating">
+                        OnRowUpdating="gvPaymentTypes_RowUpdating" 
+                        oncommandbuttoninitialize="gvPaymentTypes_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">

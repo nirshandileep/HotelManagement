@@ -26,7 +26,7 @@ namespace HBM.GeneralManagement
             DbCommand commandUpdate = db.GetStoredProcCommand("usp_RoomRatePlanUpdate");
             db.AddInParameter(commandUpdate, "@RoomRatePlanId", DbType.Int32, "RoomRatePlanId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@RoomId", DbType.Int32, "RoomId", DataRowVersion.Current);
-            db.AddInParameter(commandUpdate, "@RatePlanId", DbType.Int32, "RatePlanId", DataRowVersion.Current);
+            db.AddInParameter(commandUpdate, "@RatePlanId", DbType.Int32, "RatePlansId", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@Note", DbType.String, "Note", DataRowVersion.Current);
             db.AddInParameter(commandUpdate, "@UpdatedUser", DbType.Int32, "UpdatedUser", DataRowVersion.Current);
 

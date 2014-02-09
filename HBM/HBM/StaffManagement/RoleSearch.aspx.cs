@@ -24,10 +24,26 @@ namespace HBM
             try
             {
                 this.LoadRoles();
+
+                AuthoriseUser();
             }
             catch (System.Exception )
             {                
                 
+            }
+        }
+
+        private void AuthoriseUser()
+        {
+
+            gvRoles.Columns["Actions"].Visible = Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_Roles_Delete);
+            gvRoles.Columns[1].Visible = Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_Roles_Edit)
+                     || Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_Roles_View);
+            gvRoles.Columns[2].Visible = !gvRoles.Columns[1].Visible;
+
+            if (!Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_Roles_Search))
+            {
+                Response.Redirect(Constants.URL_UNAUTHORISEDACTION, false);
             }
         }
 

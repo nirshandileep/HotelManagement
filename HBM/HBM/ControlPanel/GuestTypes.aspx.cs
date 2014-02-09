@@ -152,5 +152,23 @@ namespace HBM.ControlPanel
 
 
         }
+
+        protected void gvGuestTypes_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+        {
+            if (e.VisibleIndex == -1) return;
+
+            switch (e.ButtonType)
+            {
+                case ColumnCommandButtonType.New:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_GuestType_Add);
+                    break;
+                case ColumnCommandButtonType.Edit:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_GuestType_Edit);
+                    break;
+                case ColumnCommandButtonType.Delete:
+                    e.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_GuestType_Delete);
+                    break;
+            }
+        }
     }
 }

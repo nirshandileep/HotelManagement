@@ -847,11 +847,31 @@ namespace HBM
                     LoadInitialData();
                     ViewData();
                 }
+
+                AuthoriseUser();
                
             }
             catch (System.Exception)
             {
 
+            }
+        }
+
+        private void AuthoriseUser()
+        {
+            btnSave.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.CustomerManagement_Customer_Add)
+                                || SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.CustomerManagement_Customer_Edit);
+            btnClear.Visible = btnSave.Visible;
+
+            btnReservation.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.ReservationManagement_Reservation_Add);
+            btnSearch.Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.CustomerManagement_Customer_Search);
+
+            cmbGuestType.Buttons[0].Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_GuestType_Add);
+            cmbGuestTypeGrp.Buttons[0].Visible = SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.GeneralManagement_GuestType_Add);
+                
+            if (!SessionHandler.LoggedUser.IsUserAuthorised(Enums.Rights.CustomerManagement_Customer_View))
+            {
+                Response.Redirect(Constants.URL_UNAUTHORISEDACTION, false);
             }
         }
 
@@ -985,8 +1005,6 @@ namespace HBM
 
         protected void rblCustomerMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //hdnCustomerId.Value = rblCustomerMode.SelectedValue;
-
             if (rblCustomerMode.SelectedValue == ((int)Common.Enums.CustomerModes.Individual).ToString())
             {
                 tblIndividualCustomer.Visible = true;
@@ -1000,8 +1018,6 @@ namespace HBM
                 hdnCustomerMode.Value = "2";
 
             }
-
-            //rblCustomerMode.Enabled = false;
         }
 
         protected void gvGroupMembers_CellEditorInitialize(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditorEventArgs e)

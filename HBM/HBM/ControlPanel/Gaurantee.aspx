@@ -26,7 +26,8 @@
                 <td>
                     <dx:ASPxGridView ID="gvGaurantee" runat="server" AutoGenerateColumns="False" KeyFieldName="GuaranteeId"
                         OnRowDeleting="gvGaurantee_RowDeleting" OnRowInserting="gvGaurantee_RowInserting"
-                        OnRowUpdating="gvGaurantee_RowUpdating">
+                        OnRowUpdating="gvGaurantee_RowUpdating" 
+                        oncommandbuttoninitialize="gvGaurantee_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewDataTextColumn Caption="Guarantee Name" VisibleIndex="0" FieldName="GuaranteeName">
                                 <PropertiesTextEdit>

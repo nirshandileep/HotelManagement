@@ -27,7 +27,8 @@
                 <td>
                     <dx:ASPxGridView ID="gvGuestTypes" runat="server" AutoGenerateColumns="False" KeyFieldName="GuestTypeId"
                         OnRowInserting="gvGuestTypes_RowInserting" OnRowDeleting="gvGuestTypes_RowDeleting"
-                        OnRowUpdating="gvGuestTypes_RowUpdating">
+                        OnRowUpdating="gvGuestTypes_RowUpdating" 
+                        oncommandbuttoninitialize="gvGuestTypes_CommandButtonInitialize">
                         <Columns>
                             <dx:GridViewCommandColumn VisibleIndex="2" ButtonType="Image" Width="120px" Caption="Actions"
                                 FixedStyle="Left">

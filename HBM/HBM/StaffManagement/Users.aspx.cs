@@ -30,8 +30,19 @@ namespace HBM
                     this.hdnUserId.Value = Cryptography.Decrypt(Request.QueryString["UserId"]);
                     this.DisplayData();
                 }
+            }
 
-                
+            AuthoriseUser();
+        }
+
+        private void AuthoriseUser()
+        {
+            btnSave.Visible = Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_User_Add) 
+                || Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_User_Edit);
+            
+            if (!Master.LoggedUser.IsUserAuthorised(Enums.Rights.UserManagement_User_View))
+            {
+                Response.Redirect(Constants.URL_UNAUTHORISEDACTION, false);
             }
         }
 

@@ -24,7 +24,21 @@ namespace HBM
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.LoadCustomers();  
+            this.LoadCustomers();
+            AuthoriseUser();
+        }
+
+        private void AuthoriseUser()
+        {
+            gvCustomers.Columns["Actions"].Visible = Master.LoggedUser.IsUserAuthorised(Enums.Rights.CustomerManagement_Customer_Delete);
+            gvCustomers.Columns[1].Visible = (Master.LoggedUser.IsUserAuthorised(Enums.Rights.CompanyManagement_Company_View) ||
+                Master.LoggedUser.IsUserAuthorised(Enums.Rights.CompanyManagement_Company_Edit));
+            gvCustomers.Columns[2].Visible = !gvCustomers.Columns[1].Visible;
+
+            if (!Master.LoggedUser.IsUserAuthorised(Enums.Rights.CustomerManagement_Customer_Search))
+            {
+                Response.Redirect(Constants.URL_UNAUTHORISEDACTION, false);
+            }
         }
 
         protected void gvCustomers_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)

@@ -25,13 +25,15 @@
                                         Text='<%# Eval("UserName") %>' />
                                 </DataItemTemplate>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn Caption="First Name" FieldName="FirstName" VisibleIndex="2"
+                            <dx:GridViewDataTextColumn Caption="User Name" FieldName="UserName" 
+                                VisibleIndex="2" Visible="False">
+                            </dx:GridViewDataTextColumn>
+<dx:GridViewDataTextColumn FieldName="FirstName" ShowInCustomizationForm="True" Width="100px" 
+                                Caption="First Name" VisibleIndex="3"></dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Last Name" FieldName="LastName"
                                 Width="100px">
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Last Name" FieldName="LastName"
-                                Width="100px">
-                            </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn Caption="Email Address" FieldName="EmailAddress" VisibleIndex="4"
+                            <dx:GridViewDataTextColumn Caption="Email Address" FieldName="EmailAddress" VisibleIndex="5"
                                 Width="100px">
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Caption="Actions" Width="60px">
