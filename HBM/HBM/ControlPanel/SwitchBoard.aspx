@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="1" OnTabClick="tcCommon_TabClick"
+                    <dx:ASPxTabControl ID="tcCommon" runat="server" ActiveTabIndex="3" OnTabClick="tcCommon_TabClick"
                         Width="900px" Height="25px" TabAlign="Justify" 
                         EnableTheming="True" TabSpacing="0px">
                         <Tabs>
