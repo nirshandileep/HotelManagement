@@ -171,8 +171,8 @@
                     <dx:ASPxLoadingPanel ID="aspxLoadingPanel" runat="server" 
                         ClientInstanceName="cinaspxLoadingPanel" Modal="True">
                     </dx:ASPxLoadingPanel>
-                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
-                        Width="100%">
+                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" 
+                        Width="100%" >
                         <TabPages>
                             <dx:TabPage Text="Room Info">
                                 <ContentCollection>
@@ -399,7 +399,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                             OnRowUpdating="gvServiceInformation_RowUpdating" OnDataBound="gvServiceInformation_DataBound"
                                             EnableCallBacks="False">
                                             <TotalSummary>
-                                                <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" DisplayFormat="Total : {0:F2}" />
+                                                <dx:ASPxSummaryItem FieldName="Amount" ShowInColumn="Amount" SummaryType="Sum" 
+                                                    DisplayFormat="Total : {0:F2}" ShowInGroupFooterColumn="Amount" />
                                             </TotalSummary>
                                             <Columns>
                                                 <dx:GridViewCommandColumn ButtonType="Image" Caption="Action" ShowInCustomizationForm="True"
@@ -428,7 +429,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     </ClearFilterButton>
                                                 </dx:GridViewCommandColumn>
                                                 <dx:GridViewDataComboBoxColumn Caption="Service Type" FieldName="AdditionalServiceId"
-                                                    ShowInCustomizationForm="True" VisibleIndex="1" Width="150px">
+                                                    ShowInCustomizationForm="True" VisibleIndex="1" Width="150px" 
+                                                    Name="colType">
                                                     <PropertiesComboBox TextField="ServiceName" ValueField="AdditionalServiceId" ValueType="System.Int32"
                                                         IncrementalFilteringMode="StartsWith" TextFormatString="{0}">
                                                         <Columns>
@@ -436,6 +438,11 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                             <dx:ListBoxColumn Caption="Service Code" FieldName="ServiceCode" />
                                                             <dx:ListBoxColumn Caption="Rate" FieldName="Rate" />
                                                         </Columns>
+                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) {
+	  var value =  s.GetSelectedItem().texts[2]; 
+      ColAmount.SetText(value);     
+      
+}" />
                                                         <ValidationSettings>
                                                             <RequiredField ErrorText="Required" IsRequired="True" />
                                                         </ValidationSettings>
@@ -443,7 +450,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                 </dx:GridViewDataComboBoxColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Amount" FieldName="Amount" ShowInCustomizationForm="True"
                                                     VisibleIndex="3" Width="80px">
-                                                    <PropertiesSpinEdit DisplayFormatString="g" MaxLength="10" MaxValue="10000000">
+                                                    <PropertiesSpinEdit DisplayFormatString="g" MaxLength="10" MaxValue="10000000" 
+                                                        ClientInstanceName="ColAmount">
                                                         <ValidationSettings>
                                                             <RequiredField ErrorText="Required" IsRequired="True" />
                                                         </ValidationSettings>
