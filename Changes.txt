@@ -1,0 +1,9 @@
+Staus table changes
+===================
+added 2 rows
+8	Reserved	Reservation - Reserved	1	2013-10-20 00:00:00.000	NULL	NULL
+9	Check Out	Reservation - Checked  Out	1	2013-10-20 00:00:00.000	NULL	NULL
+
+RatePlans
+===========
+Rate- change to decimal(18,2)
