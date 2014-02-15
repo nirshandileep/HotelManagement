@@ -18,21 +18,24 @@ namespace HBM
         protected void Page_Init(object sender, EventArgs e)
         {
             gvRights.SettingsPager.PageSize = Constants.GRID_PAGESIZE;
-        }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
             if (!IsPostBack)
             {
                 if (Request.QueryString["RolesId"] != null)
                 {
                     this.hdnRoleId.Value = Cryptography.Decrypt(Request.QueryString["RolesId"]);
                     this.DisplayData();
-                }                
+                    
+                }
             }
 
             this.LoadRights();
-            AuthoriseUser();
+            this.AuthoriseUser();
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+         
         }
 
         private void AuthoriseUser()
@@ -150,6 +153,9 @@ namespace HBM
 
                     transaction.Commit();
                     result = true;
+
+                    this.DisplayData();
+                    
                     System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
                 }
                 else
@@ -191,11 +197,12 @@ namespace HBM
                 RolesObj.UpdatedUser = Master.LoggedUser.UsersId;
 
                 if (RolesObj.Save(db, transaction))
-                {
-                    List<object> myList = gvRights.GetSelectedFieldValues("RightId");
+                {                  
 
                     //Delete exiting role rights
                     RolesObj.DeleteByRolesId(db, transaction);
+
+                    List<object> myList = gvRights.GetSelectedFieldValues("RightId");
 
                     if (myList.Count > 0)
                     {
@@ -209,6 +216,9 @@ namespace HBM
 
                 transaction.Commit();
                 result = true;
+
+                this.DisplayData();
+
                 System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowSuccessMessage('" + Messages.Save_Success + "')", true);
 
             }

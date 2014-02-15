@@ -53,52 +53,49 @@
                         </tr>
                         <tr>
                             <td>
-                                &nbsp;</td>
+                                &nbsp;
+                            </td>
                             <td>
-                                &nbsp;</td>
+                                &nbsp;
+                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" Width="100%" 
-                        HeaderText="Rights List">
-                        <PanelCollection>
-                            <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxGridView ID="gvRights" runat="server" Width="100%" AutoGenerateColumns="False"
-                                    KeyFieldName="RightId">
-                                    <Columns>
-                                        <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="0" Width="100px">
-                                        </dx:GridViewCommandColumn>
-                                        <dx:GridViewDataTextColumn Caption="Module" FieldName="ModuleName" VisibleIndex="1"
-                                            Width="150px">
-                                        </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn Caption="Right Name" FieldName="RightName" VisibleIndex="2"
-                                            Width="200px">
-                                        </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn Caption="Description" FieldName="RightDescription" VisibleIndex="3"
-                                            Width="400px">
-                                        </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn Caption="RightId" FieldName="RightId" VisibleIndex="6"
-                                            Visible="False">
-                                        </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" VisibleIndex="7"
-                                            Visible="False">
-                                        </dx:GridViewDataTextColumn>
-                                    </Columns>
-                                    <SettingsBehavior AllowDragDrop="False" />
-                                </dx:ASPxGridView>
-                            </dx:PanelContent>
-                        </PanelCollection>
-                    </dx:ASPxRoundPanel>
+                    <h2 class="w875">
+                        Rights List</h2>
+                    <dx:ASPxGridView ID="gvRights" runat="server" Width="100%" AutoGenerateColumns="False"
+                        KeyFieldName="RightId">
+                        <Columns>
+                            <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="0" Width="100px">
+                            </dx:GridViewCommandColumn>
+                            <dx:GridViewDataTextColumn Caption="Module" FieldName="ModuleName" VisibleIndex="1"
+                                Width="150px">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Right Name" FieldName="RightName" VisibleIndex="2"
+                                Width="200px">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Description" FieldName="RightDescription" VisibleIndex="3"
+                                Width="400px">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="RightId" FieldName="RightId" VisibleIndex="6"
+                                Visible="False">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="RolesId" FieldName="RolesId" VisibleIndex="7"
+                                Visible="False">
+                            </dx:GridViewDataTextColumn>
+                        </Columns>
+                        <SettingsBehavior AllowDragDrop="False" />
+                    </dx:ASPxGridView>
                 </td>
             </tr>
             <tr>
                 <td>
                     <br />
                     <dx:ASPxButton ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="vgSave"
-                        HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle">
+                        HorizontalAlign="Center" ImageSpacing="15px" VerticalAlign="Middle" UseSubmitBehavior="False">
                         <Image Url="~/Images/Save.png">
                         </Image>
                     </dx:ASPxButton>
