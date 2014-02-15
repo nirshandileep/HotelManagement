@@ -91,6 +91,7 @@
     <Compile Include="Services\RoomsDAO.cs" />
     <Compile Include="Services\ServiceMethodsDAO.cs" />
     <Compile Include="Services\SourceDAO.cs" />
+    <Compile Include="Services\StatusDAO.cs" />
     <Compile Include="Services\TaxTypeDAO.cs" />
   </ItemGroup>
   <ItemGroup>

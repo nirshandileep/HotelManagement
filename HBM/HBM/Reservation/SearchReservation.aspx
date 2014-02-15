@@ -59,6 +59,9 @@
                                 <Settings AutoFilterCondition="Contains" FilterMode="DisplayText" 
                                     SortMode="DisplayText" />
                             </dx:GridViewDataDateColumn>
+                            <dx:GridViewDataTextColumn Caption="Status" 
+                                FieldName="StatusName" VisibleIndex="8">
+                            </dx:GridViewDataTextColumn>
                         </Columns>
                         <SettingsBehavior ColumnResizeMode="Control" />
                         <Settings ShowFilterRow="True" HorizontalScrollBarMode="Visible" />

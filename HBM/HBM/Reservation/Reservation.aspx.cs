@@ -75,6 +75,7 @@ namespace HBM.Reservation
                     trReservationSection.Visible = true;
                     trSummarySection.Visible = true;
                     trButtonSection.Visible = true;
+                    trStatusSection.Visible = true;
 
                     dtCheckingDate.Enabled = false;
                     dtCheckOutDate.Enabled = false;
@@ -162,10 +163,10 @@ namespace HBM.Reservation
 
         private void LoadInitialData()
         {
-            //cmbResStatus.DataSource = new GenMan.Status().SelectAllList();
-            //cmbResStatus.TextField = "StatusName";
-            //cmbResStatus.ValueField = "StatusId";
-            //cmbResStatus.DataBind();       
+            cmbResStatus.DataSource = new GenMan.Status().SelectByModule("Reservation");
+            cmbResStatus.TextField = "StatusName";
+            cmbResStatus.ValueField = "StatusId";
+            cmbResStatus.DataBind();
 
             cmbCustomer.DataSource = new Customer() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
             cmbCustomer.TextField = "CustomerName";
@@ -231,6 +232,7 @@ namespace HBM.Reservation
                 trReservationSection.Visible = false;
                 trSummarySection.Visible = false;
                 trButtonSection.Visible = false;
+                trStatusSection.Visible = false;
 
                 dtCheckingDate.Enabled = true;
                 dtCheckOutDate.Enabled = true;
@@ -355,7 +357,7 @@ namespace HBM.Reservation
 
 
                 dr["Days"] = totalDays;
-                dr["Amount"] =  totalDays * (Convert.ToDouble(hdnRate.Value == string.Empty ? "0" : hdnRate.Value));
+                dr["Amount"] = totalDays * (Convert.ToDouble(hdnRate.Value == string.Empty ? "0" : hdnRate.Value));
                 dr["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
                 dr["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
 
@@ -408,7 +410,7 @@ namespace HBM.Reservation
 
         protected void cmbRatePlan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -416,6 +418,7 @@ namespace HBM.Reservation
             trReservationSection.Visible = true;
             trSummarySection.Visible = true;
             trButtonSection.Visible = true;
+            trStatusSection.Visible = true;
 
             dtCheckingDate.Enabled = false;
             dtCheckOutDate.Enabled = false;
@@ -431,7 +434,7 @@ namespace HBM.Reservation
         {
             int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
             hdnRoom.Value = currentRoomID.ToString();
-           
+
         }
 
         #endregion
@@ -462,15 +465,7 @@ namespace HBM.Reservation
                 reservation.CheckInDate = Convert.ToDateTime(dtCheckingDate.Text);
                 reservation.CheckOutDate = Convert.ToDateTime(dtCheckOutDate.Text);
 
-                if (reservationId == newReservationId)
-                {
-                    reservation.StatusId = (int)HBM.Common.Enums.HBMStatus.Active;
-
-                }
-                else
-                {
-                    reservation.StatusId = (int)HBM.Common.Enums.HBMStatus.Modify;
-                }
+                reservation.StatusId = Convert.ToInt32(cmbResStatus.SelectedItem.Value.ToString());
 
                 reservation.RoomTotal = Convert.ToDecimal(txtRoomTotal.Text.Trim());
                 reservation.ServiceTotal = Convert.ToDecimal(txtServiceTotal.Text.Trim());
@@ -557,6 +552,8 @@ namespace HBM.Reservation
 
                 dtCheckingDate.Value = reservation.CheckInDate;
                 dtCheckOutDate.Value = reservation.CheckOutDate;
+
+                cmbResStatus.SelectedItem = cmbResStatus.Items.FindByValue(reservation.StatusId.ToString());
 
                 txtRoomTotal.Text = reservation.RoomTotal.ToString();
                 txtServiceTotal.Text = reservation.ServiceTotal.ToString();
@@ -949,7 +946,7 @@ namespace HBM.Reservation
                             e.Editor.Enabled = true;
                         }
 
-                      
+
                     }
                     else
                     {
@@ -973,7 +970,7 @@ namespace HBM.Reservation
 
                 }
 
-              
+
 
 
             }
@@ -986,8 +983,8 @@ namespace HBM.Reservation
 
 
 
-            
-          
+
+
 
         }
 
@@ -1019,7 +1016,7 @@ namespace HBM.Reservation
             dataRow["Amount"] = "0.00";
             dataRow["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
             dataRow["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
-            
+
             if (dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null)
             {
                 dsPaymentInformation.Tables[0].Rows.Add(dataRow);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace HBM.GeneralManagement
 {
@@ -20,5 +21,12 @@ namespace HBM.GeneralManagement
         {
             return HBM.Utility.Generic.GetAll<Status>();
         }
+
+        public DataSet SelectByModule(string moduleName)
+        {
+            return (new StatusDAO()).SelectByModule(moduleName);
+        }
+
+    
     }
 }
