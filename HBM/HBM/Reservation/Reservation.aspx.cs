@@ -54,8 +54,7 @@ namespace HBM.Reservation
                 this.LoadAddiotnalService(newReservationId);
                 this.LoadPaymentInformation(newReservationId);
 
-
-
+                
             }
 
             ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
@@ -109,6 +108,15 @@ namespace HBM.Reservation
             }
 
 
+            if (cmbRoom.SelectedItem  != null)
+            {
+                seAdults.MaxValue = Convert.ToInt32(cmbRoom.SelectedItem.GetValue("MaxAdult").ToString());
+                seChildren.MaxValue = Convert.ToInt32(cmbRoom.SelectedItem.GetValue("MaxChildren").ToString());
+                seInfants.MaxValue = Convert.ToInt32(cmbRoom.SelectedItem.GetValue("MaxInfant").ToString());
+            }
+          
+
+
             if (cmbRatePlan.SelectedItem != null)
             {
                 hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
@@ -117,6 +125,11 @@ namespace HBM.Reservation
             {
                 hdnRate.Value = "0";
             }
+
+
+           
+
+
 
             //if (gvPaymentInformation.IsEditing)
             //{
@@ -383,6 +396,12 @@ namespace HBM.Reservation
             this.ClearRoomInfoSection();
             this.Calculate();
 
+            if (cmbCustomer.SelectedItem != null)
+            {
+                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
+            }
+
+
         }
 
         protected void btnNew_Click(object sender, EventArgs e)
@@ -434,7 +453,7 @@ namespace HBM.Reservation
             if (cmbCustomer.SelectedItem != null && (string.Empty != cmbCustomer.SelectedItem.Value.ToString()))
             {
                 this.LoadCardInformationByCustomer(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
-                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
+                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));               
 
             }
 
@@ -444,7 +463,7 @@ namespace HBM.Reservation
         {
             int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
             hdnRoom.Value = currentRoomID.ToString();
-
+           
         }
 
         #endregion
@@ -1063,6 +1082,8 @@ namespace HBM.Reservation
             }
 
         }
+
+        
 
     }
 }

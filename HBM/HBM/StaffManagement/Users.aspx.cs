@@ -84,6 +84,7 @@ namespace HBM
                 UserMan.Roles roles = new UserMan.Roles();
                 ddlRoles.ValueField = "RolesId";
                 ddlRoles.TextField = "RoleName";
+                roles.CompanyId = Master.CurrentCompany.CompanyId;
                 ddlRoles.DataSource = roles.SelectAllDataset();
                 ddlRoles.DataBind();
             }

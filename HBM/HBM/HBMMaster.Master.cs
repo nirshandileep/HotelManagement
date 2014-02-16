@@ -174,8 +174,16 @@ namespace HBM
             }
             else
             {
+                ClearSessions();
                 Response.Redirect(HBM.Common.Constants.URL_LOGIN, false);
             }
+
+            if (CurrentCompany == null)
+            {
+                ClearSessions();
+                Response.Redirect(HBM.Common.Constants.URL_LOGIN, false);
+            }
+
         }
 
 
