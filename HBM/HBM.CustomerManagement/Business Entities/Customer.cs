@@ -182,6 +182,11 @@ namespace HBM.CustomerManagement
 
         }
 
+        public DataSet SelectByGroup(int customerID)
+        {
+            return (new CustomerDAO()).SelectByGroup(customerID);
+        }
+
         #endregion
 
 

@@ -177,8 +177,7 @@ namespace HBM.CustomerManagement
 
             return true;
         }
-
-
+        
         public DataSet SelectById(int customerID)
         {
             Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
@@ -188,6 +187,17 @@ namespace HBM.CustomerManagement
 
             return db.ExecuteDataSet(command);
         }
+
+        public DataSet SelectByGroup(int customerID)
+        {
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand command = db.GetStoredProcCommand("usp_CustomerSelectByGroupID");
+
+            db.AddInParameter(command, "@CustomerId", DbType.Int32, customerID);
+
+            return db.ExecuteDataSet(command);
+        }
+
 
     }
 }

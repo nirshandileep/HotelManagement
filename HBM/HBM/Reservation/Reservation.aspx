@@ -20,18 +20,18 @@
 <%@ MasterType VirtualPath="~/HBMMaster.Master" %>
 <%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script language="javascript" type="text/javascript">
+
         function OnSelectedIndexChanged(s, e) {
-
             var value = s.GetText();
-
             if (value == 'Credit Card') {
                 cgvPaymentInformation.GetEditor('ColCardType').SetEnabled(true);
                 cgvPaymentInformation.GetEditor('ColCardNo').SetEnabled(true);
                 cgvPaymentInformation.GetEditor('ColExpireDate').SetEnabled(true);
                 cgvPaymentInformation.GetEditor('ColNameOnCard').SetEnabled(true);
-
             }
             else {
                 cgvPaymentInformation.GetEditor('ColCardType').SetEnabled(false);
@@ -159,8 +159,7 @@
                     <dx:ASPxLoadingPanel ID="aspxLoadingPanel" runat="server" ClientInstanceName="cinaspxLoadingPanel"
                         Modal="True">
                     </dx:ASPxLoadingPanel>
-                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
-                        Width="100%">
+                    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
                         <TabPages>
                             <dx:TabPage Text="Room Info">
                                 <ContentCollection>
@@ -172,8 +171,29 @@
                                                 </td>
                                                 <td>
                                                     <dx:ASPxDropDownEdit ID="ddlShareNames" runat="server" ClientInstanceName="ddlShareNames"
-                                                        DropDownWindowHeight="200px" DropDownWindowWidth="350px" MaxLength="255">
+                                                        DropDownWindowHeight="200px" DropDownWindowWidth="350px" MaxLength="255" ClientIDMode="Static">
                                                         <DropDownWindowTemplate>
+                                                            <dx:ASPxMenu ID="mnuGuest" runat="server" ClientInstanceName="mnuClientGuest" ClientIDMode="Static">
+                                                                <ClientSideEvents ItemClick="function(s, e) { 
+	
+	if (e.item.GetText() != 'Guests')
+	{
+	
+	if (memSharesNames.GetValue() != null)	
+	{
+		memSharesNames.SetValue(memSharesNames.GetValue()+','+ e.item.GetText());
+    }
+	else
+	{
+		memSharesNames.SetValue(e.item.GetText());
+	}
+	}
+}" />
+                                                                <Items>
+                                                                    <dx:MenuItem Text="Guests" EnableScrolling="True">
+                                                                    </dx:MenuItem>
+                                                                </Items>
+                                                            </dx:ASPxMenu>
                                                             <dx:ASPxMemo ID="memSharesNames" runat="server" ClientInstanceName="memSharesNames"
                                                                 Height="200px" Width="100%">
                                                             </dx:ASPxMemo>
@@ -248,10 +268,11 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     </td>
                                                 </td>
                                             </tr>
-                                            
                                             <tr valign="middle">
                                                 <td height="22" valign="middle">
-                                                    # Adults <asp:HiddenField ID="hdnRate" runat="server" /> <asp:HiddenField ID="hdnRoom" runat="server" />
+                                                    # Adults
+                                                    <asp:HiddenField ID="hdnRate" runat="server" />
+                                                    <asp:HiddenField ID="hdnRoom" runat="server" />
                                                 </td>
                                                 <td>
                                                     <dx:ASPxSpinEdit ID="seAdults" runat="server" Height="21px" MaxLength="3" MaxValue="100"

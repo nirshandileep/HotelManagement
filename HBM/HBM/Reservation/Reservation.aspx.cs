@@ -12,6 +12,7 @@ using GenRes = HBM.ReservationManagement;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using HBM.Utility;
+using DevExpress.Web.ASPxMenu;
 
 namespace HBM.Reservation
 {
@@ -77,6 +78,8 @@ namespace HBM.Reservation
                     trButtonSection.Visible = true;
                     trStatusSection.Visible = true;
 
+                    cmbCustomer.Enabled = false;
+                    cmbSource.Enabled = false;
                     dtCheckingDate.Enabled = false;
                     dtCheckOutDate.Enabled = false;
                     btnCreate.Visible = false;
@@ -234,6 +237,8 @@ namespace HBM.Reservation
                 trButtonSection.Visible = false;
                 trStatusSection.Visible = false;
 
+                cmbCustomer.Enabled = true;
+                cmbSource.Enabled = true;
                 dtCheckingDate.Enabled = true;
                 dtCheckOutDate.Enabled = true;
                 btnCreate.Visible = true;
@@ -420,12 +425,17 @@ namespace HBM.Reservation
             trButtonSection.Visible = true;
             trStatusSection.Visible = true;
 
+            cmbCustomer.Enabled = false;
+            cmbSource.Enabled = false;
             dtCheckingDate.Enabled = false;
             dtCheckOutDate.Enabled = false;
+
 
             if (cmbCustomer.SelectedItem != null && (string.Empty != cmbCustomer.SelectedItem.Value.ToString()))
             {
                 this.LoadCardInformationByCustomer(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
+                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
+
             }
 
         }
@@ -1032,7 +1042,27 @@ namespace HBM.Reservation
         #endregion
 
 
+        private void LoadSharesList(int customerID)
+        {
+            DataSet dsCustomersList = new DataSet();
+            Customer customer = new Customer();
+            dsCustomersList = customer.SelectByGroup(customerID);
 
+            if (dsCustomersList != null && dsCustomersList.Tables.Count > 0 && dsCustomersList.Tables[0] != null && dsCustomersList.Tables[0].Rows.Count > 0)
+            {
+                ASPxMenu tmpMenu = (ASPxMenu)ddlShareNames.FindControl("mnuGuest");
+
+                if (tmpMenu != null)
+                {
+                    for (int i = 0; i <= dsCustomersList.Tables[0].Rows.Count - 1; i++)
+                    {
+                        tmpMenu.Items[0].Items.Add(new MenuItem(dsCustomersList.Tables[0].Rows[i]["CustomerName"] !=null ? dsCustomersList.Tables[0].Rows[i]["CustomerName"].ToString() : string.Empty ));
+                    }                    
+                }
+                
+            }
+
+        }
 
     }
 }
