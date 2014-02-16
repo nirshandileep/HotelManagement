@@ -13,5 +13,15 @@ namespace HBM
         {
 
         }
+
+        protected void lnkLogin_Click(object sender, EventArgs e)
+        {
+            if (Master != null)
+            {
+                Master.ClearSessions();
+            }
+
+            Response.Redirect(HBM.Common.Constants.URL_LOGIN, false);
+        }
     }
 }

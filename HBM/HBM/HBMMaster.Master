@@ -17,113 +17,110 @@
     <link href="css/stickyfooter.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript" src="../Scripts/jquery-2.0.3.min.js"></script>
     <script language="javascript" type="text/javascript" src="../JS/HBMCommon.js"></script>
-   
 </head>
 <body>
- 
     <div id="wrap">
-	<div id="main">
-    <form id="form1" runat="server">    
-    <div id="dvTopMessage" runat="server">
-    </div>
-    <div class="header2">
-        <div class="wrapper">
-            <div class="hotel-logo">                
-                <dx:ASPxBinaryImage ID="bimgLogo" runat="server" width="133" height="77" alt="logo">
-                </dx:ASPxBinaryImage>
+        <div id="main">
+            <form id="form1" runat="server">
+            <div id="dvTopMessage" runat="server">
             </div>
-            <div class="nav">
-                <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" ItemSpacing="0px" SelectParentItem="True"
-                    VerticalAlign="Middle">
-                    <Items>
-                        <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
-                            <Image Url="~/Images/Home.png">
-                            </Image>
-                        </dx:MenuItem>
-                        <dx:MenuItem Text="Customer" DropDownMode="True">
+            <div class="header2">
+                <div class="wrapper">
+                    <div class="hotel-logo">
+                        <dx:ASPxBinaryImage ID="bimgLogo" runat="server" Width="133" Height="77" alt="logo">
+                        </dx:ASPxBinaryImage>
+                    </div>
+                    <div class="nav">
+                        <dx:ASPxMenu ID="MainMenu" runat="server" Height="25px" ItemSpacing="0px" SelectParentItem="True"
+                            VerticalAlign="Middle">
                             <Items>
-                                <dx:MenuItem NavigateUrl="~/Customer/Customers.aspx" Text="Add Customer">
-                                    <Image Url="~/Images/Customer.png">
+                                <dx:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Home">
+                                    <Image Url="~/Images/Home.png">
                                     </Image>
                                 </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/Customer/CustomerSearch.aspx" Text="Search Customer">
-                                    <Image Url="~/Images/Search.png">
-                                    </Image>
+                                <dx:MenuItem Text="Customer" DropDownMode="True">
+                                    <Items>
+                                        <dx:MenuItem NavigateUrl="~/Customer/Customers.aspx" Text="Add Customer">
+                                            <Image Url="~/Images/Customer.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Customer/CustomerSearch.aspx" Text="Search Customer">
+                                            <Image Url="~/Images/Search.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                    </Items>
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="Reservation" DropDownMode="True">
+                                    <Items>
+                                        <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" Text="Add Reservation">
+                                            <Image Url="~/Images/Reservation.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" Text="Search Reservation">
+                                            <Image Url="~/Images/Search.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                    </Items>
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="Staff Management" DropDownMode="True">
+                                    <Items>
+                                        <dx:MenuItem NavigateUrl="~/StaffManagement/Users.aspx" Text="Add Users">
+                                            <Image Url="~/Images/Staff.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/StaffManagement/UserSearch.aspx" Text="Search User">
+                                            <Image Url="~/Images/Search.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/StaffManagement/Roles.aspx" Text="Add Role">
+                                            <Image Url="~/Images/Role.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/StaffManagement/RoleSearch.aspx" Text="Search Role">
+                                            <Image Url="~/Images/Search.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                    </Items>
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="Administration" DropDownMode="True">
+                                    <Items>
+                                        <dx:MenuItem NavigateUrl="~/ControlPanel/Company.aspx" Text="Company">
+                                            <Image Url="~/Images/Company.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/ControlPanel/SwitchBoard.aspx" Text="Swtich Board">
+                                            <Image Url="~/Images/Switchboard.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem Text="Reports" NavigateUrl="~/Reports/ReportGenerator.aspx">
+                                            <Image Url="~/Images/Report.png">
+                                            </Image>
+                                        </dx:MenuItem>
+                                    </Items>
                                 </dx:MenuItem>
                             </Items>
-                        </dx:MenuItem>
-                        <dx:MenuItem Text="Reservation" DropDownMode="True">
-                            <Items>
-                                <dx:MenuItem NavigateUrl="~/Reservation/Reservation.aspx" 
-                                    Text="Add Reservation">
-                                    <Image Url="~/Images/Reservation.png">
-                                    </Image>
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/Reservation/SearchReservation.aspx" 
-                                    Text="Search Reservation">
-                                    <Image Url="~/Images/Search.png">
-                                    </Image>
-                                </dx:MenuItem>
-                            </Items>
-                        </dx:MenuItem>
-                        <dx:MenuItem Text="Staff Management" DropDownMode="True">
-                            <Items>
-                                <dx:MenuItem NavigateUrl="~/StaffManagement/Users.aspx" Text="Add Users">
-                                    <Image Url="~/Images/Staff.png">
-                                    </Image>
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/StaffManagement/UserSearch.aspx" Text="Search User">
-                                    <Image Url="~/Images/Search.png">
-                                    </Image>
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/StaffManagement/Roles.aspx" Text="Add Role">
-                                    <Image Url="~/Images/Role.png">
-                                    </Image>
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/StaffManagement/RoleSearch.aspx" Text="Search Role">
-                                    <Image Url="~/Images/Search.png">
-                                    </Image>
-                                </dx:MenuItem>
-                            </Items>
-                        </dx:MenuItem>
-                        <dx:MenuItem Text="Administration" DropDownMode="True">
-                            <Items>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/Company.aspx" Text="Company">
-                                    <Image Url="~/Images/Company.png">
-                                    </Image>
-                                </dx:MenuItem>
-                                <dx:MenuItem NavigateUrl="~/ControlPanel/SwitchBoard.aspx" Text="Swtich Board">
-                                    <Image Url="~/Images/Switchboard.png">
-                                    </Image>
-                                </dx:MenuItem>
-                                <dx:MenuItem Text="Reports" NavigateUrl="~/Reports/ReportGenerator.aspx">
-                                    <Image Url="~/Images/Report.png">
-                                    </Image>
-                                </dx:MenuItem>
-                            </Items>
-                        </dx:MenuItem>
-                    </Items>
-                    <Border BorderStyle="None" BorderColor="#76A3BC" />
-                </dx:ASPxMenu>
-            </div>
-            <div class="welcomeMsg">
-                <p>
-                    Welcome !</p>
-                <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label>
-                <div class="logoutBtn">
-                    <a><asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">Logout</asp:LinkButton></a>
+                            <Border BorderStyle="None" BorderColor="#76A3BC" />
+                        </dx:ASPxMenu>
+                    </div>
+                    <div class="welcomeMsg">
+                        <p>
+                            Welcome !</p>
+                        <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label>
+                        <div class="logoutBtn">
+                            <a>
+                                <asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">Logout</asp:LinkButton></a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="wrapper">
+                <div class="page-wrapper">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            </form>
         </div>
-    </div> 
-    <div class="wrapper">
-        <div class="page-wrapper">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </div>
-    </form>
-    </div>
     </div>
     <div id="footer">
         <div class="footer2">
@@ -132,6 +129,5 @@
             </p>
         </div>
     </div>
-    
 </body>
 </html>
