@@ -10,7 +10,8 @@ namespace HBM.UserManagement
         public bool IsUserAuthorised(Common.Enums.Rights right,Users user)
         {
             bool returnValue = false;
-            if (user.AllRights.Select(e => e.RightId == (int)right).Count() > 0)
+            int count = user.AllRights.FindAll(e => e.RightId == (int)right).Count();
+            if (count > 0)
             {
                 returnValue = true;
             }
