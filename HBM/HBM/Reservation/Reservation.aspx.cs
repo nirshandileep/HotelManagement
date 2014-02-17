@@ -201,7 +201,7 @@ namespace HBM.Reservation
             cmbSource.ValueField = "SourceId";
             cmbSource.DataBind();
 
-            cmbRoom.DataSource = new GenMan.Room() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
+            cmbRoom.DataSource = new GenMan.Room() { }.SelectAvailable(Master.CurrentCompany.CompanyId, Convert.ToDateTime(dtCheckingDate.Value), Convert.ToDateTime(dtCheckOutDate.Value)).Tables[0];
             cmbRoom.TextField = "RoomName";
             cmbRoom.ValueField = "RoomId";
             cmbRoom.DataBind();

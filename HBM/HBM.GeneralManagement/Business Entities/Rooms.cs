@@ -128,6 +128,10 @@ namespace HBM.GeneralManagement
             return (new RoomDAO()).IsDuplicateTypeName(this);
         }
 
+        public DataSet SelectAvailable(int companyId, DateTime checkInDate, DateTime checkOutDate)
+        {
+            return (new RoomDAO()).SelectAvailable(companyId, checkInDate, checkOutDate);
+        }
 
         #endregion
     }

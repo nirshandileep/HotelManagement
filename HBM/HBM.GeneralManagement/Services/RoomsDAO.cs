@@ -192,5 +192,20 @@ namespace HBM.GeneralManagement
             return result;
         }
 
+        public DataSet SelectAvailable(int companyId, DateTime checkInDate, DateTime checkOutDate)
+        {
+
+            Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+            DbCommand dbCommand = db.GetStoredProcCommand("usp_RoomAvailableGetByDates");
+
+            db.AddInParameter(dbCommand, "@CompanyId", DbType.Int32, companyId);
+            db.AddInParameter(dbCommand, "@CheckInDate", DbType.Date, checkInDate);
+            db.AddInParameter(dbCommand, "@CheckOutDate", DbType.Date, checkOutDate);
+
+
+            return db.ExecuteDataSet(dbCommand);
+
+        }
+
     }
 }
