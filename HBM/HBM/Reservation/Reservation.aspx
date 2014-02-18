@@ -214,7 +214,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                 </td>
                                                 <td room="" valign="middle&gt;" width="65px">
                                                     Room<td>
-                                                        <dx:ASPxComboBox ID="cmbRoom" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbRoom_SelectedIndexChanged"
+                                                        <dx:ASPxComboBox ID="cmbRoom" runat="server" OnSelectedIndexChanged="cmbRoom_SelectedIndexChanged"
                                                             TextFormatString="{1}" ValueType="System.Int32">
                                                             <ClientSideEvents BeginCallback="function(s, e) {
 
