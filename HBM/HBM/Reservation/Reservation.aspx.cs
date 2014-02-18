@@ -54,7 +54,6 @@ namespace HBM.Reservation
                 this.LoadAddiotnalService(newReservationId);
                 this.LoadPaymentInformation(newReservationId);
 
-                
             }
 
             ((GridViewDataComboBoxColumn)gvServiceInformation.Columns["AdditionalServiceId"]).PropertiesComboBox.DataSource = new GenMan.AdditionalService() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
@@ -108,13 +107,12 @@ namespace HBM.Reservation
             }
 
 
-            if (cmbRoom.SelectedItem  != null)
+            if (cmbRoom.SelectedItem != null)
             {
                 seAdults.MaxValue = Convert.ToInt32(cmbRoom.SelectedItem.GetValue("MaxAdult").ToString());
                 seChildren.MaxValue = Convert.ToInt32(cmbRoom.SelectedItem.GetValue("MaxChildren").ToString());
                 seInfants.MaxValue = Convert.ToInt32(cmbRoom.SelectedItem.GetValue("MaxInfant").ToString());
             }
-          
 
 
             if (cmbRatePlan.SelectedItem != null)
@@ -127,50 +125,13 @@ namespace HBM.Reservation
             }
 
 
-           
+            if (cmbRoom.SelectedItem != null && cmbRoom.SelectedItem.Value != null)
+            {
+                int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
+                hdnRoom.Value = currentRoomID.ToString();
+            }
 
 
-
-            //if (gvPaymentInformation.IsEditing)
-            //{
-
-            //    ASPxComboBox colType = gvPaymentInformation.FindEditFormTemplateControl("ColType") as ASPxComboBox;
-
-            //    if (colType.Text == "Credit Card")
-            //    {
-            //        ASPxComboBox colCardType = gvPaymentInformation.FindEditFormTemplateControl("ColCardType") as ASPxComboBox;
-            //        colCardType.Enabled = true;
-
-            //        ASPxTextBox colCardNo = gvPaymentInformation.FindEditFormTemplateControl("ColCardType") as ASPxTextBox;
-            //        colCardNo.Enabled = true;
-
-            //        ASPxDateEdit colExpireDate = gvPaymentInformation.FindEditFormTemplateControl("ColExpireDate") as ASPxDateEdit;
-            //        colExpireDate.Enabled = true;
-
-            //        ASPxTextBox colNameOnCard = gvPaymentInformation.FindEditFormTemplateControl("ColNameOnCard") as ASPxTextBox;
-            //        colNameOnCard.Enabled = true;
-
-            //    }
-            //    else
-            //    {
-            //        ASPxComboBox colCardType = gvPaymentInformation.FindEditFormTemplateControl("ColCardType") as ASPxComboBox;
-            //        colCardType.Value = null;
-            //        colCardType.Enabled = false;
-
-            //        ASPxTextBox colCardNo = gvPaymentInformation.FindEditFormTemplateControl("ColCardType") as ASPxTextBox;
-            //        colCardNo.Value = null;
-            //        colCardNo.Enabled = false;
-
-            //        ASPxDateEdit colExpireDate = gvPaymentInformation.FindEditFormTemplateControl("ColExpireDate") as ASPxDateEdit;
-            //        colExpireDate.Value = null;
-            //        colExpireDate.Enabled = false;
-
-            //        ASPxTextBox colNameOnCard = gvPaymentInformation.FindEditFormTemplateControl("ColNameOnCard") as ASPxTextBox;
-            //        colNameOnCard.Value = null;
-            //        colNameOnCard.Enabled = false;
-
-            //    }
-            //}
         }
 
         #endregion
@@ -189,8 +150,6 @@ namespace HBM.Reservation
             cmbCustomer.ValueField = "CustomerId";
             cmbCustomer.DataBind();
 
-
-
             cmbTax.DataSource = new GenMan.TaxType() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
             cmbTax.TextField = "TaxTypeName";
             cmbTax.ValueField = "TaxTypeId";
@@ -201,15 +160,10 @@ namespace HBM.Reservation
             cmbSource.ValueField = "SourceId";
             cmbSource.DataBind();
 
-            cmbRoom.DataSource = new GenMan.Room() { }.SelectAvailable(Master.CurrentCompany.CompanyId, Convert.ToDateTime(dtCheckingDate.Value), Convert.ToDateTime(dtCheckOutDate.Value)).Tables[0];
-            cmbRoom.TextField = "RoomName";
-            cmbRoom.ValueField = "RoomId";
-            cmbRoom.DataBind();
+            this.LoadRoomList();
 
-            //cmbRatePlan.DataSource = new GenMan.RatePlans() { CompanyId = Master.CurrentCompany.CompanyId }.SelectAllDataset().Tables[0];
-            //cmbRatePlan.TextField = "RatePlanName";
-            //cmbRatePlan.ValueField = "RatePlansId";
-            //cmbRatePlan.DataBind();
+
+
 
         }
 
@@ -305,6 +259,18 @@ namespace HBM.Reservation
             }
 
             txtBalance.Text = ((Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text) + Convert.ToDecimal(txtTaxTotal.Text)) - (Convert.ToDecimal(txtDiscount.Text) + Convert.ToDecimal(txtPaidAmount.Text))).ToString();
+        }
+
+        private void LoadRoomList()
+        {
+            if (cmbCustomer.SelectedItem != null && cmbCustomer.SelectedItem.Value != null)
+            {
+                cmbRoom.DataSource = new GenMan.Room() { }.SelectAvailable(Master.CurrentCompany.CompanyId, Convert.ToDateTime(dtCheckingDate.Value), Convert.ToDateTime(dtCheckOutDate.Value)).Tables[0];
+                cmbRoom.TextField = "RoomName";
+                cmbRoom.ValueField = "RoomId";
+                cmbRoom.DataBind();
+            }
+            
         }
 
         #endregion
@@ -453,7 +419,9 @@ namespace HBM.Reservation
             if (cmbCustomer.SelectedItem != null && (string.Empty != cmbCustomer.SelectedItem.Value.ToString()))
             {
                 this.LoadCardInformationByCustomer(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
-                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));               
+                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
+
+                this.LoadRoomList();
 
             }
 
@@ -461,8 +429,13 @@ namespace HBM.Reservation
 
         protected void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
-            hdnRoom.Value = currentRoomID.ToString();
+
+            if (cmbRoom.SelectedItem != null && cmbRoom.SelectedItem.Value != null)
+            {
+                int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
+                hdnRoom.Value = currentRoomID.ToString();
+            }
+
            
         }
 
@@ -1075,15 +1048,15 @@ namespace HBM.Reservation
                 {
                     for (int i = 0; i <= dsCustomersList.Tables[0].Rows.Count - 1; i++)
                     {
-                        tmpMenu.Items[0].Items.Add(new MenuItem(dsCustomersList.Tables[0].Rows[i]["CustomerName"] !=null ? dsCustomersList.Tables[0].Rows[i]["CustomerName"].ToString() : string.Empty ));
-                    }                    
+                        tmpMenu.Items[0].Items.Add(new MenuItem(dsCustomersList.Tables[0].Rows[i]["CustomerName"] != null ? dsCustomersList.Tables[0].Rows[i]["CustomerName"].ToString() : string.Empty));
+                    }
                 }
-                
+
             }
 
         }
 
-        
+
 
     }
 }

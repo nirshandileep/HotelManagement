@@ -88,7 +88,8 @@
                             </td>
                             <td rowspan="3" valign="bottom">
                                 <dx:ASPxButton ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create"
-                                    ValidationGroup="vgCreate" Height="40px" Width="100px">
+                                    ValidationGroup="vgCreate" Height="40px" Width="100px" 
+                                    UseSubmitBehavior="False">
                                 </dx:ASPxButton>
                             </td>
                         </tr>
@@ -263,7 +264,7 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     </td>
                                                     <td rowspan="3" valign="top">
                                                         <dx:ASPxButton ID="btnAdd" runat="server" Height="40px" OnClick="btnAdd_Click" Text="Add"
-                                                            ValidationGroup="vgAdd" Width="100px">
+                                                            ValidationGroup="vgAdd" Width="100px" UseSubmitBehavior="False">
                                                         </dx:ASPxButton>
                                                     </td>
                                                 </td>
