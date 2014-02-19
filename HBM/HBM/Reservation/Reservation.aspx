@@ -70,6 +70,7 @@
                                         <dx:ListBoxColumn Caption="Name" FieldName="CustomerName" />
                                         <dx:ListBoxColumn Caption="Phone" FieldName="Phone" />
                                         <dx:ListBoxColumn Caption="Mobile" FieldName="Mobile" />
+                                        <dx:ListBoxColumn Caption="Is Group" FieldName="IsGroupCustomer" />
                                     </Columns>
                                     <ValidationSettings ValidationGroup="vgCreate" ErrorDisplayMode="ImageWithTooltip">
                                         <RequiredField ErrorText="Required" IsRequired="True" />

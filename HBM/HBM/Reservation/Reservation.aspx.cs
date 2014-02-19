@@ -162,9 +162,6 @@ namespace HBM.Reservation
 
             this.LoadRoomList();
 
-
-
-
         }
 
         private void ClearFormFields()
