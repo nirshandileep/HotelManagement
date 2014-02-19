@@ -265,14 +265,48 @@ namespace HBM.Reservation
         {
             if (cmbCustomer.SelectedItem != null && cmbCustomer.SelectedItem.Value != null)
             {
-                cmbRoom.DataSource = new GenMan.Room() { }.SelectAvailable(Master.CurrentCompany.CompanyId, Convert.ToDateTime(dtCheckingDate.Value), Convert.ToDateTime(dtCheckOutDate.Value)).Tables[0];
+                Session[Constants.SESSION_RESERVERATION_ROOMLIST] = new GenMan.Room() { }.SelectAvailable(Master.CurrentCompany.CompanyId, Convert.ToDateTime(dtCheckingDate.Value), Convert.ToDateTime(dtCheckOutDate.Value)).Tables[0];
+                cmbRoom.DataSource = (DataTable)Session[Constants.SESSION_RESERVERATION_ROOMLIST];
                 cmbRoom.TextField = "RoomName";
                 cmbRoom.ValueField = "RoomId";
                 cmbRoom.DataBind();
             }
+            else
+            {
+                if (Session[Constants.SESSION_RESERVERATION_ROOMLIST] != null)
+                {
+                    cmbRoom.DataSource = (DataTable)Session[Constants.SESSION_RESERVERATION_ROOMLIST];
+                    cmbRoom.TextField = "RoomName";
+                    cmbRoom.ValueField = "RoomId";
+                    cmbRoom.DataBind();
+                }
+
+            }
             
         }
 
+        private void LoadSharesList(int customerID)
+        {
+            DataSet dsCustomersList = new DataSet();
+            Customer customer = new Customer();
+            dsCustomersList = customer.SelectByGroup(customerID);
+
+            if (dsCustomersList != null && dsCustomersList.Tables.Count > 0 && dsCustomersList.Tables[0] != null && dsCustomersList.Tables[0].Rows.Count > 0)
+            {
+                ASPxMenu tmpMenu = (ASPxMenu)ddlShareNames.FindControl("mnuGuest");
+
+                if (tmpMenu != null)
+                {
+                    for (int i = 0; i <= dsCustomersList.Tables[0].Rows.Count - 1; i++)
+                    {
+                        tmpMenu.Items[0].Items.Add(new MenuItem(dsCustomersList.Tables[0].Rows[i]["CustomerName"] != null ? dsCustomersList.Tables[0].Rows[i]["CustomerName"].ToString() : string.Empty));
+                    }
+                }
+
+            }
+
+        }
+        
         #endregion
 
         #region Events
@@ -430,11 +464,14 @@ namespace HBM.Reservation
         protected void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (cmbRoom.SelectedItem != null && cmbRoom.SelectedItem.Value != null)
+            if (Session["RoomList"] != null)
             {
                 int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
                 hdnRoom.Value = currentRoomID.ToString();
+         
             }
+         
+                
 
            
         }
@@ -1034,27 +1071,6 @@ namespace HBM.Reservation
         #endregion
 
 
-        private void LoadSharesList(int customerID)
-        {
-            DataSet dsCustomersList = new DataSet();
-            Customer customer = new Customer();
-            dsCustomersList = customer.SelectByGroup(customerID);
-
-            if (dsCustomersList != null && dsCustomersList.Tables.Count > 0 && dsCustomersList.Tables[0] != null && dsCustomersList.Tables[0].Rows.Count > 0)
-            {
-                ASPxMenu tmpMenu = (ASPxMenu)ddlShareNames.FindControl("mnuGuest");
-
-                if (tmpMenu != null)
-                {
-                    for (int i = 0; i <= dsCustomersList.Tables[0].Rows.Count - 1; i++)
-                    {
-                        tmpMenu.Items[0].Items.Add(new MenuItem(dsCustomersList.Tables[0].Rows[i]["CustomerName"] != null ? dsCustomersList.Tables[0].Rows[i]["CustomerName"].ToString() : string.Empty));
-                    }
-                }
-
-            }
-
-        }
 
 
 

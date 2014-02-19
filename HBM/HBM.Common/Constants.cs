@@ -113,6 +113,7 @@ namespace HBM.Common
         public static readonly string SESSION_SERVICEMETHODS = "Servicemethods";
 
         public static readonly string SESSION_CURRENTREPORT = "currentReprt";
+        public static readonly string SESSION_RESERVERATION_ROOMLIST = "Reserveration_RoomList";
         
 
 
