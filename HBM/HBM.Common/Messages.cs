@@ -25,6 +25,10 @@ namespace HBM.Common
 
         public static readonly string Select_Role = "Please select a role";
         public static readonly string Reservation_RoomInfoEmpty = "Can not Save, Room information is empty";
+        public static readonly string Reservation_RoomRateisEmpty= "Room rate is empty";
+        public static readonly string Reservation_NoAvailableRooms= "No room is available";
+
+
 
         public static readonly string Save_Unsuccess_BillingAddress_Notprovided = Save_Unsuccess + " Billing Address details are not properly provided";
 

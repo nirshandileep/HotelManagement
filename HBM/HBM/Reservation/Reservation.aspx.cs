@@ -136,7 +136,7 @@ namespace HBM.Reservation
 
         #endregion
 
-        #region Common Methods
+        #region Methods
 
         private void LoadInitialData()
         {
@@ -263,10 +263,31 @@ namespace HBM.Reservation
             if (cmbCustomer.SelectedItem != null && cmbCustomer.SelectedItem.Value != null)
             {
                 Session[Constants.SESSION_RESERVERATION_ROOMLIST] = new GenMan.Room() { }.SelectAvailable(Master.CurrentCompany.CompanyId, Convert.ToDateTime(dtCheckingDate.Value), Convert.ToDateTime(dtCheckOutDate.Value)).Tables[0];
-                cmbRoom.DataSource = (DataTable)Session[Constants.SESSION_RESERVERATION_ROOMLIST];
-                cmbRoom.TextField = "RoomName";
-                cmbRoom.ValueField = "RoomId";
-                cmbRoom.DataBind();
+
+                DataTable dt = (DataTable)Session[Constants.SESSION_RESERVERATION_ROOMLIST];
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    cmbRoom.DataSource = dt;
+                    cmbRoom.TextField = "RoomName";
+                    cmbRoom.ValueField = "RoomId";
+                    cmbRoom.DataBind();
+
+                    trReservationSection.Visible = true;
+                    trSummarySection.Visible = true;
+                    trButtonSection.Visible = true;
+                    trStatusSection.Visible = true;
+
+                    cmbCustomer.Enabled = false;
+                    cmbSource.Enabled = false;
+                    dtCheckingDate.Enabled = false;
+                    dtCheckOutDate.Enabled = false;
+
+                }
+                else
+                {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Reservation_NoAvailableRooms + "')", true);
+                }
             }
             else
             {
@@ -279,7 +300,7 @@ namespace HBM.Reservation
                 }
 
             }
-            
+
         }
 
         private void LoadSharesList(int customerID)
@@ -303,7 +324,21 @@ namespace HBM.Reservation
             }
 
         }
-        
+
+        private bool ValidateRooms()
+        {
+            bool result = true;
+
+            if (hdnRate.Value == string.Empty || hdnRate.Value == "0")
+            {
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Reservation_RoomRateisEmpty + "')", true);
+                result = false;
+            }
+
+
+            return result;
+        }
+
         #endregion
 
         #region Events
@@ -341,63 +376,67 @@ namespace HBM.Reservation
         protected void btnAdd_Click(object sender, EventArgs e)
         {
 
-            if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+            if (this.ValidateRooms())
             {
-                dsRoomInfomation = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
 
-                DataRow dr = dsRoomInfomation.Tables[0].NewRow();
-                Random rd = new Random();
-                dr["ReservationRoomId"] = rd.Next();
-                dr["ReservationId"] = 0;
-                dr["RoomId"] = Convert.ToInt32(cmbRoom.Value);
-                dr["RoomName"] = cmbRoom.Text;
-                dr["RatePlanId"] = Convert.ToInt32(cmbRatePlan.Value);
-                dr["RatePlanName"] = cmbRatePlan.Text;
-                dr["Sharers"] = ddlShareNames.Text.Trim();
-                dr["CheckInDate"] = dtCheckingDate.Value;
-                dr["CheckOutDate"] = dtCheckOutDate.Value;
-                dr["NumberOfAdults"] = seAdults.Text;
-                dr["NumberOfChildren"] = seChildren.Text;
-                dr["NumberOfInfant"] = seInfants.Text;
-                dr["Rate"] = Convert.ToDecimal(hdnRate.Value == string.Empty ? "0" : hdnRate.Value); ;
-                TimeSpan tspan = Convert.ToDateTime(dtCheckOutDate.Text) - Convert.ToDateTime(dtCheckingDate.Text);
-                double totalDays = 0;
-                totalDays = tspan.TotalDays;
-
-                if (totalDays == 0)
+                if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
                 {
-                    totalDays = 1;
+                    dsRoomInfomation = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
+
+                    DataRow dr = dsRoomInfomation.Tables[0].NewRow();
+                    Random rd = new Random();
+                    dr["ReservationRoomId"] = rd.Next();
+                    dr["ReservationId"] = 0;
+                    dr["RoomId"] = Convert.ToInt32(cmbRoom.Value);
+                    dr["RoomName"] = cmbRoom.Text;
+                    dr["RatePlanId"] = Convert.ToInt32(cmbRatePlan.Value);
+                    dr["RatePlanName"] = cmbRatePlan.Text;
+                    dr["Sharers"] = ddlShareNames.Text.Trim();
+                    dr["CheckInDate"] = dtCheckingDate.Value;
+                    dr["CheckOutDate"] = dtCheckOutDate.Value;
+                    dr["NumberOfAdults"] = seAdults.Text;
+                    dr["NumberOfChildren"] = seChildren.Text;
+                    dr["NumberOfInfant"] = seInfants.Text;
+                    dr["Rate"] = Convert.ToDecimal(hdnRate.Value == string.Empty ? "0" : hdnRate.Value); ;
+                    TimeSpan tspan = Convert.ToDateTime(dtCheckOutDate.Text) - Convert.ToDateTime(dtCheckingDate.Text);
+                    double totalDays = 0;
+                    totalDays = tspan.TotalDays;
+
+                    if (totalDays == 0)
+                    {
+                        totalDays = 1;
+                    }
+
+
+
+                    dr["Days"] = totalDays;
+                    dr["Amount"] = totalDays * (Convert.ToDouble(hdnRate.Value == string.Empty ? "0" : hdnRate.Value));
+                    dr["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
+                    dr["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
+
+                    dsRoomInfomation.Tables[0].Rows.Add(dr);
+                    Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
+
+                }
+                else
+                {
+                    reservationRoom.ReservationId = 0;
+                    dsRoomInfomation = reservationRoom.SelectAllDataSetByReseervationId();
+                    Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
                 }
 
+                gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
+                gvRoomInfo.DataBind();
 
+                this.ClearRoomInfoSection();
+                this.Calculate();
 
-                dr["Days"] = totalDays;
-                dr["Amount"] = totalDays * (Convert.ToDouble(hdnRate.Value == string.Empty ? "0" : hdnRate.Value));
-                dr["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
-                dr["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
-
-                dsRoomInfomation.Tables[0].Rows.Add(dr);
-                Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
+                if (cmbCustomer.SelectedItem != null)
+                {
+                    this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
+                }
 
             }
-            else
-            {
-                reservationRoom.ReservationId = 0;
-                dsRoomInfomation = reservationRoom.SelectAllDataSetByReseervationId();
-                Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] = dsRoomInfomation;
-            }
-
-            gvRoomInfo.DataSource = dsRoomInfomation.Tables[0];
-            gvRoomInfo.DataBind();
-
-            this.ClearRoomInfoSection();
-            this.Calculate();
-
-            if (cmbCustomer.SelectedItem != null)
-            {
-                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
-            }
-
 
         }
 
@@ -436,16 +475,6 @@ namespace HBM.Reservation
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            trReservationSection.Visible = true;
-            trSummarySection.Visible = true;
-            trButtonSection.Visible = true;
-            trStatusSection.Visible = true;
-
-            cmbCustomer.Enabled = false;
-            cmbSource.Enabled = false;
-            dtCheckingDate.Enabled = false;
-            dtCheckOutDate.Enabled = false;
-
 
             if (cmbCustomer.SelectedItem != null && (string.Empty != cmbCustomer.SelectedItem.Value.ToString()))
             {
@@ -465,12 +494,12 @@ namespace HBM.Reservation
             {
                 int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
                 hdnRoom.Value = currentRoomID.ToString();
-         
-            }
-         
-                
 
-           
+            }
+
+
+
+
         }
 
         #endregion
