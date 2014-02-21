@@ -173,6 +173,20 @@ namespace HBM.GeneralManagement
             return true;
         }
 
+
+        public bool UpdateRoomAsDirty(Room room, Database db, DbTransaction transaction)
+        {
+            
+            DbCommand command = db.GetStoredProcCommand("usp_RoomMarkDirty");
+
+            db.AddInParameter(command, "@RoomId", DbType.Int32, room.RoomId);
+            db.AddInParameter(command, "@UpdatedUser", DbType.Int32, room.UpdatedUser);
+
+            db.ExecuteNonQuery(command, transaction);
+
+            return true;
+        }
+
         public bool IsDuplicateTypeName(Room room)
         {
             bool result = false;

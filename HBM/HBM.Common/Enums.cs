@@ -19,6 +19,8 @@ namespace HBM.Common
             CheckIn = 5,
             Cancel = 6,
             NoShow = 7,
+            Reserved = 8,
+            CheckOut = 9,
         }
 
         /// <summary>

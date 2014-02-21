@@ -13,6 +13,7 @@ using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using HBM.Utility;
 using DevExpress.Web.ASPxMenu;
+using HBM.GeneralManagement;
 
 namespace HBM.Reservation
 {
@@ -577,6 +578,32 @@ namespace HBM.Reservation
                 }
 
                 reservation.Save(db, transaction);
+
+                if (reservation.StatusId == (int)HBM.Common.Enums.HBMStatus.CheckOut)
+                {
+                    if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+                    {
+                        DataSet roomsToMakeDrity = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
+
+                        if (roomsToMakeDrity != null && roomsToMakeDrity.Tables.Count > 0 && roomsToMakeDrity.Tables[0] != null && roomsToMakeDrity.Tables[0].Rows.Count > 0)
+                        {
+                            for (int i = 0; i <= roomsToMakeDrity.Tables[0].Rows.Count - 1; i++)
+                            {
+                                Room dirtyroom = new Room();
+                                dirtyroom.RoomId = Convert.ToInt32( roomsToMakeDrity.Tables[0].Rows[i]["RoomId"].ToString());
+                                dirtyroom.UpdatedUser = Master.LoggedUser.UsersId;
+                                dirtyroom.UpdateRoomAsDirty(db, transaction);
+                            }
+
+                           
+                        }
+
+                    }
+
+                }
+
+
+
                 transaction.Commit();
 
                 this.hdnReservationId.Value = reservation.ReservationId.ToString();

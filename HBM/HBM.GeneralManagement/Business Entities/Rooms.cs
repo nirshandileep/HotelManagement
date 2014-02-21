@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data.Common;
 
 namespace HBM.GeneralManagement
 {
@@ -121,6 +123,11 @@ namespace HBM.GeneralManagement
         public bool MarkRoomAsDirty()
         {
             return (new RoomDAO()).UpdateRoomAsDirty(this);
+        }
+
+        public bool UpdateRoomAsDirty( Database db, DbTransaction transaction)
+        {
+            return (new RoomDAO()).UpdateRoomAsDirty(this,db,transaction);
         }
 
         public bool IsDuplicateTypeName()
