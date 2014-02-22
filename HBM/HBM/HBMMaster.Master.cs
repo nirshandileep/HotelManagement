@@ -63,7 +63,7 @@ namespace HBM
         /// Clear all sessions in the system, all newly added sessions needs to be added to this method
         /// </summary>
         public void ClearSessions()
-        {       
+        {
             Session[Constants.SESSION_LOGGEDUSER] = null;
             Session[Constants.SESSION_BEDTYPES] = null;
             Session[Constants.SESSION_DEPARTMENT] = null;
@@ -75,7 +75,7 @@ namespace HBM
             Session[Constants.SESSION_TAXTYPES] = null;
             Session[Constants.SESSION_ADDITIONALSERVICETYPE] = null;
             Session[Constants.SESSION_ADDITIONALSERVICE] = null;
-            Session[Constants.SESSION_CREDITCARDTYPE] = null;            
+            Session[Constants.SESSION_CREDITCARDTYPE] = null;
             Session[Constants.SESSION_GUESTTYPE] = null;
             Session[Constants.SESSION_PAYMENTTYPES] = null;
             Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] = null;
@@ -86,7 +86,7 @@ namespace HBM
             Session[Constants.SESSION_DIRTYROOMS] = null;
             Session[Constants.SESSION_ROOMRATEPLAN] = null;
             Session[Constants.SESSION_CURRENTREPORT] = null;
-            
+
 
         }
 
@@ -195,7 +195,7 @@ namespace HBM
         protected void Page_Load(object sender, EventArgs e)
         {
             //Called everytime to check it the user session is null
-           
+
 
         }
 

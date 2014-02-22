@@ -62,6 +62,9 @@ namespace HBM.Reservation
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
 
+      
+
+
             if (!IsPostBack)
             {
                 //// Display reservation
@@ -97,15 +100,7 @@ namespace HBM.Reservation
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-
-            if (hdnRoom.Value != string.Empty)
-            {
-                int currentRoomID = Convert.ToInt32(hdnRoom.Value);
-                cmbRatePlan.DataSource = new GenMan.RoomRatePlan() { RoomId = currentRoomID }.SelectByRoomId();
-                cmbRatePlan.TextField = "RatePlanName";
-                cmbRatePlan.ValueField = "RatePlansId";
-                cmbRatePlan.DataBind();
-            }
+        
 
 
             if (cmbRoom.SelectedItem != null)
@@ -116,7 +111,13 @@ namespace HBM.Reservation
             }
 
 
-            if (cmbRatePlan.SelectedItem != null)
+            if (cmbRoom.SelectedItem != null && cmbRoom.SelectedItem.Value != null)
+            {
+                int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
+                hdnRoom.Value = currentRoomID.ToString();
+            }
+
+            if (cmbRatePlan.SelectedItem != null && cmbRatePlan.SelectedItem.Value != null)
             {
                 hdnRate.Value = cmbRatePlan.SelectedItem.GetValue("Rate").ToString();
             }
@@ -124,14 +125,6 @@ namespace HBM.Reservation
             {
                 hdnRate.Value = "0";
             }
-
-
-            if (cmbRoom.SelectedItem != null && cmbRoom.SelectedItem.Value != null)
-            {
-                int currentRoomID = Convert.ToInt32(cmbRoom.SelectedItem.Value.ToString());
-                hdnRoom.Value = currentRoomID.ToString();
-            }
-
 
         }
 
@@ -162,6 +155,7 @@ namespace HBM.Reservation
             cmbSource.DataBind();
 
             this.LoadRoomList();
+            //this.LoadRatePlans();
 
         }
 
@@ -257,6 +251,78 @@ namespace HBM.Reservation
             }
 
             txtBalance.Text = ((Convert.ToDecimal(txtRoomTotal.Text) + Convert.ToDecimal(txtServiceTotal.Text) + Convert.ToDecimal(txtTaxTotal.Text)) - (Convert.ToDecimal(txtDiscount.Text) + Convert.ToDecimal(txtPaidAmount.Text))).ToString();
+        }      
+
+        private void LoadSharesList(int customerID)
+        {
+            DataSet dsCustomersList = new DataSet();
+            Customer customer = new Customer();
+            dsCustomersList = customer.SelectByGroup(customerID);
+
+            if (dsCustomersList != null && dsCustomersList.Tables.Count > 0 && dsCustomersList.Tables[0] != null && dsCustomersList.Tables[0].Rows.Count > 0)
+            {
+                ASPxMenu tmpMenu = (ASPxMenu)ddlShareNames.FindControl("mnuGuest");
+
+                if (tmpMenu != null)
+                {
+                    for (int i = 0; i <= dsCustomersList.Tables[0].Rows.Count - 1; i++)
+                    {
+                        tmpMenu.Items[0].Items.Add(new MenuItem(dsCustomersList.Tables[0].Rows[i]["CustomerName"] != null ? dsCustomersList.Tables[0].Rows[i]["CustomerName"].ToString() : string.Empty));
+                    }
+                }
+
+            }
+
+        }
+
+        private bool ValidateRooms()
+        {
+            bool result = true;
+
+            if (hdnRate.Value == string.Empty || hdnRate.Value == "0")
+            {
+                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Reservation_RoomRateisEmpty + "')", true);
+                result = false;
+            }
+
+
+            return result;
+        }
+
+        private void LoadCardInformationByCustomer(int customerID)
+        {
+            DataSet dsCustomers = new DataSet();
+            Customer customer = new Customer();
+            dsCustomers = customer.SelectById(customerID);
+
+            reservationPayments.ReservationId = 0;
+            dsPaymentInformation = reservationPayments.SelectAllDataSetByReservationID();
+            dsPaymentInformation.Tables[0].PrimaryKey = new DataColumn[] { dsPaymentInformation.Tables[0].Columns["ReservationPaymentId"] };
+
+            DataRow dataRow = dsPaymentInformation.Tables[0].NewRow();
+
+            Random rd = new Random();
+            dataRow["ReservationPaymentId"] = rd.Next();
+            dataRow["PaymentDate"] = DateTime.Today;
+            dataRow["PaymentTypeId"] = (int)HBM.Common.Enums.PaymentType.CreditCard;
+            dataRow["CreditCardTypeId"] = dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null ? dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] : "1";
+            dataRow["CCNo"] = dsCustomers.Tables[0].Rows[0]["CCNo"] != null ? dsCustomers.Tables[0].Rows[0]["CCNo"] : string.Empty;
+            dataRow["CCExpirationDate"] = dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] != null ? dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] : string.Empty;
+            dataRow["CCNameOnCard"] = dsCustomers.Tables[0].Rows[0]["CCNameOnCard"] != null ? dsCustomers.Tables[0].Rows[0]["CCNameOnCard"] : string.Empty;
+            dataRow["Amount"] = "0.00";
+            dataRow["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
+            dataRow["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
+
+            if (dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null)
+            {
+                dsPaymentInformation.Tables[0].Rows.Add(dataRow);
+
+                gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
+                gvPaymentInformation.DataBind();
+
+                Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
+            }
+
         }
 
         private void LoadRoomList()
@@ -304,40 +370,17 @@ namespace HBM.Reservation
 
         }
 
-        private void LoadSharesList(int customerID)
+        private void LoadRatePlans()
         {
-            DataSet dsCustomersList = new DataSet();
-            Customer customer = new Customer();
-            dsCustomersList = customer.SelectByGroup(customerID);
-
-            if (dsCustomersList != null && dsCustomersList.Tables.Count > 0 && dsCustomersList.Tables[0] != null && dsCustomersList.Tables[0].Rows.Count > 0)
+            if (hdnRoom.Value != string.Empty)
             {
-                ASPxMenu tmpMenu = (ASPxMenu)ddlShareNames.FindControl("mnuGuest");
-
-                if (tmpMenu != null)
-                {
-                    for (int i = 0; i <= dsCustomersList.Tables[0].Rows.Count - 1; i++)
-                    {
-                        tmpMenu.Items[0].Items.Add(new MenuItem(dsCustomersList.Tables[0].Rows[i]["CustomerName"] != null ? dsCustomersList.Tables[0].Rows[i]["CustomerName"].ToString() : string.Empty));
-                    }
-                }
-
+                int currentRoomID = Convert.ToInt32(hdnRoom.Value);
+                cmbRatePlan.DataSource = new GenMan.RoomRatePlan() { RoomId = currentRoomID }.SelectByRoomId();
+                cmbRatePlan.TextField = "RatePlanName";
+                cmbRatePlan.ValueField = "RatePlansId";
+                cmbRatePlan.DataBind();               
             }
-
-        }
-
-        private bool ValidateRooms()
-        {
-            bool result = true;
-
-            if (hdnRate.Value == string.Empty || hdnRate.Value == "0")
-            {
-                System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Reservation_RoomRateisEmpty + "')", true);
-                result = false;
-            }
-
-
-            return result;
+            
         }
 
         #endregion
@@ -1085,47 +1128,16 @@ namespace HBM.Reservation
             this.Calculate();
         }
 
-        private void LoadCardInformationByCustomer(int customerID)
-        {
-            DataSet dsCustomers = new DataSet();
-            Customer customer = new Customer();
-            dsCustomers = customer.SelectById(customerID);
-
-            reservationPayments.ReservationId = 0;
-            dsPaymentInformation = reservationPayments.SelectAllDataSetByReservationID();
-            dsPaymentInformation.Tables[0].PrimaryKey = new DataColumn[] { dsPaymentInformation.Tables[0].Columns["ReservationPaymentId"] };
-
-            DataRow dataRow = dsPaymentInformation.Tables[0].NewRow();
-
-            Random rd = new Random();
-            dataRow["ReservationPaymentId"] = rd.Next();
-            dataRow["PaymentDate"] = DateTime.Today;
-            dataRow["PaymentTypeId"] = (int)HBM.Common.Enums.PaymentType.CreditCard;
-            dataRow["CreditCardTypeId"] = dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null ? dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] : "1";
-            dataRow["CCNo"] = dsCustomers.Tables[0].Rows[0]["CCNo"] != null ? dsCustomers.Tables[0].Rows[0]["CCNo"] : string.Empty;
-            dataRow["CCExpirationDate"] = dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] != null ? dsCustomers.Tables[0].Rows[0]["CCExpirationDate"] : string.Empty;
-            dataRow["CCNameOnCard"] = dsCustomers.Tables[0].Rows[0]["CCNameOnCard"] != null ? dsCustomers.Tables[0].Rows[0]["CCNameOnCard"] : string.Empty;
-            dataRow["Amount"] = "0.00";
-            dataRow["CreatedUser"] = SessionHandler.LoggedUser.UsersId;
-            dataRow["StatusId"] = (int)HBM.Common.Enums.HBMStatus.Active;
-
-            if (dsCustomers.Tables[0].Rows[0]["CreditCardTypeId"] != null)
-            {
-                dsPaymentInformation.Tables[0].Rows.Add(dataRow);
-
-                gvPaymentInformation.DataSource = dsPaymentInformation.Tables[0];
-                gvPaymentInformation.DataBind();
-
-                Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] = dsPaymentInformation;
-            }
-
-        }
+        
 
         #endregion
 
+     
 
-
-
+        protected void cmbRatePlan_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            LoadRatePlans();
+        }
 
     }
 }

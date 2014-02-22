@@ -25,6 +25,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script language="javascript" type="text/javascript">
 
+
+        function OnRoomChanged(cmbClientRoom) {
+
+            hdnRoom.value = cmbClientRoom.GetValue().toString();
+            cmbClientRatePlans.PerformCallback(hdnRoom.value);
+
+           
+                cinaspxLoadingPanel.Show();
+          
+            
+
+        }
+
+        function OnRatePlanChanged(cmbClientRatePlans) {
+
+            hdnRate.value = cmbClientRatePlans.GetSelectedItem().texts[3];
+        }
+
+
         function OnSelectedIndexChanged(s, e) {
             var value = s.GetText();
             if (value == 'Credit Card') {
@@ -47,6 +66,9 @@
 
             }
         }
+
+
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -89,8 +111,7 @@
                             </td>
                             <td rowspan="3" valign="bottom">
                                 <dx:ASPxButton ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create"
-                                    ValidationGroup="vgCreate" Height="40px" Width="100px" 
-                                    UseSubmitBehavior="False">
+                                    ValidationGroup="vgCreate" Height="40px" Width="100px" UseSubmitBehavior="False">
                                 </dx:ASPxButton>
                             </td>
                         </tr>
@@ -129,7 +150,7 @@
 	var checkindateText=new Date(checkindate.GetText());
     var checkoutdateText =new Date(checkoutdate.GetText());     
 	
-	if(checkoutdateText  &gt; checkindateText )
+	if(checkoutdateText  &gt;= checkindateText )
 	{
 		    e.isValid = true;
 	}
@@ -215,14 +236,15 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                 </td>
                                                 <td room="" valign="middle&gt;" width="65px">
                                                     Room<td>
-                                                        <dx:ASPxComboBox ID="cmbRoom" runat="server" OnSelectedIndexChanged="cmbRoom_SelectedIndexChanged"
-                                                            TextFormatString="{1}" ValueType="System.Int32" AutoPostBack="True">
+                                                        <dx:ASPxComboBox ID="cmbRoom" runat="server" TextFormatString="{1}" ValueType="System.Int32"
+                                                            ClientInstanceName="cmbClientRoom" EnableCallbackMode="True" EnableClientSideAPI="True">
                                                             <ClientSideEvents BeginCallback="function(s, e) {
 
 }" EndCallback="function(s, e) {
 		
 }" SelectedIndexChanged="function(s, e) {
-	cinaspxLoadingPanel.Show();	
+	OnRoomChanged(s);	
+	
 }" />
                                                             <Columns>
                                                                 <dx:ListBoxColumn Caption="Code" FieldName="RoomCode" Width="50px" />
@@ -244,10 +266,18 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                         Rate Plan
                                                     </td>
                                                     <td>
-                                                        <dx:ASPxComboBox ID="cmbRatePlan" runat="server" OnSelectedIndexChanged="cmbRatePlan_SelectedIndexChanged"
-                                                            TextFormatString="{0}" ValueType="System.Int32" AutoPostBack="True">
+                                                        <dx:ASPxComboBox ID="cmbRatePlan" runat="server" TextFormatString="{0}" 
+                                                            ValueType="System.Int32" ClientInstanceName="cmbClientRatePlans" 
+                                                            OnCallback="cmbRatePlan_Callback">
                                                             <ClientSideEvents SelectedIndexChanged="function(s, e) {
-	cinaspxLoadingPanel.Show();	
+	OnRatePlanChanged(s);
+	//cinaspxLoadingPanel.Show();	
+}" EndCallback="function(s, e) {	
+
+	hdnRate.value =cmbClientRatePlans.GetSelectedItem().texts[3];
+	  cinaspxLoadingPanel.Hide();
+
+
 }" />
                                                             <Columns>
                                                                 <dx:ListBoxColumn Caption="Plan Name" FieldName="RatePlanName" Width="100px" />
@@ -273,8 +303,8 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                             <tr valign="middle">
                                                 <td height="22" valign="middle">
                                                     # Adults
-                                                    <asp:HiddenField ID="hdnRate" runat="server" />
-                                                    <asp:HiddenField ID="hdnRoom" runat="server" />
+                                                    <asp:HiddenField ID="hdnRate" runat="server" ClientIDMode="Static" />
+                                                    <asp:HiddenField ID="hdnRoom" runat="server" ClientIDMode="Static" />
                                                 </td>
                                                 <td>
                                                     <dx:ASPxSpinEdit ID="seAdults" runat="server" Height="21px" MaxLength="3" MaxValue="100"
