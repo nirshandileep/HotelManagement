@@ -476,6 +476,25 @@ namespace HBM.Reservation
                 result = false;
             }
 
+            if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+            {
+                DataSet dsTemp = new DataSet();
+                dsTemp = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
+
+                if (dsTemp != null && dsTemp.Tables.Count > 0 && dsTemp.Tables[0] != null && dsTemp.Tables[0].Rows.Count > 0)
+                {
+                    DataRow[] resutRows = dsTemp.Tables[0].Select("RoomId=" + cmbRoom.Value);
+
+                    if (resutRows.Length > 0)
+                    {
+                        System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Reservation_RoomIsAlreadAdded + "')", true);
+                        result = false;
+                    }
+                }
+
+
+            }
+
 
             return result;
         }
@@ -655,8 +674,6 @@ namespace HBM.Reservation
                     {
                         totalDays = 1;
                     }
-
-
 
                     dr["Days"] = totalDays;
                     dr["Amount"] = totalDays * (Convert.ToDouble(hdnRate.Value == string.Empty ? "0" : hdnRate.Value));
