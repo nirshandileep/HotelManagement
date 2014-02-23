@@ -32,9 +32,13 @@
 
             hdnMaxAdult.value=cmbClientRoom.GetSelectedItem().GetColumnText('MaxAdult');
             hdnMaxChildren.value=cmbClientRoom.GetSelectedItem().GetColumnText('MaxChildren');
-            hdnMaxInfant.value=cmbClientRoom.GetSelectedItem().GetColumnText('MaxInfant');            
+            hdnMaxInfant.value = cmbClientRoom.GetSelectedItem().GetColumnText('MaxInfant');
+            seAdults.SetMaxValue(hdnMaxAdult.value);
+            seChildren.SetMaxValue(hdnMaxChildren.value);
+            seInfants.SetMaxValue(hdnMaxInfant.value);
             cmbClientRatePlans.PerformCallback(hdnRoom.value);
-           
+
+            
             cinaspxLoadingPanel.Show();
           
         }
