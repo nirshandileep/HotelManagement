@@ -29,18 +29,19 @@
         function OnRoomChanged(cmbClientRoom) {
 
             hdnRoom.value = cmbClientRoom.GetValue().toString();
+
+            hdnMaxAdult.value=cmbClientRoom.GetSelectedItem().GetColumnText('MaxAdult');
+            hdnMaxChildren.value=cmbClientRoom.GetSelectedItem().GetColumnText('MaxChildren');
+            hdnMaxInfant.value=cmbClientRoom.GetSelectedItem().GetColumnText('MaxInfant');            
             cmbClientRatePlans.PerformCallback(hdnRoom.value);
-
            
-                cinaspxLoadingPanel.Show();
+            cinaspxLoadingPanel.Show();
           
-            
-
         }
 
         function OnRatePlanChanged(cmbClientRatePlans) {
 
-            hdnRate.value = cmbClientRatePlans.GetSelectedItem().texts[3];
+            hdnRate.value = cmbClientRatePlans.GetSelectedItem().GetColumnText('Rate');
         }
 
 
@@ -74,7 +75,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-inner">
         <h2>
-            <asp:HiddenField ID="hdnReservationId" runat="server" />
+            ser<asp:HiddenField ID="hdnReservationId" runat="server" />
             Reservation<asp:Literal ID="ltlReservationCode" runat="server"></asp:Literal></h2>
         <table width="100%">
             <tr>
@@ -307,8 +308,9 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     <asp:HiddenField ID="hdnRoom" runat="server" ClientIDMode="Static" />
                                                 </td>
                                                 <td>
+                                                    <asp:HiddenField ID="hdnMaxAdult" runat="server" ClientIDMode="Static" />
                                                     <dx:ASPxSpinEdit ID="seAdults" runat="server" Height="21px" MaxLength="3" MaxValue="100"
-                                                        NullText="0" Number="0">
+                                                        NullText="0" Number="0" ClientIDMode="Static">
                                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
                                                             <RequiredField ErrorText="Required" IsRequired="True" />
                                                         </ValidationSettings>
@@ -318,8 +320,9 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                     # Children
                                                 </td>
                                                 <td>
+                                                    <asp:HiddenField ID="hdnMaxChildren" runat="server" ClientIDMode="Static" />
                                                     <dx:ASPxSpinEdit ID="seChildren" runat="server" Height="21px" MaxLength="3" MaxValue="100"
-                                                        NullText="0" Number="0">
+                                                        NullText="0" Number="0" ClientIDMode="Static">
                                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
                                                             <RequiredField ErrorText="Required" IsRequired="True" />
                                                         </ValidationSettings>
@@ -330,11 +333,12 @@ memSharesNames.SetValue(ddlShareNames.GetValue());
                                                 </td>
                                                 <td>
                                                     <dx:ASPxSpinEdit ID="seInfants" runat="server" Height="21px" MaxLength="3" MaxValue="100"
-                                                        NullText="0" Number="0">
+                                                        NullText="0" Number="0" ClientIDMode="Static">
                                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="vgAdd">
                                                             <RequiredField ErrorText="Required" IsRequired="True" />
                                                         </ValidationSettings>
                                                     </dx:ASPxSpinEdit>
+                                                    <asp:HiddenField ID="hdnMaxInfant" runat="server" ClientIDMode="Static" />
                                                 </td>
                                             </tr>
                                         </table>

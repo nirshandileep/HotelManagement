@@ -62,8 +62,8 @@ namespace HBM.Reservation
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["PaymentTypeId"]).PropertiesComboBox.DataSource = (new GenMan.PaymentType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
             ((GridViewDataComboBoxColumn)gvPaymentInformation.Columns["CreditCardTypeId"]).PropertiesComboBox.DataSource = (new GenMan.CreditCardType() { CompanyId = Master.CurrentCompany.CompanyId }).SelectAllDataset().Tables[0];
 
-      
 
+       
 
             if (!IsPostBack)
             {
@@ -100,8 +100,8 @@ namespace HBM.Reservation
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-        
 
+            
 
             if (cmbRoom.SelectedItem != null)
             {
@@ -157,6 +157,197 @@ namespace HBM.Reservation
             this.LoadRoomList();
             //this.LoadRatePlans();
 
+        }
+
+        private bool SaveData(Int64 reservationId)
+        {
+
+            bool result = false;
+
+            DbConnection connection = null;
+            DbTransaction transaction = null;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                ResMan.Reservation reservation = new GenRes.Reservation();
+                reservation.ReservationId = reservationId;
+                reservation.CompanyId = Master.CurrentCompany.CompanyId;
+
+                reservation.CustomerId = Convert.ToInt32(cmbCustomer.Value);
+                reservation.SourceId = Convert.ToInt32(cmbSource.Value);
+                reservation.CheckInDate = Convert.ToDateTime(dtCheckingDate.Text);
+                reservation.CheckOutDate = Convert.ToDateTime(dtCheckOutDate.Text);
+
+                reservation.StatusId = Convert.ToInt32(cmbResStatus.SelectedItem.Value.ToString());
+
+                reservation.RoomTotal = Convert.ToDecimal(txtRoomTotal.Text.Trim());
+                reservation.ServiceTotal = Convert.ToDecimal(txtServiceTotal.Text.Trim());
+                reservation.NetTotal = Convert.ToDecimal(txtNetTotal.Text.Trim());
+                reservation.Discount = Convert.ToDecimal(txtDiscount.Text.Trim());
+                reservation.TaxTypeId = Convert.ToInt32(cmbTax.Value);
+                reservation.TaxAmount = Convert.ToDecimal(txtTaxTotal.Text.Trim());
+                reservation.Total = Convert.ToDecimal(txtTotal.Text.Trim());
+                reservation.PaidAmount = Convert.ToDecimal(txtPaidAmount.Text.Trim());
+                reservation.Balance = Convert.ToDecimal(txtBalance.Text.Trim());
+                reservation.TaxPercentage = Convert.ToDecimal(hdnTaxPercent.Value == string.Empty ? "0" : hdnTaxPercent.Value);
+                reservation.CreatedUser = Master.LoggedUser.UsersId;
+                reservation.UpdatedUser = Master.LoggedUser.UsersId;
+
+                if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+                {
+                    reservation.ReservationRoomDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
+                }
+                else
+                {
+                    reservationRoom.ReservationId = reservationId;
+                    reservation.ReservationRoomDataSet = reservationRoom.SelectAllDataSetByReseervationId();
+                }
+
+
+                if (Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] != null)
+                {
+                    reservation.ReservationAdditionalServiceDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE];
+                }
+                else
+                {
+                    reservationAdditionalService.ReservationId = reservationId;
+                    reservation.ReservationAdditionalServiceDataSet = reservationAdditionalService.SelectAllDataSetByReservationID();
+                }
+
+                if (Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] != null)
+                {
+                    reservation.ReservationPaymentDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION];
+                }
+                else
+                {
+                    reservationPayments.ReservationId = reservationId;
+                    reservation.ReservationPaymentDataSet = reservationPayments.SelectAllDataSetByReservationID();
+                }
+
+                reservation.Save(db, transaction);
+
+                if (reservation.StatusId == (int)HBM.Common.Enums.HBMStatus.CheckOut)
+                {
+                    if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+                    {
+                        DataSet roomsToMakeDrity = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
+
+                        if (roomsToMakeDrity != null && roomsToMakeDrity.Tables.Count > 0 && roomsToMakeDrity.Tables[0] != null && roomsToMakeDrity.Tables[0].Rows.Count > 0)
+                        {
+                            for (int i = 0; i <= roomsToMakeDrity.Tables[0].Rows.Count - 1; i++)
+                            {
+                                Room dirtyroom = new Room();
+                                dirtyroom.RoomId = Convert.ToInt32(roomsToMakeDrity.Tables[0].Rows[i]["RoomId"].ToString());
+                                dirtyroom.UpdatedUser = Master.LoggedUser.UsersId;
+                                dirtyroom.UpdateRoomAsDirty(db, transaction);
+                            }
+
+
+                        }
+
+                    }
+
+                }
+
+
+
+                transaction.Commit();
+
+                this.hdnReservationId.Value = reservation.ReservationId.ToString();
+
+                result = true;
+            }
+            catch (System.Exception)
+            {
+                transaction.Rollback();
+            }
+
+
+            return result;
+        }
+
+        private bool DisplayData(Int64 reservationId)
+        {
+            bool result = false;
+
+            DbConnection connection = null;
+            DbTransaction transaction = null;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                ResMan.Reservation reservation = new ResMan.Reservation();
+                reservation.ReservationId = reservationId;
+                reservation = reservation.Select();
+
+                ltlReservationCode.Text = " - " + reservation.ReservationCode;
+
+                cmbCustomer.SelectedItem = cmbCustomer.Items.FindByValue(reservation.CustomerId.ToString());
+                cmbSource.SelectedItem = cmbSource.Items.FindByValue(reservation.SourceId.ToString());
+
+                dtCheckingDate.Value = reservation.CheckInDate;
+                dtCheckOutDate.Value = reservation.CheckOutDate;
+
+                cmbResStatus.SelectedItem = cmbResStatus.Items.FindByValue(reservation.StatusId.ToString());
+
+                txtRoomTotal.Text = reservation.RoomTotal.ToString();
+                txtServiceTotal.Text = reservation.ServiceTotal.ToString();
+                txtNetTotal.Text = reservation.NetTotal.ToString();
+                txtDiscount.Text = reservation.Discount.ToString();
+                cmbTax.SelectedItem = cmbTax.Items.FindByValue(reservation.TaxTypeId.ToString());
+                txtTaxTotal.Text = reservation.TaxAmount.ToString();
+                txtTotal.Text = reservation.Total.ToString();
+                txtPaidAmount.Text = reservation.PaidAmount.ToString();
+                txtBalance.Text = reservation.Balance.ToString();
+                hdnTaxPercent.Value = reservation.TaxPercentage.ToString();
+
+                this.LoadRoomInformation(reservationId);
+                this.LoadAddiotnalService(reservationId);
+                this.LoadPaymentInformation(reservationId);
+
+                transaction.Commit();
+                result = true;
+            }
+            catch (System.Exception)
+            {
+                transaction.Rollback();
+            }
+
+
+            return result;
+        }
+
+        private void ClearRoomInfoSection()
+        {
+            ddlShareNames.Text = string.Empty;
+            cmbRoom.SelectedIndex = -1;
+            cmbRatePlan.SelectedIndex = -1;
+            seAdults.Text = "0";
+            seChildren.Text = "0";
+            seInfants.Text = "0";
+            hdnRate.Value = string.Empty;
+            ddlShareNames.Focus();
+        }
+
+        private void ValidateReservation()
+        {
+            if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
+            {
+                if (((DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION]).Tables[0].Rows.Count == 0)
+                {
+                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Reservation_RoomInfoEmpty + "')", true);
+                    return;
+                }
+            }
         }
 
         private void ClearFormFields()
@@ -387,6 +578,20 @@ namespace HBM.Reservation
 
         #region Events
 
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+
+            if (cmbCustomer.SelectedItem != null && (string.Empty != cmbCustomer.SelectedItem.Value.ToString()))
+            {
+                this.LoadCardInformationByCustomer(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
+                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
+
+                this.LoadRoomList();
+
+            }
+
+        }
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -517,20 +722,6 @@ namespace HBM.Reservation
 
         }
 
-        protected void btnCreate_Click(object sender, EventArgs e)
-        {
-
-            if (cmbCustomer.SelectedItem != null && (string.Empty != cmbCustomer.SelectedItem.Value.ToString()))
-            {
-                this.LoadCardInformationByCustomer(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
-                this.LoadSharesList(Convert.ToInt32(cmbCustomer.SelectedItem.Value));
-
-                this.LoadRoomList();
-
-            }
-
-        }
-
         protected void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -546,199 +737,10 @@ namespace HBM.Reservation
 
         }
 
-        #endregion
-
-        #region Reservation
-
-        private bool SaveData(Int64 reservationId)
+        protected void cmbRatePlan_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
+            LoadRatePlans();
 
-            bool result = false;
-
-            DbConnection connection = null;
-            DbTransaction transaction = null;
-
-            try
-            {
-                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-                connection = db.CreateConnection();
-                connection.Open();
-                transaction = connection.BeginTransaction();
-
-                ResMan.Reservation reservation = new GenRes.Reservation();
-                reservation.ReservationId = reservationId;
-                reservation.CompanyId = Master.CurrentCompany.CompanyId;
-
-                reservation.CustomerId = Convert.ToInt32(cmbCustomer.Value);
-                reservation.SourceId = Convert.ToInt32(cmbSource.Value);
-                reservation.CheckInDate = Convert.ToDateTime(dtCheckingDate.Text);
-                reservation.CheckOutDate = Convert.ToDateTime(dtCheckOutDate.Text);
-
-                reservation.StatusId = Convert.ToInt32(cmbResStatus.SelectedItem.Value.ToString());
-
-                reservation.RoomTotal = Convert.ToDecimal(txtRoomTotal.Text.Trim());
-                reservation.ServiceTotal = Convert.ToDecimal(txtServiceTotal.Text.Trim());
-                reservation.NetTotal = Convert.ToDecimal(txtNetTotal.Text.Trim());
-                reservation.Discount = Convert.ToDecimal(txtDiscount.Text.Trim());
-                reservation.TaxTypeId = Convert.ToInt32(cmbTax.Value);
-                reservation.TaxAmount = Convert.ToDecimal(txtTaxTotal.Text.Trim());
-                reservation.Total = Convert.ToDecimal(txtTotal.Text.Trim());
-                reservation.PaidAmount = Convert.ToDecimal(txtPaidAmount.Text.Trim());
-                reservation.Balance = Convert.ToDecimal(txtBalance.Text.Trim());
-                reservation.TaxPercentage = Convert.ToDecimal(hdnTaxPercent.Value == string.Empty ? "0" : hdnTaxPercent.Value);
-                reservation.CreatedUser = Master.LoggedUser.UsersId;
-                reservation.UpdatedUser = Master.LoggedUser.UsersId;
-
-                if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
-                {
-                    reservation.ReservationRoomDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
-                }
-                else
-                {
-                    reservationRoom.ReservationId = reservationId;
-                    reservation.ReservationRoomDataSet = reservationRoom.SelectAllDataSetByReseervationId();
-                }
-
-
-                if (Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE] != null)
-                {
-                    reservation.ReservationAdditionalServiceDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_ADDTIONALSERVICE];
-                }
-                else
-                {
-                    reservationAdditionalService.ReservationId = reservationId;
-                    reservation.ReservationAdditionalServiceDataSet = reservationAdditionalService.SelectAllDataSetByReservationID();
-                }
-
-                if (Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION] != null)
-                {
-                    reservation.ReservationPaymentDataSet = (DataSet)Session[Constants.SESSION_RESERVATION_PAYMENTINFORMATION];
-                }
-                else
-                {
-                    reservationPayments.ReservationId = reservationId;
-                    reservation.ReservationPaymentDataSet = reservationPayments.SelectAllDataSetByReservationID();
-                }
-
-                reservation.Save(db, transaction);
-
-                if (reservation.StatusId == (int)HBM.Common.Enums.HBMStatus.CheckOut)
-                {
-                    if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
-                    {
-                        DataSet roomsToMakeDrity = (DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION];
-
-                        if (roomsToMakeDrity != null && roomsToMakeDrity.Tables.Count > 0 && roomsToMakeDrity.Tables[0] != null && roomsToMakeDrity.Tables[0].Rows.Count > 0)
-                        {
-                            for (int i = 0; i <= roomsToMakeDrity.Tables[0].Rows.Count - 1; i++)
-                            {
-                                Room dirtyroom = new Room();
-                                dirtyroom.RoomId = Convert.ToInt32( roomsToMakeDrity.Tables[0].Rows[i]["RoomId"].ToString());
-                                dirtyroom.UpdatedUser = Master.LoggedUser.UsersId;
-                                dirtyroom.UpdateRoomAsDirty(db, transaction);
-                            }
-
-                           
-                        }
-
-                    }
-
-                }
-
-
-
-                transaction.Commit();
-
-                this.hdnReservationId.Value = reservation.ReservationId.ToString();
-
-                result = true;
-            }
-            catch (System.Exception)
-            {
-                transaction.Rollback();
-            }
-
-
-            return result;
-        }
-
-        private bool DisplayData(Int64 reservationId)
-        {
-            bool result = false;
-
-            DbConnection connection = null;
-            DbTransaction transaction = null;
-
-            try
-            {
-                Database db = DatabaseFactory.CreateDatabase(Constants.HBMCONNECTIONSTRING);
-                connection = db.CreateConnection();
-                connection.Open();
-                transaction = connection.BeginTransaction();
-
-                ResMan.Reservation reservation = new ResMan.Reservation();
-                reservation.ReservationId = reservationId;
-                reservation = reservation.Select();
-
-                ltlReservationCode.Text = " - " + reservation.ReservationCode;
-
-                cmbCustomer.SelectedItem = cmbCustomer.Items.FindByValue(reservation.CustomerId.ToString());
-                cmbSource.SelectedItem = cmbSource.Items.FindByValue(reservation.SourceId.ToString());
-
-                dtCheckingDate.Value = reservation.CheckInDate;
-                dtCheckOutDate.Value = reservation.CheckOutDate;
-
-                cmbResStatus.SelectedItem = cmbResStatus.Items.FindByValue(reservation.StatusId.ToString());
-
-                txtRoomTotal.Text = reservation.RoomTotal.ToString();
-                txtServiceTotal.Text = reservation.ServiceTotal.ToString();
-                txtNetTotal.Text = reservation.NetTotal.ToString();
-                txtDiscount.Text = reservation.Discount.ToString();
-                cmbTax.SelectedItem = cmbTax.Items.FindByValue(reservation.TaxTypeId.ToString());
-                txtTaxTotal.Text = reservation.TaxAmount.ToString();
-                txtTotal.Text = reservation.Total.ToString();
-                txtPaidAmount.Text = reservation.PaidAmount.ToString();
-                txtBalance.Text = reservation.Balance.ToString();
-                hdnTaxPercent.Value = reservation.TaxPercentage.ToString();
-
-                this.LoadRoomInformation(reservationId);
-                this.LoadAddiotnalService(reservationId);
-                this.LoadPaymentInformation(reservationId);
-
-                transaction.Commit();
-                result = true;
-            }
-            catch (System.Exception)
-            {
-                transaction.Rollback();
-            }
-
-
-            return result;
-        }
-
-        private void ClearRoomInfoSection()
-        {
-            ddlShareNames.Text = string.Empty;
-            cmbRoom.SelectedIndex = -1;
-            cmbRatePlan.SelectedIndex = -1;
-            seAdults.Text = "0";
-            seChildren.Text = "0";
-            seInfants.Text = "0";
-            hdnRate.Value = string.Empty;
-            ddlShareNames.Focus();
-        }
-
-        private void ValidateReservation()
-        {
-            if (Session[Constants.SESSION_RESERVATION_ROOMINFORMATION] != null)
-            {
-                if (((DataSet)Session[Constants.SESSION_RESERVATION_ROOMINFORMATION]).Tables[0].Rows.Count == 0)
-                {
-                    System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMessage", "javascript:ShowInfoMessage('" + Messages.Reservation_RoomInfoEmpty + "')", true);
-                    return;
-                }
-            }
         }
 
         #endregion
@@ -1132,12 +1134,6 @@ namespace HBM.Reservation
 
         #endregion
 
-     
-
-        protected void cmbRatePlan_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
-        {
-            LoadRatePlans();
-        }
-
     }
+
 }

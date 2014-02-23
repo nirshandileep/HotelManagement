@@ -157,6 +157,15 @@ namespace HBM.Reservation {
         protected global::System.Web.UI.WebControls.HiddenField hdnRoom;
         
         /// <summary>
+        /// hdnMaxAdult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnMaxAdult;
+        
+        /// <summary>
         /// seAdults control.
         /// </summary>
         /// <remarks>
@@ -164,6 +173,15 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seAdults;
+        
+        /// <summary>
+        /// hdnMaxChildren control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnMaxChildren;
         
         /// <summary>
         /// seChildren control.
@@ -182,6 +200,15 @@ namespace HBM.Reservation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxSpinEdit seInfants;
+        
+        /// <summary>
+        /// hdnMaxInfant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnMaxInfant;
         
         /// <summary>
         /// gvRoomInfo control.
