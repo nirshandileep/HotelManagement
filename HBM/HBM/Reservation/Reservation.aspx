@@ -79,7 +79,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-inner">
         <h2>
-            ser<asp:HiddenField ID="hdnReservationId" runat="server" />
+            Add<asp:HiddenField ID="hdnReservationId" runat="server" />
             Reservation<asp:Literal ID="ltlReservationCode" runat="server"></asp:Literal></h2>
         <table width="100%">
             <tr>
